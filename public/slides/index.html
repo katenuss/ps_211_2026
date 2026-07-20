@@ -40,7 +40,7 @@
 <div class="wrap">
   <header>
     <h1>Slide Decks</h1>
-    <p class="muted">Lectures, exam reviews, and discussion sections</p>
+    <p class="muted">Lectures and exam reviews</p>
   </header>
 
   <div class="hr"></div>
@@ -54,11 +54,6 @@
     <h2>Exam Reviews</h2>
     <div id="exams" class="grid"></div>
   </div>
-
-  <div class="section">
-    <h2>Discussion Sections</h2>
-    <div id="discussions" class="grid"></div>
-  </div>
 </div>
 
 <script>
@@ -69,54 +64,54 @@ async function urlExists(url) {
 
 (function(){
   const base = '/' + (location.pathname.split('/').filter(Boolean)[0] || '');
-  const L_START = 1, L_END = 18;
+  const L_START = 1, L_END = 19;
   const EXAMS = [1,2,3,4];
-  const DISCUSSIONS = 13; // Discussion 1..13
 
   const lecturesWrap = document.getElementById('lectures');
   const examsWrap = document.getElementById('exams');
-  const discussionsWrap = document.getElementById('discussions');
 
   const titles = {
-    1: 'Introduction & Course Logistics',
-    2: 'Variables, Operational Definitions, Experiment Types',
+    1: 'Introduction & Intro to Statistics',
+    2: 'Variables, Operational Definitions & Types of Experiments',
     3: 'Frequency Distributions & Visual Displays',
-    4: 'Central Tendency & Variability',
-    5: 'Sampling & Probability',
-    6: 'Normal Distribution & Z-scores',
-    7: 'Z-scores (continued)',
-    8: 'Hypothesis Testing, Z tests, Confidence Intervals',
-    9: 'Effect Size, Power, One-sample T Tests',
-    10: 'Paired-samples T Tests',
-    11: 'Independent-samples T Tests',
-    12: 'Independent-samples T Tests (Continued), T Tests in R',
-    13: 'Reporting Results in APA Style',
-    14: 'One-way ANOVA',
-    15: 'Repeated-measures ANOVA & Two-way (Factorial) ANOVA',
-    16: 'Correlation',
-    17: 'Regression',
-    18: 'Chi-square & Non-parametric tests; Data Ethics'
+    4: 'Central Tendency',
+    5: 'Variability',
+    6: 'Sampling, Probability & Intro to Hypothesis Testing',
+    7: 'Normal Distributions, Standardization & Z-scores',
+    8: 'The Central Limit Theorem & Standard Error',
+    9: 'Z-tables, Percentiles & Building Toward Hypothesis Testing',
+    10: 'Hypothesis Testing with Z Tests & Confidence Intervals',
+    11: 'Effect Size & Statistical Power',
+    12: 'Parametric Assumptions & Intro to T-tests',
+    13: 'Paired-samples T Tests',
+    14: 'Independent-samples T Tests & APA Reporting',
+    15: 'One-way ANOVA',
+    16: 'Repeated-measures & Two-way ANOVA',
+    17: 'Correlation',
+    18: 'Regression',
+    19: 'Chi-square & Non-parametric Tests'
   };
 
   const dates = {
-    1: 'Sept. 2',
-    2: 'Sept. 4',
-    3: 'Sept. 9',
-    4: 'Sept. 11',
-    5: 'Sept. 16',
-    6: 'Sept. 18',
-    7: 'Sept. 30',
-    8: 'Oct. 2',
-    9: 'Oct. 7',
-    10: 'Oct. 21',
-    11: 'Oct. 23',
-    12: 'Oct. 28',
-    13: 'Oct. 30',
-    14: 'Nov. 11',
-    15: 'Nov. 13',
-    16: 'Nov. 18',
-    17: 'Nov. 20',
-    18: 'Dec. 2'
+    1: 'Sept. 3',
+    2: 'Sept. 8',
+    3: 'Sept. 10',
+    4: 'Sept. 15',
+    5: 'Sept. 17',
+    6: 'Sept. 22',
+    7: 'Oct. 1',
+    8: 'Oct. 6',
+    9: 'Oct. 8',
+    10: 'Oct. 15',
+    11: 'Oct. 20',
+    12: 'Oct. 22',
+    13: 'Nov. 3',
+    14: 'Nov. 5',
+    15: 'Nov. 17',
+    16: 'Nov. 19',
+    17: 'Nov. 24',
+    18: 'Dec. 1',
+    19: 'Dec. 3'
   };
 
   function makeCard({ kicker, title, date, buttons }) {
@@ -168,7 +163,7 @@ async function urlExists(url) {
     // Lectures
     for (let n = L_START; n <= L_END; n++) {
       const deckURL = `${base}/lecture${n}/`;
-      const pdfURL  = `${base}/pdfs/ps211_fall2025_lecture${n}.pdf`;
+      const pdfURL  = `${base}/pdfs/ps211_fall2026_lecture${n}.pdf`;
 
       const [deckOK, pdfOK] = await Promise.all([urlExists(deckURL), urlExists(pdfURL)]);
 
@@ -189,7 +184,7 @@ async function urlExists(url) {
     for (const n of EXAMS) {
 
       const deckURL = `${base}/lecture_exam${n}_review/`;
-      const pdfURL  = `${base}/pdfs/ps211_fall2025_lecture_exam${n}_review.pdf`;
+      const pdfURL  = `${base}/pdfs/ps211_fall2026_lecture_exam${n}_review.pdf`;
 
       const [deckOK, pdfOK] = await Promise.all([urlExists(deckURL), urlExists(pdfURL)]);
 
@@ -203,24 +198,6 @@ async function urlExists(url) {
         buttons: [openBtn, pdfBtn]
       });
       examsWrap.appendChild(card);
-    }
-
-
-
-    // Discussions
-    for (let n = 1; n <= DISCUSSIONS; n++) {
-      const pdfURL = `${base}/pdfs/ps211_fall2025_discussion${n}.pdf`;
-      const pdfOK  = await urlExists(pdfURL);
-
-      const pdfBtn = pdfOK ? btnGhost('Download PDF', pdfURL, true)
-                           : btnGhost('Download PDF', '', false, 'PDF not yet available');
-
-      const card = makeCard({
-        kicker: `Discussion ${n}`,
-        title: `Discussion ${n}`,
-        buttons: [pdfBtn]
-      });
-      discussionsWrap.appendChild(card);
     }
   })();
 })();
