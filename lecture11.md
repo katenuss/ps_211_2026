@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 11
-exportFilename: ps211_fall2025_lecture11
+exportFilename: ps211_fall2026_lecture11
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1  
-### Lecture 11: Independent-Sample *t* Tests
+## Fall 2026 · Section C1
+### Lecture 11: Effect Size & Statistical Power
 
 ---
 layout: top-title
@@ -20,14 +20,16 @@ align: lt
 ---
 
 :: title ::
-# Updates & Reminders
+# Updates and Reminders
 
 :: content ::
-- ==The mid-semester survey== has been posted. Please take a few minutes to fill it out!
-- If 38 people fill it out by next class, everyone will get 2 bonus percentage points on Exam 3. 
-- I'm already finding it super useful, so thank you to those who have filled it out!
-  - One note: Answer keys for the homeworks *ARE* posted (on Blackboard and Slack) and are not taken down.
-- ==Homework 3== will be posted by the end of the week and is due on Friday, Oct. 31.
+- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 16**.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
+- Coming up:
+  - Tuesday (10/27): Exam 2 Review
+  - Thursday (10/29): Exam 2 (covers Lectures 7-12)
 
 ---
 layout: top-title
@@ -36,13 +38,21 @@ align: lt
 ---
 
 :: title ::
-# Updates & Reminders
+# Quick Recap: Z Tests & Confidence Intervals
 
 :: content ::
-- ==Exam 2== grades have been posted.
-- This exam was hard!
-- We changed the denominator from 30 to 28 to account for the fact that several questions were overly confusing and challenging.
-- We will go over the challenging questions today, in a few moments.
+- Last time, we covered ==*z* tests== and ==confidence intervals (CIs)== in depth — today builds directly on that.
+
+### Quick recap
+- A ***z* test** compares a sample mean to a population mean when we know the population SD.
+- A ==confidence interval== gives a range of plausible values for the population mean, built around our sample mean.
+- CIs and hypothesis tests agree: if the population mean falls **outside** our CI, we reject $H_0$.
+
+<Admonition title="Formula refresher" color="teal-light" width="100%">
+
+$$z = \frac{M-\mu}{SE}, \quad SE = \frac{SD}{\sqrt{n}}, \quad CI = M \pm z_{crit}(SE)$$
+
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -51,90 +61,59 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Exam 2: Why was it so hard?
+# Example: Screen Time of Teens vs. Adults
 
 :: left ::
+- Nielsen (2018): U.S. adults spend **11  hours/day** on screens ($\mu=11$, $SD=2$)
+- We measure a sample of **20  teens** → $M=9$
 
-### Things that are on me:
-- We went over *a lot* of material fairly quickly. -> Exam 3 will cover less new material.
-- You were given opportunities to practice the material, but not the format. -> We will do more practice multiple choice questions in class.
-- The wording of some questions could have been clearer. -> We will try to make Exam 3 clearer.
+==Do teens and adults differ in how much time they spend on screens?==
 
-<p v-click>
 
-### Both you and me
-- Some questions asked you to *apply* concepts in new ways and think critically. This is hard! -> We will do more of this in class.
+- Compute the probability (*p* value) that the teen population distribution and the adult population distribution are the same.
 
-</p>
+- Compute a 95% CI for the *population mean* of teens.
 
 :: right ::
 
 <p v-click>
 
-### Things that are on you:
-- Engagement in the course is lower than it was for the lectures leading up to Exam 1. 
-- The concepts in this part of the course are more challenging, so you need to spend more time reviewing and practicing outside of class.
-- Some of the exam questions that people struggled with were very closely related to similar homework questions that people did well on. In addition to *completing* the homework, make sure you *understand* it.
-- Ask for help! If we are moving too quickly, raise your hand and tell us! Or come to office hours!
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Hard questions from Exam 2
-
-:: content ::
-
-[We are going over these outside of the slide deck.]
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Types of *t* Tests
-
-:: content ::
-There are 3 types of *t* tests, used in different research scenarios:
-
-1. **Single-sample *t* test** – Compare a sample mean to a population mean when the population SD is unknown.  
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Before Exam 2!
-</div>
-</div>
-
-<p v-click>
-
-2. **Paired-sample *t* test** – Compare two samples when every participant is in both samples (within-subjects design).  
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Last class!
-</div>
-</div>
+==For the *p* value (*z*-test)==
+1. Convert 9 to *z* score:
+$$\frac{(9-11)}{2/\sqrt(20)}= - 4.47$$
+2. Use *z* table to convert to percentile / probability: $< .001$
 
 </p>
 
 <p v-click>
 
-3. **Independent-samples *t* test** – Compare two samples when participants are in only one group (between-subjects design).
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Today!
-</div>
-</div>
+==For the 95% CI==
+1. Compute $SE$:  $2 / \sqrt{20} = 0.447$
+2. Find $z_{crit}=1.96$
+3. Compute bounds:  $9 \pm 1.96(0.447)$ → [8.12, 9.88]
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Confidence Intervals and Significance
+
+:: content ::
+- CI and hypothesis testing give consistent conclusions.
+- If the **population mean** (e.g., 11 hours) **falls outside** the 95% CI, we reject the null hypothesis.
+- If it **falls inside**, we fail to reject.
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+A CI provides more information than a simple reject/fail‑to‑reject decision — it is an ==interval estimate== that shows the range of plausible effects.
+</SpeechBubble>
 
 </p>
 
@@ -145,17 +124,32 @@ align: lt
 ---
 
 :: title ::
-
-# A brief aside: Where did *t* tests come from?
+# Effect Size
 
 :: content ::
-- *t* tests were developed by William Sealy Gosset in 1908 while working at the Guinness Brewery in Dublin, Ireland.  Gosset wanted to monitor the quality of raw materials (e.g., barley) used in brewing, but he had only small samples to work with.  
-- To address this problem, he developed the *t* distribution and the *t* test, which allowed him to make inferences about population means from small samples.  
-- He published his work under the pseudonym "Student" to avoid conflicts with Guinness's policy against employees publishing research.
+- Statistical significance depends on the sample size.
+- The larger the sample size, the more likely it is that a statistically significant result will be found.
 
+<Admonition title="Question" color="teal-light" width="100%">
+Based on what we know about *z* tests, why is this the case?
+</Admonition>
 
-<img src="/images/lecture11/guinness.jpg"  class="w-1/4 mx-auto"/>
+<p v-click>
 
+**Answer:** Larger sample sizes provide more "certain" estimates of the population parameters, reducing the standard error and increasing the likelihood of finding a statistically significant effect.
+
+</p>
+
+<p v-click>
+
+- The ==**effect size**== tells us *how big* the effect actually is.
+- It measures the ==magnitude of a difference== in standardized units.
+</p>
+
+<p v-click>
+
+**Example:** Researchers examine standardized math test scores in over 500,000 students across the country. They find that, on average, girls score .3 points lower than boys. This effect is *statistically significant.* But is it meaningful?
+</p>
 
 ---
 layout: top-title
@@ -164,54 +158,14 @@ align: lt
 ---
 
 :: title ::
-
-# More contributions from Guinness Brewery!
-
-:: content ::
-
-- Stella Cunliffe, a statistician at Guinness in the 1950s, developed quality control methods that improved the consistency of beer production.  
-- At the time, workers had to either accept or reject barrels of beer by moving them up or down a hill. 
-- She used *t* testing to determine that *accepting* barrels was easier than *rejecting* them, leading to bias in quality control. She redesigned the process to reduce this bias.
-- She became the first woman president of the Royal Statistical Society in 1975.
-
-<img src="/images/lecture11/guinness.jpg"  class="w-1/4 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Types of *t* Tests
+# What is effect size?
 
 :: content ::
-There are 3 types of *t* tests, used in different research scenarios:
-
-1. **Single-sample *t* test** – Compare a sample mean to a population mean when the population SD is unknown.  
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Before Exam 2!
-</div>
-</div>
-
-
-2. **Paired-sample *t* test** – Compare two samples when every participant is in both samples (within-subjects design).  
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Last class!
-</div>
-</div>
-
-3. **Independent-samples *t* test** – Compare two samples when participants are in only one group (between-subjects design).
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Today!
-</div>
-</div>
-
+- Tells us the size of a difference that is *unaffected* by sample size.
+- Allows standardization across studies
+- Tells how much two populations do not overlap – the less overlap, the bigger the effect size
+- Said in another way, the effect size is a ==quantitative measure of the magnitude of the experimental effect.==
+  - The larger the effect size, the stronger the relationship between two variables.
 
 
 ---
@@ -221,100 +175,22 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Between- vs Within-Subjects Designs
-
-:: left ::
-### Within-Subjects / Within-Groups
-- Each participant experiences **all** levels of the independent variable.  
-- Comparisons are made *over time or conditions* for the same people.
-
-<p v-click>
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-3 transform">
-  What is an advantage of a within-subjects design?
-</div>
-</div>
-
-</p>
-
-
-:: right ::
-### Between-Subjects / Between-Groups
-- Each participant experiences **only one** level of the independent variable.  
-- Comparisons are made *between different people*.
-
-<p v-click>
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-3 transform">
-  What is an advantage of a between-subjects design?
-</div>
-</div>
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Within-Subjects Designs: Pros & Cons
+# Effect size tells us how much two populations do not overlap
 
 :: left ::
 
-### Advantages
-- Practical: Fewer participants needed.
-- Statistical: Often the best way to control for individual differences, which reduces variability and increases statistical power.
-  - Decreases subject variability because each participant is their own baseline or ‘control’
+<img src="/images/lecture9/effect_size.png" alt="Effect size" class="w-1/2 mx-auto"/>
 
+Overlap can be decreased in two ways:
+
+1. When two population ==means are far apart==, the overlap of the distributions is less and the effect size is bigger.
 
 :: right ::
 
-<p v-click>
+<img src="/images/lecture9/effect_size_var.png" alt="Effect size variance" class="w-3/4 mx-auto"/>
+<br>
 
-### Disadvantages
-- Carryover effects:
-  - Once participants have experienced one condition, it may influence their behavior in subsequent conditions.
-- Order effects
-    - Practice effects: Improvement due to familiarity with the task.
-    - Fatigue effects: Decline in performance due to tiredness or boredom.
-  - "Counterbalancing" can help mitigate this issue, but it may not eliminate it entirely.
-  
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Between-Subjects Designs: Pros & Cons
-
-:: left ::
-
-### Advantages
-- No carryover effects
-- No order effects
-- Sometimes the only ethical design (e.g., drug trials where participants cannot receive two different treatments)
-
-
-:: right ::
-
-<p v-click>
-
-### Disadvantages
-- More participants needed
-- Individual differences can introduce variability
-
-
-</p>
+2. When ==variability within each distribution is smaller==, overlap decreases and effect size increases. 
 
 
 ---
@@ -324,90 +200,16 @@ align: lt
 ---
 
 :: title ::
-# Which *t* Test Should I Use?
+# Calculating effect size
 
 :: content ::
-- **Within-groups design** → use a *paired-samples t test*  
-- **Between-groups design** → use an *independent-samples t test*
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Practice: Paired-Samples *t* Test
-
-:: left ::
-*Students complete a short quiz twice — once with music, once in silence. The instructor wants to know if background music helps or hurts performance.*
-
-- Scores with music: 7, 6, 5, 8, 7
-- Scores without music: 8, 6, 7, 9, 8
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-2 transform">
-  What would you tell the instructor about the effect of background music on quiz performance?
-</div>
-</div>
-
-:: right ::
-
-<p v-click>
-
-**Hint 1:** You will need to compute: 
-- The difference in each pair of scores
-- The mean and standard deviation of the differences
-- The standard error of the mean differences
-- The *t* statistic
-
-</p>
-
-
-<p v-click>
-
-**Hint 2:** Using an alpha level of .05 for a two-tailed test, the critical values for df = 4 are ± 2.776.
-
-</p>
-
-<p v-click>
-
-**Hint 3:** It doesn't matter whether you subtract "with music - without music" or "without music - with music," as long as you are consistent. The magnitude of the *t* statistic will be the same; only the sign will differ.
-
-</p>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
-
-:: left ::
-1. Step 1: Populations & Assumptions
-- Group 1: Quiz scores with music.
-- Group 2: Quiz scores without music.  
-- Distribution: Differences between paired scores.  
-- Assumptions: 
-  - DV is numeric. 
-  - Random sample of students.
-  - Population distribution (including SD in quiz scores) is unknown.
-
-:: right :: 
-2. Step 2: Hypotheses
-- **Null (H₀):**  μ₁ = μ₂  (no mean difference)  
-  - or equivalently:  μ₁ − μ₂ = 0
-  - In words: Music does not affect quiz performance. 
-
-- **Research (H₁):**  μ₁ ≠ μ₂  (there is a difference)
-  - or equivalently:  μ₁ − μ₂ ≠ 0
-  - In words: Music affects quiz performance.
+- ==Cohen's d== is a common statistical measure of effect size.
+- We calculate Cohen's d by taking the difference between two means and dividing by the data's standard deviation.
+- Cohen (1990) used the small but statistically significant correlation between height and IQ to explain the difference between statistical significance and practical importance.
+  - His sample size was big: 14,000 children!
+  - Cohen calculated that a person would have to grow by 3.5 feet to increase her IQ by 30 points (2 standard deviations)
+  - Or, to increase her height by 4 inches, she would have to increase her IQ by 233 points!
+  - Height may have been statistically significantly related to IQ, but there was no practical real-world application.
 
 
 ---
@@ -418,224 +220,29 @@ align: lt
 
 :: title ::
 
-# Practice: Paired-Samples *t* Test (Solution)
+# Calculating effect size (continued)
 
 :: content ::
-3. Step 3: Determine Characteristics of the Comparison Distribution. 
-- We know the mean of the comparison distribution is 0 under H₀. Now we need to compute the standard error (SE) of the mean differences.  
-- This requires estimating the population standard deviation ($\sigma$) of the difference scores.
-- Our best estimate of the population standard deviation will be the *sample* standard deviation (s) of the difference scores.
-- First, we compute the difference scores (With Music − Without Music).
-- Then, we need to compute their mean. *We will also need this later!*
-- Finally, we compute the sample standard deviation (s) of the difference scores.
+- To calculate Cohen's d, we use the same formula as for the *z* statistic, but we substitute the standard deviation for the standard error:
 
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+**Cohen's _d_:**
+$$d = \frac{M_1 - M_2}{SD}$$
 
-:: title ::
+- This way, the effect size (Cohen's d) is based on the spread of the distribution of individual scores (standard deviation), not the distribution of means (standard error).
 
-# Practice: Paired-Samples *t* Test (Solution)
+<Admonition title="Question" color="teal-light" width="100%">
+What is the effect size for the difference in teens' vs. adults' screen time?
 
-:: content ::
+$M1 = 11; M2 = 9; SD = 2$
+</Admonition>
 
-<div class="text-xs w-2/3 mx-auto mt-2" style="line-height:1.1">
-
-<table class="border-collapse w-full">
-  <thead>
-    <tr>
-      <th>Participant</th>
-      <th>With Music</th>
-      <th>Without Music</th>
-      <th>Difference (D)</th>
-      <th>D − Mean D (-1)</th>
-      <th>Squared Deviation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>7</td><td>8</td><td>-1</td><td>0</td><td>0</td></tr>
-    <tr><td>2</td><td>6</td><td>6</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>3</td><td>5</td><td>7</td><td>-2</td><td>-1</td><td>1</td></tr>
-    <tr><td>4</td><td>8</td><td>9</td><td>-1</td><td>0</td><td>0</td></tr>
-    <tr><td>5</td><td>7</td><td>8</td><td>-1</td><td>0</td><td>0</td></tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3" style="text-align:right;"><strong>Sum of Differences (ΣD)</strong></td>
-      <td><strong>-5</strong></td>
-      <td colspan="2"></td>
-    </tr>
-    <tr>
-      <td colspan="3" style="text-align:right;"><strong>Mean Difference (ΣD / n)</strong></td>
-      <td colspan="3"><strong>-5 ÷ 5 = -1.0</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sum of Squares (SS)</strong></td>
-      <td><strong>2.00</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sample Variance (s² = SS / (n-1))</strong></td>
-      <td><strong>0.50</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sample SD (√s²)</strong></td>
-      <td><strong>0.71</strong></td>
-    </tr>
-  </tfoot>
-</table>
-
-</div>
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
-
-:: left ::
-
-3. Step 3: Determine Characteristics of the Comparison Distribution (continued)
-- Now, we can compute the standard error (SE) of the mean differences:  
-  $$SE = \frac{s}{\sqrt{n}} = \frac{0.71}{\sqrt{5}} = 0.318$$
-- Thus, our comparison distribution has:  
-  - Mean = 0 and SE = 0.318
-- Remember, this is the mean and SE of the *difference scores* we would expect if we drew many samples of 5 students from a population where music has no effect on quiz performance.
-
-:: right ::
-4. Step 4: Determine the Critical Values (or Cutoffs)
-- Now, we need to determine where the middle 95% of this comparison distribution lies (since we are using an alpha level of .05 for a two-tailed test).
-- Remember, we are using a *t* distribution to account for our additional uncertainty due to estimating the population standard deviation from our sample.
-- We can find out critical values from a t-table or computer program for a two-tailed test with df = (n − 1) = 4.:
-→ $t_{crit}= ± 2.776$
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
-
-:: left ::
-
-5. Step 5: Calculate the Test Statistic
-- We calculate our *t* value using the formula:  
-  $$t = \frac{M_{diff}-\mu_D}{SE}$$  
-  where:  
-  - $M_{diff}$ = sample mean difference  
-  - $\mu_D$ = hypothesized population mean difference (0 under H₀)  
-  - SE = standard error of the mean differences
-
-$$t = \frac{M_{diff}-0}{SE} = \frac{-1}{0.318} = -3.14$$
-
-:: right ::
 
 <p v-click>
 
-6. Step 6: Make a Decision
-
-- Compare calculated *t* to critical values:  
-  - Calculated *t* = -3.14  
-  - Critical values = ± 2.776
-  - -3.14 < -2.776 → **Reject H₀**
-  - Interpret sign: Since we subtracted (With Music − Without Music), a negative *t* indicates that scores were lower with music.
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-1 transform">
-  The results suggest that background music has a significant effect on quiz performance, with students performing worse when music is played during the quiz.
-</div>
-</div>
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Thinking critically: Paired-Samples *t* Test 
-
-:: content ::
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-1 transform">
-  The results suggest that background music has a significant effect on quiz performance, with students performing worse when music is played during the quiz.
-</div>
-</div>
-
-**Why can we conclude that we have a significant effect without computing a *p*-value?**
-
-A. We can't. This is a mistake.
-
-B. Because our calculated *t* value falls in the critical region, we know that the *p*-value is less than .05.
-
-C. Because our calculated *t* value is negative, we know that the *p*-value is less than .05.
-
-D. Because our calculated *t* value is greater than 1, we know that our results are significant.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Thinking critically: Paired-Samples *t* Test 
-
-:: content ::
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-1 transform">
-  The results suggest that background music has a significant effect on quiz performance, with students performing worse when music is played during the quiz.
-</div>
-</div>
-
-**Given that our calculated mean difference is -1, and our *t* value is -3.14, which of the following are the most likely values for the 95% confidence interval?**
-
-A. [-1, 1]
-
-B. [-3.14, -1]
-
-C. [-3.14, 3.14]
-
-D. [-1.9, -0.1]
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What if the researcher has used a between-subjects design? 
-
-:: content ::
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-2 transform">
-The researcher realizes his study is flawed because students took the quiz twice, which may have influenced their performance. How could the researcher redesign the study to use a between-subjects design?
-</div>
-</div>
-
-<p v-click>
-
-**Answer:**
-- The researcher could randomly assign students to one of two groups: one group with music and another group without music. 
-- The researcher would then compare the quiz scores of the two independent groups using an independent-samples *t* test.
+<StickyNote color="green-light" title="Answer" width="100%">
+d = 1. This tells us that on average, teens' screen time is 1 full standard deviation below that of adults'. This is a *large* effect.
+</StickyNote>
 
 </p>
 
@@ -647,137 +254,29 @@ align: lt
 
 :: title ::
 
-# Independent-Samples *t* Tests
+# Practice: Study Hours
 
 :: content ::
-- Compares two means from **independent groups.**  
-- Each group has different people that each experience **only one** level of the independent variable.  
-- Example: Comparing quiz scores of students who took the quiz with music vs. students who took the quiz in silence.  
-  - The scores are independent because no student is in both groups. There are no paired scores.
+- Let's practice calculating Cohen's d with another example.
+- A tutoring center wants to know if students who use their weekly study group study more than students who don't.
+- Students who attend the study group study an average of **9 hours/week** ($M_1 = 9$).
+- Students who don't attend study an average of **7 hours/week** ($M_2 = 7$).
+- The standard deviation of study hours across all students is **4 hours** ($SD = 4$).
+
+<Admonition title="Question" color="teal-light" width="100%">
+What is Cohen's d for this comparison? How would you interpret it?
+</Admonition>
 
 <p v-click>
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-2 transform">
 
-Can you think of another study design where you would use an independent-samples *t* test?
-</div>
-</div>
-</p>
+<StickyNote color="green-light" title="Answer" width="100%">
 
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
+$$d = \frac{9-7}{4} = 0.5$$
 
-:: title ::
-# Paired- vs. Independent-Samples *t* Tests
-
-:: left ::
-### Paired-Samples *t* Test
-1. Compute difference scores for each participant.
-2. Compute mean of these difference scores.
-3. Determine probability of observing this mean difference under null hypothesis
-
-<p v-click> 
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-2 transform">
-Here, our null distribution is a distribution of mean differences.
-</div>
-</div>
+A d of 0.5 is a *medium* effect size (using Cohen's conventions, coming up next) — noticeably smaller than the large effect (d = 1) we saw with screen time, even though both differences were "only" 2 units on their own scales.
+</StickyNote>
 
 </p>
-
-:: right ::
-### Independent-Samples *t* Test
-1. Compute mean scores for each group.
-2. Compute difference between these group means.
-3. Determine probability of observing this mean difference under null hypothesis.
-
-<p v-click> 
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-2 transform">
-Here, our null distribution is a distribution of differences between independent group means.
-</div>
-</div>
-
-<br> 
-<img src="/images/lecture10/fried_brain.png"  class="w-1/3 mx-auto"/>
-
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Paired- vs. Independent-Samples *t* Tests
-
-:: left ::
-### Paired-Samples *t* Test
-<p v-click>
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-2 transform">
-Here, our null distribution is a distribution of mean differences.
-</div>
-</div>
-
-- The mean of this null distribution is 0.
-- Although we have two sets of scores, we focus on the **difference scores** between paired observations.
-- That means we are really working with **one** sample of difference scores.
-- The standard error of this distribution is determined by this **single** sample's SD and number of scores.
-
-</p>
-
-:: right ::
-### Independent-Samples *t* Test
-<p v-click>
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-2 transform">
-Here, our null distribution is a distribution of differences between independent group means.
-</div>
-</div>
-
-- The mean of this null distribution is still 0!
-- We focus on the **means** of the two independent groups.
-- That means we are really working with **two** independent samples.
-- The standard error of this distribution is determined by **both** samples' SDs and sample sizes.
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# How do we create the distribution of differences between independent group means?
-
-:: left ::
-1. Randomly sample n₁ participants for Group 1 and n₂ participants for Group 2 from the population.  
-2. Compute the mean for each group.  
-3. Compute the difference between the two group means (M₁ − M₂).  
-4. Repeat many times to build a distribution of mean differences between independent groups.
-5. Use this distribution to determine the probability of observing a mean difference as extreme as the one in our sample, assuming the null hypothesis is true.
-
-
-:: right ::
-<img src="/images/lecture10/independent_mean_diff_hist_n20_25.png"  class="mx-auto"/>
-
-
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-1 border-yellow-300 rounded-lg shadow-md p-1 transform">
-
-Note that here we have **two** ns (n₁ and n₂) because the two groups can have different sample sizes.
-</div>
-</div>
 
 ---
 layout: top-title
@@ -787,54 +286,152 @@ align: lt
 
 :: title ::
 
-# What are the characteristics of the distribution of differences between independent group means?
+# Conventions for interpreting effect sizes
 
 :: content ::
-Remember, **normally we do not have to build this distribution by simulating many samples.** Instead, we can compute its characteristics directly.  
-- Under H₀, the mean of this distribution is 0.  
-- The standard error (SE) of this distribution is computed using both groups' sample standard deviations and sample sizes.
-- We use both groups' data to estimate the *pooled variance*, which is our best estimate of the population variance.
-- From the pooled variance, we can compute the standard error of the difference between independent means.
+- Jacob Cohen published guidelines (or conventions) based on the overlap between two distributions to help researchers determine whether an effect is small, medium, or large.
+- These numbers are not cutoffs; they are merely rough guidelines to help researchers interpret results.
+- If the difference between two groups' means is less than 0.2, the difference is not important, even if it's significant.
+
+
+<img src="/images/lecture9/cohens_d.jpeg" alt="Effect size interpretation" class="w-1/4 mx-auto"/>
+
 
 ---
-layout: top-title-two-cols
+layout: top-title
 color: indigo-light
-align: lt-lt-lt
+align: lt
+---
+
+:: title ::
+# Statistical Power
+
+:: content ::
+- ==**Statistical Power**== = probability of correctly rejecting $H_0$ when it's false (avoiding a Type II error).
+- In other words, power is the likelihood we will reject the null hypothesis *when we should.*
+- Ranges from probability of 0.00 to probability of 1.00
+- Probability of 0.80 (80%) is the conventional goal.
+  - Many studies in psychology are underpowered!
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Statistical Power (Continued)
+
+:: content :: 
+
+<img src="/images/lecture9/power.png" alt="Statistical power" class="w-5/8 mx-auto"/>
+
+
+- When testing hypotheses, there are two ways we can be correct and two ways we can be wrong:
+
+1. ==Correctly rejecting the null hypothesis (true positive)==
+2. Correctly failing to reject the null hypothesis (true negative)
+3. Incorrectly rejecting the null hypothesis (Type I error)
+4. Incorrectly failing to reject the null hypothesis (Type II error)
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Five factors that influence power
+
+:: content :: 
+
+Power increases when:
+1. Alpha **increases** 
+- This is usually not a good idea: This is like changing the rules of a basketball game by shortening the basket height, or widening the goalposts in football or soccer
+- Increasing the alpha level from 0.05 to 0.1 increases the probability of type I error from 5% to 10%!
+
+<p v-click>
+
+2. Turn a **two-tailed test** into a **one-tailed test**
+- This is only appropriate if you have a strong theoretical reason to predict the direction of the effect.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Five factors that influence power (continued)
+
+:: content :: 
+
+Power increases when:
+
+3. Sample size (n) **increases** 
+- This is a good idea: More data gives us a clearer picture of the population.
+- Larger samples give us more precise estimates of population parameters, reducing standard error and increasing the likelihood of finding a statistically significant effect
+
+<p v-click>
+
+4. Difference in means **increases** 
+- This is usually not under our control, but we can try to design studies that maximize effect size.
+- For example, we can use extreme groups (e.g., comparing very high vs. very low anxiety individuals) to increase the difference between means.
+- We can also make our manipulations stronger: Maybe we are studying how effective group therapy is for public speaking anxiety, so we increase the length of therapy from 3 to 6 months to increase the difference between the means of each therapy vs. no therapy group
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+
+:: title ::
+# Five factors that influence power (continued)
+
+:: content :: 
+
+Power increases when:
+
+5. Standard deviation **decreases** 
+- This is also a good idea: Populations with less variability make it easier to detect differences between groups.
+- Often not under our control, but we can try to use reliable measures and reduce measurement error to decrease variability within groups.
+- For example, if we are measuring anxiety, we can use a well-validated questionnaire rather than a single-item measure to reduce measurement error and variability within groups.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
 ---
 
 :: title ::
 
-# Steps of an Independent-Samples *t* Test
+# When and how do we use power?
 
-:: left ::
+:: content :: 
 
-1. Identify populations, distribution, & assumptions.  
-2. State null and research hypotheses.  
-3. Determine characteristics of comparison distribution.  
-4. Determine critical values (cutoffs).  
-5. Calculate test statistic.  
-6. Make a decision.
+We use ==power calculators== in two ways:
+1. Calculate power ==after== conducting study from several pieces of information (*post hoc*).
 
-:: right ::
+2. Conduct power analyses ==before== conducting study to determine sample size necessary to achieve given level of power given estimate of effect size (*a priori*).
 
-<p v-click>
+*A priori* power calculations are especially useful because they help us determine the sample size needed to achieve 80% power with an alpha level of 0.05
 
-*Steps 3-5 are similar to those for paired-samples *t* tests, but the formulas differ slightly because we are dealing with two independent groups.*
+We can use online calculators or packages for R to conduct power analyses.
 
-<span class="text-blue-600">
-
-3. Determine characteristics of comparison distribution.  
-4. Determine critical values (cutoffs).  
-5. Calculate test statistic.  
-
-</span>
-
-</p>
-
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Computing power is largely beyond the scope of this course, but it is very important you understand power at a conceptual level.
+</SpeechBubble>
 
 ---
 layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!
+# That's all for today!
+See you next time, when we'll talk about parametric assumptions and get our first look at *t* tests.

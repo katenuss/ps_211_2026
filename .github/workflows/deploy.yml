@@ -50,7 +50,7 @@ jobs:
           mkdir -p dist
 
           # Find lecture decks
-          lectures=(lecture*.md)
+          lectures=(lecture1.md)   # publish only lecture 1 for now
           if [ ${#lectures[@]} -eq 0 ]; then
             echo "No lecture*.md files found."
             exit 1

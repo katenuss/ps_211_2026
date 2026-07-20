@@ -3,3 +3,6 @@ node_modules
 *-export*
 dist
 .DS_Store
+
+# scratch (safe to delete)
+_to_delete/

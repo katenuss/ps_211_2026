@@ -6,11 +6,11 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 1
-exportFilename: ps211_fall2025_lecture1
+exportFilename: ps211_fall2026_lecture1
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
+## Fall 2026 · Section C1
 ### Lecture 1: Course Overview, Intro to Statistics and Research Design
 
 ---
@@ -71,8 +71,7 @@ align: l-lt-lt
 - **Email:** katenuss@bu.edu
 - **Office:** 111 Cummington Mall, Room 208
 - **Office Hours:** 
-  - Tuesdays 9:30 - 10:30 a.m.
-  - Wednesdays 2:30 - 3:30 p.m.
+  - Tuesdays 8:45 - 10:45 a.m.
 
 
 :: right ::
@@ -102,13 +101,13 @@ align: l-lt-lt
 
 :: left ::
 
-## Juneau Wang
+## Your Teaching Fellow (TF)
 ##### PhD Student in Psychological & Brain Sciences
 
-- **Pronouns:** he/him
-- **Email:** juneauw@bu.edu
-- **Office:** 111 Cummington Mall, Room 242
-- **Office Hours:** Tuesdays 12:30 - 2:30 p.m.
+- **TF to be announced** — we will introduce your TF and share their contact info as soon as they are assigned.
+- **Office Hours:**
+  - Tuesdays 12:30 - 1:30 p.m.
+  - Thursdays 9:00 - 10:00 a.m.
 
 
 :: right ::
@@ -146,7 +145,7 @@ align: lt
 
 <p v-click>
 
-- We will use **Slack** for class communication. Everyone should be added. Please reach out to Kate or Juneau if you are not yet on the Slack workspace.
+- We will use **Slack** for class communication. Everyone should be added. Please reach out to Kate or your TF if you are not yet on the Slack workspace.
 
 </p>
 
@@ -168,14 +167,9 @@ align: lt
 
 - That said, our hope is that you will take advantage of lecture, discussion, and office hours to ask questions **IN PERSON**. If you send us a content-based question via email or slack, we may ask you to come to office hours or ask during lecture/discussion instead.
 
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform -rotate-1">
-    Please come talk to us!
-  </div>
-</div>
-
 </p>
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Please come talk to us!</SpeechBubble>
 
 
 
@@ -244,11 +238,7 @@ We will cover:
 <p v-click> 6) Confidence intervals, effect sizes, statistical power. </p>
 <p v-click> 7) T-tests, ANOVA (one-way, two-way, repeated-measures), Correlations, Regressions, Chi-Square tests. </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform -rotate-1">
-    Don't worry if you don't know what any or all of these are yet! The whole purpose of this class is to gain this knowledge.
-  </div>
-</div>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Don't worry if you don't know what any or all of these are yet! The whole purpose of this class is to gain this knowledge.</SpeechBubble>
 
 ---
 layout: top-title-two-cols
@@ -290,7 +280,7 @@ align: lt
 
 :: content ::
 - **Exams (3 × 15% + 1 x 25%) = 70%**  
-  <p v-click>Exams will involve short-answer + multiple-choice questions. </p>
+  <p v-click>Exams will involve multiple-choice questions only. </p>
 
   <p v-click>
 
@@ -303,12 +293,12 @@ align: lt
 
   <p v-click> 
 
-  - A review sheet will be provided; You may write notes on it and use it during the exam. 
+  - You will be allowed to bring one, hand-written double-sided "cheat sheet" to each exam.
   </p>
 
   <p v-click> 
 
-  - Calculators are allowed, but phones and computers are not. We will let you know ahead of time if a calculator is necessary. 
+  - No calculators, phones, or computers will be allowed during exams. 
   </p>
 
   <p v-click> 
@@ -333,83 +323,47 @@ align: lt
 
 :: content ::
 
-- **Homework Assignments (3 x 3.33%) = 10%**  
+- **Data Write-Ups (2 x 10%) = 20%**  
 
   <p v-click>
 
-  - Four assignments; lowest homework grade is dropped.
+  - There is no standalone homework this year — instead, you will complete two Data Write-Ups using R to analyze and interpret a provided dataset.
 
   </p>
 
   <p v-click>
 
-  - You will answer conceptual questions and use R to analyze and interpret data.
+  - Write-Up 1 is due **Monday, Nov. 16**; Write-Up 2 is due **Monday, Dec. 7**.
 
-  </p>
-
-  <p v-click>
-
-  - R Markdown templates will be provided so you will not have to code from scratch. 
-
-  </p>
-
-  <p v-click>
-
-  - Homeworks are due 11:59 PM ET on syllabus dates.
-  
-  </p>
-
-  <p v-click>
-
-  - Submit on Blackboard as HTML files, knitted from R Markdown. (instructions to follow!)
-  
-  </p>
-
-  <p v-click>
-
-  - Late homeworks will lose 3 points each day they are late; No late work accepted after answers are posted.
-  
-  </p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Course Requirements & Grading (cont.)
-
-:: content ::
-
-- **Data Write-Up (1 x 10%) = 10%**  
-  <p v-click>
-
-  - You will use R to analyze and interpret a provided dataset.
-  
   </p>
 
   <p v-click>
 
   - R Markdown templates will be provided so you will not have to code from scratch. 
-  
+
   </p>
 
   <p v-click>
 
   - You will produce APA-style results & discussion sections (+ figures/tables). 
+
+  </p>
+
+  <p v-click>
+
+  - Write-ups are due 11:59 PM ET on the dates above.
   
   </p>
 
   <p v-click>
 
-  - The data write-up is due 11:59 PM ET on syllabus dates.
+  - Submission instructions to follow.
   
-   </p>
+  </p>
+
   <p v-click>
-  
-  - You will lose 3 points each day it is late; No late work accepted after answers are posted.
+
+  - Late write-ups will lose 3 points each day they are late. No late work accepted after one week.
   
   </p>
 
@@ -426,29 +380,23 @@ align: lt
 - **Discussion Section = 10%**  
   <p v-click>
 
-  - In-depth review of class material and semester-long research project.
+  - In-depth review of class material and in-class R practice.
 
   </p>
   <p v-click>
 
-  - In small groups, you will come up with a research hypothesis, conduct a literature review, and write hypothetical methods, results, and discussion sections to be presented on a poster at the end of the semester.
-  
+  - There are **13 discussion sections** total this semester.
+
+  </p>
+  <p v-click>
+
+  - You need to attend (and pass) **10 of the 13** sections to get full discussion credit — you can miss up to 3 with no penalty.
+
   </p>
   <p v-click>
 
   - If you miss a discussion section, contact your TF about make-up work.
 
-  </p>
-
-  <p v-click>
-
-  - If you miss three or more discussion sections, you will not get full credit.
-  </p>
-
-  <p v-click>
-
-  - If you miss five or more discussion sections, you will get a 0 for discussion participation.
-  
   </p>
 
 
@@ -562,7 +510,7 @@ align: lt
 :: content ::
 
 **Collaboration is a huge part of science. Learning how to collaborate effectively is an important skill.**
-- As such, you are allowed to ask each other for help on homework assignments and data write-ups.
+- As such, you are allowed to ask each other for help on data write-ups.
 - However, you must each submit your own work. Copying someone else’s work is plagiarism. 
 
 <p v-click>
@@ -594,27 +542,7 @@ align: lt
 :: content ::
 
 - Boston University provides reasonable accommodations for students with documented disabilities.
-- Please reach out to Kate and Juneau (via Slack) **as soon as possible** and share your paperwork from disability services.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Pre-course survey
-
-:: content ::
-
-- We have posted a link to a pre-course survey on Slack.
-- Please complete it by the end of the day on Friday, September 5 (for a bonus point on Exam 1).
-- The survey has two parts:
-  - A few questions about your background and comfort with math and programming.
-  - A few fun questions to generate a dataset for us to analyze later in the semester.
-
-
+- Please reach out to Kate and your TF (via Slack) **as soon as possible** and share your paperwork from disability services.
 
 ---
 layout: top-title
@@ -631,36 +559,9 @@ align: lt
 
 <br>
 
-<p v-click>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This is my second year teaching this course — thank you for bearing with me as I keep improving it!</SpeechBubble>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform -rotate-1">
-    It is my first time teaching this course! 
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform -rotate--1">
-    It is actually my first time teaching ever!
-  </div>
-</div>
-
-</p>
-
-
-<p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Please provide feedback throughout the semester. There is an anonymous feedback form on Slack, but please also feel free to reach out to me or Juneau directly.
-  </div>
-</div>
-
-</p>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Please provide feedback throughout the semester. There is an anonymous feedback form on Slack, but please also feel free to reach out to me or your TF directly.</SpeechBubble>
 
 
 ---
@@ -715,13 +616,7 @@ color: indigo-light
 
 </p>
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    You may even find it fun!
-  </div>
-</div>
-</p>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You may even find it fun!</SpeechBubble>
 
 
 
@@ -740,9 +635,9 @@ color: indigo-light
 - Please follow them carefully as soon as possible.
 - If you run into issues, please:
   - Come to office hours.
-  - Ask Juneau for help during your discussion section.
+  - Ask your TF for help during your discussion section.
   - Post on the Slack to see if a classmate can help you.
-- We will go over the basics of R markdown next week when we assign the first homework.
+- We will go over the basics of R markdown when we start working with data.
 
 ---
 layout: cover
@@ -972,11 +867,7 @@ align: lt-lt-lt
 :: title ::
 # Example of an original research article
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform -rotate-1">
-    Warning: shameless self promotion.
-  </div>
-</div>
+<AdmonitionType type="warning" width="100%">Warning: shameless self promotion.</AdmonitionType>
 
 :: left ::
 <img src="/images/lecture1/elife_article.png" alt="elife" />
@@ -1003,11 +894,7 @@ align: lt-lt-lt
 :: title ::
 # Example of an original research article
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform -rotate-1">
-    Warning: shameless self promotion.
-  </div>
-</div>
+<AdmonitionType type="warning" width="100%">Warning: shameless self promotion.</AdmonitionType>
 
 
 :: left ::
@@ -1109,17 +996,9 @@ align: lt
 
 According to the World Health Organization, approximately 300 million people worldwide suffer from depression. 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Do you think the research behind this number is based on a sample or a population? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Is 300 million a descriptive or inferential statistic? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is 300 million a descriptive or inferential statistic? Explain.</Admonition>
 
 
 ---
@@ -1137,21 +1016,13 @@ align: lt
 
 According to the World Health Organization, approximately 300 million people worldwide suffer from depression. 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Do you think the research behind this number is based on a sample or a population? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
 
-**Answer:** Sample. It would be nearly impossible to survey every single person in the world. Instead, researchers likely surveyed a representative sample of people and used inferential statistics to estimate the total number of people with depression worldwide.
+<StickyNote color="green-light" title="Answer" width="100%">Sample. It would be nearly impossible to survey every single person in the world. Instead, researchers likely surveyed a representative sample of people and used inferential statistics to estimate the total number of people with depression worldwide.</StickyNote>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Is 300 million a descriptive or inferential statistic? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is 300 million a descriptive or inferential statistic? Explain.</Admonition>
 
-**Answer:** Inferential statistic. This number is an estimate based on data from a sample, rather than a direct measurement of the entire population.
+<StickyNote color="green-light" title="Answer" width="100%">Inferential statistic. This number is an estimate based on data from a sample, rather than a direct measurement of the entire population.</StickyNote>
 
 ---
 layout: top-title
@@ -1168,17 +1039,9 @@ align: lt
 
 According to Boston University, 91% of incoming first-years were in the top 10% of their high school class. 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Do you think the research behind this number is based on a sample or a population? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Is 91% a descriptive or inferential statistic? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is 91% a descriptive or inferential statistic? Explain.</Admonition>
 
 
 ---
@@ -1196,21 +1059,13 @@ align: lt
 
 According to Boston University, 91% of incoming first-years were in the top 10% of their high school class. 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Do you think the research behind this number is based on a sample or a population? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
 
-**Answer:** Population. This statistic likely includes all incoming first-year students at Boston University, rather than a sample.
+<StickyNote color="green-light" title="Answer" width="100%">Population. This statistic likely includes all incoming first-year students at Boston University, rather than a sample.</StickyNote>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Is 91% a descriptive or inferential statistic? Explain.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is 91% a descriptive or inferential statistic? Explain.</Admonition>
 
-**Answer:** Descriptive statistic. This number directly describes a characteristic of the entire population of incoming first-year students at Boston University.
+<StickyNote color="green-light" title="Answer" width="100%">Descriptive statistic. This number directly describes a characteristic of the entire population of incoming first-year students at Boston University.</StickyNote>
 
 
 ---
@@ -1262,11 +1117,7 @@ align: lt
 - Differ in quantity (meaning amount or number).
 - Examples: height, weight, age.
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Can you think of more examples of each type?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Can you think of more examples of each type?</Admonition>
 
 
 
@@ -1341,11 +1192,7 @@ align: lt-lt-lt
 :: right ::
 <img src="/images/lecture1/levels_of_measurement.jpg" alt="levels of measurement" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Can you think of examples of each type?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Can you think of examples of each type?</Admonition>
 
 
 ---
@@ -1368,23 +1215,11 @@ You want to conduct a survey of college students to understand their study habit
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which of these variables are qualitative and which are quantitative?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are qualitative and which are quantitative?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which of these variables are discrete and which are continuous?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are discrete and which are continuous?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which of these variables are nominal, ordinal, interval, and ratio?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are nominal, ordinal, interval, and ratio?</Admonition>
 
 
 ---
@@ -1407,29 +1242,17 @@ You want to conduct a survey of college students to understand their study habit
 
 :: right ::
 
-<div class="mt-4 max-w-md mx-auto">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 text-sm">
-    Which of these variables are qualitative and which are quantitative?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are qualitative and which are quantitative?</Admonition>
 
-**Answer:** Quantitative: 1, 3, 5; Qualitative: 2, 4.
+<StickyNote color="green-light" title="Answer" width="100%">Quantitative: 1, 3, 5; Qualitative: 2, 4.</StickyNote>
 
-<div class="mt-4 max-w-md mx-auto">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 text-sm">
-    Which of these variables are discrete and which are continuous?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are discrete and which are continuous?</Admonition>
 
-**Answer:** Discrete: 2, 4, 5; Continuous: 1, 3.
+<StickyNote color="green-light" title="Answer" width="100%">Discrete: 2, 4, 5; Continuous: 1, 3.</StickyNote>
 
-<div class="mt-4 max-w-md mx-auto">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 text-sm">
-    Which of these variables are nominal, ordinal, interval, and ratio?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are nominal, ordinal, interval, and ratio?</Admonition>
 
-**Answer:** Nominal: 2; Ordinal: 4, 5; Interval: None; Ratio: 1, 3
+<StickyNote color="green-light" title="Answer" width="100%">Nominal: 2; Ordinal: 4, 5; Interval: None; Ratio: 1, 3</StickyNote>
 
 
 ---
@@ -1450,23 +1273,11 @@ You are not sure if you want to take this class, so you design an experiment to 
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What is the population in this study?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the population in this study?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What is the sample size of this study?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the sample size of this study?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    You determine that the average happiness score for students who took PS 211 is 8.2, while the average happiness score for students who did not take PS 211 is 6.5. Is this a descriptive or inferential statistic?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">You determine that the average happiness score for students who took PS 211 is 8.2, while the average happiness score for students who did not take PS 211 is 6.5. Is this a descriptive or inferential statistic?</Admonition>
 
 
 ---
@@ -1487,29 +1298,17 @@ You are not sure if you want to take this class, so you design an experiment to 
 
 :: right ::
 
-<div class="mt-6 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 text-sm leading-snug">
-    What is the population in this study?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the population in this study?</Admonition>
 
-**Answer:** All BU students.
+<StickyNote color="green-light" title="Answer" width="100%">All BU students.</StickyNote>
 
-<div class="mt-6 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 text-sm leading-snug">
-    What is the sample size of this study?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the sample size of this study?</Admonition>
 
-**Answer:** 300 (150 from each group).
+<StickyNote color="green-light" title="Answer" width="100%">300 (150 from each group).</StickyNote>
 
-<div class="mt-6 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 text-sm leading-snug">
-    You determine that the average happiness score for students who took PS 211 is 8.2, while the average happiness score for students who did not take PS 211 is 6.5. Is this a descriptive or inferential statistic?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">You determine that the average happiness score for students who took PS 211 is 8.2, while the average happiness score for students who did not take PS 211 is 6.5. Is this a descriptive or inferential statistic?</Admonition>
 
-**Answer:** Descriptive statistic. These numbers directly describe the average happiness scores of the two groups in the sample.
+<StickyNote color="green-light" title="Answer" width="100%">Descriptive statistic. These numbers directly describe the average happiness scores of the two groups in the sample.</StickyNote>
 
 
 ---
@@ -1530,23 +1329,11 @@ You are not sure if you want to take this class, so you design an experiment to 
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you change Question 2 to collect a nominal variable instead of an ordinal variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a nominal variable instead of an ordinal variable?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What would be the advantage of collecting a nominal variable for Question 2 instead of an ordinal variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What would be the advantage of collecting a nominal variable for Question 2 instead of an ordinal variable?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you change Question 2 to collect a ratio variable instead of an ordinal variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a ratio variable instead of an ordinal variable?</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -1566,29 +1353,17 @@ You are not sure if you want to take this class, so you design an experiment to 
 
 :: right ::
 
-<div class="mt-4 w-full flex justify-center">
-  <div class="bg-green-100 border border-green-300 rounded-md shadow p-2 text-sm leading-snug">
-    How could you change Question 2 to collect a nominal variable instead of an ordinal variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a nominal variable instead of an ordinal variable?</Admonition>
 
-**Answer:** Ask students to describe their general mood in words. 
+<StickyNote color="green-light" title="Answer" width="100%">Ask students to describe their general mood in words.</StickyNote>
 
-<div class="mt-4 w-full flex justify-center">
-  <div class="bg-green-100 border border-green-300 rounded-md shadow p-2 text-sm leading-snug">
-    What would be the advantage of collecting a nominal variable for Question 2 instead of an ordinal variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What would be the advantage of collecting a nominal variable for Question 2 instead of an ordinal variable?</Admonition>
 
-**Answer:** It would be easier to answer, and responses could still be grouped (e.g., happy, neutral, sad).
+<StickyNote color="green-light" title="Answer" width="100%">It would be easier to answer, and responses could still be grouped (e.g., happy, neutral, sad).</StickyNote>
 
-<div class="mt-4 w-full flex justify-center">
-  <div class="bg-green-100 border border-green-300 rounded-md shadow p-2 text-sm leading-snug">
-    How could you change Question 2 to collect a ratio variable instead of an ordinal variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a ratio variable instead of an ordinal variable?</Admonition>
 
-**Answer:** Ask students to report the number of hours they feel happy each week.
+<StickyNote color="green-light" title="Answer" width="100%">Ask students to report the number of hours they feel happy each week.</StickyNote>
 
 
 ---

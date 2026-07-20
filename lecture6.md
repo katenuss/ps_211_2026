@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 6
-exportFilename: ps211_fall2025_lecture6
+exportFilename: ps211_fall2026_lecture6
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
-### Lecture 6: The Normal Curve, Standardization, and Z Scores
+## Fall 2026 · Section C1
+### Lecture 6: Sampling, Probability & Intro to Hypothesis Testing
 
 ---
 layout: top-title
@@ -23,14 +23,10 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- ==Homework 1== has been graded.
-- We will post answers and grades tomorrow morning.
-- We will not be returning individual homeworks, so if you would like to see or go over what you got wrong, please come to office hours.
-- We will **not** be responding to individual questions about homework grades via Slack.
-- For the most part, people did pretty well (~91 average). 
-- We graded very leniently, so even if you did well, please review the answers to make sure you understand everything.
-- Please bring your questions to the review session on Tuesday.
-- I posted a review sheet for ==Exam 1== on Slack and the course website.
+- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16; the second is ANOVA based, due Monday, Dec. 7).
+- Discussion sections are using time for in-class R practice — take advantage of it!
+- Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
+- We are going to go over some more information about how to use **R** and **R Studio** today.
 
 ---
 layout: top-title
@@ -39,16 +35,16 @@ align: lt
 ---
 
 :: title ::
-# Review: Variance
+# Updates and reminders (continued)
 
 :: content ::
-
-**Why do we care about variance and standard deviations?**
-
-- Variance and standard deviations tell us how **spread out** scores are around the mean.
-- They are used in many statistical tests (e.g., t-tests, ANOVA).
-- They are also useful in the real world!
-
+- ==Exam 1== is scheduled for **Tuesday, September 29** during our regular class time.
+- Exam 1 will cover Lectures 1–6.
+- I will post a review sheet with a list of all the topics the exam will cover.
+- You can print this review sheet and take hand-written notes on it (both sides) to use during the exam.
+- Alternatively, you can write your own notes on a blank sheet of paper (both sides).
+- You will *not* be tested on R code, but you should be able to interpret plots and output from R. For example, we may show you a histogram or frequency table created in R and ask you questions about them.
+- The class before the exam (**Thursday, September 24**) will be a review session.
 
 ---
 layout: top-title
@@ -57,26 +53,15 @@ align: lt
 ---
 
 :: title ::
-# Review: Variance in the real world
+# Before we begin discussing sampling and probability...
 
 :: content ::
+- Resolving key points of confusion about R:
+    - Opening and closing R Studio without losing work.
+    - Files: .R, .Rmd, .Rproj, .html, .pdf. *What are they and when to use each?*
+    - Saving your work: saving code vs. workspace variables.
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Imagine you have the choice between two summer jobs: You can be a lifeguard or you can be a tour guide. Both jobs pay, on average, $15/hour. However, the lifeguard job has a standard deviation of $1/hour, while the tour guide job has a standard deviation of $10/hour. Which job would you choose? Why?
-  </div>
-</div>
-
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Imagine that you are a boating instructor and you need to order lifejackets for a group of 100 people. You know their average weight is 150 lbs. The options for lifejacket sizes range from XXS to XXL, which correspond to different weights. How would knowing the standard deviation of their weights help you decide how many of each lifejacket size to order?
-  </div>
-</div>
-
-</p>
+<img src="/images/lecture5/help_meme.jpg" alt="help" class="mx-auto w-1/3" />
 
 ---
 layout: top-title
@@ -85,42 +70,16 @@ align: lt
 ---
 
 :: title ::
-# Review: Variance in the real world
+# Quick recap: Variance and SD
 
 :: content ::
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-  Now imagine that you need to estimate the standard deviation of the weights of the 100 people. You decide to randomly poll 10 of the 100 and ask their weights. How would you use the weights of the 10 people to estimate the standard deviation of the weights of all 100 people?
-  </div>
-</div>
+- **Variance** = the average squared deviation of scores from the mean.
+- **Standard deviation (SD)** = the square root of the variance — the typical amount scores deviate from the mean.
+- For **samples**, we divide by $N-1$ instead of $N$ (Bessel's correction) to get an unbiased estimate of the population variance.
 
-<p v-click>
-
-**Answer:** Calculate the standard deviation of the 10 weights (your sample) and use that as an estimate of the standard deviation of all 100 weights (your population).
-
-</p>
-
-<p v-click>
-
-**Let's do it:** 
-Here are your sample weights (in lbs): $120, 130, 140, 150, 160, 170, 180, 190, 200, 210$
-
-</p>
-
-<p v-click>
-
-**Step 1:** Calculate the mean of the weights.
-
-$M = (120 + 130 + 140 + 150 + 160 + 170 + 180 + 190 + 200 + 210) / 10 = 165$
-
-</p>
-
-<p v-click>
-
-**Step 2:** Calculate the sum of squared deviations from the mean.
-$$ \sum (X_i - M)^2 = (120-165)^2 + (130-165)^2 + (140-165)^2 ...  + (210-165)^2 = 8250 $$
-
-</p>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+We covered variance and SD in depth last time — if any of this feels shaky, review Lecture 5 before the exam!
+</SpeechBubble>
 
 ---
 layout: top-title
@@ -129,37 +88,26 @@ align: lt
 ---
 
 :: title ::
-# Review: Variance in the real world (continued)
-
+# New stuff! Sampling and probability
 
 :: content ::
+- Now that we understand variance and SD, we can see **why sampling matters.**
+- We will also discuss **probability**, which is the foundation of inferential statistics.
 
-<p v-click>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
 
-**Step 3:** Calculate the *sample* variance.
-$$ Variance = \frac{\sum (X_i - M)^2}{n-1} = \frac{8250}{10-1} = 916.67 $$
-</p>
+:: title ::
+# Why do we sample?
 
-<p v-click>
-
-**Step 4:** Calculate the *sample* standard deviation.
-$$ SD = \sqrt{Variance} = \sqrt{916.67} \approx 30.28 $$
-
-</p>
-
-<p v-click>
-
-Now we have our *sample* standard deviation of 30.28 lbs, which we can use as an estimate of the *population* standard deviation of all 100 weights.
-
-</p>
-
-<p v-click>
-
-**Variance is a very important concept in statistics!**
-
-It will come up again and again in this class and in future statistics classes.
-
-</p>
+:: content ::
+- We usually want to know about a **population** (e.g., all college students).
+- But we can't measure everyone, so we take a **sample** (e.g., 20 BU students who participate in a study).
+- We use the sample to estimate population parameters (e.g., mean, variance).
+- We also use samples to test general hypotheses about broader populations. Inferential statistics lets us do this!
 
 
 ---
@@ -169,24 +117,17 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Review: Normal Curves
+# Two main types of samples in Psychological Science
 
 :: left ::
-- A **normal distribution** is:
-  - Bell-shaped: Most scores cluster in the center
-  - Symmetrical: Left side mirrors the right
-  - Unimodal: Only one “hump”  
-- Ends of the curve are called **tails**
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-4 transform">
-    Today, we'll learn why normal distributions are so important in statistics.
-  </div>
-</div>
+- **Random Sample:** Every member of the population has an equal chance of being selected.
+    - Advantage: More representative.
+    - Disadvantage: Expensive, often impossible.
 
 :: right ::
-
-<img src="/images/lecture6/normal_dist.png" alt="Normal distribution" class="w-3/4 mx-auto"/>
+- **Convenience Sample:** Uses participants who are readily available.
+    - Common in psychology (e.g., Psych 101 students).
+    - Easier and cheaper, but may introduce bias.
 
 
 ---
@@ -196,75 +137,36 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Cheater Detection Using Normal Curves
+# Examples: Samples in Psychological Studies
 
 :: left ::
 
-- We often expect natural patterns to be normally distributed.  
-- Deviations from normality can indicate **cheating** or **manipulation**, or more generally that something is off.
+<img src="/images/lecture5/participants_methods.png" alt="participant sample" class="mx-auto w-3/4" />
+
+<Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 
 <p v-click>
 
-### Study of sumo wrestlers:
-  - 26% finished with 8 wins  
-  - 12.2% finished with 7 wins  
-  - Expected (if normal): ~19.6% for both outcomes  
+**Answer:** This is a convenience sample. The participants volunteered to take part in the study, and they were recruited through flyers and online postings. This means they were not randomly selected from the general population.
 </p>
 
 :: right ::
 
-<img src="/images/lecture6/sumo_normal.png" alt="Sumo results normal dist" class="w-1/2 mx-auto"/>
-
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-2 transform">
-    Why might the sumo results deviate from a normal distribution?
-  </div>
-</div>
+*A researcher wants to study whether giving BU students free coffee improves their mood. They randomly select 50 students from the entire BU student directory to participate in the study.*
 
 </p>
 
 <p v-click>
-
-**Answer:** Sumo wrestlers were throwing matches to help wrestlers who had won 7 matches win their 8th (and have a winning season / advance rounds).
-
+<Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 </p>
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-2 transform">
-    This is also called "anomaly detection" and is used in many fields, including fraud detection.
-  </div>
-</div>
+**Answer:** This is a random sample. The researcher randomly selected participants from the entire BU student directory, giving every student an equal chance of being chosen.
 
 </p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# More Scores = More “Normal”
-
-:: left ::
-
-- As sample size increases, samples drawn from normally distributed populations look more normal.
-- Larger samples better approximate the true population distribution.
-- Small samples can look irregular.  
-
-<img src="/images/lecture6/happiness_small.png" alt="Small normal dist" class="w-3/4 mx-auto"/>
-
-
-:: right ::
-
-
-<img src="/images/lecture6/happiness_large.png" alt="Large normal dist" class="w-3/4 mx-auto"/>
-
-<img src="/images/lecture6/happiness_largest.png" alt="Larger normal dist" class="w-3/4 mx-auto"/>
 
 
 ---
@@ -274,21 +176,108 @@ align: lt
 ---
 
 :: title ::
-# Standardization: Comparing Apples and Oranges
+# Random Sampling: One way to do it
 
 :: content ::
-- When data are normally distributed, we can compare scores across ==different== distributions.
-    - This can be very useful!
+- Use a computer program to generate random numbers.
+- Use those numbers to select participants from a list.
 
-- We actually often do this implicitly, without realizing it or using math.
-- Example:
-    - If a movie critic typically gives 4-star reviews, and another typically gives 2-star reviews, who gave the better review if they both gave a movie 3 stars?
-    - You might intuitively say the second critic, because 3 stars is above their average, while it's below the first critic's average.
+<p v-click>
+<Admonition title="Question" color="teal-light" width="100%">You use a computer program to randomly select 10 students from your 100-person Psych 101 class to participate in a study. Your computer spits out the following numbers: 1, 2, 3, 4, 44, 56, 57, 58, 83, 99. They don't look very random to you. Should you re-run the program to get a different set of numbers?</Admonition>
+</p>
 
 <p v-click>
 
-**But how much better?**
-- We can use math to quantify this!
+**Answer:** No! Randomness can produce streaks or clusters of numbers. The set of numbers you got is just as random as any other set.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Convenience Sampling
+
+:: content ::
+- In practice, true random samples are rare.
+- Psychologists often rely on **convenience samples**.
+- Example: Volunteer samples (people who sign up for studies).
+    - Benefits: Motivated and willing participants.
+    - Downsides: Self-selection bias. The people who volunteer may differ from those who don't.
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Generalizability & External Validity
+
+:: left ::
+- **Generalizability** = how well findings from a sample apply to a population.
+- Also called **external validity.**
+- Critical for psychology: a study that doesn't generalize may have little impact.
+- Convenience samples may limit generalizability.
+
+:: right ::
+
+<img src="/images/lecture5/weird_science.png" alt="weird psychology" class="mx-auto w-1/2" />
+
+<p v-click>
+
+Stats from Arnett (2008):
+- From 2003‐2007, ==68%== of subjects in psychology studies in top journals came from the US.
+- ==96%== came from from Western industrialized countries.  
+- In the *Journal of Personality and Social Psychology*, ==67%== of the American samples were composed of undergraduates in psychology courses.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Modern Sampling Techniques
+
+:: content ::
+- Online crowdsourcing solicits input from a large group of people.
+- There are many online platforms for this:
+    - e.g., Amazon Mechanical Turk (MTurk), Prolific, Qualtrics Panels.
+- Participants sign up to complete surveys or tasks for pay.
+- These platforms provide access to large, diverse samples quickly and cheaply.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Crowdsourcing
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">What are some potential advantages and disadvantages of using crowdsourcing platforms for research?</Admonition>
+
+<p v-click>
+
+**Advantages:**
+- Access to a large and diverse participant pool.
+- Cost-effective and time-efficient.
+- Ability to reach participants from various geographic locations.
+
+**Disadvantages:**
+- Potential for low-quality data (e.g., inattentive respondents).
+- Limited control over the research environment.
+- Limited types of data can be collected (e.g., no brain imaging)
 
 </p>
 
@@ -299,23 +288,44 @@ align: lt
 ---
 
 :: title ::
-# Standardization: Comparing Apples and Oranges
+# Random Assignment
 
 :: content ::
+- **Random sampling**: Selecting participants for a study.
+- **Random assignment**: Assigning participants to conditions within a study.
+- Ensures every participant has an equal chance of being in any condition (i.e., level of the independent variable).
 
-- Standardization lets us compare scores across **different distributions**.  
-- We accomplish by converting raw scores into a common metric: “number of SDs from the mean.”  
-- This common metric is called a **z score**.
-- We can then directly compare *z* scores from different distributions.
+<Admonition title="Question" color="teal-light" width="100%">Why should researchers care about random assignment if they don't seem to care about random sampling?</Admonition>
 
 <p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    
-    z score: How many standard deviations a score is from the mean of its distribution.
 
-  </div>
-</div>
+**Answer:** Random assignment helps to reduce the risk of confounding variables by ensuring that the groups are comparable at the start of an experiment. This is important for understanding causality even if the sample itself is not representative of the broader population.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Example: Random Assignment
+
+:: content ::
+- Imagine you want to run a between-subjects version of the Stroop task.
+- You decide to run this experiment on your PS 211 classmates.
+- You divide the class into two groups:
+    - Group 1: Congruent condition. (e.g., the word "red" printed in red ink).
+    - Group 2: Incongruent condition. (e.g., the word "red" printed in blue ink).
+- You assign the first 10 students who arrive to Group 1, and the next 10 to Group 2.
+
+<Admonition title="Question" color="teal-light" width="100%">Is this a good method of random assignment? Why or why not?</Admonition>
+
+<p v-click>
+
+**Answer:** No, this is not a good method of random assignment. Assigning students based on their arrival order can introduce bias, as early arrivers may differ systematically from later arrivers (e.g., in motivation or punctuality). 
 
 </p>
 
@@ -326,110 +336,21 @@ align: lt
 ---
 
 :: title ::
-# Review: Standard Deviation
-
-<img src="/images/lecture6/i-am-back.png" alt="I am back meme" class="w-1/4 mx-auto"/>
+# Review: Descriptive vs. Inferential Statistics
 
 :: content ::
-- **Variance:** average squared deviation from the mean  
-- **Standard Deviation (SD):** square root of variance  
+- **Descriptive stats:** Summarize data from a sample. "Describe" the sample.
+    - Examples: "The average amount of sugar in the five drinks I tried from Starbucks is 30 grams."
 
-$$ SD = \sqrt{\frac{\sum (X_i - M)^2}{N}} $$
-
-- SD tells us the **typical deviation** from the mean.  
-- Larger SD = more spread.  
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# The Z Distribution
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    
-    z score: How many standard deviations a score is from the mean of its distribution.
-
-  </div>
-</div>
-
-:: left ::
-
-- A $z$ distribution is a distribution of $z$ scores.  
-- Properties:  
-  - Mean = 0  
-  - SD = 1  
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Why is the mean of a z distribution always 0?
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** The mean is **0 standard deviations from the mean**!  
-
-</p>
-
-
-:: right ::
-<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# The Z Distribution (Continued)
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    
-    z score: How many standard deviations a score is from the mean of its distribution.
-
-  </div>
-</div>
-
-:: left ::
-
-- A $z$ distribution is a distribution of $z$ scores.  
-- Properties:  
-  - Mean = 0  
-  - SD = 1  
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Why is the SD of a z distribution always 1?
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** If a raw score is 1 SD above the mean, its z score is 1. If a raw score is 2 SDs above the mean, its z score is 2. And so on. Thus, the SD of the z distribution is always 1. 
-
-</p>
-
-
-:: right ::
-<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
+- **Inferential stats:** Allow us to draw conclusions about populations from samples.
+    - Examples: "Based on my sample, I estimate that the average amount of sugar in all Starbucks drinks is between 20 and 50 grams."
 
 
 <p v-click>
-Understanding a score's relation to the mean of its distribution gives us important information.
+
+- But ... how do we ensure that these inferences are valid? **Probability!**
+
+<img src="/images/lecture5/coin_flip.jpg" alt="coin" class="mx-auto w-1/3" />
 
 </p>
 
@@ -440,76 +361,15 @@ align: lt
 ---
 
 :: title ::
-# How to Calculate a Z Score
+# Probability
 
 :: content ::
-You can sometimes calculate z scores without a calculator.
-
-
-**Example:**  
-- Exam mean = 70  
-- SD = 10  
-- Your score = 80
-- Your friend's score = 75  
-- Your enemy's score = 60
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What is your z score? What is your friend's z score? What is your enemy's z score?
-  </div>
-</div>
-
-<p v-click>
-
-**Answer:** Your $z = 1$, friend's $z = 0.5$, enemy's $z = -1$
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt 
----
-
-:: title ::
-
-# How to Calculate a Sample Z Score: Formula
-
-:: left ::
-
-$$z = \frac{X - M}{s}$$
-
-<img src="/images/lecture6/ohno.jpeg" alt="Oh no" class="w-3/4 mx-auto"/>
-
-
-:: right ::
-
-**Let's break it down:**
-
-
-**Step 1:** Compute the sample mean ($M$) and standard deviation ($s$).
-
-**Step 2:** Subtract the mean from your raw score ($X - M$).
-
-*This gives us the distance from the mean.*
-
-**Step 3:** Divide by the standard deviation ($s$). 
-
-*This converts the distance into "number of standard deviations."*
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    How would we compute a z score for a population instead of a sample?
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** Use the population mean ($\mu$) and population standard deviation ($\sigma$).
-</p>
+- **Probability** = the likelihood that a specific outcome will occur, out of all possible outcomes.
+- Ranges from 0 (impossible) to 1 (certain).
+- Example: Probability of flipping heads on a fair coin = 0.5.
+- Probability helps us understand and quantify uncertainty.
+- **Experimental probability** = relative frequency of an outcome in repeated trials.
+- **Theoretical probability**= based on known possible outcomes (e.g., coin flips, dice rolls).
 
 ---
 layout: top-title
@@ -518,481 +378,218 @@ align: lt
 ---
 
 :: title ::
-# Example: Computing a Z Score
+# Probability Terms
 
 :: content ::
-- Mean happiness score of 157 countries = 5.382  
-- SD = 1.138  
-- Australia’s score = 7.313  
-
-*How many SDs above the mean is Australia's level of happiness?*
-
-$$ z = \frac{7.313 - 5.382}{1.138} \approx 1.7 $$
-
-**Interpretation:**  
-Australia's happiness level is **1.7 SDs above the mean**.  
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Example: Computing a Z Score
-
-:: content ::
-- Mean happiness score of 157 countries = 5.382  
-- SD = 1.138 
-- Egypt’s score = 4.362  
-
-$$ z = \frac{4.362 - 5.382}{1.138} \approx -0.9 $$
-
-*How many SDs below the mean is Egypt's level of happiness?*
-
-**Interpretation:**  
-Egypt's happiness level is **0.9 SDs below the mean**.  
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Reverse: Transforming Z Scores into Raw Scores
-
-:: left ::
-- You can also convert $z$ scores back into raw scores.
-
-Formula:  
-$$ X = z \times SD + M $$
-
-:: right ::
-**Example:**  
-- France happiness: $z = 0.963$  
-- Mean happiness score of 157 countries = 5.382  
-- SD = 1.139  
-
-$$ X = (0.963)(1.139) + 5.382 \approx 6.48 $$  
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why is this useful?
-
-:: content ::
-- *Z* scores allow comparison across different scales.  
-
-**Example:**  
-- Imagine we are comparing grades across two PS 211 classes, taught by different professors.
-
-- Your grade: 92/100, class mean = 78.1, SD = 12.2  
-- Your friend's grade: 8.1/10, class mean = 9, SD = 0.74  
-
-*Who did better, you or your friend?*
-
-<p v-click>
-
-- Your $z = \frac{92-78.1}{12.2} = 1.14$  
-- Friend’s $z = \frac{8.1-6.8}{0.74} = 1.76$  
-
-</p>
-
-<p v-click>
-
-**Conclusion:** Both of you received above average grades, but your friend did better *relative to their class*.  
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Comparing scores across different scales: Practice!
-
-:: content ::
-- Imagine you want to decide which of two new restaurants to go to.
-- Restaurant A was reviewed by Critic A, who gave it a 7/10.
-- Restaurant B was reviewed by Critic B, who gave it a 7/10.
-
-<p v-click>
-
-- You have the smart idea to take a *sample* of each critic's past restaurant ratings to see how harsh or lenient they are.
-- Critic A's ratings: $6, 6, 7, 8, 4$
-- Critic B's ratings: $4, 5, 5, 9, 8$
-
-</p>
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which restaurant should you go to, based on the critics' reviews? Explain your reasoning!
-  </div>
-</div>
-
-**Take 10 minutes to work this out with your neighbors. You can use a calculator and refer to your past notes! There is a lot of computation involved!**
-
-</p>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Comparing scores across different scales: Practice (Continued)
-
-:: left ::
-- Critic A's ratings: $6, 6, 7, 8, 4$
-- Critic B's ratings: $4, 5, 5, 9, 8$
-
-
-<p v-click>
-
-**Step 1:** Calculate the mean and SD for each critic's ratings.
-- Critic A: $M = 6.2$, $SD \approx 1.48$
-- Critic B: $M = 6.2$, $SD \approx 2.17$
-
-</p>
-
-
-<p v-click>
-
-**Step 2:** Calculate the z score for each restaurant's rating.
-- Restaurant A: $z = \frac{7 - 6.2}{1.48} \approx 0.54$
-- Restaurant B: $z = \frac{7 - 6.2}{2.17} \approx 0.37$
-
-</p>
-
-
-
-:: right ::
-<p v-click>
-
-**Conclusion:** Based on the z scores, Restaurant A is a better choice relative to its critic's past ratings.
-
-</p>
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Why does the standard deviation matter in this comparison?
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** Critic B's ratings are more spread out (higher SD), so a 7/10 is less impressive relative to their average rating than it is for Critic A. 
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Z Scores, Normal Distributions, and Percentiles
-
-:: left ::
-
-
-- $z$ scores allow us to determine **percentiles**.  
-- ==Percentile==: percentage of scores below a given score.
-- Normal distributions are standard, so we know the percentage of scores below any $z$ score.
-
-
-<img src="/images/lecture6/z_percentile.png" alt="Z scores percentiles" class="w-full mx-auto"/>
-
-
-
-:: right ::
-
-- 100% of scores fall below $z = +\infty$; 0% fall below $z = -\infty$.
-- 50% of scores fall below $z = 0$ (the mean).
-- 84% of scores fall below $z = 1$ (1 SD above the mean).
-- 68% of scores fall between $z = -1$ and $z = +1$ (within 1 SD of the mean).
-
-- **Can use a z table to find exact percentiles for any z score.** 
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Central Limit Theorem
-
-:: content ::
-- ==The theorem:== Any **distribution of sample means** will be approximately normal if the sample size is sufficiently large.
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What is a "distribution of sample means"?
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** A "distribution of sample means" is the distribution of the means of multiple samples taken from a population. It shows how the sample means vary and allows us to make inferences about the population mean.
-
-</p>
-
-<p v-click>
-
-**Example:** We want to estimate the average height of all PS 211 students. Each class, we measure the height of 5 randomly selected students and calculate the mean height of those 5 students. We repeat this process many times, each time selecting a new random sample of 5 students and calculating the mean height. The distribution of these sample means will be approximately normal, even if the original distribution of individual heights is not normal.
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Central Limit Theorem: Demo
-
-:: left ::
-# Dice Rolls
-- Imagine rolling a 6-sided die.
-- Roll it once, record the result.
-- Repeat many times, plot the distribution of results.
-
-:: right ::
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What does this distribution look like?
-  </div>
-</div>
-</p>
-
-<p v-click>
-
-<img src="/images/lecture6/dice_roll_hist.png" alt="Dice rolls 1" class="w-full mx-auto"/>
-
-</p>
-
-<p v-click>
-
-**Answer:** The distribution is ==uniform==, with each outcome (1-6) equally likely.
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Central Limit Theorem: Demo (Continued)
-
-:: left ::
-# Sampling Dice Rolls
-- Now imagine randomly selecting two rolls from this distribution.
-- Compute their mean.
-- Repeat many times, plot the distribution of means.
-
-:: right ::
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What does the distribution of means look like?
-  </div>
-</div>
-</p>
-
-<p v-click>
-
-<img src="/images/lecture6/dice_roll_mean_hist.png" alt="Dice roll means" class="w-full mx-auto"/>
-
-</p>
-
-<p v-click>
-
-**Answer:** As the sample size increases, the distribution of means approaches a normal distribution, even though the original distribution is uniform!
-</p>
-
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Distribution of Scores vs. Means
-
-:: left ::
-
-- Even if scores in a population aren’t normally distributed, the distribution of sample means will be approximately normal if the sample size is large enough.
-- This is the essence of the Central Limit Theorem.
-- A distribution of means is **less variable** than a distribution of raw scores.
-- This means it is less spread out.
-
-:: right ::
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Why is the distribution of means less variable than the distribution of raw scores?
-  </div>
-</div>
-</p>
-
-<p v-click>
-
-**Answer:** The distribution of means is less variable because averaging reduces the impact of extreme values. When we take the mean of a sample, we are essentially smoothing out the variability that exists in individual scores.
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Central Limit Theorem: Video Explanation
-
-:: content ::
-Let's watch someone else explain this!
-
-https://www.youtube.com/watch?v=YAlJCEDH2uY
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Standard Error of the Mean
-
-:: left ::
-
-- The ==standard error (SE)== is the name for the standard deviation of a distribution of sample means.
-
-- The formula for the standard error is:
-$$ SE = \frac{s}{\sqrt{n}} $$
-where $s$ is the sample standard deviation and $n$ is the sample size.
-
-:: right ::
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Where does this formula come from?
-  </div>
-</div>
-</p>
-
-<p v-click>
-
-**Answer:** The formula for the standard error comes from the fact that the variability of sample means is related to the variability of individual scores and the sample size. As we increase the sample size, the standard error decreases, reflecting the increased precision of our estimate of the population mean.
-
-*We can derive it mathematically, but that is beyond the scope of this class.*
-
-</p>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Standard Error of the Mean
-
-:: left ::
-
-- The standard error tells us how much variability we can expect in sample means from one sample to another.
-- As sample size ($n$) increases, the standard error decreases.
-- This means that larger samples yield more ==precise== estimates of the population mean.
-- The **standard deviation** tells us the spread of individual data points, while the **standard error** helps quantify the uncertainty in our estimate of the population mean.
-
-
-:: right ::
-
-<p v-click>
-<div class="mt-1 w-full flex justify-center">
-    <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow
-    -md p-4 transform">
-    Why is this value important in psychological research?
-  </div>
-</div>
-</p>
-
-<p v-click>
-
-**Answer:** The standard error is important because it helps researchers understand how much their sample mean might vary from the true population mean.
-</p>
-
-<p v-click>
-<img src="/images/lecture6/barplot_sem.png" alt="Error bars" class="w-3/4 mx-auto"/>
-</p>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Calculating Standard Error
-
-:: left ::
-
-- If the SD of a distribution of individual scores = 5
-- If we take samples of size $n = 25$, then the SE of the distribution of sample means is:
-$$ SE = \frac{5}{\sqrt{25}} = \frac{5}{5} = 1 $$
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-
- What if we take samples of size $n = 9$? What if we take samples of size $n = 100$? Which will have a smaller SE? Why?
-   
-  </div>
-</div>
-
-
-:: right ::
+- **Trial:** Each repetition of an event or each occasion a procedure is carried out (e.g., a dice roll).
+- **Outcome:** Result of the trial.
+- **Success:** The outcome of interest (e.g., heads).
+
+<Admonition title="Question" color="teal-light" width="100%">If you want to determine the probability of a coin landing on heads, what is a trial, an outcome, and a success?</Admonition>
 
 <p v-click>
 
 **Answer:**
-- For $n = 9$:
-$$ SE = \frac{5}{\sqrt{9}} = \frac{5}{3} \approx 1.67 $$
+- Trial: Each flip of the coin.
+- Outcome: The result of the coin flip (either heads or tails).
+- Success: The coin landing on heads.
+</p>
 
-- For $n = 100$:
-$$ SE = \frac{5}{\sqrt{100}} = \frac{5}{10} = 0.5 $$
 
-The sample size of $n = 100$ will have a smaller SE because the standard error decreases as the sample size increases. This reflects the increased precision of our estimate of the population mean with larger samples.
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Independent Trials
+
+:: content ::
+- Independent = one trial's outcome does not affect another.
+- Example: slot machines, coin flips.
+- Yes, rare streaks can occur!
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Probability: Our intuitions are bad!
+
+:: content ::
+- We are generally bad at intuitively grasping probability.
+- We see patterns where none exist (e.g., gambler's fallacy).
+- We overestimate the likelihood of vivid events (e.g., shark attacks).
+- We underestimate the likelihood of common events (e.g., car accidents).
+- We notice evidence that confirms our beliefs, and ignore contrary evidence (confirmation bias).
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Probability intuitions: The birthday paradox
+
+:: content ::
+- What's the probability that two people in this class of 45 have the same birthday (out of 365 days)?
+
+<Admonition title="Question" color="teal-light" width="100%">What do you think the answer is closest to: 1%, 10%, 30%, 50%, 70%, or 90%?</Admonition>
+
+<p v-click>
+
+**Answer:** The probability is surprisingly high! It's actually 94.1%. 
+
+Probability that at least two people share a birthday in a group of 45 is calculated using the complementary probability that no one shares a birthday, which is then subtracted from 1.
+
+- Probability that no one shares a birthday:
+  $$ P(\text{no shared birthday}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times ... \times \frac{321}{365} $$ 
 
 </p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Probability is important for ... hypothesis testing!
+
+:: content ::
+- Hypothesis-testing: Using sample data to evaluate two competing hypotheses about a population.
+
+*Example: Are students who take PS 211 happier than other BU students?*
+
+Experiment: 
+- Administer survey measuring happiness (scale 1-10) to a random sample of 10 PS 211 students and a random sample of other BU students.
+- Results: PS 211 students: ${8, 7, 9, 6, 8, 7, 9, 10, 8, 7}, M = 8.0$ 
+- Other BU students: ${5, 6, 4, 5, 6, 5, 4, 5, 6, 5}, M = 5.0$
+
+<Admonition title="Question" color="teal-light" width="100%">Are the 10 students in PS 211 on average happier than the 10 other BU students?</Admonition>
+
+<p v-click>
+
+**Answer:** Yes, we can draw that conclusion about the sample based on the sample means (assuming we believe our survey is valid and reliable).
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Probability is important for ... hypothesis testing!
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">Can we conclude that PS 211 students are happier than other BU students? Why or why not?</Admonition>
+
+<p v-click>
+
+**Answer:** We cannot conclude that PS 211 students are happier than other BU students based solely on this sample. The observed difference in means could be due to random chance, especially given the small sample sizes. We need to conduct a hypothesis test to determine if a real difference likely exists in the population.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing
+
+:: content ::
+- In psychological research, we define two hypotheses:
+    - **Null Hypothesis (H₀):** There is no difference.
+        - The null hypothesis is a statement that postulates that there is no difference between populations or that the difference is in a direction opposite of that anticipated by the researcher.
+        - Any observed difference is due to random chance or sampling error.
+
+
+    - **Research Hypothesis (H₁):** There is a difference.
+        - There is a difference between populations or sometimes, more specifically, that there is a difference in a certain direction, positive or negative; also called an alternative hypothesis.
+        - An observed difference reflects a true effect in the population.
+    
+- ==Goal: Use data to test which is more plausible.==
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing: Examples
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">In the PS 211 happiness example, what are the null and research hypotheses?</Admonition>
+
+<p v-click>
+
+**Answer:**
+- Null Hypothesis (H₀): There is no difference in happiness levels between PS 211 students and other BU students.
+- Research Hypothesis (H₁): PS 211 students are happier than other BU students.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing: Examples (Continued)
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">In the Stroop task example, what are the null and research hypotheses?</Admonition>
+
+<p v-click>
+
+**Answer:**
+- Null Hypothesis (H₀): There is no difference in reaction times between the congruent and incongruent conditions.
+- Research Hypothesis (H₁): Reaction times are slower in the incongruent condition compared to the congruent condition.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Directions
+
+:: content ::
+- Both of these examples had ==directional== research hypotheses (PS 211 students are happier; Stroop incongruent is slower).
+- Sometimes, we have ==non-directional== research hypotheses (e.g., there is a difference, but we don't know the direction).
+- The type of hypothesis affects the type of *significance test* we use. We will cover *significance testing* in more detail later.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# One-tailed vs. Two-tailed Tests
+
+:: content ::
+- **One-tailed test:** Tests for an effect in one direction (e.g., PS 211 students are happier).
+- **Two-tailed test:** Tests for an effect in either direction (e.g., there is a difference in happiness, but we don't know which group is happier).
+- One-tailed tests have more statistical power, but can miss effects in the opposite direction.
+
+<img src="/images/lecture5/tail_meme.jpg" alt="one two tailed" class="mx-auto w-1/3" />
 
 ---
 layout: top-title-two-cols
@@ -1001,128 +598,93 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Practice: Putting concepts together
+# Rejecting the Null Hypothesis
 
 :: left ::
+**The goal of statistics is to determine whether we can reject the null hypothesis.**
 
-- Imagine you want to determine whether Psychology majors or Biology majors have higher GPAs. You randomly sample 30 students from each major and record their GPAs.
-
-<div class="mt-1 w-full flex justify-center">
-    <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow
-    -md p-4 transform">
-    What would be a good way to visualize these GPA distributions? Think of two types of plots that could be used for this purpose.
-    </div>
-</div>
-
-<p v-click>
-
-1. **Box plots:** These would allow you to see the median, quartiles, and potential outliers for each major's GPA distribution.
-2. **Histograms:** These would show the frequency distribution of GPAs for each major, allowing you to see the shape of the distribution (e.g., normality, skewness).
-
-</p>
-
+- We either reject or fail to reject H₀ based on the data.
+- If the data are very unlikely under H₀, we reject H₀ in favor of H₁.
+- If the data are not unlikely under H₀, we fail to reject H₀
+- We never "accept" H₀, because we can't prove it true.
+- We use probability to assess how likely our data are under H₀.
 
 
 :: right ::
-
-<div class="mt-1 w-full flex justify-center">
-    <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow
-    -md p-4 transform">
-    Now imagine you want to compare the mean GPAs of the two groups. What would be a good way to quantify your uncertainty in the estimate of these means? How could you visualize the uncertainty in your estimate of the mean GPA for each major?
-    </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What's wrong with this statement of experiment results: "PS 211 students are equally as happy as other BU students."?</Admonition>
 
 <p v-click>
 
-**Answer:** You could calculate the **standard error (SE)** for each group's mean GPA. 
+**Answer:** This statement suggests that we have proven the null hypothesis (H₀) to be true, which is not possible. We can only fail to reject H₀.
 
-To visualize the uncertainty in your estimate of the mean GPA for each major, you could use barplots with error bars representing the SE for each group. 
+</p>
+
+<p v-click>
+<Admonition title="Question" color="teal-light" width="100%">How should we fix it?</Admonition>
+
+</p>
+
+<p v-click>
+
+**Answer:** A better way to state the results would be: "We did not find evidence that PS 211 students are happier than other BU students."    
 
 </p>
 
 ---
-layout: top-title-two-cols
+layout: top-title
 color: indigo-light
-align: lt-lt-lt
+align: lt
 ---
 
 :: title ::
-# Practice: Putting concepts together (Continued)
+# Two ways to be wrong: Type I and Type II Errors
 
-:: left ::
+:: content ::
+- **Type I error:** Rejecting H₀ when it is true (false positive).
+    - "You said PS 211 students are happier, but they aren't."
+- **Type II error:** Failing to reject H₀ when it is false (false negative).
+    - "You said PS 211 students aren't happier, but they are."
+- Both errors have consequences.
 
-# Let's take a look at what those plots might look like
-
-<br>
-
-<img src="/images/lecture6/gpa_barplot.png" alt="Barplot of gpa with error bars" class="w-1/2mx-auto"/>
-
-<p v-click>
-
-**Challenge question:** If the SE represents +/- 1 SD of the distribution of sample means, what is the probability that the true population mean falls within the error bars shown in the barplot?
-
-</p>
-
-<p v-click>
-
-**Answer:** Approximately 68% of the time, since the error bars represent +/- 1 SD of the distribution of sample means.
-
-</p>
-
-
-:: right ::
-
-<img src="/images/lecture6/gpa_hist.png" alt="Histogram of gpa" class="w-3/4 mx-auto"/>
-
-<br>
-
-<img src="/images/lecture6/gpa_boxplot.png" alt="Boxplot of GPA" class="w-3/4 mx-auto"/>
-
+<img src="/images/lecture5/errors.png" alt="type 1 type 2" class="mx-auto w-1/2" />
 
 ---
-layout: top-title-two-cols
+layout: top-title
 color: indigo-light
-align: lt-lt-lt
+align: lt
 ---
 
 :: title ::
+# Type I and Type II Errors: Example
 
-# R Demo: Z Scores and Percentiles
+:: content ::
 
-:: left ::
-- Let's do a quick demo in R to calculate z scores and percentiles.
+<Admonition title="Question" color="teal-light" width="100%">You have a cough and decide to take a covid test. What is your null and alternative hypothesis?</Admonition>
 
+<p v-click>
 
-```r
-# Sample data: Happiness scores of countries
-happiness_scores <- c(7.313, 6.48, 4.362, 5.5, 3.8, 6.9, 4.12)
+**Answer:**
+- Null Hypothesis (H₀): You do not have COVID-19. (i.e., you are not 'different' from your usual healthy state)
+- Alternative Hypothesis (H₁): You have COVID-19. (i.e., you are 'different' from your usual healthy state)
 
-# Calculate mean and standard deviation
-mean_happiness <- mean(happiness_scores)
-sd_happiness <- sd(happiness_scores)
+</p>
 
-# Calculate z scores
-z_scores <- (happiness_scores - mean_happiness) / sd_happiness
-z_scores
+<p v-click>
 
-# Convert z scores to percentiles with the 'pnorm' function
-percentiles <- pnorm(z_scores) * 100
-percentiles
-```
+<Admonition title="Question" color="teal-light" width="100%">If the test comes back positive, but you actually don't have COVID-19, what type of error is this?</Admonition>
 
+</p>
 
-:: right ::
+<p v-click>
 
-- Now let's try some R practice! 
-- We will use the dataset "quakes" which contains information about earthquakes, including their magnitudes.
-- Imagine you experience an earthquake of magnitude 6. What percentage of earthquakes off the coast of Fiji are less severe than the one you experienced?
+**Answer:** This is a Type I error (false positive). You rejected the null hypothesis (you do not have COVID-19) when it was actually true.
 
-
-
+</p>
 
 ---
 layout: cover
 color: indigo-light
 ---
 
-# Time for Lecture 7!
+# That's all for today!
+See you Thursday -- we will combine probability with hypothesis testing and inference.

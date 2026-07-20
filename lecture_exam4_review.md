@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Exam 4 Review Session
-exportFilename: ps211_fall2025_exam4_review.pdf
+exportFilename: ps211_fall2026_exam4_review
 ---
 
-# PS 211: Introduction to Experimental Design  
-## Fall 2025 · Section C1  
-### Exam 4 Review Session
+# PS 211: Introduction to Experimental Design
+## Fall 2026 · Section C1
+### Exam 4 Review Session (Lectures 15-19)
 
 ---
 layout: top-title
@@ -23,13 +23,15 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- Today is our last regular class session!
-- ==Exam 4== is on **Tuesday, Dec. 9** during class.
+- Today is our last regular class session before Exam 4!
+- ==Exam 4== is on **Thursday, Dec. 10** during class — covers Lectures 15-19.
+  - Thursday, Dec. 10 is also the **last day of classes** for the semester.
+  - **NO MAKE-UPS**
 - We will shortly post:
-  - Homework 4 grades
+  - Data Write-Up #2 grades
   - Discussion section grades
 
-- We will post Exam 4 grades and course grades on Tuesday afternoon *if* everyone takes the exam on time.
+- We will post Exam 4 grades and course grades on Thursday afternoon *if* everyone takes the exam on time.
 
 
 ---
@@ -166,9 +168,9 @@ D. We cannot determine this without knowing our degrees of freedom.
 
 **Answer: A.**  Increasing “signal” increases F.
 
-<div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 We don't know how much F increases without knowing the exact values, but we can say it will increase.
-</div>
+</SpeechBubble>
 
 </p>
 
@@ -201,10 +203,9 @@ D. The critical value was miscalculated; F cannot be less than 1.
 
 <p v-click>
 
-<div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
-
-Note: Even though *F* tests are always one-tailed, *F* **can** be less than 1 when within-group variability exceeds between-group variability.
-</div>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Even though *F* tests are always one-tailed, *F* **can** be less than 1 when within-group variability exceeds between-group variability.
+</SpeechBubble>
 
 </p>
 
@@ -453,10 +454,9 @@ Pearson’s *r*:
 - Magnitude: strength of relationship
   - Larger absolute value = stronger relationship
 
-<div class="bg-red-50 border-l-4 border-red-400 p-3 rounded">
-
-**Remember, correlation does NOT imply causation!**
-</div>
+<AdmonitionType type="warning" width="100%">
+Remember, correlation does NOT imply causation!
+</AdmonitionType>
 ---
 layout: top-title
 color: indigo-light
@@ -501,11 +501,9 @@ E. About 62% of the variance in accident rate is NOT explained by driving experi
 
 **Answers: A, B, D, and E**
 
-<div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
-
-Note: E is correct because $r^2 = (-0.62)^2 = 0.3844$, so approximately 38% of the variance is explained, meaning about 62% is not explained. The fact that it is exactly .62 is coincidental.
-
-</div>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+E is correct because $r^2 = (-0.62)^2 = 0.3844$, so approximately 38% of the variance is explained, meaning about 62% is not explained. The fact that it is exactly .62 is coincidental.
+</SpeechBubble>
 
 </p>
 
@@ -550,17 +548,15 @@ align: lt
 - Simple linear regression involves finding the **line of best fit** that minimizes the sum of squared differences between observed and predicted values:
 
 
-$$\hat{Y} = bX + a X$$
+$$\hat{Y} = bX + a$$
 
 Where:
-- $b$ is the slope = expected change in Y for each unit X  
+- $b$ is the slope = expected change in Y for each unit X
 - $a$ is the intercept = predicted Y when X = 0
 
-<div class="bg-red-50 border-l-4 border-red-400 p-3 rounded">
-
+<AdmonitionType type="warning" width="100%">
 Regression enables prediction, but does not imply causation.
-
-</div>
+</AdmonitionType>
 
 ---
 layout: top-title
@@ -825,15 +821,13 @@ align: lt
 :: content ::
 - We made it through the semester! (Almost.)
 - I hope that you learned something and didn't find this course ==too painful.==
-- This was my first time ever teaching and I learned a lot.
-- I am looking forward to improving this course in the future.
 - I really appreciate all of your engagement and effort, especially those of you who consistently participated during class.
 
 <p v-click>
 
 ### Thank you also to:
-- Juneau, who was an amazing TF!
-- Chloe Jordan, who gave me all her course materials.
+- your TF, for all their hard work this semester!
+- everyone who gave feedback that helped shape this version of the course.
 
 </p>
 

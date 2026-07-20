@@ -1,0 +1,14 @@
+/* Post-it style sticky notes (answers, definitions, etc.) */
+.sticky-note {
+  width: fit-content !important;
+  max-width: 22rem !important;
+  height: auto !important;
+  transform: rotate(-2deg);
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.22);
+  border: none;
+}
+
+/* Speech bubbles shrink to fit their text */
+.speech-bubble {
+  width: fit-content;
+}

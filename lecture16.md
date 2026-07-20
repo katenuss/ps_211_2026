@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 16
-exportFilename: ps211_fall2025_lecture16
+exportFilename: ps211_fall2026_lecture16
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1  
-### Lecture 16: Correlation
+## Fall 2026 · Section C1
+### Lecture 16: Repeated-Measures ANOVA, Two-Way ANOVA
 
 ---
 layout: top-title
@@ -23,19 +23,598 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- The ==Data Write-up== was due yesterday.
-  - We are going to grade them and post feedback by the end of the week.
-  - We will accept late submissions through Friday. 
-- ==Homework 4== will be posted shortly. 
-  - Due **Tuesday, Dec. 2** at 11:59 PM.
-  - We are going to post answers on Wednesday, Dec. 3.
+- Second ==Data Write-Up== (ANOVA-based) is due **Monday, December 7** by 11:59pm.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
+- Discussion sections: remember, you need to pass **10 of the 13** total sections for full credit.
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Remember, you can use the grade calculator (pinned on Slack) to see how future assignments will affect your final grade!
+</SpeechBubble>
+
 
 ---
 layout: section
 color: indigo-light
 ---
 
-# Correlation
+# Part 1: One-Way Repeated-Measures ANOVA (Within-Groups)
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# From Between-Groups to Repeated-Measures ANOVA
+
+:: content ::
+
+- Recall: The **one-way between-groups ANOVA** compares means from **independent samples**.
+
+<p v-click>
+
+- What if the **same participants** complete **multiple conditions**?
+
+</p>
+
+<p v-click>
+
+- We use a **repeated-measures ANOVA**, also called a **within-groups ANOVA.**
+</p>
+
+<p v-click>
+
+- Just like with *t*-tests, we have a between-groups and a within-groups version of ANOVA.
+
+</p>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# When to Use a Repeated-Measures ANOVA
+
+:: content ::
+Use when:
+- The **same participants** are measured across **three or more conditions.**
+- There is **one independent variable (IV)** with 3+ levels.
+- The dependent variable (DV) is **numeric** (interval or ratio).
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+In which of these scenarios would a Repeated-Measures ANOVA be appropriate?
+</Admonition>
+
+1. Testing memory performance after 0, 1, and 2 cups of coffee with the same participants.
+
+2. Comparing test scores of students from three different schools.
+
+3. Measuring reaction times of the same participants under three different lighting conditions.
+
+4. Evaluating how number of hours of sleep per night relates to GPA.
+
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# When to Use a Repeated-Measures ANOVA
+
+:: content ::
+Use when:
+- The **same participants** are measured across **three or more conditions.**
+- There is **one independent variable (IV)** with 3+ levels.
+- The dependent variable (DV) is **numeric** (interval or ratio).
+
+
+<Admonition title="Question" color="teal-light" width="100%">
+In which of these scenarios would a repeated-measures ANOVA be appropriate?
+</Admonition>
+
+1. Testing memory performance after 0, 1, and 2 cups of coffee with the same participants. ✅
+
+2. Comparing test scores of students from three different schools. ❌
+
+3. Measuring reaction times of the same participants under three different lighting conditions. ✅
+
+4. Evaluating how number of hours of sleep per night relates to GPA. ❌
+
+
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Advantages of Repeated-Measures ANOVA
+
+:: content ::
+- **Accounts for individual differences** – the same people are in every condition.
+
+- **Increases statistical power** – less error variance.
+
+- **Fewer participants** needed.
+
+<p v-click>
+
+Essentially, every participant acts as their **own control group.**
+
+</p>
+
+<p v-click>
+
+==**This should sound familiar from within-groups t-tests!**==
+
+<img src="/images/lecture15/dejavu_meme.jpeg" class="w-1/3 mx-auto"/>
+
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Disadvantages of Within-Groups Designs
+
+:: content ::
+- **Carryover** effects:
+  - Once participants have experienced one condition, it may influence their behavior in subsequent conditions.
+- **Order effects**:
+    - Practice effects: Improvement due to familiarity with the task.
+    - Fatigue effects: Decline in performance due to tiredness or boredom.
+  - ==Counterbalancing== can help mitigate this issue, but it may not eliminate it entirely.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Within- vs. Between-Groups Designs: Practice
+
+:: content ::
+
+*You run an experiment where participants memorize a list of words after drinking 0, 1, or 2 cups of coffee. Participants complete all three conditions across three separate days. All participants show improvement over time, regardless of coffee amount.*
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Which disadvantage of within-groups designs does this illustrate?
+</Admonition>
+
+A. This shows how individual differences can impact performance across conditions.
+
+B. This shows how practice effects can impact performance.
+
+C. This shows how fatigue effects can impact performance.
+
+D. This shows that within-groups designs are typically underpowered.
+
+
+</p>
+
+<p v-click>
+
+**Answer: B** – Participants improved over time due to practice, regardless of the coffee condition.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Within- vs. Between-Groups Designs: Practice
+
+:: content ::
+
+*You run an experiment where participants memorize a list of words after drinking 0, 1, or 2 cups of coffee. Participants complete all three conditions across three separate days. All participants show improvement over time, regardless of coffee amount.*
+
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+What is one way you could mitigate the influence of practice effects in your experimental design?
+</Admonition>
+
+A. Increase your sample size to reduce the influence of practice effects.
+
+B. Counterbalance the order of conditions across participants to ensure that the influence of practice equally affects all conditions.
+
+C. Ask participants to promise not to practice between sessions.
+
+D. All of the above.
+
+</p>
+
+<p v-click>
+
+**Answer: B** – Counterbalancing helps distribute practice effects evenly across conditions, reducing their confounding influence.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Between- vs. Repeated-Measures ANOVA
+
+:: content ::
+- In both cases, we are still using the *F* ratio: Between-Groups Variance / Within-Groups Variance.
+   - We still want to know whether the variability ==between== condition means is larger than the variability ==within== conditions.
+- The key difference: **how we calculate the Within-Groups Variance.**
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Calculations in a Repeated-Measures ANOVA
+
+:: content ::
+- Remember, for between-groups ANOVA, we partition total variability into:
+$$
+SS_{Total} = SS_{Between} + SS_{Within}
+$$
+
+<p v-click>
+
+- **SS<sub>Between</sub>:** variability due to condition means.
+- **SS<sub>Within</sub>:** variability due to random noise.
+
+</p>
+
+<p v-click>
+
+Importantly, in a between-groups design, this ==random noise== includes all sources of variability within conditions, including  individual differences between participants.
+
+</p>
+
+<p v-click>
+
+- The logic is similar to between-groups ANOVA, **but we add one more term:**
+
+$$
+SS_{Total} = SS_{Between} + SS_{Within} + SS_{Subjects}
+$$
+
+</p>
+
+<p v-click>
+
+- **SS<sub>Subjects</sub>:** variability due to stable individual differences between participants.
+- **SS<sub>Within</sub>** now reflects variability due to random noise only, after removing variability due to individual differences.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Calculating the Subjects Sum of Squares
+
+:: content ::
+To calculate ==**SS<sub>Subjects</sub>**==:
+1. Compute each participant's overall mean across all conditions ($M_{participant}$).
+2. For each participant, calculate the squared difference between their overall mean and the grand mean ($GM$).
+3. Sum these squared differences across all $n$ participants.
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Remember, the **grand mean** is the mean of all scores across all participants and conditions.
+</SpeechBubble>
+
+<p v-click>
+In equation form:
+
+$$
+SS_{Subjects} = \sum_{1}^{n} ( M_{participant} - GM )^2
+$$
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing Steps (Repeated-Measures ANOVA)
+
+:: content ::
+- **Step 1: Identify populations, distribution, and assumptions.**
+   - Numeric DV
+   - Normally distributed
+   - Homogeneity of variance
+
+- **Step 2: Determine null and alternative hypotheses.**
+   - H₀: μ₁ = μ₂ = μ₃
+   - H₁: At least one μ differs
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing Steps (Repeated-Measures ANOVA)
+
+:: content ::
+
+- **Step 3: Determine comparison distribution.**
+   - *F* distribution with df<sub>Between</sub> and df<sub>Within</sub>.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Degrees of Freedom (df) for Repeated-Measures ANOVA
+
+:: content ::
+<p v-click>
+
+- df<sub>Between</sub> = ==k − 1==, *where k = number of conditions*
+   - when calculating variability between conditions, we lose one degree of freedom from our calculation of the overall mean.
+</p>
+
+<p v-click>
+
+- df<sub>Subjects</sub> = ==n − 1==, *where n = number of subjects*
+   - when calculating variability due to individual differences, we lose one degree of freedom from our calculation of the overall mean.
+</p>
+
+<p v-click>
+
+- df<sub>Within</sub> = ==(k-1)*(n-1)==
+   - when calculating variability within conditions, we lose (k-1) degrees of freedom for conditions and (n-1) degrees of freedom for subjects.
+</p>
+
+<p v-click>
+
+- Total df = ==N − 1==, *where N = (n\*k), total number of observations (scores)*
+   - when calculating total variability, we lose one degree of freedom from our calculation of the grand mean.
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing Steps (Repeated-Measures ANOVA)
+
+:: content ::
+- **Step 4: Find critical value** using df<sub>Between</sub> and df<sub>Within</sub>
+    - From *F* table or software
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Why do we often have *two* critical values for a *t* test but only one critical value for an *F* test?
+</Admonition>
+
+</p>
+
+<p v-click>
+
+**Answer:** Because *t* tests can be one-tailed or two-tailed, while *F* tests are always one-tailed, because we are always testing whether the variance between groups is greater than the variance within groups.
+
+</p>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing Steps (Repeated-Measures ANOVA)
+
+:: content ::
+- **Step 5: Compute F**:
+
+$$
+F = \frac{MS_{Between}}{MS_{Within}}
+$$
+
+Remember, for a repeated-measures ANOVA, we calculate MS<sub>Within</sub> after removing SS<sub>Subjects</sub>:
+
+$$
+MS_{Within} = \frac{SS_{Within}}{df_{Within}}
+$$
+
+<br>
+
+$$SS_{Within} = SS_{Total} - SS_{Between} - SS_{Subjects}$$
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Hypothesis Testing Steps (Repeated-Measures ANOVA)
+
+:: content ::
+- **Step 6: Make a decision.**
+   - If *F* calculated ≥ *F* critical, reject H₀.
+   - If *F* calculated < *F* critical, fail to reject H₀.
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Accounting for individual variance increases power
+
+:: content ::
+#### Example:
+- Imagine BU asks students to rate their satisfaction (from 0 - 1) with three different dining halls.
+- They ask 10 different students to rate three dining halls.
+- They plot the mean responses and include error bars that show +/- 1 SE from each mean:
+
+<p v-click>
+<img src="/images/lecture15/errorbars1.png" class="w-1/2 mx-auto"/>
+
+</p>
+
+<p v-click>
+
+<AdmonitionType type="warning" width="100%">
+Big error bars indicate lots of variability in the ratings!
+</AdmonitionType>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Accounting for individual variance increases power
+
+:: content ::
+- However, some of this variability is due to individual differences among students.
+- To account for this, we can subtract each student's overall mean rating from their dining hall ratings. This gives us each student's rating of each dining hall after accounting for individual differences.
+- We can then re-compute the standard error of each mean rating and re-plot.
+
+<p v-click>
+
+<img src="/images/lecture15/errorbars2.png" class="w-1/2 mx-auto"/>
+
+</p>
+
+<p v-click>
+
+<AdmonitionType type="warning" width="100%">
+Now error bars reflect random error only -> "noise" that can't be explained by individual differences.
+</AdmonitionType>
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Effect Size for Repeated-Measures ANOVA
+
+:: content ::
+Effect size is measured using **R² (or η²)**:
+
+$$
+η² = \frac{SS_{Between}}{SS_{Total} - SS_{Subjects}}
+$$
+
+This shows the **proportion of variance explained** by the IV after removing variance due to individual differences.
+
+<p v-click>
+Example interpretation: η² = .40 → 40% of variance in performance is explained by the condition.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Repeated-Measures ANOVA in R
+
+:: content ::
+Use the `aov()` function with a within-subjects design:
+
+```r
+# Example dataset
+data <- data.frame(
+  subject = rep(1:10, each = 3),
+  condition = rep(c("A", "B", "C"), times = 10),
+  score = c(5, 6, 7, 4, 5, 6, 6, 7, 8, 5, 6, 7, 7, 8, 9,
+            6, 7, 8, 5, 6, 7, 8, 9, 10, 7, 8, 9)
+)
+
+# Run the repeated-measures ANOVA
+anova_result <- aov(score ~ condition + Error(subject/condition), data = data)
+summary(anova_result)
+```
+
+- The `Error(subject/condition)` term specifies the within-subjects design.
+- This indicates that each `subject` experiences all levels of `condition`.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Next Steps After a Significant Repeated-Measures ANOVA
+
+:: content ::
+- A significant ANOVA indicates that at least one condition mean differs, but it doesn't tell us which ones.
+- Follow up with post-hoc tests (e.g., pairwise t-tests, Tukey's HSD) to explore specific group differences.
+- Can use corrections (e.g., Bonferroni) to control for Type I error.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Recap: Repeated-Measures ANOVA
+
+:: content ::
+- A repeated-measures ANOVA is used when the **same participants** complete **3+ conditions.**
+- Remember, the *F* statistic compares variability between condition means to variability within conditions.
+- When the *same participants* complete all conditions, some of that within-condition variability can be attributed to individual differences.
+   - Mathematically, accounts for **individual differences** by computing SS<sub>Subjects</sub> and subtracting that from SS<sub>Within</sub>.
+- Increases **statistical power**: SS<sub>Within</sub> reflects only *random* error.
+
+
 
 ---
 layout: top-title
@@ -68,312 +647,13 @@ th, td {
 }
 </style>
 
-<p v-click>
-
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-1 transform">
-
-  But what if our IV is **numeric** (not categorical)?
-</div>
-</div>
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Recap: Statistical Tests 
-
-:: content ::
-
-| **Test** | **# of IVs** | **IV Type** | **# of Levels** | **DV Type** | **Use Case** |
-|-----------|--------------|--------------|------------------|--------------|-----------------------|
-| *z-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (known SD)</span> |
-| *One-Sample t-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (unknown SD)</span> |
-| *Independent t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare two groups (e.g., School A vs. School B)</span> |
-| *Paired t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare same group before vs. after intervention or in two conditions</span> |
-| *One-Way (Between-Groups) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare 3+ groups (e.g., Drug A, B, C)</span> |
-| *Repeated-Measures (Within-Subjects) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare same participants across 3+ conditions</span> |
-| ***Correlation*** | **1** | **Numeric** | — | **Numeric** | <span style="color:#7e57c2;">**Examine the relation between two numeric variables**</span> |
-
-<style>
-table {
-  font-size: 0.9rem;
-  width: 98%;
-  margin: auto;
-}
-th, td {
-  padding: 4px 6px;
-}
-</style>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Defining Correlation
-
-:: content ::
-- A **correlation** is a systematic association (relation) between two variables.
-- It reflects **covariation** (“co-relation”) — how two numeric variables change together.
-
-<p v-click>
-
-- As discussed earlier in the course, ==correlations do *not* tell us about causation!==
-- We typically use correlations in **observational** (non-experimental) research designs.
-
-</p>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Correlation vs. Causation
-
-:: content ::
-- **Correlation:** An association between two or more variables  
-  - Variables are typically measured, not manipulated.  
-  - Shows relations — but **not cause.**
-
-<p v-click>
-
-#### Advantages
-- Some research questions **cannot be studied experimentally** (e.g., unethical to manipulate the amount of stress in children's early life environments).  
-- Efficient way to study **naturally occurring variables.**
-
-</p>
-
-<p v-click>
-
-#### Disadvantages
-- **Confounding variables** can create false associations.  
-- **Causality cannot be inferred** — we can’t tell which variable influences which.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Characteristics of Correlations
-
-:: content ::
-- Correlations are summarized by the **Pearson correlation coefficient** (*r*).  
-- ==*r*== indicates both:
-  - **Direction** (positive or negative) of the relationship.
-    - Determined by the sign of *r* (+ or −).
-  - **Strength** (magnitude) of the relationship.
-    - Determined by the absolute value of *r* (ignoring sign).
-
-<p v-click>
-
-#### Interpreting *r* values:
-
-- *r* ranges from −1 to +1.
-- *r* = 0 → no linear relation
-- Larger absolute *r* → stronger relation
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Assumptions of Pearson’s *r*
-
-:: content ::
-- Variables are **numeric**.
-- The relation between two variables is **linear**. (Pearson’s *r* only captures linear relationships.)
-- Scores have been **randomly sampled** from the population.
-- The distributions from which the scores have been sampled are **approximately normal**.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Directions of Correlation
-
-:: content ::
-- **Positive correlation:**  
-  When one variable increases, the other tends to **increase** too.  
-  > Example: Infants who hear more words in the first year tend to have larger vocabularies at age 2 (*r* = .52).
-
-<p v-click>
-
-- **Negative correlation:**  
-  When one variable increases, the other tends to **decrease**.  
-  > Example: Students who cheat more on exams tend to have lower grades overall (*r* = −0.43).
-
-</p>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Examples: Penguin dimensions
-
-:: content ::
-<img src="/images/lecture16/penguins.jpg" class="w-1/3 rounded-lg mx-auto"/>
-
-<div class="flex justify-center items-start gap-4 mt-4">
-  <img src="/images/lecture16/corr1.png" class="w-1/3 rounded-lg shadow-md"/>
-  <img src="/images/lecture16/corr2.png" class="w-1/3 rounded-lg shadow-md"/>
-  <img src="/images/lecture16/corr3.png" class="w-1/3 rounded-lg shadow-md"/>
-</div>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Practice: Identify the Correlation Type
-
-:: content ::
-Which of the following would you expect to show a **negative correlation**?
-
-A. Peoples' heights and weights
-
-B. The number of hours people spend studying and their exam scores  
-
-C. Distance people live from campus and their attendance in classes
-
-D. Shoe size and GPA
-
-<p v-click>
-
-**Answer: C.** We would expect a negative correlation between distance from campus and class attendance — as distance increases, attendance tends to decrease.
-
-</p>
-
-<p v-click>
-
-**A.** We would expect a *positive* correlation between height and weight — as height increases, weight tends to increase as well.
-
-**B.** We would expect a *positive* correlation between the number of hours people spend studying and their exam scores — as study time increases, exam scores tend to increase as well.
-
-**D.** We would expect *no correlation* between shoe size and GPA — these variables are unrelated.
-
-</p>
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Correlation Strength
-
-:: content ::
-
-- The **magnitude** of *r* (ignoring its sign) shows **strength**.  
-- Larger absolute *r* → stronger linear relationship.
-
-Cohen’s (1988) general guidelines:
-
-
-<div class="mt-2 w-full flex justify-center">
-<table class="text-sm border border-gray-300 rounded-lg shadow-md">
-  <thead>
-    <tr class="bg-indigo-100">
-      <th>Strength</th>
-      <th>|r| value</th>
-      <th>Interpretation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Small</td><td>.10</td><td>Weak relationship</td></tr>
-    <tr><td>Medium</td><td>.30</td><td>Moderate relationship</td></tr>
-    <tr><td>Large</td><td>.50</td><td>Strong relationship</td></tr>
-  </tbody>
-</table>
-</div>
-
-<p v-click>
-
-In behavioral science, *r* values above .50 are **rare** — human behavior is noisy!
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Correlations are *Linear*
-
-:: content ::
-
-*What is the correlation between these two variables?*
-
-<img src="/images/lecture16/nonlinear.png" class="w-1/3 rounded-lg mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Correlations measure *linear* relationships
-
-:: content ::
-
-*What is the correlation between these two variables?*
-
-<img src="/images/lecture16/nonlinear_labeled.png" class="w-1/3 rounded-lg mx-auto"/>
-
-<p v-click>
-
-- There is *no* linear relationship here — the pattern is curved.
-
-</p>
-
-<p v-click>
-
-- We would need to use a different method (e.g., nonlinear regression) to capture this curved relationship.
-
-</p>
-
 ---
 layout: section
 color: indigo-light
 ---
 
-# Part 2: Calculating and Interpreting *r*
+# Part 2: Two-Way ANOVA (Factorial Designs)
+What if we have **two** independent variables?
 
 ---
 layout: top-title
@@ -382,76 +662,64 @@ align: lt
 ---
 
 :: title ::
-# The Pearson Correlation Coefficient (*r*)
+# Why Use a Two-Way ANOVA?
 
 :: content ::
-- The Pearson correlation coefficient is the most common measure of correlations between two variables. 
-- It quantifies the **linear relationship** between two numeric variables.
+A **Two-Way ANOVA** allows us to test **two independent variables simultaneously.**
+
+Example: ⛷️ Do ski resorts exaggerate weekend snow reports?
+
+<img src="/images/lecture15/interaction_barplot.png" class="w-1/2 mx-auto"/>
+
 
 <p v-click>
 
-$$
-r = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}
-$$
-
-</p>
-
-<p v-click>
-
-Where:  
-- *xᵢ*, *yᵢ* = individual scores  
-- *x̄*, *ȳ* = means of X and Y
+IV₁ = Report Source (Resort vs. Weather Station)
+IV₂ = Day (Weekday vs. Weekend)
+DV = Inches of snow reported
 </p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
+
 
 :: title ::
-# The Pearson Correlation Coefficient (*r*)
+# Why Use a Two-Way ANOVA?
 
-:: content ::
+:: left ::
 
-$$
-r = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}
-$$
+
+With a two-way ANOVA, we can simultaneously test:
 
 <p v-click>
 
-- Numerator = product of deviations from means (how X and Y move together)  
-- Denominator = product of sums of squared deviations (standardizes the measure)
+1️⃣ Main effect of Report Source: **Does the source of the report (Resort vs. Weather Station) affect the reported snow levels?**
+
+<img src="/images/lecture15/source_barplot.png" class="w-1/2 mx-auto"/>
+
+</p>
+
+:: right ::
+
+
+<p v-click>
+
+2️⃣ Main effect of Day: **Do weekday vs. weekend reports differ in snow levels?**
+
+<img src="/images/lecture15/day_barplot.png" class="w-1/2 mx-auto"/>
+
 </p>
 
 
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Pearson Correlation Coefficient (*r*): Numerator
-
-:: content ::
-
-### Understanding the numerator:
-
-$$
-\sum(x_i - \bar{x})(y_i - \bar{y})
-$$
-
-- For each pair of scores, calculate how far each score is from its mean.
-- Multiply these deviations together.
-- Sum these products across all pairs.
-
-
 <p v-click>
 
-- Positive products (both above or both below means) increase *r*.  
-- Negative products (one above, one below) decrease *r*.
+3️⃣ Interaction between Report Source × Day: **Does the effect of report source depend on whether it's a weekday or weekend?**
+
+<img src="/images/lecture15/interaction_barplot.png" class="w-1/2 mx-auto"/>
+
 </p>
 
 ---
@@ -461,147 +729,38 @@ align: lt
 ---
 
 :: title ::
-# The Pearson Correlation Coefficient (*r*): Demoninator
+# Structure of a Two-Way ANOVA
 
 :: content ::
+- A two-way ANOVA involves **two independent variables (IVs).**
+- These IVs can each have **two or more levels.**
 
-### Understanding the demoninator:
+- In a **2 × 2 design**, there are two independent variables, each with two levels.
 
-$$
-\sqrt{\sum (x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}
-$$
-
-- For each variable, calculate squared deviations from the mean.
-- Sum these squared deviations.
-- Multiply the sums for X and Y, then take the square root.
-
+- Each unique combination = a **cell** in the design.
 
 <p v-click>
 
-- This gives us an overall measure of variability for both variables.
-- This standardizes the correlation, ensuring *r* ranges from −1 to +1.
+| **Source** | **Weekday** | **Weekend** |
+|---------|----------|----------|
+| Resort Report | Mean₁ | Mean₂ |
+| Weather Station | Mean₃ | Mean₄ |
+
+
+
+- Each cell's mean reflects one condition combination (e.g., Resort–Weekend).
+
+</p>
+<p v-click>
+
+What would a ==2 x 3== design look like?
+
 </p>
 
 <p v-click>
 
-- Like our other statistics, *r* can be understood as a ==**signal-to-noise ratio**==:  
-  - Numerator = signal (covariation)  
-  - Denominator = noise (total variability)
+| **Source** | **Weekday** | **Saturday** | **Sunday** |
 
-</p>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# From Scatterplots to *r*
-
-:: content ::
-- We can visualize relationships using a **scatterplot**.
-  - Each point represents one participant.
-  - The participant's score on variable X is on the x-axis; score on variable Y is on the y-axis.
-
-- Scatterplots show:
-  - Direction (positive / negative)  
-  - Strength (tightness of clustering)
-
-<p v-click>
-
-Remember: correlation measures **linear** relationships only — curved patterns can have *r* ≈ 0 even if related.
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Pearson Correlation Coefficient (*r*): Understanding visually
-
-:: content ::
-
-<img src="/images/lecture16/pearson_r_1.png" class="w-3/4 rounded-lg mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Pearson Correlation Coefficient (*r*): Understanding visually
-
-:: content ::
-
-<img src="/images/lecture16/pearson_r_2.png" class="w-3/4 rounded-lg mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Statistical Significance of *r*
-
-:: content ::
-- A significant *r* means the relationship between the two variables is **unlikely to be due to chance**.  
-  - This means that the observed correlation in our sample likely reflects a true relation that exists in the population.
-
-<p v-click>
-
-- We can test the significance of *r* using the *t* statistic!
-  - This is a little confusing because we have previously used the *t* statistic to compare means, but here we use it to test correlations.
-  - This is a totally different test - the only similarity is that we are using the *t* distribution as our null distribution.
-</p>
-
-<p v-click>
-
-For a correlation with sample size *N*, we compute:
-
-$$
-t = \frac{r\sqrt{N-2}}{\sqrt{1 - r^2}}
-$$
-</p>
-
-<p v-click>
-
-- We then compare this *t* value to the critical value from the *t* distribution with *N − 2* degrees of freedom.
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Statistical Significance of *r*
-
-:: content ::
-$$
-t = \frac{r\sqrt{N-2}}{\sqrt{1 - r^2}}
-$$
-
-==**Don't worry about memorizing this formula or understanding where it comes from.**==
-
-<br> 
-
-<p v-click>
-
-Key ideas:
-- Larger absolute *r* → larger *t* → more likely to be significant.
-- Larger *N* → larger *t* → more likely to be significant.
-- Larger *N* → more degrees of freedom → smaller critical *t* → more likely to be significant.
 
 </p>
 
@@ -613,34 +772,61 @@ align: lt
 ---
 
 :: title ::
-# Coefficient of Determination (*R²*)
+# What Does a Two-Way ANOVA Test?
 
 :: content ::
-- *R²* = proportion of shared variance between two variables.
-- We discussed R² in the context of ANOVA - it can also be used with correlations, and in fact, is directly related to *r*.
+A Two-Way ANOVA produces **three *F* statistics:**
 
-$$
-R^2 = r^2
-$$
+1️⃣ *F₁*: Main effect of IV₁
+2️⃣ *F₂*: Main effect of IV₂
+3️⃣ *F₃*: Interaction between IV₁ × IV₂
 
 <p v-click>
 
-- *R²* helps us understand how much of the variability in one variable is explained by the other.
-- If the two variables are correlated, that means that we can account for some of the variance in one variable by the other variable. 
-- *R²* ranges from 0 to 1.
-- Larger *R²* → more shared variance → stronger relationship.
+- Each *F* statistic tests a specific hypothesis about the effects of the independent variables on the dependent variable.
 </p>
 
 <p v-click>
 
-**Example:**  
-If *r* = 0.90, then *R²* = 0.81 → 81% of variance in one variable is explained by the other.
+- Each *F* statistic is computed similarly to a one-way ANOVA:
+$$ F = \frac{MS_{Between}}{MS_{Within}} $$
 
 </p>
 
 <p v-click>
 
-The remaining 19 % is due to chance, measurement error, or other factors.
+- This is because we are still computing the ratio of variability ==between== condition means (e.g., 'signal') to variability ==within== conditions (e.g., 'noise').
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Computing *F* statistics for Two-Way ANOVAs
+
+:: content ::
+
+- We compute separate $SS_{Between}$, $MS_{Between}$, $df$, and critical values for all of our effects of interest:
+
+   1️⃣ Main effect of IV₁ (e.g., Report Source)
+
+   2️⃣ Main effect of IV₂ (e.g., Day)
+
+   3️⃣ Interaction between IV₁ × IV₂ (e.g., Report Source × Day)
+
+<br>
+
+
+<p v-click>
+
+- However, they all share the same $SS_{Within}$ and $MS_{Within}$, which reflect variability within "cells."
+   - This is because the within-groups variability is the same regardless of which effect we are testing.
+   - Remember, when calculating $SS_{Within}$, we are looking at variability within each cell (condition combination), summed across all cells.
 
 </p>
 
@@ -651,11 +837,400 @@ align: lt
 ---
 
 :: title ::
-# Partial Correlations
+# Interpreting Main Effects vs. Interactions
 
 :: content ::
-- A **partial correlation** shows how much of the relationship between two variables remains after removing the influence of a **third variable**.
-- In other words, the correlation coefficient expresses the relationship between two variables, over and above their association with a third variable.
+- **Main Effect:** One IV influences the DV ==regardless== of the other.
+
+<img src="/images/lecture15/day_barplot.png" class="w-1/4 mx-auto"/>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Interpreting Main Effects vs. Interactions
+
+:: content ::
+
+- **Interaction:** The effect of one IV ==changes depending on== the other IV.
+
+<img src="/images/lecture15/interaction_barplot.png" class="w-1/3 mx-auto"/>
+
+- For example: ⛷️ Ski resort exaggeration might only happen on **weekends**, not weekdays.
+
+- This would be an example of an **interaction**.
+
+- The effect of Source (Resort vs. Weather Station) depends on Day (Weekday vs. Weekend).
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Marginal Means in Two-Way ANOVA
+
+:: content ::
+- **Marginal means** are the means for each level of one IV, averaged across levels of the other IV.
+- For example, in our ski resort example:
+   - Marginal mean for Resort Report = Average of (Resort–Weekday + Resort–Weekend)
+   - Marginal mean for Weather Station = Average of (Weather Station–Weekday + Weather Station–Weekend)
+- We use marginal means to assess **main effects** in a two-way ANOVA.
+
+### Means Table
+
+| **Source**         | **Weekday** | **Weekend** | <span style="color:#7e57c2;">**Marginal Mean**</span> |
+|--------------------|-------------|-------------|--------------------|
+| **Resort Report**   | 8.2         | 15.3        | <span style="color:#7e57c2;">11.8</span> |
+| **Weather Station** | 9.2         | 11.5        | <span style="color:#7e57c2;">10.8</span> |
+| <span style="color:#4db6ac;">**Marginal Mean**</span> | <span style="color:#4db6ac;">8.7</span> | <span style="color:#4db6ac;">13.4</span> | — |
+
+<style>
+table {
+  font-size: 0.9rem;
+  width: 85%;
+  margin: auto;
+}
+th, td {
+  padding: 4px 6px;
+  text-align: center;
+}
+</style>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Marginal Means in Two-Way ANOVA
+
+:: content ::
+
+### Means Table
+
+| **Source**         | **Weekday** | **Weekend** | <span style="color:#7e57c2;">**Marginal Mean**</span> |
+|--------------------|-------------|-------------|--------------------|
+| **Resort Report**   | 8.2         | 15.3        | <span style="color:#7e57c2;">11.8</span> |
+| **Weather Station** | 9.2         | 11.5        | <span style="color:#7e57c2;">10.8</span> |
+| <span style="color:#4db6ac;">**Marginal Mean**</span> | <span style="color:#4db6ac;">8.7</span> | <span style="color:#4db6ac;">13.4</span> | — |
+
+<style>
+table {
+  font-size: 0.9rem;
+  width: 85%;
+  margin: auto;
+}
+th, td {
+  padding: 4px 6px;
+  text-align: center;
+}
+</style>
+
+- We can use these marginal means to assess main effects:
+   - **Main Effect of Source:** Resort Report (11.8) vs. Weather Station (10.8)
+   - **Main Effect of Day:** Weekday (8.7) vs. Weekend (13.4)
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Means and Interactions in Two-Way ANOVA
+
+:: content ::
+
+### Means Table
+
+| **Source**         | <span style="color:#7e57c2;">**Weekday**</span> | <span style="color:#4db6ac;">**Weekend**</span> | **Marginal Mean** |
+|--------------------|-------------|-------------|--------------------|
+| **Resort Report**   | <span style="color:#7e57c2;">8.2</span> | <span style="color:#4db6ac;">15.3</span> | **11.8** |
+| **Weather Station** | <span style="color:#7e57c2;">9.2</span> | <span style="color:#4db6ac;">11.5</span> | **10.8** |
+| **Marginal Mean**   | **8.7** | **13.4** | — |
+
+<style>
+table {
+  font-size: 0.9rem;
+  width: 85%;
+  margin: auto;
+}
+th, td {
+  padding: 4px 6px;
+  text-align: center;
+}
+</style>
+
+<br>
+
+- To assess interactions, we look at the cell means directly:
+   - Does the difference between Resort Report and Weather Station change from Weekday to Weekend?
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Understanding interactions in ANOVA
+
+:: content ::
+
+- An interaction occurs when the effect of one independent variable on the dependent variable depends on the level of the other independent variable.
+- In our ski resort example, the effect of Report Source (Resort vs. Weather Station) on reported snow levels changes depending on whether it's a Weekday or Weekend.
+- Often, it is difficult to understand interactions just from the output of statistical tests.
+
+   --> ==**Visualization**== is key!
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+:: title ::
+
+# Understanding interactions in ANOVA: Visualization
+
+:: left ::
+
+### Interaction Bar Graph
+<br>
+
+<img src="/images/lecture15/interaction_barplot.png" class="w-7/8 mx-auto"/>
+
+:: right ::
+
+### Interaction Boxplot
+<br>
+
+<img src="/images/lecture15/interaction_boxplot.png" class="w-7/8 mx-auto"/>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Two-Way ANOVA: Interpreting statistical output
+
+:: content ::
+
+### Run Two-Way ANOVA in R
+
+```r
+#Run two-way ANOVA
+anova_result <- aov(SnowReported ~ Source * Day, data = snow_data)
+summary(anova_result)
+```
+
+
+<p v-click>
+
+### Example Output:
+
+```
+            Df Sum Sq Mean Sq F value   Pr(>F)
+Source       1   5.93    5.93   4.836  0.05907 .
+Day          1  66.62   66.62  54.374 7.81e-05 ***
+Source:Day   1  18.04   18.04  14.720  0.00497 **
+Residuals    8   9.80    1.23
+```
+</p>
+
+<p v-click>
+
+- There is one row for each main effect and one row for the interaction.
+- Each row includes: Df, Sum Sq, Mean Sq, F value, and p-value (Pr(>F)).
+- The Residuals row shows the within-groups variability. It is the "residual" or leftover variability after accounting for the effects of the IVs.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Two-Way ANOVA: Interpreting statistical output
+
+:: content ::
+
+```
+            Df Sum Sq Mean Sq F value   Pr(>F)
+Source       1   5.93    5.93   4.836  0.05907 .
+Day          1  66.62   66.62  54.374 7.81e-05 ***
+Source:Day   1  18.04   18.04  14.720  0.00497 **
+Residuals    8   9.80    1.23
+```
+
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Which effects are statistically significant at α = .05?
+</Admonition>
+
+</p>
+
+<p v-click>
+
+**Answer:** Day (p < .001) and Source:Day interaction (*p* = .00497) are significant. Source (*p* = .05907) is not significant at α = .05.
+
+</p>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+What is the interpretation of these results in words?
+</Admonition>
+
+</p>
+
+<p v-click>
+
+**Answer:** The results suggest that the day of the week has a significant effect on reported snow levels, with weekends generally having higher reports. Additionally, the interaction between report source and day indicates that the difference between the two sources varies by day, with resorts exaggerating reports more on weekends compared to weekdays.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why use a two-way ANOVA?
+
+:: content ::
+
+- A two-way ANOVA allows us to compare:
+   1. How levels from TWO independent variables affect the dependent variable
+   2. How the combined (interaction) effects of those two independent variables affect the dependent variable
+- A two-way ANOVA is a hypothesis test that includes:
+   - Two nominal (or ordinal) independent variables
+      - The number of levels of each IV doesn't matter
+   - One numeric (interval or ratio) dependent variable
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why design a study with two IVs?
+
+:: content ::
+
+- It is often more efficient to evaluate more than one independent variable in a single study.
+- It allows us to explore interactions between independent variables!
+- Any ANOVA with two or more independent variables is called a **factorial ANOVA**.
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# What if one IV is within-groups and the other is between-groups?
+
+:: content ::
+
+- This is called a ==mixed-design ANOVA.== The calculations are more complex (and outside the scope of this course), but the logic is the same.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Which of the following studies would likely use a mixed-design ANOVA?
+</Admonition>
+
+A. Testing how day of the week and report source affect snow reports.
+
+B. Testing how students in different sections of PS 211 perform on exams 1, 2, and 3.
+
+C. Testing how first-years vs. sophomores rate their satisfaction with three different dining halls.
+
+D. All of the above.
+
+</p>
+
+<p v-click>
+
+**Answer: D** – All of the above!
+
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# What if we have *lots* of independent variables?
+
+:: content ::
+
+- Multifactorial ANOVA can handle **more than two independent variables.**
+- The logic is the same: we can test main effects for each IV and interactions between any combination of IVs.
+- However, as the number of IVs increases, the complexity of the design and the required sample size also increase.
+
+<p v-click>
+
+- A three-way ANOVA would involve:
+   - Three main effects (one for each IV)
+   - Three two-way interactions (IV₁ × IV₂, IV₁ × IV₃, IV₂ × IV₃)
+   - One three-way interaction (IV₁ × IV₂ × IV₃)
+   - ==7== *F* statistics in total!
+</p>
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# What if we have *lots* of independent variables?
+
+:: content ::
+
+<p v-click>
+
+- A four-way ANOVA would involve:
+   - Four main effects
+   - Six two-way interactions
+   - Four three-way interactions
+   - One four-way interaction
+   - ==15== *F* statistics in total!
+</p>
+
+<p v-click>
+
+**Example:**
+- A researcher may want to examine how teaching method, class size, time of day, and student class year affect student performance on exams.
+- They would have one numeric dependent variable (exam performance) and four categorical independent variables (teaching method, class size, time of day, and class year).
+
+</p>
+
 
 ---
 layout: top-title-two-cols
@@ -664,120 +1239,43 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Partial Correlations
+# Two-Way ANOVA in Action:
 
 :: left ::
+- In a 2012 study (Moss-Rascusin et al.), researchers investigated how applicant gender influenced science faculty members' evaluations of lab manager job applications.
+- Faculty evaluated identical job applications labeled “John” or “Jennifer.”
+- Researchers ran a two-way ANOVA to analyze how labeled gender (male vs. female) and faculty participant gender (here, male vs. female) influenced ratings of the applicants' competence.
 
-**Example:**  
-- People who play more sports tend to live longer.  
-- Some of that relationship may be due to things like smoking, income, or alcohol use.  
-- When we statistically remove (control for) those variables, the correlation gets smaller.  
-- But if we remove the effect of **education**, the correlation between sports and longevity is still significant.  
-- This tells us that **sports and longevity are related above and beyond education** — that remaining relationship is a **partial correlation**.
+- **IV₁:** Applicant Gender
+- **IV₂:** Faculty Gender
+- **DV:** Competence Rating
 
 :: right ::
 
-<img src="/images/lecture16/partial_correlation.png" class="w-7/8 rounded-lg mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Outliers and Correlations
-
-:: content ::
-- Outliers can **inflate** or **deflate** *r* dramatically.
-
 <p v-click>
 
-<img src="/images/lecture16/outlier.png" class="w-2/3 rounded-lg mx-auto"/>
+==**Finding:**==
+- Both male and female faculty rated "John" as more competent than "Jennifer."
 
 </p>
 
+<p v-click>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+<Admonition title="Question" color="teal-light" width="100%">
+How would you interpret this finding in terms of main effects and interactions?
+</Admonition>
 
-:: title ::
-# Outliers and Correlations
+A. There is a main effect of Applicant Gender.
 
-:: content ::
-- Outliers can **inflate** or **deflate** *r* dramatically.
+B. There is a main effect of Faculty Gender.
 
+C. There is an interaction between Applicant Gender and Faculty Gender.
 
-<img src="/images/lecture16/outlier2.png" class="w-2/3 rounded-lg mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Defining Outliers
-
-:: content ::
-- An **outlier** is a data point that differs significantly from other observations.
-- Outliers can arise from:
-  - Measurement errors (e.g., data entry mistakes)
-  - Natural variability (genuine extreme values)
-  - Sampling issues (e.g., non-representative samples)
-- There are multiple methods to identify outliers, including visual inspection and statistical tests.
-  - It is always extremely important to ==visually inspect your data== before conducting analyses.
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Detecting Outliers with Statistical Tests
-
-:: content ::
-- Common methods include:
-  - **Grubb’s Test:** Identifies a single outlier in a normally distributed dataset.
-    - How far the suspected outlier is from the mean compared to the standard deviation.
-  - **Dixon Q's Test:** Suitable for small sample sizes to detect a single outlier.
-    - Compares the gap between the suspected outlier and its nearest neighbor to the range of the data.
-  - **IQR Method:** Values beyond 1.5 × IQR from Q1 or Q3 are considered outliers.
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Outliers: What should you do?
-
-:: content ::
-
-### Should you drop outliers?
-
-Drop if:
-- The data point is clearly wrong (error, typo).
-  
-Keep them if:
-- They reflect genuine variation or critical outcomes.
-
+</p>
 
 <p v-click>
 
-### Other ways of dealing with outliers
-- Some analysis methods are robust to outliers (e.g., Spearman’s rank correlation).
-- Sometimes you can report results with and without outliers to show their impact.
+**Answer: A** – There is a main effect of Applicant Gender: both male and female faculty rated "John" as more competent than "Jennifer." There is no main effect of Faculty Gender, and no interaction
 
 </p>
 
@@ -788,28 +1286,24 @@ align: lt
 ---
 
 :: title ::
-# Practice: Interpreting Correlations
+# Two-Way ANOVA in Action: Visualization Practice
 
 :: content ::
-Hill (1990) studied final exam grades in Sociology and found these correlations:
+- In a 2012 study (Moss-Rascusin et al.), researchers investigated how applicant gender influenced science faculty members' evaluations of lab manager job applications.
 
-| Variable | *r* |
-|-----------|----:|
-| Overall GPA | .72 |
-| Number of absences | −.51 |
-| Hours spent studying | .31 |
+- Both male and female faculty rated "John" as more competent than "Jennifer."
 
-Which variable shows the **strongest** relationship with exam grade?
+<Admonition title="Question" color="teal-light" width="100%">
+Which of the plots below best represents this finding?
+</Admonition>
 
-A. Hours spent studying  
-B. Number of absences  
-C. Overall GPA
 
-<p v-click>
+<div class="flex justify-center items-start gap-4 mt-4">
+  <img src="/images/lecture15/anova_interaction_A.png" class="w-1/3 rounded-lg shadow-md"/>
+  <img src="/images/lecture15/anova_interaction_B.png" class="w-1/3 rounded-lg shadow-md"/>
+  <img src="/images/lecture15/anova_interaction_C.png" class="w-1/3 rounded-lg shadow-md"/>
+</div>
 
-**Answer: C.** Overall GPA (*r* = .72) has the strongest positive relationship with exam performance.
-
-</p>
 
 ---
 layout: top-title
@@ -818,32 +1312,43 @@ align: lt
 ---
 
 :: title ::
-# Practice: Direction & Causation
+# Two-Way ANOVA in Action: Visualization Practice
 
 :: content ::
-A study finds a correlation of *r* = −.45 between screen time and sleep quality.  
-Which interpretation is most appropriate?
 
-A. Screen time causes poor sleep.  
 
-B. Poor sleep causes increased screen time.  
+<div class="flex justify-center items-start gap-6 mt-6">
 
-C. A third variable (e.g., stress) affects both screen time and sleep quality. 
+  <!-- Left plot (purple outline + label) -->
+  <div class="flex flex-col items-center w-1/3">
+    <img src="/images/lecture15/anova_interaction_A.png"
+         class="h-64 w-auto object-contain rounded-lg shadow-md ring-4 ring-purple-400"/>
+    <p class="mt-2 text-lg font-semibold" style="color:#7e57c2;">
+      Main effect of faculty gender
+    </p>
+  </div>
 
-D. There is a negative association between screen time and sleep quality.
+  <!-- Middle plot (indigo outline + label) -->
+  <div class="flex flex-col items-center w-1/3">
+    <img src="/images/lecture15/anova_interaction_B.png"
+         class="h-64 w-auto object-contain rounded-lg shadow-md ring-4 ring-indigo-400"/>
+    <p class="mt-2 text-lg font-semibold" style="color:#3f51b5;">
+      Main effect of applicant gender
+    </p>
+  </div>
 
-<p v-click>
+  <!-- Right plot (teal outline + label) -->
+  <div class="flex flex-col items-center w-1/3">
+    <img src="/images/lecture15/anova_interaction_C.png"
+         class="h-64 w-auto object-contain rounded-lg shadow-md ring-4 ring-teal-400"/>
+    <p class="mt-2 text-lg font-semibold" style="color:#009688;">
+     Faculty gender x applicant gender interaction
+    </p>
+  </div>
 
-**Answer: D.** There is a negative association between screen time and sleep quality. We cannot infer causation from correlation alone.
+</div>
 
-</p>
 
----
-layout: section
-color: indigo-light
----
-
-# Part 3: Correlations in R
 
 ---
 layout: top-title
@@ -852,36 +1357,15 @@ align: lt
 ---
 
 :: title ::
-# R Practice: Computing Correlations
+# Reporting Two-Way ANOVA Results (APA Style)
 
 :: content ::
+When reporting:
+- Mention the type of ANOVA (e.g., 2 × 2 between-groups)
+- Include *F*, df, *p*, and η² for each main effect and interaction
 
-```r
-# Sample data
-df <- data.frame(
-  study_hours = c(2, 4, 5, 6, 8, 10),
-  exam_score  = c(55, 63, 68, 72, 85, 91)
-)
-```
-
-# Compute Pearson correlation
-```r
-cor(df$study_hours, df$exam_score)
-```
-
-# Test significance
-```r
-cor.test(df$study_hours, df$exam_score)
-```
-
-# Visualize with ggplot2
-```r
-library(ggplot2)
-ggplot(df, aes(x = study_hours, y = exam_score)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  theme_minimal()
-```
+Example:
+> A 2 × 2 ANOVA revealed a significant main effect of applicant gender, *F*(1, 120) = 5.12, *p* = .026, *η²* = .04, on competence ratings, with male applicants rated more competent than female applicants. There was no main effect of faculty gender, nor was there an interaction between applicant gender and faculty gender (*ps* > .05).
 
 
 ---
@@ -889,5 +1373,5 @@ layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!  
-Next class: Regression!
+# That's all for today!
+Next class: Correlation

@@ -6,11 +6,11 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Exam 2 Review
-exportFilename: ps211_fall2025_exam2_review
+exportFilename: ps211_fall2026_exam2_review
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
+## Fall 2026 · Section C1
 ### Exam 2 Review Session 
 
 ---
@@ -23,9 +23,10 @@ align: lt
 # Updates and Reminders
 
 :: content ::
-- ==Homework 2== is due Friday.
-  - We are going to try to return grades quickly so you can use feedback to prepare for Exam 2.
-- Please submit as a PDF. 
+- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 16**.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
 
 ---
 layout: top-title
@@ -37,8 +38,8 @@ align: lt
 # Updates and Reminders (Exam 2)
 
 :: content ::
-==Exam 2== is next Thursday.
-- The exam will focus on lectures 6 - 9, but may also include some cumulative content from earlier in the course.
+==Exam 2== is this Thursday, October 29.
+- The exam will focus on Lectures 7 - 12 (normal distributions/z-scores, the Central Limit Theorem & standard error, z-tables & percentiles, hypothesis testing & confidence intervals, effect size & power, parametric assumptions & intro to t-tests), but may also include some cumulative content from earlier in the course.
 - The exam will consist of 31 multiple choice questions. You will only need to answer 30 questions correctly to get 100%.
 - You will not need a calculator.
 - You can bring one 8.5"x11" sheet of handwritten notes (front and back).
@@ -66,11 +67,9 @@ align: lt-lt-lt
 - We sample 5 students who sign a contract. They attended 6, 6, 12, 7, and 8 counseling sessions
 - The university average of students who did not sign contracts is 4.6 counseling sessions attended.
 
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
+<Admonition title="Question" color="teal-light" width="100%">
 Did students who sign the contract attend a different number of sessions than those who did not?
-</div>
-</div>
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -310,9 +309,9 @@ align: lt
 :: content ::
 - To use a *t* table and run a *t* test, we need to determine our **degrees of freedom**. 
 
-<div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-3 mt-2">
-Degrees of freedom = number of scores that are free to vary when we estimate a population parameter from a sample.
-</div>
+<StickyNote color="amber-light" title="Definition" width="100%">
+Degrees of freedom = number of scores that are free to vary when we estimate a population parameter from a sample.
+</StickyNote>
 
 - Degrees of freedom reflect the amount of **independent information** available.
 - More degrees of freedom means more independent information, which means a more accurate estimate of the population parameter.
@@ -343,6 +342,29 @@ align: lt
 - So, with 5 scores, we have 4 degrees of freedom (5 - 1 = 4).
 
 ---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Review: Parametric Assumptions
+
+:: content ::
+- The single-sample *t* test (like the *z* test) is a ==parametric== statistical test — it relies on assumptions about the data.
+
+<Admonition title="The four assumptions" color="teal-light" width="100%">
+
+1. **Normality** — data are (roughly) normally distributed (often reasonable thanks to the Central Limit Theorem).
+2. **Equal variance** — groups have approximately equal variance.
+3. **Independence** — data points are randomly and independently sampled.
+4. **No extreme outliers**
+
+</Admonition>
+
+- If these assumptions are badly violated, a ==non-parametric== test may be a better choice — every parametric test has a non-parametric equivalent.
+
+---
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
@@ -367,6 +389,26 @@ align: lt-lt-lt
   - n = sample size
 
 *Remember, when we are dealing with distributions of means, we use the standard error ($\frac{\sigma}{\sqrt{n}}$).*
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Review: The Central Limit Theorem & Standard Error
+
+:: content ::
+- The ==Central Limit Theorem (CLT)== tells us that the distribution of sample means will be approximately normal, even if the underlying population is not — as long as sample size is large enough.
+- This is why we're able to use normal (and *t*) distributions when working with sample means!
+- The ==standard error (SE)== is the standard deviation of the distribution of sample means:
+
+$$SE = \frac{\sigma}{\sqrt{n}}$$
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+As sample size (n) increases, standard error decreases — our estimate of the population mean gets more precise, which is part of why larger samples make it easier to find statistically significant effects.
+</SpeechBubble>
 
 ---
 layout: top-title
@@ -893,11 +935,9 @@ We use ==power calculators== in two ways:
 
 We can use online calculators or packages for R to conduct power analyses.
 
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-1 transform">
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 Computing power is largely beyond the scope of this course, but it is very important you understand power at a conceptual level.
-</div>
-</div>
+</SpeechBubble>
 
 
 ---
@@ -906,5 +946,5 @@ color: indigo-light
 ---
 
 # That’s all for today!
-See you next Thursday for Exam 2!
+See you Thursday, October 29 for Exam 2!
 

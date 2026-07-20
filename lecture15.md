@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 15
-exportFilename: ps211_fall2025_lecture15
+exportFilename: ps211_fall2026_lecture15
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1  
-### Lecture 15: One-Way Repeated-Measures ANOVA & Two-Way ANOVA
+## Fall 2026 · Section C1
+### Lecture 15: One-Way ANOVA
 
 ---
 layout: top-title
@@ -23,27 +23,45 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- ==Data Write-Up== due Monday (11/17) by 11:59pm.
-- ==Homework 4== will be posted early next week (due Dec. 2).
-   - Only your top 3 out of 4 homework grades will count toward your final course grade.
-- ==Exam 3== went pretty well!
-  - Median: 25/30
-  - Everyone earned 2 bonus percentage points, which means the median is > 85%.
-  - A few concepts are still challenging for people. 
+- ==Exam 3== grades are posted.
+  - We will go over difficult questions in class if needed.
+- No standalone homework this week — keep in mind our second ==Data Write-Up== (ANOVA-based) is due **Monday, December 7**.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
+- This week:
+  - Lecture 15 (today): One-Way ANOVA
+  - Lecture 16 (Thurs): Repeated-Measures ANOVA & Two-Way ANOVA
 
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-4 transform">
-  Remember, you can use the grade calculator (pinned on Slack) to see how future assignments will affect your final grade!
-</div>
-</div>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
 
+:: title ::
+
+# What's coming up
+
+:: content ::
+- Two more "gradeable" assignments left in the course:
+  - Data Write-Up #2 (ANOVA-based, due Mon. 12/7)
+  - Exam 4 (Thurs. 12/10)
+- Next week (11/24):
+  - Lecture 17 (Tues): Correlation
+  - **No class Wed. 11/25 or Thurs. 11/26 — Thanksgiving break**
+- Week of 12/1:
+  - Lecture 18 (Tues): Regression
+  - Lecture 19 (Thurs): Chi-Square & Non-Parametric Tests
 
 ---
 layout: section
 color: indigo-light
+align: lt
 ---
 
-# Part 1: One-Way Repeated-Measures ANOVA (Within-Groups)
+Moving to our next topic...
+# One-Way ANOVA
 
 ---
 layout: top-title
@@ -52,59 +70,26 @@ align: lt
 ---
 
 :: title ::
-# From Between-Groups to Repeated-Measures ANOVA
+
+# Are We Worse Drivers When on the Phone?
 
 :: content ::
 
-- Recall: The **one-way between-groups ANOVA** compares means from **independent samples**.
+A simple *t*-test compares driving ability when talking vs. not talking on the phone.
 
 <p v-click>
 
-- What if the **same participants** complete **multiple conditions**?
-
+But what if we wanted to compare **more than two conditions**?
 </p>
 
-<p v-click>
-
-- We use a **repeated-measures ANOVA**, also called a **within-groups ANOVA.**
-</p>
 
 <p v-click>
 
-- Just like with *t*-tests, we have a between-groups and a within-groups version of ANOVA.
-
-</p>
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# When to Use a Repeated-Measures ANOVA
-
-:: content ::
-Use when:
-- The **same participants** are measured across **three or more conditions.**
-- There is **one independent variable (IV)** with 3+ levels.
-- The dependent variable (DV) is **numeric** (interval or ratio).
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-In which of these scenarios would a Repeated-Measures ANOVA be appropriate?
-</div>
-</div>
-
-1. Testing memory performance after 0, 1, and 2 cups of coffee with the same participants. 
-
-2. Comparing test scores of students from three different schools.
-
-3. Measuring reaction times of the same participants under three different lighting conditions.
-
-4. Evaluating how number of hours of sleep per night relates to GPA. 
-
+💭 Possible conditions:
+– Driving alone
+– With a passenger
+– On a cell phone
+– On a video call
 
 </p>
 
@@ -115,32 +100,26 @@ align: lt
 ---
 
 :: title ::
-# When to Use a Repeated-Measures ANOVA
+# Can I Use a *t* Test to Compare >2 Groups?
 
 :: content ::
-Use when:
-- The **same participants** are measured across **three or more conditions.**
-- There is **one independent variable (IV)** with 3+ levels.
-- The dependent variable (DV) is **numeric** (interval or ratio).
 
+If you used a *t*-test for every possible combination, you'd run many tests!
 
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-In which of these scenarios would a repeated-measures ANOVA be appropriate?
-</div>
-</div>
+- Driving alone vs. passenger
+- Driving alone vs. video call
+- Driving alone vs. cell phone
+- Passenger vs. video call
+- Passenger vs. cell phone
+- Video call vs. cell phone
 
-1. Testing memory performance after 0, 1, and 2 cups of coffee with the same participants. ✅
+That's **6 *t*-tests!**
 
-2. Comparing test scores of students from three different schools. ❌
+<p v-click>
 
-3. Measuring reaction times of the same participants under three different lighting conditions. ✅
-
-4. Evaluating how number of hours of sleep per night relates to GPA. ❌
-
-
-
-
+Is there any problem with that? 🤔
+Yes — it **increases the chance of a Type I error** (false positive).
+</p>
 
 ---
 layout: top-title
@@ -149,27 +128,24 @@ align: lt
 ---
 
 :: title ::
-# Advantages of Repeated-Measures ANOVA
+# Why You Can't Do Many *t* Tests
 
 :: content ::
-- **Accounts for individual differences** – the same people are in every condition.
-
-- **Increases statistical power** – less error variance.
-
-- **Fewer participants** needed.
-
-<p v-click>
-
-Essentially, every participant acts as their **own control group.**
-
-</p>
+- Each test carries a 5% chance (*α* = .05) of a **Type I error** — falsely rejecting the null.
+  - There is a 5% chance of concluding there is a difference when there really isn't one.
+  - There is a 95% chance of correctly *failing* to reject the null.
+- The more *t*-tests you do, the higher your overall risk of error.
+- This problem is called **alpha inflation**.
 
 <p v-click>
 
-==**This should sound familiar from within-groups t-tests!**==
+With one test → 95% chance of correctly retaining the null & 5% chance of a false positive
 
-<img src="/images/lecture15/dejavu_meme.jpeg" class="w-1/3 mx-auto"/>
 
+With two tests -> 95% chance of correctly retaining the null **twice** → $(0.95)^2 = 0.903$ → 10% chance of error
+
+
+With three tests → 95% chance of correctly retaining the null **three** times → $(0.95)^3 = 0.857$ → 14% chance of error
 
 </p>
 
@@ -180,51 +156,21 @@ align: lt
 ---
 
 :: title ::
-# Disadvantages of Within-Groups Designs
+# Why You Can't Do Many *t* Tests (continued)
 
 :: content ::
-- **Carryover** effects:
-  - Once participants have experienced one condition, it may influence their behavior in subsequent conditions.
-- **Order effects**:
-    - Practice effects: Improvement due to familiarity with the task.
-    - Fatigue effects: Decline in performance due to tiredness or boredom.
-  - ==Counterbalancing== can help mitigate this issue, but it may not eliminate it entirely.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Within- vs. Between-Groups Designs: Practice
-
-:: content ::
-
-*You run an experiment where participants memorize a list of words after drinking 0, 1, or 2 cups of coffee. Participants complete all three conditions across three separate days. All participants show improvement over time, regardless of coffee amount.*
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
- Which disadvantage of within-groups designs does this illustrate?
-</div>
-</div>
-
-A. This shows how individual differences can impact performance across conditions.
-
-B. This shows how practice effects can impact performance.
-
-C. This shows how fatigue effects can impact performance.
-
-D. This shows that within-groups designs are typically underpowered.
-
-
+So if you did 6 *t*-tests (like in our example), you'd have **a 54% chance of a Type I error!**
 </p>
 
 <p v-click>
 
-**Answer: B** – Participants improved over time due to practice, regardless of the coffee condition.
+<AdmonitionType type="warning" width="100%">
+Multiple t-tests inflate the error rate. We need a single test for 3+ groups.
+</AdmonitionType>
+
 </p>
 
 ---
@@ -234,122 +180,37 @@ align: lt
 ---
 
 :: title ::
-# Within- vs. Between-Groups Designs: Practice
+# The Solution: Using the *F* Statistic
 
 :: content ::
-
-*You run an experiment where participants memorize a list of words after drinking 0, 1, or 2 cups of coffee. Participants complete all three conditions across three separate days. All participants show improvement over time, regardless of coffee amount.*
-
+When we want to compare **3 or more means**, we use the **F distribution** — the foundation of ANOVA.
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
- What is one way you could mitigate the influence of practice effects in your experimental design?
-</div>
-</div>
-
-A. Increase your sample size to reduce the influence of practice effects.
-
-B. Counterbalance the order of conditions across participants to ensure that the influence of practice equally affects all conditions.
-
-C. Ask participants to promise not to practice between sessions.
-
-D. All of the above.
+Like *z* and *t* tests, the *F* statistic is a **ratio**:
 
 </p>
 
 <p v-click>
 
-**Answer: B** – Counterbalancing helps distribute practice effects evenly across conditions, reducing their confounding influence.
+$$z = \frac{\text{Difference Between Means}}{\text{Standard Error}}$$
+
 </p>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+<br>
 
-:: title ::
-# Between- vs. Repeated-Measures ANOVA
+<p v-click>
 
-:: content ::
-- In both cases, we are still using the *F* ratio: Between-Groups Variance / Within-Groups Variance.
-   - We still want to know whether the variability ==between== condition means is larger than the variability ==within== conditions.
-- The key difference: **how we calculate the Within-Groups Variance.**
+$$t = \frac{\text{Difference Between Means}}{\text{Standard Error}}$$
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+</p>
 
-:: title ::
-# Calculations in a Repeated-Measures ANOVA
+<br>
 
-:: content ::
-- Remember, for between-groups ANOVA, we partition total variability into:
+
+<p v-click>
 $$
-SS_{Total} = SS_{Between} + SS_{Within}
-$$
-
-<p v-click>
-
-- **SS<sub>Between</sub>:** variability due to condition means.  
-- **SS<sub>Within</sub>:** variability due to random noise.
-
-</p>
-
-<p v-click>
-
-Importantly, in a between-groups design, this ==random noise== includes all sources of variability within conditions, including  individual differences between participants.
-
-</p>
-
-<p v-click>
-
-- The logic is similar to between-groups ANOVA, **but we add one more term:**
-
-$$
-SS_{Total} = SS_{Between} + SS_{Within} + SS_{Subjects}
-$$
-
-</p>
-
-<p v-click>
-
-- **SS<sub>Subjects</sub>:** variability due to stable individual differences between participants.
-- **SS<sub>Within</sub>** now reflects variability due to random noise only, after removing variability due to individual differences.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Calculating the Subjects Sum of Squares
-
-:: content ::
-To calculate ==**SS<sub>Subjects</sub>**==:
-1. Compute each participant’s overall mean across all conditions ($M_{participant}$).
-2. For each participant, calculate the squared difference between their overall mean and the grand mean ($GM$).
-3. Sum these squared differences across all $n$ participants.
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-2 transform">
-
-  Remember, the **grand mean** is the mean of all scores across all participants and conditions.
-</div>
-</div>
-
-<p v-click>
-In equation form:
-
-$$
-SS_{Subjects} = \sum_{1}^{n} ( M_{participant} - GM )^2
+F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
 $$
 
 </p>
@@ -361,220 +222,504 @@ align: lt
 ---
 
 :: title ::
-# Hypothesis Testing Steps (Repeated-Measures ANOVA)
+# The Solution: Using the *F* Statistic
+
 
 :: content ::
-- **Step 1: Identify populations, distribution, and assumptions.**  
-   - Numeric DV  
-   - Normally distributed  
-   - Homogeneity of variance  
-
-- **Step 2: Determine null and alternative hypotheses.**  
-   - H₀: μ₁ = μ₂ = μ₃  
-   - H₁: At least one μ differs  
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Hypothesis Testing Steps (Repeated-Measures ANOVA)
-
-:: content ::
-
-- **Step 3: Determine comparison distribution.**  
-   - *F* distribution with df<sub>Between</sub> and df<sub>Within</sub>.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Degrees of Freedom (df) for Repeated-Measures ANOVA
-
-:: content ::
-<p v-click>
-
-- df<sub>Between</sub> = ==k − 1==, *where k = number of conditions*
-   - when calculating variability between conditions, we lose one degree of freedom from our calculation of the overall mean.
-</p>
-
-<p v-click>
-
-- df<sub>Subjects</sub> = ==n − 1==, *where n = number of subjects*
-   - when calculating variability due to individual differences, we lose one degree of freedom from our calculation of the overall mean.
-</p>
-
-<p v-click>
-
-- df<sub>Within</sub> = ==(k-1)*(n-1)==
-   - when calculating variability within conditions, we lose (k-1) degrees of freedom for conditions and (n-1) degrees of freedom for subjects.
-</p>
-
-<p v-click>
-
-- Total df = ==N − 1==, *where N = (n\*k), total number of observations (scores)*
-   - when calculating total variability, we lose one degree of freedom from our calculation of the grand mean.
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Hypothesis Testing Steps (Repeated-Measures ANOVA)
-
-:: content ::
-- **Step 4: Find critical value** using df<sub>Between</sub> and df<sub>Within</sub> 
-    - From *F* table or software
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-
-  Why do we often have *two* critical values for a *t* test but only one critical value for an *F* test?
-</div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** Because *t* tests can be one-tailed or two-tailed, while *F* tests are always one-tailed, because we are always testing whether the variance between groups is greater than the variance within groups.
-
-</p>
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Hypothesis Testing Steps (Repeated-Measures ANOVA)
-
-:: content ::
-- **Step 5: Compute F**:
 
 $$
-F = \frac{MS_{Between}}{MS_{Within}}
+F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
 $$
 
-Remember, for a repeated-measures ANOVA, we calculate MS<sub>Within</sub> after removing SS<sub>Subjects</sub>:
+
+<p v-click>
+
+- The **numerator** captures how far apart the group means are.
+- The **denominator** captures how much variability exists within each group.
+</p>
+
+<p v-click>
+
+The bigger the ratio, the more evidence that not all groups come from the same population.
+</p>
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Intuition for the *F* Statistic
+
+:: left ::
+
+- Think of the *F* statistic as an expansion of the *z* and *t* statistics:
+  - *z* → can do one thing
+  - *t* → can do a few things
+  - *F* → can do lots of things
+- Each builds on the same idea: comparing variability due to chance vs. systematic differences.
+
+:: right ::
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+The *F* statistic captures both the **differences between groups** and the **noise within them**.
+</SpeechBubble>
+
+<p v-click>
+
+*Which part of this equation captures systematic differences between groups?*
+
+Whi*ch part captures "noise" within groups?*
 
 $$
-MS_{Within} = \frac{SS_{Within}}{df_{Within}}
+F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
+$$
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Characteristics of the *F* Distribution
+
+:: content ::
+- *F* is a **ratio of two variances** (between-groups / within-groups).
+  - Variances are based on sums of squares (SS), so *F* is always **positive**.
+- The *F* distribution is a *series* of distributions (like the *t* distribution)
+  - There are **two values for degrees of freedom** in every *F* test:
+    - One for the numerator (*df₁* = between-groups)
+    - One for the denominator (*df₂* = within-groups)
+
+<p v-click>
+
+Like *t*, the *F* distribution changes shape depending on the sample size and number of groups.
+</p>
+
+<p v-click>
+
+To use *F*, your data must be on a **numeric (interval or ratio)** scale.
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The *F* Table and Degrees of Freedom
+
+:: content ::
+- The *F* table expands the *t* table by adding **another dimension** for the number of groups.
+- There's an *F* distribution for every combination of:
+  - Sample size (→ *df₁*, numerator)
+  - Number of groups (→ *df₂*, denominator)
+
+<p v-click>
+
+*F*(df₁, df₂) helps us decide whether group differences are larger than expected by chance.
+</p>
+
+<p v-click>
+
+*In practice, most people don't use the *F* table directly — statistical software calculates the exact p-value for you!*
+
+The important thing to understand is that your *p* value depends on ==both== degrees of freedom, which are determined by:
+1. your sample size and
+2. your number of groups.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# ANOVA Overview
+
+:: content ::
+==An **ANOVA** (*Analysis of Variance*) compares **differences between 3+ groups using one test.**==
+
+<p v-click>
+
+#### One-way between-groups ANOVA
+- Hypothesis test used to compare means across **more than two independent groups**:
+  - Groups are defined by a single independent variable (IV) with 3+ levels.
+    - These levels are **categorical** (nominal/ordinal).
+    - A between-groups ANOVA is used for a design where each participant appears in only one group.
+  - The dependent variable (DV) is **numeric** (interval/ratio).
+
+</p>
+
+<p v-click>
+
+Example: Comparing mean driving performance across four phone-use conditions.
+
+</p>
+
+<p v-click>
+
+*Phone-use conditions: Categorical IV with 4 levels*
+
+*Driving performance: Numeric DV*
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# ANOVA: What Are We Analyzing?
+
+:: content ::
+Even though the test is called an **analysis of variance**, what we're really doing is comparing **means**.
+
+<p v-click>
+
+We ask:
+*Are the differences among group means larger than we would expect from random chance?*
+
+</p>
+
+<p v-click>
+
+If the groups come from the same population, their means should be similar.
+
+If the means are *very different*, that suggests at least one group differs systematically.
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# The Two Sources of Variability
+
+:: left ::
+### 1️⃣ Between-Groups Variance
+- How far apart are the **group means**?
+- Captures **systematic differences** due to the independent variable.
+
+### 2️⃣ Within-Groups Variance
+- How spread out are scores **inside each group**?
+- Captures **unsystematic noise** — individual differences or measurement error.
+
+:: right ::
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+When between-group variability ≫ within-group variability, the *F* ratio becomes large → **evidence against the null**.
+</SpeechBubble>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# How Do We Compute Between vs. Within Variability?
+
+:: content ::
+
+ANOVA divides the **total variability** in a dataset into two parts:
+
+$$
+SS_\text{Total} = SS_\text{Between} + SS_\text{Within}
+$$
+
+
+<p v-click>
+
+#### Recap: Sum of Squares (SS) Refresher
+
+To calculate variance, we compute the **sum of squared deviations** from the mean.
+
+1. Subtract the mean from each score.
+2. Square each deviation.
+3. Add them up.
+
+$$SS = \sum{(X - \bar{X})^2}$$
+
+- This is the **Sum of Squares (SS)**.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# 1️⃣ Between-Groups Variability (*SS<sub>Between</sub>*)
+
+:: content ::
+- Start with the **mean of each group** (*M₁, M₂, M₃, …*).
+- Compute how far each group mean is from the **grand mean** (*M<sub>G</sub>*, the mean of all scores).
+- Weight each squared deviation by the **group size** (*n*).
+- Add them up.
+
+$$
+SS_\text{Between} = \sum n_i (M_i - M_G)^2
+$$
+
+This reflects the variability **explained by group membership**.
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# 2️⃣ Within-Groups Variability (*SS<sub>Within</sub>*)
+
+
+:: content ::
+
+- For each group, measure how much each individual score deviates from its group mean.
+- Square those deviations and sum them across all groups.
+
+$$
+SS_\text{Within} = \sum \sum (X_{ij} - M_i)^2
+$$
+
+This captures **unexplained variability** — random noise and individual differences.
+
+<p v-click>
+
+*Why are there ==two== summation symbols?*
+
+- The inner Σ says: For a given group i, sum the squared deviations of each person's score (j) from that group's mean
+- The outer Σ says: Now repeat that process for each group, and add them all up.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Converting Sums of Squares to the *F* Statistic
+
+:: content ::
+
+We then divide each sum of squares by its degrees of freedom to obtain **mean squares (MS):**
+
+$$
+MS_\text{Between} = \frac{SS_\text{Between}}{df_\text{Between}}, \quad
+MS_\text{Within} = \frac{SS_\text{Within}}{df_\text{Within}}
+$$
+
+<p v-click>
+
+Where:
+- $df_\text{Between} = k - 1$ (k = number of groups)
+- $df_\text{Within} = N - k$ (N = total sample size)
+
+</p>
+
+
+<p v-click>
+Finally, we compare the two:
+
+$$
+F = \frac{MS_\text{Between}}{MS_\text{Within}}
+$$
+
+</p>
+
+<p v-click>
+
+A large *F* value indicates that between-group variability is much greater than within-group variability → evidence against the null hypothesis.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The Logic of the *F* Statistic
+
+:: content ::
+At its core, ANOVA is a **signal-to-noise ratio**:
+
+$$
+F = \frac{\text{Systematic variance (between groups)}}{\text{Random variance (within groups)}}
+$$
+
+- **Signal** → variability explained by your independent variable
+- **Noise** → variability due to chance
+
+<p v-click>
+
+If *F* ≈ 1 → group differences are about what chance would produce.
+If *F* >> 1 → the manipulation explains meaningful variance.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Comparing *F* to *t*
+
+:: content ::
+At its core, the *F* statistic is a **signal-to-noise ratio**.
+
+$$
+F = \frac{\text{Systematic variance (between groups)}}{\text{Random variance (within groups)}}
 $$
 
 <br>
 
-$$SS_{Within} = SS_{Total} - SS_{Between} - SS_{Subjects}$$
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Hypothesis Testing Steps (Repeated-Measures ANOVA)
-
-:: content ::
-- **Step 6: Make a decision.**
-   - If *F* calculated ≥ *F* critical, reject H₀.
-   - If *F* calculated < *F* critical, fail to reject H₀.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Accounting for individual variance increases power
-
-:: content ::
-#### Example:
-- Imagine BU asks students to rate their satisfaction (from 0 - 1) with three different dining halls.
-- They ask 10 different students to rate three dining halls.
-- They plot the mean responses and include error bars that show +/- 1 SE from each mean:
-
-<p v-click>
-<img src="/images/lecture15/errorbars1.png" class="w-1/2 mx-auto"/>
-
-</p>
-
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-1 transform">
-  Big error bars indicate lots of variability in the ratings!
-</div>
-</div>
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Accounting for individual variance increases power
-
-:: content ::
-- However, some of this variability is due to individual differences among students.
-- To account for this, we can subtract each student's overall mean rating from their dining hall ratings. This gives us each student's rating of each dining hall after accounting for individual differences.
-- We can then re-compute the standard error of each mean rating and re-plot.
-
-<p v-click>
-
-<img src="/images/lecture15/errorbars2.png" class="w-1/2 mx-auto"/>
-
-</p>
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-1 transform">
-  Now error bars reflect random error only -> "noise" that can't be explained by individual differences.
-</div>
-</div>
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Effect Size for Repeated-Measures ANOVA
-
-:: content ::
-Effect size is measured using **R² (or η²)**:
+==The *t* statistic can also be expressed as a signal-to-noise ratio:==
 
 $$
-η² = \frac{SS_{Between}}{SS_{Total} - SS_{Subjects}}
+t = \frac{\text{Difference Between Means}}{\text{Standard Error}}
 $$
 
-This shows the **proportion of variance explained** by the IV after removing variance due to individual differences.
+</p>
 
 <p v-click>
-Example interpretation: η² = .40 → 40% of variance in performance is explained by the condition.
+
+- The measures are different, but the logic is the same.
+- The numerator reflects systematic differences between groups, while the denominator reflects random noise.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Interpreting *F*
+
+:: content ::
+- *F* values can't be negative.
+- The **larger the *F***, the stronger the evidence that not all group means are equal.
+- Whether an *F* is "large enough" depends on its **critical value** from the *F* distribution (*df₁*, *df₂*).
+
+<p v-click>
+
+If your observed *F* > critical *F*, you reject H₀ and conclude that ==at least one mean== differs from the others.
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The F Statistic Visualized: Between-Group Variance
+
+:: content ::
+
+<img src="/images/lecture13/anova_mean_demo.png"  class="w-3/4 mx-auto"/>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The F Statistic Visualized: Within-Group Variance
+
+:: content ::
+
+<img src="/images/lecture13/anova_var_demo.png"  class="w-3/4 mx-auto"/>
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Setting Up the Hypotheses
+
+:: left ::
+
+**Null hypothesis (H₀):**
+All population means are equal.
+$$
+\mu_1 = \mu_2 = \mu_3 = \dots
+$$
+
+**Research hypothesis (H₁):**
+At least one population mean differs.
+
+:: right ::
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Unlike a *t*-test, ANOVA does not tell us *which* means differ — only that **not all of them are the same**.
+
+We are *always* testing if the between-group variance is larger than the within-group variance. Because of this, *F* tests are *always* **one-tailed.**
+</SpeechBubble>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why Use ANOVA Instead of Multiple *t* Tests?
+
+:: content ::
+- Keeps the **Type I error rate** at 5%.
+- Tests all group differences **in one analysis**.
+- Provides the foundation for **multi-factor and repeated-measures** designs.
+  - We will talk about repeated-measures designs soon.
+
+<p v-click>
+
+ANOVA is the statistically correct, efficient way to ask:
+<br>
+
+==“Are these group means different enough that it's unlikely to be chance?”==
+
 </p>
 
 ---
@@ -584,822 +729,362 @@ align: lt
 ---
 
 :: title ::
-# Repeated-Measures ANOVA in R
+# Assumptions of One-Way ANOVA
 
 :: content ::
-Use the `aov()` function with a within-subjects design:
+Every ANOVA relies on three key assumptions, which represent the ideal conditions for valid results:
+
+1. **Random selection** of participants
+2. **Normality** — each group's population is roughly normal
+3. **Homogeneity of variance** — groups have similar spread
+  - ==Homoscedastic== populations are those that have the same variance.
+  - ==Heteroscedastic== populations are those that have different variances.
+
+<p v-click>
+
+When these hold, *F* is robust and trustworthy.
+If they're violated, be cautious in interpreting results, or may need to use non-parametric alternatives.
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Example: One-Way ANOVA (Source Table)
+
+:: content ::
+Imagine we conduct a one-way ANOVA comparing driving performance across four driving conditions: 1. No phone, 2. Passenger, 3. Cell phone, and 4. Video call.
+
+In total, we have 40 participants divided among the four groups (n = 10 per group).
+
+The between-groups and within-groups sums of squares are:
+| Source          | SS      | df  | MS       | F      |
+|-----------------|---------|-----|----------|--------|
+| Between Groups  | 450.0   |    |    |    |
+| Within Groups   | 100.0  |  |     |        |
+| **Total**       | 550.0  |  |          |        |
+
+<p v-click>
+
+**What should go in the DF column?**
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Example: One-Way ANOVA (Source Table)
+
+:: content ::
+
+The between-groups and within-groups sums of squares are:
+| Source          | SS      | df  | MS       | F      |
+|-----------------|---------|-----|----------|--------|
+| Between Groups  | 450.0   | K-1 = 3   |    |    |
+| Within Groups   | 100.0  | N-K = 36 |     |        |
+| **Total**       | 550.0  | 39 |          |        |
+
+<p v-click>
+
+**What should go in the MS column?**
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Example: One-Way ANOVA (Source Table)
+
+:: content ::
+
+The between-groups and within-groups sums of squares are:
+| Source          | SS      | df  | MS       | F      |
+|-----------------|---------|-----|----------|--------|
+| Between Groups  | 450.0   | K-1 = 3   | SS/df = 150.0   |    |
+| Within Groups   | 100.0  | N-K = 36 |  SS/df = 2.78   |        |
+| **Total**       | 550.0  | 39 |          |        |
+
+<p v-click>
+
+**What should go in the F column?**
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Example: One-Way ANOVA (Source Table)
+
+:: content ::
+
+The between-groups and within-groups sums of squares are:
+| Source          | SS      | df  | MS       | F      |
+|-----------------|---------|-----|----------|--------|
+| Between Groups  | 450.0   | K-1 = 3   | SS/df = 150.0   | MS_Between / MS_Within = 54.0  |
+| Within Groups   | 100.0  | N-K = 36 |  SS/df = 2.78   |        |
+| **Total**       | 550.0  | 39 |          |        |
+
+<p v-click>
+
+**Final ANOVA result: *F*(3, 36) = 54.0**
+
+*We need to look up the critical F value for (3, 36) df to determine significance, or use software to get the exact p-value.*
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Beyond Significance: Measuring Effect Size
+
+:: content ::
+A significant *F* tells us that not all group means are equal —
+but **how big** is that difference in practical terms?
+
+<p v-click>
+
+That's where **effect size** comes in.
+For ANOVA, we most often report **η² (eta squared)** or **R²**. (In a one-way ANOVA, they are equivalent.)
+
+$$
+\eta^2 = \frac{SS_\text{Between}}{SS_\text{Total}}
+$$
+
+It represents the **proportion of total variance** in the dependent variable that is explained by the independent variable.
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Understanding η² and R² Conceptually
+
+:: left ::
+- Think of *η²* like a “percentage of variance explained.”
+- *η² = .20* means 20 % of the variability in your data is accounted for by your experimental manipulation (group membership).
+- Larger *η²* → stronger effect.
+
+:: right ::
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+🧠  Quick interpretation guide (Cohen, 1988):
+• Small ≈ .01 • Medium ≈ .06 • Large ≈ .14
+
+These cutoffs are rough — context matters.
+</SpeechBubble>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Example: Reporting Effect Size
+
+:: content ::
+Imagine we find:
+> *F*(2, 36) = 5.47, *p* = .008, *η²* = .23
+
+That means **23 %** of the variance in scores is explained by our independent variable.
+
+<p v-click>
+
+Including effect sizes helps readers judge:
+- whether the difference is **meaningful**, not just statistically significant,
+- and whether findings might replicate with new samples.
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# When *F* Is Significant: What's Next?
+
+:: content ::
+- A significant ANOVA tells us that **at least one group differs**, but not *which* ones.
+
+<p v-click>
+
+- To find out *which* groups differ, we use **follow-up tests** called *post-hoc comparisons*.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why Not Just Run More *t*-Tests?
+
+:: content ::
+Because each extra *t*-test increases the risk of **Type I error** (false positives).
+
+<p v-click>
+
+Post-hoc procedures control that risk by adjusting the critical value or significance threshold.
+When we run "post-hoc tests," we are essentially running *t* tests with built-in corrections for multiple comparisons.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Planned vs. Post-Hoc Comparisons
+
+:: left ::
+**Planned (a priori)**
+- Decided *before* data collection
+- Test specific hypotheses
+- Fewer tests → no need for strong correction
+
+**Post-hoc**
+- Done *after* seeing results
+- Explore where the differences lie
+- Need corrections to keep α = .05 overall
+
+:: right ::
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Think of post-hoc tests as “honest ways to peek under the hood” after finding a significant overall *F*.
+
+In general, with post-hoc tests, we adjust the size of the effect needed to declare significance to control for multiple comparisons.
+</SpeechBubble>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Common Post-Hoc Test Corrections
+
+:: content ::
+
+| Test | Key Idea | Conservative? | Typical Use |
+|------|-----------|---------------|--------------|
+| **Scheffé** | Controls α for all possible contrasts | Most conservative | Exploratory analyses |
+| **Tukey HSD** | Tests all pairwise mean comparisons equally | Moderate | Balanced designs |
+| **Bonferroni** | Divides α by number of comparisons | Flexible | Small number of tests |
+
+<p v-click>
+
+All aim to protect against **false positives** while allowing fair comparisons among multiple groups.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Conceptual Takeaway
+
+:: content ::
+- **Scheffé:** “Play it safe” — harder to reach significance
+- **Tukey HSD:** “Middle ground” — good balance of safety and power
+- **Bonferroni:** “Divide and conquer” — simple, but can be overly strict when many tests
+
+
+<p v-click>
+
+Different journals or software packages may default to different methods —  always report which you used.
+</p>
+
+<p v-click>
+
+**Bonferroni example:** You run an ANOVA with 4 groups (6 pairwise comparisons) and find a significant effect. You now want to know *which* groups differ. To keep overall α = .05, each *t* test must meet *p* < .0083 (.05/6) to be significant.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Reporting One-Way ANOVA Results in APA format
+
+:: content ::
+When reporting ANOVA results, include:
+- The type of ANOVA (e.g., one-way between-groups)
+- The *F* statistic with degrees of freedom
+- The *p* value
+- Effect size (e.g., *η²* or *R²*)
+- Results of post-hoc tests if applicable
+
+<p v-click>
+
+==Example write-up:==
+A one-way between-groups ANOVA was conducted to compare the effect of phone use on driving performance. There was a significant effect of phone use condition on driving performance, *F*(3, 36) = 54.0, *p* < .001, *η²* = .82. Post-hoc comparisons using the Tukey HSD test indicated that the video call condition resulted in significantly worse driving performance compared to the no phone condition (*p* = .023) and the passenger condition (*p* < .001). No other comparisons were significant (*p*s > .05).
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# One-Way ANOVA in R
+
+:: content ::
+
+To perform a one-way ANOVA in R, you can use the `aov()` function. Here's a basic example:
 
 ```r
-# Example dataset
+# Example data
 data <- data.frame(
-  subject = rep(1:10, each = 3),
-  condition = rep(c("A", "B", "C"), times = 10),
-  score = c(5, 6, 7, 4, 5, 6, 6, 7, 8, 5, 6, 7, 7, 8, 9,
-            6, 7, 8, 5, 6, 7, 8, 9, 10, 7, 8, 9)
+  performance = c(85, 90, 78, 88, 92, 80, 75, 95, 89, 84,
+                  70, 65, 72, 68, 74, 66, 69, 71, 73, 67),
+  condition = factor(rep(c("No Phone", "Passenger", "Cell Phone", "Video Call"), each = 5))
 )
+# Perform one-way ANOVA
+anova_result <- aov(performance ~ condition, data = data)
 
-# Run the repeated-measures ANOVA
-anova_result <- aov(score ~ condition + Error(subject/condition), data = data)
+# View summary
 summary(anova_result)
-```
-
-- The `Error(subject/condition)` term specifies the within-subjects design.
-- This indicates that each `subject` experiences all levels of `condition`.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Next Steps After a Significant Repeated-Measures ANOVA
-
-:: content ::
-- A significant ANOVA indicates that at least one condition mean differs, but it doesn’t tell us which ones.
-- Follow up with post-hoc tests (e.g., pairwise t-tests, Tukey's HSD) to explore specific group differences.
-- Can use corrections (e.g., Bonferroni) to control for Type I error.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Recap: Repeated-Measures ANOVA
-
-:: content ::
-- A repeated-measures ANOVA is used when the **same participants** complete **3+ conditions.**
-- Remember, the *F* statistic compares variability between condition means to variability within conditions.
-- When the *same participants* complete all conditions, some of that within-condition variability can be attributed to individual differences.
-   - Mathematically, accounts for **individual differences** by computing SS<sub>Subjects</sub> and subtracting that from SS<sub>Within</sub>.
-- Increases **statistical power**: SS<sub>Within</sub> reflects only *random* error.
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Recap: Statistical Tests We've Covered So Far
-
-:: content ::
-
-| **Test** | **# of IVs** | **IV Type** | **# of Levels** | **DV Type** | **Use Case** |
-|-----------|--------------|--------------|------------------|--------------|-----------------------|
-| *z-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (known SD)</span> |
-| *One-Sample t-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (unknown SD)</span> |
-| *Independent t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare two groups (e.g., School A vs. School B)</span> |
-| *Paired t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare same group before vs. after intervention or in two conditions</span> |
-| *One-Way (Between-Groups) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare 3+ groups (e.g., Drug A, B, C)</span> |
-| *Repeated-Measures (Within-Subjects) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare same participants across 3+ conditions</span> |
-
-<style>
-table {
-  font-size: 0.9rem;
-  width: 98%;
-  margin: auto;
-}
-th, td {
-  padding: 4px 6px;
-}
-</style>
-
----
-layout: section
-color: indigo-light
----
-
-# Part 2: Two-Way ANOVA (Factorial Designs)
-What if we have **two** independent variables?
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why Use a Two-Way ANOVA?
-
-:: content ::
-A **Two-Way ANOVA** allows us to test **two independent variables simultaneously.**
-
-Example: ⛷️ Do ski resorts exaggerate weekend snow reports?
-
-<img src="/images/lecture15/interaction_barplot.png" class="w-1/2 mx-auto"/>
-
-
-<p v-click>
-
-IV₁ = Report Source (Resort vs. Weather Station)  
-IV₂ = Day (Weekday vs. Weekend)  
-DV = Inches of snow reported
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-
-:: title ::
-# Why Use a Two-Way ANOVA?
-
-:: left ::
-
-
-With a two-way ANOVA, we can simultaneously test:  
-
-<p v-click>
-
-1️⃣ Main effect of Report Source: **Does the source of the report (Resort vs. Weather Station) affect the reported snow levels?**
-
-<img src="/images/lecture15/source_barplot.png" class="w-1/2 mx-auto"/>
-
-</p>
-
-:: right ::
-
-
-<p v-click>
-
-2️⃣ Main effect of Day: **Do weekday vs. weekend reports differ in snow levels?**  
-
-<img src="/images/lecture15/day_barplot.png" class="w-1/2 mx-auto"/>
-
-</p>
-
-
-<p v-click>
-
-3️⃣ Interaction between Report Source × Day: **Does the effect of report source depend on whether it's a weekday or weekend?**
-
-<img src="/images/lecture15/interaction_barplot.png" class="w-1/2 mx-auto"/>
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Structure of a Two-Way ANOVA
-
-:: content ::
-- A two-way ANOVA involves **two independent variables (IVs).**
-- These IVs can each have **two or more levels.**
-
-- In a **2 × 2 design**, there are two independent variables, each with two levels.
-
-- Each unique combination = a **cell** in the design.
-
-<p v-click>
-
-| **Source** | **Weekday** | **Weekend** |
-|---------|----------|----------|
-| Resort Report | Mean₁ | Mean₂ |
-| Weather Station | Mean₃ | Mean₄ |
-
-
-
-- Each cell’s mean reflects one condition combination (e.g., Resort–Weekend).
-
-</p>
-<p v-click>
-
-What would a ==2 x 3== design look like?
-
-</p>
-
-<p v-click>
-
-| **Source** | **Weekday** | **Saturday** | **Sunday** |
-
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What Does a Two-Way ANOVA Test?
-
-:: content ::
-A Two-Way ANOVA produces **three *F* statistics:**
-
-1️⃣ *F₁*: Main effect of IV₁  
-2️⃣ *F₂*: Main effect of IV₂  
-3️⃣ *F₃*: Interaction between IV₁ × IV₂
-
-<p v-click>
-
-- Each *F* statistic tests a specific hypothesis about the effects of the independent variables on the dependent variable.
-</p>
-
-<p v-click>
-
-- Each *F* statistic is computed similarly to a one-way ANOVA:
-$$ F = \frac{MS_{Between}}{MS_{Within}} $$
-
-</p>
-
-<p v-click>
-
-- This is because we are still computing the ratio of variability ==between== condition means (e.g., 'signal') to variability ==within== conditions (e.g., 'noise').
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Computing *F* statistics for Two-Way ANOVAs
-
-:: content ::
-
-- We compute separate $SS_{Between}$, $MS_{Between}$, $df$, and critical values for all of our effects of interest: 
-
-   1️⃣ Main effect of IV₁ (e.g., Report Source) 
-
-   2️⃣ Main effect of IV₂ (e.g., Day)  
-
-   3️⃣ Interaction between IV₁ × IV₂ (e.g., Report Source × Day)
-
-<br>
-
-
-<p v-click>
-
-- However, they all share the same $SS_{Within}$ and $MS_{Within}$, which reflect variability within "cells."
-   - This is because the within-groups variability is the same regardless of which effect we are testing.
-   - Remember, when calculating $SS_{Within}$, we are looking at variability within each cell (condition combination), summed across all cells.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Interpreting Main Effects vs. Interactions
-
-:: content ::
-- **Main Effect:** One IV influences the DV ==regardless== of the other.  
-
-<img src="/images/lecture15/day_barplot.png" class="w-1/4 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Interpreting Main Effects vs. Interactions
-
-:: content ::
-
-- **Interaction:** The effect of one IV ==changes depending on== the other IV.
-
-<img src="/images/lecture15/interaction_barplot.png" class="w-1/3 mx-auto"/>
-
-- For example: ⛷️ Ski resort exaggeration might only happen on **weekends**, not weekdays.
-
-- This would be an example of an **interaction**.
-
-- The effect of Source (Resort vs. Weather Station) depends on Day (Weekday vs. Weekend).
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Marginal Means in Two-Way ANOVA
-
-:: content ::
-- **Marginal means** are the means for each level of one IV, averaged across levels of the other IV.
-- For example, in our ski resort example:
-   - Marginal mean for Resort Report = Average of (Resort–Weekday + Resort–Weekend)
-   - Marginal mean for Weather Station = Average of (Weather Station–Weekday + Weather Station–Weekend)
-- We use marginal means to assess **main effects** in a two-way ANOVA.
-
-### Means Table
-
-| **Source**         | **Weekday** | **Weekend** | <span style="color:#7e57c2;">**Marginal Mean**</span> |
-|--------------------|-------------|-------------|--------------------|
-| **Resort Report**   | 8.2         | 15.3        | <span style="color:#7e57c2;">11.8</span> |
-| **Weather Station** | 9.2         | 11.5        | <span style="color:#7e57c2;">10.8</span> |
-| <span style="color:#4db6ac;">**Marginal Mean**</span> | <span style="color:#4db6ac;">8.7</span> | <span style="color:#4db6ac;">13.4</span> | — |
-
-<style>
-table {
-  font-size: 0.9rem;
-  width: 85%;
-  margin: auto;
-}
-th, td {
-  padding: 4px 6px;
-  text-align: center;
-}
-</style>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Marginal Means in Two-Way ANOVA
-
-:: content ::
-
-### Means Table
-
-| **Source**         | **Weekday** | **Weekend** | <span style="color:#7e57c2;">**Marginal Mean**</span> |
-|--------------------|-------------|-------------|--------------------|
-| **Resort Report**   | 8.2         | 15.3        | <span style="color:#7e57c2;">11.8</span> |
-| **Weather Station** | 9.2         | 11.5        | <span style="color:#7e57c2;">10.8</span> |
-| <span style="color:#4db6ac;">**Marginal Mean**</span> | <span style="color:#4db6ac;">8.7</span> | <span style="color:#4db6ac;">13.4</span> | — |
-
-<style>
-table {
-  font-size: 0.9rem;
-  width: 85%;
-  margin: auto;
-}
-th, td {
-  padding: 4px 6px;
-  text-align: center;
-}
-</style>
-
-- We can use these marginal means to assess main effects:
-   - **Main Effect of Source:** Resort Report (11.8) vs. Weather Station (10.8)
-   - **Main Effect of Day:** Weekday (8.7) vs. Weekend (13.4)
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Means and Interactions in Two-Way ANOVA
-
-:: content ::
-
-### Means Table
-
-| **Source**         | <span style="color:#7e57c2;">**Weekday**</span> | <span style="color:#4db6ac;">**Weekend**</span> | **Marginal Mean** |
-|--------------------|-------------|-------------|--------------------|
-| **Resort Report**   | <span style="color:#7e57c2;">8.2</span> | <span style="color:#4db6ac;">15.3</span> | **11.8** |
-| **Weather Station** | <span style="color:#7e57c2;">9.2</span> | <span style="color:#4db6ac;">11.5</span> | **10.8** |
-| **Marginal Mean**   | **8.7** | **13.4** | — |
-
-<style>
-table {
-  font-size: 0.9rem;
-  width: 85%;
-  margin: auto;
-}
-th, td {
-  padding: 4px 6px;
-  text-align: center;
-}
-</style>
-
-<br> 
-
-- To assess interactions, we look at the cell means directly:
-   - Does the difference between Resort Report and Weather Station change from Weekday to Weekend?
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Understanding interactions in ANOVA
-
-:: content ::
-
-- An interaction occurs when the effect of one independent variable on the dependent variable depends on the level of the other independent variable.
-- In our ski resort example, the effect of Report Source (Resort vs. Weather Station) on reported snow levels changes depending on whether it's a Weekday or Weekend.
-- Often, it is difficult to understand interactions just from the output of statistical tests. 
-
-   --> ==**Visualization**== is key!
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-:: title ::
-
-# Understanding interactions in ANOVA: Visualization
-
-:: left ::
-
-### Interaction Bar Graph
-<br>
-
-<img src="/images/lecture15/interaction_barplot.png" class="w-7/8 mx-auto"/>
-
-:: right ::
-
-### Interaction Boxplot
-<br>
-
-<img src="/images/lecture15/interaction_boxplot.png" class="w-7/8 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Two-Way ANOVA: Interpreting statistical output
-
-:: content ::
-
-### Run Two-Way ANOVA in R
-
-```r
-#Run two-way ANOVA
-anova_result <- aov(SnowReported ~ Source * Day, data = snow_data)
-summary(anova_result)
-```
-
-
-<p v-click>
-
-### Example Output:
 
 ```
-            Df Sum Sq Mean Sq F value   Pr(>F)    
-Source       1   5.93    5.93   4.836  0.05907 .  
-Day          1  66.62   66.62  54.374 7.81e-05 ***
-Source:Day   1  18.04   18.04  14.720  0.00497 ** 
-Residuals    8   9.80    1.23  
-```
-</p>
-
-<p v-click>
-
-- There is one row for each main effect and one row for the interaction.
-- Each row includes: Df, Sum Sq, Mean Sq, F value, and p-value (Pr(>F)).
-- The Residuals row shows the within-groups variability. It is the "residual" or leftover variability after accounting for the effects of the IVs.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-:: title ::
-
-# Two-Way ANOVA: Interpreting statistical output
-
-:: content ::
-
-```
-            Df Sum Sq Mean Sq F value   Pr(>F)    
-Source       1   5.93    5.93   4.836  0.05907 .  
-Day          1  66.62   66.62  54.374 7.81e-05 ***
-Source:Day   1  18.04   18.04  14.720  0.00497 ** 
-Residuals    8   9.80    1.23  
-```
-
-
-<p v-click>
-
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  Which effects are statistically significant at α = .05?
-</div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** Day (p < .001) and Source:Day interaction (*p* = .00497) are significant. Source (*p* = .05907) is not significant at α = .05.
-
-</p>
-
-<p v-click>
-
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  What is the interpretation of these results in words?
-</div>
-</div>
-
-</p>
-
-<p v-click>
-
-**Answer:** The results suggest that the day of the week has a significant effect on reported snow levels, with weekends generally having higher reports. Additionally, the interaction between report source and day indicates that the difference between the two sources varies by day, with resorts exaggerating reports more on weekends compared to weekdays.
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why use a two-way ANOVA?
-
-:: content ::
-
-- A two-way ANOVA allows us to compare:
-   1. How levels from TWO independent variables affect the dependent variable
-   2. How the combined (interaction) effects of those two independent variables affect the dependent variable
-- A two-way ANOVA is a hypothesis test that includes:
-   - Two nominal (or ordinal) independent variables
-      - The number of levels of each IV doesn't matter
-   - One numeric (interval or ratio) dependent variable
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why design a study with two IVs?
-
-:: content ::
-
-- It is often more efficient to evaluate more than one independent variable in a single study.
-- It allows us to explore interactions between independent variables!
-- Any ANOVA with two or more independent variables is called a **factorial ANOVA**.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What if one IV is within-groups and the other is between-groups?
-
-:: content ::
-
-- This is called a ==mixed-design ANOVA.== The calculations are more complex (and outside the scope of this course), but the logic is the same.
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  Which of the following studies would likely use a mixed-design ANOVA?
-</div>
-</div>
-
-A. Testing how day of the week and report source affect snow reports.
-
-B. Testing how students in different sections of PS 211 perform on exams 1, 2, and 3.
-
-C. Testing how first-years vs. sophomores rate their satisfaction with three different dining halls.
-
-D. All of the above.
-
-</p>
-
-<p v-click>
-
-**Answer: D** – All of the above!
-
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What if we have *lots* of independent variables?
-
-:: content ::
-
-- Multifactorial ANOVA can handle **more than two independent variables.**
-- The logic is the same: we can test main effects for each IV and interactions between any combination of IVs.
-- However, as the number of IVs increases, the complexity of the design and the required sample size also increase.
-
-<p v-click>
-
-- A three-way ANOVA would involve:
-   - Three main effects (one for each IV)
-   - Three two-way interactions (IV₁ × IV₂, IV₁ × IV₃, IV₂ × IV₃)
-   - One three-way interaction (IV₁ × IV₂ × IV₃)
-   - ==7== *F* statistics in total!
-</p>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What if we have *lots* of independent variables?
-
-:: content ::
-
-<p v-click>
-
-- A four-way ANOVA would involve:
-   - Four main effects
-   - Six two-way interactions
-   - Four three-way interactions
-   - One four-way interaction
-   - ==15== *F* statistics in total!
-</p>
-
-<p v-click>
-
-**Example:**
-- A researcher may want to examine how teaching method, class size, time of day, and student class year affect student performance on exams.
-- They would have one numeric dependent variable (exam performance) and four categorical independent variables (teaching method, class size, time of day, and class year).
-
-</p>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Two-Way ANOVA in Action: 
-
-:: left ::
-- In a 2012 study (Moss-Rascusin et al.), researchers investigated how applicant gender influenced science faculty members' evaluations of lab manager job applications.
-- Faculty evaluated identical job applications labeled “John” or “Jennifer.”
-- Researchers ran a two-way ANOVA to analyze how labeled gender (male vs. female) and faculty participant gender (here, male vs. female) influenced ratings of the applicants' competence. 
-
-- **IV₁:** Applicant Gender
-- **IV₂:** Faculty Gender
-- **DV:** Competence Rating
-
-:: right ::
-
-<p v-click>
-
-==**Finding:**==
-- Both male and female faculty rated "John" as more competent than "Jennifer."
-
-</p>
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  How would you interpret this finding in terms of main effects and interactions?
-</div>
-</div>
-
-A. There is a main effect of Applicant Gender.
-
-B. There is a main effect of Faculty Gender.
-
-C. There is an interaction between Applicant Gender and Faculty Gender.
-
-</p>
-
-<p v-click>
-
-**Answer: A** – There is a main effect of Applicant Gender: both male and female faculty rated "John" as more competent than "Jennifer." There is no main effect of Faculty Gender, and no interaction
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Two-Way ANOVA in Action: Visualization Practice
-
-:: content ::
-- In a 2012 study (Moss-Rascusin et al.), researchers investigated how applicant gender influenced science faculty members' evaluations of lab manager job applications.
-
-- Both male and female faculty rated "John" as more competent than "Jennifer."
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  Which of the plots below best represents this finding?
-</div>
-</div>
-
-
-<div class="flex justify-center items-start gap-4 mt-4">
-  <img src="/images/lecture15/anova_interaction_A.png" class="w-1/3 rounded-lg shadow-md"/>
-  <img src="/images/lecture15/anova_interaction_B.png" class="w-1/3 rounded-lg shadow-md"/>
-  <img src="/images/lecture15/anova_interaction_C.png" class="w-1/3 rounded-lg shadow-md"/>
-</div>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Two-Way ANOVA in Action: Visualization Practice
-
-:: content ::
-
-
-<div class="flex justify-center items-start gap-6 mt-6">
-
-  <!-- Left plot (purple outline + label) -->
-  <div class="flex flex-col items-center w-1/3">
-    <img src="/images/lecture15/anova_interaction_A.png"
-         class="h-64 w-auto object-contain rounded-lg shadow-md ring-4 ring-purple-400"/>
-    <p class="mt-2 text-lg font-semibold" style="color:#7e57c2;">
-      Main effect of faculty gender
-    </p>
-  </div>
-
-  <!-- Middle plot (indigo outline + label) -->
-  <div class="flex flex-col items-center w-1/3">
-    <img src="/images/lecture15/anova_interaction_B.png"
-         class="h-64 w-auto object-contain rounded-lg shadow-md ring-4 ring-indigo-400"/>
-    <p class="mt-2 text-lg font-semibold" style="color:#3f51b5;">
-      Main effect of applicant gender
-    </p>
-  </div>
-
-  <!-- Right plot (teal outline + label) -->
-  <div class="flex flex-col items-center w-1/3">
-    <img src="/images/lecture15/anova_interaction_C.png"
-         class="h-64 w-auto object-contain rounded-lg shadow-md ring-4 ring-teal-400"/>
-    <p class="mt-2 text-lg font-semibold" style="color:#009688;">
-     Faculty gender x applicant gender interaction
-    </p>
-  </div>
-
-</div>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Reporting Two-Way ANOVA Results (APA Style)
-
-:: content ::
-When reporting:
-- Mention the type of ANOVA (e.g., 2 × 2 between-groups)
-- Include *F*, df, *p*, and η² for each main effect and interaction
-
-Example:
-> A 2 × 2 ANOVA revealed a significant main effect of applicant gender, *F*(1, 120) = 5.12, *p* = .026, *η²* = .04, on competence ratings, with male applicants rated more competent than female applicants. There was no main effect of faculty gender, nor was there an interaction between applicant gender and faculty gender (*ps* > .05).
 
 
 ---
@@ -1407,5 +1092,5 @@ layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!  
-Next class: Correlation & Regression
+# That's all for today!
+Thursday: Repeated-Measures ANOVA & Two-Way ANOVA

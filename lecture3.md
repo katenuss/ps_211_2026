@@ -6,11 +6,11 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 3
-exportFilename: ps211_fall2025_lecture3
+exportFilename: ps211_fall2026_lecture3
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
+## Fall 2026 · Section C1
 ### Lecture 3: Frequency distributions & visual displays of data
 
 ---
@@ -25,12 +25,11 @@ align: lt
 :: content ::
 
 - You should now have R and R Studio installed on your computer.  
-- Please see me or Juneau *right away* if you have any issues.
-- Homework 1 has been posted and is due (via Blackboard) on Monday, September 15 at 11:59 PM.
-    - Homework 1 mostly covers material from Lectures 1 - 3, with a small amount of material from Lecture 4.
-    - You should be able to do most of it after today's lecture.
-- In today's lecture, we will also go over instructions for using R Markdown to complete Homework 1.
-- My office hours tomorrow (Sept. 10) are cancelled, but if you need to meet, please Slack me and we can find an alternate time.
+- Please see me or your TF *right away* if you have any issues.
+- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16).
+- Discussion sections are using time for in-class R practice — take advantage of it!
+- In today's lecture, we will also go over instructions for using R Markdown, which you'll use throughout the course.
+- Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
 
 
 ---
@@ -98,11 +97,7 @@ align: lt-lt-lt
 - The original measurements or observations collected in a study.
 - Have not been transformed, summarized, or analyzed.
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Why is presenting raw data limiting?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Why is presenting raw data limiting?</Admonition>
 
 <p v-click>
 
@@ -334,11 +329,7 @@ align: lt-lt-lt
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    How would you convert this table to a grouped frequency table with intervals of width 5?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How would you convert this table to a grouped frequency table with intervals of width 5?</Admonition>
 
 <p v-click>
 
@@ -346,12 +337,7 @@ align: lt-lt-lt
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    What is an advantage of using a grouped frequency table? What is a disadvantage?
-  </div>
-</div>
-
+<Admonition title="Question" color="teal-light" width="100%">What is an advantage of using a grouped frequency table? What is a disadvantage?</Admonition>
 
 <p v-click>
 
@@ -400,11 +386,7 @@ align: lt
 
 :: title ::
 # Histograms in the wild
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-1 rotate-1 transform">
-    I made this in R for an actual paper.
-  </div>
-</div>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">I made this in R for an actual paper.</SpeechBubble>
 
 :: content ::
 
@@ -564,11 +546,7 @@ align: lt
 
 Consider these three variables: finishing times in a marathon of recreational runners, number of university dining hall meals eaten in a day, and scores on a scale of extroversion from a randomly sampled population.
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which variable do you think would be most likely to show a positive skew? 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which variable do you think would be most likely to show a positive skew?</Admonition>
 
 <p v-click>
 
@@ -576,12 +554,7 @@ Consider these three variables: finishing times in a marathon of recreational ru
 
 </p>
 
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform mt-4">
-    Which variable do you think would be most likely to be normally distributed?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which variable do you think would be most likely to be normally distributed?</Admonition>
 
 <p v-click>
 
@@ -601,11 +574,7 @@ align: lt
 
 :: content ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Can nominal variables have a skewed distribution? Why or why not?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Can nominal variables have a skewed distribution? Why or why not?</Admonition>
 
 <p v-click>
 
@@ -613,12 +582,7 @@ align: lt
 
 </p>
 
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform mt-4">
-    You want to visualize the distribution of ages in a sample of adults. Would you use a frequency table, a grouped frequency table, or a histogram? 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">You want to visualize the distribution of ages in a sample of adults. Would you use a frequency table, a grouped frequency table, or a histogram?</Admonition>
 
 <p v-click>
 
@@ -662,11 +626,7 @@ align: lt-lt-lt
 
 <img src="/images/lecture3/barplot.png" alt="bar graph" class="mx-auto w-3/4" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is one advantage of using a bar graph? What is one disadvantage?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is one advantage of using a bar graph? What is one disadvantage?</Admonition>
 
 <p v-click>
 
@@ -712,11 +672,7 @@ align: lt-lt-lt
 
 :: left ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is one advantage of using a scatter plot? 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is one advantage of using a scatter plot?</Admonition>
 
 <p v-click>
 
@@ -724,11 +680,7 @@ align: lt-lt-lt
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is one disadvantage of using a scatter plot? 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is one disadvantage of using a scatter plot?</Admonition>
 
 <p v-click>
 
@@ -761,11 +713,7 @@ align: lt-lt-lt
 :: right ::
 <img src="/images/lecture3/line_graph.png" alt="line graph" class="mx-auto w-5/6" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    When does it make sense to connect the points on a graph with lines?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">When does it make sense to connect the points on a graph with lines?</Admonition>
 
 <p v-click>
 
@@ -797,11 +745,7 @@ align: lt-lt-lt
 
 <img src="/images/lecture3/boxplot.png" alt="box plot" class="mx-auto w-5/6" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is one advantage of using a box plot? 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is one advantage of using a box plot?</Admonition>
 
 <p v-click>
 
@@ -881,11 +825,7 @@ align: lt
 
 <img src="/images/lecture3/chartjunk1.png" alt="chart junk 1" class="mx-auto w-1/2" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is wrong with this graph?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is wrong with this graph?</Admonition>
 
 <p v-click>
 
@@ -908,11 +848,7 @@ align: lt
 
 <img src="/images/lecture3/chartjunk2.jpg" alt="chart junk 2" class="mx-auto w-1/3" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is wrong with this graph?
-  </div>
-</div>  
+<Admonition title="Question" color="teal-light" width="100%">What is wrong with this graph?</Admonition>
 
 <p v-click>
 
@@ -934,11 +870,7 @@ align: lt
 
 <img src="/images/lecture3/chartjunk3.png" alt="chart junk 3" class="mx-auto w-1/2" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is wrong with this graph?
-  </div>
-</div>  
+<Admonition title="Question" color="teal-light" width="100%">What is wrong with this graph?</Admonition>
 
 <p v-click>
 
@@ -960,24 +892,11 @@ align: lt-lt-lt
 
 *For each of the following scenarios, decide which type of graph would be most appropriate (bar graph, scatter plot, or line graph) and explain your choice.*
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  Visualizing the relation between hours studied and exam scores for a group of students. 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Visualizing the relation between hours studied and exam scores for a group of students.</Admonition>
 
+<Admonition title="Question" color="teal-light" width="100%">Visualizing the average monthly temperatures over a year in a specific city.</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  Visualizing the average monthly temperatures over a year in a specific city.
-  </div>
-</div>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-  Visualizing the number of students in different majors at a university.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Visualizing the number of students in different majors at a university.</Admonition>
 
 :: right ::
 
@@ -1056,11 +975,7 @@ align: lt
 
 - Here are some examples of how axes can be manipulated to mislead viewers:
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is misleading about each of these graphs?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is misleading about each of these graphs?</Admonition>
 
 <br>
 
@@ -1072,11 +987,7 @@ align: lt
 
 </p>
 
-<p v-click>
-
-==Note: This is part of why we need statistical tests to determine if differences are "real" or not.==
-
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This is part of why we need statistical tests to determine if differences are "real" or not.</SpeechBubble></p>
 
 ---
 layout: top-title-two-cols

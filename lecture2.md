@@ -6,11 +6,11 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 2
-exportFilename: ps211_fall2025_lecture2
+exportFilename: ps211_fall2026_lecture2
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
+## Fall 2026 · Section C1
 ### Lecture 2: More variables and research methods
 
 ---
@@ -25,15 +25,15 @@ align: lt
 
 :: content ::
 
-- The ==pre-course survey== (linked on Slack in "general") is due by **Friday, Sep. 5** for a bonus point on the first exam.
-  - Please fill this out! It will help us tailor the course to all students' backgrounds, and provide a dataset for us to analyze together.
-
-<p v-click>
-
 - You should be working on having ==R and R Studio== installed on your personal computer.
   - If you have not yet successfully installed them, please follow the instructions on Slack and come to office hours if you need help.
 
   <img src="/images/lecture2/help_meme.jpeg" alt="help" class="mx-auto" />
+
+<p v-click>
+
+- Reminder: Discussion sections started this week — they'll now spend time on in-class R practice rather than homework prep, since we no longer have standalone homework assignments this year.
+
 </p>
 
 
@@ -88,29 +88,11 @@ align: lt-lt-lt
 - **Interval**: equal intervals, no true zero (e.g., temperature in °F)  
 - **Ratio**: equal intervals, true zero (e.g., lever presses = 0)  
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-2 transform">
-    Sometimes our measurement tools limit us to discrete variables, even if the underlying construct is continuous.
-  </div>
-</div>
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Sometimes our measurement tools limit us to discrete variables, even if the underlying construct is continuous.</SpeechBubble></p>
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    Example: Measuring boredom on a 1-5 scale
-  </div>
-</div>
-</p>
+<p v-click><StickyNote color="green-light" title="Example" width="100%">Measuring boredom (or how tired you feel in this 11am lecture!) on a 1-5 scale</StickyNote></p>
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-2 transform">
-    This will be important when we discuss which statistical tests to use later in the course!
-  </div>
-</div>
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This will be important when we discuss which statistical tests to use later in the course!</SpeechBubble></p>
 
 :: right ::
 
@@ -176,21 +158,9 @@ align: lt
 
 ### **Dependent Variable (DV)**: The outcome variable that we hypothesized would be affected by the IV. 
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform rotate-.5">
-  Note: In non-experimental studies, independent variables are not manipulated, but instead are selected or observed as they naturally occur.
-  </div>
-</div>
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">In non-experimental studies, independent variables are not manipulated, but instead are selected or observed as they naturally occur.</SpeechBubble></p>
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-  This is often the case in developmental studies, where age is an independent variable that cannot be manipulated.
-  </div>
-</div>
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This is often the case in developmental studies, where age is an independent variable that cannot be manipulated.</SpeechBubble></p>
 
 ---
 layout: top-title
@@ -249,15 +219,7 @@ align: lt-lt-lt
 
 :: right ::
 
-<p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What are the advantages of a correlational study?
-  </div>
-</div>
-
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What are the advantages of a correlational study?</Admonition></p>
 
 <p v-click>
 
@@ -265,15 +227,7 @@ align: lt-lt-lt
 
 </p>
 
-<p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What are the disadvantages of a correlational study?
-  </div>
-</div>
-
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What are the disadvantages of a correlational study?</Admonition></p>
 
 <p v-click>
 
@@ -293,44 +247,32 @@ align: lt-lt-lt
 
 :: left ::
 
-### A researcher wants to see if having students bring laptops to class affects their exam scores. Half the students are randomly assigned to bring laptops; half are not. At the end of the semester, all students take the same exam.
+### A researcher wants to see if keeping your phone in another room while studying affects how much students learn. Half the students are randomly assigned to study with their phone in another room; half study with their phone next to them. At the end of the session, all students take the same quiz on the material.
 
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    Is this an experiment?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is this an experiment?</Admonition>
 
 <p v-click>
 
-**Answer**: Yes! The researcher is manipulating whether students bring laptops or not.
+**Answer**: Yes! The researcher is manipulating where students' phones are while studying.
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    What is the IV and what are its levels?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
 
 <p v-click>
 
-**Answer**: IV = Laptop use; Levels = laptop, no laptop
+**Answer**: IV = Phone location; Levels = phone in another room, phone nearby
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    What is the DV?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
 
 <p v-click>
 
-**Answer**: DV = Exam score
+**Answer**: DV = Quiz score
 
 </p>
 
@@ -346,15 +288,11 @@ align: lt-lt-lt
 
 :: left ::
 
-### A researcher wants to see if watching a movie about climate change affects attitudes towards climate change. She polls 100 people about whether they have watched *An Inconvenient Truth* and then asks them to fill out a questionnaire about their attitudes towards climate change.
+### A researcher wants to see if using a sleep-tracking app affects how many hours college students sleep. She surveys 100 students about whether they use a sleep-tracking app and then asks them to report their average hours of sleep per night.
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    Is this an experiment?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is this an experiment?</Admonition>
 
 <p v-click>
 
@@ -362,27 +300,19 @@ align: lt-lt-lt
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    What is the IV and what are its levels?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
 
 <p v-click>
 
-**Answer**: IV = Watching *An Inconvenient Truth*; Levels = watched, not watched
+**Answer**: IV = Sleep-tracking app use; Levels = uses app, does not use app
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    What is the DV?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
 
 <p v-click>
 
-**Answer**: DV = Attitudes towards climate change (measured via questionnaire)
+**Answer**: DV = Average hours of sleep per night (self-reported)
 
 </p>
 
@@ -408,13 +338,7 @@ align: lt-lt-lt
 
 <img src="/images/lecture2/temp_pirates.png" alt="correlation example 2" class="mx-auto max-h-96 object-contain" />
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Does this plot tell us that decreasing numbers of pirates causes global temperatures to rise?
-  </div>
-</div>
-</p>
+<p v-click><AdmonitionType type="warning" width="100%">Does this plot tell us that decreasing numbers of pirates causes global temperatures to rise?</AdmonitionType></p>
 
 ---
 layout: top-title
@@ -445,13 +369,7 @@ align: lt
 - Well-designed **experiments** can control for confounding variables **and** allow for causal inferences.
 - **Random assignment** helps ensure that confounding variables are equally distributed across conditions.
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    However, experiments can still have confounds if not properly designed.
-  </div>
-</div>
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">However, experiments can still have confounds if not properly designed.</SpeechBubble></p>
 
 
 ---
@@ -473,13 +391,7 @@ align: lt-lt-lt
 
 <img src="/images/lecture2/wellness.png" alt="wellness" class="mx-auto max-h-96 object-contain" />
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What can you conclude from these results?
-  </div>
-</div>
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What can you conclude from these results?</Admonition></p>
 
 <p v-click>
 
@@ -508,13 +420,7 @@ align: lt-lt-lt
 
 :: right ::
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    If there's a relation between access to the wellness program and healthy behaviors, what could you conclude from these results?
-  </div>
-</div>
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">If there's a relation between access to the wellness program and healthy behaviors, what could you conclude from these results?</Admonition></p>
 
 <p v-click>
 
@@ -543,13 +449,7 @@ align: lt-lt-lt
 
 :: right ::
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    What is one potential confound in this experiment that may undermine this conclusion?
-  </div>
-</div>
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What is one potential confound in this experiment that may undermine this conclusion?</Admonition></p>
 
 <p v-click>
 
@@ -560,13 +460,7 @@ align: lt-lt-lt
 
 </p>
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    What else could have gone wrong in this experiment?
-  </div>
-</div>
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What else could have gone wrong in this experiment?</Admonition></p>
 
 <p v-click>
 
@@ -610,51 +504,24 @@ align: lt
 
 ## Reliable but not valid? 
 
-<br>
-<br>
-<br>
+<p v-click>
 
-## Valid but not reliable? 
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Can a measure be...
-
-:: content ::
-
-## Reliable but not valid? 
 - Yes! A broken scale that always reads 5 lbs too heavy is reliable (consistent) but not valid (not accurate).
 - Yes! An IQ test may give you the same score each time (reliable) but not actually measure intelligence (valid).
 
+</p>
+
+<br>
 
 ## Valid but not reliable? 
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+<p v-click>
 
-:: title ::
-# Can a measure be...
-
-:: content ::
-
-## Reliable but not valid? 
-- Yes! A broken scale that always reads 5 lbs too heavy is reliable (consistent) but not valid (not accurate).
-- Yes! An IQ test may give you the same score each time (reliable) but not actually measure intelligence (valid).
-
-
-## Valid but not reliable? 
 - No! If a measure is not consistent, it cannot be valid because it cannot be accurate.
 - A measure can't measure what it's supposed to measure if it gives different results each time.
 - Example: A scale that gives different weights each time is neither reliable nor valid.
+
+</p>
 
 ---
 layout: top-title
@@ -687,23 +554,11 @@ align: lt-lt-lt
 - You then ask participants to read one of the poems and rate how happy they feel on a scale from 1-10.
 
 :: right ::
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you determine if ChatGPT's ratings are reliable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you determine if ChatGPT's ratings are reliable?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you determine if ChatGPT's ratings are valid?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you determine if ChatGPT's ratings are valid?</Admonition>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you improve the validity of your rating scale?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you improve the validity of your rating scale?</Admonition>
 
 
 ---
@@ -722,27 +577,15 @@ align: lt-lt-lt
 - You then ask participants to read one of the poems and rate how happy they feel on a scale from 1-10.
 
 :: right ::
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    How could you determine if ChatGPT's ratings are reliable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you determine if ChatGPT's ratings are reliable?</Admonition>
 
 **Answer:** You could ask ChatGPT to rate the same poems multiple times and see if the ratings are consistent.
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    How could you determine if ChatGPT's ratings are valid?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you determine if ChatGPT's ratings are valid?</Admonition>
 
 **Answer:** You could compare ChatGPT's ratings to human ratings of the same poems to see if they align.
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    How could you improve the validity of your rating scale?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you improve the validity of your rating scale?</Admonition>
 
 **Answer:** You could use it alongside an established scale for measuring happiness and compare results.
 
@@ -829,11 +672,7 @@ align: lt-lt-lt
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What is the IV and what are its levels? 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
 
 <p v-click>
 
@@ -841,11 +680,7 @@ align: lt-lt-lt
 
 </p>
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What is the DV?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
 
 <p v-click>
 
@@ -884,11 +719,7 @@ align: lt
   - Example: Happiness could be operationally defined as "self-reported happiness on a 1-10 scale" or "number of smiles in a 5-minute video""
 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you operationalize musical artist popularity?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you operationalize musical artist popularity?</Admonition>
 
 <p v-click>
 
@@ -896,12 +727,7 @@ align: lt
 
 </p>
 
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you operationalize math ability?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you operationalize math ability?</Admonition>
 
 <p v-click>
 
@@ -920,23 +746,12 @@ align: lt
 
 :: content ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    One of the biggest challenges in experimental psychology research is coming up with good operational definitions for the variables you want to study.
-  </div>
-</div>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">One of the biggest challenges in experimental psychology research is coming up with good operational definitions for the variables you want to study.</SpeechBubble>
 
 - Abstract concepts (e.g., intelligence, happiness, anxiety) can be hard to define and measure.
 - Poor operational definitions can lead to unreliable or invalid results.
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How would you operationalize anxiety in a research study?
-  </div>
-</div>
-
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">How would you operationalize anxiety in a research study?</Admonition></p>
 
 <p v-click>
 
@@ -947,49 +762,7 @@ align: lt
 
 </p>
 
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Each of these definitions captures an aspect of anxiety, but it's unlikely that any one of them fully captures the construct. 
-  </div>
-</div>
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Operational definitions: They're hard!
-
-:: content ::
-
-**Answer**: Anxiety could be operationalized as:
-- self-reported anxiety levels on a questionnaire. 
-- cortisol levels in saliva samples.
-- heart rate during a task.
-
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Each of these definitions captures an aspect of anxiety, but it's unlikely that any one of them fully captures the construct. 
-  </div>
-</div>
-
-</p>
-
-<p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    You have to create operational definitions that are well-suited to your specific research question, hypothesis, and context.
-  </div>
-</div>
-
-</p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Each of these definitions captures an aspect of anxiety, but it's unlikely that any one of them fully captures the construct. You have to create operational definitions that are well-suited to your specific research question, hypothesis, and context.</SpeechBubble></p>
 
 ---
 layout: top-title-two-cols
@@ -1029,97 +802,23 @@ A researcher wants to see if children and adolescents show reduced Stroop interf
 
 :: right ::
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    Is this a between-subjects or within-subjects design?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is this a between-subjects or within-subjects design? What are the IVs and their levels?</Admonition>
 
 <p v-click>
 
-**Answer**: Trick question! This design is *mixed.* The age group (children, adolescents, adults) is a between-subjects variable, while the Stroop condition (congruent vs. incongruent) is a within-subjects variable.
-
-</p>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    What are the IVs and what are their levels?
-  </div>
-</div>
-
-<p v-click>
-
-**Answer**: There are two IVs:
+**Answer**: Trick question! This design is *mixed.* There are two IVs:
 1. Age group (between-subjects): Levels = children, adolescents, adults
 2. Stroop condition (within-subjects): Levels = congruent, incongruent
 
 </p>
 
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Putting concepts together: Practice
-
-:: left ::
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    In this study, is age group a discrete or continuous variable?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is age group in this study discrete or continuous? How could you change the design to make it continuous instead?</Admonition>
 
 <p v-click>
 
-**Answer**: Discrete. Age group is categorical (children vs. adults).
+**Answer**: Discrete (categorical groups). You could instead measure each participant's exact age in years rather than sorting them into groups.
 
 </p>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    In this study, is age group a nominal, ordinal, interval, or ratio variable?
-  </div>
-</div>
-
-<p v-click>
-
-**Answer**: Ordinal. Age group has an inherent order (children are younger than adults), but the difference between groups is not necessarily equal.
-
-</p>
-
-
-:: right ::
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    How could you change the design to make age a continuous variable?
-  </div>
-</div>
-
-<p v-click>
-
-**Answer**: You could measure the exact age of each participant (in years) instead of categorizing them into groups (children, adolescents, adults).
-
-</p>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow-md p-1 transform">
-    Is this a correlational or experimental study?
-  </div>
-</div>
-
-<p v-click>
-
-**Answer**: Both! The researcher manipulates one of the independent variables (Stroop condition) to observe its effect on the dependent variable (reaction times). However, age group is a naturally occurring variable that is not manipulated, making it correlational in that respect.
-
-</p>
-
-
-
 
 ---
 layout: cover
@@ -1128,6 +827,5 @@ color: indigo-light
 
 # That’s all for Lecture 2!  
 See you next class. Please remember to:
-- Fill out the pre-course survey.
 - Install R and R Studio before the next lecture.
 - Come to office hours if you need help! 

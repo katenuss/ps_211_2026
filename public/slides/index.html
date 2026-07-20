@@ -68,7 +68,7 @@ async function urlExists(url) {
 }
 
 (function(){
-  const base = '/ps_211';
+  const base = '/' + (location.pathname.split('/').filter(Boolean)[0] || '');
   const L_START = 1, L_END = 18;
   const EXAMS = [1,2,3,4];
   const DISCUSSIONS = 13; // Discussion 1..13

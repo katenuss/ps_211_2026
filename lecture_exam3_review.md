@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Exam 3 Review Session
-exportFilename: ps211_fall2025_exam3_review.pdf
+exportFilename: ps211_fall2026_exam3_review
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
-### Exam 3 Review Session
+## Fall 2026 · Section C1
+### Exam 3 Review Session (Lectures 13-14)
 
 ---
 layout: top-title
@@ -23,177 +23,14 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- ==Homework 3== answers and grades were posted.
-  - Feel free to come to office hours to go over your homework.
-- ==Exam 3== is on **Thursday, Nov. 6th** during our regular class time.
-    - A review sheet has been posted. 
+- ==Exam 3== is on **Thursday, November 12** during our regular class time.
+    - It covers **Lectures 13-14** (paired-samples *t*, independent-samples *t*, and APA-style reporting).
+    - A review sheet has been posted.
     - You will *not* need a calculator.
+- ==Data Write-Up #1== (t-test-based) is due **Monday, November 16** — come to office hours if you want to talk through it.
 - ==Office hours this week:==
-   - Today: 12:30 PM – 2:30 PM (Juneau)
-   - Wednesday: 9:00 - 10:00 AM (Kate)
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Effect Size
-
-:: content ::
-- Effect sizes quantify the **magnitude** of an effect.
-- For *z* and*t* tests, we use **Cohen’s d**:
-
-$$d = \frac{M - \mu}{SD}$$
-
-Where:
-- *M* = sample mean
-- *μ* = population mean
-- *SD* = standard deviation of the sample
-  - For a *z* test, this is the population standard deviation (σ).
-  - For an single-sample or paired-samples *t* test, this is the sample standard deviation ($s$).
-  - For an independent-samples *t* test, this is the pooled standard deviation ($s_{pooled}$).
-  
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Effect Size (Continued)
-
-:: content ::
-- Effect sizes are often interpreted using Cohen’s guidelines:
-  - Small effect: $d = 0.2$
-  - Medium effect: $d = 0.5$
-  - Large effect: $d = 0.8$
-- Effect sizes are useful because they are **standardized** and can be compared across studies.
-- They tell us about the **practical significance** of our results. 
-  - If an effect is statistically significant but has a small effect size, it may not be *practically* important.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Effect Size (Continued)
-
-:: content ::
-- Effect sizes are not influenced by sample size, unlike test statistics, *p* values, and confidence intervals.
-- Effect sizes are not influenced by sample size because they quantify the magnitude of the effect relative to the variability in the data, rather than the precision of the estimate.
-- This means that even with a small sample size, you can have a large effect size if the difference between groups is substantial relative to the variability.
-- Conversely, with a large sample size, you can have a small effect size if the difference between groups is minimal relative to the variability.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Effect Size (Continued)
-
-:: content ::
-
-**Practice question:** What would it mean if you found a large effect size but a non-significant *p* value?
-
-A. It could indicate that the sample size was too small to detect the effect statistically, even though the effect itself would be important in practice, if it were real.
-
-B. It could indicate that the effect is not practically significant, even though it is statistically significant.
-
-C. It could indicate that there was a calculation error, since effect sizes and *p* values always align.
-
-D. It could indicate that the null hypothesis is true.
-
-<p v-click>
-
-**Answer:** A
-- A large effect size with a non-significant *p* value often suggests that the sample size was too small to detect the effect statistically, even though the effect itself may be practically important.
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Statistical Power
-
-:: content ::
-
-- **Statistical power** is the probability of correctly rejecting the null hypothesis (i.e., detecting a true effect).
-- Power is influenced by several factors:
-  - Effect size: Larger effects are easier to detect, increasing power.
-  - Sample size: Larger samples provide more information, increasing power.
-  - Significance level (α): A higher α increases power but also increases the risk of Type I errors.
-  - Variability in the data: Less variability increases power.
-- A common target for power is 0.80, meaning there is an 80% chance of detecting a true effect if it exists.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Statistical Power (Continued)
-
-:: content ::
-
-**Practice question:** Why do within-subjects designs generally have higher statistical power than between-subjects designs?
-
-A. Because they have larger sample sizes.
-
-B. Because they control for individual differences, reducing variability.
-
-C. Because they use a higher significance level (α).
-
-D. Because they always have larger effect sizes.
-
-<p v-click>
-
-**Answer:** B
-- Within-subjects designs control for individual differences by using the same participants in all conditions, which reduces variability and increases statistical power.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Statistical Power (Continued)
-
-:: content ::
-
-**Practice question:** Why does running a one-tailed test instead of a two-tailed test increase statistical power?
-
-A. Because it increases the effect size.
-
-B. Because it allocates all of the alpha level to one tail of the distribution, making it easier to reach significance in that direction.
-
-C. Because it increases the sample size.
-
-D. Because it reduces variability in the data.
-
-<p v-click>
-
-**Answer:** B
-- Running a one-tailed test allocates all of the alpha level to one tail of the distribution, making it easier to reach significance in that direction.
-
-</p>
-
+   - Tuesday: 12:30 - 1:30 PM (Kate)
+   - Thursday: 9:00 - 10:00 AM (Kate)
 
 ---
 layout: top-title

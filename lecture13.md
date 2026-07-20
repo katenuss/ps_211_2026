@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 13
-exportFilename: ps211_fall2025_lecture13
+exportFilename: ps211_fall2026_lecture13
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1  
-### Lecture 13: Reporting results in APA style, One-way ANOVA
+## Fall 2026 · Section C1
+### Lecture 13: Paired-Samples *t*-Tests & Reporting Results in APA Style
 
 ---
 layout: top-title
@@ -23,15 +23,14 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- ==Homework 3== is due on **Friday, October 31** at 11:59 PM.
-  - Submit via Blackboard as a PDF file.
-  - Late submissions will incur a penalty of 3% per day.
-  - We are going to try to post grades and answers by Monday night.
-- ==Exam 3== will be on **Thursday, Nov. 6th** during our regular class time.
-    - It will focus on material from Lectures 10-13 (today). 
-    - It will build on material from earlier in the course, so be sure to review those topics as well.
-    - The format will be the same as Exam 1 (33 multiple choice questions).
-    - A review sheet will be posted by the end of the day tomorrow. 
+- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 16**. Today and Thursday, you'll have both paired- and independent-samples *t* tests in hand for it.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
+- Coming up:
+  - Thursday (11/5): Lecture 14 — Independent-Samples *t* Tests (in R)
+  - Tuesday (11/10): Exam 3 Review
+  - Thursday (11/12): Exam 3 (covers Lectures 13-14)
 
 ---
 layout: top-title
@@ -40,146 +39,61 @@ align: lt
 ---
 
 :: title ::
-# Review: Confidence Intervals
+# Types of *t* Tests
 
 :: content ::
-- Remember, a *z* or *t* statistic corresponds to a percentile in the sampling distribution.
-- For example, if we have *t* = 2.45 with df = 28, we can look up the corresponding p-value: *p* = .022.
-- This means that if the null hypothesis were true, we would expect to see a *t* value this extreme (or more extreme) only 2.2% of the time.
+There are 3 types of *t* tests, used in different research scenarios:
+
+1. **Single-sample *t* test** – Compare a sample mean to a population mean when the population SD is unknown.
+
+<div class="mt-0 w-full flex justify-center">
+<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
+  This is what we went over already!
+</div>
+</div>
+
+<br>
 
 <p v-click>
 
-- Confidence intervals rely on this logic **in reverse**.
-- Instead of asking "Given the null hypothesis, what is the probability of observing this data?",
-- We ask "Given the observed data, what range of population values are plausible?"
-</p>
+2. **Paired-sample *t* test** – Compare two samples when every participant is in both samples (within-subjects design).
+3. **Independent-samples *t* test** – Compare two samples when participants are in only one group (between-subjects design).
 
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Confidence Intervals (Continued)
-
-:: content ::
-- Instead of starting with the *null* distribution, we start with the *sampling* distribution.
-- We assume our sample mean was drawn from a population with some unknown mean μ.
-- Our best estimate of μ is the sample mean *M*.
-- But because of sampling variability, ==we know that *M* might not equal μ exactly.==
-
-<p v-click>
-
-- So we construct a range of values around *M* that are plausible values for μ.
-- This range is called a **confidence interval (CI)**.
 </p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
 
 :: title ::
-# Review: Confidence Intervals (Continued)
+# Between- vs Within-Subjects Designs
 
-:: content ::
-- To find a **95% confidence interval**, we identify the range of values that would fall within the middle 95% of the sampling distribution.
-- This corresponds to the values between the 2.5th and 97.5th percentiles.
-- We can use the critical *t* value for our sample size to find these cutoffs.
-- Our critical *t* value tells us how far from *M* we need to go to capture 95% of the sampling distribution.
-
-<img src="/images/lecture13/t_distribution_df5.png"  class="w-1/3 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Confidence Intervals (Continued)
-
-:: content ::
-- Remember, our *t* value is in units of ==standard errors (SE)==.
-- A critical *t* of 2.57 means that 95% of the distribution falls within 2.57 SEs of the mean.
-
-
-<img src="/images/lecture13/sampling_distributions_CI.png"  class="w-2/3 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Confidence Intervals (Continued)
-
-:: content ::
-- Remember, our *t* value is in units of ==standard errors (SE)==.
-- A critical *t* of 2.57 means that 95% of the distribution falls within 2.57 SEs of the mean.
-
-
-- We can use this to calculate the CI around our sample mean:
-$$\text{CI} = M \pm (t_{critical} \times SE)$$
-Where:
-- *M* = sample mean
-- $t_{critical}$ = critical *t* value for desired confidence level
-- *SE* = standard error of the mean
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Confidence Intervals (Continued)
-
-:: content ::
-**One more time...**
-- Our best estimate of μ is the sample mean *M*.
-- But because of sampling variability, ==we know that *M* might not equal μ exactly.==
-- So we construct a ==range of values around *M*== that are plausible values for μ.
-- We do this by determining where 95% (or 99% or 99.9%, etc.) of the sampling distribution lies.
-- We compute *this* by finding the critical *t* value and multiplying it by the standard error.
-- This range is called a **confidence interval (CI)**.
-- Lower standard error -> narrower CI.
-- Higher standard error -> wider CI.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Review: Confidence Intervals (Continued)
-
-:: content ::
-
-**Practice question:**
-
-*How does increasing the sample size affect the width of a confidence interval?*
-
-A. Increases the width because there is more data.
-
-B. Increases the width because the critical t-value gets larger.
-
-C. Decreases the width because the standard error is smaller and the estimate is more precise.
-
-D. No effect on the width because n does not factor into CI calculations.
-
-<br> 
+:: left ::
+### Within-Subjects
+- Each participant experiences **all** levels of the independent variable.
+- Comparisons are made *over time or conditions* for the same people.
 
 <p v-click>
 
-**Answer:** C. Decreases the width because the standard error is smaller and the estimate is more precise.
+<Admonition title="Question" color="teal-light" width="100%">
+What is an advantage of a within-subjects design?
+</Admonition>
+
+</p>
+
+
+:: right ::
+### Between-Subjects
+- Each participant experiences **only one** level of the independent variable.
+- Comparisons are made *between different people*.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+What is an advantage of a between-subjects design?
+</Admonition>
 
 </p>
 
@@ -190,30 +104,148 @@ align: lt
 ---
 
 :: title ::
-
-# Review: Confidence Intervals (Continued)
+# Which *t* Test Should I Use?
 
 :: content ::
+- **Within-groups design** → use a *paired-samples t test*
+- **Between-groups design** → use an *independent-samples t test*
 
-**Practice question:**
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+For the paired *t*, we must first create **difference scores** for each participant (e.g., after – before; Condition 1 - Condition 2).
+</SpeechBubble>
 
-*How does increasing the estimate of the sample mean affect the width of a confidence interval?*
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
 
-A. Increases the width because the values are higher.
+:: title ::
+# What is a Paired-Samples *t* Test?
 
-B. Increases the width because the critical t-value gets larger.
+:: content ::
+- Compares two means for a **within-groups** design in which each participant experiences both levels of an independent variable.
+- Can also be used for **before-and-after** comparisons.
 
-C. Decreases the width because the standard error will also increase.
-
-D. No effect on the width because the sample mean does not factor into CI calculations.
-
-<br> 
 
 <p v-click>
 
-**Answer:** D. No effect on the width because the sample mean does not factor into CI calculations.
+<Admonition title="Question" color="teal-light" width="100%">
+Imagine you want to measure "Stroop Interference" by testing participants' reaction times on a color-naming task where the words are either congruent or incongruent with the ink color. How would you design this study to test for differences in reaction times using a paired-samples *t* test?
+</Admonition>
 
 </p>
+
+<p v-click>
+
+<StickyNote color="green-light" title="Answer" width="100%">
+- Have each participant complete both the congruent and incongruent conditions of the Stroop task.
+- Measure their reaction times for each condition.
+- Use a paired-samples *t* test to compare the mean difference in reaction times across all participants to determine if there is a significant effect of condition on reaction time.
+</StickyNote>
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Distributions of Mean *Differences*
+
+
+:: content ::
+
+**Another distribution!**
+
+<img src="/images/lecture10/ohno.jpg"  class="w-1/6 mx-auto"/>
+
+
+<br>
+
+To start a paired-samples *t*, we must create a **distribution of mean differences** by subtracting the two scores for each participant and then sampling means of those differences repeatedly.
+
+- Step 1: Randomly sample n participants.
+- Step 2: Compute each participant's difference score (Condition 2 – Condition 1).
+- Step 3: Compute the mean of these differences across all participants in a sample.
+- Step 4: Repeat many times to build a distribution of mean differences for a population.
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Example: Distribution of Mean Differences
+
+:: content ::
+
+A researcher wants to determine whether students sleep more when internet access in their dorms is restricted at night. She has 30 students report their average nightly sleep duration for one week *with* internet access and one week *without* internet access.
+
+To conduct a paired-samples *t* test, she needs to determine the probability that the observed mean difference in sleep duration occurred by chance, assuming no true difference in sleep duration across conditions.
+
+To do this, she needs to create a **distribution of mean differences** under the null hypothesis:
+- Assume no true difference in sleep duration across conditions.
+- Randomly sample 30 (or n) students from this (simulated) population and compute the mean difference in sleep duration for each sample.
+- Repeat this process many times to build a distribution of mean differences.
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Example: Distribution of Mean Differences
+
+:: content ::
+
+<div class="flex justify-center space-x-6">
+  <img src="/images/lecture10/mean_diff_sleep_hist_n30_null.png" alt="n30" class="w-1/3" />
+  <img src="/images/lecture10/mean_diff_sleep_hist_n10_null.png" alt="n10" class="w-1/3" />
+</div>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Will the shape of these null distributions always be normal?
+</Admonition>
+
+</p>
+
+<p v-click>
+
+**Answer:** Yes, if the sample size is sufficiently large. Due to the Central Limit Theorem, the distribution of the mean differences will approach normality as the sample size increases.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Conducting a Paired-Sample *t* Test
+
+:: left ::
+
+Under the **null hypothesis**, we assume there is no average difference in sleep duration across the population:
+$$\mu_1 - \mu_2 = 0$$
+
+<img src="/images/lecture10/mean_diff_sleep_hist_n30_null.png"  class="w-3/4 mx-auto" />
+
+:: right ::
+
+- We can use this distribution of mean differences to determine the **probability of observing a mean difference as extreme as the one in our sample**, assuming the null hypothesis is true.
+
+- If the researcher observes a mean difference in sleep duration of 0.5 hours in her sample of 30 students, she can calculate the *t* statistic to see how many standard errors this observed mean difference is away from the null hypothesis mean difference of 0.
 
 
 
@@ -224,13 +256,501 @@ align: lt
 ---
 
 :: title ::
-# Recap: Worksheet example
+# Steps of a Paired-Sample *t* Test
 
 :: content ::
-- Let's go through the worksheet together.
-- I will attempt to fill it out in real time. 
-- Please correct me if I make a mistake!
 
+1. Identify populations, distribution, & assumptions.
+2. State null and research hypotheses.
+3. Determine characteristics of comparison distribution.
+4. Determine critical values (cutoffs).
+5. Calculate test statistic.
+6. Make a decision.
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Example: Sleep and Internet Access
+
+:: left ::
+A researcher wants to determine whether students sleep more when internet access in their dorms is restricted at night. She has 5 students report their average nightly sleep duration for one week *with* internet access and one week *without* internet access.
+
+- Hours of sleep **with** internet access:
+  - 6.5, 7.0, 6.0, 5.5, 6.0
+
+- Hours of sleep **without** internet access:
+  - 7.0, 7.5, 5.5, 6.0, 7.0
+
+:: right ::
+
+<p v-click>
+
+We'll test if mean hours of sleep differ across conditions using a **paired-samples *t test.***
+
+<img src="/images/lecture10/t_test_meme.jpg"  class="w-3/4 mx-auto" />
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Step 1: Populations & Assumptions
+
+:: content ::
+- Group 1: Sleep reports with internet access.
+- Group 2: Sleep reports without internet access.
+- Distribution: Differences between paired scores.
+- Assumptions:
+  - DV is numeric.
+  - Random sample of students.
+  - Population distribution (including SD in average numbers of sleep) is unknown.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Step 2: Hypotheses
+
+:: content ::
+- **Null (H₀):**  μ₁ = μ₂  (no mean difference)
+  - or equivalently:  μ₁ − μ₂ = 0
+  - In words: Students sleep the same amount with or without internet access.
+
+- **Research (H₁):**  μ₁ ≠ μ₂  (there is a difference)
+  - or equivalently:  μ₁ − μ₂ ≠ 0
+  - In words: Students sleep different amounts with vs. without internet access.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Step 3: Determine Characteristics of the Comparison Distribution
+
+:: content ::
+Under the null, the mean of the comparison distribution = 0. Because we don't know the population SD, we must estimate the standard deviation from the sample data, just like in a single-sample *t* test.
+
+<div class="text-xs w-2/3 mx-auto mt-2" style="line-height:1.1">
+
+<table class="border-collapse w-full">
+ <thead>
+    <tr>
+      <th>Participant</th>
+      <th>With Internet</th>
+      <th>Without Internet</th>
+      <th>Difference (D)</th>
+      <th>D − Mean D (0.4)</th>
+      <th>Squared Deviation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>6.5</td><td>7.0</td><td>0.5</td><td>0.1</td><td>0.01</td></tr>
+    <tr><td>2</td><td>7.0</td><td>7.5</td><td>0.5</td><td>0.1</td><td>0.01</td></tr>
+    <tr><td>3</td><td>6.0</td><td>5.5</td><td>-0.5</td><td>-0.9</td><td>0.81</td></tr>
+    <tr><td>4</td><td>5.5</td><td>6.0</td><td>0.5</td><td>0.1</td><td>0.01</td></tr>
+    <tr><td>5</td><td>6.0</td><td>7.0</td><td>1.0</td><td>0.6</td><td>0.36</td></tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5" style="text-align:right;"><strong>Sum of Squares (SS)</strong></td>
+      <td><strong>1.20</strong></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="text-align:right;"><strong>Sample Variance (s² = SS / 4)</strong></td>
+      <td><strong>0.30</strong></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="text-align:right;"><strong>Sample SD (√s²)</strong></td>
+      <td><strong>0.55</strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Step 3: Determine Characteristics of the Comparison Distribution
+
+:: content ::
+- Now, we can compute the standard error (SE) of the mean differences:
+  $$SE = \frac{s}{\sqrt{n}} = \frac{0.55}{\sqrt{5}} = 0.246$$
+- Thus, our comparison distribution has:
+  - Mean = 0
+  - SE = 0.246
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Step 4: Determine the Critical Values (or Cutoffs)
+
+:: content ::
+- df = N – 1 = 4
+- The critical values are determined by the t-distribution with 4 degrees of freedom.
+- We will use an alpha level of .05 for a two-tailed test.
+- We can find out critical values from a t-table or computer program:
+→ $t_{crit}= ± 2.776$
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Steps 5: Calculate the Test Statistic
+
+:: content ::
+- We calculate our *t* value using the formula:
+  $$t = \frac{M_{diff}-\mu_D}{SE}$$
+  where:
+  - $M_{diff}$ = sample mean difference
+  - $\mu_D$ = hypothesized population mean difference (0 under H₀)
+  - SE = standard error of the mean differences
+
+$$t = \frac{M_{diff}-0}{SE} = \frac{0.4}{0.246} = 1.63$$
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Steps 6: Make a Decision
+
+:: content ::
+- Compare calculated *t* to critical values:
+  - Calculated *t* = 1.63
+  - Critical values = ± 2.776
+
+1.63 < 2.776 → **Fail to Reject H₀**
+
+<img src="/images/lecture10/p_meme.jpg"  class="w-1/4 mx-auto" />
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Confidence Intervals for Paired-Sample *t* Tests
+
+:: content ::
+
+- A **confidence interval (CI)** provides a range of values within which we are fairly certain the true population parameter lies.
+- For a paired-samples *t* test, we can construct a CI around the sample mean difference to estimate the range of plausible values for the true mean difference in the population.
+- A 95% CI means that if we were to take many samples and construct a CI for each sample, approximately 95% of those intervals would contain the true population mean difference.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Computing a 95% Confidence Interval for the Mean Difference
+
+:: content ::
+- To compute a 95% confidence interval for the mean difference, we can use the following formula:
+  $$CI = M_{diff} \pm t_{crit} \times SE$$
+
+<p v-click>
+
+*Why can we use this formula?*
+- This formula is similar to the one used for single-sample *t* tests, but here we are using the mean difference and the standard error of the mean differences.
+
+</p>
+
+<p v-click>
+
+- Plugging in our values:
+  $$CI = 0.4 \pm 2.776 \times 0.246$$
+- This gives us:
+  $$CI = 0.4 \pm 0.683 = [-.283, 1.083] $$
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Interpreting the Confidence Interval
+
+:: content ::
+- The sample mean (0.4) is centered within CI [-0.283, 1.083].
+- If we repeated this study many times, ≈ 95% of CIs would contain the true population mean difference.
+- Because the CI includes 0, we cannot rule out the possibility that there is no true difference in sleep duration across conditions.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Beyond Hypothesis Testing: Effect Size
+
+:: content ::
+- The effect size indicates the magnitude of the difference between conditions in standard deviation units.
+
+- For paired-samples *t* tests, we can use **Cohen's d** to quantify effect size:
+  $$d = \frac{M_{diff} - 0}{s}$$
+  where:
+  - $M_{diff}$ = sample mean difference
+  - $s$ = sample standard deviation of the differences
+
+- Using our example:
+  $$d = \frac{0.4}{0.55} = 0.73$$
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Beyond Hypothesis Testing: Effect Size
+
+:: content ::
+
+ $$d = \frac{0.4}{0.55} = 0.73$$
+
+- Interpretation:
+- $d = 0.2$ → small effect.
+- $d = 0.5$ → medium effect.
+- $d = 0.8$ → large effect.
+
+*If this study were repeated with a larger sample size, we might find a significant (and meaningful) effect!*
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Practice: Paired-Samples *t* Test
+
+:: left ::
+
+*Students complete a short quiz twice — once with music, once in silence. The instructor wants to know if background music helps or hurts performance.*
+
+- Scores with music: 7, 6, 5, 8, 7
+- Scores without music: 8, 6, 7, 9, 8
+
+<Admonition title="Question" color="teal-light" width="100%">
+What would you tell the instructor about the effect of background music on quiz performance?
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+**Hint 1:** You will need to compute:
+- The difference in each pair of scores
+- The mean and standard deviation of the differences
+- The standard error of the mean differences
+- The *t* statistic
+
+</p>
+
+
+<p v-click>
+
+**Hint 2:** Using an alpha level of .05 for a two-tailed test, the critical values for df = 4 are ± 2.776.
+
+</p>
+
+<p v-click>
+
+**Hint 3:** It doesn't matter whether you subtract "with music - without music" or "without music - with music," as long as you are consistent. The magnitude of the *t* statistic will be the same; only the sign will differ.
+
+</p>
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Practice: Paired-Samples *t* Test (Solution)
+
+:: left ::
+
+1. Step 1: Populations & Assumptions
+- Group 1: Quiz scores with music.
+- Group 2: Quiz scores without music.
+- Distribution: Differences between paired scores.
+- Assumptions:
+  - DV is numeric.
+  - Random sample of students.
+  - Population distribution (including SD in quiz scores) is unknown.
+
+:: right ::
+
+2. Step 2: Hypotheses
+- **Null (H₀):**  μ₁ = μ₂  (no mean difference)
+  - or equivalently:  μ₁ − μ₂ = 0
+  - In words: Music does not affect quiz performance.
+
+- **Research (H₁):**  μ₁ ≠ μ₂  (there is a difference)
+  - or equivalently:  μ₁ − μ₂ ≠ 0
+  - In words: Music affects quiz performance.
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Practice: Paired-Samples *t* Test (Solution)
+
+:: content ::
+
+3. Step 3: Determine Characteristics of the Comparison Distribution
+
+<div class="text-xs w-2/3 mx-auto mt-2" style="line-height:1.1">
+
+<table class="border-collapse w-full">
+  <thead>
+    <tr>
+      <th>Participant</th>
+      <th>With Music</th>
+      <th>Without Music</th>
+      <th>Difference (D)</th>
+      <th>D − Mean D (-1)</th>
+      <th>Squared Deviation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>7</td><td>8</td><td>-1</td><td>0</td><td>0</td></tr>
+    <tr><td>2</td><td>6</td><td>6</td><td>0</td><td>1</td><td>1</td></tr>
+    <tr><td>3</td><td>5</td><td>7</td><td>-2</td><td>-1</td><td>1</td></tr>
+    <tr><td>4</td><td>8</td><td>9</td><td>-1</td><td>0</td><td>0</td></tr>
+    <tr><td>5</td><td>7</td><td>8</td><td>-1</td><td>0</td><td>0</td></tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5" style="text-align:right;"><strong>Sum of Squares (SS)</strong></td>
+      <td><strong>2.00</strong></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="text-align:right;"><strong>Sample Variance (s² = SS / 4)</strong></td>
+      <td><strong>0.50</strong></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="text-align:right;"><strong>Sample SD (√s²)</strong></td>
+      <td><strong>0.71</strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Practice: Paired-Samples *t* Test (Solution)
+
+:: left ::
+
+3. Step 3: Determine Characteristics of the Comparison Distribution (continued)
+- Now, we can compute the standard error (SE) of the mean differences:
+  $$SE = \frac{s}{\sqrt{n}} = \frac{0.71}{\sqrt{5}} = 0.318$$
+- Thus, our comparison distribution has:
+  - Mean = 0
+  - SE = 0.318
+
+:: right ::
+4. Step 4: Determine the Critical Values (or Cutoffs)
+- df = N – 1 = 4
+- The critical values are determined by the t-distribution with 4 degrees of freedom.
+- We will use an alpha level of .05 for a two-tailed test.
+- We can find out critical values from a t-table or computer program (and were told it here):
+→ $t_{crit}= ± 2.776$
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Practice: Paired-Samples *t* Test (Solution)
+
+:: left ::
+
+5. Step 5: Calculate the Test Statistic
+- We calculate our *t* value using the formula:
+  $$t = \frac{M_{diff}-\mu_D}{SE}$$
+  where:
+  - $M_{diff}$ = sample mean difference
+  - $\mu_D$ = hypothesized population mean difference (0 under H₀)
+  - SE = standard error of the mean differences
+
+$$t = \frac{M_{diff}-0}{SE} = \frac{-1}{0.318} = -3.14$$
+
+:: right ::
+
+<p v-click>
+
+6. Step 6: Make a Decision
+
+- Compare calculated *t* to critical values:
+  - Calculated *t* = -3.14
+  - Critical values = ± 2.776
+  - -3.14 < -2.776 → **Reject H₀**
+
+<StickyNote color="green-light" title="Answer" width="100%">
+The results suggest that background music has a significant effect on quiz performance, with students performing *worse* when music is played during the quiz.
+</StickyNote>
+
+</p>
 
 
 ---
@@ -243,7 +763,7 @@ align: lt
 # Reporting Results in APA Style
 
 :: content ::
-APA style tells us **how to clearly report statistics** so others can understand and replicate our work.  
+APA style tells us **how to clearly report statistics** so others can understand and replicate our work.
 It ensures clarity and consistency across psychology and related sciences.
 
 ---
@@ -258,17 +778,15 @@ align: lt
 
 :: content ::
 
-- **APA** = *American Psychological Association*  
-- A standardized format for writing and reporting scientific results  
-- Ensures clarity, transparency, and consistency across research papers  
+- **APA** = *American Psychological Association*
+- A standardized format for writing and reporting scientific results
+- Ensures clarity, transparency, and consistency across research papers
 
-<div class="mt-4 bg-blue-50 border-l-4 border-blue-400 p-3 rounded">
-
-**APA style guides how we:**  
-• write numbers and statistics  
-• report results of tests (*t*, *z*, *F*, etc.)  
-• format p-values, CIs, and effect sizes  
-</div>
+<StickyNote color="amber-light" title="APA style guides how we..." width="100%">
+• write numbers and statistics
+• report results of tests (*t*, *z*, *F*, etc.)
+• format p-values, CIs, and effect sizes
+</StickyNote>
 
 ---
 layout: top-title
@@ -281,13 +799,13 @@ align: lt
 # Why Use APA Style?
 
 :: content ::
-- Helps readers quickly interpret results.  
-- Makes research **replicable** and **comparable**.  
-- Prevents ambiguity — everyone reports in the same format. 
-- Required by most psychology journals and conferences. 
+- Helps readers quickly interpret results.
+- Makes research **replicable** and **comparable**.
+- Prevents ambiguity — everyone reports in the same format.
+- Required by most psychology journals and conferences.
 
 <div class="mt-3 italic text-gray-700">
-Think of APA as the “grammar rules” of scientific writing.
+Think of APA as the "grammar rules" of scientific writing.
 </div>
 
 ---
@@ -341,6 +859,24 @@ align: lt
 
 :: title ::
 
+# Formatting Rules (APA 7th Edition)
+
+:: content ::
+- Italicize *t*, *z*, *p*, *M*, *SD*, *F*, *r*
+- Use **two decimal places** for statistics (except *p*)
+- Report *p* values as:
+  - *p* = .042 (no leading zero)
+  - *p* < .001 (for very small values)
+- Match decimal precision across CIs and descriptive stats
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
 # Reporting a *z* Test
 
 :: content ::
@@ -351,7 +887,7 @@ $M = X, \ SD = Y, \ z = Z, \ p = P, \ d = D,  \text{ 95\% CI [LL, UL]}$
 
 **Example**
 
-Students’ average rent (*M* = $920, *SD* = $192) was significantly higher than the population mean of $500, *z* = 9.39, *p* < .001, *d* = 4.20, 95% CI \[$832, $1008].
+Students' average rent (*M* = $920, *SD* = $192) was significantly higher than the population mean of $500, *z* = 9.39, *p* < .001, *d* = 4.20, 95% CI \[$832, $1008].
 
 ✅ No *degrees of freedom* are reported for *z* tests. *Z* tests are based on known population parameters, not sample estimates, so df are not applicable.
 
@@ -372,7 +908,7 @@ $t(df) = X.XX, \ p = P, \ d = D, \text{ 95\% CI [LL, UL]}$
 
 **Example**
 
-The sample’s mean reaction time (*M* = 312 ms, *SD* = 28) was significantly faster than the population mean of 350 ms, *t*(14) = −5.68, *p* < .001, *d* = 1.47, 95% CI \[−50.1, −21.9].
+The sample's mean reaction time (*M* = 312 ms, *SD* = 28) was significantly faster than the population mean of 350 ms, *t*(14) = −5.68, *p* < .001, *d* = 1.47, 95% CI \[−50.1, −21.9].
 
 <br>
 
@@ -402,69 +938,6 @@ Participants recalled more words after caffeine (*M* = 12.3, *SD* = 2.1) than wi
 
 ✅ State the means and SDs for **both** conditions.
 
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Reporting an Independent-Samples *t* Test
-
-:: content ::
-
-**Template**
-
-$t(df) = X.XX, \ p = P, \ d = D, \text{ 95\% CI [LL, UL]}$
-
-**Example**
-
-Participants in the study-group condition had higher quiz scores (*M* = 84.6, *SD* = 4.2) than participants in the individual condition (*M* = 78.3, *SD* = 5.0), *t*(38) = 4.11, *p* < .001, *d* = 1.30, 95% CI \[3.21, 9.59].
-
-✅ State the means and SDs for **both** groups.
-
-<p v-click>
-
-**Practice question:** How many participants were in this study?
-
-A. 38
-
-B. 40
-
-C. 38 per group (76 total)
-
-D. 36
-
-</p>
-
-<p v-click>
-
-**Answer:** B. 40
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Formatting Rules (APA 7th Edition)
-
-:: content ::
-- Italicize *t*, *z*, *p*, *M*, *SD*, *F*, *r*  
-- Use **two decimal places** for statistics (except *p*)  
-- Report *p* values as:
-  - *p* = .042 (no leading zero)
-  - *p* < .001 (for very small values)
-- Match decimal precision across CIs and descriptive stats  
-
 ---
 layout: top-title
 color: indigo-light
@@ -480,9 +953,9 @@ align: lt
 <div>
 
 ### Always Include
-- Test type and statistic (*t*, *z*, etc.)  
-- df (for *t* tests)  
-- *p* value  
+- Test type and statistic (*t*, *z*, etc.)
+- df (for *t* tests)
+- *p* value
 - Descriptive stats (*M*, *SD*)
 
 </div>
@@ -490,9 +963,9 @@ align: lt
 <div>
 
 ### Usually Include
-- Effect size (*d*, *r*, etc.)  
-- Confidence interval  
-- Directional phrasing (“significantly greater than…”)
+- Effect size (*d*, *r*, etc.)
+- Confidence interval
+- Directional phrasing ("significantly greater than…")
 
 </div>
 
@@ -510,12 +983,9 @@ align: lt
 # APA Reporting: Practice 🧠
 
 :: content ::
-**Rewrite each in APA style:**
+**Rewrite in APA style:**
 
-1. The Caffeine group got an average of 14.2 right answers (standard deviation = 3), and the Placebo group got 11.1 right answers (SD 2.8). The difference was statistically significant with t = 3.2 and p=0.004, df = 28. The Effect size was D= 0.79 and 95 percent CI = (0.50 TO 4.80).
-
-2. Participants slept on average 7.6 Hours (s.d.=0.8) which was not significantly different from the national Mean of 7.5. The T test was not significant (P = .66; t = .45; DF=19). Cohen’s D = 0.06 and the 95% confidence interval was (-0.42 , 0.62).
-
+Participants slept on average 7.6 hours (s.d.=0.8) which was not significantly different from the national mean of 7.5. The T test was not significant (P = .66; t = .45; DF=19). Cohen's D = 0.06 and the 95% confidence interval was (-0.42 , 0.62).
 
 ---
 layout: top-title
@@ -524,208 +994,25 @@ align: lt
 ---
 
 :: title ::
-# Practice: Answers 
-
-::content ::
-Below are the **APA-corrected versions** of those two messy examples.
-
-#### ☕️ Correct Example 1 — Independent-Samples *t*
-
-> The caffeine group (*M* = 14.2, *SD* = 3.0) scored higher than the placebo group (*M* = 11.1, *SD* = 2.8),  
-> *t*(28) = 3.20, *p* = .004, *d* = 0.79, 95% CI \[0.5, 4.8].
-
-*What was fixed?*
-- Italicize statistical symbols (*t*, *p*, *d*, *M*, *SD*).  
-- Report *t*(df) = value, *p*, *d*, and 95% CI in this order.  
-- Use brackets for the CI and **no leading zeros** for *p* values less than 1.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Practice: Answers (Continued)
+# Practice: Answer
 
 :: content ::
-#### 😴 Correct Example 2 — One-Sample *t*
 
-> Participants slept an average of 7.6 hours (*SD* = 0.8), which did not differ significantly from the national mean of 7.5,  
+#### 😴 Correct Example — One-Sample *t*
+
+> Participants slept an average of 7.6 hours (*SD* = 0.8), which did not differ significantly from the national mean of 7.5,
 > *t*(19) = 0.45, *p* = .66, *d* = 0.06, 95% CI \[−0.42, 0.62].
 
 *What was fixed?*
-- Write numbers and units clearly (“7.6 hours”).  
-- Keep *p* = .66 (not *P* = 0.66).  
+- Italicize statistical symbols (*t*, *p*, *d*, *M*, *SD*).
+- Write numbers and units clearly ("7.6 hours").
+- Keep *p* = .66 (not *P* = 0.66), and report *t*(df) = value, *p*, *d*, and 95% CI in this order.
 - Report CI in brackets.
-
-
----
-layout: section
-color: indigo-light
-align: lt
----
-
-Moving to our next topic...
-# One-Way ANOVA
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Are We Worse Drivers When on the Phone?
-
-:: content ::
-
-A simple *t*-test compares driving ability when talking vs. not talking on the phone.
-
-<p v-click>
-
-But what if we wanted to compare **more than two conditions**?
-</p>
-
-
-<p v-click>
-
-💭 Possible conditions:  
-– Driving alone  
-– With a passenger  
-– On a cell phone  
-– On a video call  
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Can I Use a *t* Test to Compare >2 Groups?
-
-:: content ::
-
-If you used a *t*-test for every possible combination, you’d run many tests!
-
-- Driving alone vs. passenger  
-- Driving alone vs. video call  
-- Driving alone vs. cell phone  
-- Passenger vs. video call 
-- Passenger vs. cell phone  
-- Video call vs. cell phone  
-
-That’s **6 *t*-tests!**
-
-<p v-click>
-
-Is there any problem with that? 🤔  
-Yes — it **increases the chance of a Type I error** (false positive).
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why You Can’t Do Many *t* Tests
-
-:: content ::
-- Each test carries a 5% chance (*α* = .05) of a **Type I error** — falsely rejecting the null.  
-  - There is a 5% chance of concluding there is a difference when there really isn’t one.
-  - There is a 95% chance of correctly *failing* to reject the null.
-- The more *t*-tests you do, the higher your overall risk of error.  
-- This problem is called **alpha inflation**.
-
-<p v-click>
-
-With one test → 95% chance of correctly retaining the null & 5% chance of a false positive
-
-
-With two tests -> 95% chance of correctly retaining the null **twice** → $(0.95)^2 = 0.903$ → 10% chance of error
-
-
-With three tests → 95% chance of correctly retaining the null **three** times → $(0.95)^3 = 0.857$ → 14% chance of error
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why You Can’t Do Many *t* Tests (continued)
-
-:: content ::
-
-<p v-click>
-
-So if you did 6 *t*-tests (like in our example), you’d have **a 54% chance of a Type I error!**
-</p>
-
-<p v-click>
-<div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
-
-<strong>Conclusion:</strong> Multiple t-tests inflate the error rate. We need a single test for 3+ groups.
-</div>
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Solution: Using the *F* Statistic
-
-:: content ::
-When we want to compare **3 or more means**, we use the **F distribution** — the foundation of ANOVA.
-
-<p v-click>
-
-Like *z* and *t* tests, the *F* statistic is a **ratio**:
-
-</p>
-
-<p v-click>
-
-$$z = \frac{\text{Difference Between Means}}{\text{Standard Error}}$$
-
-</p>
-
-<br>
-
-<p v-click>
-
-$$t = \frac{\text{Difference Between Means}}{\text{Standard Error}}$$
-
-</p>
-
-<br>
-
-
-<p v-click>
-$$
-F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
-$$
-
-</p>
 
 ---
 layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!
-Tuesday: Exam 3 Review Session featuring lots of practice questions
+# That's all for today!
+We will continue with independent-samples *t* Tests (in R) on Thursday!

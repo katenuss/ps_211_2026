@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 8
-exportFilename: ps211_fall2025_lecture8
+exportFilename: ps211_fall2026_lecture8
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
-### Lecture 8: Hypothesis Testing with Z Tests (Continued)
+## Fall 2026 · Section C1
+### Lecture 8: The Central Limit Theorem & Standard Error
 
 ---
 layout: top-title
@@ -20,20 +20,17 @@ align: lt
 ---
 
 :: title ::
-# Updates and Reminders
+# Updates and reminders
 
 :: content ::
-- ==Exam 1== grades have been posted.
-- People did well! Median = 29.
-- If you would like to go over your exam, please come to office hours next week.
-- The next exam is somewhat soon, on **Thursday, October 16**.
-- Coming up: 
-    - Tuesday (10/7): Lecture 9
-    - Thursday (10/9): Exam 2 Review
-    - Tuesday (10/14): No class (Monday schedule)
-    - Thursday (10/16): Exam 2
-- ==Homework 2== will be posted by the end of the day tomorrow and is due on **Friday, October 10**.
-
+- ==Exam 2== covers Lectures 7-12.
+- Exam 2 Review is Tuesday, October 27.
+- Exam 2 is Thursday, October 29.
+- Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
+  - Write-Up 1 (t-test based): due Monday, November 16
+  - Write-Up 2 (ANOVA based): due Monday, December 7
+- Office hours: Tuesday 12:30-1:30pm, Thursday 9:00-10:00am.
+- Heads up: there is **no class** next Tuesday, October 13 (substitute Monday schedule).
 
 ---
 layout: top-title
@@ -42,73 +39,28 @@ align: lt
 ---
 
 :: title ::
-# Z Statistics for Distribution of *Means*
+# The Central Limit Theorem
 
 :: content ::
-If we want to think about the *z* statistic for a **group**, we need to change a few things:
-
-1. We use ==means== instead of raw scores.
-2. We calculate the mean and ==standard error== for the distribution of means.
-3. Then we calculate a *z* statistic for the sample mean.
+- ==The theorem:== Any **distribution of sample means** will be approximately normal if the sample size is sufficiently large.
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-4 transform">
-  When might this be useful?
-</div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">
+What is a "distribution of sample means"?
+</Admonition>
 
 </p>
 
 <p v-click>
 
-**Answer: All the time!**
-
-*We often want to know if a sample is different from a population.*
+**Answer:** A "distribution of sample means" is the distribution of the means of multiple samples taken from a population. It shows how the sample means vary and allows us to make inferences about the population mean.
 
 </p>
 
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Example: Dating Profiles
-
-:: left ::
-Researchers are studying online dating profile ratings.
-- They have a sample of 30 profiles from Rhode Island (RI).
-- RI sample (n=30): $M = 2.84$
-- U.S. population: $\mu = 2.5$, $SD = 0.833$  
-- **Is the RI sample mean different from the U.S. mean?**
-
-:: right ::
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-  What is the standard error for the distribution of means?
-</div>
-</div>
-
 <p v-click>
 
-**Answer:** $SE = SD/\sqrt{n} = 0.833/\sqrt{30} \approx 0.152$
-
-</p>
-
-<div class="mt-1 w-full flex justify-center">
-<div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-  What does this standard error tell us?
-</div>
-</div>
-
-<p v-click>
-
-**Answer:** The average sample mean computed from samples of size $n=30$ will be about 0.152 away from the population mean ($\mu$) of 2.5.
-
+**Example:** We want to estimate the average height of all PS 211 students. Each class, we measure the height of 5 randomly selected students and calculate the mean height of those 5 students. We repeat this process many times, each time selecting a new random sample of 5 students and calculating the mean height. The distribution of these sample means will be approximately normal, even if the original distribution of individual heights is not normal.
 </p>
 
 ---
@@ -118,219 +70,35 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Example: Dating Profiles (Continued)
+# Central Limit Theorem: Demo
 
 :: left ::
-Researchers are studying online dating profile ratings.
-- They have a sample of 30 profiles from Rhode Island (RI).
-- RI sample (n=30): $M = 2.84$
-- U.S. population: $\mu = 2.5$, $SD = 0.833$  
-- **Is the RI sample mean different from the U.S. mean?**
+# Dice Rolls
+- Imagine rolling a 6-sided die.
+- Roll it once, record the result.
+- Repeat many times, plot the distribution of results.
 
 :: right ::
 
-<div class="w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    How would we calculate a z statistic to determine how "extreme" the RI sample mean is?
-  </div>
-</div>
-
 <p v-click>
 
-1. Calculate standard error: $SE = 0.833/\sqrt{30} \approx 0.152$
-2. Calculate z statistic for the sample mean, using the population mean and standard error:
-
-$z = (M - \mu) / SE$
-
-$z = (2.84 - 2.5) / 0.152 \approx 2.24$
+<Admonition title="Question" color="teal-light" width="100%">
+What does this distribution look like?
+</Admonition>
 
 </p>
 
-
-<p v-click>
-The RI sample mean is more than 2 SDs above the U.S. mean.  
-
-We need to conduct a formal hypothesis test to determine if this difference is **statistically significant**.  
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Hypotheses
-
-:: content ::
-- **Null hypothesis ($H_0$):** There is no real difference. The populations from which samples are drawn are the same / equal. Any observed difference is due to chance.
-
-==The goal of hypothesis testing is to determine how likely our sample data would be if the null hypothesis were true.==
-
-**We do statistics to either: reject or fail to reject the null hypothesis.**
-
-We do not "prove" that the null hypothesis is true. We can only fail to reject it if we don't have enough evidence against it.
-
-*Absence of evidence is not evidence of absence. There could still be a difference that we just didn't detect.*
-
 <p v-click>
 
-- **Research hypothesis or alternative hypothesis ($H_1$):** What the researcher expects to find. Sometimes states the direction of the effect (e.g., group A will have a higher mean than group B).
-
-*The research hypothesis is the hypothesis that would be true if the null hypothesis is false.*
+<img src="/images/lecture6/dice_roll_hist.png" alt="Dice rolls 1" class="w-full mx-auto"/>
 
 </p>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Hypothesis Testing
-
-:: content ::
-- We use statistics to formally test hypotheses.
-- Statistical analyses are based on certain assumptions about the dataset.
-- ==Statistical assumptions== describe the ideal conditions for hypothesis testing. (More on this later!)
-- We want to ensure these assumptions are (mostly) met so that we can make accurate inferences.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Six Steps of Hypothesis Testing
-
-:: content ::
-1. Identify the populations, comparison distribution, and assumptions  
-- What populations are represented by the sample(s)?  
-- What is the comparison distribution? Is it a distribution of means? Raw scores?
-- What assumptions, if any, do our data meet? (More on this later!)
-  - This helps us choose the right statistical test!
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-2. State null and research hypotheses  
-- Your hypotheses should be about the **population(s)**, not the **sample(s)**. Remember, we want to make inferences about populations! 
-
 <p v-click>
 
-3. Determine characteristics of **comparison distribution.**  
-- The comparison distribution = the distribution based on the null hypothesis.
-- For *z* tests, we determine the mean and standard error of the comparison distribution and use this to calculate our test statistic.
+**Answer:** The distribution is ==uniform==, with each outcome (1-6) equally likely.
 
 </p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-4. Determine ==critical values==, or cutoffs  
-- The critical value defines the boundaries of the "extreme" scores. They determine how extreme the data must be (e.g., how large the *z* statistic must be) to reject the null hypothesis.
-- The standard in psychological research is typically .05 or 5%. 
-- For a "two-tailed" test, this means we reject the null hypothesis if the test statistic falls in the upper or lower 2.5% of our distribution.
-
-<img src="/images/lecture7/z_critical.png" alt="Critical Regions" class="w-3/4 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-4. Determine ==critical values==, or cutoffs  
-- The critical region is the area in the tails of the distribution beyond the critical values. Values that fall in the critical region are considered extreme enough to reject the null hypothesis.
-- The probabilities used to determine the critical values in hypothesis testing are called alpha levels.
-
-
-<img src="/images/lecture7/z_critical.png" alt="Critical Regions" class="w-3/4 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-5. Calculate test statistic
-- All the information from the previous steps is used to calculate the test statistic.
-- We will focus on the *z* statistic for now, but these same steps apply for other test statistics (to be discussed later in the course!)
-- Once we have our test statistic, we can compare it to the critical values from step 4 to determine whether the sample data is extreme enough to reject the null hypothesis.  
-
-<img src="/images/lecture7/p_val.png" alt="z stat and p" class="w-2/5 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-6. Determine whether you can reject the null hypothesis.
-- Reject if: The test statistic is beyond the cutoff
-- Fail to reject if: The test statistic is not beyond the cutoff
-- This usually involves comparing *p* values (obtained probabilities) to *alpha* values (predetermined cutoffs).
-- If we reject the null hypothesis, we say our results are ==statistically significant.==
-
-**Statistically significant**: Data are more extreme than what we would expect by chance if there truly were no actual difference.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# P values
-
-:: content ::
-- The *p* value is the probability of obtaining the observed results if the null hypothesis is true.
-- A smaller *p* value indicates stronger evidence against the null hypothesis.
-
-<img src="/images/lecture7/p_val_meme.jpg" alt="P value meme" class="w-1/3 mx-auto"/>
-
 
 ---
 layout: top-title-two-cols
@@ -339,32 +107,35 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Example: Santa’s Cookies
+# Central Limit Theorem: Demo (Continued)
 
 :: left ::
-- Santa Claus claims that the average bag of gingerbread cookies weighs 500g, and the standard deviation across cookie bags is 30g.
-
-<img src="/images/lecture7/santa_cookies.png" alt="Santa Cookies" class="w-3/4 mx-auto"/>
+# Sampling Dice Rolls
+- Now imagine randomly selecting two rolls from this distribution.
+- Compute their mean.
+- Repeat many times, plot the distribution of means.
 
 :: right ::
 
-*You are not sure whether what Santa is saying is true. You decide to test a hypothesis that the average weight of one bag of cookies is LESS than 500g.* 
+<p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What are your null and research hypotheses?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">
+What does the distribution of means look like?
+</Admonition>
+
+</p>
 
 <p v-click>
 
-**Answer:** 
-
-$H_0$: Average weight of one bag of cookies = 500g.
-
-$H_1$: Average weight of one bag of cookies < 500g.
+<img src="/images/lecture6/dice_roll_mean_hist.png" alt="Dice roll means" class="w-full mx-auto"/>
 
 </p>
+
+<p v-click>
+
+**Answer:** As the sample size increases, the distribution of means approaches a normal distribution, even though the original distribution is uniform!
+</p>
+
 
 
 ---
@@ -374,29 +145,135 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Example: Santa’s Cookies (Continued)
+# Distribution of Scores vs. Means
 
 :: left ::
-- You can’t test every single bag of cookies, so you weigh a sample of Santa's bags.
-- You collect 25 bags of cookies.
-- The mean weight of the 25 bags is 485 g.
 
-<img src="/images/lecture7/santa_cookies2.png" alt="Santa Cookies2" class="w-3/4 mx-auto"/>
+- Even if scores in a population aren’t normally distributed, the distribution of sample means will be approximately normal if the sample size is large enough.
+- This is the essence of the Central Limit Theorem.
+- A distribution of means is **less variable** than a distribution of raw scores.
+- This means it is less spread out.
 
 :: right ::
 
-
 <p v-click>
 
-- If the null hypothesis is true, your sampling distribution should look like this:
+<Admonition title="Question" color="teal-light" width="100%">
+Why is the distribution of means less variable than the distribution of raw scores?
+</Admonition>
 
-<img src="/images/lecture7/sample_dist.png" alt="Santa Cookies 3" class="w-7/8 mx-auto"/>
 </p>
 
 <p v-click>
 
-- But your sample mean is only 485 g, 15 g below the mean expected value.
+**Answer:** The distribution of means is less variable because averaging reduces the impact of extreme values. When we take the mean of a sample, we are essentially smoothing out the variability that exists in individual scores.
+</p>
 
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The Central Limit Theorem: Video Explanation
+
+:: content ::
+Let's watch someone else explain this!
+
+https://www.youtube.com/watch?v=YAlJCEDH2uY
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Standard Error of the Mean
+
+:: left ::
+
+- The ==standard error (SE)== is the name for the standard deviation of a distribution of sample means.
+
+- The formula for the standard error is:
+$$ SE = \frac{s}{\sqrt{n}} $$
+where $s$ is the sample standard deviation and $n$ is the sample size.
+
+:: right ::
+
+<p v-click>
+
+<AdmonitionType type="warning" width="100%">
+Where does this formula come from?
+</AdmonitionType>
+
+</p>
+
+<p v-click>
+
+**Answer:** The formula for the standard error comes from the fact that the variability of sample means is related to the variability of individual scores and the sample size. As we increase the sample size, the standard error decreases, reflecting the increased precision of our estimate of the population mean.
+
+*We can derive it mathematically, but that is beyond the scope of this class.*
+
+</p>
+
+
+---
+layout: center
+color: amber-light
+---
+
+<StickyNote color="amber-light" title="Why this matters" width="80%">
+
+The standard error is one of the most important ideas in this entire course.
+
+Every sample mean we compute "bounces around" the true population mean just by chance. The standard error lets us **quantify how much bounce to expect.**
+
+Very soon, we'll use exactly this idea to:
+- Build **z-tests** that ask "is our sample mean far enough from what we'd expect by chance?"
+- Construct **confidence intervals** around sample means
+- Run **hypothesis tests** more generally, across many different statistical tests
+
+Understanding standard error now will make everything else in this course click into place.
+
+</StickyNote>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Standard Error of the Mean
+
+:: left ::
+
+- The standard error tells us how much variability we can expect in sample means from one sample to another.
+- As sample size ($n$) increases, the standard error decreases.
+- This means that larger samples yield more ==precise== estimates of the population mean.
+- The **standard deviation** tells us the spread of individual data points, while the **standard error** helps quantify the uncertainty in our estimate of the population mean.
+
+
+:: right ::
+
+<p v-click>
+
+<AdmonitionType type="warning" width="100%">
+Why is this value important in psychological research?
+</AdmonitionType>
+
+</p>
+
+<p v-click>
+
+**Answer:** The standard error is important because it helps researchers understand how much their sample mean might vary from the true population mean.
+</p>
+
+<p v-click>
+<img src="/images/lecture6/barplot_sem.png" alt="Error bars" class="w-3/4 mx-auto"/>
 </p>
 
 
@@ -407,262 +284,113 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Example: Santa’s Cookies (Continued)
+# Calculating Standard Error
 
 :: left ::
-- Is this difference extreme enough to reject the null hypothesis, assuming an alpha level of .05?
-- Remember, Santa's claim is that cookie bags have a mean weight of 500g, and the SD across cookie bags is 30g. Your sample size is 25 bags.
 
-<img src="/images/lecture7/santa_cookies4.png" alt="Santa Cookies 4" class="w-1/2 mx-auto"/>
+- If the SD of a distribution of individual scores = 5
+- If we take samples of size $n = 25$, then the SE of the distribution of sample means is:
+$$ SE = \frac{5}{\sqrt{25}} = \frac{5}{5} = 1 $$
+
+<Admonition title="Question" color="teal-light" width="100%">
+What if we take samples of size $n = 9$? What if we take samples of size $n = 100$? Which will have a smaller SE? Why?
+</Admonition>
+
+
+:: right ::
+
+<p v-click>
+
+**Answer:**
+- For $n = 9$:
+$$ SE = \frac{5}{\sqrt{9}} = \frac{5}{3} \approx 1.67 $$
+
+- For $n = 100$:
+$$ SE = \frac{5}{\sqrt{100}} = \frac{5}{10} = 0.5 $$
+
+The sample size of $n = 100$ will have a smaller SE because the standard error decreases as the sample size increases. This reflects the increased precision of our estimate of the population mean with larger samples.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Practice: Putting concepts together
+
+:: left ::
+
+- Imagine you want to determine whether Psychology majors or Biology majors have higher GPAs. You randomly sample 30 students from each major and record their GPAs.
+
+<Admonition title="Question" color="teal-light" width="100%">
+What would be a good way to visualize these GPA distributions? Think of two types of plots that could be used for this purpose.
+</Admonition>
+
+<p v-click>
+
+1. **Box plots:** These would allow you to see the median, quartiles, and potential outliers for each major's GPA distribution.
+2. **Histograms:** These would show the frequency distribution of GPAs for each major, allowing you to see the shape of the distribution (e.g., normality, skewness).
+
+</p>
+
+
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+Now imagine you want to compare the mean GPAs of the two groups. What would be a good way to quantify your uncertainty in the estimate of these means? How could you visualize the uncertainty in your estimate of the mean GPA for each major?
+</Admonition>
+
+<p v-click>
+
+**Answer:** You could calculate the **standard error (SE)** for each group's mean GPA. 
+
+To visualize the uncertainty in your estimate of the mean GPA for each major, you could use barplots with error bars representing the SE for each group. 
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Practice: Putting concepts together (Continued)
+
+:: left ::
+
+# Let's take a look at what those plots might look like
 
 <br>
 
-<div class="mt-0 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    Use what you have learned today to come up with an answer!
-  </div>
-</div>
+<img src="/images/lecture6/gpa_barplot.png" alt="Barplot of gpa with error bars" class="w-1/2mx-auto"/>
+
+<p v-click>
+
+**Challenge question:** If the SE represents +/- 1 SD of the distribution of sample means, what is the probability that the true population mean falls within the error bars shown in the barplot?
+
+</p>
+
+<p v-click>
+
+<StickyNote color="green-light" title="Answer" width="100%">
+Approximately 68% of the time, since the error bars represent +/- 1 SD of the distribution of sample means.
+</StickyNote>
+
+</p>
+
 
 :: right ::
 
-<img src="/images/lecture7/z_table_2.gif" alt="z table" class="w-3/4 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Santa's Cookies: The Solution
-
-:: content ::
-- We can use the *z* statistic to address this question.
-- First, we can use *z* scores to standardize our data. If the mean of our sample data equals the population mean (our null hypothesis), then our *z* score will be 0.
-- Computing the *z* score:
-
-1. Compute difference in means: $485 - 500 = -15$
-2. Compute standard error: $30 / \sqrt(25) = 6$
-3. Compute *z* score for sample mean: $-15 / 6 = -2.5$.
-
-<p v-click>
-
-- Next, we want to determine ==how extreme== this *z* score is.
-- We can use our *z* table to look up the percentile, which is $1 - .9938 = .0062.$
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Santa's Cookies: The Solution (Continued)
-
-:: content ::
-
-- This means the probability of getting a value as extreme as ours is **.0062.** This is our *p value*. 
-
-
-<img src="/images/lecture7/cookies_answer.png" alt="Cookies 5" class="w-1/3 mx-auto"/>
-
-- Assuming we had set our alpha level at .05, then we would reject the null hypothesis, because there is < 5% chance that we would observe this pattern of data if the null were true.
-
-<p v-click>
-<div class="mt-0 w-full flex justify-center">
-  <div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-1 transform">
-    Be careful when moving back and forth between decimals and percents!
-
-    .05 = 5%
-    .0062 = .62%
-  </div>
-</div>
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Point estimates vs. interval estimates
-
-:: content ::
-
-- The best estimate of a population parameter is the corresponding sample statistic. This is called a ==point estimate.==
-- However, a point estimate is unlikely to be exactly equal to the population parameter.
-- For example, the best estimate of the population mean is the sample mean, but the sample mean is unlikely to be exactly equal to the population mean.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Point estimates vs. interval estimates (Continued)
-
-:: content ::
-
-- To account for this uncertainty, we can compute a range of values that is likely to contain the population parameter. This is called an ==interval estimate.==
-
-<img src="/images/lecture8/point_estimate.jpg" alt="Point vs Interval Estimate" class="w-1/2 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Example: Point estimates vs. interval estimates
-
-:: content ::
-
-- *You ask parents of middle schoolers how many hours their child spends on homework each week. You collect data from a sample of 50 parents. On average, parents report that their child spends 10 hours on homework each week.*
-- This is your ==point estimate== of the population mean. For example, you might report, "The average middle schooler spends 10 hours on homework each week."
-- But how confident are you that this is the true population mean? You can compute an ==interval estimate== to provide a range of values that likely contains the population mean.
-- Your interval estimate might be something like: 9 to 11 hours. You might report, "The average middle schooler spends between 9 and 11 hours on homework each week."
-
-<p v-click>
-
-<div class="mt-1 w-full flex justify-center">
-    <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow
-    -md p-4 transform">
-      But how do we compute this interval estimate?
-    </div>
-</div>
-
-</p>
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Confidence Intervals
-
-:: content ::
-- A common type of interval estimate is a ==confidence interval.==
-- A confidence interval is the range of values within which a population parameter is estimated to fall.
-- A confidence interval is usually expressed in terms of a percentage, such as 95% or 99%. This percentage is called the ==confidence level.==
-- A 95% confidence interval means that if we were to take many samples and compute a 95% confidence interval for each sample, then approximately 95% of those intervals would contain the true population parameter.
-
-<img src="/images/lecture8/head_explode.jpeg" alt="Head explode" class="w-1/4 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Confidence Intervals (Continued)
-
-:: content ::
-- When we compute a 95% confidence interval, we are *not* saying that there is a 95% probability that the population parameter falls within our specific interval. The population parameter is fixed; it either falls within our interval or it does not.
-- We **are** saying that we expect to find the population mean within this interval 95% of the time when we conduct the same study with the same sample size
-
-**Explanation**: https://www.youtube.com/watch?v=tFWsuO9f74o
-
-<img src="/images/lecture8/head_explode.jpeg" alt="Head explode" class="w-1/4 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Calculating confidence intervals with *z* distributions
-
-:: content ::
-
-You have: 
-- Sample mean (M): E.g., 10 hours of homework per week
-- Sample size (n): E.g., 50 middle schoolers
-- Population standard deviation (SD): E.g., 2 hours
-
-*Note: This is rare in practice! We will learn how to handle unknown population SDs later in the course.*
+<img src="/images/lecture6/gpa_hist.png" alt="Histogram of gpa" class="w-3/4 mx-auto"/>
 
 <br>
 
-You want:
-- ==95% Confidence interval (CI)== around the sample mean. 
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Calculating confidence intervals with *z* distributions (Continued)
-
-:: content ::
-
-1. Assume your **sample** mean lies in the center of a normal distribution.
-2. Determine the area under the normal curve that corresponds to your desired confidence level (e.g., 95%).
-- For a 95% CI, this is .95. This leaves .05 in the tails, or .025 in each tail. From this, you can determine the bounds of the CI.
-- For a 95% CI, the upper bound is .975. The lower bound is .025.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Calculating confidence intervals with *z* distributions (Continued)
-
-:: content ::
-3. Find the corresponding *z* scores for these bounds using a *z* table or computer programming.
-- For the upper bound (.975), the *z* score is approximately 1.96.
-- For the lower bound (.025), the *z* score is approximately -1.96.
-4. Convert the z statistic to raw scores. 
-- Use the formula: $X = \mu + z \times SE$, where $SE = SD/\sqrt{n}$.
-
-5. Now we have our 95% CI!
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# R Demo: Z Scores, Percentiles, and Confidence Intervals
-
-:: left ::
-- Let's do a demo in R to calculate z scores, percentiles, and confidence intervals. 
-- This will help prepare you for Homework 2, which involves some R coding.
-
-
-
+<img src="/images/lecture6/gpa_boxplot.png" alt="Boxplot of GPA" class="w-3/4 mx-auto"/>
 
 
 ---
@@ -670,5 +398,5 @@ layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!
-Next time: more on **t tests**
+# That's all for today!
+Next time: using z scores and the z table to compute percentiles — and our first hypothesis tests!

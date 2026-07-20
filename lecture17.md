@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 17
-exportFilename: ps211_fall2025_lecture17
+exportFilename: ps211_fall2026_lecture17
 ---
 
-# PS 211: Introduction to Experimental Design  
-## Fall 2025 · Section C1  
-### Lecture 17: Regression
+# PS 211: Introduction to Experimental Design
+## Fall 2026 · Section C1
+### Lecture 17: Correlation
 
 ---
 layout: top-title
@@ -23,23 +23,90 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- ==Homework 4== has been posted and is due **Dec. 2.**
-    - Remember, only your top 3 homework grades count.
-- ==Data Write-up== grades have been posted.
-    - We directly commented on your submitted PDFs.
-    - Good job! 🎉
-    - Please come to office hours if you have questions.
-    - If you have feedback about how the assignment can be improved, please let me know.
-        - Next year I will ask better questions on the pre-course survey. 
-- **No class or office hours next week!** 
-    - Happy Thanksgiving! 🦃
+- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **Monday, December 7** at 11:59pm.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
+- **No class Wed. 11/25 or Thurs. 11/26 — Happy Thanksgiving!** 🦃
 
 ---
 layout: section
 color: indigo-light
 ---
 
-# Part 1: What is Regression?
+# Correlation
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Recap: Statistical Tests We've Covered So Far
+
+:: content ::
+
+| **Test** | **# of IVs** | **IV Type** | **# of Levels** | **DV Type** | **Use Case** |
+|-----------|--------------|--------------|------------------|--------------|-----------------------|
+| *z-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (known SD)</span> |
+| *One-Sample t-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (unknown SD)</span> |
+| *Independent t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare two groups (e.g., School A vs. School B)</span> |
+| *Paired t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare same group before vs. after intervention or in two conditions</span> |
+| *One-Way (Between-Groups) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare 3+ groups (e.g., Drug A, B, C)</span> |
+| *Repeated-Measures (Within-Subjects) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare same participants across 3+ conditions</span> |
+
+<style>
+table {
+  font-size: 0.9rem;
+  width: 98%;
+  margin: auto;
+}
+th, td {
+  padding: 4px 6px;
+}
+</style>
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+But what if our IV is **numeric** (not categorical)?
+</SpeechBubble>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+:: title ::
+
+# Recap: Statistical Tests
+
+:: content ::
+
+| **Test** | **# of IVs** | **IV Type** | **# of Levels** | **DV Type** | **Use Case** |
+|-----------|--------------|--------------|------------------|--------------|-----------------------|
+| *z-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (known SD)</span> |
+| *One-Sample t-test* | 0 | — | — | Numeric | <span style="color:#7e57c2;">Compare sample mean to population mean (unknown SD)</span> |
+| *Independent t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare two groups (e.g., School A vs. School B)</span> |
+| *Paired t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare same group before vs. after intervention or in two conditions</span> |
+| *One-Way (Between-Groups) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare 3+ groups (e.g., Drug A, B, C)</span> |
+| *Repeated-Measures (Within-Subjects) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare same participants across 3+ conditions</span> |
+| ***Correlation*** | **1** | **Numeric** | — | **Numeric** | <span style="color:#7e57c2;">**Examine the relation between two numeric variables**</span> |
+
+<style>
+table {
+  font-size: 0.9rem;
+  width: 98%;
+  margin: auto;
+}
+th, td {
+  padding: 4px 6px;
+}
+</style>
+
 
 ---
 layout: top-title
@@ -48,37 +115,211 @@ align: lt
 ---
 
 :: title ::
-# What is Regression?
+# Defining Correlation
 
 :: content ::
+- A **correlation** is a systematic association (relation) between two variables.
+- It reflects **covariation** (“co-relation”) — how two numeric variables change together.
 
 <p v-click>
 
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-2 transform">
+- As discussed earlier in the course, ==correlations do *not* tell us about causation!==
+- We typically use correlations in **observational** (non-experimental) research designs.
 
-  Regression builds directly on correlation — today we move from *describing* relationships to *predicting* outcomes.
+</p>
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Review: Correlation vs. Causation
+
+:: content ::
+- **Correlation:** An association between two or more variables
+  - Variables are typically measured, not manipulated.
+  - Shows relations — but **not cause.**
+
+<p v-click>
+
+#### Advantages
+- Some research questions **cannot be studied experimentally** (e.g., unethical to manipulate the amount of stress in children's early life environments).
+- Efficient way to study **naturally occurring variables.**
+
+</p>
+
+<p v-click>
+
+#### Disadvantages
+- **Confounding variables** can create false associations.
+- **Causality cannot be inferred** — we can't tell which variable influences which.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Characteristics of Correlations
+
+:: content ::
+- Correlations are summarized by the **Pearson correlation coefficient** (*r*).
+- ==*r*== indicates both:
+  - **Direction** (positive or negative) of the relationship.
+    - Determined by the sign of *r* (+ or −).
+  - **Strength** (magnitude) of the relationship.
+    - Determined by the absolute value of *r* (ignoring sign).
+
+<p v-click>
+
+#### Interpreting *r* values:
+
+- *r* ranges from −1 to +1.
+- *r* = 0 → no linear relation
+- Larger absolute *r* → stronger relation
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Assumptions of Pearson's *r*
+
+:: content ::
+- Variables are **numeric**.
+- The relation between two variables is **linear**. (Pearson's *r* only captures linear relationships.)
+- Scores have been **randomly sampled** from the population.
+- The distributions from which the scores have been sampled are **approximately normal**.
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Directions of Correlation
+
+:: content ::
+- **Positive correlation:**
+  When one variable increases, the other tends to **increase** too.
+  > Example: Students who spend more hours on social media per day tend to report higher levels of anxiety (*r* = .38).
+
+<p v-click>
+
+- **Negative correlation:**
+  When one variable increases, the other tends to **decrease**.
+  > Example: Students who get more sleep per night tend to report lower stress levels (*r* = −0.43).
+
+</p>
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Examples: Penguin dimensions
+
+:: content ::
+<img src="/images/lecture16/penguins.jpg" class="w-1/3 rounded-lg mx-auto"/>
+
+<div class="flex justify-center items-start gap-4 mt-4">
+  <img src="/images/lecture16/corr1.png" class="w-1/3 rounded-lg shadow-md"/>
+  <img src="/images/lecture16/corr2.png" class="w-1/3 rounded-lg shadow-md"/>
+  <img src="/images/lecture16/corr3.png" class="w-1/3 rounded-lg shadow-md"/>
 </div>
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Identify the Correlation Type
+
+:: content ::
+Which of the following would you expect to show a **negative correlation**?
+
+A. Peoples' heights and weights
+
+B. The number of hours people spend studying and their exam scores
+
+C. Distance people live from campus and their attendance in classes
+
+D. Shoe size and GPA
+
+<p v-click>
+
+**Answer: C.** We would expect a negative correlation between distance from campus and class attendance — as distance increases, attendance tends to decrease.
+
+</p>
+
+<p v-click>
+
+**A.** We would expect a *positive* correlation between height and weight — as height increases, weight tends to increase as well.
+
+**B.** We would expect a *positive* correlation between the number of hours people spend studying and their exam scores — as study time increases, exam scores tend to increase as well.
+
+**D.** We would expect *no correlation* between shoe size and GPA — these variables are unrelated.
+
+</p>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Correlation Strength
+
+:: content ::
+
+- The **magnitude** of *r* (ignoring its sign) shows **strength**.
+- Larger absolute *r* → stronger linear relationship.
+
+Cohen's (1988) general guidelines:
+
+
+<div class="mt-2 w-full flex justify-center">
+<table class="text-sm border border-gray-300 rounded-lg shadow-md">
+  <thead>
+    <tr class="bg-indigo-100">
+      <th>Strength</th>
+      <th>|r| value</th>
+      <th>Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Small</td><td>.10</td><td>Weak relationship</td></tr>
+    <tr><td>Medium</td><td>.30</td><td>Moderate relationship</td></tr>
+    <tr><td>Large</td><td>.50</td><td>Strong relationship</td></tr>
+  </tbody>
+</table>
 </div>
 
-</p>
-
 <p v-click>
 
-- While correlation *describes* a relationship, regression quantifies how much change to expect in one variable given a change in another.
-
-- This lets us use one variable to **predict** another.
+In behavioral science, *r* values above .50 are **rare** — human behavior is noisy!
 </p>
 
-<p v-click>
-
-- **Correlation answers:**  
-  “Are X and Y related?”
-
-- **Regression answers:**  
-  “How much does Y change when X changes?”
-
-</p>
 
 ---
 layout: top-title
@@ -87,29 +328,13 @@ align: lt
 ---
 
 :: title ::
-# Regression vs. Correlation
+# Correlations are *Linear*
 
 :: content ::
 
-- Imagine we have data about ice cream sales per month (in dollars) and the number of shark attacks per month.
+*What is the correlation between these two variables?*
 
-<p v-click>
-
-- **Correlation** can tell us that ice cream sales and shark attacks are related ($r = .7$).
-
-</p>
-
-<p v-click>
-
-- But what if we want to **predict** shark attacks based on ice cream sales? For example, if monthly ice cream sales are $5000, how many shark attacks should we expect?
-
-</p>
-
-<p v-click>
-
-- **Regression** allows us to make this prediction by quantifying the relationship between ice cream sales and shark attacks.
-
-</p>
+<img src="/images/lecture16/nonlinear.png" class="w-1/3 rounded-lg mx-auto"/>
 
 ---
 layout: top-title
@@ -118,121 +343,32 @@ align: lt
 ---
 
 :: title ::
-# Regression Does Not Tell Us About Causation!
+# Correlations measure *linear* relationships
 
 :: content ::
-- Even though regression predicts, it **cannot** establish causality.
-- Why?
-  - Predictors are **not manipulated**.
-  - Confounds still exist.
-  - Observational data is **not** experimental data.
+
+*What is the correlation between these two variables?*
+
+<img src="/images/lecture16/nonlinear_labeled.png" class="w-1/3 rounded-lg mx-auto"/>
 
 <p v-click>
 
-**Key idea:**  
-Regression tells us how we should expect a variable to change *if a predictor changes*, not *why* the change occurs.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Regression Variables
-
-:: content ::
-In regression, we use **new terms** instead of IV and DV:
-
-- **Predictor variable** (X):  
-  The variable we use to make our prediction
-
-- **Outcome variable** (Y):  
-  The variable we want to predict
-
-<p v-click>
-
-Previously, we have used “independent” and “dependent” variable labels. But we have used these terms to describe **experiments** in which our independent variable was manipulated (e.g., condition assignment).
+- There is *no* linear relationship here — the pattern is curved.
 
 </p>
 
 <p v-click>
 
-In regression, we are often working with **observational data** where no variables are manipulated. Thus, we use the terms **predictor** and **outcome** to avoid implying causality.
+- We would need to use a different method (e.g., nonlinear regression) to capture this curved relationship.
 
 </p>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What is Regression Used For?
-
-:: content ::
-Regression is used in almost every field:
-
-- Content-recommendation algorithms
-- Dating apps
-- Economic forecasting
-- Public health forecasting
-- Risk assessment tools (e.g., recidivism)
-- Investment behavior
-- Etc.
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Regression in Psychology & Neuroscience
-
-:: left ::
-
-<p v-click>
-
-In ==psychology:==  
-Regression helps researchers understand how different variables **predict** behaviors and outcomes.
-
-</p>
-
-<p v-click>
-
-<img src="/images/lecture17/regression_example1.jpg" class="w-3/5  rounded-lg mx-auto"/>
-
-<small>*A regression model revealed that age predicts whether people are likely to choose options that are more uncertain. (Nussenbaum et al., 2023)*</small>
-
-</p>
-
-:: right ::
-
-<p v-click>
-
-In ==neuroscience:==  
-Regression helps researchers understand how different variables **predict** brain activity and how brain activity **predicts** behavior.
-
-<p v-click>
-
-
-<img src="/images/lecture17/regression_example2.jpg" class="w-3/5 rounded-lg mx-auto"/>
-
-<small>*A regression model revealed that age predicts how the prefrontal cortex (PFC) responds to high- vs. low-value information during memory encoding. (Nussenbaum & Hartley, 2021)*</small>
-
-</p>
-
-</p>
 ---
 layout: section
 color: indigo-light
 ---
 
-# Part 2: Simple Linear Regression
+# Part 2: Calculating and Interpreting *r*
 
 ---
 layout: top-title
@@ -241,225 +377,25 @@ align: lt
 ---
 
 :: title ::
-# Simple Linear Regression
+# The Pearson Correlation Coefficient (*r*)
 
 :: content ::
-Simple Linear Regression (SLR):
-- Used to **predict an outcome** (Y) based on **one predictor** (X).
-- We find the **line of best fit** through the data points.
+- The Pearson correlation coefficient is the most common measure of correlations between two variables.
+- It quantifies the **linear relationship** between two numeric variables.
 
 <p v-click>
-
-$$\hat{Y} = bX + a$$
-
-- **b** = slope  
-- **a** = intercept  
-- **Ŷ** = predicted outcome value  
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Understanding the Slope and Intercept
-
-:: content ::
-
-- The **slope (b)** tells us:
- ==How much Y is expected to change when X increases by 1 unit.==
-
-<p v-click>
-
-- If **b > 0** → higher X predicts higher Y (positive relationship)  
-- If **b < 0** → higher X predicts lower Y (negative relationship)  
-- If **b = 0** → X does not predict Y
-
-</p>
-
-<p v-click>
-
-- The **intercept (a)** tells us:
- ==The predicted value of Y when X = 0.==
-
-</p>
-
-<p v-click>
-
-- Sometimes X = 0 is not meaningful (e.g., GPA = 0, height = 0) --> remember interval scales!
-  - In those cases, the **intercept is still needed mathematically**, but we interpret it cautiously.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# What Does the Regression Line Represent?
-
-:: content ::
-
-- The regression line is the **prediction rule** for Y based on X.
-
-<p v-click>
-
-- It represents our **best guess** for the average value of Y at each level of X.
-
-</p>
-
-<p v-click>
-
-- Example:
-    - A therapist wants to predict their clients’ depression scores based on stressful life events.
-    - The therapist counts the number of stressful life events for every client in the past 2 years and their current depression scores.
-    - The therapist finds that the best fitting regression line has a slope of 2 and an intercept of 10.
-    - This means that for each additional stressful life event, the therapist predicts the depression score to increase by 2 points, starting from a baseline of 10 when there are no stressful life events.
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Finding the Regression Line: Ordinary Least Squares (OLS)
-
-:: content ::
-
-**Ordinary Least Squares (OLS)** is a common method used to find the **best-fitting line** in simple regression.
-
-It finds the line that **minimizes the total squared prediction error**:
 
 $$
-\text{SSE} = \sum (Y - \hat{Y})^2
+r = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}
 $$
-
-where:
-- **SSE** = Sum of Squared Errors
-- **Y** = Actual outcome values
-- **Ŷ** = Predicted outcome values from the regression line
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Finding the Regression Line: Ordinary Least Squares (OLS)
-
-:: content ::
-
-<img src="/images/lecture17/error.png" class="w-2/3 rounded-lg mx-auto"/>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Finding the Regression Line: Ordinary Least Squares (OLS)
-
-:: content ::
-
-$$
-\text{SSE} = \sum (Y - \hat{Y})^2
-$$
-
-<p v-click>
-
-### Why squared errors?
-- Prevents positive and negative errors from canceling.
-- Penalizes **large errors** more than small ones.
-- Makes math tractable and guarantees a unique best line.
-
 
 </p>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# OLS: Practice
-
-:: content ::
-
-**Which of the following describes (in words) the best-fitting regression line found using OLS?**
-
-A. The line that has an equal number of points above and below it.
-
-B. The line that minimizes the sum of squared deviations between actual and predicted Y values.
-
-C. The line that best predicts the **mean** of Y. 
-
-D. The line with the **largest** slope.
-
 <p v-click>
-
-**Answer: B.**  
-OLS finds the line with the **smallest sum of squared errors (SSE)**, which is the sum of squared deviations between actual and predicted Y values.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Error in Prediction
-
-:: content ::
-
-- Regression predictions are **not perfect**.
-- There will always be some error in our predictions.
-- These errors can come from:
-    - **Unexplained variance** in the data (i.e., factors not included in the model)
-    - **Random noise** in measurements
-    - **Individual differences** among subjects
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Error in Prediction
-
-:: content ::
-
-- The amount of error around the line of best fit can be quantified.
-- The ==standard error of the estimate== describes how far away (on average) the data points are from the line of best fit.
-
-<p v-click>
-
-- Computed as:
-$$SE_{estimate} = \sqrt{\frac{SSE}{df}}
-$$
 
 Where:
-- **SSE** = Sum of Squared Errors (from OLS)
-- **df** = degrees of freedom
-- For simple regression, **df = n - 2** (n = number of data points)
-
+- *xᵢ*, *yᵢ* = individual scores
+- *x̄*, *ȳ* = means of X and Y
 </p>
 
 ---
@@ -469,129 +405,19 @@ align: lt
 ---
 
 :: title ::
-# Error in Prediction
+# The Pearson Correlation Coefficient (*r*)
 
 :: content ::
 
-<img src="/images/lecture17/regression_standard_error.png" class="w-2/3 rounded-lg mx-auto"/>
+$$
+r = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}
+$$
 
 <p v-click>
 
-**Question:** How will increasing the number of data points (n) affect the standard error of the estimate?
-
+- Numerator = product of deviations from means (how X and Y move together)
+- Denominator = product of sums of squared deviations (standardizes the measure)
 </p>
-
-<p v-click>
-
-**Answer:** Increasing the number of data points (n) will generally **decrease** the standard error of the estimate. This is because a larger sample size provides more information about the population, leading to more accurate estimates of the regression parameters.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Proportionate Reduction in Error (PRE)
-
-:: content ::
-- PRE quantifies how much more accurate our predictions become when using regression versus simply using the **mean** of Y.
-- It is calculated as:
-
-$$PRE = \frac{SSE_{mean} - SSE_{regression}}{SSE_{mean}}$$
-
-
-<p v-click>
-
-This is the same as our earlier definition of R²: Variance explained by the regression model!
-
-$$PRE = R^2$$
-
-This is also called the **coefficient of determination**.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Proportionate Reduction in Error (PRE)
-
-:: content ::
-
-
-Interpreting R²:  
-- **R² = 0** → regression does not improve prediction  
-- **R² = 1** → perfect prediction  
-- **R² = .40** → 40% of variance explained
-
-
-<img src="/images/lecture17/pre.png" class="w-2/3 rounded-lg mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Proportionate Reduction in Error (PRE)
-
-:: content ::
-
-
-<img src="/images/lecture17/pre2.png" class="w-2/3 rounded-lg mx-auto"/>
-
-
-<img src="/images/lecture17/pre3.png" class="w-2/3 rounded-lg mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Proportionate Reduction in Error (PRE)
-
-:: content ::
-
-$$PRE = \frac{SSE_{mean} - SSE_{regression}}{SSE_{mean}}$$
-
-
-<p v-click>
-
-This is very similar to the formula for R² or $\eta^2$ in ANOVA:
-
-$$R^2 = \frac{SS_{between}}{SS_{total}}$$
-
-</p>
-
-<br> 
-
-<p v-click>
-
-Our numerators reflect the ==amount of variance explained by the model==, and our denominators reflect the ==total variance in the outcome variable==.
-
-</p>
-
-<p v-click>
-
-- Thus, R² in regression and $\eta^2$ in ANOVA both quantify the **proportion of variance explained** by the model.
-- They are measures of **effect size**.
-</p>
-
-
 
 
 
@@ -602,31 +428,62 @@ align: lt
 ---
 
 :: title ::
-# R² and Significance Testing
+# The Pearson Correlation Coefficient (*r*): Numerator
 
 :: content ::
 
-- **R²** tells us how much variance in Y is explained by the regression model.  
-  → It is an **effect size**.
+### Understanding the numerator:
 
-<p v-click>
+$$
+\sum(x_i - \bar{x})(y_i - \bar{y})
+$$
 
-- We can also ask: **Is this R² likely to be > 0 in the population, or could it be due to chance?**  
-  - In simple regression, this is equivalent to testing whether the **slope = 0** (or *r* = 0).  
-  - Like with an ANOVA, we can use an **F-test** to determine whether the overall regression model explains a significant amount of variance in Y.
-  - We use an ***F*-test** for the overall model.
-  - We use a *t* test for the slope.
-</p>
-
+- For each pair of scores, calculate how far each score is from its mean.
+- Multiply these deviations together.
+- Sum these products across all pairs.
 
 
 <p v-click>
 
-- Remember, our test statistic values depend on both effect size and sample size.  
-  - With a large enough sample, even a small R² can be statistically significant.  
-
+- Positive products (both above or both below means) increase *r*.
+- Negative products (one above, one below) decrease *r*.
 </p>
 
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The Pearson Correlation Coefficient (*r*): Denominator
+
+:: content ::
+
+### Understanding the denominator:
+
+$$
+\sqrt{\sum (x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}
+$$
+
+- For each variable, calculate squared deviations from the mean.
+- Sum these squared deviations.
+- Multiply the sums for X and Y, then take the square root.
+
+
+<p v-click>
+
+- This gives us an overall measure of variability for both variables.
+- This standardizes the correlation, ensuring *r* ranges from −1 to +1.
+</p>
+
+<p v-click>
+
+- Like our other statistics, *r* can be understood as a ==**signal-to-noise ratio**==:
+  - Numerator = signal (covariation)
+  - Denominator = noise (total variability)
+
+</p>
 
 
 
@@ -637,18 +494,22 @@ align: lt
 ---
 
 :: title ::
-# Unstandardized Coefficients
+# From Scatterplots to *r*
 
 :: content ::
-- Regression coefficients can be reported in **unstandardized** or **standardized** form.
-- ==Unstandardized coefficients== are reported in the **original units** of the variables.
+- We can visualize relationships using a **scatterplot**.
+  - Each point represents one participant.
+  - The participant's score on variable X is on the x-axis; score on variable Y is on the y-axis.
 
-**Unstandardized slope (b)**  
-- Interpreted in **raw units**  
-- Example: “For each additional stressful event, depression scores increase by 3.2 points.”
+- Scatterplots show:
+  - Direction (positive / negative)
+  - Strength (tightness of clustering)
 
-**Intercept (a)**  
-- Predicted Y when X = 0 (may or may not be meaningful)
+<p v-click>
+
+Remember: correlation measures **linear** relationships only — curved patterns can have *r* ≈ 0 even if related.
+</p>
+
 
 ---
 layout: top-title
@@ -657,19 +518,139 @@ align: lt
 ---
 
 :: title ::
-# Standardized Coefficients
+# The Pearson Correlation Coefficient (*r*): Understanding visually
 
 :: content ::
-- Standardized coefficients are reported in **standard deviation units**.
-- Variables are standardized (z-scored) before running the regression.
 
-**Standardized slope (β)**  
-- Interpreted in **standard deviation units**  
-- Example: “For each additional standard deviation increase in stressful events, depression scores increase by 0.45 standard deviations.”
+<img src="/images/lecture16/pearson_r_1.png" class="w-3/4 rounded-lg mx-auto"/>
 
-**Intercept (β₀)**  
-- Predicted Y when X is at its mean (i.e., when standardized X = 0)
 
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The Pearson Correlation Coefficient (*r*): Understanding visually
+
+:: content ::
+
+<img src="/images/lecture16/pearson_r_2.png" class="w-3/4 rounded-lg mx-auto"/>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Statistical Significance of *r*
+
+:: content ::
+- A significant *r* means the relationship between the two variables is **unlikely to be due to chance**.
+  - This means that the observed correlation in our sample likely reflects a true relation that exists in the population.
+
+<p v-click>
+
+- We can test the significance of *r* using the *t* statistic!
+  - This is a little confusing because we have previously used the *t* statistic to compare means, but here we use it to test correlations.
+  - This is a totally different test - the only similarity is that we are using the *t* distribution as our null distribution.
+</p>
+
+<p v-click>
+
+For a correlation with sample size *N*, we compute:
+
+$$
+t = \frac{r\sqrt{N-2}}{\sqrt{1 - r^2}}
+$$
+</p>
+
+<p v-click>
+
+- We then compare this *t* value to the critical value from the *t* distribution with *N − 2* degrees of freedom.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Statistical Significance of *r*
+
+:: content ::
+$$
+t = \frac{r\sqrt{N-2}}{\sqrt{1 - r^2}}
+$$
+
+==**Don't worry about memorizing this formula or understanding where it comes from.**==
+
+<br>
+
+<p v-click>
+
+Key ideas:
+- Larger absolute *r* → larger *t* → more likely to be significant.
+- Larger *N* → larger *t* → more likely to be significant.
+- Larger *N* → more degrees of freedom → smaller critical *t* → more likely to be significant.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Coefficient of Determination (*R²*)
+
+:: content ::
+- *R²* = proportion of shared variance between two variables.
+- We discussed R² in the context of ANOVA - it can also be used with correlations, and in fact, is directly related to *r*.
+
+$$
+R^2 = r^2
+$$
+
+<p v-click>
+
+- *R²* helps us understand how much of the variability in one variable is explained by the other.
+- If the two variables are correlated, that means that we can account for some of the variance in one variable by the other variable.
+- *R²* ranges from 0 to 1.
+- Larger *R²* → more shared variance → stronger relationship.
+</p>
+
+<p v-click>
+
+**Example:**
+If *r* = 0.90, then *R²* = 0.81 → 81% of variance in one variable is explained by the other.
+
+</p>
+
+<p v-click>
+
+The remaining 19 % is due to chance, measurement error, or other factors.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Partial Correlations
+
+:: content ::
+- A **partial correlation** shows how much of the relationship between two variables remains after removing the influence of a **third variable**.
+- In other words, the correlation coefficient expresses the relationship between two variables, over and above their association with a third variable.
 
 ---
 layout: top-title-two-cols
@@ -678,27 +659,20 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Unstandardized vs. Standardized Coefficients
+# Partial Correlations
 
 :: left ::
-### Unstandardized Coefficients
 
-#### Advantages
-- Easy to interpret in real-world terms
-- Useful for practical applications
-
-#### Disadvantages
-- Hard to compare across different scales
+**Example:**
+- People who play more sports tend to live longer.
+- Some of that relationship may be due to things like smoking, income, or alcohol use.
+- When we statistically remove (control for) those variables, the correlation gets smaller.
+- But if we remove the effect of **education**, the correlation between sports and longevity is still significant.
+- This tells us that **sports and longevity are related above and beyond education** — that remaining relationship is a **partial correlation**.
 
 :: right ::
 
-### Standardized Coefficients
-#### Advantages
-- Easy to compare across different predictors
-- Useful for understanding relative importance
-
-#### Disadvantages
-- Harder to interpret in real-world terms
+<img src="/images/lecture16/partial_correlation.png" class="w-7/8 rounded-lg mx-auto"/>
 
 
 ---
@@ -708,24 +682,14 @@ align: lt
 ---
 
 :: title ::
-# Example: Unstandardized vs. Standardized Coefficients
+# Outliers and Correlations
 
 :: content ::
-Imagine you are predicting house prices based on square footage and number of bedrooms.
-
-- **Unstandardized coefficients:**  
-  - Slope ($b$) for square footage = 150 (each additional square foot increases price by $150)  
-  - Slope ($b$) for number of bedrooms = 20,000 (each additional bedroom increases price by $20,000)
+- Outliers can **inflate** or **deflate** *r* dramatically.
 
 <p v-click>
 
-**Which predictor has a larger impact on price?**
-
-</p>
-
-<p v-click>
-
-**Answer:** It depends on the scale of the predictors. Square footage is measured in hundreds or thousands, while number of bedrooms is a small integer. Thus, we cannot directly compare their unstandardized coefficients.
+<img src="/images/lecture16/outlier.png" class="w-2/3 rounded-lg mx-auto"/>
 
 </p>
 
@@ -737,39 +701,144 @@ align: lt
 ---
 
 :: title ::
-# Example: Unstandardized vs. Standardized Coefficients
+# Outliers and Correlations
 
 :: content ::
-Imagine you are predicting house prices based on square footage and number of bedrooms.
+- Outliers can **inflate** or **deflate** *r* dramatically.
+
+
+<img src="/images/lecture16/outlier2.png" class="w-2/3 rounded-lg mx-auto"/>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Defining Outliers
+
+:: content ::
+- An **outlier** is a data point that differs significantly from other observations.
+- Outliers can arise from:
+  - Measurement errors (e.g., data entry mistakes)
+  - Natural variability (genuine extreme values)
+  - Sampling issues (e.g., non-representative samples)
+- There are multiple methods to identify outliers, including visual inspection and statistical tests.
+  - It is always extremely important to ==visually inspect your data== before conducting analyses.
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Detecting Outliers with Statistical Tests
+
+:: content ::
+- Common methods include:
+  - **Grubb's Test:** Identifies a single outlier in a normally distributed dataset.
+    - How far the suspected outlier is from the mean compared to the standard deviation.
+  - **Dixon Q's Test:** Suitable for small sample sizes to detect a single outlier.
+    - Compares the gap between the suspected outlier and its nearest neighbor to the range of the data.
+  - **IQR Method:** Values beyond 1.5 × IQR from Q1 or Q3 are considered outliers.
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Outliers: What should you do?
+
+:: content ::
+
+### Should you drop outliers?
+
+Drop if:
+- The data point is clearly wrong (error, typo).
+
+Keep them if:
+- They reflect genuine variation or critical outcomes.
 
 
 <p v-click>
 
-- **Standardized coefficients:**  
-  - Slope (β) for square footage = 0.6  
-  - Slope (β) for number of bedrooms = 0.4
+### Other ways of dealing with outliers
+- Some analysis methods are robust to outliers (e.g., Spearman's rank correlation).
+- Sometimes you can report results with and without outliers to show their impact.
 
 </p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Interpreting Correlations
+
+:: content ::
+Hill (1990) studied final exam grades in Sociology and found these correlations:
+
+| Variable | *r* |
+|-----------|----:|
+| Overall GPA | .72 |
+| Number of absences | −.51 |
+| Hours spent studying | .31 |
+
+Which variable shows the **strongest** relationship with exam grade?
+
+A. Hours spent studying
+B. Number of absences
+C. Overall GPA
 
 <p v-click>
-    
-**Now, which predictor has a larger impact on price?**
+
+**Answer: C.** Overall GPA (*r* = .72) has the strongest positive relationship with exam performance.
 
 </p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Direction & Causation
+
+:: content ::
+A study finds a correlation of *r* = −.45 between screen time and sleep quality.
+Which interpretation is most appropriate?
+
+A. Screen time causes poor sleep.
+
+B. Poor sleep causes increased screen time.
+
+C. A third variable (e.g., stress) affects both screen time and sleep quality.
+
+D. There is a negative association between screen time and sleep quality.
 
 <p v-click>
 
-**Answer:** Square footage has a larger impact on price, as indicated by its higher standardized coefficient (β = 0.6 vs. β = 0.4).
+**Answer: D.** There is a negative association between screen time and sleep quality. We cannot infer causation from correlation alone.
 
 </p>
-
 
 ---
 layout: section
 color: indigo-light
 ---
 
-# Part 3: Multiple Regression: Testing multiple predictors
+# Part 3: Correlations in R
 
 ---
 layout: top-title
@@ -778,481 +847,42 @@ align: lt
 ---
 
 :: title ::
-# Multiple Regression
-
-:: content ::
-
-Multiple regression predicts an outcome using **2+ predictors**:
-
-
-$$\hat{Y} = b_1X_1 + b_2X_2 + \dots + a$$
-
-Examples:
-- Predict GPA from hours studied + attendance  
-- Predict depression from stress + sleep + social support
-
-<p v-click>
-
-### Key idea:
-Each slope (**b₁**, **b₂**, …) represents the relationship between that predictor and Y **holding all other predictors constant**.
-
-This makes regression different from simple correlations.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Multiple Predictors
-
-:: content ::
-
-Imagine predicting Y from **two** predictors: X₁ and X₂.
-
-Each predictor explains a **different slice of variance**.
-
-
-<p v-click>
-
-### Why use multiple predictors?
-- Increases accuracy  
-- Reduces omitted-variable bias  
-- Helps control for confounds  
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Multiple Predictors
-
-:: content ::
-
-*You want to understand how stress and sleep relate to depression.*
-- You first run a simple linear regression predicting depression from sleep alone. You find that sleep significantly predicts depression ($b = -2, p < .01$).
-- However, you then run a ==multiple regression== including both stress and sleep as predictors. 
-    - Here, you find that stress significantly predicts depression ($b = 3, p < .001$), but sleep no longer significantly predicts depression ($b = -0.5, p = .15$).
-
-**What do these two findings suggest?**
-
-A. Sleep is not related to depression.  
-
-B. Stress predicts sleep.  
-
-C. Stress explains some of the same variance in depression as sleep.  
-
-D. Stress and sleep are unrelated.
-
-<p v-click>
-
-**Answer: C.**  If including stress in the model reduces the effect of sleep on depression, it suggests that stress and sleep share some variance in predicting depression.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Interaction Terms in Regression
-
-:: content ::
-
-- An **interaction** occurs when the effect of one predictor **depends on** the level of another predictor.
-
-- In other words:
-
-    - ==The relationship between X₁ and Y changes depending on X₂.==
-
-<p v-click>
-
-- This is the same as in ANOVA, where the effect of one IV depends on the level of another IV.
-
-</p>
-
-<p v-click>
-
-**Example:**  The effect of stress on depression may depend on social support.  
-- High social support may buffer the negative effect of stress on depression.
-
-</p>
-
-<br> 
-
-<p v-click>
-
-*To test for interactions in regression, we include an **interaction term** in the model:*
-
-$$\hat{Y} = b_1X_1 + b_2X_2 + b_3(X_1 \times X_2) + a$$
-</p>
-
-
-
----
-layout: section
-color: indigo-light
----
-
-# Part 4: Regression in R
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Simple Linear Regression in R
-
-:: content ::
-
-
-
-```r
-# Fit regression model
-model <- lm(depression ~ stress, data = df)
-summary(model)
-```
-
-```r
-Call:
-lm(formula = depression ~ stress, data = df)
-
-Residuals:
-       1        2        3        4        5        6 
--1.80000 -1.00000 -0.20000  2.60000  0.40000 -0.00000 
-
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   7.7714     1.1665   6.662  0.00117 ** 
-stress        2.8571     0.2878   9.928  0.00020 ***
----
-Signif. codes:  
-0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 1.897 on 4 degrees of freedom
-Multiple R-squared:  0.961,    
-Adjusted R-squared:  0.951 
-F-statistic: 98.57 on 1 and 4 DF,  p-value: 0.000195
-```
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Simple Linear Regression in R
+# R Practice: Computing Correlations
 
 :: content ::
 
 ```r
-
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   7.7714     1.1665   6.662  0.00117 ** 
-stress        2.8571     0.2878   9.928  0.00020 ***
----
-Signif. codes:  
-0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 1.897 on 4 degrees of freedom
-Multiple R-squared:  0.961,    
-Adjusted R-squared:  0.951 
-F-statistic: 98.57 on 1 and 4 DF,  p-value: 0.000195
+# Sample data
+df <- data.frame(
+  study_hours = c(2, 4, 5, 6, 8, 10),
+  exam_score  = c(55, 63, 68, 72, 85, 91)
+)
 ```
 
-<p v-click>
-
-- The slope for stress is 2.8571, meaning that for each additional unit increase in stress, depression scores are predicted to increase by approximately 2.86 points.
-- The R² value is 0.961, indicating that approximately 96.1% of the variance in depression scores is explained by stress.
-- The p-value for the stress predictor is .00020, indicating that the relationship between stress and depression is statistically significant.
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Multiple Regression in R
-
-:: content ::
-
-
+# Compute Pearson correlation
 ```r
-Call:
-lm(formula = depression ~ stress + sleep + social_support, data = df)
-Residuals:
-       1        2        3        4        5        6 
--1.20000 -0.80000  0.40000  1.60000  0.20000 -0.20000
-Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      5.1234     1.2345   4.150  0.00567 ** 
-stress           2.4567     0.3456   7.112  0.00045 ***
-sleep           -0.9876     0.4567  -2.163  0.07543 .
-social_support    1.2345     0.5678   2.173  0.06543 .
----
-Signif. codes:  
-0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1      
-Residual standard error: 1.567 on 3 degrees of freedom
-Multiple R-squared:  0.978,    
-Adjusted R-squared:  0.962 
-F-statistic: 57.89 on 3 and 3 DF,  p-value: 0.000123
+cor(df$study_hours, df$exam_score)
 ```
 
-<p v-click>
+# Test significance
+```r
+cor.test(df$study_hours, df$exam_score)
+```
+
+# Visualize with ggplot2
+```r
+library(ggplot2)
+ggplot(df, aes(x = study_hours, y = exam_score)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+```
 
-**Which predictor has the largest impact on depression?**
-
-</p>
-
-<p v-click>
-
-**Answer:** Stress has the largest impact on depression, as indicated by its highest t-value (7.112) and lowest p-value (.00045) among the predictors.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
-
----
-
-:: title ::
-
-# Recap: Regression
-
-:: content ::
-
-<p v-click>
-
-- Regression ==predicts== an outcome variable (Y) based on one or more predictor variables (X).
-
-</p>
-
-<p v-click>
-
-- We find the best-fitting line using **Ordinary Least Squares (OLS)**, which minimizes the sum of squared errors between our predictions and actual values.
-
-</p>
-
-<p v-click>
-
-- Simple linear regression uses one predictor, while multiple regression uses two or more predictors.
-
-</p>
-
-<p v-click>
-
-- Regression coefficients can be ==unstandardized (b) or standardized (β)==.
-
-</p>
-
-<p v-click>
-
-- R² quantifies the proportion of variance in Y explained by the model.
-
-</p>
-
-<p v-click>
-
-- We test the significance of individual predictors with *t*-tests and the overall model with an *F*-test.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
-
----
-
-:: title ::
-
-# Regression: Practice Questions
-
-:: content ::
-
-<p v-click>
-
-*A researcher uses hours studied (X) to predict final exam score (Y). The regression slope is b = 4.2, p < .01.*
-
-**What does this result mean in practical terms?**
-
-A. Students who study score exactly 4.2 points higher on their exam relative to students who do not study.
-
-B. For each extra hour studied, exam scores increase on average by 4.2 points.
-
-C. For each extra hour studied, exam scores increase by 4.2%.
-
-D. Students who study more tend to perform worse.
-
-</p>
-
-<p v-click>
-
-**Answer: B.**  
-The slope indicates that for each additional hour studied, the predicted exam score increases by 4.2 points on average.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
-
----
-
-:: title ::
-
-# Regression: Practice Questions
-
-:: content ::
-
-*The best-fitting regression line predicting stress level (Y) from hours of sleep (X) is:*
-
-$$\hat{Y} = 22 - 1.5X$$
-
-**What does the intercept (22) represent?**
-
-A. Predicted stress level when sleep = 0 hours
-
-B. Average stress level in the sample
-
-C. Minimum stress score possible
-
-<p v-click>
-
-**Answer: A.**  
-The intercept represents the predicted stress level when the predictor (hours of sleep) is equal to 0.
-</p>
-
-<p v-click>
-
-**How should we interpret this intercept in practical terms?**
-
-
-</p>
-
-<p v-click>
-
-Since 0 hours of sleep is not a realistic scenario, the intercept may not have a meaningful interpretation in this context. It is primarily a mathematical necessity for the regression equation.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
-
----
-
-:: title ::
-
-# Regression: Practice Questions
-
-:: content ::
-A study predicts job performance from years of experience. The model yields R² = .32.
-
-**Which is the most accurate interpretation of this R² value?**
-
-A. Experience causes 32% better job performance.
-
-B. Experience explains 32% of the variance in performance.
-
-C. 32% of employees are high performers.
-
-D. Performance can be predicted with 32% accuracy.
-
-<p v-click>
-
-**Answer: B.**  
-R² indicates that 32% of the variance in job performance is explained by years of experience
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Regression: Practice Questions
-
-:: content ::
-A study predicts college GPA using SAT score (X₁) and high school GPA (X₂).
-
-When SAT score is used alone, it significantly predicts college GPA ($b = 0.03, p < .01$). When both SAT score and high school GPA are included as predictors in the model, the slope for SAT becomes non-significant.
-
-**What is the best interpretation of this result?**
-
-A. SAT does not predict college GPA at all.
-
-B. SAT only predicts GPA for high-performing students.
-
-C. SAT and high school GPA explain overlapping variance.
-
-D. High school GPA causes SAT performance.
-
-<p v-click>
-
-**Answer: C.**
-
-Including high school GPA in the model accounts for some of the same variance in college GPA that SAT score explains, leading to a non-significant slope for SAT.
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
-
----
-
-:: title ::
-
-# Regression: Practice Questions
-
-:: content ::
-
-A regression predicts happiness from daily exercise duration. The slope is $b = 1.4, p = .28.$
-
-**Which conclusion is correct?**
-
-A. Exercise has no effect on happiness.
-
-B. We failed to find evidence that exercise predicts happiness.
-
-C. Exercise decreases happiness.
-
-D. The effect size is zero.
-
-<p v-click>
-
-**Answer: B.**  
-A non-significant p-value indicates that we did not find evidence that exercise duration predicts happiness in this sample. It does not prove that there is no effect in the population.
-</p>
 
 ---
 layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!  
-Enjoy Thanksgiving!  🦃
+# That's all for today!
+Next class: Regression!

@@ -6,12 +6,12 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Lecture 18
-exportFilename: ps211_fall2025_lecture18
+exportFilename: ps211_fall2026_lecture18
 ---
 
-# PS 211: Introduction to Experimental Design  
-## Fall 2025 · Section C1  
-### Lecture 18: Review, Non-Parametric Tests, P-Hacking, & Open Science
+# PS 211: Introduction to Experimental Design
+## Fall 2026 · Section C1
+### Lecture 18: Regression
 
 ---
 layout: top-title
@@ -23,17 +23,162 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- ==Homework 4== is due **today.**
-    - Remember, only your top three homework grades count.
-    - Answers will be posted tomorrow night.
+- Welcome back from Thanksgiving break!
+- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **this Monday, December 7** at 11:59pm.
+- Office hours this week:
+  - Tuesday: 12:30 - 1:30 pm (Kate)
+  - Thursday: 9:00 - 10:00 am (Kate)
+- Coming up:
+  - Lecture 19 (Thurs): Chi-Square & Non-Parametric Tests
+  - Exam 4 Review (Tues. 12/8)
+  - Exam 4 (Thurs. 12/10, last day of classes) — covers Lectures 15-19
 
-- ==Exam 4== is next Tuesday, **Dec. 9**.
-   - Review sheet will be posted today or tomorrow.
-    - Focuses on Lectures 14 - 18.
-    - **NO MAKE-UPS**
-- ==Final office hours are this week!==
-- ==Course evaluations== are open.
-    - Please complete! There will be time in class on Thursday to do so. (Bring your computer).
+---
+layout: section
+color: indigo-light
+---
+
+# Part 1: What is Regression?
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# What is Regression?
+
+:: content ::
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+Regression builds directly on correlation — today we move from *describing* relationships to *predicting* outcomes.
+</SpeechBubble>
+
+</p>
+
+<p v-click>
+
+- While correlation *describes* a relationship, regression quantifies how much change to expect in one variable given a change in another.
+
+- This lets us use one variable to **predict** another.
+</p>
+
+<p v-click>
+
+- **Correlation answers:**
+  “Are X and Y related?”
+
+- **Regression answers:**
+  “How much does Y change when X changes?”
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Regression vs. Correlation
+
+:: content ::
+
+- Imagine we have data about ice cream sales per month (in dollars) and the number of shark attacks per month.
+
+<p v-click>
+
+- **Correlation** can tell us that ice cream sales and shark attacks are related ($r = .7$).
+
+</p>
+
+<p v-click>
+
+- But what if we want to **predict** shark attacks based on ice cream sales? For example, if monthly ice cream sales are $5000, how many shark attacks should we expect?
+
+</p>
+
+<p v-click>
+
+- **Regression** allows us to make this prediction by quantifying the relationship between ice cream sales and shark attacks.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Regression Does Not Tell Us About Causation!
+
+:: content ::
+- Even though regression predicts, it **cannot** establish causality.
+- Why?
+  - Predictors are **not manipulated**.
+  - Confounds still exist.
+  - Observational data is **not** experimental data.
+
+<p v-click>
+
+**Key idea:**
+Regression tells us how we should expect a variable to change *if a predictor changes*, not *why* the change occurs.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Regression Variables
+
+:: content ::
+In regression, we use **new terms** instead of IV and DV:
+
+- **Predictor variable** (X):
+  The variable we use to make our prediction
+
+- **Outcome variable** (Y):
+  The variable we want to predict
+
+<p v-click>
+
+Previously, we have used “independent” and “dependent” variable labels. But we have used these terms to describe **experiments** in which our independent variable was manipulated (e.g., condition assignment).
+
+</p>
+
+<p v-click>
+
+In regression, we are often working with **observational data** where no variables are manipulated. Thus, we use the terms **predictor** and **outcome** to avoid implying causality.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# What is Regression Used For?
+
+:: content ::
+Regression is used in almost every field:
+
+- Content-recommendation algorithms
+- Dating apps
+- Economic forecasting
+- Public health forecasting
+- Risk assessment tools (e.g., recidivism)
+- Investment behavior
+- Etc.
 
 ---
 layout: top-title-two-cols
@@ -42,32 +187,70 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Review: Correlation and Regression
+# Regression in Psychology & Neuroscience
 
 :: left ::
 
-### **Correlation**
-- Measures **strength and direction** of a linear relationship  
-- Measure of how X and Y vary together relative to how much they vary individually
-- Symmetric: $r(X,Y) = r(Y,X)$
-    - The correlation between X and Y is the same as between Y and X
-- Ranges from −1 to +1  
-- Unitless  
-- Describes association only; no prediction
+<p v-click>
+
+In ==psychology:==
+Regression helps researchers understand how different variables **predict** behaviors and outcomes.
+
+</p>
+
+<p v-click>
+
+<img src="/images/lecture17/regression_example1.jpg" class="w-3/5  rounded-lg mx-auto"/>
+
+<small>*A regression model revealed that age predicts whether people are likely to choose options that are more uncertain. (Nussenbaum et al., 2023)*</small>
+
+</p>
 
 :: right ::
 
 <p v-click>
 
-### **Regression**
-- Predicts **Y from X** using a best-fit line  
-- Computed by minimizing squared errors between observed and predicted Y values
-- Asymmetric: $Y = bX + a  ≠  X = b'Y + a'$
-    - Predicting Y from X differs from predicting X from Y
-- Ranges from −∞ to +∞
-- Units matter  
-- Used for prediction.
+In ==neuroscience:==
+Regression helps researchers understand how different variables **predict** brain activity and how brain activity **predicts** behavior.
+
+<p v-click>
+
+
+<img src="/images/lecture17/regression_example2.jpg" class="w-3/5 rounded-lg mx-auto"/>
+
+<small>*A regression model revealed that age predicts how the prefrontal cortex (PFC) responds to high- vs. low-value information during memory encoding. (Nussenbaum & Hartley, 2021)*</small>
+
+</p>
+
+</p>
+---
+layout: section
+color: indigo-light
+---
+
+# Part 2: Simple Linear Regression
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Simple Linear Regression
+
+:: content ::
+Simple Linear Regression (SLR):
+- Used to **predict an outcome** (Y) based on **one predictor** (X).
+- We find the **line of best fit** through the data points.
+
+<p v-click>
+
+$$\hat{Y} = bX + a$$
+
+- **b** = slope
+- **a** = intercept
+- **Ŷ** = predicted outcome value
 
 </p>
 
@@ -78,29 +261,32 @@ align: lt
 ---
 
 :: title ::
-# Significance Testing: Correlation & Regression
+# Understanding the Slope and Intercept
 
 :: content ::
 
+- The **slope (b)** tells us:
+ ==How much Y is expected to change when X increases by 1 unit.==
+
 <p v-click>
 
-- Correlation and regression both assess linear relationships between variables.
-- These relationships can be tested for **statistical significance.**
+- If **b > 0** → higher X predicts higher Y (positive relationship)
+- If **b < 0** → higher X predicts lower Y (negative relationship)
+- If **b = 0** → X does not predict Y
 
 </p>
 
 <p v-click>
 
-- *Null hypothesis:* There is no linear association between X and Y (correlation = 0; slope = 0).
-- *Alternative hypothesis:* There is a linear association between X and Y (correlation ≠ 0; slope ≠ 0).
+- The **intercept (a)** tells us:
+ ==The predicted value of Y when X = 0.==
 
 </p>
 
 <p v-click>
 
-- For both, the test statistic depends on sample size (n) and effect size (r or slope).
-- Larger samples → more power to detect smaller effects.
-- Just like with all our inferential tests, ==**the p-value indicates probability of observing data if null is true.**==
+- Sometimes X = 0 is not meaningful (e.g., GPA = 0, height = 0) --> remember interval scales!
+  - In those cases, the **intercept is still needed mathematically**, but we interpret it cautiously.
 
 </p>
 
@@ -112,28 +298,117 @@ align: lt
 ---
 
 :: title ::
-# Relation between correlation & regression
+# What Does the Regression Line Represent?
 
 :: content ::
 
+- The regression line is the **prediction rule** for Y based on X.
+
 <p v-click>
 
-- If there is a linear relationship between X and Y, **both** correlation and regression will capture it.
-- If there is no linear relationship, both will indicate no association.
+- It represents our **best guess** for the average value of Y at each level of X.
 
 </p>
 
 <p v-click>
 
-
-- The regression slope can be very, very small even if correlation is strong, depending on the scales of X and Y.
-
+- Example:
+    - A therapist wants to predict their clients' depression scores based on stressful life events.
+    - The therapist counts the number of stressful life events for every client in the past 2 years and their current depression scores.
+    - The therapist finds that the best fitting regression line has a slope of 2 and an intercept of 10.
+    - This means that for each additional stressful life event, the therapist predicts the depression score to increase by 2 points, starting from a baseline of 10 when there are no stressful life events.
 </p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Finding the Regression Line: Ordinary Least Squares (OLS)
+
+:: content ::
+
+**Ordinary Least Squares (OLS)** is a common method used to find the **best-fitting line** in simple regression.
+
+It finds the line that **minimizes the total squared prediction error**:
+
+$$
+\text{SSE} = \sum (Y - \hat{Y})^2
+$$
+
+where:
+- **SSE** = Sum of Squared Errors
+- **Y** = Actual outcome values
+- **Ŷ** = Predicted outcome values from the regression line
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Finding the Regression Line: Ordinary Least Squares (OLS)
+
+:: content ::
+
+<img src="/images/lecture17/error.png" class="w-2/3 rounded-lg mx-auto"/>
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Finding the Regression Line: Ordinary Least Squares (OLS)
+
+:: content ::
+
+$$
+\text{SSE} = \sum (Y - \hat{Y})^2
+$$
 
 <p v-click>
 
-- Correlation quantifies ==strength of association.== 
-- Regression quantifies ==change in Y per unit change in X.==
+### Why squared errors?
+- Prevents positive and negative errors from canceling.
+- Penalizes **large errors** more than small ones.
+- Makes math tractable and guarantees a unique best line.
+
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# OLS: Practice
+
+:: content ::
+
+**Which of the following describes (in words) the best-fitting regression line found using OLS?**
+
+A. The line that has an equal number of points above and below it.
+
+B. The line that minimizes the sum of squared deviations between actual and predicted Y values.
+
+C. The line that best predicts the **mean** of Y.
+
+D. The line with the **largest** slope.
+
+<p v-click>
+
+**Answer: B.**
+OLS finds the line with the **smallest sum of squared errors (SSE)**, which is the sum of squared deviations between actual and predicted Y values.
 
 </p>
 
@@ -145,25 +420,253 @@ align: lt
 ---
 
 :: title ::
-# Relation between ANOVA & regression
+# Error in Prediction
 
 :: content ::
-- ANOVA can be viewed as a special case of regression where the predictor(s) is/are ==categorical.==
-- Remember, ANOVA asks: Is the variance between group means larger than the variance within groups?
-    - In regression terms, this is equivalent to asking: Does knowing the group membership (categorical predictor) help predict the outcome variable?
+
+- Regression predictions are **not perfect**.
+- There will always be some error in our predictions.
+- These errors can come from:
+    - **Unexplained variance** in the data (i.e., factors not included in the model)
+    - **Random noise** in measurements
+    - **Individual differences** among subjects
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Error in Prediction
+
+:: content ::
+
+- The amount of error around the line of best fit can be quantified.
+- The ==standard error of the estimate== describes how far away (on average) the data points are from the line of best fit.
 
 <p v-click>
 
-- Both ANOVA and regression use the same underlying principles of determining ==how much variance in the outcome can be explained by the predictors== versus how much remains unexplained (error).
+- Computed as:
+$$SE_{estimate} = \sqrt{\frac{SSE}{df}}
+$$
+
+Where:
+- **SSE** = Sum of Squared Errors (from OLS)
+- **df** = degrees of freedom
+- For simple regression, **df = n - 2** (n = number of data points)
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Error in Prediction
+
+:: content ::
+
+<img src="/images/lecture17/regression_standard_error.png" class="w-2/3 rounded-lg mx-auto"/>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+How will increasing the number of data points (n) affect the standard error of the estimate?
+</Admonition>
 
 </p>
 
 <p v-click>
 
-- Both can handle multiple predictors (factors in ANOVA; variables in regression), interactions, and mixed designs (combinations of within- and between-subjects factors/variables).
+**Answer:** Increasing the number of data points (n) will generally **decrease** the standard error of the estimate. This is because a larger sample size provides more information about the population, leading to more accurate estimates of the regression parameters.
 
 </p>
 
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Proportionate Reduction in Error (PRE)
+
+:: content ::
+- PRE quantifies how much more accurate our predictions become when using regression versus simply using the **mean** of Y.
+- It is calculated as:
+
+$$PRE = \frac{SSE_{mean} - SSE_{regression}}{SSE_{mean}}$$
+
+
+<p v-click>
+
+This is the same as our earlier definition of R²: Variance explained by the regression model!
+
+$$PRE = R^2$$
+
+This is also called the **coefficient of determination**.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Proportionate Reduction in Error (PRE)
+
+:: content ::
+
+
+Interpreting R²:
+- **R² = 0** → regression does not improve prediction
+- **R² = 1** → perfect prediction
+- **R² = .40** → 40% of variance explained
+
+
+<img src="/images/lecture17/pre.png" class="w-2/3 rounded-lg mx-auto"/>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Proportionate Reduction in Error (PRE)
+
+:: content ::
+
+
+<img src="/images/lecture17/pre2.png" class="w-2/3 rounded-lg mx-auto"/>
+
+
+<img src="/images/lecture17/pre3.png" class="w-2/3 rounded-lg mx-auto"/>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Proportionate Reduction in Error (PRE)
+
+:: content ::
+
+$$PRE = \frac{SSE_{mean} - SSE_{regression}}{SSE_{mean}}$$
+
+
+<p v-click>
+
+This is very similar to the formula for R² or $\eta^2$ in ANOVA:
+
+$$R^2 = \frac{SS_{between}}{SS_{total}}$$
+
+</p>
+
+<br>
+
+<p v-click>
+
+Our numerators reflect the ==amount of variance explained by the model==, and our denominators reflect the ==total variance in the outcome variable==.
+
+</p>
+
+<p v-click>
+
+- Thus, R² in regression and $\eta^2$ in ANOVA both quantify the **proportion of variance explained** by the model.
+- They are measures of **effect size**.
+</p>
+
+
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# R² and Significance Testing
+
+:: content ::
+
+- **R²** tells us how much variance in Y is explained by the regression model.
+  → It is an **effect size**.
+
+<p v-click>
+
+- We can also ask: **Is this R² likely to be > 0 in the population, or could it be due to chance?**
+  - In simple regression, this is equivalent to testing whether the **slope = 0** (or *r* = 0).
+  - Like with an ANOVA, we can use an **F-test** to determine whether the overall regression model explains a significant amount of variance in Y.
+  - We use an ***F*-test** for the overall model.
+  - We use a *t* test for the slope.
+</p>
+
+
+
+<p v-click>
+
+- Remember, our test statistic values depend on both effect size and sample size.
+  - With a large enough sample, even a small R² can be statistically significant.
+
+</p>
+
+
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Unstandardized Coefficients
+
+:: content ::
+- Regression coefficients can be reported in **unstandardized** or **standardized** form.
+- ==Unstandardized coefficients== are reported in the **original units** of the variables.
+
+**Unstandardized slope (b)**
+- Interpreted in **raw units**
+- Example: “For each additional stressful event, depression scores increase by 3.2 points.”
+
+**Intercept (a)**
+- Predicted Y when X = 0 (may or may not be meaningful)
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Standardized Coefficients
+
+:: content ::
+- Standardized coefficients are reported in **standard deviation units**.
+- Variables are standardized (z-scored) before running the regression.
+
+**Standardized slope (β)**
+- Interpreted in **standard deviation units**
+- Example: “For each additional standard deviation increase in stressful events, depression scores increase by 0.45 standard deviations.”
+
+**Intercept (β₀)**
+- Predicted Y when X is at its mean (i.e., when standardized X = 0)
 
 
 ---
@@ -173,532 +676,125 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Review of Inferential Statistics: The Core Idea
-
-::left::
-
-### Why do we need inferential statistics?
-- We typically observe **samples**, not populations.
-    - Remember, samples are just subsets of the larger population we care about.
-- We want to make **inferences** about populations.
-    - For example, when we're testing a treatment for depression, we want to know if it works for all people with depression, not just the people who happen to be in our study.
-
-::right::
-
-<p v-click>
-
-### Variability in Samples  
-
-- Samples have **variability** due to many factors.
-    - Sampling error: random variability between samples 
-    - Measurement error: imprecision in our measurements
-    - Individual differences: true variability among people
-    - **True population variability: differences in the population that we care about!**
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review of Inferential Statistics: The Core Idea (Continued)
-
-::content::
-
-- We use inferential statistics to evaluate whether the patterns we see in our sample data are likely to reflect ==true effects in the population==, or if they could have arisen just by chance due to variability.
-
-<p v-click>
-
-- We can think of all statistical tests as comparing **signal** to **noise**:
-    - Signal: the meaningful effect we are trying to detect (e.g., difference between groups, association between variables)
-    - Noise: the random variability that obscures the signal (e.g., individual differences, measurement error)
-
-</p>
-
-<p v-click>
-
-- The key question: **Is the signal strong enough relative to the noise to conclude that there is a real effect in the population?**
-
-</p>
-
-<p v-click>
-
-- Our ==test statistics== quantify this signal-to-noise ratio.
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Signal-to-Noise in Practice
-
-::left::
-**Examples of how we quantify signal**
-- Group mean differences (ANOVA, *t*-tests)
-- Strength of association (correlation, regression coefficients)
-
-::right::
-
-**Examples of how we quantify noise**
-- Standard deviation  
-- Standard error  
-- Within-group variance  
-- Residual error in regression
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Review: Standard Deviation and Standard Error
-
-::left::
-
-### **Standard Deviation (SD)**
-- One measure of the **spread of individual scores** (variability) in a sample/population
-- High SD: lots of variability among individuals
-- Low SD: individuals are similar to each other
-
-<p v-click>
-
-- When there is more variability in the data, it is harder to detect true effects (signal) because the noise is larger.
-
-</p>
-
-<p v-click>
-
-*Example: High variability in anxiety levels can make it more challenging to identify whether a treatment is effective, as the noise (individual differences) may obscure the signal (treatment effect).*
-
-</p>
-
-::right::
-
-<p v-click>
-
-### **Standard Error (SE)**
-- Equal to the SD of the sampling distribution of the mean.
-- Describes **how much sample means vary** across repeated samples. Quantifies uncertainty in our estimate of the population mean.
-- Answers the question: *If we took many samples from the same population, how much would their means differ from each other?*
-
-</p>
-
-<p v-click>
-
-- Formula:  
-  **SE = SD / √n**  
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Why Sample Size Matters
-
-:: content ::
-
-- Remember, test statistics depend on both effect size (signal) and variability (noise).
-- **Sample size (n)** directly affects the standard error (SE):  
-  **SE = SD / √n**
-- Larger samples reduce the SD of the sampling distribution (SE), making our estimates more precise.
-- This reduces noise in our signal-to-noise ratio, and makes it easier to detect true effects.
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Tests We’ve Covered 
-:: content ::
-### *Z*-test
-==***Does our sample mean come from a population with a known mean?***==
-
-- Population SD (σ) **must** be known (rare in practice).
-- Uses the standard normal distribution.
-- Example: testing if a new teaching method changes test scores compared to student scores from prior years with known population mean and SD.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Tests We’ve Covered 
-
-:: content ::
-### Single-sample *t*-test
-==***Does our sample mean come from a population with a known mean?***==
-- Population SD (σ) is unknown and must be estimated with sample SD (s).
-- Uses *t* distribution (wider tails than *z* distribution).
-- Example: testing if average sleep duration in a sample differs from the recommended 8 hours.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Tests We’ve Covered 
-
-:: content ::
-### Paired-samples *t*-test
-==***Are the means of two related measurements different?***==
-- Compare two measurements from the **same participants**.
-- Uses **difference scores** (e.g., post-test - pre-test).
-- Tests whether the mean difference is significantly different from zero.
-- Uses *t* distribution.
-- Example: testing if a training program improves fitness scores by comparing pre- and post-training scores.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Tests We’ve Covered
-
-:: content ::
-### Independent-samples t-test
-==***Are the means of two independent groups different?***==
-- Compare means of **two separate groups**  
-- Tests whether the difference in means is significantly different from zero.
-- Uses pooled estimate of variance from both groups.
-- Uses *t* distribution.
-- Example: testing if a new drug leads to lower blood pressure compared to a placebo.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Tests We’ve Covered 
-
-:: content ::
-### One-way Between-Subjects ANOVA
-==***Are the means of 3 or more independent groups different?***==
-
-- Compares **3+ independent groups**  
-- *F* statistic compares:
-  - **Between-group variance** (signal)  
-  - **Within-group variance** (noise)  
-- To determine *which* means differ, post-hoc tests (Tukey, Bonferroni) are required.
-
-Example: testing if different teaching methods lead to different average test scores across multiple classes.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Tests We’ve Covered 
-
-:: content ::
-### One-way Repeated-Measures ANOVA
-==***Are the means of 3 or more related measurements different?***==
-- Compares **3+ conditions** in same participants.
-- Accounts for within-subject variability (reduces noise).
-- *F* statistic compares:
-  - **Between-condition variance** (signal)  
-  - **Within-condition variance** (noise) ==after accounting for subject variability==
-- Example: testing if reaction times differ across three types of stimuli presented to the same participants.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Tests We’ve Covered 
-
-:: content ::
-### Factorial ANOVA
-==***Are the means of groups defined by multiple independent variables different?***==
-
-- Compares means across levels of **2+ independent variables (factors)**
-- Tests:
-  - Main effects  
-  - Interactions  
-- Interactions allow effects of one IV to depend on levels of another
-- Example: testing effects of drug type and dosage on symptom reduction.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Tests We’ve Covered 
-
-:: content ::
-### Correlation
-==***Are two continuous variables linearly related?***==
-
-- Measures linear association between two continuous variables (X and Y)
-- Quantified by **Pearson’s *r***, which indicates:
-  - Strength (magnitude) of association  
-  - Direction (positive/negative) of association
-- Can test significance of correlation by converting *r* to a *t*-statistic.
-    - Significance indicates whether the observed correlation is likely due to chance.
-    - Depends on effect size (*r*) and sample size (n).
-- Example: examining relationship between study time and exam scores.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Tests We’ve Covered 
-
-:: content ::
-### Simple Linear Regression
-==***Can we predict Y from X?***==
-
-- Predicts continuous outcome variable (Y) from a single continuous predictor (X)  
-- Finds best-fit line: $Y = bX + a$ by minimizing squared errors between observed and predicted Y values. 
-- Produces: slope (b), intercept (a), and residuals (errors).
-- Can examine standardized (β) or unstandardized (b) coefficients.
-- Can assess model fit (R²) and significance of slope.
-- Example: predicting shark attacks based on water temperature.
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Tests We’ve Covered 
-
-:: content ::
-
-### Multiple Regression
-==***Can we predict Y from multiple Xs?***==
-- Predicts continuous outcome variable (Y) from multiple continuous predictors (X1, X2, ...) simultaneously.
-- Allows testing unique contributions of each predictor.
-- Can include interaction terms to assess moderation effects.
-- Produces coefficients for each predictor, overall model fit (R²), and significance tests.
-- There are methods that allow us to include both continuous and categorical predictors (dummy coding) *as well as* both between- and within-subjects variables (mixed-effects models).
-- Example: predicting job performance from experience, education, and personality traits.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Assumptions of Parametric Tests
-
-:: content ::
-The tests we have discussed so far assume that:
-- Data are randomly sampled
-- Observations are independent
-- Distribution of scores (or residuals) in the population is **approximately normal**
-- Outcome variable is ==numeric==
-    - Interval or ratio scale
-    - Not ordinal or categorical
-
-<p v-click>
-
-- When assumptions hold: parametric tests are powerful.  
-- When badly violated: results can be biased.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Non-Parametric Tests: Overview
-
-:: content ::
-- Non-parametric tests do **not** assume normality or specific distributions.
-- They are more **robust** to violations of assumptions.
-- Often used with:
-  - Small sample sizes  
-  - Ordinal or categorical data
-  - Extreme outliers
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Common Non-Parametric Tests
-(do not memorize; just be aware of options)
-
-::left::
-### **Rank-based alternatives**
-- Mann–Whitney U (independent groups)  
-- Wilcoxon signed-rank (paired)  
-- Kruskal–Wallis (one-way ANOVA alt.)  
-- Friedman test (repeated-measures ANOVA alt.)  
-- Spearman’s ρ (correlation alt.)
-
-::right::
-### **For categorical / binary outcomes**
-- Chi-square goodness-of-fit  
-- Chi-square test of independence  
-- Fisher’s exact test  
-- McNemar’s test (paired binary)
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Example: Chi-Square (χ²) Tests
-
-:: content ::
-- Used for **categorical** data.
-- Equivalent to ANOVA / *t*-tests for categorical outcomes.
-- Chi-square evaluates whether **observed** frequencies differ from **expected** frequencies.
-
-<br> 
-
-## Two main types:
-- Goodness-of-fit (one categorical / nominal variable )  
-- Test of independence (two categorical / nominal variables)  
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Chi-Square Goodness-of-Fit Test
-
-:: content ::
-- Used when examining whether **one categorical variable** matches expected distribution.
-- Compares observed frequencies in each category to expected frequencies based on a theoretical distribution (e.g., uniform distribution).
-- Null hypothesis: observed frequencies match expected frequencies.
-- If large discrepancies: reject null hypothesis.
-- Null distribution: chi-square distribution with (k - 1) degrees of freedom (k = number of categories).
-- Example: Testing whether the distribution of favorite Top 5 Spotify artists differs from uniform distribution.
-
-### R function: chisq.test()
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Chi-Square Test of Independence
-
-:: content ::
-- Used when examining whether **two categorical variables** are associated.
-- Null hypothesis: no association between variables.
-- Alternative hypothesis: association exists.
-- Example: Testing whether voting preference (Democrat, Republican, Independent) is associated with age group (18-29, 30-44, 45-60, 60+).
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Limitations of Non-Parametric Tests
+# Unstandardized vs. Standardized Coefficients
 
 :: left ::
+### Unstandardized Coefficients
 
-### Disadvantages
-- Lower power  
-- Cannot model complex designs easily  
-- Harder to interpret effect sizes  
+#### Advantages
+- Easy to interpret in real-world terms
+- Useful for practical applications
 
-
-::right::
-
-### Advantages
-- Fewer assumptions  
-- More robust to outliers  
-- Useful for ordinal or categorical variables  
-- Still allow valid inference in messy real-world data
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Statistical Tests: Recap
-
-:: left ::
-- We have covered a variety of parametric inferential tests.
-    - *z*-tests, *t*-tests, ANOVA, correlation, regression
-- We have also discussed non-parametric alternatives.
-
-<p v-click>
-
-- But it is also important to remember that selecting the appropriate statistical test is only part of conducting meaningful, ethical, and useful research.
-
-
-</p>
-
+#### Disadvantages
+- Hard to compare across different scales
 
 :: right ::
 
+### Standardized Coefficients
+#### Advantages
+- Easy to compare across different predictors
+- Useful for understanding relative importance
+
+#### Disadvantages
+- Harder to interpret in real-world terms
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Example: Unstandardized vs. Standardized Coefficients
+
+:: content ::
+Imagine you are predicting house prices based on square footage and number of bedrooms.
+
+- **Unstandardized coefficients:**
+  - Slope ($b$) for square footage = 150 (each additional square foot increases price by $150)
+  - Slope ($b$) for number of bedrooms = 20,000 (each additional bedroom increases price by $20,000)
+
 <p v-click>
 
-<img src="/images/lecture18/power_responsibility.jpg" class="w-3/4  rounded-lg mx-auto"/>
+**Which predictor has a larger impact on price?**
 
+</p>
+
+<p v-click>
+
+**Answer:** It depends on the scale of the predictors. Square footage is measured in hundreds or thousands, while number of bedrooms is a small integer. Thus, we cannot directly compare their unstandardized coefficients.
+
+</p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Example: Unstandardized vs. Standardized Coefficients
+
+:: content ::
+Imagine you are predicting house prices based on square footage and number of bedrooms.
+
+
+<p v-click>
+
+- **Standardized coefficients:**
+  - Slope (β) for square footage = 0.6
+  - Slope (β) for number of bedrooms = 0.4
+
+</p>
+
+<p v-click>
+
+**Now, which predictor has a larger impact on price?**
+
+</p>
+
+<p v-click>
+
+**Answer:** Square footage has a larger impact on price, as indicated by its higher standardized coefficient (β = 0.6 vs. β = 0.4).
+
+</p>
+
+
+---
+layout: section
+color: indigo-light
+---
+
+# Part 3: Multiple Regression: Testing multiple predictors
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Multiple Regression
+
+:: content ::
+
+Multiple regression predicts an outcome using **2+ predictors**:
+
+
+$$\hat{Y} = b_1X_1 + b_2X_2 + \dots + a$$
+
+Examples:
+- Predict GPA from hours studied + attendance
+- Predict depression from stress + sleep + social support
+
+<p v-click>
+
+### Key idea:
+Each slope (**b₁**, **b₂**, …) represents the relationship between that predictor and Y **holding all other predictors constant**.
+
+This makes regression different from simple correlations.
 
 </p>
 
@@ -709,76 +805,21 @@ align: lt
 ---
 
 :: title ::
-# Beyond Statistics: Research Ethics
+# Multiple Predictors
 
 :: content ::
-- Ethical research practices are essential for credible, trustworthy science.
-- Misuse of statistics can lead to misleading or false conclusions.
-- Researchers have a responsibility to conduct and report research honestly and transparently.
-- There are entire courses on research ethics. Today, we're just going to briefly cover some key issues related to data analysis and reporting.
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+Imagine predicting Y from **two** predictors: X₁ and X₂.
 
-:: title ::
-# P-Hacking & Researcher Degrees of Freedom
-
-:: content ::
-- **P-hacking**: manipulating data or analyses to achieve statistically significant results ($p < 0.05$).
-- Examples:
-  - **Cherry-picking**: selecting only certain data points or analyses that support a desired conclusion.
-  - **Data dredging**: conducting multiple analyses without pre-specifying them, increasing the chance of finding false positives.
-  - **Post-hoc hypothesizing**: creating hypotheses after seeing the data, rather than before.
+Each predictor explains a **different slice of variance**.
 
 
 <p v-click>
 
-- **Researcher degrees of freedom**: choices researchers make during data collection, analysis, and reporting that can influence results.
-    - Examples: deciding when to stop data collection, which variables to include, how to handle outliers, etc.
-
-</p>
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# P-Hacking & Researcher Degrees of Freedom: Example
-
-:: content ::
-- Imagine a researcher testing a new drug's effect on anxiety.
-- They collect data from 20 participants and find $p = .08$ (not significant).
-- They decide to:
-  - Add 10 more participants → $p = .04$ (significant).
-  - Exclude 2 outliers → $p = .03$ (more significant).
-  - Test multiple outcome measures → find one with $p = .02$ (significant).
-- They report only the final significant result, ignoring the initial non-significant findings.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Why is P-Hacking a Problem?
-
-:: content ::
-- Increases false positive rates (Type I errors).
-- Undermines the credibility of research findings.
-- Can lead to incorrect conclusions and wasted resources.
-- Erodes public trust in science.
-
-<p v-click>
-
-- Contributes to the =="replication crisis"== in psychology and other fields.
+### Why use multiple predictors?
+- Increases accuracy
+- Reduces omitted-variable bias
+- Helps control for confounds
 
 </p>
 
@@ -789,16 +830,30 @@ align: lt
 ---
 
 :: title ::
-# The replication crisis in psychology
+# Multiple Predictors
 
 :: content ::
-- Many high-profile findings fail to replicate in subsequent studies, often due to questionable research practices like p-hacking.
-- Some findings that have been difficult to replicate include:
-    - Power posing effects  (e.g., standing in a "powerful" pose increases confidence and risk-taking)
-    - Priming effects (e.g., reading words related to old age makes people walk slower)
-    - Neonatal imitation (e.g., newborns imitating facial expressions)
 
-- These and other replication failures have led to increased scrutiny of research practices and calls for greater transparency and rigor in psychological science.
+*You want to understand how stress and sleep relate to depression.*
+- You first run a simple linear regression predicting depression from sleep alone. You find that sleep significantly predicts depression ($b = -2, p < .01$).
+- However, you then run a ==multiple regression== including both stress and sleep as predictors.
+    - Here, you find that stress significantly predicts depression ($b = 3, p < .001$), but sleep no longer significantly predicts depression ($b = -0.5, p = .15$).
+
+**What do these two findings suggest?**
+
+A. Sleep is not related to depression.
+
+B. Stress predicts sleep.
+
+C. Stress explains some of the same variance in depression as sleep.
+
+D. Stress and sleep are unrelated.
+
+<p v-click>
+
+**Answer: C.**  If including stress in the model reduces the effect of sleep on depression, it suggests that stress and sleep share some variance in predicting depression.
+
+</p>
 
 ---
 layout: top-title
@@ -807,52 +862,395 @@ align: lt
 ---
 
 :: title ::
-# P-Hacking & Researcher Degrees of Freedom: Solutions
+
+# Interaction Terms in Regression
 
 :: content ::
 
+- An **interaction** occurs when the effect of one predictor **depends on** the level of another predictor.
+
+- In other words:
+
+    - ==The relationship between X₁ and Y changes depending on X₂.==
+
 <p v-click>
 
-Some solutions:
-- Pre-register studies to specify analyses in advance.
-- Use robust statistical methods to reduce false positives.
-    - Example: Adjust for multiple comparisons.
-- Report effect sizes and confidence intervals, not just p-values.
-- Report all analyses, including failed ones.
-- Share data and code for transparency.
+- This is the same as in ANOVA, where the effect of one IV depends on the level of another IV.
 
+</p>
+
+<p v-click>
+
+**Example:**  The effect of stress on depression may depend on social support.
+- High social support may buffer the negative effect of stress on depression.
+
+</p>
+
+<br>
+
+<p v-click>
+
+*To test for interactions in regression, we include an **interaction term** in the model:*
+
+$$\hat{Y} = b_1X_1 + b_2X_2 + b_3(X_1 \times X_2) + a$$
 </p>
 
 
 
 ---
-layout: top-title-two-cols
+layout: section
 color: indigo-light
-align: lt-lt-lt
+---
+
+# Part 4: Regression in R
+
+---
+layout: top-title
+color: indigo-light
+align: lt
 ---
 
 :: title ::
-# Open Science: What & Why
+# Simple Linear Regression in R
 
-:: left ::
-### Open science includes:
-- Pre-registration: Determine hypotheses, methods, and analyses before data collection.
-- Registered reports: Peer review before data collection.
-- Sharing data: Make data publicly available.
-- Sharing code: Provide code for analyses.
+:: content ::
 
-:: right ::
 
-### Benefits:
-- Transparency  
-- Reproducibility  
-- Builds cumulative knowledge  
-- Reduces questionable research practices  
+
+```r
+# Fit regression model
+model <- lm(depression ~ stress, data = df)
+summary(model)
+```
+
+```r
+Call:
+lm(formula = depression ~ stress, data = df)
+
+Residuals:
+       1        2        3        4        5        6
+-1.80000 -1.00000 -0.20000  2.60000  0.40000 -0.00000
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)   7.7714     1.1665   6.662  0.00117 **
+stress        2.8571     0.2878   9.928  0.00020 ***
+---
+Signif. codes:
+0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.897 on 4 degrees of freedom
+Multiple R-squared:  0.961,
+Adjusted R-squared:  0.951
+F-statistic: 98.57 on 1 and 4 DF,  p-value: 0.000195
+```
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Simple Linear Regression in R
+
+:: content ::
+
+```r
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)   7.7714     1.1665   6.662  0.00117 **
+stress        2.8571     0.2878   9.928  0.00020 ***
+---
+Signif. codes:
+0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.897 on 4 degrees of freedom
+Multiple R-squared:  0.961,
+Adjusted R-squared:  0.951
+F-statistic: 98.57 on 1 and 4 DF,  p-value: 0.000195
+```
+
+<p v-click>
+
+- The slope for stress is 2.8571, meaning that for each additional unit increase in stress, depression scores are predicted to increase by approximately 2.86 points.
+- The R² value is 0.961, indicating that approximately 96.1% of the variance in depression scores is explained by stress.
+- The p-value for the stress predictor is .00020, indicating that the relationship between stress and depression is statistically significant.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Multiple Regression in R
+
+:: content ::
+
+
+```r
+Call:
+lm(formula = depression ~ stress + sleep + social_support, data = df)
+Residuals:
+       1        2        3        4        5        6
+-1.20000 -0.80000  0.40000  1.60000  0.20000 -0.20000
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)
+(Intercept)      5.1234     1.2345   4.150  0.00567 **
+stress           2.4567     0.3456   7.112  0.00045 ***
+sleep           -0.9876     0.4567  -2.163  0.07543 .
+social_support    1.2345     0.5678   2.173  0.06543 .
+---
+Signif. codes:
+0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Residual standard error: 1.567 on 3 degrees of freedom
+Multiple R-squared:  0.978,
+Adjusted R-squared:  0.962
+F-statistic: 57.89 on 3 and 3 DF,  p-value: 0.000123
+```
+
+<p v-click>
+
+**Which predictor has the largest impact on depression?**
+
+</p>
+
+<p v-click>
+
+**Answer:** Stress has the largest impact on depression, as indicated by its highest t-value (7.112) and lowest p-value (.00045) among the predictors.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+
+---
+
+:: title ::
+
+# Recap: Regression
+
+:: content ::
+
+<p v-click>
+
+- Regression ==predicts== an outcome variable (Y) based on one or more predictor variables (X).
+
+</p>
+
+<p v-click>
+
+- We find the best-fitting line using **Ordinary Least Squares (OLS)**, which minimizes the sum of squared errors between our predictions and actual values.
+
+</p>
+
+<p v-click>
+
+- Simple linear regression uses one predictor, while multiple regression uses two or more predictors.
+
+</p>
+
+<p v-click>
+
+- Regression coefficients can be ==unstandardized (b) or standardized (β)==.
+
+</p>
+
+<p v-click>
+
+- R² quantifies the proportion of variance in Y explained by the model.
+
+</p>
+
+<p v-click>
+
+- We test the significance of individual predictors with *t*-tests and the overall model with an *F*-test.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+
+---
+
+:: title ::
+
+# Regression: Practice Questions
+
+:: content ::
+
+<p v-click>
+
+*A researcher uses hours studied (X) to predict final exam score (Y). The regression slope is b = 4.2, p < .01.*
+
+**What does this result mean in practical terms?**
+
+A. Students who study score exactly 4.2 points higher on their exam relative to students who do not study.
+
+B. For each extra hour studied, exam scores increase on average by 4.2 points.
+
+C. For each extra hour studied, exam scores increase by 4.2%.
+
+D. Students who study more tend to perform worse.
+
+</p>
+
+<p v-click>
+
+**Answer: B.**
+The slope indicates that for each additional hour studied, the predicted exam score increases by 4.2 points on average.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+
+---
+
+:: title ::
+
+# Regression: Practice Questions
+
+:: content ::
+
+*The best-fitting regression line predicting stress level (Y) from hours of sleep (X) is:*
+
+$$\hat{Y} = 22 - 1.5X$$
+
+**What does the intercept (22) represent?**
+
+A. Predicted stress level when sleep = 0 hours
+
+B. Average stress level in the sample
+
+C. Minimum stress score possible
+
+<p v-click>
+
+**Answer: A.**
+The intercept represents the predicted stress level when the predictor (hours of sleep) is equal to 0.
+</p>
+
+<p v-click>
+
+**How should we interpret this intercept in practical terms?**
+
+
+</p>
+
+<p v-click>
+
+Since 0 hours of sleep is not a realistic scenario, the intercept may not have a meaningful interpretation in this context. It is primarily a mathematical necessity for the regression equation.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+
+---
+
+:: title ::
+
+# Regression: Practice Questions
+
+:: content ::
+A study predicts job performance from years of experience. The model yields R² = .32.
+
+**Which is the most accurate interpretation of this R² value?**
+
+A. Experience causes 32% better job performance.
+
+B. Experience explains 32% of the variance in performance.
+
+C. 32% of employees are high performers.
+
+D. Performance can be predicted with 32% accuracy.
+
+<p v-click>
+
+**Answer: B.**
+R² indicates that 32% of the variance in job performance is explained by years of experience
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Regression: Practice Questions
+
+:: content ::
+A study predicts college GPA using SAT score (X₁) and high school GPA (X₂).
+
+When SAT score is used alone, it significantly predicts college GPA ($b = 0.03, p < .01$). When both SAT score and high school GPA are included as predictors in the model, the slope for SAT becomes non-significant.
+
+**What is the best interpretation of this result?**
+
+A. SAT does not predict college GPA at all.
+
+B. SAT only predicts GPA for high-performing students.
+
+C. SAT and high school GPA explain overlapping variance.
+
+D. High school GPA causes SAT performance.
+
+<p v-click>
+
+**Answer: C.**
+
+Including high school GPA in the model accounts for some of the same variance in college GPA that SAT score explains, leading to a non-significant slope for SAT.
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+
+---
+
+:: title ::
+
+# Regression: Practice Questions
+
+:: content ::
+
+A regression predicts happiness from daily exercise duration. The slope is $b = 1.4, p = .28.$
+
+**Which conclusion is correct?**
+
+A. Exercise has no effect on happiness.
+
+B. We failed to find evidence that exercise predicts happiness.
+
+C. Exercise decreases happiness.
+
+D. The effect size is zero.
+
+<p v-click>
+
+**Answer: B.**
+A non-significant p-value indicates that we did not find evidence that exercise duration predicts happiness in this sample. It does not prove that there is no effect in the population.
+</p>
 
 ---
 layout: cover
 color: indigo-light
 ---
 
-# That’s all for today!  
-See you Thursday for Exam 4 review!
+# That's all for today!
+Next class: Chi-Square & Non-Parametric Tests

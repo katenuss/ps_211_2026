@@ -6,11 +6,11 @@ color: indigo-light
 theme: neversink
 mdc: true
 neversink_slug: PS 211 - Exam 1 Review
-exportFilename: ps211_fall2025_exam1_review
+exportFilename: ps211_fall2026_exam1_review
 ---
 
 # PS 211: Introduction to Experimental Design
-## Fall 2025 · Section C1
+## Fall 2026 · Section C1
 ### Exam 1 Review Session
 
 ---
@@ -23,11 +23,10 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- ==Exam 1== is on Thursday.
-- You will not need a calculator for the exam.
-- You can bring one 8.5"x11" sheet of notes (front and back).
-- The exam will cover everything up to and including lecture 5: null and research hypotheses
-- The exam will consist of 33 multiple choice questions. You will only need to answer 30 questions correctly to get 100%.
+- ==Exam 1== is on **Tuesday, September 29** during our regular class time.
+- The exam will be **in class**, multiple choice, and **no calculator** is needed.
+- You can bring a handwritten, double-sided cheat sheet (you can write on the provided review sheet, both sides, or use your own blank paper).
+- The exam will cover everything up to and including Lecture 6: null and research hypotheses.
 - Having your computer or phone out during the exam will result in a 0 for the exam.
 - You will have the entire class period (75 minutes) to complete the exam.
 - Please bring a pencil. 
@@ -104,11 +103,7 @@ align: lt-lt-lt
 :: right ::
 <img src="/images/lecture1/levels_of_measurement.jpg" alt="levels of measurement" />
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Can you think of examples of each type?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Can you think of examples of each type?</Admonition>
 
 
 ---
@@ -133,11 +128,7 @@ You conduct a survey of college students to understand how demographics relate t
 
 :: right ::
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    Which of these variables are qualitative and which are quantitative? Which are discrete and which are continuous? Which are nominal, ordinal, interval, and ratio?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which of these variables are qualitative and which are quantitative? Which are discrete and which are continuous? Which are nominal, ordinal, interval, and ratio?</Admonition>
 
 <p v-click>
 
@@ -252,11 +243,7 @@ align: lt
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How would you describe the reliability and validity of this new questionnaire?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How would you describe the reliability and validity of this new questionnaire?</Admonition>
 
 </p>
 
@@ -281,11 +268,7 @@ align: lt
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    What evidence would you use to support your argument?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">What evidence would you use to support your argument?</Admonition>
 
 </p>
 
@@ -309,11 +292,7 @@ align: lt
   - Example: Happiness could be operationally defined as "self-reported happiness on a 1-10 scale" or "number of smiles in a 5-minute video""
 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you operationalize musical ability?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">How could you operationalize musical ability?</Admonition>
 
 <p v-click>
 
@@ -322,11 +301,7 @@ align: lt
 </p>
 
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    How could you operationalize stress?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">How could you operationalize stress?</Admonition>
 
 <p v-click>
 
@@ -431,11 +406,7 @@ align: lt
 :: content ::
 
 <p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-A teacher gives a very easy test to a class of students. Most students score between 90 and 100, with a few scoring slightly lower. What kind of skew would you expect in the distribution of test scores? Is there a floor or ceiling effect?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">A teacher gives a very easy test to a class of students. Most students score between 90 and 100, with a few scoring slightly lower. What kind of skew would you expect in the distribution of test scores? Is there a floor or ceiling effect?</Admonition>
 </p>
 
 <p v-click>
@@ -445,11 +416,7 @@ A teacher gives a very easy test to a class of students. Most students score bet
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-  Why is this ceiling effect potentially problematic?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">Why is this ceiling effect potentially problematic?</Admonition>
 
 </p>
 
@@ -473,11 +440,7 @@ align: lt
 *Consider the following scenarios and determine whether the distribution of scores is likely to be positively skewed, negatively skewed, or normally distributed. Also, identify any potential floor or ceiling effects.*
 
 <p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-A researcher asks participants to rate their satisfaction with a new product on a scale from 1 to 10. Most participants give ratings between 8 and 10, with very few giving lower ratings. 
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">A researcher asks participants to rate their satisfaction with a new product on a scale from 1 to 10. Most participants give ratings between 8 and 10, with very few giving lower ratings.</Admonition>
 </p>
 
 <p v-click>
@@ -487,11 +450,7 @@ A researcher asks participants to rate their satisfaction with a new product on 
 </p>
 
 <p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-A researcher asks parents how many hours their children spend playing video games each week. Most parents report that their children play between 0 and 2 hours, with a few reporting higher amounts.
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">A researcher asks parents how many hours their children spend playing video games each week. Most parents report that their children play between 0 and 2 hours, with a few reporting higher amounts.</Admonition>
 </p>
 
 <p v-click>
@@ -511,11 +470,7 @@ align: lt
 
 :: content ::
 <p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-A researcher asks students how many hours they spend on social media, with a scale that ranges from 0 to 10 hours per week.
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">A researcher asks students how many hours they spend on social media, with a scale that ranges from 0 to 10 hours per day.</Admonition>
 </p>
 
 <p v-click>
@@ -525,11 +480,7 @@ A researcher asks students how many hours they spend on social media, with a sca
 </p>
 
 <p v-click>
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-What about scores on the exam on Thursday?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">What about scores on the exam on Tuesday?</Admonition>
 </p>
 
 <p v-click>
@@ -548,12 +499,7 @@ align: lt-lt-lt
 # Practice: Distributions and floor/ceiling effects (continued)
 
 :: left ::
-<div class="mt-0 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow
--md p-1 transform">
-Does this grouped frequency table show a positive skew, negative skew, or normal distribution? Is there a floor or ceiling effect?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Does this grouped frequency table show a positive skew, negative skew, or normal distribution? Is there a floor or ceiling effect?</Admonition>
 
 <img src="/images/exam1_review/freq_table.png" alt="grouped frequency table" class="mx-auto w-1/2" />
 
@@ -569,12 +515,7 @@ Does this grouped frequency table show a positive skew, negative skew, or normal
 
 <p v-click>
 
-<div class="mt-0 w-full flex justify-center">
-  <div class="bg-green-100 border-1 border-green-300 rounded-lg shadow
--md p-1 transform">
-Does this histogram show the same data?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">Does this histogram show the same data?</Admonition>
 
 <img src="/images/lecture5/starbucks_fat_hist.png" alt="histogram" class="mx-auto w-3/4" />
 
@@ -648,12 +589,7 @@ align: lt-lt-lt
 <img src="/images/lecture4/exam_scores_barplot.png" alt="outlier bar" class="mx-auto w-3/4" />
 
 <p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which exam was harder?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which exam was harder?</Admonition>
 </p>
 
 :: right ::
@@ -663,12 +599,7 @@ align: lt-lt-lt
 </p>
 
 <p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which exam was harder?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">Which exam was harder?</Admonition>
 </p>
 
 ---
@@ -684,12 +615,7 @@ align: lt
 <img src="/images/lecture4/exam_scores_histogram.png" alt="outlier histogram" class="mx-auto w-1/2" />
 
 <p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-    Which exam was harder?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which exam was harder?</Admonition>
 </p>
 
 ---
@@ -699,125 +625,16 @@ align: lt
 ---
 
 :: title ::
-# Variance
+# Review: Variance and Standard Deviation
 
 :: content ::
+- **Variance** = the average squared deviation of scores from the mean.
+- **Standard deviation (SD)** = the square root of the variance — the typical amount scores deviate from the mean.
+- For samples, we divide by $N-1$ (Bessel's correction) instead of $N$.
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-purple-100 border-2 border-purple-300 rounded-lg shadow-md p-2 transform">
-    What if we want a measure of spread influenced by ALL scores?
-  </div>
-</div>
-
-
-- We can compute the distance each score is from the mean (the deviation), and take the average of that.
-- But... if we add up all the deviations, they will always equal zero!
-
-**Example**
-- Scores: 70, 80, 90
-- Mean: 80; Deviations: -10, 0, +10
-- Sum of deviations: -10 + 0 + 10 = 0
-
-
-<p v-click>
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-purple-100 border-2 border-purple-300 rounded-lg shadow-md p-2 transform">
-    To solve this, we square each deviation (to make them positive) before summing them!
-  </div>
-</div>
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Variance (continued)
-
-:: left ::
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-2 transform">
-    Equation time
-  </div>
-</div>
-
-
-- The formula for the variance of a population is:
-
-$$\sigma^2 = \frac{\sum_{i=1}^{N} (X_i - \mu)^2}{N}$$
-
-:: right ::
-
-<p v-click>
-
-<img src="/images/lecture4/ohno_math.jpg" alt="oh no" class="mx-auto w-3/4" />
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Variance (continued)
-
-:: left ::
-
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-red-100 border-2 border-red-300 rounded-lg shadow-md p-2 transform">
-    Equation time
-  </div>
-</div>
-
-
-- The formula for the variance of a population is:
-
-$$\sigma^2 = \frac{\sum_{i=1}^{N} (X_i - \mu)^2}{N}$$
-
-:: right ::
-
-
-<p v-click>
-
-1. For each score ($X_i$), compute the deviation from the population mean: $X_i - \mu$.
-
-<img src="/images/lecture4/mew.png" alt="mew" class="mx-auto w-1/4" />
-
-</p>
-
-<p v-click>
-
-2. Square each deviation: $(X_i - \mu)^2$.
-
-</p>
-
-<p v-click>
-
-3. Sum the squared deviations: $\sum_{i=1}^{N} (X_i - \mu)^2$.
-
-</p>
-
-<p v-click>
-
-4. Divide by the total number of scores: $N$.
-
-</p>
-
-<p v-click>
-
-5. Now we have our population variance, represented by $\sigma^2$ (the Greek letter "sigma" squared).
-
-</p>
-
-
-
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+We covered variance and SD in depth in Lecture 5 — this is just a quick refresher before we look at some applications.
+</SpeechBubble>
 
 ---
 layout: top-title
@@ -826,42 +643,16 @@ align: lt
 ---
 
 :: title ::
-# Review: Variance
+# Variance in the real world
 
 :: content ::
 
-**Why do we care about variance and standard deviations?**
-
-- Variance and standard deviations tell us how **spread out** scores are around the mean.
-- They are used in many statistical tests (e.g., t-tests, ANOVA).
-- They are also useful in the real world!
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Variance in the real world
-
-:: content ::
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Imagine you have the choice between two summer jobs: You can be a lifeguard or you can be a tour guide. Both jobs pay, on average, $15/hour. However, the lifeguard job has a standard deviation of $1/hour, while the tour guide job has a standard deviation of $10/hour. Which job would you choose? Why?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Imagine you have the choice between two summer jobs: You can be a lifeguard or you can be a tour guide. Both jobs pay, on average, $15/hour. However, the lifeguard job has a standard deviation of $1/hour, while the tour guide job has a standard deviation of $10/hour. Which job would you choose? Why?</Admonition>
 
 
 <p v-click>
 
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md p-4 transform">
-    Imagine that you are a boating instructor and you need to order lifejackets for a group of 100 people. You know their average weight is 150 lbs. The options for lifejacket sizes range from XXS to XXL, which correspond to different weights. How would knowing the standard deviation of their weights help you decide how many of each lifejacket size to order?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">Imagine that you are a boating instructor and you need to order lifejackets for a group of 100 people. You know their average weight is 150 lbs. The options for lifejacket sizes range from XXS to XXL, which correspond to different weights. How would knowing the standard deviation of their weights help you decide how many of each lifejacket size to order?</Admonition>
 
 </p>
 
@@ -872,99 +663,12 @@ align: lt
 ---
 
 :: title ::
-# Review: Variance in the real world
 
-:: content ::
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-4 transform">
-  Now imagine that you need to estimate the standard deviation of the weights of the 100 people. You decide to randomly poll 10 of the 100 and ask their weights. How would you use the weights of the 10 people to estimate the standard deviation of the weights of all 100 people?
-  </div>
-</div>
-
-<p v-click>
-
-**Answer:** Calculate the standard deviation of the 10 weights (your sample) and use that as an estimate of the standard deviation of all 100 weights (your population).
-
-</p>
-
-<p v-click>
-
-**Let's do it:** 
-Here are your sample weights (in lbs): $120, 130, 140, 150, 160, 170, 180, 190, 200, 210$
-
-</p>
-
-<p v-click>
-
-**Step 1:** Calculate the mean of the weights.
-
-$M = (120 + 130 + 140 + 150 + 160 + 170 + 180 + 190 + 200 + 210) / 10 = 165$
-
-</p>
-
-<p v-click>
-
-**Step 2:** Calculate the sum of squared deviations from the mean.
-$$ \sum (X_i - M)^2 = (120-165)^2 + (130-165)^2 + (140-165)^2 ...  + (210-165)^2 = 8250 $$
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Variance in the real world (continued)
+# Variability: Practice
 
 :: content ::
 
-<p v-click>
-
-**Step 3:** Calculate the *sample* variance.
-$$ Variance = \frac{\sum (X_i - M)^2}{n-1} = \frac{8250}{10-1} = 916.67 $$
-</p>
-
-<p v-click>
-
-**Step 4:** Calculate the *sample* standard deviation.
-$$ SD = \sqrt{Variance} = \sqrt{916.67} \approx 30.28 $$
-
-</p>
-
-<p v-click>
-
-Now we have our *sample* standard deviation of 30.28 lbs, which we can use as an estimate of the *population* standard deviation of all 100 weights.
-
-</p>
-
-<p v-click>
-
-**Variance is a very important concept in statistics!**
-
-It will come up again and again in this class and in future statistics classes.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Variability: Practice (Continued)
-
-:: content ::
-
-<div class="mt-1 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-1 transform">
-    Which distribution likely has a greater standard deviation?
-  </div>  
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Which distribution likely has a greater standard deviation?</Admonition>
 
 <div class="mt-6 flex justify-center space-x-6">
   <img src="/images/lecture4/bimodal.png" alt="bimodal" class="w-1/3" />
@@ -1012,11 +716,7 @@ align: lt-lt-lt
 
 <img src="/images/lecture5/participants_methods.png" alt="participant sample" class="mx-auto w-3/4" />
 
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-    Is this a random or convenience sample? How do you know?
-  </div>
-</div>
+<Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 
 <p v-click>
 
@@ -1032,11 +732,7 @@ align: lt-lt-lt
 </p>
 
 <p v-click>
-<div class="mt-8 w-full flex justify-center">
-  <div class="bg-green-100 border-2 border-green-300 rounded-lg shadow-md p-2 transform">
-     Is this a random or convenience sample? How do you know?
-  </div>
-</div>
+<Admonition title="Question" color="purple-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 </p>
 
 <p v-click>
@@ -1073,4 +769,4 @@ color: indigo-light
 ---
 
 # That's all for today!
-Good luck on Exam 1 on Thursday!
+Good luck on Exam 1 on Tuesday!
