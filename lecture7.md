@@ -597,9 +597,9 @@ $$ z_2 = \frac{76 - 68}{5} = 1.6 $$
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 You did slightly better, relative to your classmates, on Exam 2 (z = 1.6) than on Exam 1 (z = 1.5) — even though your raw score was higher on Exam 1! Standardizing lets us compare performance across two exams with different means and SDs.
-</StickyNote>
+</Admonition>
 
 </p>
 

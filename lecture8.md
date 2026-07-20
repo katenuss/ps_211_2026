@@ -377,9 +377,9 @@ align: lt-lt-lt
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 Approximately 68% of the time, since the error bars represent +/- 1 SD of the distribution of sample means.
-</StickyNote>
+</Admonition>
 
 </p>
 

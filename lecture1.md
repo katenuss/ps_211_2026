@@ -104,10 +104,9 @@ align: l-lt-lt
 ## Your Teaching Fellow (TF)
 ##### PhD Student in Psychological & Brain Sciences
 
-- **TF to be announced** — we will introduce your TF and share their contact info as soon as they are assigned.
+- **Teaching Fellow** 
 - **Office Hours:**
-  - Tuesdays 12:30 - 1:30 p.m.
-  - Thursdays 9:00 - 10:00 a.m.
+  
 
 
 :: right ::
@@ -130,7 +129,7 @@ align: lt
     - C2: Wed 12:20 – 1:10 p.m.
     - C3: Wed 1:25 – 2:15 p.m.
 
-==All course meetings in CAS 306==
+==All course meetings are in CAS 306==
 
 ---
 layout: top-title
@@ -143,33 +142,34 @@ align: lt
 
 :: content ::
 
-<p v-click>
+<v-click>
 
 - We will use **Slack** for class communication. Everyone should be added. Please reach out to Kate or your TF if you are not yet on the Slack workspace.
 
-</p>
+</v-click>
 
-<p v-click>
+<v-click>
 
 - Please check Slack regularly for important announcements. 
 
-</p>
+</v-click>
 
-<p v-click>
+<v-click>
 
 - Please also use the Slack to ask questions about course material!
 
     - In general, our policy is that if you ask us a question about course material, we will publicly post it (anonymously, if you desire) and the answer on Slack, so that everyone can benefit from the learning opportunity.
 
-</p>
+</v-click>
 
-<p v-click>
+<v-click>
 
 - That said, our hope is that you will take advantage of lecture, discussion, and office hours to ask questions **IN PERSON**. If you send us a content-based question via email or slack, we may ask you to come to office hours or ask during lecture/discussion instead.
 
-</p>
+</v-click>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Please come talk to us!</SpeechBubble>
+
+<SpeechBubble color="amber-light" shape="round" position="br" maxWidth="24rem" animation="pop" v-click>Please come talk to us!</SpeechBubble>
 
 
 
@@ -238,7 +238,7 @@ We will cover:
 <p v-click> 6) Confidence intervals, effect sizes, statistical power. </p>
 <p v-click> 7) T-tests, ANOVA (one-way, two-way, repeated-measures), Correlations, Regressions, Chi-Square tests. </p>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Don't worry if you don't know what any or all of these are yet! The whole purpose of this class is to gain this knowledge.</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem" animation="pop" v-click>Don't worry if you don't know what any or all of these are yet! The whole purpose of this class is to gain this knowledge.</SpeechBubble>
 
 ---
 layout: top-title-two-cols
@@ -280,7 +280,7 @@ align: lt
 
 :: content ::
 - **Exams (3 × 15% + 1 x 25%) = 70%**  
-  <p v-click>Exams will involve multiple-choice questions only. </p>
+  <p v-click> Exams will involve multiple-choice questions only. </p>
 
   <p v-click>
 
@@ -333,13 +333,19 @@ align: lt
 
   <p v-click>
 
-  - Write-Up 1 is due **Monday, Nov. 16**; Write-Up 2 is due **Monday, Dec. 7**.
+  - Write-Up 1 is due **Tuesday, Nov. 17**; Write-Up 2 is due **Tuesday, Dec. 8**.
 
   </p>
 
   <p v-click>
 
-  - R Markdown templates will be provided so you will not have to code from scratch. 
+  - You will work in small groups and complete most of these write-ups during Discussion Sections.
+
+  </p>
+
+  <p v-click>
+
+  - You will find a dataset and investigate a question you find interesting.
 
   </p>
 
@@ -363,7 +369,7 @@ align: lt
 
   <p v-click>
 
-  - Late write-ups will lose 3 points each day they are late. No late work accepted after one week.
+  - Late write-ups will lose 3 points each day they are late. No late work accepted after one week. 
   
   </p>
 
@@ -380,7 +386,7 @@ align: lt
 - **Discussion Section = 10%**  
   <p v-click>
 
-  - In-depth review of class material and in-class R practice.
+  - During discussion, you will review class material and learn how to analyze data in R.
 
   </p>
   <p v-click>
@@ -388,14 +394,20 @@ align: lt
   - There are **13 discussion sections** total this semester.
 
   </p>
+
+   <p v-click>
+
+  - Each section will be graded pass/fail. To pass, you need to show up, pay attention, and actively participate.
+  </p>
+
   <p v-click>
 
-  - You need to attend (and pass) **10 of the 13** sections to get full discussion credit — you can miss up to 3 with no penalty.
+  - You need to pass **10 of the 13** sections to get full discussion credit — you can miss up to 3 with no penalty.
 
   </p>
   <p v-click>
 
-  - If you miss a discussion section, contact your TF about make-up work.
+  - If you miss a discussion section, contact your TF or a classmate to learn what you missed.
 
   </p>
 
@@ -415,7 +427,7 @@ align: lt
 
 - Missing class limits learning & participation.
 - Students who attend lectures (esp. later in semester) generally earn better grades.  
-- In class we go over problems that prepare you for assessments.
+- In class, we will go over problems that prepare you for the exams.
 - All lecture slides will be posted right before or after class, but they will be hard to understand without attending.
 
 
@@ -465,11 +477,13 @@ We will build a classroom that supports everyone’s ability to learn.
 
 ## Specific policies:
 
-<p v-click>Bring your laptop to class for note-taking and R demonstrations.</p>
+<p v-click>You can bring your laptop to class for note-taking and R demonstrations, but you don't have to.</p>
+
+<p v-click>You should bring a laptop to discussion sections for hands-on R practice.</p>
 
 <p v-click>If tech use distracts others and continues after a warning, you may be asked to leave.</p>
 
-<p v-click>Food and drink are okay if not distracting.</p>
+<p v-click>Food and drink are fine if not distracting!</p>
 
 
 ---
@@ -510,22 +524,26 @@ align: lt
 :: content ::
 
 **Collaboration is a huge part of science. Learning how to collaborate effectively is an important skill.**
-- As such, you are allowed to ask each other for help on data write-ups.
-- However, you must each submit your own work. Copying someone else’s work is plagiarism. 
+- You will be *required* to work in groups (of 2-3) for the data write-ups.
 
 <p v-click>
 
 <br> 
 
-**You may also use AI tools (e.g., ChatGPT) to help you with your code.**
+**You may also use AI tools (e.g., ChatGPT, Claude) to help you.**
 - However, use them cautiously. They can be wrong! 
-- In addition, remember that you will need to understand the statistical concepts, as you will complete the exams on your own without any help.
 
 </p>
 
 <p v-click>
 
-*There will be a place on the assignment to acknowledge your collaborators and any AI tools you used. You will not be penalized for collaboration or use of AI if you disclose it honestly.*
+*There will be a place on the data write-ups to acknowledge any AI tools you used. You will not be penalized for the use of AI if you disclose it honestly.*
+
+</p>
+
+<p v-click>
+
+**Remember, the goal of this course is for you to understand the material.** You will be taking exams on your own, without external resources (except for a cheat sheet). 
 
 </p>
 
@@ -542,7 +560,7 @@ align: lt
 :: content ::
 
 - Boston University provides reasonable accommodations for students with documented disabilities.
-- Please reach out to Kate and your TF (via Slack) **as soon as possible** and share your paperwork from disability services.
+- Prior to the first exam, we will reach out to students for whom we have received accommodations paperwork. 
 
 ---
 layout: top-title
@@ -559,9 +577,11 @@ align: lt
 
 <br>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This is my second year teaching this course — thank you for bearing with me as I keep improving it!</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem" v-click>This is my second year teaching this course — thank you for bearing with me as I keep improving it!</SpeechBubble>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Please provide feedback throughout the semester. There is an anonymous feedback form on Slack, but please also feel free to reach out to me or your TF directly.</SpeechBubble>
+<br>
+
+<SpeechBubble color="teal-light" shape="round" position="br" maxWidth="24rem" v-click>Please provide feedback throughout the semester. There is an anonymous feedback form on Slack, but please also feel free to reach out to me or your TF directly.</SpeechBubble>
 
 
 ---
@@ -610,13 +630,13 @@ color: indigo-light
 
 <p v-click>
 
-- My goal in this course is to introduce you to R. You will be able to do well (and get a 100) in this class *without becoming fluent in R.* 
+- My goal in this course is to introduce you to R. You will be able to do well (and get a 100) in this class *without becoming fully fluent in R.* 
   - You are welcome to go above and beyond the course requirements and challenge yourself to learn more R on your own!
   - I use R in my own research and am always happy to talk to students who want to learn more.
 
 </p>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You may even find it fun!</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem" v-click>You may even find it fun!</SpeechBubble>
 
 
 
@@ -636,8 +656,8 @@ color: indigo-light
 - If you run into issues, please:
   - Come to office hours.
   - Ask your TF for help during your discussion section.
-  - Post on the Slack to see if a classmate can help you.
-- We will go over the basics of R markdown when we start working with data.
+  - Post on Slack to see if a classmate can help you.
+- We will go over the basics of R and R Markdown during discussion.
 
 ---
 layout: cover
@@ -981,25 +1001,6 @@ align: lt
 - Use data from a representative sample to make inferences about the larger population.
 - This is where ==inferential statistics== come in!
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Populations and samples (cont.)
-
-:: content ::
-
-# Practicing the concepts
-
-According to the World Health Organization, approximately 300 million people worldwide suffer from depression. 
-
-<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
-
-<Admonition title="Question" color="teal-light" width="100%">Is 300 million a descriptive or inferential statistic? Explain.</Admonition>
-
 
 ---
 layout: top-title
@@ -1016,32 +1017,14 @@ align: lt
 
 According to the World Health Organization, approximately 300 million people worldwide suffer from depression. 
 
-<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
+<Admonition title="Question" color="teal-light">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Sample. It would be nearly impossible to survey every single person in the world. Instead, researchers likely surveyed a representative sample of people and used inferential statistics to estimate the total number of people with depression worldwide.</StickyNote>
+<Admonition color="green-light" title="Answer" v-click>Sample. It would be nearly impossible to survey every single person in the world. Instead, researchers likely surveyed a representative sample of people and used inferential statistics to estimate the total number of people with depression worldwide.</Admonition>
 
-<Admonition title="Question" color="teal-light" width="100%">Is 300 million a descriptive or inferential statistic? Explain.</Admonition>
+<Admonition title="Question" color="teal-light">Is 300 million a descriptive or inferential statistic? Explain.</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Inferential statistic. This number is an estimate based on data from a sample, rather than a direct measurement of the entire population.</StickyNote>
+<Admonition color="green-light" title="Answer" v-click>Inferential statistic. This number is an estimate based on data from a sample, rather than a direct measurement of the entire population.</Admonition>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Populations and samples (cont.)
-
-:: content ::
-
-# Practicing the concepts
-
-According to Boston University, 91% of incoming first-years were in the top 10% of their high school class. 
-
-<Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
-
-<Admonition title="Question" color="teal-light" width="100%">Is 91% a descriptive or inferential statistic? Explain.</Admonition>
 
 
 ---
@@ -1061,11 +1044,11 @@ According to Boston University, 91% of incoming first-years were in the top 10% 
 
 <Admonition title="Question" color="teal-light" width="100%">Do you think the research behind this number is based on a sample or a population? Explain.</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Population. This statistic likely includes all incoming first-year students at Boston University, rather than a sample.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Population. This statistic likely includes all incoming first-year students at Boston University, rather than a sample.</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">Is 91% a descriptive or inferential statistic? Explain.</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Descriptive statistic. This number directly describes a characteristic of the entire population of incoming first-year students at Boston University.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Descriptive statistic. This number directly describes a characteristic of the entire population of incoming first-year students at Boston University.</Admonition>
 
 
 ---
@@ -1117,7 +1100,7 @@ align: lt
 - Differ in quantity (meaning amount or number).
 - Examples: height, weight, age.
 
-<Admonition title="Question" color="teal-light" width="100%">Can you think of more examples of each type?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%" v-click>Can you think of more examples of each type?</Admonition>
 
 
 
@@ -1160,13 +1143,19 @@ align: lt-lt-lt
 - You can assign numbers to these variables, but the numbers do not have any mathematical meaning.
 - Examples: hair color, gender, species.
 
+
+
+:: right ::
+
+<v-click>
+
 ## Ordinal variables
 - Used for labeling variables with a meaningful order or ranking.
 - The intervals between the ranks may not be equal.
 - No fractions or decimals.
 - Examples: class rank, satisfaction ratings (e.g., 1-5 stars).
 
-:: right ::
+</v-click>
 
 
 ---
@@ -1192,7 +1181,7 @@ align: lt-lt-lt
 :: right ::
 <img src="/images/lecture1/levels_of_measurement.jpg" alt="levels of measurement" />
 
-<Admonition title="Question" color="teal-light" width="100%">Can you think of examples of each type?</Admonition>
+<Admonition title="Question" color="amber-light" width="100%">Can you think of examples of each type?</Admonition>
 
 
 ---
@@ -1217,42 +1206,16 @@ You want to conduct a survey of college students to understand their study habit
 
 <Admonition title="Question" color="teal-light" width="100%">Which of these variables are qualitative and which are quantitative?</Admonition>
 
-<Admonition title="Question" color="teal-light" width="100%">Which of these variables are discrete and which are continuous?</Admonition>
-
-<Admonition title="Question" color="teal-light" width="100%">Which of these variables are nominal, ordinal, interval, and ratio?</Admonition>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Types of variables: practice
-
-:: left ::
-
-You want to conduct a survey of college students to understand their study habits and academic performance. You collect the following data:
-1. Number of hours spent studying per week.
-2. Major (e.g., Psychology, Biology, Engineering).
-3. GPA (Grade Point Average).
-4. Class rank (e.g., Freshman, Sophomore, Junior, Senior).
-5. Satisfaction with academic experience (rated on a scale from 1 to 5).
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">Which of these variables are qualitative and which are quantitative?</Admonition>
-
-<StickyNote color="green-light" title="Answer" width="100%">Quantitative: 1, 3, 5; Qualitative: 2, 4.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Quantitative: 1, 3, 5; Qualitative: 2, 4.</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">Which of these variables are discrete and which are continuous?</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Discrete: 2, 4, 5; Continuous: 1, 3.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Discrete: 2, 4, 5; Continuous: 1, 3.</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">Which of these variables are nominal, ordinal, interval, and ratio?</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Nominal: 2; Ordinal: 4, 5; Interval: None; Ratio: 1, 3</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Nominal: 2; Ordinal: 4, 5; Interval: None; Ratio: 1, 3</Admonition>
+
 
 
 ---
@@ -1275,40 +1238,15 @@ You are not sure if you want to take this class, so you design an experiment to 
 
 <Admonition title="Question" color="teal-light" width="100%">What is the population in this study?</Admonition>
 
-<Admonition title="Question" color="teal-light" width="100%">What is the sample size of this study?</Admonition>
-
-<Admonition title="Question" color="teal-light" width="100%">You determine that the average happiness score for students who took PS 211 is 8.2, while the average happiness score for students who did not take PS 211 is 6.5. Is this a descriptive or inferential statistic?</Admonition>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Putting it all together: practice
-
-:: left ::
-
-You are not sure if you want to take this class, so you design an experiment to see if BU students who take PS 211 are generally happier than students who do not take PS 211. To do this, you email 200 students who took PS 211 last year and 200 students who did not take PS 211 last year. 150 students in each group respond to your email. You collect the following data: 
-1. Whether or not the student took PS 211 (Yes/No).
-2. The student's happiness score (rated on a scale from 1 to 10).
-3. The student's major (e.g., Psychology, Biology, Engineering).
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">What is the population in this study?</Admonition>
-
-<StickyNote color="green-light" title="Answer" width="100%">All BU students.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>All BU students.</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is the sample size of this study?</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">300 (150 from each group).</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>300 (150 from each group).</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">You determine that the average happiness score for students who took PS 211 is 8.2, while the average happiness score for students who did not take PS 211 is 6.5. Is this a descriptive or inferential statistic?</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Descriptive statistic. These numbers directly describe the average happiness scores of the two groups in the sample.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Descriptive statistic. These numbers directly describe the average happiness scores of the two groups in the sample.</Admonition>
 
 
 ---
@@ -1331,39 +1269,15 @@ You are not sure if you want to take this class, so you design an experiment to 
 
 <Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a nominal variable instead of an ordinal variable?</Admonition>
 
-<Admonition title="Question" color="teal-light" width="100%">What would be the advantage of collecting a nominal variable for Question 2 instead of an ordinal variable?</Admonition>
-
-<Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a ratio variable instead of an ordinal variable?</Admonition>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Putting it all together: practice
-
-:: left ::
-
-You are not sure if you want to take this class, so you design an experiment to see if BU students who take PS 211 are generally happier than students who do not take PS 211. To do this, you email 200 students who took PS 211 last year and 200 students who did not take PS 211 last year. 150 students in each group respond to your email. You collect the following data: 
-1. Whether or not the student took PS 211 (Yes/No).
-2. The student's happiness score (rated on a scale from 1 to 10).
-3. The student's major (e.g., Psychology, Biology, Engineering).
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a nominal variable instead of an ordinal variable?</Admonition>
-
-<StickyNote color="green-light" title="Answer" width="100%">Ask students to describe their general mood in words.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Ask students to describe their general mood in words.</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What would be the advantage of collecting a nominal variable for Question 2 instead of an ordinal variable?</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">It would be easier to answer, and responses could still be grouped (e.g., happy, neutral, sad).</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>It would be easier to answer, and responses could still be grouped (e.g., happy, neutral, sad).</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">How could you change Question 2 to collect a ratio variable instead of an ordinal variable?</Admonition>
 
-<StickyNote color="green-light" title="Answer" width="100%">Ask students to report the number of hours they feel happy each week.</StickyNote>
+<Admonition color="green-light" title="Answer" width="100%" v-click>Ask students to report the number of hours they feel happy each week.</Admonition>
 
 
 ---
@@ -1372,6 +1286,6 @@ color: indigo-light
 ---
 
 
-# That's all for this week! See you Thursday!
+# That's all for this week! See you Tuesday!
 
 ---

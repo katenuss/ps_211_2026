@@ -77,9 +77,9 @@ Why is the central limit theorem relevant here?
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 The central limit theorem states that the distribution of sample means will be approximately normal. This means that if we are working with sample means, we can assume our sample mean is drawn from a normal distribution.
-</StickyNote>
+</Admonition>
 
 </p>
 

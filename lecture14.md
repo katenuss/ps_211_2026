@@ -445,9 +445,9 @@ $$t = \frac{M_1 - M_2}{SE_{difference}} = \frac{7.5 - 6.0}{0.5} = 3.00$$
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 Students who exercise regularly slept significantly more than students who don't, *t*(8) = 3.00, *p* < .05. The 95% CI is $1.5 \pm (2.306)(0.5) = [0.35, 2.65]$ hours, and the effect size is large: $d = 1.5/\sqrt{0.625} = 1.90$.
-</StickyNote>
+</Admonition>
 
 </p>
 

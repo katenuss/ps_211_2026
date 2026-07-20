@@ -240,9 +240,9 @@ $M1 = 11; M2 = 9; SD = 2$
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 d = 1. This tells us that on average, teens' screen time is 1 full standard deviation below that of adults'. This is a *large* effect.
-</StickyNote>
+</Admonition>
 
 </p>
 
@@ -269,12 +269,12 @@ What is Cohen's d for this comparison? How would you interpret it?
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 
 $$d = \frac{9-7}{4} = 0.5$$
 
 A d of 0.5 is a *medium* effect size (using Cohen's conventions, coming up next) — noticeably smaller than the large effect (d = 1) we saw with screen time, even though both differences were "only" 2 units on their own scales.
-</StickyNote>
+</Admonition>
 
 </p>
 

@@ -138,11 +138,11 @@ Imagine you want to measure "Stroop Interference" by testing participants' react
 
 <p v-click>
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 - Have each participant complete both the congruent and incongruent conditions of the Stroop task.
 - Measure their reaction times for each condition.
 - Use a paired-samples *t* test to compare the mean difference in reaction times across all participants to determine if there is a significant effect of condition on reaction time.
-</StickyNote>
+</Admonition>
 
 </p>
 
@@ -746,9 +746,9 @@ $$t = \frac{M_{diff}-0}{SE} = \frac{-1}{0.318} = -3.14$$
   - Critical values = ± 2.776
   - -3.14 < -2.776 → **Reject H₀**
 
-<StickyNote color="green-light" title="Answer" width="100%">
+<Admonition color="green-light" title="Answer" width="100%" v-click>
 The results suggest that background music has a significant effect on quiz performance, with students performing *worse* when music is played during the quiz.
-</StickyNote>
+</Admonition>
 
 </p>
 
