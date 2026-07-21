@@ -12,3 +12,30 @@
 .speech-bubble {
   width: fit-content;
 }
+
+/* Tighten spacing between question/answer admonition boxes */
+.slidev-layout .markdown-alert {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.slidev-layout p:has(> .markdown-alert) {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* No fat paragraph margins inside admonition boxes (kills the empty band below answer text) */
+.slidev-layout .markdown-alert p {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+.slidev-layout .markdown-alert ul,
+.slidev-layout .markdown-alert ol {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+/* ...but keep a little extra air above each new Question box so pairs read as units */
+.slidev-layout .markdown-alert.neversink-teal-light-scheme,
+.slidev-layout p:has(> .markdown-alert.neversink-teal-light-scheme) {
+  margin-top: 14px;
+}

@@ -396,7 +396,7 @@ align: lt-lt-lt
 
 :: right ::
 
-<img src="/images/lecture2/wellness.png" alt="wellness" class="mx-auto max-h-96 object-contain" />
+<img src="/images/lecture2/wellness.png" alt="wellness" class="mx-auto max-h-64 object-contain" />
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">What can you conclude from these results?</Admonition></p>
 
@@ -619,104 +619,6 @@ align: lt
 ---
 
 :: title ::
-# Experimental Example: The Stroop Task
-
-:: content ::
-
-<p v-click>
-
-- The Stroop Task is used to study how well people can suppress interference from "automatic" cognitve processes (like reading).
-  - This is an important aspects of what's commonly referred to as "cognitive control." 
-</p>
-
-<p v-click>
-
-- Participants see color words (e.g., "red", "blue", "green") printed in different colors and must name the ink color as quickly as possible.
-- Two conditions:
-  - **Congruent**: word meaning matches ink color (e.g., "red" in red ink)
-  - **Incongruent**: word meaning does not match ink color (e.g., "red" in blue ink)
-
-</p>
-
-<p v-click>
-
-- Researchers measure reaction times (RTs) for naming the ink color in both conditions.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Stroop Task: Let's try it!
-
-:: content ::
-
-<p v-click>
-
-<img src="/images/lecture2/stroop_effect.jpg" alt="stroop incongruent" class="mx-auto max-h-96 object-contain" />
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Stroop Task: Let's try it!
-
-:: content ::
-
-<p v-click>
-
-<img src="/images/lecture2/stroop_effect_congruent.jpg" alt="stroop congruent" class="mx-auto max-h-96 object-contain" />
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# The Stroop Task: Typical results
-
-:: left ::
-
-<img src="/images/lecture2/stroop_findings.jpg" alt="stroop findings" class="mx-auto max-h-96 object-contain" />
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
-
-<Admonition title="Answer" color="green-light" width="100%" v-click>
-
-IV = Task condition; Levels = Congruent, Incongruent, (and sometimes Control)
-
-</Admonition>
-
-<Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
-
-<Admonition title="Answer" color="green-light" width="100%" v-click>
-
-DV = Reaction Time (RT) to name ink color
-
-</Admonition>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
 # Hypothesis Testing 
 
 :: content ::
@@ -757,25 +659,25 @@ Math ability could be operationalized as "score on a standardized math test."
 </Admonition>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
 
 :: title ::
 # Operational definitions: They're hard!
 
-:: content ::
+:: left ::
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">One of the biggest challenges in experimental psychology research is coming up with good operational definitions for the variables you want to study.</SpeechBubble>
+<div class="flex items-center gap-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem">One of the biggest challenges in experimental psychology research is coming up with good operational definitions for the variables you want to study.</SpeechBubble>
+</div>
 
-<br>
-
-<IceCream :size="140" mood="shocked" color="#FDA7DC" v-click/>
-
-<br> 
 - Abstract concepts (e.g., intelligence, happiness, anxiety) can be hard to define and measure.
 - Poor operational definitions can lead to unreliable or invalid results.
+
+:: right ::
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">How would you operationalize anxiety in a research study?</Admonition></p>
 
@@ -824,7 +726,7 @@ align: lt-lt-lt
 
 :: left ::
 
-A researcher wants to see if children and adolescents show reduced Stroop interference compared to adults. She recruits 20 children, 20 adolescents, and 20 adults. Each participant completes both the congruent and incongruent Stroop tasks, and the researcher measures their reaction times (RTs) for each condition.
+A researcher wants to see if background noise affects memory differently across development. She recruits 20 children, 20 adolescents, and 20 adults. Each participant completes a memory test twice: once in a quiet room and once with loud background noise. The researcher measures each participant's test score in each condition.
 
 :: right ::
 
@@ -834,7 +736,7 @@ A researcher wants to see if children and adolescents show reduced Stroop interf
 
 Trick question! This design is *mixed.* There are two IVs:
 1. Age group (between-subjects): Levels = children, adolescents, adults
-2. Stroop condition (within-subjects): Levels = congruent, incongruent
+2. Noise condition (within-subjects): Levels = quiet, noisy
 
 </Admonition>
 
@@ -845,6 +747,134 @@ Trick question! This design is *mixed.* There are two IVs:
 Discrete (categorical groups). You could instead measure each participant's exact age in years rather than sorting them into groups.
 
 </Admonition>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Putting it all together: Let's collect some data!
+
+:: content ::
+
+## Scan the QR code for your birthday month and answer both questions.
+
+- Please answer on your own — no discussing (or Googling!) yet.
+- We'll talk about what this was all about in a minute!
+
+<div class="flex justify-center gap-24 mt-6">
+  <div class="text-center">
+    <img src="/images/lecture2/qr_anchor_high.png" alt="QR code for January-June birthdays" class="h-48 mx-auto" />
+    <p class="font-bold mt-2">Birthday in January – June</p>
+  </div>
+  <div class="text-center">
+    <img src="/images/lecture2/qr_anchor_low.png" alt="QR code for July-December birthdays" class="h-48 mx-auto" />
+    <p class="font-bold mt-2">Birthday in July – December</p>
+  </div>
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Putting it all together: What did we just do?
+
+:: left ::
+
+## We ran an experiment!
+
+- **Everyone** guessed the height of the tallest tree in the world.
+- But the *first* question differed between the two groups:
+  - **January – June birthdays:** "Is the tallest tree in the world taller or shorter than ==1,200 feet==?"
+  - **July – December birthdays:** "Is the tallest tree in the world taller or shorter than ==180 feet==?"
+
+<p v-click><StickyNote color="amber-light" title="The real answer" width="100%">The tallest known living tree is a coast redwood named Hyperion — about 380 feet tall!</StickyNote></p>
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What is the hypothesis?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Being exposed to a large number before estimating causes people to make higher estimates than being exposed to a small number — an effect called ==anchoring==.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What are the operational definitions?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+- **Anchor**: the number in the first question (1,200 vs. 180 feet).
+- **Estimate**: the numeric guess of the tallest tree's height, in feet.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Putting it all together: The design
+
+:: left ::
+
+- Two groups of students.
+- Your birthday month determined which anchor you saw.
+- Each student saw only **one** anchor and made **one** guess.
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="20rem">Is birthday month a reasonable way to randomly assign students to groups? Could it introduce any confounds?</SpeechBubble></p>
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">Is this a between-subjects or within-subjects design?</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+Between-subjects: each student experienced only one level of the IV.
+
+</Admonition>
+
+<Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+IV = Anchor size; Levels = high (1,200 ft), low (180 ft)
+
+</Admonition>
+
+<Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+DV = Estimated height of the tallest tree (in feet)
+
+</Admonition>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Putting it all together: The results!
+
+:: content ::
+
+## Did the anchor change your guesses?
+
+<a href="https://docs.google.com/spreadsheets/d/1-6V-kB07M4YcdBUP61u4NJpxv7_wPPhf2uKBqn0qWUc/edit?usp=sharing" target="_blank" class="block w-fit mx-auto my-6 px-8 py-4 rounded-xl bg-indigo-600 text-white font-bold text-xl shadow-lg hover:bg-indigo-500">📊 Open the live results</a>
+
+<p v-click><Admonition title="What usually happens" color="amber" width="100%">The high-anchor group's average guess is much higher than the low-anchor group's — even though the anchor carries no real information about the answer!</Admonition></p>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">Comparing two group averages is exactly what much of this course is about: visualizing group differences, quantifying variability, and eventually testing whether differences are "real" (t-tests!).</StickyNote></p>
 
 ---
 layout: cover
