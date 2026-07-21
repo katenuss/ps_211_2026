@@ -284,7 +284,7 @@
       if (await deckExists(n)) {
         const a = document.createElement('a');
         a.href = `${base}/lecture${n}/`;
-        a.textContent = `Lecture ${n}: ${title}`;
+        a.innerHTML = `Lecture ${n}: ${title}`;
         a.style.textDecoration = 'none';
         td.innerHTML = '';
         td.appendChild(a);
@@ -303,7 +303,7 @@
       if (await examDeckExists(n)) {
         const a = document.createElement('a');
         a.href = `${base}/lecture_exam${n}_review/`;
-        a.textContent = `EXAM #${n} ${title}`;
+        a.innerHTML = `EXAM #${n} ${title}`;
         a.style.textDecoration = 'none';
         td.innerHTML = '';
         td.appendChild(a);

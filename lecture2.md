@@ -11,7 +11,7 @@ exportFilename: ps211_fall2026_lecture2
 
 # PS 211: Introduction to Experimental Design
 ## Fall 2026 · Section C1
-### Lecture 2: More variables and research methods
+### Lecture 2: Variables, operational definition, types of experiments
 
 ---
 layout: top-title
@@ -32,7 +32,7 @@ align: lt
 
 <p v-click>
 
-- Reminder: Discussion sections started this week — they'll now spend time on in-class R practice rather than homework prep, since we no longer have standalone homework assignments this year.
+- Reminder: Discussion sections started this week! Please bring a laptop.
 
 </p>
 
@@ -56,6 +56,9 @@ align: lt
   - Quantitative or qualitative
   - Only specific values; no fractions (e.g., number of pets) 
 
+<SpeechBubble color="amber-light" shape="round" position="br" maxWidth="24rem" animation="pop" v-click> It's important to know what types of variables we are working with so we can apply the right statistical methods!</SpeechBubble>
+
+
 
 ---
 layout: top-title-two-cols
@@ -67,7 +70,7 @@ align: lt-lt-lt
 # Review: Discrete Variables
 
 :: left ::
-- **Nominal**: categories with names (e.g., Democrat = 1, Republican = 0; numbers meaningless)  
+- **Nominal**: categories with names (e.g., Democrat = 1, Republican = 0; numbers are meaningless)  
 - **Ordinal**: rankings with order, but no fractions (e.g., 1st, 2nd, 3rd place)  
 
 :: right ::
@@ -85,14 +88,14 @@ align: lt-lt-lt
 
 :: left ::
 
-- **Interval**: equal intervals, no true zero (e.g., temperature in °F)  
+- **Interval**: equal intervals, no true zero (e.g., temperature in °F, SAT scores)  
 - **Ratio**: equal intervals, true zero (e.g., lever presses = 0)  
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Sometimes our measurement tools limit us to discrete variables, even if the underlying construct is continuous.</SpeechBubble></p>
 
 <p v-click><StickyNote color="green-light" title="Example" width="100%">Measuring boredom (or how tired you feel in this 11am lecture!) on a 1-5 scale</StickyNote></p>
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This will be important when we discuss which statistical tests to use later in the course!</SpeechBubble></p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="br" maxWidth="24rem" >Again, This will be important when we discuss which statistical tests to use later in the course!</SpeechBubble></p>
 
 :: right ::
 
@@ -137,9 +140,9 @@ align: lt
 
 ## An ==experiment== is a study in which independent variable(s) are manipulated to examine their effect on dependent variable(s).
 
-- Involves *changing* or *manipulating* something
-- Goal is to determine *causal* relations
-- Requires *controlled* conditions
+- Involves *changing* or *manipulating* something.
+- Goal is to determine *causal* relations.
+- Requires *controlled* conditions.
 
 
 ---
@@ -160,7 +163,7 @@ align: lt
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">In non-experimental studies, independent variables are not manipulated, but instead are selected or observed as they naturally occur.</SpeechBubble></p>
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This is often the case in developmental studies, where age is an independent variable that cannot be manipulated.</SpeechBubble></p>
+<p v-click><StickyNote color="green-light" title="Example" width="100%">This is often the case in developmental studies, where age is an independent variable that cannot be manipulated.</StickyNote></p>
 
 ---
 layout: top-title
@@ -221,19 +224,19 @@ align: lt-lt-lt
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">What are the advantages of a correlational study?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Correlational studies are useful for identifying relationships between variables and can provide insights for further research. They are often easier and less expensive to conduct than experimental studies. Sometimes, they are the only ethical (or possible!) option.
+Correlational studies are useful for identifying relationships between variables and can provide insights for further research. They are often easier and less expensive to conduct than experimental studies. Sometimes, they are the only ethical (or possible!) option.
 
-</p>
+</Admonition></p>
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">What are the disadvantages of a correlational study?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** They cannot establish causality. They can also be influenced by confounding variables (more on this later)! 
+They cannot establish causality. They can also be influenced by confounding variables (more on this later)! 
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -254,27 +257,27 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">Is this an experiment?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Yes! The researcher is manipulating where students' phones are while studying.
+Yes! The researcher is manipulating where students' phones are while studying.
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: IV = Phone location; Levels = phone in another room, phone nearby
+IV = Phone location; Levels = phone in another room, phone nearby
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: DV = Quiz score
+DV = Quiz score
 
-</p>
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -294,27 +297,27 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">Is this an experiment?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: No. The researcher is not manipulating anything; she is just collecting observational/survey data.
+No. The researcher is not manipulating anything; she is just collecting observational/survey data.
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: IV = Sleep-tracking app use; Levels = uses app, does not use app
+IV = Sleep-tracking app use; Levels = uses app, does not use app
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: DV = Average hours of sleep per night (self-reported)
+DV = Average hours of sleep per night (self-reported)
 
-</p>
+</Admonition>
 
 
 ---
@@ -371,6 +374,10 @@ align: lt
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">However, experiments can still have confounds if not properly designed.</SpeechBubble></p>
 
+<br>
+
+<IceCream :size="140" mood="sad" color="#FDA7DC" v-click/>
+
 
 ---
 layout: top-title-two-cols
@@ -393,13 +400,13 @@ align: lt-lt-lt
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">What can you conclude from these results?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Employees who joined the wellness program reported more healthy behaviors.
+Employees who joined the wellness program reported more healthy behaviors.
 
-**Important:** We *cannot* conclude anything about causality!
+</Admonition></p>
 
-</p>
+<p v-click><Admonition title="Important!" color="amber" width="100%">We cannot conclude anything about causality!</Admonition></p>
 
 
 ---
@@ -422,11 +429,13 @@ align: lt-lt-lt
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">If there's a relation between access to the wellness program and healthy behaviors, what could you conclude from these results?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Having access to the wellness program causes employees to report more healthy behaviors.
+Having access to the wellness program causes employees to report more healthy behaviors.
 
-</p>
+</Admonition></p>
+
+
 
 
 
@@ -451,22 +460,22 @@ align: lt-lt-lt
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">What is one potential confound in this experiment that may undermine this conclusion?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** There are many! Over the four weeks, the high-exercise group may have had:
+There are many! Over the four weeks, the high-exercise group may have had:
 - better moods to begin with.
 - more social interaction over the four weeks.
 - more exposure to sunlight.
 
-</p>
+</Admonition></p>
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">What else could have gone wrong in this experiment?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The manipulation may not have worked. Maybe the low-exercise group actually exercised more than the high-exercise group!
+The manipulation may not have worked. Maybe the low-exercise group actually exercised more than the high-exercise group!
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -579,15 +588,27 @@ align: lt-lt-lt
 :: right ::
 <Admonition title="Question" color="teal-light" width="100%">How could you determine if ChatGPT's ratings are reliable?</Admonition>
 
-**Answer:** You could ask ChatGPT to rate the same poems multiple times and see if the ratings are consistent.
+<Admonition title="Answer" color="green-light" width="100%">
+
+You could ask ChatGPT to rate the same poems multiple times and see if the ratings are consistent.
+
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">How could you determine if ChatGPT's ratings are valid?</Admonition>
 
-**Answer:** You could compare ChatGPT's ratings to human ratings of the same poems to see if they align.
+<Admonition title="Answer" color="green-light" width="100%">
+
+You could compare ChatGPT's ratings to human ratings of the same poems to see if they align.
+
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">How could you improve the validity of your rating scale?</Admonition>
 
-**Answer:** You could use it alongside an established scale for measuring happiness and compare results.
+<Admonition title="Answer" color="green-light" width="100%">
+
+You could use it alongside an established scale for measuring happiness and compare results.
+
+</Admonition>
 
 
 
@@ -674,19 +695,19 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is the IV and what are its levels?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: IV = Task condition; Levels = Congruent, Incongruent, (and sometimes Control)
+IV = Task condition; Levels = Congruent, Incongruent, (and sometimes Control)
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is the DV?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: DV = Reaction Time (RT) to name ink color
+DV = Reaction Time (RT) to name ink color
 
-</p>
+</Admonition>
 
 
 ---
@@ -721,19 +742,19 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">How could you operationalize musical artist popularity?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Musical artist popularity could be operationalized as "number of monthly listeners on Spotify" or "social media followers across platforms."
+Musical artist popularity could be operationalized as "number of monthly listeners on Spotify" or "social media followers across platforms."
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">How could you operationalize math ability?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Math ability could be operationalized as "score on a standardized math test." 
+Math ability could be operationalized as "score on a standardized math test."
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -748,19 +769,24 @@ align: lt
 
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">One of the biggest challenges in experimental psychology research is coming up with good operational definitions for the variables you want to study.</SpeechBubble>
 
+<br>
+
+<IceCream :size="140" mood="shocked" color="#FDA7DC" v-click/>
+
+<br> 
 - Abstract concepts (e.g., intelligence, happiness, anxiety) can be hard to define and measure.
 - Poor operational definitions can lead to unreliable or invalid results.
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">How would you operationalize anxiety in a research study?</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer**: Anxiety could be operationalized as:
-- self-reported anxiety levels on a questionnaire. 
+Anxiety could be operationalized as:
+- self-reported anxiety levels on a questionnaire.
 - cortisol levels in saliva samples.
 - heart rate during a task.
 
-</p>
+</Admonition></p>
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Each of these definitions captures an aspect of anxiety, but it's unlikely that any one of them fully captures the construct. You have to create operational definitions that are well-suited to your specific research question, hypothesis, and context.</SpeechBubble></p>
 
@@ -804,21 +830,21 @@ A researcher wants to see if children and adolescents show reduced Stroop interf
 
 <Admonition title="Question" color="teal-light" width="100%">Is this a between-subjects or within-subjects design? What are the IVs and their levels?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Trick question! This design is *mixed.* There are two IVs:
+Trick question! This design is *mixed.* There are two IVs:
 1. Age group (between-subjects): Levels = children, adolescents, adults
 2. Stroop condition (within-subjects): Levels = congruent, incongruent
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">Is age group in this study discrete or continuous? How could you change the design to make it continuous instead?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Discrete (categorical groups). You could instead measure each participant's exact age in years rather than sorting them into groups.
+Discrete (categorical groups). You could instead measure each participant's exact age in years rather than sorting them into groups.
 
-</p>
+</Admonition>
 
 ---
 layout: cover
