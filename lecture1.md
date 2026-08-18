@@ -101,16 +101,23 @@ align: l-lt-lt
 
 :: left ::
 
-## Your Teaching Fellow (TF)
-##### PhD Student in Psychological & Brain Sciences
+## Rola Adebogun
+##### PhD Student in Clinical Psychology
 
-- **Teaching Fellow** 
-- **Office Hours:**
-  
+- **Pronouns:** she/her
+- **Email:** rade@bu.edu
+- **Office:** 111 Cummington Mall, Room 223
+- **Office Hours:** Wednesdays, 2:20 - 3:30
+  - By appointment
 
 
 :: right ::
 
+- **Research interests**:
+- Psychosocial factors affecting physical and mental health outcomes for families and children with developmental conditions (primarily ASD) & those from marginalized backgrounds.
+- Emphasis on culture, context, and social determinants of health.
+
+<img src="/images/lecture1/rola.png" alt="Rola Adebogun headshot" class="w-full rounded-lg border-2 border-indigo-200 shadow-lg" />
 
 
 ---

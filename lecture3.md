@@ -24,12 +24,12 @@ align: lt
 
 :: content ::
 
-- You should now have R and R Studio installed on your computer.  
-- Please see me or your TF *right away* if you have any issues.
+- R and R Studio are being introduced in ==discussion sections== — bring a laptop!
+  - If you haven't installed them yet, follow the instructions on Slack and come to office hours if you need help.
 - Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16).
-- Discussion sections are using time for in-class R practice — take advantage of it!
-- In today's lecture, we will also go over instructions for using R Markdown, which you'll use throughout the course.
 - Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You'll see a little R code in today's slides — it's just a preview. You'll get hands-on practice in discussion section, so no need to memorize anything today.</SpeechBubble></p>
 
 
 ---
@@ -82,6 +82,8 @@ align: lt
 - There are many ==correct== ways to present the same data.
     - Our job is to choose the ways that are most ==useful==.
 
+<p v-click><SpeechBubble color="amber-light" shape="round" position="br" maxWidth="24rem">Today is all about one big question: how do we turn a pile of numbers into something we can actually see and understand?</SpeechBubble></p>
+
 ---
 layout: top-title-two-cols
 color: indigo-light
@@ -99,16 +101,16 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">Why is presenting raw data limiting?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:**  It's hard to see patterns or make comparisons when looking at a list of numbers. It's generally helpful to organize or summarize them in some way.
+It's hard to see patterns or make comparisons when looking at a list of numbers. It's generally helpful to organize or summarize them in some way.
 
-</p>
+</Admonition>
 
 
 :: right ::
 
-<img src="/images/lecture3/raw_data.png" alt="tooth scatter" class="mx-auto w-1/3" />
+<img src="/images/lecture3/raw_data.png" alt="raw data" class="mx-auto w-1/3" />
 
 
 ---
@@ -125,11 +127,12 @@ align: lt
 :: content ::
 
 ## One way: Frequency distributions
-- Displays count or proportion of each value (or range of values) in a dataset.
-- Options include:
-    - Frequency tables
-    - Grouped frequency tables
-    - Histograms
+- A **frequency distribution** displays the count (or proportion) of each value — or range of values — in a dataset.
+- We can display frequency distributions with:
+    - Frequency tables (& grouped frequency tables) — we'll look at these ==briefly==
+    - **Histograms** — our main focus today!
+
+<p v-click><StickyNote color="amber-light" title="Why the focus on histograms?" width="60%">Histograms are the foundation for one of the most important ideas in this course: the *distribution*. Understanding them now will pay off all semester.</StickyNote></p>
 
 
 ---
@@ -145,106 +148,16 @@ align: lt-lt-lt
 
 :: left ::
 
-- A frequency table is a visual representation of a data set that shows how often (frequently) each value occurred.
+- A **frequency table** shows how often (frequently) each value occurred.
 - Values are listed in one column, and the count of individual scores with that value are listed in the second column.
   - All possible values are listed, even if the count is 0.
+- A percentage column is sometimes added: (count / total) × 100.
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">You'll make frequency tables in R with dplyr's count() function — one line of code!</StickyNote></p>
 
 :: right ::
 
 <img src="/images/lecture3/volcano_frequency.png" alt="volcano frequency" class="mx-auto w-2/3" />
-   
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-
-:: title ::
-
-# Creating a frequency table
-
-:: left ::
-
-## General steps
-
-- Create two columns
-  - First column: list all possible values of the variable
-  - Second column: tally the number of times each value occurs
-
-
-:: right ::
-
-## In R:
-
-- The 'dplyr' package can be used to create frequency tables easily.
-
-```r
-library(dplyr)
-
-data %>%
-  group_by(variable) %>%
-  summarize(count = n())
-```
-<br>
-
-### For example:
-
-```r
-volcano_data %>%
-  group_by(number_of_volcanoes) %>%
-  summarize(count = n())
-```
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-
-:: title ::
-
-# Including percentages
-
-:: left ::
-
-## General steps
-
-- Create two columns
-  - First column: list all possible values of the variable
-  - Second column: tally the number of times each value occurs
-  - **Third column**: calculate the percentage of the total for each value
-    - Percentage = (Count / Total number of observations) * 100
-
-
-:: right ::
-
-## In R:
-
-- The 'dplyr' package can be used to create frequency tables easily.
-
-```r
-library(dplyr)
-
-data %>%
-  group_by(variable) %>%
-  summarize(count = n()) %>%
-  mutate(percentage = (count / sum(count)) * 100)
-```
-<br>
-
-### For example:
-
-```r
-volcano_data %>%
-  group_by(number_of_volcanoes) %>%
-  summarize(count = n()) %>%
-  mutate(percentage = (count / sum(count)) * 100)
-```
-
-
 
 ---
 layout: top-title-two-cols
@@ -259,91 +172,21 @@ align: lt-lt-lt
 
 :: left ::
 
-- Sometimes frequency tables can be limited
-  - What if data cover a wide range of values?
-  - What if there are many unique values? (i.e., for continuous variables)
-    - Listing all the possible values can basically be equivalent to displaying the raw data.
+- Frequency tables break down when data have **many unique values** (i.e., continuous variables).
+  - Listing every value is basically the same as displaying the raw data!
+- **Grouped frequency tables** solve this: group values into equal-width intervals (or ==**"bins"**==) and count observations in each bin.
 
-
-:: right ::
-
-## Grouped frequency tables:
-
-- Show data spanning a specific interval, rather than individual values.
-- Intervals (or "bins") are created to group values together.
-
-
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-
-:: title ::
-
-# Creating a grouped frequency table
-
-:: left ::
-
-## General steps
-- Determine the range of values in the dataset (max - min).
-- Decide on the number of intervals (or "bins") to create.
-- Determine the bottom of the lowest interval.
-- Create intervals of equal width to cover the entire range of data.
-- Tally the number of observations that fall within each interval.
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="22rem">Remember this word — *bins*! It's about to become very important.</SpeechBubble></p>
 
 :: right ::
 
-## Grouped frequency tables in R:
+<Admonition title="Question" color="teal-light" width="100%">What is an advantage of grouping values into bins? What is a disadvantage?</Admonition>
 
-The 'cut' function in R can be used to create intervals.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-```r
-library(dplyr)
+Advantage: Easier to see patterns in data with many unique values. Disadvantage: Loss of detail about individual values.
 
-data %>%
-  mutate(interval = 
-        cut(variable,
-        breaks = seq(min, max, by = bin_width))) %>%
-  group_by(interval) %>%
-  summarize(count = n())
-```
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-
-:: title ::
-
-# Converting a frequency table to a grouped frequency table
-
-:: left ::
-
-<img src="/images/lecture3/volcano_frequency.png" alt="volcano frequency" class="mx-auto w-2/3" />
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">How would you convert this table to a grouped frequency table with intervals of width 5?</Admonition>
-
-<p v-click>
-
-**Answer:** Create intervals like 0-4, 5-9, 10-14, etc., and tally the counts for each interval.
-
-</p>
-
-<Admonition title="Question" color="teal-light" width="100%">What is an advantage of using a grouped frequency table? What is a disadvantage?</Admonition>
-
-<p v-click>
-
-**Answer:** Advantage: Easier to see patterns in data with many unique values. Disadvantage: Loss of detail about individual values.
-
-</p>
+</Admonition>
 
 
 ---
@@ -356,27 +199,79 @@ align: lt
 # Histograms
 
 :: content ::
-- Graphs are often more effective than tables for seeing patterns in data.
 - A **histogram** is a graphical representation of a grouped frequency table.
-- The x-axis shows the intervals (or "bins") of continuous values.
-- The y-axis shows the frequency (or count) of observations in each interval.
+- The x-axis shows the ==bins== (intervals of a continuous variable).
+- The y-axis shows the ==frequency== (count) of observations in each bin.
+- Each bar *is* a row of the grouped frequency table — drawn instead of listed.
+
+<img src="/images/lecture3/hist_anatomy.png" alt="histogram anatomy" class="mx-auto w-1/2" />
+
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
 
 :: title ::
-# Histograms (Continued)
+# Practice: Reading a histogram
 
-:: content ::
+:: left ::
 
-- A histogram *looks* like a bar graph, but **the y-axis always represents frequency or count**, not a separate variable.
+<img src="/images/lecture3/hist_anatomy.png" alt="histogram anatomy" class="mx-auto w-full" />
 
-<img src="/images/lecture3/bar_vs_hist.png" alt="bar vs hist" class="mx-auto w-1/2" />
+:: right ::
 
-==Note: Histograms are for continuous variables only. Classically, the bars should touch to indicate this.== 
+<Admonition title="Question" color="teal-light" width="100%">How many students slept fewer than 5 hours?</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+11 (3 students in the 3-4 bin + 8 students in the 4-5 bin).
+
+</Admonition>
+
+<Admonition title="Question" color="teal-light" width="100%">Can you tell *exactly* how long any individual student slept?</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+No! Binning loses detail about individual values — the same trade-off as a grouped frequency table.
+
+</Admonition>
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Why are histograms so useful?
+
+:: left ::
+
+## One picture shows you everything at once:
+- Where scores **cluster** (the center)
+- How **spread out** they are
+- The **shape**: symmetric? lopsided? two humps?
+- **Gaps and outliers**
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>Summary statistics like the average can hide all of this. Always look at your data!</SpeechBubble>
+</div>
+
+:: right ::
+
+<img src="/images/lecture3/hist_shapes.png" alt="same mean different shapes" class="mx-auto w-full" />
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">All three classes average ≈70%. What does each histogram tell you that the average doesn't?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Class A: scores cluster symmetrically around 70. Class B: most students scored *below* 70, with a few high scores pulling the average up. Class C: two separate groups — almost nobody actually scored near 70!
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -404,45 +299,44 @@ align: lt
 ---
 
 :: title ::
+# Making a histogram: Choosing the bins
 
-# Creating a histogram in R
+:: content ::
+
+- To make a histogram, you make the same choices as for a grouped frequency table: pick a ==binwidth==, create equal-width bins covering the full range, and count observations in each bin.
+- The binwidth **changes what you see**:
+
+<img src="/images/lecture3/hist_binwidths.png" alt="binwidth comparison" class="mx-auto w-4/5" />
+
+<p v-click><StickyNote color="amber-light" title="No single 'right' answer" width="60%">Too narrow = noisy; too wide = patterns hidden. In practice, try a few binwidths and pick one that shows the shape clearly.</StickyNote></p>
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+
+# Making a histogram in R
 
 :: content ::
 
 - ggplot2 is a popular R library for creating graphs, including histograms.
-- Your assignments will use it throughout the semester.
-- The 'syntax' (meaning the way you write the code) can be a bit tricky at first, but you'll get the hang of it!
 - Basic idea:
   - Tell R which dataset to use with `ggplot()`.
   - Use `aes()` to "map" the variable you want on the x-axis.
-  - Use `geom_histogram()` to create the histogram.
+  - Use `geom_histogram()` to create the histogram — and set the binwidth!
 
 ```r
 library(ggplot2)
 
-ggplot(data, aes(x = variable)) +
-  geom_histogram(binwidth = 5)
+ggplot(data, aes(x = hours_of_sleep)) +
+  geom_histogram(binwidth = 1)
 ```
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# R histogram demo
-
-:: content ::
-
-(R Demo)
-
-- Open R Studio and create a new script.
-- Load the ggplot2 library with `library(ggplot2)`.
-- Use the `ggplot()` function to specify the dataset and mapping.
-- Add `geom_histogram()` to create the histogram.
-- Run the script to generate the histogram.
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll write and run this code yourselves — today, just notice how the code choices (like binwidth) map onto the concepts we just covered.</StickyNote></p>
 
 ---
 layout: top-title
@@ -451,13 +345,86 @@ align: lt
 ---
 
 :: title ::
-# Distributions
+# Histograms are for continuous variables
 
 :: content ::
-- Histograms also let us see the **distribution** of a variable.
-- A distribution describes how values of a variable are spread or clustered.
-- The shape of a distribution provides key insights into the characteristics of the data.
 
+- A histogram *looks* like a bar graph, but **the y-axis always represents frequency or count**, not a separate variable.
+
+<img src="/images/lecture3/bar_vs_hist.png" alt="bar vs hist" class="mx-auto w-1/2" />
+
+==Note: Histograms are for continuous variables only. Classically, the bars should touch to show that the bins are connected intervals on a number line.== 
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# What about non-continuous variables?
+
+:: left ::
+
+- Discrete variables (nominal or ordinal) have frequency distributions too!
+- We display them with a ==**bar plot**== of the counts: one bar per category.
+- The bars **don't touch** — each category is separate, not an interval on a number line.
+- For nominal variables, the order of the bars is arbitrary.
+
+<p v-click><StickyNote color="green-light" title="In R" width="100%">Same ggplot2 logic: swap geom_histogram() for geom_bar().</StickyNote></p>
+
+:: right ::
+
+<img src="/images/lecture3/bar_freq_pets.png" alt="bar plot of pet frequencies" class="mx-auto w-full" />
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Why can't we make a histogram of pet type?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+There's no number line to divide into bins — the values are categories with no inherent order or spacing.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# From histograms to distributions
+
+:: content ::
+
+- A **distribution** describes how the values of a variable are spread or clustered.
+- A histogram is a ==picture of a distribution==.
+- Imagine collecting more and more data and making the bins narrower and narrower — the jagged bars smooth out into a curve:
+
+<img src="/images/lecture3/hist_to_dist.png" alt="histogram to distribution" class="mx-auto w-4/5" />
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# From histograms to distributions (continued)
+
+:: content ::
+
+<div class="flex items-center gap-4">
+<IceCream :size="100" mood="blissful" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="28rem">This is one of the most important ideas in the whole course: whenever you see a smooth distribution curve, picture the histogram hiding underneath it.</SpeechBubble>
+</div>
+
+<br>
+
+- The height of the curve over a range of values ≈ how frequently those values occur.
+- Everything we say about distributions from now on — their center, spread, and shape — you can read off a histogram.
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">Next week we'll talk about the *normal distribution*. It's just the smooth-curve version of a very common histogram shape!</StickyNote></p>
 
 
 ---
@@ -548,19 +515,19 @@ Consider these three variables: finishing times in a marathon of recreational ru
 
 <Admonition title="Question" color="teal-light" width="100%">Which variable do you think would be most likely to show a positive skew?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Finishing times in a marathon are likely to show a positive skew, as many runners may finish within a certain time range, but a few may take much longer.
+Finishing times in a marathon are likely to show a positive skew, as many runners may finish within a certain time range, but a few may take much longer.
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">Which variable do you think would be most likely to be normally distributed?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Scores on a scale of extroversion are often normally distributed in a randomly sampled population, as most people tend to fall in the middle range of extroversion, with fewer people being extremely introverted or extremely extroverted.
+Scores on a scale of extroversion are often normally distributed in a randomly sampled population, as most people tend to fall in the middle range of extroversion, with fewer people being extremely introverted or extremely extroverted.
 
-</p>
+</Admonition>
 
 
 ---
@@ -576,19 +543,19 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Can nominal variables have a skewed distribution? Why or why not?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** No, nominal variables cannot have a skewed distribution because they represent categories without any inherent order or ranking. Skewness applies to the distribution of ordinal or continuous variables, where the data can be arranged along a scale.
+No, nominal variables cannot have a skewed distribution because they represent categories without any inherent order or ranking. Skewness applies to the distribution of ordinal or continuous variables, where the data can be arranged along a scale. (Think of the pet bar plot: rearranging the bars would change its "shape"!)
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">You want to visualize the distribution of ages in a sample of adults. Would you use a frequency table, a grouped frequency table, or a histogram?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Either a grouped frequency table or a histogram would be appropriate for visualizing the distribution of ages in a sample of adults. A grouped frequency table would summarize the data into age intervals, while a histogram would provide a graphical representation of the same information.
+A histogram is usually the best choice: age is continuous, and a histogram makes the shape of the distribution visible at a glance. A grouped frequency table contains the same information but is harder to read patterns from.
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -601,7 +568,7 @@ align: lt
 # Moving beyond histograms: More on data visualization
 
 :: content ::
-- Histograms (and frequency tables) are just one of many ways to visualize data.
+- Histograms and bar plots of frequencies are just some of many ways to visualize data.
 - There are **many** other types of graphs that can be useful for different purposes.
 - We are going to go through some of them now.
 - We will also discuss some general principles of effective data visualization.
@@ -618,8 +585,8 @@ align: lt-lt-lt
 
 :: left ::
 
-- Bar graphs are like histograms, but they are used for categorical (nominal or ordinal) variables rather than continuous variables.
-  -  They can also display other measures on the y axis, not just frequency or count.
+- We've seen bar graphs display *frequencies* of categorical (nominal or ordinal) variables.
+- But bar graphs can also display **other measures** on the y-axis — like the average of another variable for each category.
 - Each bar represents a category, and the length or height of the bar corresponds to the value it represents.
 
 :: right ::
@@ -628,11 +595,11 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is one advantage of using a bar graph? What is one disadvantage?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** One advantage of using a bar graph is that it can display data for different categories side by side, making it easy to compare them. A disadvantage is that it may not show the full distribution of the data.
+One advantage of using a bar graph is that it can display data for different categories side by side, making it easy to compare them. A disadvantage is that it may not show the full distribution of the data.
 
-</p>
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -674,19 +641,19 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is one advantage of using a scatter plot?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** One advantage of using a scatter plot is that it can show the relationship between two variables, making it easy to identify trends and correlations. 
+One advantage of using a scatter plot is that it can show the relationship between two variables, making it easy to identify trends and correlations. 
 
-</p>
+</Admonition>
 
 <Admonition title="Question" color="teal-light" width="100%">What is one disadvantage of using a scatter plot?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** A disadvantage is that it can be difficult to interpret when there are many overlapping points, especially without a trendline.
+A disadvantage is that it can be difficult to interpret when there are many overlapping points, especially without a trendline.
 
-</p>
+</Admonition>
 
 :: right ::
 
@@ -715,11 +682,11 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">When does it make sense to connect the points on a graph with lines?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** In psychology, it often makes sense to connect points with lines when the data represent measurements taken over time, such as in longitudinal studies or time-series analyses. 
+In psychology, it often makes sense to connect points with lines when the data represent measurements taken over time, such as in longitudinal studies or time-series analyses. 
 
-</p>
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -747,11 +714,11 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is one advantage of using a box plot?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** One advantage of using a box plot is that it provides a clear summary of the distribution of the data, including the median and quartiles. 
+One advantage of using a box plot is that it provides a clear summary of the distribution of the data, including the median and quartiles. 
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -827,12 +794,11 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is wrong with this graph?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The graph is overly complicated and includes unnecessary elements (chart junk) that distract from the main message.
-As one example: There is no reason for the bars to be different colors.
+The graph is overly complicated and includes unnecessary elements (chart junk) that distract from the main message. As one example: There is no reason for the bars to be different colors.
 
-</p>  
+</Admonition>
 
 ---
 layout: top-title
@@ -850,11 +816,11 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is wrong with this graph?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Almost everything. The 3D effect distorts the data and the visuals are distracting.
+Almost everything. The 3D effect distorts the data and the visuals are distracting.
 
-</p>  
+</Admonition>
 
 ---
 layout: top-title
@@ -872,11 +838,11 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is wrong with this graph?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The visuals are distracting, the grid lines are unnecessary, there is no y-axis label, it is unclear how the image size relates to the data.
+The visuals are distracting, the grid lines are unnecessary, there is no y-axis label, it is unclear how the image size relates to the data.
 
-</p> 
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -905,30 +871,23 @@ align: lt-lt-lt
 <br>
 <br>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:**
 Scatter plot - because both variables (hours studied and exam scores) are continuous, and we want to see the relationship between them.
 
-</p> 
+</Admonition>
 
-<br>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<p v-click>
-
-**Answer:**
 Line graph - because we are looking at changes over time (monthly temperatures).
 
-</p> 
+</Admonition>
 
-<br>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<p v-click>
-
-**Answer:**
 Bar graph - because we are comparing counts across different categories (majors).
 
-</p> 
+</Admonition>
 
 
 
@@ -981,11 +940,11 @@ align: lt
 
 <img src="/images/lecture3/misleading_axes.png" alt="misleading axes" class="mx-auto w-1/3" />
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The y-axis covers a very large range, making differences appear non-existent.
+The y-axis covers a very large range, making differences appear non-existent.
 
-</p>
+</Admonition>
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">This is part of why we need statistical tests to determine if differences are "real" or not.</SpeechBubble></p>
 
@@ -1004,21 +963,21 @@ align: lt-lt-lt
 
 <img src="/images/lecture3/misleadingaxes2.png" alt="misleading axes2" class="mx-auto w-3/4" />
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The x-axis changes the scale, making the top 1% look more like the top 20%.
+The x-axis changes the scale, making the top 1% look more like the top 20%.
 
-</p>
+</Admonition>
 
 :: right ::
 
 <img src="/images/lecture3/nothing_on_the_axis.jpg" alt="misleading axes3" class="mx-auto w-3/4" />
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The y axis is completely meaningless.
+The y axis is completely meaningless.
 
-</p>
+</Admonition>
 
 ---
 layout: cover
@@ -1026,20 +985,8 @@ color: indigo-light
 ---
 
 
-# That's all for data visualization!
+# That's all for Lecture 3!
 
-We will continually revisit data visualization throughout the course.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-
-# Getting set up with R Markdown for Homework 1
-
-(Demo)
-
-
----
+See you next class. Please remember to:
+- Bring a laptop to discussion section for R practice.
+- Come to office hours if you need help!
