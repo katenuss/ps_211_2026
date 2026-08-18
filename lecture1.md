@@ -113,11 +113,11 @@ align: l-lt-lt
 
 :: right ::
 
-- **Research interests**:
+**Research interests**:
 - Psychosocial factors affecting physical and mental health outcomes for families and children with developmental conditions (primarily ASD) & those from marginalized backgrounds.
 - Emphasis on culture, context, and social determinants of health.
 
-<img src="/images/lecture1/rola.png" alt="Rola Adebogun headshot" class="w-full rounded-lg border-2 border-indigo-200 shadow-lg" />
+<img src="/images/lecture1/rola.png" alt="Rola Adebogun headshot" class="w-40 h-40 object-cover rounded-lg border-2 border-indigo-200 shadow-lg"/>
 
 
 ---
