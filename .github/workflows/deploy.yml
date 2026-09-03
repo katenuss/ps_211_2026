@@ -72,8 +72,9 @@ jobs:
               --out "dist/${slug}"
 
             echo "📄 Exporting $f → dist/pdfs/ps211_fall2026_${slug}.pdf"
+            # NOTE: do NOT add --per-slide here. In Slidev 52.x, --per-slide
+            # captures only click state 0 and silently drops every v-click reveal.
             pnpm exec slidev export "$f" \
-              --per-slide \
               --with-clicks \
               --wait 1000 \
               --timeout 120000 \
