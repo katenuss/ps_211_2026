@@ -23,13 +23,13 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- ==Exam 2== now covers Lectures 7-12.
-- Exam 2 Review is Tuesday, October 27.
-- Exam 2 is Thursday, October 29.
+- ==Exam 2== covers Lectures 7-10.
+- Exam 2 Review is Tuesday, October 20.
+- Exam 2 is Thursday, October 22.
 - There are no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Monday, November 16
-  - Write-Up 2 (ANOVA based): due Monday, December 7
-- Office hours: Tuesday 12:30-1:30pm, Thursday 9:00-10:00am.
+  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
+  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Please bring questions to office hours rather than Slack for anything requiring a longer discussion.
 
 ---
@@ -110,11 +110,11 @@ Why might the sumo results deviate from a normal distribution?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Sumo wrestlers were throwing matches to help wrestlers who had won 7 matches win their 8th (and have a winning season / advance rounds).
+Sumo wrestlers were throwing matches to help wrestlers who had won 7 matches win their 8th (and have a winning season / advance rounds).
 
-</p>
+</Admonition></p>
 
 <p v-click>
 
@@ -248,11 +248,11 @@ Why is the mean of a z distribution always 0?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The mean is **0 standard deviations from the mean**!  
+The mean is **0 standard deviations from the mean**!
 
-</p>
+</Admonition></p>
 
 
 :: right ::
@@ -287,11 +287,11 @@ Why is the SD of a z distribution always 1?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** If a raw score is 1 SD above the mean, its z score is 1. If a raw score is 2 SDs above the mean, its z score is 2. And so on. Thus, the SD of the z distribution is always 1. 
+If a raw score is 1 SD above the mean, its z score is 1. If a raw score is 2 SDs above the mean, its z score is 2. And so on. Thus, the SD of the z distribution is always 1.
 
-</p>
+</Admonition></p>
 
 
 :: right ::
@@ -327,11 +327,11 @@ You can sometimes calculate z scores without a calculator.
 What is your z score? What is your friend's z score? What is your enemy's z score?
 </Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Your $z = 1$, friend's $z = 0.5$, enemy's $z = -1$
+Your $z = 1$, friend's $z = 0.5$, enemy's $z = -1$
 
-</p>
+</Admonition>
 
 ---
 layout: top-title-two-cols
@@ -373,10 +373,11 @@ How would we compute a z score for a population instead of a sample?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Use the population mean ($\mu$) and population standard deviation ($\sigma$).
-</p>
+Use the population mean ($\mu$) and population standard deviation ($\sigma$).
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -557,11 +558,11 @@ Why does the standard deviation matter in this comparison?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Critic B's ratings are more spread out (higher SD), so a 7/10 is less impressive relative to their average rating than it is for Critic A. 
+Critic B's ratings are more spread out (higher SD), so a 7/10 is less impressive relative to their average rating than it is for Critic A.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -595,13 +596,11 @@ $$ z_2 = \frac{76 - 68}{5} = 1.6 $$
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
 You did slightly better, relative to your classmates, on Exam 2 (z = 1.6) than on Exam 1 (z = 1.5) — even though your raw score was higher on Exam 1! Standardizing lets us compare performance across two exams with different means and SDs.
-</Admonition>
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -632,6 +631,8 @@ align: lt-lt-lt
 - 68% of scores fall between $z = -1$ and $z = +1$ (within 1 SD of the mean).
 
 - **Can use a z table to find exact percentiles for any z score.** 
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">We'll practice using z tables to find exact percentiles in an upcoming lecture — for now, focus on the idea that a z score tells you where a score sits in its distribution.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -670,6 +671,8 @@ percentiles
 - Now let's try some R practice! 
 - We will use the dataset "quakes" which contains information about earthquakes, including their magnitudes.
 - Imagine you experience an earthquake of magnitude 6. What percentage of earthquakes off the coast of Fiji are less severe than the one you experienced?
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">You'll get hands-on practice computing z scores and percentiles in R — no need to memorize this code today.</StickyNote></p>
 
 ---
 layout: cover

@@ -23,14 +23,12 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 16**. Today and Thursday, you'll have both paired- and independent-samples *t* tests in hand for it.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Tuesday, November 17** at 11:59 p.m. Today and Thursday, you'll have both paired- and independent-samples *t* tests in hand for it.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
   - Thursday (11/5): Lecture 14 — Independent-Samples *t* Tests (in R)
   - Tuesday (11/10): Exam 3 Review
-  - Thursday (11/12): Exam 3 (covers Lectures 13-14)
+  - Thursday (11/12): Exam 3 (covers Lectures 11-14)
 
 ---
 layout: top-title
@@ -136,15 +134,13 @@ Imagine you want to measure "Stroop Interference" by testing participants' react
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
 - Have each participant complete both the congruent and incongruent conditions of the Stroop task.
 - Measure their reaction times for each condition.
 - Use a paired-samples *t* test to compare the mean difference in reaction times across all participants to determine if there is a significant effect of condition on reaction time.
-</Admonition>
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -219,11 +215,11 @@ Will the shape of these null distributions always be normal?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Yes, if the sample size is sufficiently large. Due to the Central Limit Theorem, the distribution of the mean differences will approach normality as the sample size increases.
+Yes, if the sample size is sufficiently large. Due to the Central Limit Theorem, the distribution of the mean differences will approach normality as the sample size increases.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -746,11 +742,13 @@ $$t = \frac{M_{diff}-0}{SE} = \frac{-1}{0.318} = -3.14$$
   - Critical values = ± 2.776
   - -3.14 < -2.776 → **Reject H₀**
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
-The results suggest that background music has a significant effect on quiz performance, with students performing *worse* when music is played during the quiz.
-</Admonition>
-
 </p>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+The results suggest that background music has a significant effect on quiz performance, with students performing *worse* when music is played during the quiz.
+
+</Admonition>
 
 
 ---
@@ -765,6 +763,8 @@ align: lt
 :: content ::
 APA style tells us **how to clearly report statistics** so others can understand and replicate our work.
 It ensures clarity and consistency across psychology and related sciences.
+
+<p v-click><StickyNote color="amber-light" title="Why this matters" width="60%">You'll report your *t*-test results in APA style in Data Write-Up 1 (due Tuesday, November 17) — today's templates are exactly what you'll use.</StickyNote></p>
 
 ---
 layout: top-title

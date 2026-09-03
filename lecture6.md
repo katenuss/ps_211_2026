@@ -23,9 +23,9 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16; the second is ANOVA based, due Monday, Dec. 7).
+- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17; the second is ANOVA based, due Tuesday, Dec. 8).
 - Discussion sections are using time for in-class R practice — take advantage of it!
-- Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - We are going to go over some more information about how to use **R** and **R Studio** today.
 
 ---
@@ -62,6 +62,8 @@ align: lt
     - Saving your work: saving code vs. workspace variables.
 
 <img src="/images/lecture5/help_meme.jpg" alt="help" class="mx-auto w-1/3" />
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">Tomorrow's discussion is more hands-on R practice — a great place to iron out any remaining R Studio questions before the exam.</StickyNote></p>
 
 ---
 layout: top-title
@@ -145,10 +147,11 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** This is a convenience sample. The participants volunteered to take part in the study, and they were recruited through flyers and online postings. This means they were not randomly selected from the general population.
-</p>
+This is a convenience sample. The participants volunteered to take part in the study, and they were recruited through flyers and online postings. This means they were not randomly selected from the general population.
+
+</Admonition>
 
 :: right ::
 
@@ -162,11 +165,11 @@ align: lt-lt-lt
 <Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** This is a random sample. The researcher randomly selected participants from the entire BU student directory, giving every student an equal chance of being chosen.
+This is a random sample. The researcher randomly selected participants from the entire BU student directory, giving every student an equal chance of being chosen.
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -186,11 +189,11 @@ align: lt
 <Admonition title="Question" color="teal-light" width="100%">You use a computer program to randomly select 10 students from your 100-person Psych 101 class to participate in a study. Your computer spits out the following numbers: 1, 2, 3, 4, 44, 56, 57, 58, 83, 99. They don't look very random to you. Should you re-run the program to get a different set of numbers?</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** No! Randomness can produce streaks or clusters of numbers. The set of numbers you got is just as random as any other set.
+No! Randomness can produce streaks or clusters of numbers. The set of numbers you got is just as random as any other set.
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -267,7 +270,7 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">What are some potential advantages and disadvantages of using crowdsourcing platforms for research?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
 **Advantages:**
 - Access to a large and diverse participant pool.
@@ -279,7 +282,7 @@ align: lt
 - Limited control over the research environment.
 - Limited types of data can be collected (e.g., no brain imaging)
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -297,11 +300,11 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Why should researchers care about random assignment if they don't seem to care about random sampling?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Random assignment helps to reduce the risk of confounding variables by ensuring that the groups are comparable at the start of an experiment. This is important for understanding causality even if the sample itself is not representative of the broader population.
+Random assignment helps to reduce the risk of confounding variables by ensuring that the groups are comparable at the start of an experiment. This is important for understanding causality even if the sample itself is not representative of the broader population.
 
-</p>
+</Admonition>
 
 
 ---
@@ -323,11 +326,11 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Is this a good method of random assignment? Why or why not?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** No, this is not a good method of random assignment. Assigning students based on their arrival order can introduce bias, as early arrivers may differ systematically from later arrivers (e.g., in motivation or punctuality). 
+No, this is not a good method of random assignment. Assigning students based on their arrival order can introduce bias, as early arrivers may differ systematically from later arrivers (e.g., in motivation or punctuality).
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -387,13 +390,13 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">If you want to determine the probability of a coin landing on heads, what is a trial, an outcome, and a success?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:**
 - Trial: Each flip of the coin.
 - Outcome: The result of the coin flip (either heads or tails).
 - Success: The coin landing on heads.
-</p>
+
+</Admonition>
 
 
 ---
@@ -440,16 +443,21 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">What do you think the answer is closest to: 1%, 10%, 30%, 50%, 70%, or 90%?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The probability is surprisingly high! It's actually 94.1%. 
+The probability is surprisingly high! It's actually 94.1%.
 
 Probability that at least two people share a birthday in a group of 45 is calculated using the complementary probability that no one shares a birthday, which is then subtracted from 1.
 
 - Probability that no one shares a birthday:
-  $$ P(\text{no shared birthday}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times ... \times \frac{321}{365} $$ 
+  $$ P(\text{no shared birthday}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times ... \times \frac{321}{365} $$
 
-</p>
+</Admonition>
+
+<div class="flex items-center gap-4 mt-2">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem" v-click>94%! This is exactly why we can't trust our gut about probability — and why we need formal hypothesis tests instead of intuition.</SpeechBubble>
+</div>
 
 
 ---
@@ -473,11 +481,11 @@ Experiment:
 
 <Admonition title="Question" color="teal-light" width="100%">Are the 10 students in PS 211 on average happier than the 10 other BU students?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Yes, we can draw that conclusion about the sample based on the sample means (assuming we believe our survey is valid and reliable).
+Yes, we can draw that conclusion about the sample based on the sample means (assuming we believe our survey is valid and reliable).
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -492,11 +500,11 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Can we conclude that PS 211 students are happier than other BU students? Why or why not?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** We cannot conclude that PS 211 students are happier than other BU students based solely on this sample. The observed difference in means could be due to random chance, especially given the small sample sizes. We need to conduct a hypothesis test to determine if a real difference likely exists in the population.
+We cannot conclude that PS 211 students are happier than other BU students based solely on this sample. The observed difference in means could be due to random chance, especially given the small sample sizes. We need to conduct a hypothesis test to determine if a real difference likely exists in the population.
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -533,12 +541,12 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">In the PS 211 happiness example, what are the null and research hypotheses?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:**
 - Null Hypothesis (H₀): There is no difference in happiness levels between PS 211 students and other BU students.
 - Research Hypothesis (H₁): PS 211 students are happier than other BU students.
-</p>
+
+</Admonition>
 
 ---
 layout: top-title
@@ -553,13 +561,12 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">In the Stroop task example, what are the null and research hypotheses?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:**
 - Null Hypothesis (H₀): There is no difference in reaction times between the congruent and incongruent conditions.
 - Research Hypothesis (H₁): Reaction times are slower in the incongruent condition compared to the congruent condition.
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -589,6 +596,8 @@ align: lt
 - **Two-tailed test:** Tests for an effect in either direction (e.g., there is a difference in happiness, but we don't know which group is happier).
 - One-tailed tests have more statistical power, but can miss effects in the opposite direction.
 
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="60%">After Exam 1, we'll turn these ideas into actual significance tests — this vocabulary (H₀, H₁, one- vs. two-tailed) will come up constantly.</StickyNote></p>
+
 <img src="/images/lecture5/tail_meme.jpg" alt="one two tailed" class="mx-auto w-1/3" />
 
 ---
@@ -609,26 +618,28 @@ align: lt-lt-lt
 - We never "accept" H₀, because we can't prove it true.
 - We use probability to assess how likely our data are under H₀.
 
+<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">"Fail to reject" vs. "accept" the null is a classic exam distinction — absence of evidence is not evidence of absence!</StickyNote></p>
+
 
 :: right ::
 <Admonition title="Question" color="teal-light" width="100%">What's wrong with this statement of experiment results: "PS 211 students are equally as happy as other BU students."?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** This statement suggests that we have proven the null hypothesis (H₀) to be true, which is not possible. We can only fail to reject H₀.
+This statement suggests that we have proven the null hypothesis (H₀) to be true, which is not possible. We can only fail to reject H₀.
 
-</p>
+</Admonition>
 
 <p v-click>
 <Admonition title="Question" color="teal-light" width="100%">How should we fix it?</Admonition>
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** A better way to state the results would be: "We did not find evidence that PS 211 students are happier than other BU students."    
+A better way to state the results would be: "We did not find evidence that PS 211 students are happier than other BU students."
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -661,13 +672,12 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">You have a cough and decide to take a covid test. What is your null and alternative hypothesis?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:**
 - Null Hypothesis (H₀): You do not have COVID-19. (i.e., you are not 'different' from your usual healthy state)
 - Alternative Hypothesis (H₁): You have COVID-19. (i.e., you are 'different' from your usual healthy state)
 
-</p>
+</Admonition>
 
 <p v-click>
 
@@ -675,11 +685,11 @@ align: lt
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** This is a Type I error (false positive). You rejected the null hypothesis (you do not have COVID-19) when it was actually true.
+This is a Type I error (false positive). You rejected the null hypothesis (you do not have COVID-19) when it was actually true.
 
-</p>
+</Admonition></p>
 
 ---
 layout: cover
@@ -687,4 +697,4 @@ color: indigo-light
 ---
 
 # That's all for today!
-See you Thursday -- we will combine probability with hypothesis testing and inference.
+See you Thursday for the ==Exam 1 review session== — bring your questions! New material resumes after the exam, with Lecture 7 on Thursday, October 1.

@@ -23,13 +23,11 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 16**. You now have both paired- and independent-samples *t* tests in hand for it.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Tuesday, November 17** at 11:59 p.m. You now have both paired- and independent-samples *t* tests in hand for it.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
   - Tuesday (11/10): Exam 3 Review
-  - Thursday (11/12): Exam 3 (covers Lectures 13-14)
+  - Thursday (11/12): Exam 3 (covers Lectures 11-14)
 
 ---
 layout: top-title
@@ -259,11 +257,11 @@ align: lt
 If we increase the sample sizes (n₁ and n₂) while keeping the sample variances (s₁² and s₂²) constant, what happens to the standard error of the difference between means (SE_difference)?
 </Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** It decreases. As sample sizes increase, our estimates of the population parameters become more precise, leading to a smaller standard error — just like with the single-sample and paired-samples *t* tests.
+It decreases. As sample sizes increase, our estimates of the population parameters become more precise, leading to a smaller standard error — just like with the single-sample and paired-samples *t* tests.
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -443,13 +441,11 @@ $$t = \frac{M_1 - M_2}{SE_{difference}} = \frac{7.5 - 6.0}{0.5} = 3.00$$
 
 **Step 6:** $3.00 > 2.306$ → **Reject H₀**
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
 Students who exercise regularly slept significantly more than students who don't, *t*(8) = 3.00, *p* < .05. The 95% CI is $1.5 \pm (2.306)(0.5) = [0.35, 2.65]$ hours, and the effect size is large: $d = 1.5/\sqrt{0.625} = 1.90$.
-</Admonition>
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -523,11 +519,11 @@ How many participants were in this study?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** df = n₁ + n₂ − 2 = 38, so n₁ + n₂ = 40 total participants.
+df = n₁ + n₂ − 2 = 38, so n₁ + n₂ = 40 total participants.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -552,4 +548,4 @@ color: indigo-light
 ---
 
 # That's all for today!
-Next class: Exam 3 Review (covers Lectures 13-14)
+Next class: Exam 3 Review (covers Lectures 11-14)

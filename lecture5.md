@@ -24,9 +24,9 @@ align: lt
 
 :: content ::
 
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16; the second is ANOVA based, due Monday, Dec. 7).
+- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17; the second is ANOVA based, due Tuesday, Dec. 8).
 - Discussion sections are using time for in-class R practice — take advantage of it!
-- Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - ==Exam 1== is scheduled for **Tuesday, September 29** and covers Lectures 1 - 6. Review session is **Thursday, September 24**.
 
 ---
@@ -484,6 +484,8 @@ sample_variance_N_minus_1 <- sum((sample_scores - sample_mean)^2) / (length(samp
 
 </p>
 
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll write R code like this yourselves — today, just focus on how the code mirrors the formulas.</StickyNote></p>
+
 
 ---
 layout: top-title
@@ -520,6 +522,8 @@ align: lt
 - The standard deviation is often more interpretable than the variance because it is in the same units as the original data.
 - For example, if exam scores are measured in points, the standard deviation will also be in points, while the variance will be in points squared.
 - Both the variance and standard deviation provide valuable information about the spread of a dataset, but the standard deviation is often preferred for its interpretability.
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">When you hear "scores were typically about 10 points from the average" — that's the standard deviation talking. It's the spread number you'll actually report.</SpeechBubble></p>
 
 
 ---
@@ -566,14 +570,13 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Thought question: Why would the built in 'var' and 'sd' functions compute the sample variance and standard deviation instead of the population versions?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** In practice, we often work with samples rather than entire populations. Therefore, R's built-in functions are designed to compute sample statistics by default.
+In practice, we often work with samples rather than entire populations. Therefore, R's built-in functions are designed to compute sample statistics by default.
 
 <img src="/images/lecture4/sample_meme.jpg" alt="sample meme" class="mx-auto w-1/4" />
 
-
-</p>
+</Admonition>
 
 
 ---
@@ -593,20 +596,21 @@ align: lt
 
 <img src="/images/lecture4/high_low_var.svg" alt="variance practice" class="mx-auto w-1/2" />
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The histogram on the left has higher variance because the scores are more spread out from the mean.
+The histogram on the left has higher variance because the scores are more spread out from the mean.
 
-</p>
+</Admonition>
 
 <p v-click>
 <Admonition title="Question" color="teal-light" width="100%">Which measure of variability would be most affected by an outlier?</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The range would be most affected by an outlier because it only depends on the highest and lowest scores.
-</p>
+The range would be most affected by an outlier because it only depends on the highest and lowest scores.
+
+</Admonition></p>
 
 
 
@@ -631,11 +635,11 @@ align: lt
 </div>
 
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The "Violet" distribution likely has a greater standard deviation because its scores are more spread out from the mean.
+The "Violet" distribution likely has a greater standard deviation because its scores are more spread out from the mean.
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -731,11 +735,11 @@ align: lt
 Two groups of students both report an average anxiety score of 5 (on a 0-10 scale) before an exam. Group A has a standard deviation of 0.5. Group B has a standard deviation of 3.5. What does this difference in SD tell us about each group, even though their average is identical?
 </StickyNote>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Possible answer:** In Group A, almost everyone feels about the same, moderate amount of anxiety — the mean of 5 describes the group well. In Group B, the same average of 5 is hiding a lot of variability: some students may feel almost no anxiety, while others may feel extremely anxious. 
+In Group A, almost everyone feels about the same, moderate amount of anxiety — the mean of 5 describes the group well. In Group B, the same average of 5 is hiding a lot of variability: some students may feel almost no anxiety, while others may feel extremely anxious.
 
-</p>
+</Admonition></p>
 
 <p v-click>
 

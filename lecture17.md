@@ -23,11 +23,9 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **Monday, December 7** at 11:59pm.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
-- **No class Wed. 11/25 or Thurs. 11/26 — Happy Thanksgiving!** 🦃
+- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **Tuesday, December 8** at 11:59pm.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- **No discussion Wed. 11/25 and no class Thurs. 11/26 — Happy Thanksgiving!** 🦃
 
 ---
 layout: section
@@ -256,21 +254,22 @@ align: lt
 # Practice: Identify the Correlation Type
 
 :: content ::
+<Admonition title="Question" color="teal-light" width="100%">
+
 Which of the following would you expect to show a **negative correlation**?
 
-A. Peoples' heights and weights
+- A. Peoples' heights and weights
+- B. The number of hours people spend studying and their exam scores
+- C. Distance people live from campus and their attendance in classes
+- D. Shoe size and GPA
 
-B. The number of hours people spend studying and their exam scores
+</Admonition>
 
-C. Distance people live from campus and their attendance in classes
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-D. Shoe size and GPA
+C. We would expect a negative correlation between distance from campus and class attendance — as distance increases, attendance tends to decrease.
 
-<p v-click>
-
-**Answer: C.** We would expect a negative correlation between distance from campus and class attendance — as distance increases, attendance tends to decrease.
-
-</p>
+</Admonition></p>
 
 <p v-click>
 
@@ -332,7 +331,7 @@ align: lt
 
 :: content ::
 
-*What is the correlation between these two variables?*
+<Admonition title="Question" color="teal-light" width="100%">What is the correlation between these two variables?</Admonition>
 
 <img src="/images/lecture16/nonlinear.png" class="w-1/3 rounded-lg mx-auto"/>
 
@@ -347,21 +346,16 @@ align: lt
 
 :: content ::
 
-*What is the correlation between these two variables?*
+<Admonition title="Question" color="teal-light" width="100%">What is the correlation between these two variables?</Admonition>
 
 <img src="/images/lecture16/nonlinear_labeled.png" class="w-1/3 rounded-lg mx-auto"/>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%">
 
 - There is *no* linear relationship here — the pattern is curved.
-
-</p>
-
-<p v-click>
-
 - We would need to use a different method (e.g., nonlinear regression) to capture this curved relationship.
 
-</p>
+</Admonition>
 
 ---
 layout: section
@@ -639,6 +633,8 @@ The remaining 19 % is due to chance, measurement error, or other factors.
 
 </p>
 
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="60%">*R²* will come back next class when we talk about regression — same idea of "variance explained," now with a line that makes predictions.</StickyNote></p>
+
 ---
 layout: top-title
 color: indigo-light
@@ -727,6 +723,8 @@ align: lt
 - There are multiple methods to identify outliers, including visual inspection and statistical tests.
   - It is always extremely important to ==visually inspect your data== before conducting analyses.
 
+<p v-click><StickyNote color="amber-light" title="Heads up" width="60%">This is a great habit for your Data Write-Up: plot your data *before* you run any tests. A single outlier can completely change your conclusions!</StickyNote></p>
+
 
 
 ---
@@ -794,17 +792,21 @@ Hill (1990) studied final exam grades in Sociology and found these correlations:
 | Number of absences | −.51 |
 | Hours spent studying | .31 |
 
+<Admonition title="Question" color="teal-light" width="100%">
+
 Which variable shows the **strongest** relationship with exam grade?
 
-A. Hours spent studying
-B. Number of absences
-C. Overall GPA
+- A. Hours spent studying
+- B. Number of absences
+- C. Overall GPA
 
-<p v-click>
+</Admonition>
 
-**Answer: C.** Overall GPA (*r* = .72) has the strongest positive relationship with exam performance.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-</p>
+C. Overall GPA (*r* = .72) has the strongest positive relationship with exam performance.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -816,22 +818,22 @@ align: lt
 # Practice: Direction & Causation
 
 :: content ::
-A study finds a correlation of *r* = −.45 between screen time and sleep quality.
-Which interpretation is most appropriate?
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Screen time causes poor sleep.
+A study finds a correlation of *r* = −.45 between screen time and sleep quality. Which interpretation is most appropriate?
 
-B. Poor sleep causes increased screen time.
+- A. Screen time causes poor sleep.
+- B. Poor sleep causes increased screen time.
+- C. A third variable (e.g., stress) affects both screen time and sleep quality.
+- D. There is a negative association between screen time and sleep quality.
 
-C. A third variable (e.g., stress) affects both screen time and sleep quality.
+</Admonition>
 
-D. There is a negative association between screen time and sleep quality.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+D. There is a negative association between screen time and sleep quality. We cannot infer causation from correlation alone.
 
-**Answer: D.** There is a negative association between screen time and sleep quality. We cannot infer causation from correlation alone.
-
-</p>
+</Admonition></p>
 
 ---
 layout: section

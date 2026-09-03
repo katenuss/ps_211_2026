@@ -26,8 +26,8 @@ align: lt
 
 - R and R Studio are being introduced in ==discussion sections== — bring a laptop!
   - If you haven't installed them yet, follow the instructions on Slack and come to office hours if you need help.
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16).
-- Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
+- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17).
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You'll see a little R code in today's slides — it's just a preview. You'll get hands-on practice in discussion section, so no need to memorize anything today.</SpeechBubble></p>
 

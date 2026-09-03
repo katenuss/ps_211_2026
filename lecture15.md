@@ -25,12 +25,12 @@ align: lt
 :: content ::
 - ==Exam 3== grades are posted.
   - We will go over difficult questions in class if needed.
-- No standalone homework this week — keep in mind our second ==Data Write-Up== (ANOVA-based) is due **Monday, December 7**.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- **Data Write-Up #1 (t-test based) is due TODAY (Tuesday, November 17) at 11:59 p.m.!**
+- No standalone homework this week — keep in mind our second ==Data Write-Up== (ANOVA-based) is due **Tuesday, December 8** at 11:59 p.m.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - This week:
   - Lecture 15 (today): One-Way ANOVA
+  - Discussion 11 (Wed. 11/18): R practice for ANOVA + intro to Data Write-Up #2
   - Lecture 16 (Thurs): Repeated-Measures ANOVA & Two-Way ANOVA
 
 ---
@@ -45,11 +45,11 @@ align: lt
 
 :: content ::
 - Two more "gradeable" assignments left in the course:
-  - Data Write-Up #2 (ANOVA-based, due Mon. 12/7)
+  - Data Write-Up #2 (ANOVA-based, due Tues. 12/8)
   - Exam 4 (Thurs. 12/10)
 - Next week (11/24):
   - Lecture 17 (Tues): Correlation
-  - **No class Wed. 11/25 or Thurs. 11/26 — Thanksgiving break**
+  - **No discussion Wed. 11/25 and no class Thurs. 11/26 — Thanksgiving break**
 - Week of 12/1:
   - Lecture 18 (Tues): Regression
   - Lecture 19 (Thurs): Chi-Square & Non-Parametric Tests
@@ -115,11 +115,13 @@ If you used a *t*-test for every possible combination, you'd run many tests!
 
 That's **6 *t*-tests!**
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Is there any problem with that? 🤔</Admonition></p>
 
-Is there any problem with that? 🤔
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
 Yes — it **increases the chance of a Type I error** (false positive).
-</p>
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -267,11 +269,9 @@ align: lt-lt-lt
 The *F* statistic captures both the **differences between groups** and the **noise within them**.
 </SpeechBubble>
 
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Which part of this equation captures systematic differences between groups? Which part captures "noise" within groups?</Admonition></p>
+
 <p v-click>
-
-*Which part of this equation captures systematic differences between groups?*
-
-Whi*ch part captures "noise" within groups?*
 
 $$
 F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
@@ -508,14 +508,14 @@ $$
 
 This captures **unexplained variability** — random noise and individual differences.
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Why are there ==two== summation symbols?</Admonition></p>
 
-*Why are there ==two== summation symbols?*
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 - The inner Σ says: For a given group i, sum the squared deviations of each person's score (j) from that group's mean
 - The outer Σ says: Now repeat that process for each group, and add them all up.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -769,11 +769,7 @@ The between-groups and within-groups sums of squares are:
 | Within Groups   | 100.0  |  |     |        |
 | **Total**       | 550.0  |  |          |        |
 
-<p v-click>
-
-**What should go in the DF column?**
-
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What should go in the df column?</Admonition></p>
 
 ---
 layout: top-title
@@ -794,10 +790,7 @@ The between-groups and within-groups sums of squares are:
 | Within Groups   | 100.0  | N-K = 36 |     |        |
 | **Total**       | 550.0  | 39 |          |        |
 
-<p v-click>
-
-**What should go in the MS column?**
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What should go in the MS column?</Admonition></p>
 
 ---
 layout: top-title
@@ -818,10 +811,7 @@ The between-groups and within-groups sums of squares are:
 | Within Groups   | 100.0  | N-K = 36 |  SS/df = 2.78   |        |
 | **Total**       | 550.0  | 39 |          |        |
 
-<p v-click>
-
-**What should go in the F column?**
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What should go in the *F* column?</Admonition></p>
 
 ---
 layout: top-title
@@ -1086,6 +1076,8 @@ summary(anova_result)
 
 ```
 
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">Tomorrow (Wed. 11/18) you'll run one-way ANOVAs in R yourselves — and get an introduction to Data Write-Up #2, which is ANOVA-based.</StickyNote></p>
+
 
 ---
 layout: cover
@@ -1094,3 +1086,5 @@ color: indigo-light
 
 # That's all for today!
 Thursday: Repeated-Measures ANOVA & Two-Way ANOVA
+
+- Don't forget: Data Write-Up #1 is due tonight at 11:59 p.m.!

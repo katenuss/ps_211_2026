@@ -23,13 +23,14 @@ align: lt
 # Updates and Reminders
 
 :: content ::
-- ==Exam 2== now covers Lectures 7-12.
-- Exam 2 Review is Tuesday, October 27.
-- Exam 2 is Thursday, October 29.
+- ==Exam 2== covers Lectures 7-10 — that means today's lecture is the last new material before the exam!
+- Exam 2 Review is next Tuesday, October 20.
+- Discussion 7 is Wednesday, October 21: Exam 2 review & R practice (hypothesis testing & confidence intervals).
+- Exam 2 is next Thursday, October 22.
 - Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Monday, November 16
-  - Write-Up 2 (ANOVA based): due Monday, December 7
-- Office hours: Tuesday 12:30-1:30pm, Thursday 9:00-10:00am.
+  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
+  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Reminder: there was **no class** this past Tuesday, October 13 (substitute Monday schedule) — that's why today picks up right where we left off!
 
 
@@ -57,13 +58,13 @@ When might this be useful?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: All the time!**
+**All the time!**
 
 *We often want to know if a sample is different from a population.*
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -87,21 +88,21 @@ Researchers are studying online dating profile ratings.
 What is the standard error for the distribution of means?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** $SE = SD/\sqrt{n} = 0.833/\sqrt{30} \approx 0.152$
+$SE = SD/\sqrt{n} = 0.833/\sqrt{30} \approx 0.152$
 
-</p>
+</Admonition></p>
 
 <Admonition title="Question" color="teal-light" width="100%">
 What does this standard error tell us?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The average sample mean computed from samples of size $n=30$ will be about 0.152 away from the population mean ($\mu$) of 2.5.
+The average sample mean computed from samples of size $n=30$ will be about 0.152 away from the population mean ($\mu$) of 2.5.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -126,7 +127,7 @@ Researchers are studying online dating profile ratings.
 How would we calculate a z statistic to determine how "extreme" the RI sample mean is?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Calculate standard error: $SE = 0.833/\sqrt{30} \approx 0.152$
 2. Calculate z statistic for the sample mean, using the population mean and standard error:
@@ -135,7 +136,7 @@ $z = (M - \mu) / SE$
 
 $z = (2.84 - 2.5) / 0.152 \approx 2.24$
 
-</p>
+</Admonition></p>
 
 
 <p v-click>
@@ -321,6 +322,8 @@ align: lt
 
 <img src="/images/lecture7/p_val_meme.jpg" alt="P value meme" class="w-1/3 mx-auto"/>
 
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">The p value is NOT the probability that the null hypothesis is true — it's the probability of data this extreme *if* the null were true. This distinction trips people up constantly, including professional researchers!</SpeechBubble></p>
+
 
 ---
 layout: top-title-two-cols
@@ -344,15 +347,13 @@ align: lt-lt-lt
 What are your null and research hypotheses?
 </Admonition>
 
-<p v-click>
-
-**Answer:** 
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 $H_0$: Average weight of one bag of cookies = 500g.
 
 $H_1$: Average weight of one bag of cookies < 500g.
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -466,6 +467,11 @@ Be careful when moving back and forth between decimals and percents! .05 = 5%, b
 
 </p>
 
+<div class="flex items-center gap-4">
+<IceCream :size="80" mood="blissful" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>Congratulations — you just completed your first full hypothesis test! Sorry, Santa.</SpeechBubble>
+</div>
+
 
 ---
 layout: top-title
@@ -562,6 +568,8 @@ align: lt
 
 <img src="/images/lecture8/head_explode.jpeg" alt="Head explode" class="w-1/4 mx-auto"/>
 
+<p v-click><StickyNote color="amber-light" title="Heads up" width="60%">This subtle interpretation point is a classic exam question — in this course and beyond!</StickyNote></p>
+
 
 ---
 layout: top-title
@@ -640,6 +648,8 @@ align: lt-lt-lt
 - Let's do a demo in R to calculate z scores, percentiles, and confidence intervals. 
 - This will help prepare you for the Data Write-Ups later this semester, which involve R coding.
 
+<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">Discussion 7 (Wednesday, October 21) is Exam 2 review plus R practice with hypothesis testing and confidence intervals — perfect timing before the exam!</StickyNote></p>
+
 
 
 
@@ -650,4 +660,4 @@ color: indigo-light
 ---
 
 # That's all for today!
-Next time: more on **t tests**
+Next up: **Exam 2 Review** on Tuesday, October 20 — then **Exam 2** on Thursday, October 22. Bring your questions!

@@ -24,11 +24,10 @@ align: lt
 
 :: content ::
 - Welcome back from Thanksgiving break!
-- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **this Monday, December 7** at 11:59pm.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **next Tuesday, December 8** at 11:59pm.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
+  - Discussion 12 (Wed. 12/2): Data Write-Up #2 work session — come with questions!
   - Lecture 19 (Thurs): Chi-Square & Non-Parametric Tests
   - Exam 4 Review (Tues. 12/8)
   - Exam 4 (Thurs. 12/10, last day of classes) — covers Lectures 15-19
@@ -106,6 +105,11 @@ align: lt
 - **Regression** allows us to make this prediction by quantifying the relationship between ice cream sales and shark attacks.
 
 </p>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem" v-click>Ice cream doesn't *cause* shark attacks — both rise in the summer! Regression lets us predict one from the other, but prediction is not causation.</SpeechBubble>
+</div>
 
 ---
 layout: top-title
@@ -395,22 +399,22 @@ align: lt
 
 :: content ::
 
-**Which of the following describes (in words) the best-fitting regression line found using OLS?**
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. The line that has an equal number of points above and below it.
+Which of the following describes (in words) the best-fitting regression line found using OLS?
 
-B. The line that minimizes the sum of squared deviations between actual and predicted Y values.
+- A. The line that has an equal number of points above and below it.
+- B. The line that minimizes the sum of squared deviations between actual and predicted Y values.
+- C. The line that best predicts the **mean** of Y.
+- D. The line with the **largest** slope.
 
-C. The line that best predicts the **mean** of Y.
+</Admonition>
 
-D. The line with the **largest** slope.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+B. OLS finds the line with the **smallest sum of squared errors (SSE)**, which is the sum of squared deviations between actual and predicted Y values.
 
-**Answer: B.**
-OLS finds the line with the **smallest sum of squared errors (SSE)**, which is the sum of squared deviations between actual and predicted Y values.
-
-</p>
+</Admonition></p>
 
 
 ---
@@ -479,11 +483,11 @@ How will increasing the number of data points (n) affect the standard error of t
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Increasing the number of data points (n) will generally **decrease** the standard error of the estimate. This is because a larger sample size provides more information about the population, leading to more accurate estimates of the regression parameters.
+Increasing the number of data points (n) will generally **decrease** the standard error of the estimate. This is because a larger sample size provides more information about the population, leading to more accurate estimates of the regression parameters.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -715,17 +719,13 @@ Imagine you are predicting house prices based on square footage and number of be
   - Slope ($b$) for square footage = 150 (each additional square foot increases price by $150)
   - Slope ($b$) for number of bedrooms = 20,000 (each additional bedroom increases price by $20,000)
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Which predictor has a larger impact on price?</Admonition></p>
 
-**Which predictor has a larger impact on price?**
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-</p>
+It depends on the scale of the predictors. Square footage is measured in hundreds or thousands, while number of bedrooms is a small integer. Thus, we cannot directly compare their unstandardized coefficients.
 
-<p v-click>
-
-**Answer:** It depends on the scale of the predictors. Square footage is measured in hundreds or thousands, while number of bedrooms is a small integer. Thus, we cannot directly compare their unstandardized coefficients.
-
-</p>
+</Admonition></p>
 
 
 ---
@@ -749,17 +749,13 @@ Imagine you are predicting house prices based on square footage and number of be
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Now, which predictor has a larger impact on price?</Admonition></p>
 
-**Now, which predictor has a larger impact on price?**
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-</p>
+Square footage has a larger impact on price, as indicated by its higher standardized coefficient (β = 0.6 vs. β = 0.4).
 
-<p v-click>
-
-**Answer:** Square footage has a larger impact on price, as indicated by its higher standardized coefficient (β = 0.6 vs. β = 0.4).
-
-</p>
+</Admonition></p>
 
 
 ---
@@ -839,21 +835,22 @@ align: lt
 - However, you then run a ==multiple regression== including both stress and sleep as predictors.
     - Here, you find that stress significantly predicts depression ($b = 3, p < .001$), but sleep no longer significantly predicts depression ($b = -0.5, p = .15$).
 
-**What do these two findings suggest?**
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Sleep is not related to depression.
+What do these two findings suggest?
 
-B. Stress predicts sleep.
+- A. Sleep is not related to depression.
+- B. Stress predicts sleep.
+- C. Stress explains some of the same variance in depression as sleep.
+- D. Stress and sleep are unrelated.
 
-C. Stress explains some of the same variance in depression as sleep.
+</Admonition>
 
-D. Stress and sleep are unrelated.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+C. If including stress in the model reduces the effect of sleep on depression, it suggests that stress and sleep share some variance in predicting depression.
 
-**Answer: C.**  If including stress in the model reduces the effect of sleep on depression, it suggests that stress and sleep share some variance in predicting depression.
-
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1013,17 +1010,13 @@ Adjusted R-squared:  0.962
 F-statistic: 57.89 on 3 and 3 DF,  p-value: 0.000123
 ```
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Which predictor has the largest impact on depression?</Admonition></p>
 
-**Which predictor has the largest impact on depression?**
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-</p>
+Stress has the largest impact on depression, as indicated by its highest t-value (7.112) and lowest p-value (.00045) among the predictors.
 
-<p v-click>
-
-**Answer:** Stress has the largest impact on depression, as indicated by its highest t-value (7.112) and lowest p-value (.00045) among the predictors.
-
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1087,28 +1080,24 @@ align: lt
 
 :: content ::
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
 
 *A researcher uses hours studied (X) to predict final exam score (Y). The regression slope is b = 4.2, p < .01.*
 
-**What does this result mean in practical terms?**
+What does this result mean in practical terms?
 
-A. Students who study score exactly 4.2 points higher on their exam relative to students who do not study.
+- A. Students who study score exactly 4.2 points higher on their exam relative to students who do not study.
+- B. For each extra hour studied, exam scores increase on average by 4.2 points.
+- C. For each extra hour studied, exam scores increase by 4.2%.
+- D. Students who study more tend to perform worse.
 
-B. For each extra hour studied, exam scores increase on average by 4.2 points.
+</Admonition></p>
 
-C. For each extra hour studied, exam scores increase by 4.2%.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-D. Students who study more tend to perform worse.
+B. The slope indicates that for each additional hour studied, the predicted exam score increases by 4.2 points on average.
 
-</p>
-
-<p v-click>
-
-**Answer: B.**
-The slope indicates that for each additional hour studied, the predicted exam score increases by 4.2 points on average.
-
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1127,32 +1116,29 @@ align: lt
 
 $$\hat{Y} = 22 - 1.5X$$
 
-**What does the intercept (22) represent?**
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Predicted stress level when sleep = 0 hours
+What does the intercept (22) represent?
 
-B. Average stress level in the sample
+- A. Predicted stress level when sleep = 0 hours
+- B. Average stress level in the sample
+- C. Minimum stress score possible
 
-C. Minimum stress score possible
+</Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: A.**
-The intercept represents the predicted stress level when the predictor (hours of sleep) is equal to 0.
-</p>
+A. The intercept represents the predicted stress level when the predictor (hours of sleep) is equal to 0.
 
-<p v-click>
+</Admonition></p>
 
-**How should we interpret this intercept in practical terms?**
+<p v-click><Admonition title="Question" color="teal-light" width="100%">How should we interpret this intercept in practical terms?</Admonition></p>
 
-
-</p>
-
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 Since 0 hours of sleep is not a realistic scenario, the intercept may not have a meaningful interpretation in this context. It is primarily a mathematical necessity for the regression equation.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1168,21 +1154,22 @@ align: lt
 :: content ::
 A study predicts job performance from years of experience. The model yields R² = .32.
 
-**Which is the most accurate interpretation of this R² value?**
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Experience causes 32% better job performance.
+Which is the most accurate interpretation of this R² value?
 
-B. Experience explains 32% of the variance in performance.
+- A. Experience causes 32% better job performance.
+- B. Experience explains 32% of the variance in performance.
+- C. 32% of employees are high performers.
+- D. Performance can be predicted with 32% accuracy.
 
-C. 32% of employees are high performers.
+</Admonition>
 
-D. Performance can be predicted with 32% accuracy.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+B. R² indicates that 32% of the variance in job performance is explained by years of experience.
 
-**Answer: B.**
-R² indicates that 32% of the variance in job performance is explained by years of experience
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1199,22 +1186,22 @@ A study predicts college GPA using SAT score (X₁) and high school GPA (X₂).
 
 When SAT score is used alone, it significantly predicts college GPA ($b = 0.03, p < .01$). When both SAT score and high school GPA are included as predictors in the model, the slope for SAT becomes non-significant.
 
-**What is the best interpretation of this result?**
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. SAT does not predict college GPA at all.
+What is the best interpretation of this result?
 
-B. SAT only predicts GPA for high-performing students.
+- A. SAT does not predict college GPA at all.
+- B. SAT only predicts GPA for high-performing students.
+- C. SAT and high school GPA explain overlapping variance.
+- D. High school GPA causes SAT performance.
 
-C. SAT and high school GPA explain overlapping variance.
+</Admonition>
 
-D. High school GPA causes SAT performance.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+C. Including high school GPA in the model accounts for some of the same variance in college GPA that SAT score explains, leading to a non-significant slope for SAT.
 
-**Answer: C.**
-
-Including high school GPA in the model accounts for some of the same variance in college GPA that SAT score explains, leading to a non-significant slope for SAT.
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1231,21 +1218,22 @@ align: lt
 
 A regression predicts happiness from daily exercise duration. The slope is $b = 1.4, p = .28.$
 
-**Which conclusion is correct?**
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Exercise has no effect on happiness.
+Which conclusion is correct?
 
-B. We failed to find evidence that exercise predicts happiness.
+- A. Exercise has no effect on happiness.
+- B. We failed to find evidence that exercise predicts happiness.
+- C. Exercise decreases happiness.
+- D. The effect size is zero.
 
-C. Exercise decreases happiness.
+</Admonition>
 
-D. The effect size is zero.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+B. A non-significant p-value indicates that we did not find evidence that exercise duration predicts happiness in this sample. It does not prove that there is no effect in the population.
 
-**Answer: B.**
-A non-significant p-value indicates that we did not find evidence that exercise duration predicts happiness in this sample. It does not prove that there is no effect in the population.
-</p>
+</Admonition></p>
 
 ---
 layout: cover

@@ -130,9 +130,7 @@ You conduct a survey of college students to understand how demographics relate t
 
 <Admonition title="Question" color="teal-light" width="100%">Which of these variables are qualitative and which are quantitative? Which are discrete and which are continuous? Which are nominal, ordinal, interval, and ratio?</Admonition>
 
-<p v-click>
-
-**Answers:**
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
 1. Quantitative, continuous, ratio
 2. Quantitative, continuous, ratio
@@ -141,7 +139,7 @@ You conduct a survey of college students to understand how demographics relate t
 5. Quantitative, discrete, ratio
 6. Quantitative, continuous, ratio
 
-</p>
+</Admonition>
 
 
 
@@ -247,11 +245,11 @@ align: lt
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The questionnaire is reliable because it produces consistent results when the same students take it multiple times. However, it is not valid because it does not correlate with physiological measures of stress, indicating that it may not be accurately measuring stress levels.
+The questionnaire is reliable because it produces consistent results when the same students take it multiple times. However, it is not valid because it does not correlate with physiological measures of stress, indicating that it may not be accurately measuring stress levels.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -272,11 +270,11 @@ align: lt
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** You could point to studies showing that SAT scores can vary significantly for the same individual when taken multiple times (indicating low reliability). Additionally, you could cite research showing that SAT scores do not strongly correlate with other measures of intelligence, such as IQ tests or academic performance (indicating low validity).
+You could point to studies showing that SAT scores can vary significantly for the same individual when taken multiple times (indicating low reliability). Additionally, you could cite research showing that SAT scores do not strongly correlate with other measures of intelligence, such as IQ tests or academic performance (indicating low validity).
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -294,20 +292,20 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">How could you operationalize musical ability?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Musical ability could be operationalized as "score on a standardized music listening test" or "number of musical instruments played proficiently."
+Musical ability could be operationalized as "score on a standardized music listening test" or "number of musical instruments played proficiently."
 
-</p>
+</Admonition>
 
 
-<Admonition title="Question" color="purple-light" width="100%">How could you operationalize stress?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">How could you operationalize stress?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer**: Stress could be operationalized as "self-reported stress levels on a 1-10 scale" or "cortisol levels measured through saliva samples."
+Stress could be operationalized as "self-reported stress levels on a 1-10 scale" or "cortisol levels measured through saliva samples."
 
-</p>
+</Admonition>
 
 
 
@@ -409,22 +407,23 @@ align: lt
 <Admonition title="Question" color="teal-light" width="100%">A teacher gives a very easy test to a class of students. Most students score between 90 and 100, with a few scoring slightly lower. What kind of skew would you expect in the distribution of test scores? Is there a floor or ceiling effect?</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The distribution of test scores would likely be negatively skewed, with a ceiling effect present. Most students are clustered at the high end of the scale (90-100).
-</p>
+The distribution of test scores would likely be negatively skewed, with a ceiling effect present. Most students are clustered at the high end of the scale (90-100).
 
-<p v-click>
-
-<Admonition title="Question" color="purple-light" width="100%">Why is this ceiling effect potentially problematic?</Admonition>
-
-</p>
+</Admonition></p>
 
 <p v-click>
 
-**Answer:** The ceiling effect is problematic because it limits the ability to differentiate between students' performance at the high end of the scale. 
+<Admonition title="Question" color="teal-light" width="100%">Why is this ceiling effect potentially problematic?</Admonition>
 
 </p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The ceiling effect is problematic because it limits the ability to differentiate between students' performance at the high end of the scale.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -443,21 +442,21 @@ align: lt
 <Admonition title="Question" color="teal-light" width="100%">A researcher asks participants to rate their satisfaction with a new product on a scale from 1 to 10. Most participants give ratings between 8 and 10, with very few giving lower ratings.</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The distribution is likely to be negatively skewed, with a ceiling effect present. Most participants are clustered at the high end of the scale (8-10).
+The distribution is likely to be negatively skewed, with a ceiling effect present. Most participants are clustered at the high end of the scale (8-10).
 
-</p>
-
-<p v-click>
-<Admonition title="Question" color="purple-light" width="100%">A researcher asks parents how many hours their children spend playing video games each week. Most parents report that their children play between 0 and 2 hours, with a few reporting higher amounts.</Admonition>
-</p>
+</Admonition></p>
 
 <p v-click>
-
-**Answer:** The distribution is likely to be positively skewed, with a floor effect present. Most children are clustered at the low end of the scale (0-2 hours), but a few play significantly more.
-
+<Admonition title="Question" color="teal-light" width="100%">A researcher asks parents how many hours their children spend playing video games each week. Most parents report that their children play between 0 and 2 hours, with a few reporting higher amounts.</Admonition>
 </p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The distribution is likely to be positively skewed, with a floor effect present. Most children are clustered at the low end of the scale (0-2 hours), but a few play significantly more.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -473,21 +472,21 @@ align: lt
 <Admonition title="Question" color="teal-light" width="100%">A researcher asks students how many hours they spend on social media, with a scale that ranges from 0 to 10 hours per day.</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The distribution is likely to be negatively skewed, with a ceiling effect present. Most students are clustered at the high end of the scale (8-10 hours).
+The distribution is likely to be negatively skewed, with a ceiling effect present. Most students are clustered at the high end of the scale (8-10 hours).
 
-</p>
-
-<p v-click>
-<Admonition title="Question" color="purple-light" width="100%">What about scores on the exam on Tuesday?</Admonition>
-</p>
+</Admonition></p>
 
 <p v-click>
-
-**Answer:** We'll see! I hope that the distribution is either normally distributed or negatively skewed, with a ceiling effect present.
-
+<Admonition title="Question" color="teal-light" width="100%">What about scores on the exam on Tuesday?</Admonition>
 </p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+We'll see! I hope that the distribution is either normally distributed or negatively skewed, with a ceiling effect present.
+
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -507,25 +506,25 @@ align: lt-lt-lt
 
 :: right ::
 
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+The distribution is positively skewed, with a floor effect present. Most scores are clustered at the low end of the scale (0-8), but a few scores are significantly higher.
+
+</Admonition>
+
 <p v-click>
 
-**Answer:** The distribution is positively skewed, with a floor effect present. Most scores are clustered at the low end of the scale (0-8), but a few scores are significantly higher.
-
-</p>
-
-<p v-click>
-
-<Admonition title="Question" color="purple-light" width="100%">Does this histogram show the same data?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">Does this histogram show the same data?</Admonition>
 
 <img src="/images/lecture5/starbucks_fat_hist.png" alt="histogram" class="mx-auto w-3/4" />
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Yes.
+Yes.
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -599,7 +598,7 @@ align: lt-lt-lt
 </p>
 
 <p v-click>
-<Admonition title="Question" color="purple-light" width="100%">Which exam was harder?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">Which exam was harder?</Admonition>
 </p>
 
 ---
@@ -652,7 +651,7 @@ align: lt
 
 <p v-click>
 
-<Admonition title="Question" color="purple-light" width="100%">Imagine that you are a boating instructor and you need to order lifejackets for a group of 100 people. You know their average weight is 150 lbs. The options for lifejacket sizes range from XXS to XXL, which correspond to different weights. How would knowing the standard deviation of their weights help you decide how many of each lifejacket size to order?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">Imagine that you are a boating instructor and you need to order lifejackets for a group of 100 people. You know their average weight is 150 lbs. The options for lifejacket sizes range from XXS to XXL, which correspond to different weights. How would knowing the standard deviation of their weights help you decide how many of each lifejacket size to order?</Admonition>
 
 </p>
 
@@ -676,11 +675,11 @@ align: lt
 </div>
 
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The "Violet" distribution likely has a greater standard deviation because its scores are more spread out from the mean.
+The "Violet" distribution likely has a greater standard deviation because its scores are more spread out from the mean.
 
-</p>
+</Admonition>
 
 
 ---
@@ -718,10 +717,11 @@ align: lt-lt-lt
 
 <Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** This is a convenience sample. The participants volunteered to take part in the study, and they were recruited through flyers and online postings. This means they were not randomly selected from the general population.
-</p>
+This is a convenience sample. The participants volunteered to take part in the study, and they were recruited through flyers and online postings. This means they were not randomly selected from the general population.
+
+</Admonition>
 
 :: right ::
 
@@ -732,14 +732,14 @@ align: lt-lt-lt
 </p>
 
 <p v-click>
-<Admonition title="Question" color="purple-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">Is this a random or convenience sample? How do you know?</Admonition>
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** This is a random sample. The researcher randomly selected participants from the entire BU student directory, giving every student an equal chance of being chosen.
+This is a random sample. The researcher randomly selected participants from the entire BU student directory, giving every student an equal chance of being chosen.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title

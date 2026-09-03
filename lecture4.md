@@ -24,10 +24,11 @@ align: lt
 
 :: content ::
 
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Monday, Nov. 16; the second is ANOVA based, due Monday, Dec. 7).
+- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17; the second is ANOVA based, due Tuesday, Dec. 8).
 - Please make sure you know how to use R Markdown and that you can successfully knit a document to an html file.
 - Discussion sections are using time for in-class R practice — take advantage of it!
-- Office hours: Tuesdays 12:30-1:30pm and Thursdays 9:00-10:00am.
+- Discussion 2 is tomorrow (Wednesday, 9/16): R practice with descriptive statistics and frequency displays. Bring a laptop!
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 
 ---
 layout: top-title
@@ -81,6 +82,8 @@ align: lt
 **Median:** The middle score
 
 **Mode:** The most common score
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll compute these in R tomorrow — mean() and median() are one-liners!</StickyNote></p>
 
 ---
 layout: top-title
@@ -176,12 +179,11 @@ $$M = \frac{\sum_{i=1}^{N} X_i}{N}$$
 
 <Admonition title="Question" color="teal-light" width="100%">Five students take an exam and receive the following scores: 80, 85, 90, 95, 100. What is the mean exam score?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
+90. 80 + 85 + 90 + 95 + 100 = 450. There are 5 scores, so 450 / 5 = 90.
 
-**Answer:** 90. 80 + 85 + 90 + 95 + 100 = 450. There are 5 scores, so 450 / 5 = 90.
-
-</p>
+</Admonition>
 
 
 :: right ::
@@ -199,15 +201,15 @@ Is the mean now 85?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** No. The new mean is 86.7:
- 
+No. The new mean is 86.7:
+
 $$80 + 85 + 90 + 95 + 100 + 80 = 520$$
 
 $$520/ 6 = 86.7$$
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -282,26 +284,28 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Five students take an exam and receive the following scores: 92, 85, 90, 95, 100. What is the median exam score?</Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** 92. 
+92.
 
-First, we order the scores: 85, 90, 92, 95, 100. 
+First, we order the scores: 85, 90, 92, 95, 100.
 
 The middle score is 92.
 
-</p>
+</Admonition>
 
 <p v-click>
 <Admonition title="Question" color="teal-light" width="100%">A sixth student takes the exam and receives a score of 0. What is the median exam score now?</Admonition>
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** 91. The ordered scores are now: 0, 85, 90, 92, 95, 100. The two middle scores are 90 and 92, and their mean is 91.
+91. The ordered scores are now: 0, 85, 90, 92, 95, 100. The two middle scores are 90 and 92, and their mean is 91.
 
-</p>
+</Admonition></p>
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Notice what just happened: one wildly extreme score (a 0!) barely moved the median. Keep that in mind — it's about to matter.</SpeechBubble></p>
 
 
 ---
@@ -346,6 +350,8 @@ color: indigo-light
 
 <img src="/images/lecture4/bimodal.png" alt="bimodal" class="mx-auto w-1/2" />
 
+<p v-click><StickyNote color="green-light" title="Example" width="60%">Exam scores in a class where half the students studied and half didn't might pile up in two separate humps — and almost nobody scores at the mean!</StickyNote></p>
+
 ---
 layout: top-title
 color: indigo-light
@@ -360,13 +366,13 @@ align: lt
 <Admonition title="Question" color="teal-light" width="100%">If a distribution is positively skewed, which measure of central tendency will be the largest? Which will be the smallest?</Admonition>
 
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** The mean will be the largest, and the mode will be the smallest.
+The mean will be the largest, and the mode will be the smallest.
 
 <img src="/images/lecture4/mean_med_mode.png" alt="mean med mode" class="mx-auto w-3/4" />
 
-</p>
+</Admonition>
 
 
 
@@ -398,6 +404,11 @@ align: lt
 - Outliers are extreme values that differ greatly from the rest of the data.  
 - Outliers can distort the mean, making it less representative of the dataset.  
 - The median is less affected by outliers and can be a better measure of central tendency in skewed data.  
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem" v-click>This is why you hear about *median* household income, not the mean — a few billionaires would drag the mean way up, while the median still describes a typical household!</SpeechBubble>
+</div>
 
 ---
 layout: top-title-two-cols

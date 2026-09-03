@@ -23,13 +23,13 @@ align: lt
 # Updates and Reminders
 
 :: content ::
-- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 16**.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- Exam 2 is done — grades will be posted soon.
+- Keep an eye out for our first ==Data Write-Up== (t-test-based), due **Tuesday, November 17** at 11:59 p.m.
+  - Discussion 8 (Wed. 10/28) introduces Data Write-Up 1 — you'll form groups and start finding datasets.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
-  - Tuesday (10/27): Exam 2 Review
-  - Thursday (10/29): Exam 2 (covers Lectures 7-12)
+  - Thursday (10/29): Lecture 12 (parametric assumptions & intro to *t* tests)
+  - Exam 3: **Thursday, November 12** (covers Lectures 11-14 — today's material is on Exam 3!)
 
 ---
 layout: top-title
@@ -134,11 +134,11 @@ align: lt
 Based on what we know about *z* tests, why is this the case?
 </Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**Answer:** Larger sample sizes provide more "certain" estimates of the population parameters, reducing the standard error and increasing the likelihood of finding a statistically significant effect.
+Larger sample sizes provide more "certain" estimates of the population parameters, reducing the standard error and increasing the likelihood of finding a statistically significant effect.
 
-</p>
+</Admonition>
 
 <p v-click>
 
@@ -211,6 +211,11 @@ align: lt
   - Or, to increase her height by 4 inches, she would have to increase her IQ by 233 points!
   - Height may have been statistically significantly related to IQ, but there was no practical real-world application.
 
+<div class="flex items-center gap-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem" v-click>Grow 3.5 feet to gain 30 IQ points?! This is why "statistically significant" and "practically important" are not the same thing.</SpeechBubble>
+</div>
+
 
 ---
 layout: top-title
@@ -238,13 +243,11 @@ $M1 = 11; M2 = 9; SD = 2$
 </Admonition>
 
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
 d = 1. This tells us that on average, teens' screen time is 1 full standard deviation below that of adults'. This is a *large* effect.
-</Admonition>
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -267,16 +270,13 @@ align: lt
 What is Cohen's d for this comparison? How would you interpret it?
 </Admonition>
 
-<p v-click>
-
-<Admonition color="green-light" title="Answer" width="100%" v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
 $$d = \frac{9-7}{4} = 0.5$$
 
 A d of 0.5 is a *medium* effect size (using Cohen's conventions, coming up next) — noticeably smaller than the large effect (d = 1) we saw with screen time, even though both differences were "only" 2 units on their own scales.
-</Admonition>
 
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -427,6 +427,8 @@ We can use online calculators or packages for R to conduct power analyses.
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 Computing power is largely beyond the scope of this course, but it is very important you understand power at a conceptual level.
 </SpeechBubble>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="60%">Effect size and power come right back when we start *t* tests on Thursday — and they're fair game for Exam 3.</StickyNote></p>
 
 ---
 layout: cover

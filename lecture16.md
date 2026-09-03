@@ -23,10 +23,8 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- Second ==Data Write-Up== (ANOVA-based) is due **Monday, December 7** by 11:59pm.
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- Second ==Data Write-Up== (ANOVA-based) is due **Tuesday, December 8** by 11:59pm.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Discussion sections: remember, you need to pass **10 of the 13** total sections for full credit.
 
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
@@ -212,10 +210,11 @@ D. This shows that within-groups designs are typically underpowered.
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: B** – Participants improved over time due to practice, regardless of the coffee condition.
-</p>
+B – Participants improved over time due to practice, regardless of the coffee condition.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -247,10 +246,11 @@ D. All of the above.
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: B** – Counterbalancing helps distribute practice effects evenly across conditions, reducing their confounding influence.
-</p>
+B – Counterbalancing helps distribute practice effects evenly across conditions, reducing their confounding influence.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -428,11 +428,11 @@ Why do we often have *two* critical values for a *t* test but only one critical 
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Because *t* tests can be one-tailed or two-tailed, while *F* tests are always one-tailed, because we are always testing whether the variance between groups is greater than the variance within groups.
+Because *t* tests can be one-tailed or two-tailed, while *F* tests are always one-tailed, because we are always testing whether the variance between groups is greater than the variance within groups.
 
-</p>
+</Admonition></p>
 ---
 layout: top-title
 color: indigo-light
@@ -635,6 +635,8 @@ align: lt
 | *Paired t-test* | 1 | Categorical | 2 | Numeric | <span style="color:#7e57c2;">Compare same group before vs. after intervention or in two conditions</span> |
 | *One-Way (Between-Groups) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare 3+ groups (e.g., Drug A, B, C)</span> |
 | *Repeated-Measures (Within-Subjects) ANOVA* | 1 | Categorical | 3+ | Numeric | <span style="color:#7e57c2;">Compare same participants across 3+ conditions</span> |
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">Notice that every test in this table has a categorical IV. Next class: what to do when *both* variables are numeric — correlation!</StickyNote></p>
 
 <style>
 table {
@@ -1086,11 +1088,11 @@ Which effects are statistically significant at α = .05?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** Day (p < .001) and Source:Day interaction (*p* = .00497) are significant. Source (*p* = .05907) is not significant at α = .05.
+Day (p < .001) and Source:Day interaction (*p* = .00497) are significant. Source (*p* = .05907) is not significant at α = .05.
 
-</p>
+</Admonition></p>
 
 <p v-click>
 
@@ -1100,10 +1102,11 @@ What is the interpretation of these results in words?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The results suggest that the day of the week has a significant effect on reported snow levels, with weekends generally having higher reports. Additionally, the interaction between report source and day indicates that the difference between the two sources varies by day, with resorts exaggerating reports more on weekends compared to weekdays.
-</p>
+The results suggest that the day of the week has a significant effect on reported snow levels, with weekends generally having higher reports. Additionally, the interaction between report source and day indicates that the difference between the two sources varies by day, with resorts exaggerating reports more on weekends compared to weekdays.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1169,12 +1172,11 @@ D. All of the above.
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: D** – All of the above!
+D – All of the above!
 
-
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -1273,11 +1275,11 @@ C. There is an interaction between Applicant Gender and Faculty Gender.
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: A** – There is a main effect of Applicant Gender: both male and female faculty rated "John" as more competent than "Jennifer." There is no main effect of Faculty Gender, and no interaction
+A – There is a main effect of Applicant Gender: both male and female faculty rated "John" as more competent than "Jennifer." There is no main effect of Faculty Gender, and no interaction.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title

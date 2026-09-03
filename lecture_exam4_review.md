@@ -24,12 +24,15 @@ align: lt
 
 :: content ::
 - Today is our last regular class session before Exam 4!
+- Reminder: ==Data Write-Up #2== is due **TONIGHT (Tuesday, December 8) at 11:59 p.m.!**
 - ==Exam 4== is on **Thursday, Dec. 10** during class — covers Lectures 15-19.
   - Thursday, Dec. 10 is also the **last day of classes** for the semester.
   - **NO MAKE-UPS**
+- Discussion 13 (Wed. 12/9): course wrap-up & Exam 4 practice.
+- ==Course evaluations== are open — we'll leave time today to complete them, so bring your computer.
 - We will shortly post:
-  - Data Write-Up #2 grades
   - Discussion section grades
+  - Data Write-Up #2 grades (after tonight's deadline)
 
 - We will post Exam 4 grades and course grades on Thursday afternoon *if* everyone takes the exam on time.
 
@@ -154,25 +157,26 @@ align: lt
 # Practice: One-Way ANOVA
 
 :: content ::
-*If your between-group variability increases while within-group variability stays constant, what happens?*
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. F increases  
+If your between-group variability increases while within-group variability stays constant, what happens?
 
-B. F decreases  
+- A. F increases
+- B. F decreases
+- C. F stays the same
+- D. We cannot determine this without knowing our degrees of freedom.
 
-C. F stays the same  
+</Admonition>
 
-D. We cannot determine this without knowing our degrees of freedom.  
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<p v-click>
+A. Increasing “signal” increases F.
 
-**Answer: A.**  Increasing “signal” increases F.
+</Admonition>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 We don't know how much F increases without knowing the exact values, but we can say it will increase.
-</SpeechBubble>
-
-</p>
+</SpeechBubble></p>
 
 ---
 layout: top-title
@@ -185,21 +189,22 @@ align: lt
 
 :: content ::
 
+<Admonition title="Question" color="teal-light" width="100%">
+
 Suppose *F*(2, 45) = 0.89, *p* = .42. What’s the correct conclusion?
 
-A. At least one mean is different from the other two.
+- A. At least one mean is different from the other two.
+- B. We did not find significant differences between means.
+- C. Post-hoc tests will reveal differences between groups.
+- D. The critical value was miscalculated; F cannot be less than 1.
 
-B. We did not find significant differences between means.
+</Admonition>
 
-C. Post-hoc tests will reveal differences between groups.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-D. The critical value was miscalculated; F cannot be less than 1.  
+B. Because *p* = .42, we fail to reject the null hypothesis, meaning we did not find significant differences between group means.
 
-<p v-click>
-
-**Answer: B**  Because *p* = .42, we fail to reject the null hypothesis, meaning we did not find significant differences between group means.
-
-</p>
+</Admonition>
 
 <p v-click>
 
@@ -249,23 +254,22 @@ align: lt
 # Practice: When to Use Post-Hocs
 
 :: content ::
+<Admonition title="Question" color="teal-light" width="100%">
+
 When are post-hoc tests appropriate?
 
-A. Whenever there are ≥ 3 groups being compared.
+- A. Whenever there are ≥ 3 groups being compared.
+- B. After a significant ANOVA.
+- C. Only when within-group variances differ.
+- D. When means “look different."
 
-B. After a significant ANOVA.  
+</Admonition>
 
-C. Only when within-group variances differ.  
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-D. When means “look different."  
+B. Post-hoc tests should only be run after a significant overall ANOVA.
 
-<p v-click>
-
-**Answer: B** Post-hoc tests should only be run after a significant overall ANOVA.
-
-
-
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -298,20 +302,22 @@ align: lt
 # Practice: F and Effect Size
 
 :: content ::
+<Admonition title="Question" color="teal-light" width="100%">
+
 Which scenario gives the **largest F**?
 
-A. Large between-group differences + small within-group variability  
+- A. Large between-group differences + small within-group variability
+- B. Small between-group differences + large within-group variability
+- C. Small between-group differences + small within-group variability
+- D. Identical means across groups with different sample sizes
 
-B. Small between-group differences + large within-group variability  
+</Admonition>
 
-C. Small between-group differences + small within-group variability  
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-D. Identical means across groups with different sample sizes
+A. Large between-group differences increase the numerator ($MS_{Between}$, the ==*signal*==), and small within-group variability decreases the denominator ($MS_{Within}$, the ==*noise*==), resulting in a larger F statistic.
 
-<p v-click>
-
-**Answer: A.** Large between-group differences increase the numerator ($MS_{Between}$, the ==*signal*==), and small within-group variability decreases the denominator ($MS_{Within}$, the ==*noise*==), resulting in a larger F statistic.
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -343,22 +349,22 @@ align: lt
 
 :: content ::
 
+<Admonition title="Question" color="teal-light" width="100%">
+
 Why does a repeated-measures ANOVA have more power than a between-subjects ANOVA?
 
-A. Repeated-measures ANOVA uses larger sample sizes.  
+- A. Repeated-measures ANOVA uses larger sample sizes.
+- B. Repeated-measures ANOVA removes between-person variability.
+- C. Repeated-measures ANOVA typically is run with a larger α.
+- D. Repeated-measures ANOVA has a larger effect size by definition.
 
-B. Repeated-measures ANOVA removes between-person variability.  
+</Admonition>
 
-C. Repeated-measures ANOVA typically is run with a larger α.  
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-D. Repeated-measures ANOVA has a larger effect size by definition.  
+B. Repeated-measures ANOVA removes between-person variability. The "noise" term, $MS_{Within}$, is smaller because the subject-specific variability is accounted for, leading to a larger *F* statistic.
 
-
-<p v-click>
-
-**Answer: B** Repeated-measures ANOVA removes between-person variability. The "noise" term, $MS_{Within}$, is smaller because the subject-specific variability is accounted for, leading to a larger *F* statistic.
-
-</p>
+</Admonition>
 
 
 ---
@@ -416,22 +422,24 @@ align: lt-lt-lt
 - Interaction effect: *p* = .02  
 
 :: right ::
+<Admonition title="Question" color="teal-light" width="100%">
+
 Which of the following conclusions are correct?
 
-A. Participants rated cheap wines differently than expensive wines.
+- A. Participants rated cheap wines differently than expensive wines.
+- B. Participants rated red and white wines differently.
+- C. The effect of price on wine ratings depended on type of wine.
+- D. None of the above.
 
-B. Participants rated red and white wines differently.
+</Admonition>
 
-C. The effect of price on wine ratings depended on type of wine.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-D. None of the above.
-
-<p v-click>
-
-**Answers: A and C**
+A and C.
 - A is correct because the main effect of price is significant (*p* = .001).
 - C is correct because the interaction effect is significant (*p* = .02).
-</p>
+
+</Admonition>
 
 
 ---
@@ -485,27 +493,27 @@ align: lt
 # Practice: Correlation Strength
 
 :: content ::
-*A researcher finds a correlation between driving experience (years) and accident rate (number of accidents) of *r* = –0.62. Which of the following conclusions are correct?*
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. There is a strong negative relationship between driving experience and accident rate. 
+A researcher finds a correlation between driving experience (years) and accident rate (number of accidents) of *r* = –0.62. Which of the following conclusions are correct?
 
-B. As driving experience increases, accident rate decreases.
+- A. There is a strong negative relationship between driving experience and accident rate.
+- B. As driving experience increases, accident rate decreases.
+- C. Driving experience causes accident rates to decrease.
+- D. About 38% of the variance in accident rate is explained by driving experience.
+- E. About 62% of the variance in accident rate is NOT explained by driving experience.
 
-C. Driving experience causes accident rates to decrease.
+</Admonition>
 
-D. About 38% of the variance in accident rate is explained by driving experience. 
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-E. About 62% of the variance in accident rate is NOT explained by driving experience.
+A, B, D, and E.
 
-<p v-click>
+</Admonition>
 
-**Answers: A, B, D, and E**
-
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 E is correct because $r^2 = (-0.62)^2 = 0.3844$, so approximately 38% of the variance is explained, meaning about 62% is not explained. The fact that it is exactly .62 is coincidental.
-</SpeechBubble>
-
-</p>
+</SpeechBubble></p>
 
 ---
 layout: top-title
@@ -517,21 +525,22 @@ align: lt
 # Practice: Third Variables
 
 :: content ::
+<Admonition title="Question" color="teal-light" width="100%">
+
 Shoe size and vocabulary correlate in children, $r = .80$. However, when controlling for age, the *partial* correlation drops to $r = .10$. What does this suggest?
 
-A. Increases in shoe size causes children to walk earlier, which leads to faster language development and vocabulary growth.  
+- A. Increases in shoe size causes children to walk earlier, which leads to faster language development and vocabulary growth.
+- B. There is a direct causal relationship between shoe size and vocabulary, but it is small ($r = .10$).
+- C. The original correlation between shoe size and vocabulary was largely due to the influence of a third variable, age.
+- D. Age explains all of the variance in children's vocabularies.
 
-B. There is a direct causal relationship between shoe size and vocabulary, but it is small ($r = .10$).
+</Admonition>
 
-C. The original correlation between shoe size and vocabulary was largely due to the influence of a third variable, age.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-D. Age explains all of the variance in children's vocabularies.
+C. The large drop in correlation when controlling for age suggests that age was a confounding variable influencing both shoe size and vocabulary.
 
-<p v-click>
-
-**Answer: C** The large drop in correlation when controlling for age suggests that age was a confounding variable influencing both shoe size and vocabulary.
-
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -568,21 +577,22 @@ align: lt
 # Practice: R² Interpretation
 
 :: content ::
-If a model explains 30% of the variance in the outcome variable, what is the value of R²?:
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. R² = .03  
+If a model explains 30% of the variance in the outcome variable, what is the value of R²?
 
-B. R² = .30  
+- A. R² = .03
+- B. R² = .30
+- C. R² = $.30^2$ = .09
+- D. R² cannot be computed for a regression model.
 
-C. R² = $.30^2$ = .09 
+</Admonition>
 
-D. R² cannot be computed for a regression model.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<p v-click>
+B. R² is the proportion of variance explained, so R² = .30.
 
-**Answer: B**
-
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -605,16 +615,11 @@ align: lt
 > A linear regression revealed that increases in hours studied were related to increases in quiz scores, 
 > *F*(1, 28) = 9.21, *p* = .005, $R^2 = .25$.
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">In both of these cases, how many participants were in the study?</Admonition></p>
 
-*In both of these cases, how many participants were in the study?*
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-</p>
-
-
-<p v-click>
-
-**Answer: 30 participants.**
+30 participants.
 
 In correlation, degrees of freedom = *n* – 2
 Where:
@@ -625,8 +630,7 @@ Where:
 - n = number of participants
 - k = number of predictors
 
-
-</p>
+</Admonition></p>
 
 ---
 layout: top-title
@@ -660,32 +664,30 @@ align: lt
 # Practice: Chi-Square Scenarios
 
 :: content ::
-*Which scenario requires a chi-square test?*
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Examining GPA vs. average hours slept each night. 
+Which scenario requires a chi-square test?
 
-B. Examining students' happiness scores across three different university majors.
+- A. Examining GPA vs. average hours slept each night.
+- B. Examining students' happiness scores across three different university majors.
+- C. Examining whether people who own cats vs. dogs differ in their favorite movie genres.
+- D. Examining the relationship between income and education level.
 
-C. Examining whether people who own cats vs. dogs differ in their favorite movie genres.
+</Admonition>
 
-D. Examining the relationship between income and education level.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<p v-click>
+C. Both variables (pet ownership and favorite movie genre) are categorical.
 
-**Answer: C**
-</p>
+</Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Which chi-square test should be used?</Admonition></p>
 
-*Which chi-square test should be used?*
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-</p>
+Chi-square test of independence — we are asking whether two categorical variables are associated.
 
-<p v-click>
-
-**Answer: Chi-square test of independence**
-
-</p>
+</Admonition></p>
 
 
 ---
@@ -761,23 +763,22 @@ align: lt
 
 :: content ::
 
-*Testing 12 outcomes and reporting only the significant one is an example of:*
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. Open science. 
+Testing 12 outcomes and reporting only the significant one is an example of:
 
-B. Exploratory data analysis. 
+- A. Open science.
+- B. Exploratory data analysis.
+- C. *P*-hacking and selective reporting.
+- D. Data fraud.
 
-C. *P*-hacking and selective reporting.
+</Admonition>
 
-D. Data fraud.  
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<p v-click>
+C. Testing multiple outcomes and reporting only significant ones is a form of *p*-hacking and selective reporting, which inflates the Type I error rate.
 
-**Answer: C** 
-
-- Testing multiple outcomes and reporting only significant ones is a form of *p*-hacking and selective reporting, which inflates the Type I error rate.
-
-</p>
+</Admonition>
 
 ---
 layout: top-title
@@ -789,25 +790,22 @@ align: lt
 # Practice: Open Science
 
 :: content ::
-*Why is pre-registration useful?*
+<Admonition title="Question" color="teal-light" width="100%">
 
-A. It helps to prevent *p*-hacking and limits researcher degrees of freedom.
+Why is pre-registration useful?
 
-B. It allows researchers to stop data collection once they achieve significance.
+- A. It helps to prevent *p*-hacking and limits researcher degrees of freedom.
+- B. It allows researchers to stop data collection once they achieve significance.
+- C. It increases the likelihood of finding significant results.
+- D. It eliminates the need for peer review.
 
-C. It increases the likelihood of finding significant results.
+</Admonition>
 
-D. It eliminates the need for peer review.
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
+A. Pre-registration helps prevent *p*-hacking by specifying hypotheses and analysis plans in advance, reducing researcher degrees of freedom.
 
-<p v-click>
-
-**Answer: A**
-- Pre-registration helps prevent *p*-hacking by specifying hypotheses and analysis plans in advance, reducing researcher degrees of freedom.
-
-
-
-</p>
+</Admonition>
 
 ---
 layout: top-title

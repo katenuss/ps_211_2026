@@ -23,13 +23,14 @@ align: lt
 # Updates and Reminders
 
 :: content ::
-- ==Exam 2== now covers Lectures 7-12.
-- Exam 2 Review is Tuesday, October 27.
-- Exam 2 is Thursday, October 29.
+- ==Exam 2== covers Lectures 7-10.
+- Exam 2 Review is Tuesday, October 20.
+- Exam 2 is Thursday, October 22.
 - Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Monday, November 16
-  - Write-Up 2 (ANOVA based): due Monday, December 7
-- Office hours: Tuesday 12:30-1:30pm, Thursday 9:00-10:00am.
+  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
+  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- Heads up: there is **no class** next Tuesday, October 13 (substitute Monday schedule).
 
 
 ---
@@ -125,22 +126,24 @@ What percentile is z = 0.67? BEFORE looking at the table, ask yourself: Should t
 </Admonition>
 
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Find row 0.6 and column 0.07 → 0.7486  
 2. z is positive, so percentile = 0.7486 = **74.86%**  
-</p>
+
+</Admonition></p>
 
 <Admonition title="Question" color="teal-light" width="100%">
 What percentile is z = -.4?
 </Admonition>
 
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Find row 0.4 and column 0.0 -> .6554 
 2. z is negative, so percentile = 1 - .6554 = .3446 = **34.46%** 
-</p>
+
+</Admonition></p>
 
 
 :: right ::
@@ -166,7 +169,7 @@ Approximately what proportion of the class scored lower than you?
 </Admonition>
 
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Compute z: $z = (28 - 27)/4 = 0.25$  
 2. Find row 0.2 and column 0.05 → 0.5987  
@@ -174,7 +177,7 @@ Approximately what proportion of the class scored lower than you?
 4. You did better than about 60% of the class.
 5. That means about 60% of the class scored lower than you.
 
-</p>
+</Admonition></p>
 
 
 :: right ::
@@ -192,6 +195,8 @@ pnorm(0.25)
 ```
 </p>
 
+<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">You'll get hands-on practice with pnorm() and percentiles in R — bring your laptop!</StickyNote></p>
+
 ---
 layout: top-title
 color: indigo-light
@@ -206,6 +211,8 @@ align: lt
 - When we start testing hypotheses, we want to know if a score is extreme enough to be considered unusual.
 - We can use *z* scores to determine this.
 - We will more precisely define what we mean by "extreme" and "unusual" soon.
+
+<p v-click><StickyNote color="amber-light" title="Why this matters" width="80%">This question — "how extreme is this result?" — is the engine behind every hypothesis test we'll run for the rest of the course. Z tables are how we answer it precisely.</StickyNote></p>
 
 
 ---
@@ -226,7 +233,7 @@ How "extreme" is a score of 33?
 </Admonition>
 
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Compute z: $z = (33 - 27)/4 = 1.5$  
 2. Find percentile: row 1.5, column 0.00 → 0.9332 = **93.32%**.
@@ -234,7 +241,7 @@ How "extreme" is a score of 33?
 4. 6.68% of scores are above z = 1.5 (100 - 93.32 = 6.68)  
 5. A score of 33 is not super extreme.
 
-</p>
+</Admonition></p>
 
 
 :: right ::
@@ -266,7 +273,7 @@ What if the standard deviation were smaller, say 1?
 </p>
 
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Compute z: $z = (33 - 27)/1 = 6$.
 2. Find percentile: row 6.0, column 0.00 → 0.9999997 = **99.99997%**. (**Off the table!**)
@@ -274,7 +281,12 @@ What if the standard deviation were smaller, say 1?
 4. A score of 33 is *extremely* extreme.
 5. We'll come back to this idea later!
 
-</p>
+</Admonition></p>
+
+<div class="flex items-center gap-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>A z of 6 is so extreme it's not even on the table — scores like that almost never happen by chance!</SpeechBubble>
+</div>
 
 
 :: right ::
@@ -307,13 +319,13 @@ When might this be useful?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer: All the time!**
+**All the time!**
 
 *We often want to know if a sample is different from a population.*
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -337,21 +349,21 @@ Researchers are studying online dating profile ratings.
 What is the standard error for the distribution of means?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** $SE = SD/\sqrt{n} = 0.833/\sqrt{30} \approx 0.152$
+$SE = SD/\sqrt{n} = 0.833/\sqrt{30} \approx 0.152$
 
-</p>
+</Admonition></p>
 
 <Admonition title="Question" color="teal-light" width="100%">
 What does this standard error tell us?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The average sample mean computed from samples of size $n=30$ will be about 0.152 away from the population mean ($\mu$) of 2.5.
+The average sample mean computed from samples of size $n=30$ will be about 0.152 away from the population mean ($\mu$) of 2.5.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -376,7 +388,7 @@ Researchers are studying online dating profile ratings.
 How would we calculate a z statistic to determine how "extreme" the RI sample mean is?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. Calculate standard error: $SE = 0.833/\sqrt{30} \approx 0.152$
 2. Calculate z statistic for the sample mean, using the population mean and standard error:
@@ -385,7 +397,7 @@ $z = (M - \mu) / SE$
 
 $z = (2.84 - 2.5) / 0.152 \approx 2.24$
 
-</p>
+</Admonition></p>
 
 
 <p v-click>
@@ -393,6 +405,8 @@ The RI sample mean is more than 2 SDs above the U.S. mean.
 
 We need to conduct a formal hypothesis test to determine if this difference is **statistically significant**.  
 </p>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">Next lecture we'll formalize exactly this: the z test, null hypotheses, and what "statistically significant" really means.</StickyNote></p>
 
 
 ---

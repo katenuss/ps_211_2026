@@ -24,14 +24,12 @@ align: lt
 
 :: content ::
 - No standalone homework this week — instead, keep an eye out for our two ==Data Write-Ups== this semester:
-  - t-test-based, due **Monday, November 16**
-  - ANOVA-based, due **Monday, December 7**
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+  - t-test-based, due **Tuesday, November 17** at 11:59 p.m.
+  - ANOVA-based, due **Tuesday, December 8** at 11:59 p.m.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
-  - Tuesday (10/27): Exam 2 Review
-  - Thursday (10/29): Exam 2 (covers Lectures 7-12)
+  - Tuesday (11/3): Lecture 13 (paired-samples *t* tests)
+  - Exam 3: **Thursday, November 12** (covers Lectures 11-14)
 
 ---
 layout: top-title
@@ -75,13 +73,11 @@ align: lt
 Why is the central limit theorem relevant here?
 </Admonition>
 
-<p v-click>
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
 The central limit theorem states that the distribution of sample means will be approximately normal. This means that if we are working with sample means, we can assume our sample mean is drawn from a normal distribution.
-</Admonition>
 
-</p>
+</Admonition>
 
 
 ---
@@ -517,7 +513,7 @@ align: lt-lt-lt
 Did students who sign the contract attend a different number of sessions than those who did not?
 </Admonition>
 
-
+<p v-click><StickyNote color="amber-light" title="Try it yourself" width="100%">Set up the six steps for this example on your own — we'll revisit it in the Exam 3 review session.</StickyNote></p>
 
 ---
 layout: cover
@@ -525,4 +521,4 @@ color: indigo-light
 ---
 
 # That's all for today!
-See you next time for the Exam 2 review session!
+See you Tuesday (11/3) for Lecture 13: paired-samples *t* tests!

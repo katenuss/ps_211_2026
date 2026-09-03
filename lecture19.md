@@ -23,14 +23,13 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- Reminder: our second ==Data Write-Up== (ANOVA-based) was due this past Monday, Dec. 7.
+- Reminder: our second ==Data Write-Up== (ANOVA-based) is due **this coming Tuesday, December 8** at 11:59 p.m. — don't leave it to the last minute!
 - ==Exam 4== is on **Thursday, Dec. 10** during class.
    - Review sheet will be posted today or tomorrow.
     - Focuses on Lectures 15 - 19.
     - **NO MAKE-UPS**
-- Office hours this week:
-  - Tuesday: 12:30 - 1:30 pm (Kate)
-  - Thursday: 9:00 - 10:00 am (Kate)
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- Discussion 13 (Wed. 12/9): course wrap-up & Exam 4 practice.
 - ==Course evaluations== are open.
     - Please complete! There will be time in class on Tuesday (Exam 4 Review) to do so. (Bring your computer).
 
@@ -229,6 +228,8 @@ align: lt
 - Our ==test statistics== quantify this signal-to-noise ratio.
 
 </p>
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">If you remember one thing from this course, let it be this: every test statistic we've covered — *z*, *t*, *F*, even *r* — is a signal-to-noise ratio!</SpeechBubble></p>
 
 ---
 layout: top-title-two-cols
@@ -602,6 +603,8 @@ align: lt
 - Equivalent to ANOVA / *t*-tests for categorical outcomes.
 - Chi-square evaluates whether **observed** frequencies differ from **expected** frequencies.
 
+<p v-click><StickyNote color="green-light" title="Example" width="60%">Is the distribution of Skittles colors in a bag really uniform? Count the observed frequencies of each color and compare them to the expected (equal) frequencies — that's a chi-square goodness-of-fit test!</StickyNote></p>
+
 <br>
 
 ## Two main types:
@@ -691,6 +694,11 @@ align: lt-lt-lt
 
 </p>
 
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="blissful" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>You now have a full statistical toolkit — from histograms all the way to regression. That's the whole course!</SpeechBubble>
+</div>
+
 
 :: right ::
 
@@ -759,6 +767,8 @@ align: lt
   - Exclude 2 outliers → $p = .03$ (more significant).
   - Test multiple outcome measures → find one with $p = .02$ (significant).
 - They report only the final significant result, ignoring the initial non-significant findings.
+
+<p v-click><StickyNote color="amber-light" title="Why this matters" width="60%">Each of these choices might seem harmless on its own, but together they dramatically inflate the chance of a false positive — the same alpha-inflation problem we saw with running many *t*-tests!</StickyNote></p>
 
 ---
 layout: top-title

@@ -23,13 +23,13 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- ==Exam 2== covers Lectures 7-12.
-- Exam 2 Review is Tuesday, October 27.
-- Exam 2 is Thursday, October 29.
+- ==Exam 2== covers Lectures 7-10.
+- Exam 2 Review is Tuesday, October 20.
+- Exam 2 is Thursday, October 22.
 - Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Monday, November 16
-  - Write-Up 2 (ANOVA based): due Monday, December 7
-- Office hours: Tuesday 12:30-1:30pm, Thursday 9:00-10:00am.
+  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
+  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Heads up: there is **no class** next Tuesday, October 13 (substitute Monday schedule).
 
 ---
@@ -52,11 +52,11 @@ What is a "distribution of sample means"?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** A "distribution of sample means" is the distribution of the means of multiple samples taken from a population. It shows how the sample means vary and allows us to make inferences about the population mean.
+A "distribution of sample means" is the distribution of the means of multiple samples taken from a population. It shows how the sample means vary and allows us to make inferences about the population mean.
 
-</p>
+</Admonition></p>
 
 <p v-click>
 
@@ -94,11 +94,11 @@ What does this distribution look like?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The distribution is ==uniform==, with each outcome (1-6) equally likely.
+The distribution is ==uniform==, with each outcome (1-6) equally likely.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -131,10 +131,16 @@ What does the distribution of means look like?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** As the sample size increases, the distribution of means approaches a normal distribution, even though the original distribution is uniform!
-</p>
+As the sample size increases, the distribution of means approaches a normal distribution, even though the original distribution is uniform!
+
+</Admonition></p>
+
+<div class="flex items-center gap-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>And this works no matter what shape the original distribution has — that's what makes the Central Limit Theorem so powerful!</SpeechBubble>
+</div>
 
 
 
@@ -164,10 +170,11 @@ Why is the distribution of means less variable than the distribution of raw scor
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The distribution of means is less variable because averaging reduces the impact of extreme values. When we take the mean of a sample, we are essentially smoothing out the variability that exists in individual scores.
-</p>
+The distribution of means is less variable because averaging reduces the impact of extreme values. When we take the mean of a sample, we are essentially smoothing out the variability that exists in individual scores.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -211,13 +218,13 @@ Where does this formula come from?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The formula for the standard error comes from the fact that the variability of sample means is related to the variability of individual scores and the sample size. As we increase the sample size, the standard error decreases, reflecting the increased precision of our estimate of the population mean.
+The formula for the standard error comes from the fact that the variability of sample means is related to the variability of individual scores and the sample size. As we increase the sample size, the standard error decreases, reflecting the increased precision of our estimate of the population mean.
 
 *We can derive it mathematically, but that is beyond the scope of this class.*
 
-</p>
+</Admonition></p>
 
 
 ---
@@ -267,10 +274,11 @@ Why is this value important in psychological research?
 
 </p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** The standard error is important because it helps researchers understand how much their sample mean might vary from the true population mean.
-</p>
+The standard error is important because it helps researchers understand how much their sample mean might vary from the true population mean.
+
+</Admonition></p>
 
 <p v-click>
 <img src="/images/lecture6/barplot_sem.png" alt="Error bars" class="w-3/4 mx-auto"/>
@@ -299,9 +307,8 @@ What if we take samples of size $n = 9$? What if we take samples of size $n = 10
 
 :: right ::
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:**
 - For $n = 9$:
 $$ SE = \frac{5}{\sqrt{9}} = \frac{5}{3} \approx 1.67 $$
 
@@ -310,7 +317,7 @@ $$ SE = \frac{5}{\sqrt{100}} = \frac{5}{10} = 0.5 $$
 
 The sample size of $n = 100$ will have a smaller SE because the standard error decreases as the sample size increases. This reflects the increased precision of our estimate of the population mean with larger samples.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -329,12 +336,12 @@ align: lt-lt-lt
 What would be a good way to visualize these GPA distributions? Think of two types of plots that could be used for this purpose.
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
 1. **Box plots:** These would allow you to see the median, quartiles, and potential outliers for each major's GPA distribution.
 2. **Histograms:** These would show the frequency distribution of GPAs for each major, allowing you to see the shape of the distribution (e.g., normality, skewness).
 
-</p>
+</Admonition></p>
 
 
 
@@ -344,13 +351,13 @@ What would be a good way to visualize these GPA distributions? Think of two type
 Now imagine you want to compare the mean GPAs of the two groups. What would be a good way to quantify your uncertainty in the estimate of these means? How could you visualize the uncertainty in your estimate of the mean GPA for each major?
 </Admonition>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**Answer:** You could calculate the **standard error (SE)** for each group's mean GPA. 
+You could calculate the **standard error (SE)** for each group's mean GPA.
 
-To visualize the uncertainty in your estimate of the mean GPA for each major, you could use barplots with error bars representing the SE for each group. 
+To visualize the uncertainty in your estimate of the mean GPA for each major, you could use barplots with error bars representing the SE for each group.
 
-</p>
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -369,19 +376,17 @@ align: lt-lt-lt
 
 <img src="/images/lecture6/gpa_barplot.png" alt="Barplot of gpa with error bars" class="w-1/2mx-auto"/>
 
-<p v-click>
+<p v-click><Admonition title="Challenge question" color="teal-light" width="100%">
 
-**Challenge question:** If the SE represents +/- 1 SD of the distribution of sample means, what is the probability that the true population mean falls within the error bars shown in the barplot?
+If the SE represents +/- 1 SD of the distribution of sample means, what is the probability that the true population mean falls within the error bars shown in the barplot?
 
-</p>
+</Admonition></p>
 
-<p v-click>
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<Admonition color="green-light" title="Answer" width="100%" v-click>
 Approximately 68% of the time, since the error bars represent +/- 1 SD of the distribution of sample means.
-</Admonition>
 
-</p>
+</Admonition></p>
 
 
 :: right ::
@@ -391,6 +396,8 @@ Approximately 68% of the time, since the error bars represent +/- 1 SD of the di
 <br>
 
 <img src="/images/lecture6/gpa_boxplot.png" alt="Boxplot of GPA" class="w-3/4 mx-auto"/>
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">You'll practice making plots like these — with error bars — in R during discussion section.</StickyNote></p>
 
 
 ---
