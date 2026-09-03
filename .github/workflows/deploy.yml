@@ -39,6 +39,9 @@ jobs:
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
+      - name: Install Chromium for PDF export
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Discover & build all lecture*.md
         shell: bash
         run: |
@@ -57,19 +60,29 @@ jobs:
           fi
           echo "Found lectures: ${lectures[*]}"
 
-          # Build each deck into dist/<slug>/ with correct base /<repo>/<slug>/
+          # Build each deck into dist/<slug>/ with correct base /<repo>/<slug>/,
+          # and export it to dist/pdfs/ps211_fall2026_<slug>.pdf (the name the
+          # slides page looks for to enable its "Download PDF" button).
+          mkdir -p dist/pdfs
           for f in "${lectures[@]}"; do
             slug="${f%.md}"
             echo "📦 Building $f → dist/$slug  (base=/${REPO}/${slug}/)"
             pnpm exec slidev build "$f" \
               --base "/${REPO}/${slug}/" \
               --out "dist/${slug}"
+
+            echo "📄 Exporting $f → dist/pdfs/ps211_fall2026_${slug}.pdf"
+            pnpm exec slidev export "$f" \
+              --per-slide \
+              --wait 1000 \
+              --timeout 120000 \
+              --output "dist/pdfs/ps211_fall2026_${slug}.pdf"
           done
 
-          # Publish PDFs placed in repo at public/pdfs/*
-          mkdir -p dist/pdfs
+          # Also publish any extra PDFs placed in repo at public/pdfs/*
+          # (e.g., review sheets). Exported deck PDFs above take precedence.
           if [ -d public/pdfs ]; then
-            cp -R public/pdfs/. dist/pdfs/
+            cp -Rn public/pdfs/. dist/pdfs/
           fi
 
           # If you provided a custom site in /public, copy it into dist/
