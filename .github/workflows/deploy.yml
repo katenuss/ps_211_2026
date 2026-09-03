@@ -74,6 +74,7 @@ jobs:
             echo "📄 Exporting $f → dist/pdfs/ps211_fall2026_${slug}.pdf"
             pnpm exec slidev export "$f" \
               --per-slide \
+              --with-clicks \
               --wait 1000 \
               --timeout 120000 \
               --output "dist/pdfs/ps211_fall2026_${slug}.pdf"
