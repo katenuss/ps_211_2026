@@ -1,0 +1,170 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PS 211 · Discussion Section</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --indigo:#4f46e5; --ink:#111827; --muted:#6b7280; --bg:#f8fafc;
+    --card:#fff; --ring:#e5e7eb; --btn:#4f46e5; --btnText:#fff;
+    --btnGhost:#eef2ff; --btnDisabled:#d1d5db; --btnDisabledText:#6b7280;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:1000px;margin:2rem auto;padding:0 16px}
+  header{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+  header h1{margin:0;font-size:1.8rem}
+  header p{margin:0;color:var(--muted)}
+  .section{margin-top:1.5rem}
+  .section h2{margin:.5rem 0 .6rem;font-size:1.1rem;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--ring);border-radius:14px;
+        padding:14px;display:flex;flex-direction:column;gap:10px}
+  .kicker{font-weight:600;color:var(--muted);font-size:.9rem}
+  h3{margin:.1rem 0 .25rem 0;font-size:1.05rem}
+  .date{color:var(--muted);font-size:.9rem;margin-top:-4px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:.35rem;
+       padding:.5rem .7rem;border-radius:10px;text-decoration:none;
+       font-weight:600;font-size:.92rem;cursor:pointer;transition:opacity .2s}
+  .primary{background:var(--btn);color:var(--btnText)}
+  .ghost{background:var(--btnGhost);color:var(--indigo)}
+  .disabled{background:var(--btnDisabled);color:var(--btnDisabledText);
+             pointer-events:none;cursor:not-allowed;opacity:.7}
+  .muted{color:var(--muted);font-size:.9rem}
+  .hr{height:1px;background:var(--ring);margin:1rem 0 1.25rem}
+  .note{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;
+        padding:10px 14px;font-size:.92rem;margin-bottom:.5rem}
+  .note code{background:#fff;padding:.05rem .3rem;border-radius:6px;font-size:.88em}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Discussion Section</h1>
+    <p class="muted">Wednesdays · worksheets and data files</p>
+  </header>
+
+  <div class="hr"></div>
+
+  <div class="note">
+    Download the <code>.Rmd</code> worksheet before section and open it in RStudio.
+    Save it (and any data file) in the same folder so the code can find the data.
+  </div>
+
+  <div class="section">
+    <h2>Discussions</h2>
+    <div id="discussions" class="grid"></div>
+  </div>
+</div>
+
+<script>
+async function urlExists(url) {
+  try { const r = await fetch(url, { method: 'HEAD' }); return r.ok; }
+  catch { return false; }
+}
+
+(function(){
+  const base = '/' + (location.pathname.split('/').filter(Boolean)[0] || '');
+  // Files are served from <repo>/discussion_section/ (copied there by deploy.yml).
+  const FILES = `${base}/discussion_section`;
+
+  const wrap = document.getElementById('discussions');
+
+  // One entry per discussion section. `files` lists what should appear for that
+  // section; a button is enabled only once the file actually exists on the site,
+  // so you can list files ahead of time and post them when ready.
+  //   label: button text · file: filename inside discussion_section/
+  //   primary: true for the main worksheet button
+  const DISCUSSIONS = [
+    { n: 1,  date: 'Sept. 9',  title: 'Intro to R and RStudio',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion01_intro_to_R.Rmd', primary: true },
+               { label: 'Data (.csv)', file: 'pixar_data.csv' } ] },
+    { n: 2,  date: 'Sept. 16', title: 'R practice: descriptive statistics & frequency displays',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion02_descriptives.Rmd', primary: true },
+               { label: 'Data (.csv)', file: 'pixar_data.csv' } ] },
+    { n: 3,  date: 'Sept. 23', title: 'R practice: variability & sampling',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion03_variability_sampling.Rmd', primary: true } ] },
+    { n: 4,  date: 'Sept. 30', title: 'R practice: z-scores',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion04_zscores.Rmd', primary: true } ] },
+    { n: 5,  date: 'Oct. 7',   title: 'R practice: Central Limit Theorem simulations & standard error',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion05_CLT_SE.Rmd', primary: true } ] },
+    { n: 6,  date: 'Oct. 14',  title: 'R practice: z scores to percentiles & hypothesis testing basics',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion06_hypothesis_testing_basics.Rmd', primary: true } ] },
+    { n: 7,  date: 'Oct. 21',  title: 'Exam 2 review & R practice: hypothesis testing & confidence intervals',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion07_hypothesis_tests_CIs.Rmd', primary: true } ] },
+    { n: 8,  date: 'Oct. 28',  title: 'Intro to Data Write-Up #1; form groups & find datasets',
+      files: [ { label: 'Data Write-Up template (.Rmd)', file: 'ps211_data_writeup.Rmd', primary: true } ] },
+    { n: 9,  date: 'Nov. 4',   title: 'Data Write-Up #1: explore t-test dataset & research questions',
+      files: [] },
+    { n: 10, date: 'Nov. 11',  title: 'Data Write-Up #1 work session',
+      files: [] },
+    { n: 11, date: 'Nov. 18',  title: 'R practice for ANOVA; intro to Data Write-Up #2',
+      files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion11_anova.Rmd', primary: true } ] },
+    { n: 12, date: 'Dec. 2',   title: 'Data Write-Up #2 work session',
+      files: [] },
+    { n: 13, date: 'Dec. 9',   title: 'Course wrap-up & Exam 4 practice',
+      files: [] },
+  ];
+
+  function makeCard({ kicker, title, buttons }) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const k = document.createElement('div');
+    k.className = 'kicker';
+    k.textContent = kicker;
+    card.appendChild(k);
+
+    const h3 = document.createElement('h3');
+    h3.textContent = title;
+    card.appendChild(h3);
+
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+    buttons.forEach(b => actions.appendChild(b));
+    card.appendChild(actions);
+
+    return card;
+  }
+
+  function btn(label, href, kind, enabled=true, title='', downloadName='') {
+    const a = document.createElement('a');
+    a.textContent = label;
+    a.className = 'btn ' + kind;
+    if (enabled && href) {
+      a.href = href;
+      // .Rmd/.csv would otherwise open as plain text in the browser
+      if (downloadName) a.setAttribute('download', downloadName);
+    } else {
+      a.classList.add('disabled');
+      if (title) a.title = title;
+    }
+    return a;
+  }
+
+  (async () => {
+    for (const d of DISCUSSIONS) {
+      const buttons = [];
+
+      if (d.files.length === 0) {
+        buttons.push(btn('No files for this section', '', 'ghost', false, 'Nothing to download'));
+      } else {
+        const checks = await Promise.all(d.files.map(f => urlExists(`${FILES}/${f.file}`)));
+        d.files.forEach((f, i) => {
+          const kind = f.primary ? 'primary' : 'ghost';
+          if (checks[i]) buttons.push(btn(f.label, `${FILES}/${f.file}`, kind, true, '', f.file));
+          else           buttons.push(btn(f.label, '', kind, false, 'Not yet posted'));
+        });
+      }
+
+      wrap.appendChild(makeCard({
+        kicker: `Discussion ${d.n} — ${d.date}`,
+        title: d.title,
+        buttons
+      }));
+    }
+  })();
+})();
+</script>

@@ -87,6 +87,15 @@ jobs:
             cp -Rn public/pdfs/. dist/pdfs/
           fi
 
+          # Publish discussion-section worksheets/data from repo root discussion_section/
+          # → <site>/discussion_section/ (what public/discussion/index.html links to).
+          # Answer keys (*_answers*) and hidden/RStudio files are never published.
+          if [ -d discussion_section ]; then
+            mkdir -p dist/discussion_section
+            rsync -a --exclude '*_answers*' --exclude '.*' --exclude '*.Rproj' \
+              discussion_section/ dist/discussion_section/
+          fi
+
           # If you provided a custom site in /public, copy it into dist/
           # (We exclude 'pdfs' because it's already handled above.)
           if [ -d public ]; then

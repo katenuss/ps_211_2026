@@ -1,0 +1,268 @@
+---
+title: 'PS 211 — Discussion Worksheet #1'
+subtitle: 'Fall 2026 · Welcome to R and R Markdown!'
+author: "Your Name"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+Welcome to your first discussion section! Today you'll learn your way around R, RStudio, and R Markdown — the tools we'll use all semester — and finish by loading a real dataset.
+
+- Work **top-to-bottom**. Read the text, then **run** each code chunk by clicking the green ▶ button in its top-right corner.
+- When you see **"Try it"**, edit or write a little code yourself.
+- When you see **"Your answer:"**, type a short answer in plain English right below it.
+- Nothing here is graded for correctness — this is practice! Work with your classmates and ask for help when you are stuck.
+
+---
+
+# 1) What are R, RStudio, and R Markdown?
+
+Three things that sound alike but aren't:
+
+- **R** is the *programming language* — the engine that does calculations.
+- **RStudio** is the *app* you're using right now — a friendly dashboard for driving R. The main panes are the **Source** (this file), the **Console** (bottom-left, where code runs), the **Environment** (top-right, what R currently has in memory), and **Files/Plots/Help** (bottom-right).
+- **R Markdown** (this `.Rmd` file!) is a *document format* that mixes regular text with runnable code. It's how you'll complete worksheets and (eventually) data write-ups for this course.
+
+---
+
+# 2) Coding and functions
+
+Code is just a set of instructions you give the computer. R comes with thousands of **functions** — pre-written mini-programs that each do one job. A function has a *name*, followed by parentheses containing its *arguments* (the inputs you give it).
+
+Run this chunk (green ▶ in the corner):
+
+```{r first-functions}
+# Anything after a hashtag is a "comment" — R ignores it. Use comments to leave notes!
+
+2 + 2            # R is a fancy calculator
+sqrt(16)         # the sqrt() function takes one argument (16) and returns its square root
+round(3.14159, 2) # round() takes TWO arguments: the number, and how many decimal places
+```
+
+When you ran the above code chunk, you should see the computations that R ran printed in the **console.**
+
+The `c()` function ("combine") glues values together into a list, which R calls a **vector**. Lots of functions take vectors as input:
+
+```{r vectors}
+c(4, 8, 15, 16, 23, 42)         # a vector of six numbers
+mean(c(4, 8, 15, 16, 23, 42))   # functions can go inside other functions!
+```
+
+**Try it:** In the chunk below, use the `max()` function to find the largest value in the vector `c(3, 1, 4, 1, 5, 9, 2, 6)`.
+
+```{r try-functions}
+# WRITE YOUR CODE HERE
+
+```
+
+---
+
+# 3) Variables
+
+A **variable** is a name you attach to a value so you can use it later. You create one with the assignment arrow `<-` (keyboard shortcut: Alt + minus, or Option + minus on a Mac).
+
+```{r variables}
+my_favorite_number <- 7      # nothing prints — R quietly stored it
+my_favorite_number           # typing the name prints the value
+
+quiz_scores <- c(8, 9, 7, 10, 6)   # variables can hold vectors too
+mean_score <- mean(quiz_scores)    # ...and the results of functions
+mean_score
+```
+
+👀 **Look at the Environment pane (top-right).** You should see `my_favorite_number`, `quiz_scores`, and `mean_score` listed there. That pane shows everything R is currently holding in memory.
+
+Variables can be **overwritten** — assigning a new value replaces the old one, no questions asked:
+
+```{r overwrite}
+my_favorite_number <- 211
+my_favorite_number    # the 7 is gone forever!
+```
+
+**Try it:** Create a variable called `my_name` that holds your name in quotes (e.g., `"Kate"`), and a variable called `hours_of_sleep` that holds the number of hours you slept last night. Print both.
+
+```{r try-variables}
+# WRITE YOUR CODE HERE
+
+```
+
+---
+
+# 4) What's temporary vs. what's saved
+
+This is the most important idea of the day, and the one that trips up the most people:
+
+- The **Environment** (your "workspace") is **temporary**. It's like a whiteboard: when you close RStudio or restart R, it gets erased.
+- Your **code** (this file) is **permanent** — as long as you save it! Your code is the *recipe*; the Environment is just the food currently sitting on the counter.
+
+The rule that follows: **any object you care about must be created *by code in your file*, not just typed once in the Console.** If it's in your script, you can always recreate it by re-running the code. If you only ever typed it in the Console, it's gone when the whiteboard is erased.
+
+Let's prove it. Type this **directly into the Console** (bottom-left), not in this document:
+
+```
+console_only <- 999
+```
+
+See it appear in the Environment pane? Now go to **Session → Restart R**. 💥 The Environment is wiped — `console_only` is gone, and so are `quiz_scores` and friends.
+
+But here's the magic: `quiz_scores` was created by a chunk *in this document*, so you can just re-run the chunks above (or click **Run → Run All Chunks Above**) and everything comes back. `console_only` has no recipe — it's lost.
+
+**Your answer:** In one sentence, why did `quiz_scores` survive the restart (after re-running) while `console_only` didn't?
+
+*(Type your answer here.)*
+
+---
+
+# 5) Files, folders, and where your work lives
+
+Every file on your computer lives at a **path** — an address like `Desktop/PS211/discussion1.Rmd`. Two things to know:
+
+- **This document is a file.** Saving it (Cmd/Ctrl + S — do it now! 💾) writes your edits to disk. Unsaved changes show a red asterisk * in the file's tab.
+- R always has a **working directory** — the folder where it looks for files. Run this to see yours:
+
+```{r where-am-i}
+getwd()   # "get working directory"
+```
+
+In a few minutes we'll load a data file, and R will look for it *in that folder*. The #1 beginner error in this course is R saying `cannot open file` — which almost always means "the file isn't in the folder R is looking in."
+
+**The fix we'll use all semester: R Projects.** An R Project (a `.Rproj` file) is a home base for a set of files. When you open a project, RStudio automatically sets the working directory to the project's folder — so if you keep your worksheet and your data file in the project folder together, everything just works.
+
+**Try it (with your TF):** Create a project for this course: **File → New Project → New Directory → New Project**, name it `ps211`, and put it somewhere you can find (e.g., Desktop). Then move this worksheet file into that folder and re-open it. All your discussion files — and their data files — should live here from now on.
+
+---
+
+# 6) Reading in a data file
+
+Here's the payoff for Section 5: let's put a real dataset into your project folder and teach R to find it.
+
+**Do this first:** download `pixar_data.csv` from the course website and save it **inside your `ps211` project folder** — the same folder this worksheet lives in.
+
+Most data lives in **CSV files** ("comma-separated values") — plain tables you could also open in Excel or Google Sheets. Reading one in needs a **package**: an add-on toolbox of functions written by other R users. You **install** a package once per computer, but you must **load** it with `library()` every session.
+
+```{r libraries, message = FALSE}
+# Remove the # and run these ONCE on your computer, then put the # back:
+# install.packages("readr")
+# install.packages("dplyr")
+
+library(readr)   # these lines you DO run every session
+library(dplyr)
+```
+
+Now read the file, storing it in a variable so we can use it later:
+
+```{r load-data, message = FALSE}
+pixar_data <- read_csv("pixar_data.csv")
+```
+
+A table stored in R like this is called a **data frame**.
+
+**If you got an error** like `'pixar_data.csv' does not exist`: R looked in its working directory and didn't find the file. Check that (a) you downloaded it, (b) it's in your `ps211` folder, and (c) you have the project open. This error will happen to you again someday — remembering this moment is half the point of today. 😄
+
+**Your answer:** Using what you learned in Section 5, why did `pixar_data.csv` have to go in your project folder?
+
+*(Type your answer here.)*
+
+## Looking around a new dataset
+
+With any new dataset, the first questions are always the same: *How big is it? What are the columns? What does one row represent?*
+
+```{r first-look}
+head(pixar_data)      # the first 6 rows
+nrow(pixar_data)      # number of rows
+colnames(pixar_data)  # names of every column
+```
+
+Each **row** is one Pixar film; each **column** is one variable measured about that film.
+
+`glimpse()` gives you all of that at once, plus each column's type:
+
+```{r glimpse}
+glimpse(pixar_data)
+```
+
+Notice the abbreviations: `<dbl>` means numbers ("doubles") and `<chr>` means text ("characters").
+
+**Your answer:** How many films are in this dataset, and what does one row represent?
+
+*(Type your answer here.)*
+
+*You can also see the whole spreadsheet by clicking `pixar_data` in the Environment pane. Try it!*
+
+## Pulling out one column
+
+To pull a single column out of a data frame, use the dollar sign: `dataframe$column_name`. A column is just a vector — so you can feed it to any function you met in Section 2.
+
+```{r columns}
+pixar_data$run_time            # every run time, in minutes
+mean(pixar_data$run_time)      # average run time
+range(pixar_data$release_year) # earliest and latest release years
+```
+
+**Try it:** Edit the chunk below to find the **highest** `metacritic` score in the dataset (hint: you used the right function back in Section 2).
+
+```{r try-max}
+# EDIT THIS LINE, THEN RUN:
+highest_score <- 100   # REPLACE 100 with code that finds the max metacritic score
+
+highest_score
+```
+
+## Connecting back to lecture
+
+Remember variable types from Lecture 2? Four of this dataset's columns:
+
+- `film` (title of the movie)
+- `film_rating` (G or PG)
+- `release_year` (e.g., 1995)
+- `run_time` (minutes)
+
+**Your answer:** For each column above, say whether it is **discrete or continuous**, and whether it is **nominal, ordinal, interval, or ratio**. (One short line each.)
+
+*(Type your answers here.)*
+
+---
+
+# 7) Anatomy of an R Markdown document
+
+This file has three kinds of pieces:
+
+1. **The YAML header** — the block between `---` fences at the very top. It holds the document's title, your name, and the output format. **Go edit `author: "Your Name"` at the top to be your actual name right now.**
+2. **Text chunks** — regular prose, like this paragraph. You can format it: `**bold**`, `*italics*`, `# headers`. This formatting language is called Markdown.
+3. **Code chunks** — the gray boxes fenced by ```` ```{r} ```` and ```` ``` ````. Only what's inside a code chunk gets run as R code.
+
+You can insert a new code chunk with the green **+C** button in the toolbar (or Cmd + Option + I / Ctrl + Alt + I).
+
+**Try it:** Insert a brand-new code chunk below this line, and inside it, compute how many minutes there are in a semester week (7 days). Then add one line of *text* below your chunk saying what the number represents.
+
+---
+
+# 8) Knitting: turning this file into a polished document
+
+**Knitting** runs every chunk from top to bottom in a fresh session and weaves the text, code, and output into a single shareable document. Click the **Knit** button (🧶, in the toolbar above) and watch what happens — a formatted HTML file appears, and a new `.html` file is saved next to this `.Rmd` in your folder.
+
+Two things about knitting worth knowing early:
+
+- Knitting starts from a **blank Environment**. If your document uses a variable that's only in your workspace (like `console_only` from earlier!), knitting will **fail** — which is R Markdown helpfully enforcing the "everything important lives in code" rule. (This is also why the `library()` and `read_csv()` lines had to be *in* the document.)
+- If knitting stops with an error, the error message tells you **which chunk** failed. Fix that chunk, knit again.
+
+**Try it:** Knit this document now. If it fails, read the error, fix the chunk it names (ask your TF if you're stuck!), and knit again until you get the HTML.
+
+---
+
+# ✅ Before you leave
+
+- [ ] I ran every chunk and completed each "Try it."
+- [ ] I made an R Project (`ps211`) and this file lives inside it.
+- [ ] I changed the `author` in the YAML header to my name.
+- [ ] I read `pixar_data.csv` into R from my project folder.
+- [ ] I used `$` to pull a column out and computed something from it.
+- [ ] I successfully knitted to HTML.
+- [ ] I understand everything in this markdown file, and if not, I will keep practicing and ask for help next time. 🎉
+
+**Next week:** we'll use this same dataset to build frequency tables and make our first plots.

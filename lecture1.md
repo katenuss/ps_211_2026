@@ -71,7 +71,7 @@ align: l-lt-lt
 - **Email:** katenuss@bu.edu
 - **Office:** 111 Cummington Mall, Room 208
 - **Office Hours:** 
-  - Tuesdays 8:45 - 10:45 a.m.
+  - Tuesdays, 8:45 - 10:45 a.m.
 
 
 :: right ::
@@ -85,7 +85,8 @@ I also run a ==research lab== that investigates how learning, memory, and decisi
 </p>
 
 <!--
-Note
+No need to make office hours appointment. Just show up!
+Also mention pregnancy. Might teach sitting down! Hopefully will make it to end of semester...
 -->
 
 ---
@@ -107,8 +108,8 @@ align: l-lt-lt
 - **Pronouns:** she/her
 - **Email:** rade@bu.edu
 - **Office:** 111 Cummington Mall, Room 223
-- **Office Hours:** Wednesdays, 2:20 - 3:30
-  - By appointment
+- **Office Hours:** Wednesdays, 2:30 - 3:30 p.m.
+  - Also by appointment
 
 
 :: right ::
@@ -119,19 +120,23 @@ align: l-lt-lt
 
 <img src="/images/lecture1/rola.png" alt="Rola Adebogun headshot" class="w-40 h-40 object-cover rounded-lg border-2 border-indigo-200 shadow-lg"/>
 
+<!--
+Have Rola introduce herself.
+-->
 
 ---
 layout: top-title
 color: indigo-light
 align: lt
 ---
+
 :: title ::
 
 # Logistics
 
 :: content ::
 
--  **Lecture (C1):**  Tue & Thu · 11:00 a.m. – 12:15 pm
+-  **Lecture (C1):**  Tue & Thu · 11:00 a.m. – 12:15 p.m.
 -  **Discussions:**
     - C2: Wed 12:20 – 1:10 p.m.
     - C3: Wed 1:25 – 2:15 p.m.
