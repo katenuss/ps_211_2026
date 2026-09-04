@@ -52,7 +52,7 @@ align: lt
 
 <div class="flex items-center gap-4 mt-4">
 <IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem">We covered variance and SD in depth last time — if any of this feels shaky, review Lecture 5 before the exam!</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem" />We covered variance and SD in depth last time — if any of this feels shaky, review Lecture 5 before the exam! </SpeechBubble>
 </div>
 
 </p>
