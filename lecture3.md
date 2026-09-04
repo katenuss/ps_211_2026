@@ -24,13 +24,12 @@ align: lt
 
 :: content ::
 
-- R and R Studio are being introduced in ==discussion sections== — bring a laptop!
+- R and R Studio are being used in ==discussion sections== — bring a laptop!
   - If you haven't installed them yet, follow the instructions on Slack and come to office hours if you need help.
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17).
+- Remember: There is no standalone homework this year. Instead, you will practice the concepts introduced in class in Discussion Section.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You'll see a little R code in today's slides — it's just a preview. You'll get hands-on practice in discussion section, so no need to memorize anything today.</SpeechBubble></p>
-
 
 ---
 layout: top-title-two-cols
@@ -984,9 +983,8 @@ layout: cover
 color: indigo-light
 ---
 
-
 # That's all for Lecture 3!
 
-See you next class. Please remember to:
-- Bring a laptop to discussion section for R practice.
+See you next week. Please remember to:
 - Come to office hours if you need help!
+- Fill out the anonymous feedback form if you want to share how things are going so far!

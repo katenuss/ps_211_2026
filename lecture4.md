@@ -24,11 +24,8 @@ align: lt
 
 :: content ::
 
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17; the second is ANOVA based, due Tuesday, Dec. 8).
-- Please make sure you know how to use R Markdown and that you can successfully knit a document to an html file.
-- Discussion sections are using time for in-class R practice — take advantage of it!
 - Discussion 2 is tomorrow (Wednesday, 9/16): R practice with descriptive statistics and frequency displays. Bring a laptop!
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays 2:30 - 3:30 p.m. (Rola)
 
 ---
 layout: top-title
@@ -77,11 +74,11 @@ align: lt
 
 :: content ::
 
-**Mean:** The arithmetic average
+**Mean:** The arithmetic average.
 
-**Median:** The middle score
+**Median:** The middle score.
 
-**Mode:** The most common score
+**Mode:** The most common score.
 
 <p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll compute these in R tomorrow — mean() and median() are one-liners!</StickyNote></p>
 
@@ -177,11 +174,13 @@ $$M = \frac{\sum_{i=1}^{N} X_i}{N}$$
 
 :: left ::
 
-<Admonition title="Question" color="teal-light" width="100%">Five students take an exam and receive the following scores: 80, 85, 90, 95, 100. What is the mean exam score?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">Five students take an exam and receive the following scores: 80, 85, 90, 95, 100. What is the mean exam score? (Knowing the two steps to take are more important than computing the answer correctly!) </Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-90. 80 + 85 + 90 + 95 + 100 = 450. There are 5 scores, so 450 / 5 = 90.
+The mean is 90. 
+$$ 80 + 85 + 90 + 95 + 100 = 450. $$
+$$450 / 5 = 90.$$
 
 </Admonition>
 
@@ -225,9 +224,9 @@ align: lt
 - The mean of a sample is a **statistic**.
 - The mean of a population is an estimated **parameter**.
 - Typically:
-    - Symbols are *italicized*. Numbers are not.
     - Latin letters are used for statistics (numbers calculated from samples).
     - Greek letters are used for parameters (numbers estimated for populations).
+    - Symbols are *italicized*. Numbers are not.
 - The mean of a sample is denoted by $M$ or $\bar{X}$ (X-bar).
 - The mean of a population is denoted by $\mu$ (the Greek letter "mu").
 
@@ -245,6 +244,7 @@ align: lt-lt-lt
 <img src="/images/lecture4/m.jpeg" alt="m" class="mx-auto w-1/2" />
 
 ==Sample Mean== (but capitalize it!)
+-  $M$ (or $\bar{X})
 - Can be calculated directly. 
 
 :: right::
@@ -252,6 +252,7 @@ align: lt-lt-lt
 <img src="/images/lecture4/mew.png" alt="mew" class="mx-auto w-1/2" />
 
 ==Population Mean==
+- $\mu$
 - Usually estimated.
 
 
@@ -269,6 +270,12 @@ align: lt
 - If there is an odd number of scores, the median is the middle score.
 - If there is an even number of scores, the median is the mean of the two middle scores.  
 - The median represents the 50th percentile of the data.  
+
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>We will talk about percentiles in more detail soon!</SpeechBubble>
+</div>
 
 
 ---
@@ -305,7 +312,11 @@ The middle score is 92.
 
 </Admonition></p>
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Notice what just happened: one wildly extreme score (a 0!) barely moved the median. Keep that in mind — it's about to matter.</SpeechBubble></p>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="30rem" v-click>Notice what just happened: one wildly extreme score (a 0!) barely moved the median. Keep that in mind — it's about to matter.</SpeechBubble>
+</div>
 
 
 ---
@@ -321,6 +332,11 @@ align: lt
 - The mode is the most common score in the dataset.  
 - A distribution may be unimodal (one mode), bimodal (two modes), or multimodal (many modes).  
 - The mode is not always useful if many values occur with the same frequency.  
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="150" mood="happy" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>A, la mode!</SpeechBubble>
+</div>
 
 ---
 layout: top-title
@@ -348,9 +364,9 @@ color: indigo-light
 :: content ::
 - In bimodal and multimodal distributions, the mean and median are *not* representative of the data.
 
-<img src="/images/lecture4/bimodal.png" alt="bimodal" class="mx-auto w-1/2" />
+<img src="/images/lecture4/bimodal.png" alt="bimodal" class="mx-auto w-1/3" />
 
-<p v-click><StickyNote color="green-light" title="Example" width="60%">Exam scores in a class where half the students studied and half didn't might pile up in two separate humps — and almost nobody scores at the mean!</StickyNote></p>
+<p v-click><StickyNote color="green-light" title="Example" width="75%">Exam scores in a class where half the students studied and half didn't might pile up in two separate humps — and almost nobody scores at the mean!</StickyNote></p>
 
 ---
 layout: top-title
@@ -407,7 +423,7 @@ align: lt
 
 <div class="flex items-center gap-4 mt-4">
 <IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem" v-click>This is why you hear about *median* household income, not the mean — a few billionaires would drag the mean way up, while the median still describes a typical household!</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem" v-click>This is why you often hear about the MEDIAN household income, not the mean — a few billionaires drag the mean way up, while the median still describes a typical household!</SpeechBubble>
 </div>
 
 ---

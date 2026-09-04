@@ -61,7 +61,7 @@ align: lt
     - Files: .R, .Rmd, .Rproj, .html, .pdf. *What are they and when to use each?*
     - Saving your work: saving code vs. workspace variables.
 
-<img src="/images/lecture5/help_meme.jpg" alt="help" class="mx-auto w-1/3" />
+<img src="/images/lecture5/help_meme.jpg" alt="help" class="mx-auto w-1/5" />
 
 <p v-click><StickyNote color="green-light" title="In discussion section" width="60%">Tomorrow's discussion is more hands-on R practice — a great place to iron out any remaining R Studio questions before the exam.</StickyNote></p>
 
@@ -77,7 +77,7 @@ align: lt
 :: content ::
 - **Variance** = the average squared deviation of scores from the mean.
 - **Standard deviation (SD)** = the square root of the variance — the typical amount scores deviate from the mean.
-- For **samples**, we divide by $N-1$ instead of $N$ (Bessel's correction) to get an unbiased estimate of the population variance.
+- For **samples**, we divide by $N-1$ instead of $N$. Last time we took that on faith — today, once we've talked about samples and populations, we'll see why.
 
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 We covered variance and SD in depth last time — if any of this feels shaky, review Lecture 5 before the exam!
@@ -358,6 +358,134 @@ align: lt
 </p>
 
 ---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Recall: Sample variance uses N − 1
+
+:: left ::
+
+<AdmonitionType type="info" width="100%">Last lecture we said: if your data are a sample, divide by N − 1. Now we can see why.</AdmonitionType>
+
+- The formula for the variance of a **sample** is:
+
+$$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
+
+<p v-click>
+
+*What changed from the population formula?*
+
+1. We use $M$ (the sample mean) instead of $\mu$ (the population mean).
+2. We divide by $N-1$ instead of $N$. 
+3. We use $s^2$ (the sample variance) instead of $\sigma^2$ (the population variance).
+
+</p>
+
+:: right ::
+
+
+<p v-click>
+
+**Why do we divide by N-1 instead of N?**
+
+<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Why N-1?
+
+:: left ::
+
+**Why do we divide by N-1 instead of N?**
+
+<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
+
+
+:: right ::
+
+- A sample statistic is an **estimate** of a population parameter (that's the whole point of inferential statistics).
+- When we use the sample mean (M) instead of the population mean (μ), we are using an estimate that is **based on the sample data.**
+- The sample mean tends to be closer to the sample scores than the true population mean would be.
+- This can lead to an underestimation of the true population variance.
+- Dividing by N-1 instead of N provides a better estimate of the population variance, especially for small sample sizes.
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Why N-1? (Continued)
+
+:: left ::
+
+*Suppose we have a population with the following scores: 70, 75, 80, 85, 90.*
+
+1. Compute the population mean.
+2. Compute the population variance.
+
+
+*Now imagine we take a sample of 3 scores from this population: 70, 75, 85.*
+
+3. Compute the sample mean.
+4. Compute the sample variance using N in the denominator.
+5. Compute the sample variance using N-1 in the denominator.
+
+
+:: right ::
+
+<img src="/images/lecture4/mathmeme.jpg" alt="math" class="mx-auto w-3/4" />
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Code to the rescue!
+
+:: content ::
+
+```r
+# Population data
+population_scores <- c(70, 75, 80, 85, 90)
+population_mean <- mean(population_scores)
+population_variance <- sum((population_scores - population_mean)^2) / length(population_scores)
+
+# Sample data
+sample_scores <- c(70, 75, 85)
+sample_mean <- mean(sample_scores)
+sample_variance_N <- sum((sample_scores - sample_mean)^2) / length(sample_scores)
+sample_variance_N_minus_1 <- sum((sample_scores - sample_mean)^2) / (length(sample_scores) - 1)
+```
+
+<p v-click>
+
+- Population Variance: 50
+- Sample Variance (N): 38.89
+- Sample Variance (N-1): 58.33
+
+</p>
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll write R code like this yourselves — today, just focus on how the code mirrors the formulas.</StickyNote></p>
+
+
+---
 layout: top-title
 color: indigo-light
 align: lt
@@ -598,7 +726,7 @@ align: lt
 
 <p v-click><StickyNote color="green-light" title="Coming attractions" width="60%">After Exam 1, we'll turn these ideas into actual significance tests — this vocabulary (H₀, H₁, one- vs. two-tailed) will come up constantly.</StickyNote></p>
 
-<img src="/images/lecture5/tail_meme.jpg" alt="one two tailed" class="mx-auto w-1/3" />
+<img src="/images/lecture5/tail_meme.jpg" alt="one two tailed" class="mx-auto w-1/5" />
 
 ---
 layout: top-title-two-cols
@@ -618,7 +746,6 @@ align: lt-lt-lt
 - We never "accept" H₀, because we can't prove it true.
 - We use probability to assess how likely our data are under H₀.
 
-<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">"Fail to reject" vs. "accept" the null is a classic exam distinction — absence of evidence is not evidence of absence!</StickyNote></p>
 
 
 :: right ::
@@ -641,6 +768,8 @@ A better way to state the results would be: "We did not find evidence that PS 21
 
 </Admonition></p>
 
+<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">"Fail to reject" vs. "accept" the null is a classic exam distinction — absence of evidence is not evidence of absence!</StickyNote></p>
+
 ---
 layout: top-title
 color: indigo-light
@@ -657,7 +786,7 @@ align: lt
     - "You said PS 211 students aren't happier, but they are."
 - Both errors have consequences.
 
-<img src="/images/lecture5/errors.png" alt="type 1 type 2" class="mx-auto w-1/2" />
+<img src="/images/lecture5/errors.png" alt="type 1 type 2" class="mx-auto w-1/3" />
 
 ---
 layout: top-title

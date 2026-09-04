@@ -23,11 +23,218 @@ align: lt
 # Updates and reminders
 
 :: content ::
-
-- Remember: there is no standalone homework this year. Instead, you'll complete two Data Write-Ups later in the semester (the first is t-test based, due Tuesday, Nov. 17; the second is ANOVA based, due Tuesday, Dec. 8).
-- Discussion sections are using time for in-class R practice — take advantage of it!
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - ==Exam 1== is scheduled for **Tuesday, September 29** and covers Lectures 1 - 6. Review session is **Thursday, September 24**.
+- If you have exam accommodations, Rola or I have messaged you on Slack to confirm. If you have not heard from us yet, that means we do not have a letter for you, and expect you to take the exam in class. 
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Almost everything we measure varies
+
+:: content ::
+
+<img src="/images/lecture5/many_things_vary.png" alt="four histograms: heights, reaction times, temperatures, sleep" class="mx-auto w-3/5" />
+
+<p v-click>
+
+- Heights, reaction times, temperatures, hours of sleep: measure any of them across people (or days) and you get a ==spread of values==, never a single number.
+- If everything we measured came out the same every time, there would be nothing to study.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Even the *same* thing, measured again, varies
+
+:: left ::
+
+<img src="/images/lecture5/same_person_rt.png" alt="one person's reaction time across 40 trials" class="mx-auto w-full" />
+
+:: right ::
+
+- This is **one person** pressing a button when they hear a beep, 40 times in a row.
+- Same person, same task, same button — and the reaction times still bounce around (roughly 200 to 420 ms).
+
+<p v-click>
+
+<StickyNote color="amber-light" title="Try it at home" width="100%">
+Step on a bathroom scale three times in a row. You will not always get the same number. Variability is everywhere, even when nothing "real" has changed.
+</StickyNote>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Where does variability come from?
+
+:: content ::
+
+Any time we see a spread of values, there are three broad sources mixed together:
+
+<div class="grid grid-cols-3 gap-4 mt-2">
+<StickyNote color="indigo-light" title="Differences between people" width="100%">
+Some people really are taller, faster, or more anxious than others. These are stable, real differences.
+</StickyNote>
+<StickyNote color="teal-light" title="Differences within a person" width="100%">
+The same person changes from day to day and moment to moment: how much they slept, whether they were paying attention.
+</StickyNote>
+<StickyNote color="amber-light" title="Measurement noise" width="100%">
+The scale, the timer, the survey question — no measurement is perfect, so some spread is just error in how we measured.
+</StickyNote>
+</div>
+
+<p v-click>
+<Admonition title="Question" color="teal-light" width="100%">We ask 100 students how many hours they slept last night and get values from 4 to 10. Which of these three sources could be contributing?</Admonition>
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+All three. Some students are habitually short sleepers (between-person), everyone's sleep varies night to night (within-person), and people's memory of when they fell asleep is imperfect (measurement noise).
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Science is the study of variability
+
+:: left ::
+
+- Almost every research question is really a question about ==why something varies==:
+  - Why do some people sleep 5 hours and others 9?
+  - Why do some children learn to read faster than others?
+  - Why does the same person remember a word list better on some days than others?
+- Answering a question like this means finding the **sources** of the spread.
+
+:: right ::
+
+<img src="/images/lecture5/sleep_all.png" alt="histogram of sleep hours" class="mx-auto w-full" />
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="26rem">
+Every bar in this histogram is a person. What makes the people on the left different from the people on the right?
+</SpeechBubble>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Explaining some of the variability
+
+:: left ::
+
+<img src="/images/lecture5/sleep_by_caffeine.png" alt="sleep histogram split by caffeine" class="mx-auto w-full" />
+
+- Same histogram, now colored by whether each student had caffeine after 4 p.m.
+
+:: right ::
+
+<p v-click>
+
+- Caffeine drinkers cluster lower, the others higher: ==caffeine may explain part of the spread.==
+- In later lectures, we will learn how to use *statistical tests* to determine if we can say that caffeine explains a *significant* part of the spread, or if this pattern may have arisen just by chance.
+
+</p>
+
+<p v-click>
+
+- Also, within each group, sleep still varies a lot!
+- There's leftover spread that we *haven't* explained yet.
+
+</p>
+
+<p v-click>
+
+<StickyNote color="indigo-light" title="The key idea" width="100%">
+Finding a source of variability means showing that a variable accounts for some of the spread.
+</StickyNote>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# You already did this in Lecture 2
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">In Lecture 2, you all guessed the height of the world's tallest tree, and your guesses were all over the place. What was one source of that variability?</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+Which anchor you saw first: 1,200 feet or 180 feet. People who saw the high anchor guessed higher, on average. The anchor was our **independent variable**, and it explained *some* of the spread in your guesses.
+
+</Admonition>
+
+<p v-click>
+
+- The rest of the spread came from everything we didn't manipulate: prior knowledge about trees, how confident people felt, random guessing.
+- ==An experiment is an attempt to explain some of the variability in a **dependent variable** using an **independent variable.**== This is the logic behind nearly every statistical test you will learn this semester.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# But first, we have to *describe* variability
+
+:: content ::
+
+- You can't explain a spread you can't measure. Before asking *why* scores vary, we need a number that says *how much* they vary.
+- That number is what today is about.
+
+<p v-click>
+
+<StickyNote color="green-light" title="The roadmap" width="100%">
+<b>Today:</b> describe variability with a single number (range, variance, standard deviation).<br>
+<br>
+<b>Rest of the semester:</b> explain variability by comparing the spread an independent variable accounts for versus the spread it does not account for. How much variability does an independent variable explain? 
+
+<br> T-tests, ANOVA, and regression are all different ways of addressing that question.
+</StickyNote>
+
+</p>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem" v-click>If today's numbers feel abstract, remember what they're for. They tell us "how much" spread there is in our measurements in the first place! </SpeechBubble>
+</div>
+
+</p>
 
 ---
 layout: top-title
@@ -39,15 +246,15 @@ align: lt
 # Variability
 
 :: content ::
-- Besides a dataset's center or ==central tendency==, we also often want to know how spread out the values are.
 - **Variability** describes the spread of a distribution. 
 - Distributions with higher variability show greater spread between scores.  
 
-<img src="/images/lecture4/variance.jpg" alt="variance" class="mx-auto w-1/4" />
+<img src="/images/lecture4/variance.jpg" alt="variance" class="mx-auto w-1/3" />
 
-<p v-click>
-<Admonition title="Question" color="teal-light" width="100%">How could we measure spread?</Admonition>
-</p>
+<div class="flex items-center gap-4 mt-2">
+<IceCream :size="80" mood="excited" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem" v-click>Remember, you can think of a distribution as a histogram that shows counts of values in a dataset. </SpeechBubble>
+</div>
 
 ---
 layout: top-title
@@ -60,7 +267,9 @@ align: lt
 
 :: content ::
 
-<Admonition title="Question" color="teal-light" width="100%">Two sections of PS 211 both average 75% on a quiz. In Section A, every student scored between 70-80%. In Section B, scores ranged from 40% to 100%. Same average — very different experiences!</Admonition>
+<Admonition title="An example" color="teal-light" width="100%">Two sections of PS 211 both average 75% on a quiz. In Section A, every student scored between 70-80%. In Section B, scores ranged from 40% to 100%. Same average — very different experiences!</Admonition>
+
+<img src="/images/lecture5/two_sections_same_mean.png" alt="two sections, same mean, different spread" class="mx-auto w-2/5" />
 
 <p v-click>
 
@@ -72,7 +281,7 @@ align: lt
 
 <p v-click>
 
-==The mean alone doesn't capture this. We need a way to measure how spread out scores are.==
+==The mean alone doesn't capture this. We need a way to summarize how spread out scores are.==
 
 </p>
 
@@ -140,7 +349,6 @@ $$Range = X_{max} - X_{min}$$
 - The range is simple to compute, but it only depends on two scores and can be distorted by outliers. 
 
 
-
 ---
 layout: top-title
 color: indigo-light
@@ -160,10 +368,8 @@ align: lt
   <img src="/images/lecture4/iqr.png" alt="iqr" class="w-2/7" />
 
   **To compute the IQR:**
-
-  <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
     Split the data into two halves at the median. Q1 is the median of the lower half of the data. Q3 is the median of the upper half.
-  </SpeechBubble>
+
 </div>
 
 ---
@@ -271,7 +477,11 @@ align: lt
 
 <p v-click>
 
-<Admonition title="Question" color="teal-light" width="100%">To solve this, we square each deviation (to make them positive) before summing them!</Admonition>
+<div class="flex items-center gap-4 mt-2">
+<IceCream :size="80" mood="excited" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem" v-click>To solve this, we square each deviation (to make them positive) before summing them! </SpeechBubble>
+</div>
+
 
 </p>
 
@@ -362,39 +572,30 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Sample Variance 
+# Worked example: Variance, step by step
 
 :: left ::
 
-<AdmonitionType type="warning" width="100%">Things are about to get tricky...</AdmonitionType>
-
-
-- The formula for the variance of a **SAMPLE** is:
-
-$$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
-
-<p v-click>
-
-*What changed?*
-
-</p>
-
-<p v-click>
-
-1. We use $M$ (the sample mean) instead of $\mu$ (the population mean).
-2. We divide by $N-1$ instead of $N$. 
-3. We use $s^2$ (the sample variance) instead of $\sigma^2$ (the population variance).
-
-</p>
+<img src="/images/lecture5/var_walk_hist.png" alt="histogram of eight quiz scores" class="mx-auto w-full" />
 
 :: right ::
 
+- Eight students take a 15-point quiz. Their scores: **5, 6, 7, 8, 8, 9, 10, 11**
+- We care about *these eight students* only, so we'll treat them as a population and use the $\sigma^2$ formula.
 
 <p v-click>
 
-**Why do we divide by N-1 instead of N?**
+**Step 1: Find the mean.**
 
-<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
+$$\mu = \frac{5+6+7+8+8+9+10+11}{8} = \frac{64}{8} = 8$$
+
+</p>
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="26rem">
+The dashed line on the histogram is the mean. Every step from here on asks: how far is each score from that line?
+</SpeechBubble>
 
 </p>
 
@@ -405,22 +606,24 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Why N-1?
+# Worked example: Deviations
 
 :: left ::
 
-**Why do we divide by N-1 instead of N?**
-
-<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
-
+<img src="/images/lecture5/var_walk_deviations.png" alt="deviation of each score from the mean" class="mx-auto w-full" />
 
 :: right ::
 
-- When we use the sample mean (M) instead of the population mean (μ), we are using an estimate that is **based on the sample data.**
-- The sample mean tends to be closer to the sample scores than the true population mean would be.
-- This can lead to an underestimation of the true population variance.
-- Dividing by N-1 instead of N provides a better estimate of the population variance, especially for small sample sizes.
+**Step 2: Find each score's deviation from the mean** ($X_i - \mu$).
+
+- Score − mean: 5 − 8 = **−3**, 6 − 8 = **−2**, 7 − 8 = **−1**, 8 − 8 = **0**, 8 − 8 = **0**
+- 9 − 8 = **+1**, 10 − 8 = **+2**, 11 − 8 = **+3**
+
+<p v-click>
+
+- Each line in the plot *is* a deviation. Notice they sum to zero: −3 −2 −1 + 0 + 0 + 1 + 2 + 3 = 0.
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -429,28 +632,41 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Why N-1? (Continued)
+# Worked example: Square, sum, divide
 
 :: left ::
 
-*Suppose we have a population with the following scores: 70, 75, 80, 85, 90.*
-
-1. Compute the population mean.
-2. Compute the population variance.
-
-
-*Now imagine we take a sample of 3 scores from this population: 70, 75, 85.*
-
-3. Compute the sample mean.
-4. Compute the sample variance using N in the denominator.
-5. Compute the sample variance using N-1 in the denominator.
-
+<img src="/images/lecture5/var_walk_squares.png" alt="squared deviations as bars" class="mx-auto w-full" />
 
 :: right ::
 
-<img src="/images/lecture4/mathmeme.jpg" alt="math" class="mx-auto w-3/4" />
+**Step 3: Square each deviation** ($(X_i - \mu)^2$).
 
+9, 4, 1, 0, 0, 1, 4, 9
+
+<p v-click>
+
+**Step 4: Sum the squared deviations.**
+
+$$\sum (X_i - \mu)^2 = 9+4+1+0+0+1+4+9 = 28$$
+
+</p>
+
+<p v-click>
+
+**Step 5: Divide by $N$.**
+
+$$\sigma^2 = \frac{28}{8} = 3.5$$
+
+</p>
+
+<p v-click>
+
+<StickyNote color="indigo-light" title="Read the plot" width="100%">
+The variance is the <b>average height of the bars</b>: the average squared distance from the mean.
+</StickyNote>
+
+</p>
 
 ---
 layout: top-title
@@ -459,33 +675,137 @@ align: lt
 ---
 
 :: title ::
-# Code to the rescue!
+# Same steps, different spread
 
 :: content ::
 
-```r
-# Population data
-population_scores <- c(70, 75, 80, 85, 90)
-population_mean <- mean(population_scores)
-population_variance <- sum((population_scores - population_mean)^2) / length(population_scores)
+Three groups of eight students take the same quiz. All three groups have a mean of 8.
 
-# Sample data
-sample_scores <- c(70, 75, 85)
-sample_mean <- mean(sample_scores)
-sample_variance_N <- sum((sample_scores - sample_mean)^2) / length(sample_scores)
-sample_variance_N_minus_1 <- sum((sample_scores - sample_mean)^2) / (length(sample_scores) - 1)
-```
+<img src="/images/lecture5/var_three_hists.png" alt="three histograms with the same mean and different spread" class="mx-auto w-4/5" />
+
+<p v-click>
+<Admonition title="Question" color="teal-light" width="100%">Group B is the group we just worked through (variance = 3.5). Without computing anything, which group has the largest variance? The smallest?</Admonition>
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Group C is the most spread out, so it has the largest variance. Group A is the most tightly clustered, so it has the smallest. Let's check by doing the steps.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Same steps, different spread (continued)
+
+:: content ::
+
+<img src="/images/lecture5/var_two_deviations.png" alt="deviations for groups A and C" class="mx-auto w-1/2" />
+
+<div class="grid grid-cols-2 gap-x-10 mt-2">
+<div>
+
+**Group A:** 7, 7, 8, 8, 8, 8, 9, 9
 
 <p v-click>
 
-- Population Variance: 50
-- Sample Variance (N): 38.89
-- Sample Variance (N-1): 58.33
+- Deviations: −1, −1, 0, 0, 0, 0, +1, +1
+- Squared: 1, 1, 0, 0, 0, 0, 1, 1
+- Sum = 4, so σ² = 4 / 8 = **0.5**
 
 </p>
 
-<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll write R code like this yourselves — today, just focus on how the code mirrors the formulas.</StickyNote></p>
+</div>
+<div>
 
+**Group C:** 2, 4, 6, 8, 8, 10, 12, 14
+
+<p v-click>
+
+- Deviations: −6, −4, −2, 0, 0, +2, +4, +6
+- Squared: 36, 16, 4, 0, 0, 4, 16, 36
+- Sum = 112, so σ² = 112 / 8 = **14**
+
+</p>
+
+</div>
+</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Bigger spread, bigger variance
+
+:: content ::
+
+<img src="/images/lecture5/var_three_hists_labeled.png" alt="three histograms labeled with their variances" class="mx-auto w-2/3" />
+
+<p v-click>
+
+- Wider histogram → bigger deviations → bigger squared deviations → ==bigger variance==.
+- Group C's deviations are exactly **twice** Group B's, but its variance is **four times** as large (14 vs. 3.5). That's the squaring at work: variance is in *squared* units.
+
+</p>
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="30rem">
+Squared units are awkward ("3.5 points squared"). Shortly we'll take the square root to get back to points — that's the standard deviation.
+</SpeechBubble>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Sample variance
+
+:: left ::
+
+- Usually we don't have the whole population, just a **sample** from it.
+- The formula for the variance of a **sample** is:
+
+$$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
+
+<p v-click>
+
+*What changed?*
+
+1. We use $M$ (the sample mean) instead of $\mu$ (the population mean).
+2. We divide by $N-1$ instead of $N$.
+3. We call it $s^2$ (sample variance) instead of $\sigma^2$ (population variance).
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+**Why $N-1$?**
+
+<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
+
+</p>
+
+<p v-click>
+
+<StickyNote color="amber-light" title="Next lecture" width="100%">
+The reason has to do with using a sample to estimate a population, which is exactly what Lecture 6 is about. For now: <b>if your data are a sample, divide by N − 1.</b>
+</StickyNote>
+
+</p>
 
 ---
 layout: top-title
@@ -508,6 +828,47 @@ $$s = \sqrt{\frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}}$$
 - It represents the typical amount that each score deviates from the mean.  
 
 - Larger standard deviations indicate greater spread, while smaller ones indicate that scores cluster more closely around the mean.  
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Seeing the standard deviation
+
+:: content ::
+
+<img src="/images/lecture5/var_walk_sd.png" alt="Group B histogram with SD shown as a horizontal distance from the mean" class="mx-auto w-3/5" />
+
+<p v-click>
+
+- Group B's variance was 3.5, so its SD is $\sqrt{3.5} = 1.87$ points.
+- Unlike the variance, the SD is a **distance on the x-axis** of the histogram: ==the typical distance between a score and the mean==. Some scores are closer (the 8s), some are farther (5 and 11), but 1.87 points is the typical gap.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Seeing the standard deviation (continued)
+
+:: content ::
+
+<img src="/images/lecture5/var_three_hists_sd.png" alt="three histograms with their SDs drawn as horizontal arrows" class="mx-auto w-4/5" />
+
+<p v-click>
+
+- Same three groups as before. The red arrow reaches one SD on each side of the mean.
+- Group A's scores hug the mean, so one SD is less than a point. Group C's spread out to 2 and 14, so one SD is almost 4 points.
+- ==Read the SD as a width:== a wider histogram has a longer arrow.
+
+</p>
 
 ---
 layout: top-title
@@ -594,7 +955,7 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">Which histogram displays data with higher variance?</Admonition>
 
-<img src="/images/lecture4/high_low_var.svg" alt="variance practice" class="mx-auto w-1/2" />
+<img src="/images/lecture4/high_low_var.svg" alt="variance practice" class="mx-auto w-2/5" />
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
@@ -652,9 +1013,9 @@ align: lt
 
 :: content ::
 
-Ten students report how many hours they slept last night:
+<Admonition title="Question" color="teal-light" width="100%">Ten students report how many hours they slept last night: <b>5, 6, 6, 7, 7, 7, 8, 8, 9, 9</b>. Treating these students as a sample, find (1) the mean, (2) the range, and (3) the sample standard deviation. Then write one sentence interpreting the SD.</Admonition>
 
-$$5, 6, 6, 7, 7, 7, 8, 8, 9, 9$$
+<p v-click><StickyNote color="amber-light" title="Try it first" width="60%">Work through it with the person next to you before we go step by step. Hint: there are 10 scores, so the sample variance divides by 9.</StickyNote></p>
 
 <p v-click>
 
@@ -673,15 +1034,15 @@ $$Range = X_{max} - X_{min} = 9 - 5 = 4 \text{ hours}$$
 </p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
 
 :: title ::
 # Practice: Sleep hours (continued)
 
-:: content ::
+:: left ::
 
 **Step 3: Find the sample standard deviation.**
 
@@ -689,20 +1050,23 @@ align: lt
 
 First, find each deviation from the mean (7.2) and square it:
 
-| Score | Deviation | Squared |
-|---|---|---|
-| 5 | -2.2 | 4.84 |
-| 6 | -1.2 | 1.44 |
-| 6 | -1.2 | 1.44 |
-| 7 | -0.2 | 0.04 |
-| 7 | -0.2 | 0.04 |
-| 7 | -0.2 | 0.04 |
-| 8 | 0.8 | 0.64 |
-| 8 | 0.8 | 0.64 |
-| 9 | 1.8 | 3.24 |
-| 9 | 1.8 | 3.24 |
+<div class="grid grid-cols-3 gap-x-6 text-sm leading-snug" style="max-width:20rem">
+<div><b>Score</b></div><div><b>Deviation</b></div><div><b>Squared</b></div>
+<div>5</div><div>-2.2</div><div>4.84</div>
+<div>6</div><div>-1.2</div><div>1.44</div>
+<div>6</div><div>-1.2</div><div>1.44</div>
+<div>7</div><div>-0.2</div><div>0.04</div>
+<div>7</div><div>-0.2</div><div>0.04</div>
+<div>7</div><div>-0.2</div><div>0.04</div>
+<div>8</div><div>0.8</div><div>0.64</div>
+<div>8</div><div>0.8</div><div>0.64</div>
+<div>9</div><div>1.8</div><div>3.24</div>
+<div>9</div><div>1.8</div><div>3.24</div>
+</div>
 
 </p>
+
+:: right ::
 
 <p v-click>
 
@@ -779,4 +1143,4 @@ color: indigo-light
 
 
 # That's all for today!
-Next time: standardizing scores and the normal curve.
+Next time: sampling, probability, and an introduction to hypothesis testing (and why N − 1).

@@ -26,17 +26,15 @@ align: lt
 :: content ::
 
 - You should be working on having ==R and R Studio== installed on your personal computer.
-  - If you have not yet successfully installed them, please follow the instructions on Slack and come to office hours if you need help.
+  - If you have not yet successfully installed them, please follow the instructions on Slack, ask questions in discussion section, and come to office hours if you need further help.
 
   <img src="/images/lecture2/help_meme.jpeg" alt="help" class="mx-auto" />
 
 <p v-click>
 
-- Reminder: Discussion sections started this week! Please bring a laptop.
+- Reminder: Discussion sections start tomorrow! Please bring a laptop.
 
 </p>
-
-
 
 ---
 layout: top-title
@@ -75,6 +73,9 @@ align: lt-lt-lt
 
 :: right ::
 
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">Some variables are a bit ambiguous. Is class year (freshman, sophomore, etc.) nominal or ordinal? Qualitative or quantitative?</SpeechBubble></p>
+
+<p v-click><StickyNote color="green-light" title="Important" width="100%">The specific label we give the variable is less important than understanding its properties!</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -108,6 +109,10 @@ color: indigo-light
 
 # New material
 ### Types of research, experimental variables, operational definitions, reliability & validity, confounds, hypothesis testing
+
+<!--
+Today - mishmash of a bunch of random terms and things that are important for understanding experimental design. Sorry if it just feels like an onslaught of random information. It's all important.
+-->
 
 ---
 layout: top-title
@@ -876,12 +881,16 @@ align: lt
 
 <p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">Comparing two group averages is exactly what much of this course is about: visualizing group differences, quantifying variability, and eventually testing whether differences are "real" (t-tests!).</StickyNote></p>
 
+<!--
+https://docs.google.com/spreadsheets/d/1-6V-kB07M4YcdBUP61u4NJpxv7_wPPhf2uKBqn0qWUc/edit?gid=1526647753#gid=1526647753
+-->
+
 ---
 layout: cover
 color: indigo-light
 ---
 
 # That’s all for Lecture 2!  
-See you next class. Please remember to:
-- Install R and R Studio before the next lecture.
-- Come to office hours if you need help! 
+See you next week. Please remember to:
+- Install R and R Studio before discussion section tomorrow.
+- Come to office hours if you need help!
