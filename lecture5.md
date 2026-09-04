@@ -802,7 +802,7 @@ $$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
 <p v-click>
 
 <StickyNote color="amber-light" title="Next lecture" width="100%">
-The reason has to do with using a sample to estimate a population, which is exactly what Lecture 6 is about. For now: <b>if your data are a sample, divide by N − 1.</b>
+The reason has to do with using a sample to estimate a population — we'll come back to it in Lecture 8, once we've seen how statistics vary from sample to sample. For now: <b>if your data are a sample, divide by N − 1.</b>
 </StickyNote>
 
 </p>
@@ -1143,4 +1143,4 @@ color: indigo-light
 
 
 # That's all for today!
-Next time: sampling, probability, and an introduction to hypothesis testing (and why N − 1).
+Next time: sampling, probability, and an introduction to hypothesis testing.

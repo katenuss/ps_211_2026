@@ -115,6 +115,11 @@ align: lt-lt-lt
 - Compute their mean.
 - Repeat many times, plot the distribution of means.
 
+<div class="flex items-center gap-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>And this works no matter what shape the original distribution has — that's what makes the Central Limit Theorem so powerful!</SpeechBubble>
+</div>
+
 :: right ::
 
 <p v-click>
@@ -137,10 +142,6 @@ As the sample size increases, the distribution of means approaches a normal dist
 
 </Admonition></p>
 
-<div class="flex items-center gap-4">
-<IceCream :size="80" mood="shocked" color="#FDA7DC" v-click/>
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem" v-click>And this works no matter what shape the original distribution has — that's what makes the Central Limit Theorem so powerful!</SpeechBubble>
-</div>
 
 
 
@@ -189,6 +190,236 @@ align: lt
 Let's watch someone else explain this!
 
 https://www.youtube.com/watch?v=YAlJCEDH2uY
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Recall: Sample variance uses N − 1
+
+:: left ::
+
+<AdmonitionType type="info" width="100%">Back in Lecture 5 we said: if your data are a sample, divide by N − 1. Now that you have seen how sample statistics behave across many samples, we can see why.</AdmonitionType>
+
+- The formula for the variance of a **sample** is:
+
+$$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
+
+<p v-click>
+
+*What changed from the population formula?*
+
+1. We use $M$ (the sample mean) instead of $\mu$ (the population mean).
+2. We divide by $N-1$ instead of $N$. 
+3. We use $s^2$ (the sample variance) instead of $\sigma^2$ (the population variance).
+
+</p>
+
+:: right ::
+
+
+<p v-click>
+
+**Why do we divide by N-1 instead of N?**
+
+<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Sample statistics are estimates
+
+:: left ::
+
+- We almost never have the whole population. We have a sample, and we use it to **estimate** the population's parameters:
+  - The sample mean $M$ is our estimate of $\mu$
+  - The sample variance $s^2$ is our estimate of $\sigma^2$
+- A good estimate is **unbiased**: any single sample might land too high or too low, but ==across many samples, the estimates average out to the true value.==
+
+<p v-click>
+
+- **The mean passes this test.** Take a sample, compute $M$; repeat thousands of times — exactly what we just did with the dice. The $M$s scatter around $\mu$, but they center on it. So the best guess for $\mu$ is simply $M$. No correction needed.
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/n1_means_unbiased.png" alt="sample means center on the population mean" class="mx-auto w-full" />
+
+</p>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">If we compute the variance of a sample the same way we did for a population (deviations from M, divided by N), is that an unbiased estimate of σ²?</Admonition>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# The variance estimate is biased. Why?
+
+:: left ::
+
+<Admonition title="Answer" color="green-light" width="100%">
+
+No. Computed that way, the sample variance is ==systematically too small==. It's a **biased** estimate of $\sigma^2$.
+
+</Admonition>
+
+<p v-click>
+
+- The culprit is $M$. We measure deviations from the **sample** mean because we don't know $\mu$.
+- But $M$ is computed *from these very scores*, so it sits right in the middle of them: it is the point that makes their squared deviations as small as possible. $\mu$ is somewhere else, so deviations from $\mu$ would be larger.
+
+</p>
+
+<p v-click>
+
+- The sum of squared deviations from $M$ is **always ≤** the sum from $\mu$, so dividing by $N$ gives a variance that is too small on average.
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/n1_M_vs_mu.png" alt="deviations from M are smaller than deviations from mu" class="mx-auto w-full" />
+
+</p>
+
+<p v-click>
+
+<StickyNote color="amber-light" title="Same sample, two reference points" width="100%">
+Sample 70, 75, 85 from a population with μ = 80. Measured from M = 76.67 the squared deviations sum to 116.67; measured from μ they sum to 150. Using M shrinks the spread.
+</StickyNote>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Fixing the bias: divide by N − 1
+
+:: left ::
+
+- Dividing by $N-1$ instead of $N$ makes each estimate a little bigger — by just the right amount, on average, to undo the shrinkage from using $M$.
+
+<p v-click>
+
+- **Simulation:** 20,000 samples of 3 scores from a population with $\sigma^2 = 50$.
+  - Divide by $N$: the estimates average **33.4**. Biased low.
+  - Divide by $N-1$: the estimates average **50.1**. Unbiased.
+
+</p>
+
+<p v-click>
+
+<StickyNote color="indigo-light" title="Another way to see it" width="100%">
+Deviations from M always sum to zero. So once you know N − 1 of them, the last one is fixed — only N − 1 deviations carry independent information about spread. We divide by the number of <i>free</i> deviations.
+</StickyNote>
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/n1_simulation.png" alt="variance estimates with N vs N-1" class="mx-auto w-full" />
+
+</p>
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="26rem">
+N − 1 doesn't make any single estimate correct. It makes the estimates correct <i>on average</i>. And notice the bias matters most when N is small: 1/3 is a big correction, 1/300 is not.
+</SpeechBubble>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+
+# Why N-1? (Continued)
+
+:: left ::
+
+*Suppose we have a population with the following scores: 70, 75, 80, 85, 90.*
+
+1. Compute the population mean.
+2. Compute the population variance.
+
+
+*Now imagine we take a sample of 3 scores from this population: 70, 75, 85.*
+
+3. Compute the sample mean.
+4. Compute the sample variance using N in the denominator.
+5. Compute the sample variance using N-1 in the denominator.
+
+
+:: right ::
+
+<img src="/images/lecture4/mathmeme.jpg" alt="math" class="mx-auto w-3/4" />
+
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Code to the rescue!
+
+:: content ::
+
+```r
+# Population data
+population_scores <- c(70, 75, 80, 85, 90)
+population_mean <- mean(population_scores)
+population_variance <- sum((population_scores - population_mean)^2) / length(population_scores)
+
+# Sample data
+sample_scores <- c(70, 75, 85)
+sample_mean <- mean(sample_scores)
+sample_variance_N <- sum((sample_scores - sample_mean)^2) / length(sample_scores)
+sample_variance_N_minus_1 <- sum((sample_scores - sample_mean)^2) / (length(sample_scores) - 1)
+```
+
+<p v-click>
+
+- Population Variance: 50
+- Sample Variance (N): 38.89
+- Sample Variance (N-1): 58.33
+
+</p>
+
+<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll write R code like this yourselves — today, just focus on how the code mirrors the formulas.</StickyNote></p>
 
 
 ---
@@ -391,11 +622,11 @@ Approximately 68% of the time, since the error bars represent +/- 1 SD of the di
 
 :: right ::
 
-<img src="/images/lecture6/gpa_hist.png" alt="Histogram of gpa" class="w-3/4 mx-auto"/>
+<img src="/images/lecture6/gpa_hist.png" alt="Histogram of gpa" class="w-3/5 mx-auto"/>
 
 <br>
 
-<img src="/images/lecture6/gpa_boxplot.png" alt="Boxplot of GPA" class="w-3/4 mx-auto"/>
+<img src="/images/lecture6/gpa_boxplot.png" alt="Boxplot of GPA" class="w-3/5 mx-auto"/>
 
 <p v-click><StickyNote color="green-light" title="In discussion section" width="100%">You'll practice making plots like these — with error bars — in R during discussion section.</StickyNote></p>
 

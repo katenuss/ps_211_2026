@@ -45,7 +45,9 @@ align: lt
 - **Variance:** the average squared deviation of scores from the mean.
 - **Standard deviation (SD):** the square root of variance — it tells us the *typical* distance of a score from the mean.
 
-$$ SD = \sqrt{\frac{\sum (X_i - M)^2}{N}} $$
+$$ s = \sqrt{\frac{\sum (X_i - M)^2}{N-1}} $$
+
+- Remember: for a **sample** we divide by $N-1$. (Why? Lecture 8.)
 
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 We covered variance and SD in depth a couple lectures ago. Today we build on that foundation to talk about normal distributions and z-scores.
@@ -98,6 +100,7 @@ align: lt-lt-lt
   - Expected (if normal): ~19.6% for both outcomes  
 </p>
 
+
 :: right ::
 
 <img src="/images/lecture6/sumo_normal.png" alt="Sumo results normal dist" class="w-1/2 mx-auto"/>
@@ -116,9 +119,10 @@ Sumo wrestlers were throwing matches to help wrestlers who had won 7 matches win
 
 </Admonition></p>
 
+
 <p v-click>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="34rem">
 This is also called "anomaly detection" and is used in many fields, including fraud detection.
 </SpeechBubble>
 
@@ -214,7 +218,9 @@ align: lt
 - **Variance:** average squared deviation from the mean  
 - **Standard Deviation (SD):** square root of variance  
 
-$$ SD = \sqrt{\frac{\sum (X_i - M)^2}{N}} $$
+$$ s = \sqrt{\frac{\sum (X_i - M)^2}{N-1}} $$
+
+- Remember: for a **sample** we divide by $N-1$. (Why? Lecture 8.)
 
 - SD tells us the **typical deviation** from the mean.  
 - Larger SD = more spread.  
@@ -357,13 +363,9 @@ $$z = \frac{X - M}{s}$$
 
 **Step 1:** Compute the sample mean ($M$) and standard deviation ($s$).
 
-**Step 2:** Subtract the mean from your raw score ($X - M$).
+**Step 2:** Subtract the mean from your raw score ($X - M$). *This is the distance from the mean.*
 
-*This gives us the distance from the mean.*
-
-**Step 3:** Divide by the standard deviation ($s$). 
-
-*This converts the distance into "number of standard deviations."*
+**Step 3:** Divide by the standard deviation ($s$). *This converts the distance into "number of standard deviations."*
 
 <p v-click>
 
@@ -579,22 +581,29 @@ align: lt
 - **Exam 2:** class mean = 68, SD = 5. Your score = 76.
 
 <Admonition title="Question" color="teal-light" width="100%">
-On which exam did you perform better, *relative to your classmates*? Calculate a z score for each exam to find out.
+On which exam did you perform better, <i>relative to your classmates</i>? Calculate a z score for each exam to find out.
 </Admonition>
 
-<p v-click>
-
-**Step 1:** Calculate your z score on Exam 1.
-$$ z_1 = \frac{87 - 75}{8} = 1.5 $$
-
-</p>
+<div class="grid grid-cols-2 gap-x-8">
+<div>
 
 <p v-click>
 
-**Step 2:** Calculate your z score on Exam 2.
-$$ z_2 = \frac{76 - 68}{5} = 1.6 $$
+**Step 1:** z score on Exam 1: $z_1 = \dfrac{87 - 75}{8} = 1.5$
 
 </p>
+
+</div>
+<div>
+
+<p v-click>
+
+**Step 2:** z score on Exam 2: $z_2 = \dfrac{76 - 68}{5} = 1.6$
+
+</p>
+
+</div>
+</div>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
