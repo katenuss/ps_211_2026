@@ -26,8 +26,8 @@ align: lt
 
 - R and R Studio are being used in ==discussion sections== — bring a laptop!
   - If you haven't installed them yet, follow the instructions on Slack and come to office hours if you need help.
-- Remember: There is no standalone homework this year. Instead, you will practice the concepts introduced in class in Discussion Section.
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays, 2:30 - 3:30 p.m. (Rola)
+- Exams: Conceptual only, no coding! BUT, you will need to interpret code output.
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You'll see a little R code in today's slides — it's just a preview. You'll get hands-on practice in discussion section, so no need to memorize anything today.</SpeechBubble></p>
 
@@ -81,7 +81,7 @@ align: lt
 - There are many ==correct== ways to present the same data.
     - Our job is to choose the ways that are most ==useful==.
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="br" maxWidth="24rem">Today is all about one big question: how do we turn a pile of numbers into something we can actually see and understand?</SpeechBubble></p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="br" maxWidth="24rem">Today is all about one big question: How do we turn a pile of numbers into something we can actually see and understand?</SpeechBubble></p>
 
 ---
 layout: top-title-two-cols
@@ -174,18 +174,49 @@ align: lt-lt-lt
 - Frequency tables break down when data have **many unique values** (i.e., continuous variables).
   - Listing every value is basically the same as displaying the raw data!
 - **Grouped frequency tables** solve this: group values into equal-width intervals (or ==**"bins"**==) and count observations in each bin.
+  - Example (right): 100 students reported how many hours they slept last night, to the nearest minute — that's ~100 unique values. Binning by hour gives 8 rows.
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="22rem">Remember this word — *bins*! It's about to become very important.</SpeechBubble></p>
 
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">What is an advantage of grouping values into bins? What is a disadvantage?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%" v-click>What is an advantage of grouping values into bins? What is a disadvantage?</Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
 Advantage: Easier to see patterns in data with many unique values. Disadvantage: Loss of detail about individual values.
 
 </Admonition>
+
+:: right ::
+
+<div class="text-sm w-5/6 mx-auto" style="line-height:1.2">
+
+**Hours of sleep last night (100 students)**
+
+<table class="border-collapse w-full text-center">
+  <thead>
+    <tr>
+      <th>Hours of sleep (bin)</th>
+      <th>Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>3 up to 4</td><td>3</td></tr>
+    <tr><td>4 up to 5</td><td>8</td></tr>
+    <tr><td>5 up to 6</td><td>10</td></tr>
+    <tr><td>6 up to 7</td><td>36</td></tr>
+    <tr><td>7 up to 8</td><td>29</td></tr>
+    <tr><td>8 up to 9</td><td>11</td></tr>
+    <tr><td>9 up to 10</td><td>2</td></tr>
+    <tr><td>10 up to 11</td><td>1</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><td style="text-align:right;"><strong>Total</strong></td><td><strong>100</strong></td></tr>
+  </tfoot>
+</table>
+
+<p class="text-xs mt-2 opacity-70">Each bin is 1 hour wide. "7 up to 8" includes 7.0 but not 8.0 — every value lands in exactly one bin.</p>
+
+</div>
 
 
 ---
@@ -201,7 +232,7 @@ align: lt
 - A **histogram** is a graphical representation of a grouped frequency table.
 - The x-axis shows the ==bins== (intervals of a continuous variable).
 - The y-axis shows the ==frequency== (count) of observations in each bin.
-- Each bar *is* a row of the grouped frequency table — drawn instead of listed.
+- Each bar *is* a row of the grouped frequency table — drawn instead of listed. (This is the sleep table from the previous slide: the "7 up to 8" row with frequency 29 becomes the bar below.)
 
 <img src="/images/lecture3/hist_anatomy.png" alt="histogram anatomy" class="mx-auto w-1/2" />
 
@@ -236,6 +267,178 @@ align: lt-lt-lt
 No! Binning loses detail about individual values — the same trade-off as a grouped frequency table.
 
 </Admonition>
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Our data: How tall is the tallest tree?
+
+:: left ::
+
+- Last class, 36 of you guessed the height of the tallest tree in the world (after seeing either a **180 ft** or a **1,200 ft** anchor).
+- Here is the (abbreviated) **frequency table** of your guesses: 36 guesses, **25 unique values**.
+  - Only the values that occurred are listed — a *complete* frequency table listing every whole number from 90 to 3,000 would have 2,911 rows!
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Is this table any easier to read than the raw data?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">Barely. Most values occur once, so the table is nearly as long as the data itself. This is exactly the situation where we need to <em>group</em>.</Admonition></p>
+
+:: right ::
+
+<div class="text-xs w-full" style="line-height:1.15">
+
+**Estimated height (ft) — frequency table**
+
+<div class="grid grid-cols-3 gap-x-4">
+
+<table class="border-collapse w-full text-center">
+  <thead><tr><th>Value</th><th>Freq.</th></tr></thead>
+  <tbody>
+    <tr><td>90</td><td>1</td></tr>
+    <tr><td>145</td><td>1</td></tr>
+    <tr><td>185</td><td>1</td></tr>
+    <tr><td>190</td><td>2</td></tr>
+    <tr><td>200</td><td>2</td></tr>
+    <tr><td>210</td><td>2</td></tr>
+    <tr><td>215</td><td>1</td></tr>
+    <tr><td>231</td><td>1</td></tr>
+    <tr><td>250</td><td>2</td></tr>
+  </tbody>
+</table>
+
+<table class="border-collapse w-full text-center">
+  <thead><tr><th>Value</th><th>Freq.</th></tr></thead>
+  <tbody>
+    <tr><td>300</td><td>4</td></tr>
+    <tr><td>350</td><td>1</td></tr>
+    <tr><td>360</td><td>1</td></tr>
+    <tr><td>400</td><td>2</td></tr>
+    <tr><td>600</td><td>2</td></tr>
+    <tr><td>700</td><td>1</td></tr>
+    <tr><td>800</td><td>1</td></tr>
+    <tr><td>900</td><td>1</td></tr>
+    <tr><td>1000</td><td>1</td></tr>
+  </tbody>
+</table>
+
+<table class="border-collapse w-full text-center">
+  <thead><tr><th>Value</th><th>Freq.</th></tr></thead>
+  <tbody>
+    <tr><td>1127</td><td>1</td></tr>
+    <tr><td>1201</td><td>1</td></tr>
+    <tr><td>1500</td><td>2</td></tr>
+    <tr><td>1700</td><td>1</td></tr>
+    <tr><td>2000</td><td>1</td></tr>
+    <tr><td>2500</td><td>1</td></tr>
+    <tr><td>3000</td><td>2</td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>36</strong></td></tr>
+  </tbody>
+</table>
+
+</div>
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Our data: Grouped frequency table
+
+:: left ::
+
+- Same 36 guesses, now grouped into **250-foot bins**.
+- 25 rows became 13 — and a pattern appears: most guesses are **under 500 ft**, with a long tail of much bigger guesses.
+- Notice that bins with a count of **0** are still listed — the empty stretches are part of the story.
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What did we lose by grouping?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">Individual values. The "0 up to 250" row contains 11 guesses ranging from 90 to 231 ft, but the table can't tell you that.</Admonition></p>
+
+:: right ::
+
+<div class="text-xs w-5/6 mx-auto" style="line-height:1.15">
+
+**Estimated height (ft) — grouped frequency table**
+
+<table class="border-collapse w-full text-center">
+  <thead><tr><th>Height (bin)</th><th>Frequency</th></tr></thead>
+  <tbody>
+    <tr><td>0 up to 250</td><td>11</td></tr>
+    <tr><td>250 up to 500</td><td>10</td></tr>
+    <tr><td>500 up to 750</td><td>3</td></tr>
+    <tr><td>750 up to 1,000</td><td>2</td></tr>
+    <tr><td>1,000 up to 1,250</td><td>3</td></tr>
+    <tr><td>1,250 up to 1,500</td><td>0</td></tr>
+    <tr><td>1,500 up to 1,750</td><td>3</td></tr>
+    <tr><td>1,750 up to 2,000</td><td>0</td></tr>
+    <tr><td>2,000 up to 2,250</td><td>1</td></tr>
+    <tr><td>2,250 up to 2,500</td><td>0</td></tr>
+    <tr><td>2,500 up to 2,750</td><td>1</td></tr>
+    <tr><td>2,750 up to 3,000</td><td>0</td></tr>
+    <tr><td>3,000 up to 3,250</td><td>2</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><td style="text-align:right;"><strong>Total</strong></td><td><strong>36</strong></td></tr>
+  </tfoot>
+</table>
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Our data: Histogram
+
+:: left ::
+
+<img src="/images/lecture3/tree_hist_all.png" alt="histogram of tallest-tree guesses" class="mx-auto w-full" />
+
+:: right ::
+
+- The grouped frequency table, **drawn**: 13 bins on the x-axis, one bar per row.
+- Empty bins show up as gaps.
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">Where do the guesses cluster? Is the distribution symmetric?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">Most guesses pile up in the two lowest bins (under 500 ft), close to the real answer. The distribution is lopsided: a handful of very large guesses stretch it far to the right.</Admonition></p>
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="22rem">But remember — half of you saw a *different anchor*. Can the histogram show that?</SpeechBubble></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Our data: Histogram, colored by anchor
+
+:: left ::
+
+<img src="/images/lecture3/tree_hist_by_anchor.png" alt="histogram of tallest-tree guesses colored by anchoring condition" class="mx-auto w-full" />
+
+:: right ::
+
+- Same bins, same bars — but now each bar is **split by anchoring condition** (our IV from last class).
+- Coloring by a categorical variable lets one histogram show **two distributions** at once.
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">What does the coloring reveal that the averages (299 ft vs. 1,579 ft) don't?</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">The two groups barely overlap: 21 of 23 low-anchor guesses are under 500 ft, while every high-anchor guess is 600 ft or more. The anchor didn't just nudge the average — it shifted the <em>whole distribution</em>.</Admonition></p>
 
 
 ---
