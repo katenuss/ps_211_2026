@@ -24,9 +24,11 @@ align: lt
 
 :: content ::
 
-- R and R Studio are being used in ==discussion sections== — bring a laptop!
-  - If you haven't installed them yet, follow the instructions on Slack and come to office hours if you need help.
+- R and R Studio will be used in every ==discussion sections==!
+- You should now have them installed. If not, please come to office hours. 
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays, 2:30 - 3:30 p.m. (Rola)
+- By the end of next discussion section, you should be 100% comfortable opening, saving, and using .Rmd files. 
+- You can continue to work on the worksheets outside of class. Remember, there is no homework for this course, so this is your practice with the concepts. 
 - Exams: Conceptual only, no coding! BUT, you will need to interpret code output.
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">You'll see a little R code in today's slides — it's just a preview. You'll get hands-on practice in discussion section, so no need to memorize anything today.</SpeechBubble></p>
