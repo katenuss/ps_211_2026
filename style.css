@@ -39,3 +39,10 @@
 .slidev-layout p:has(> .markdown-alert.neversink-teal-light-scheme) {
   margin-top: 14px;
 }
+
+/* Compact data tables (frequency tables etc.) so tall tables fit on a slide */
+.slidev-layout table.compact-table th,
+.slidev-layout table.compact-table td {
+  padding: 0.15rem 0.5rem;
+  line-height: 1.2;
+}

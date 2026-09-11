@@ -176,9 +176,7 @@ align: lt-lt-lt
 - Frequency tables break down when data have **many unique values** (i.e., continuous variables).
   - Listing every value is basically the same as displaying the raw data!
 - **Grouped frequency tables** solve this: group values into equal-width intervals (or ==**"bins"**==) and count observations in each bin.
-  - Example (right): 100 students reported how many hours they slept last night, to the nearest minute — that's ~100 unique values. Binning by hour gives 8 rows.
-
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="22rem">Remember this word — *bins*! It's about to become very important.</SpeechBubble></p>
+  - Example (right): 100 students' hours of sleep, binned by hour → 8 rows instead of ~100.
 
 <Admonition title="Question" color="teal-light" width="100%" v-click>What is an advantage of grouping values into bins? What is a disadvantage?</Admonition>
 
@@ -194,7 +192,7 @@ Advantage: Easier to see patterns in data with many unique values. Disadvantage:
 
 **Hours of sleep last night (100 students)**
 
-<table class="border-collapse w-full text-center">
+<table class="compact-table border-collapse w-full text-center">
   <thead>
     <tr>
       <th>Hours of sleep (bin)</th>
@@ -216,9 +214,11 @@ Advantage: Easier to see patterns in data with many unique values. Disadvantage:
   </tfoot>
 </table>
 
-<p class="text-xs mt-2 opacity-70">Each bin is 1 hour wide. "7 up to 8" includes 7.0 but not 8.0 — every value lands in exactly one bin.</p>
+<p class="text-xs mt-1 opacity-70">Students reported sleep to the nearest minute (~100 unique values). Each bin is 1 hour wide: "7 up to 8" includes 7.0 but not 8.0, so every value lands in exactly one bin.</p>
 
 </div>
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="tl" maxWidth="22rem">Remember this word — *bins*! It's about to become very important.</SpeechBubble></p>
 
 
 ---
@@ -236,8 +236,7 @@ align: lt
 - The y-axis shows the ==frequency== (count) of observations in each bin.
 - Each bar *is* a row of the grouped frequency table — drawn instead of listed. (This is the sleep table from the previous slide: the "7 up to 8" row with frequency 29 becomes the bar below.)
 
-<img src="/images/lecture3/hist_anatomy.png" alt="histogram anatomy" class="mx-auto w-1/2" />
-
+<img src="/images/lecture3/hist_anatomy.png" alt="histogram anatomy" class="mx-auto w-3/8" />
 
 ---
 layout: top-title-two-cols
@@ -298,7 +297,7 @@ align: lt-lt-lt
 
 <div class="grid grid-cols-3 gap-x-4">
 
-<table class="border-collapse w-full text-center">
+<table class="compact-table border-collapse w-full text-center">
   <thead><tr><th>Value</th><th>Freq.</th></tr></thead>
   <tbody>
     <tr><td>90</td><td>1</td></tr>
@@ -313,7 +312,7 @@ align: lt-lt-lt
   </tbody>
 </table>
 
-<table class="border-collapse w-full text-center">
+<table class="compact-table border-collapse w-full text-center">
   <thead><tr><th>Value</th><th>Freq.</th></tr></thead>
   <tbody>
     <tr><td>300</td><td>4</td></tr>
@@ -328,7 +327,7 @@ align: lt-lt-lt
   </tbody>
 </table>
 
-<table class="border-collapse w-full text-center">
+<table class="compact-table border-collapse w-full text-center">
   <thead><tr><th>Value</th><th>Freq.</th></tr></thead>
   <tbody>
     <tr><td>1127</td><td>1</td></tr>
@@ -372,7 +371,7 @@ align: lt-lt-lt
 
 **Estimated height (ft) — grouped frequency table**
 
-<table class="border-collapse w-full text-center">
+<table class="compact-table border-collapse w-full text-center">
   <thead><tr><th>Height (bin)</th><th>Frequency</th></tr></thead>
   <tbody>
     <tr><td>0 up to 250</td><td>11</td></tr>
@@ -485,14 +484,12 @@ align: lt
 
 :: title ::
 # Histograms in the wild
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">I made this in R for an actual paper.</SpeechBubble>
 
 :: content ::
 
-<br> 
-
-<div class="flex justify-center space-x-4">
+<div class="flex items-center justify-center gap-8">
   <img src="/images/lecture3/histogram1.png" alt="histogram" class="w-1/2" />
+  <SpeechBubble color="amber-light" shape="round" position="l" maxWidth="18rem">I made this in R for an actual paper.</SpeechBubble>
 </div>
 
 
@@ -682,7 +679,7 @@ align: lt
 - A **floor effect** occurs when a large number of observations cluster at the lower end of the scale, with few observations at the higher end.
 
 
-<img src="/images/lecture3/income_dist.jpeg" alt="income distribution" class="mx-auto w-1/2" />
+<img src="/images/lecture3/income_dist.jpeg" alt="income distribution" class="mx-auto" style="max-height: 16.5rem" />
 
 
 ---
@@ -1140,9 +1137,7 @@ align: lt
 
 <Admonition title="Question" color="teal-light" width="100%">What is misleading about each of these graphs?</Admonition>
 
-<br>
-
-<img src="/images/lecture3/misleading_axes.png" alt="misleading axes" class="mx-auto w-1/3" />
+<img src="/images/lecture3/misleading_axes.png" alt="misleading axes" class="mx-auto mt-2" style="max-height: 10rem" />
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 

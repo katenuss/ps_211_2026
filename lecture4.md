@@ -24,7 +24,9 @@ align: lt
 
 :: content ::
 
-- Discussion 2 is tomorrow (Wednesday, 9/16): R practice with descriptive statistics and frequency displays. Bring a laptop!
+- Please make sure you are on the Slack!!
+- If you have not yet installed R and R Studio, please reach out to us immediately. You are behind!
+- Discussion 2 is tomorrow (Wednesday, 9/16): R review, practice with descriptive statistics and frequency displays. Bring a laptop!
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays 2:30 - 3:30 p.m. (Rola)
 
 ---
