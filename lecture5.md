@@ -379,7 +379,7 @@ align: lt
 ---
 
 :: title ::
-# Practice: Computing the interquartile Range
+# Practice: Computing the Interquartile Range
 
 :: content ::
 - The following are the scores of 9 students on an exam: 55, 60, 65, 70, 75, 80, 85, 90, 95. What is the interquartile range (IQR) of these scores?
@@ -415,7 +415,6 @@ align: lt
 6. Compute the IQR: IQR = Q3 - Q1 = 87.5 - 62.5 = **25.**
 
 </p>
-
 
 ---
 layout: top-title-two-cols
@@ -1009,27 +1008,29 @@ align: lt
 ---
 
 :: title ::
-# Practice: Sleep hours
+# Practice: One by hand
 
 :: content ::
 
-<Admonition title="Question" color="teal-light" width="100%">Ten students report how many hours they slept last night: <b>5, 6, 6, 7, 7, 7, 8, 8, 9, 9</b>. Treating these students as a sample, find (1) the mean, (2) the range, and (3) the sample standard deviation. Then write one sentence interpreting the SD.</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">Five students report how many hours they slept last night: <b>4, 6, 7, 8, 10</b>. Treating them as a sample, find the mean and the sample standard deviation.</Admonition>
 
-<p v-click><StickyNote color="amber-light" title="Try it first" width="60%">Work through it with the person next to you before we go step by step. Hint: there are 10 scores, so the sample variance divides by 9.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Try it first" width="60%">Work through it with the person next to you. Hint: the mean is a whole number, so every deviation is too. Check that the deviations add up to zero before you square anything.</StickyNote></p>
 
 <p v-click>
 
 **Step 1: Find the mean.**
 
-$$M = \frac{5+6+6+7+7+7+8+8+9+9}{10} = \frac{72}{10} = 7.2 \text{ hours}$$
+$$M = \frac{4+6+7+8+10}{5} = \frac{35}{5} = 7 \text{ hours}$$
 
 </p>
 
 <p v-click>
 
-**Step 2: Find the range.**
+**Step 2: Find each deviation from the mean.**
 
-$$Range = X_{max} - X_{min} = 9 - 5 = 4 \text{ hours}$$
+$$4-7=-3 \quad\; 6-7=-1 \quad\; 7-7=0 \quad\; 8-7=+1 \quad\; 10-7=+3$$
+
+Check: $-3 - 1 + 0 + 1 + 3 = 0$. The deviations always cancel out, which is exactly why we square them next.
 
 </p>
 
@@ -1040,47 +1041,258 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Practice: Sleep hours (continued)
+# Practice: One by hand (continued)
 
 :: left ::
 
-**Step 3: Find the sample standard deviation.**
+**Step 3: Square each deviation and add them up.**
 
-<p v-click>
-
-First, find each deviation from the mean (7.2) and square it:
-
-<div class="grid grid-cols-3 gap-x-6 text-sm leading-snug" style="max-width:20rem">
+<div class="grid grid-cols-3 gap-x-6 text-sm leading-snug" style="max-width:18rem">
 <div><b>Score</b></div><div><b>Deviation</b></div><div><b>Squared</b></div>
-<div>5</div><div>-2.2</div><div>4.84</div>
-<div>6</div><div>-1.2</div><div>1.44</div>
-<div>6</div><div>-1.2</div><div>1.44</div>
-<div>7</div><div>-0.2</div><div>0.04</div>
-<div>7</div><div>-0.2</div><div>0.04</div>
-<div>7</div><div>-0.2</div><div>0.04</div>
-<div>8</div><div>0.8</div><div>0.64</div>
-<div>8</div><div>0.8</div><div>0.64</div>
-<div>9</div><div>1.8</div><div>3.24</div>
-<div>9</div><div>1.8</div><div>3.24</div>
+<div>4</div><div>-3</div><div>9</div>
+<div>6</div><div>-1</div><div>1</div>
+<div>7</div><div>0</div><div>0</div>
+<div>8</div><div>+1</div><div>1</div>
+<div>10</div><div>+3</div><div>9</div>
 </div>
 
-</p>
+$$SS = 9 + 1 + 0 + 1 + 9 = 20$$
 
 :: right ::
 
 <p v-click>
 
-Sum of squared deviations = 15.6
+**Step 4: Divide by N − 1 to get the variance.**
 
-$$s^2 = \frac{15.6}{N-1} = \frac{15.6}{9} = 1.73$$
-
-$$s = \sqrt{1.73} = 1.32 \text{ hours}$$
+$$s^2 = \frac{20}{5-1} = \frac{20}{4} = 5 \text{ hours}^2$$
 
 </p>
 
 <p v-click>
 
-==On average, students' sleep durations differ from the mean (7.2 hours) by about 1.32 hours.==
+**Step 5: Take the square root to get the SD.**
+
+$$s = \sqrt{5} = 2.24 \text{ hours}$$
+
+</p>
+
+<p v-click>
+
+==A typical student's sleep was about 2.2 hours away from the mean of 7 hours.==
+
+</p>
+
+<p v-click><SpeechBubble color="amber-light" shape="round" position="l" maxWidth="24rem">That is the entire computation. Every dataset, no matter how big, goes through these same five steps.</SpeechBubble></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+columns: is-5-7
+align: lt-lt-lt
+---
+
+:: title ::
+# Practice: Same range, different spread
+
+:: left ::
+
+<Admonition title="Question" color="teal-light" width="100%">Two datasets:<br><b>Dataset 1:</b> 1, 1, 1, 9, 9, 9<br><b>Dataset 2:</b> 1, 3, 5, 5, 7, 9<br>Both have a mean of 5 and a range of 8. Without computing anything, which has the larger standard deviation?</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**Dataset 1.** Every one of its scores sits 4 points from the mean. In Dataset 2, two scores sit right on the mean and two are only 2 points away, so the typical distance is smaller (SD ≈ 4.4 vs. 2.8).
+
+</Admonition></p>
+
+:: right ::
+
+<div v-click>
+
+<img src="/images/lecture5/var_same_range.png" alt="deviations from the mean for two datasets with the same range" class="mx-auto w-full" />
+
+</div>
+
+<p v-click>
+
+- ==The range only looks at the two endpoints. The SD looks at every score.==
+- Two datasets can share a min, a max, and a mean and still have very different spreads.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Guess the SD
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">Three sections took the same 20-point quiz, and every section averaged 12. Estimate each section's standard deviation by eye. Hint: the SD is the typical distance between a score and the dashed mean line.</Admonition>
+
+<img src="/images/lecture5/var_guess_sd.png" alt="three histograms of quiz scores with the same mean" class="mx-auto w-4/5" />
+
+<p v-click><StickyNote color="amber-light" title="Commit to a number" width="60%">Write down one guess per section before we reveal the answers. Being roughly right is the skill here.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Guess the SD (continued)
+
+:: content ::
+
+<img src="/images/lecture5/var_guess_sd_answer.png" alt="the same three histograms with SD arrows" class="mx-auto w-4/5" />
+
+<p v-click>
+
+- Section 1's scores are all within a point of the mean, so its SD is under 1. Section 3's scores stretch from 4 to 20, so a typical score is almost 5 points from the mean.
+- Section 2's SD (2.4) is about half of Section 3's (4.8), and its histogram is about half as wide.
+- ==If your guess was within a point of each answer, you understand what the SD measures.== The arithmetic is the computer's job.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# A bigger dataset: let R do the bookkeeping
+
+:: content ::
+
+- Ten students report how many hours they slept last night: **5, 6, 6, 7, 7, 7, 8, 8, 9, 9**.
+- The mean is 7.2, so every deviation is a decimal. Ten decimal deviations by hand is a chore, and the steps are exactly the ones you just did with five scores. This is what `var()` and `sd()` are for.
+
+```r
+sleep <- c(5, 6, 6, 7, 7, 7, 8, 8, 9, 9)
+
+mean(sleep)   # 7.2
+var(sleep)    # 1.73   (sum of squared deviations = 15.6, divided by 9)
+sd(sleep)     # 1.32
+```
+
+<p v-click>
+
+==On average, students' sleep differed from the mean of 7.2 hours by about 1.3 hours.==
+
+</p>
+
+<p v-click><StickyNote color="teal-light" title="In discussion section" width="60%">You'll compute these yourself in R, and check that R's answers match the five-step recipe.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+columns: is-5-7
+align: lt-lt-lt
+---
+
+:: title ::
+# Practice: Everyone sleeps one more hour
+
+:: left ::
+
+<Admonition title="Question" color="teal-light" width="100%">Same ten students (mean 7.2, range 4, SD 1.32). Suppose every one of them sleeps exactly one more hour tomorrow night. What happens to the mean, the range, and the SD?</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+- **Mean: 7.2 → 8.2.** It moves up with the scores.
+- **Range: still 4.** The lowest and highest scores both moved up by one.
+- **SD: still 1.32.** Every score moved up by one, and so did the mean, so ==every deviation is exactly what it was.==
+
+</Admonition></p>
+
+:: right ::
+
+<div v-click>
+
+<img src="/images/lecture5/var_shift.png" alt="dot plots of sleep hours before and after adding one hour to every score" class="mx-auto w-full" />
+
+</div>
+
+<p v-click>
+
+- The whole picture slides to the right. The SD arrow doesn't change length, because spread is about distances *between* scores and the mean, not *where* the scores sit.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+columns: is-5-7
+align: lt-lt-lt
+---
+
+:: title ::
+# Practice: Everyone's hours are doubled
+
+:: left ::
+
+<Admonition title="Question" color="teal-light" width="100%">Now suppose every student's sleep is doubled instead (5 becomes 10, 9 becomes 18, and so on). What happens to the mean, the range, the SD, and the variance?</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+- **Mean: 7.2 → 14.4** (doubled).
+- **Range: 4 → 8** (doubled).
+- **SD: 1.32 → 2.63** (doubled). Every deviation is twice as big.
+- **Variance: 1.73 → 6.93** (quadrupled!). Every *squared* deviation is four times as big.
+
+</Admonition></p>
+
+:: right ::
+
+<div v-click>
+
+<img src="/images/lecture5/var_scale.png" alt="dot plots of sleep hours before and after doubling every score" class="mx-auto w-full" />
+
+</div>
+
+<p v-click>
+
+- The dots spread out and the SD arrow gets twice as long. ==This is why we take the square root:== the SD grows with the data, in its units; the variance grows with the square.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+columns: is-5-7
+align: lt-lt-lt
+---
+
+:: title ::
+# Practice: One extreme score
+
+:: left ::
+
+<Admonition title="Question" color="teal-light" width="100%">Back to the original data. One student who reported 9 hours actually slept 14. Which changes more, the range or the SD?</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+- **Range: 4 → 9.** More than doubled, because the range is determined entirely by that one score.
+- **SD: 1.32 → 2.50.** It grows too (squaring makes a deviation of +6.3 count a lot), but the other nine scores still anchor it.
+- **Mean: 7.2 → 7.7.**
+
+</Admonition></p>
+
+:: right ::
+
+<div v-click>
+
+<img src="/images/lecture5/var_outlier.png" alt="dot plots of sleep hours before and after one score becomes an outlier" class="mx-auto w-full" />
+
+</div>
+
+<p v-click>
+
+- One score can move the range as far as it likes. The SD moves too, but every other score has a say. ==That is what it means for the range to be the measure most sensitive to outliers.==
 
 </p>
 

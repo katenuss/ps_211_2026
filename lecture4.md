@@ -246,7 +246,7 @@ align: lt-lt-lt
 <img src="/images/lecture4/m.jpeg" alt="m" class="mx-auto w-1/2" />
 
 ==Sample Mean== (but capitalize it!)
--  $M$ (or $\bar{X})
+-  $M$ (or $\bar{X}$)
 - Can be calculated directly. 
 
 :: right::
@@ -256,7 +256,6 @@ align: lt-lt-lt
 ==Population Mean==
 - $\mu$
 - Usually estimated.
-
 
 ---
 layout: top-title
