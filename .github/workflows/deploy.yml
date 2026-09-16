@@ -89,10 +89,14 @@ jobs:
 
           # Publish discussion-section worksheets/data from repo root discussion_section/
           # → <site>/discussion_section/ (what public/discussion/index.html links to).
-          # Answer keys (*_answers*) and hidden/RStudio files are never published.
+          # Answer keys (*_answers*) and hidden/RStudio files are never published,
+          # EXCEPT keys listed explicitly in --include lines below (add one line
+          # per key you want released; includes must come before the exclude).
           if [ -d discussion_section ]; then
             mkdir -p dist/discussion_section
-            rsync -a --exclude '*_answers*' --exclude '.*' --exclude '*.Rproj' \
+            rsync -a \
+              --include 'ps211_discussion01_intro_to_R_answers.Rmd' \
+              --exclude '*_answers*' --exclude '.*' --exclude '*.Rproj' \
               discussion_section/ dist/discussion_section/
           fi
 

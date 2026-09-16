@@ -1,0 +1,46 @@
+---
+title: "Orienting to R"
+author: "Rola Adebogun"
+date: "2026-09-16"
+output: html_document
+---
+
+What are chunks?
+```{r}
+name <- "Rola"
+value <-2
+list <- (c(3,5,6,7,7))
+
+#Chunks are small, runnable sections of code
+#You can run individual chunks or all of the chunks in an entire file
+```
+
+Comments
+```{r}
+#Add a "#" to comment something out
+```
+
+
+What are projects?
+```{r}
+#A project is a self-contained folder on your computer that bundles all the files required for a specific piece of work, including data sets, R scripts, outputs (like plots)m and history
+```
+
+Working Directories
+```{r}
+# A working directory is a specific folder on your computer that R uses as its "home base" or default lcation for reading and writing files. Whenever you ask R to import a dataset (like a CSV file) or export a file (like a plot or a dataframe) using a relative path, R will automatically look for or save that file inside your current working directory. If your file is saved somewhere else, R will return an error stating that the file or directory does not exist
+```
+
+
+What are packages?
+```{r}
+#An R package is a standardized, shareable bundle of code, data, documentation, and tests that extends the built-in capabilities of R
+#Think of packages as apps you download for your phone
+#our phone comes with basic default features, downloading apps allows you to perform highly specialized tasks like advanced data visualization, machine learning, or web scraping
+
+#you have to install a package and then load it
+# install.packages("tidyverse")   # run once in the console, not in the knitted file
+library(tidyverse)
+
+```
+
