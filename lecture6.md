@@ -30,7 +30,7 @@ align: lt
 - You can print this review sheet and take hand-written notes on it (both sides) to use during the exam.
 - Alternatively, you can write your own notes on a blank sheet of paper (both sides).
 - You will *not* be tested on R code, but you should be able to interpret plots and output from R. For example, we may show you a histogram or frequency table created in R and ask you questions about them.
-- The class before the exam (**Thursday, September 24**) will be a review session.
+- The class before the exam (**Thursday, September 24**) will be a review session. Bring your questions!
 
 
 ---
@@ -45,7 +45,7 @@ align: lt
 :: content ::
 - **Variance** = the average squared deviation of scores from the mean.
 - **Standard deviation (SD)** = the square root of the variance — the typical amount scores deviate from the mean.
-- For **samples**, we divide by $N-1$ instead of $N$. For now, take that on faith — in Lecture 8, once we've seen how sample statistics behave across many samples, we'll see exactly why.
+- For **samples**, we divide by $N-1$ instead of $N$. For now, just trust me — in Lecture 8, once we've seen how sample statistics behave across many samples, we'll see exactly why we do this correction.
 
 
 <p v-click>
@@ -102,7 +102,7 @@ align: lt-lt-lt
 
 :: right ::
 - **Convenience Sample:** Uses participants who are readily available.
-    - Common in psychology (e.g., Psych 101 students).
+    - Common in psychology (e.g., PS 101 students).
     - Easier and cheaper, but may introduce bias.
 
 
@@ -160,7 +160,7 @@ align: lt
 - Use those numbers to select participants from a list.
 
 <p v-click>
-<Admonition title="Question" color="teal-light" width="100%">You use a computer program to randomly select 10 students from your 100-person Psych 101 class to participate in a study. Your computer spits out the following numbers: 1, 2, 3, 4, 44, 56, 57, 58, 83, 99. They don't look very random to you. Should you re-run the program to get a different set of numbers?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">You use a computer program to randomly select 10 students from your 100-person PS 101 class to participate in a study. Your computer spits out the following numbers: 1, 2, 3, 4, 44, 56, 57, 58, 83, 99. They don't look very random to you. Should you re-run the program to get a different set of numbers?</Admonition>
 </p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
@@ -478,7 +478,7 @@ Experiment:
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-Yes, we can draw that conclusion about the sample based on the sample means (assuming we believe our survey is valid and reliable).
+Yes, we can draw that conclusion about the *sample* based on the sample means (assuming we believe our survey is valid and reliable).
 
 </Admonition>
 
@@ -497,7 +497,7 @@ align: lt
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-We cannot conclude that PS 211 students are happier than other BU students based solely on this sample. The observed difference in means could be due to random chance, especially given the small sample sizes. We need to conduct a hypothesis test to determine if a real difference likely exists in the population.
+We cannot conclude that PS 211 students are happier than other BU students based solely on this sample. The observed difference in means could be due to random chance, especially given the small sample sizes. We need to conduct a hypothesis test to determine if a real difference likely exists in the *population.*
 
 </Admonition>
 
@@ -511,7 +511,7 @@ align: lt
 # Hypothesis Testing
 
 :: content ::
-- In psychological research, we define two hypotheses:
+- In psychological research, we typically define two hypotheses:
     - **Null Hypothesis (H₀):** There is no difference.
         - The null hypothesis is a statement that postulates that there is no difference between populations or that the difference is in a direction opposite of that anticipated by the researcher.
         - Any observed difference is due to random chance or sampling error.
@@ -554,7 +554,7 @@ align: lt
 
 :: content ::
 
-<Admonition title="Question" color="teal-light" width="100%">In the Lecture 2 anchoring demo, what are the null and research hypotheses?</Admonition>
+<Admonition title="Question" color="teal-light" width="100%">In the Lecture 2 anchoring demo, what were the the null and research hypotheses?</Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
@@ -610,7 +610,7 @@ align: lt-lt-lt
 - We either reject or fail to reject H₀ based on the data.
 - If the data are very unlikely under H₀, we reject H₀ in favor of H₁.
 - If the data are not unlikely under H₀, we fail to reject H₀
-- We never "accept" H₀, because we can't prove it true.
+- We never "accept" H₀, because we can't prove that it is true.
 - We use probability to assess how likely our data are under H₀.
 
 
@@ -635,7 +635,7 @@ A better way to state the results would be: "We did not find evidence that PS 21
 
 </Admonition></p>
 
-<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">"Fail to reject" vs. "accept" the null is a classic exam distinction — absence of evidence is not evidence of absence!</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">"Fail to reject" vs. "accept" the null is a an important distinction — absence of evidence is not evidence of absence!</StickyNote></p>
 
 ---
 layout: top-title
