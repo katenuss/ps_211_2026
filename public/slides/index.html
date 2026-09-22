@@ -183,19 +183,26 @@ async function urlExists(url) {
     // Exam Reviews
     for (const n of EXAMS) {
 
-      const deckURL = `${base}/lecture_exam${n}_review/`;
-      const pdfURL  = `${base}/pdfs/ps211_fall2026_lecture_exam${n}_review.pdf`;
+      const deckURL  = `${base}/lecture_exam${n}_review/`;
+      const pdfURL   = `${base}/pdfs/ps211_fall2026_lecture_exam${n}_review.pdf`;
+      // Review sheet: drop a PDF at public/pdfs/ps211_fall2026_exam<N>_review_sheet.pdf
+      // and the button lights up on the next deploy.
+      const sheetURL = `${base}/pdfs/ps211_fall2026_exam${n}_review_sheet.pdf`;
 
-      const [deckOK, pdfOK] = await Promise.all([urlExists(deckURL), urlExists(pdfURL)]);
+      const [deckOK, pdfOK, sheetOK] = await Promise.all([
+        urlExists(deckURL), urlExists(pdfURL), urlExists(sheetURL)
+      ]);
 
-      const openBtn = btnPrimary('Open deck', deckURL, deckOK, 'Deck not yet available');
-      const pdfBtn  = pdfOK ? btnGhost('Download PDF', pdfURL, true)
-                            : btnGhost('Download PDF', '', false, 'PDF not yet available');
+      const openBtn  = btnPrimary('Open deck', deckURL, deckOK, 'Deck not yet available');
+      const pdfBtn   = pdfOK ? btnGhost('Download PDF', pdfURL, true)
+                             : btnGhost('Download PDF', '', false, 'PDF not yet available');
+      const sheetBtn = sheetOK ? btnGhost('Review sheet', sheetURL, true)
+                               : btnGhost('Review sheet', '', false, 'Review sheet not yet posted');
 
       const card = makeCard({
         kicker: `Exam ${n}`,
         title: `Exam ${n} Review`,
-        buttons: [openBtn, pdfBtn]
+        buttons: [openBtn, pdfBtn, sheetBtn]
       });
       examsWrap.appendChild(card);
     }
