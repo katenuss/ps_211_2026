@@ -1,0 +1,190 @@
+---
+title: 'PS 211 — Discussion Worksheet #2 — ANSWER KEY'
+subtitle: 'Fall 2026 · Frequency displays & descriptive statistics'
+author: "ANSWER KEY"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+We follow the lectures in order: first **frequency distributions and visual displays** (Lecture 3), then **central tendency** (Lecture 4). Run every chunk top-to-bottom; edit code where it says **EDIT**; type short answers at each **"Your answer:"**.
+
+**Setup:** `pixar_data.csv` should already be in your `ps211` project folder from last time.
+
+---
+
+## Packages (run this once at the top)
+
+```{r libraries, message = FALSE}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("dplyr")
+# install.packages("ggplot2")
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+# Load the data
+pixar_data <- read_csv("pixar_data.csv")
+```
+
+---
+
+# 1) Frequency tables
+
+A **frequency table** answers the simplest question you can ask about a variable: *how often does each value occur?* The `count()` function builds one for you — give it the data frame and the column you want tallied.
+
+```{r freq-table}
+count(pixar_data, film_rating)   # how many films have each rating?
+```
+
+The `n` column is the **frequency** — the number of films in each category.
+
+**Your answer:** How many films in this dataset are rated G, and how many are rated PG?
+
+**Sample answer:** 13 films are rated G and 10 are rated PG (read straight off the `n` column).
+
+---
+
+# 2) Grouped frequency tables
+
+When a variable has too many distinct values to tally one at a time, we bin them into **intervals** first — a **grouped frequency table**. Release year is a good example: 23 films spread over ~25 years would give a nearly useless table, mostly one film per row. Grouping by decade fixes that.
+
+First we make a `decade` variable, then we count it. (Don't worry about memorizing the `mutate()` line — focus on the counting.)
+
+```{r decades}
+pixar_data <- pixar_data |>
+  mutate(decade = floor(release_year / 10) * 10)   # e.g., 1995 -> 1990
+
+count(pixar_data, decade)
+```
+
+*(The `|>` symbol is the "pipe" — it means "take the thing on the left and feed it into the function on the right." You'll see it a lot in R code.)*  You use pipes in R to write cleaner, more readable, and more maintainable code. The shortcut for Mac keyboard shortcut for `|>` is shift + command + M. For Windows it's Ctrl + Shift + M
+
+**Your answer:** Which decade produced the most Pixar films in this dataset?
+
+**Sample answer:** The 2010s (11 of the 23 films).
+
+**Your answer:** Try running `count(pixar_data, release_year)` in the Console and compare it to the decade table above. What did grouping buy us, and what did it cost us?
+
+**Sample answer:** The year-by-year table has a row for nearly every film (mostly counts of 1), so the pattern is hard to see. Grouping into decades makes the shape of the distribution obvious, but it throws away detail — we can no longer tell *which* years within a decade were busy.
+
+---
+
+# 3) Histograms
+
+A **histogram** does for a numeric variable what a grouped frequency table does — it sorts values into bins — but shows the result as a picture. This is the single most useful "first look" at any numeric variable.
+
+```{r histogram}
+ggplot(pixar_data, aes(x = metacritic)) +
+  geom_histogram(binwidth = 5, fill = "lightgrey", color = "black") +
+  labs(title = "Metacritic Scores of Pixar Films",
+       x = "Metacritic Score", y = "Number of Films") +
+  theme_classic()
+```
+
+Anatomy of that `ggplot` code, line by line: the data and which column goes on x (`aes`), the type of plot (`geom_histogram`) with a bin width, the labels (`labs`), and a clean look (`theme_classic`).
+
+**Your answer:** Describe this distribution's shape in one sentence: is it roughly symmetric, positively skewed, or negatively skewed?
+
+**Sample answer:** Negatively skewed: most films score high (80s-90s) with a tail of a few much lower scores.
+
+**Try it:** Change `binwidth = 5` in the chunk above to `binwidth = 1`, re-run, then try `binwidth = 20`.
+
+**Your answer:** What happens at each extreme, and why is a middle-ground bin width usually most informative?
+
+**Sample answer:** With binwidth = 1 the histogram becomes spiky and noisy (each bin holds about one film); with binwidth = 20 almost everything collapses into one or two bars and the shape disappears. A middle-ground bin width smooths noise while preserving the shape of the distribution.
+
+---
+
+# 4) Bar plots for categorical variables
+
+Histograms are for numeric variables, where the bins sit on a continuous scale and the bars touch. For a **categorical** variable (like `film_rating`) there is nothing to bin — we just count each category and draw a **bar plot**, with gaps between the bars to show the categories are separate.
+
+```{r barplot}
+ggplot(pixar_data, aes(x = film_rating)) +
+  geom_bar(fill = "lightgrey", color = "black") +
+  labs(title = "Pixar Films by Rating",
+       x = "Film Rating", y = "Number of Films") +
+  theme_classic()
+```
+
+Notice that this bar plot shows exactly the same information as the frequency table in Section 1 — a table and a plot are two displays of the same frequency distribution.
+
+**Your answer:** Why would it be wrong to display `film_rating` with a histogram instead?
+
+**Sample answer:** `film_rating` is nominal — G and PG are labels, not numbers on a scale. There is no distance between them to bin, so bin width would be meaningless, and touching bars would falsely imply the categories are adjacent points on a continuum.
+
+---
+
+# 5) Central tendency: mean, median, mode
+
+Now we summarize a whole distribution with a single number. R has built-in functions for the mean and median:
+
+```{r central-tendency}
+mean(pixar_data$run_time)     # mean run time, in minutes
+median(pixar_data$run_time)   # median run time
+```
+
+R has no built-in function for the **mode** — but you already know how to find it. The mode is just the most frequent value, so build a frequency table (Section 1!) and sort it. `arrange(desc(n))` puts the largest count on top:
+
+```{r mode}
+count(pixar_data, run_time) |>
+  arrange(desc(n))
+
+#or
+which.max(table(pixar_data$run_time)) 
+```
+
+**Your answer:** What is the mode of `run_time`? Is it close to the mean and median?
+
+**Sample answer:** The mode is 100 minutes (it appears most often). It's close to the median and mean — the run times are fairly tightly clustered.
+
+**Try it:** Edit the chunk below to compute the **mean** and **median** of the `metacritic` column.
+
+```{r try-central}
+# EDIT THESE LINES, THEN RUN:
+metacritic_mean <- mean(pixar_data$metacritic)
+metacritic_median <- median(pixar_data$metacritic)
+
+metacritic_mean
+metacritic_median
+```
+
+**Your answer:** The mean is a bit *lower* than the median here. Look back at the histogram in Section 3. What does that tell you about the shape of the distribution, and why does skew pull the mean but not the median?
+
+**Sample answer:** It is negatively (left) skewed — a few unusually low scores (e.g., Cars 2) drag the mean down. The mean uses every value's actual magnitude, so an extreme score moves it; the median only cares about rank order, so one low score just stays at the bottom of the list.
+
+---
+
+# 6) Putting it together
+
+**Try it:** Copy the histogram code from Section 3 into the chunk below and change it to plot the distribution of **`run_time`** instead of `metacritic`. Pick a bin width you think is reasonable, and update the title and x-axis label to match.
+
+```{r try-histogram}
+ggplot(pixar_data, aes(x = run_time)) +
+  geom_histogram(binwidth = 5, fill = "lightgrey", color = "black") +
+  labs(title = "Run Times of Pixar Films",
+       x = "Run Time (minutes)", y = "Number of Films") +
+  theme_classic()
+```
+
+**Your answer:** Most Pixar films cluster around what run time? Are there any unusually long or short films (outliers)? Does the picture agree with the mean, median, and mode you computed in Section 5?
+
+**Sample answer:** Most films cluster around 95-105 minutes. Toy Story (81 min) is unusually short, and a couple of later films run long (~2 hours). The bulk of the histogram sits right where the mean, median, and mode all land, which is what we expect when a distribution is roughly symmetric with only mild outliers.
+
+---
+
+# ✅ Before you leave
+
+- [ ] I built a frequency table with `count()`, and a grouped one by decade.
+- [ ] I made (and modified!) a histogram and a bar plot, and I can say when to use each.
+- [ ] I computed a mean, median, and mode in R.
+- [ ] I knitted to HTML and showed my TF.
+
+**Next week:** variability — how spread out a distribution is — and what happens when we take samples from a population.

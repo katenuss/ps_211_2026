@@ -1,0 +1,483 @@
+---
+title: 'PS 211 — Discussion Worksheet #3'
+subtitle: 'Fall 2026 · Variability & sampling'
+author: "Your Name"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+Today is mostly about **variability** (Lecture 5): putting a number on how *spread out* a set of scores is, using the range, the interquartile range (IQR), the variance, and the standard deviation (SD). We finish with a short look at **sampling** (Lecture 6).
+
+Run chunks top-to-bottom; edit where it says **EDIT**; answer at each **"Your answer:"**.
+
+Many questions say **Predict first**. Take that seriously: type your prediction *before* you run the code. Being wrong and then seeing why is how the intuition gets built.
+
+**Rough pacing (40 minutes):** Part 1, 8 min · Part 2, 8 min · Part 3, 12 min · Part 4, 5 min · Part 5, 7 min.
+
+**Setup:** `pixar_data.csv` should already be in your `ps211` project folder.
+
+---
+
+## Packages (run this once at the top)
+
+```{r libraries, message = FALSE}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("ggplot2")
+
+library(readr)
+library(ggplot2)
+
+pixar_data <- read_csv("pixar_data.csv")
+
+set.seed(211)  # makes "random" numbers repeatable so we all get the same results (DO NOT CHANGE)
+```
+
+---
+
+# 1) Range and interquartile range
+
+Nine students report how many minutes it takes them to get to campus:
+
+```{r commute}
+commute <- c(22, 10, 30, 15, 18, 12, 25, 15, 20)
+
+sort(commute)   # putting scores in order is step 1 for both the range and the IQR
+```
+
+## The range
+
+The range is the highest score minus the lowest score: $Range = X_{max} - X_{min}$.
+
+```{r range}
+max(commute)
+min(commute)
+max(commute) - min(commute)   # the range
+```
+
+(Careful: R also has a function called `range()`, but it returns the min and the max, not their difference. Try `range(commute)` in the Console.)
+
+## The IQR, using the method from lecture
+
+1. Order the scores.
+2. Find the median.
+3. Split the data into a lower half and an upper half at the median. (With an odd number of scores, the median itself goes in neither half.)
+4. Q1 is the median of the lower half; Q3 is the median of the upper half.
+5. IQR = Q3 − Q1.
+
+```{r iqr-by-hand}
+median(commute)                      # step 2: the median is 18
+
+lower_half <- c(10, 12, 15, 15)      # step 3: the four scores below the median
+upper_half <- c(20, 22, 25, 30)      #         the four scores above the median
+
+Q1 <- median(lower_half)             # step 4
+Q3 <- median(upper_half)
+Q1
+Q3
+
+Q3 - Q1                              # step 5: the IQR
+```
+
+**Your answer:** In one sentence each, say what the range of 20 and the IQR of 10 tell you about these students' commutes.
+
+*(Type your answer here.)*
+
+**Try it:** Eight students report their daily hours of screen time. With an *even* number of scores, the median falls between two scores, so the halves are simply the bottom four and the top four. Fill in the two halves and compute the range and IQR.
+
+```{r try-iqr}
+screen_time <- c(6, 3, 9, 2, 5, 3, 6, 4)
+sort(screen_time)
+
+# EDIT THESE LINES, THEN RUN:
+screen_range <- 0            # REPLACE 0 with code computing the range
+lower_half_st <- c(0, 0, 0, 0)  # REPLACE with the four lowest scores
+upper_half_st <- c(0, 0, 0, 0)  # REPLACE with the four highest scores
+
+screen_range
+median(upper_half_st) - median(lower_half_st)   # the IQR
+```
+
+**Your answer:** What are the range and the IQR of the screen-time data?
+
+*(Type your answer here.)*
+
+## One extreme score
+
+Suppose the student with the 30-minute commute moves out to the suburbs, and their commute becomes 90 minutes.
+
+**Predict first:** What will happen to the range? What will happen to the IQR? Type your prediction, *then* run the chunk.
+
+*(Type your prediction here.)*
+
+```{r commute-outlier}
+commute_outlier <- c(22, 10, 90, 15, 18, 12, 25, 15, 20)
+sort(commute_outlier)
+
+max(commute_outlier) - min(commute_outlier)          # range
+median(c(20, 22, 25, 90)) - median(c(10, 12, 15, 15))  # IQR (the halves, typed out)
+```
+
+**Your answer:** Which measure changed, which did not, and why?
+
+*(Type your answer here.)*
+
+**A note on R's `IQR()` function.** R has a built-in `IQR()`, but there are several slightly different conventions for locating Q1 and Q3, and R's default is not the one from lecture. Run `IQR(commute)` in the Console: R says 7, while our method gives 10. Neither is "wrong," and with large datasets the conventions nearly agree. **For homework and exams, use the lecture method.**
+
+---
+
+# 2) Variance and standard deviation: the five-step recipe
+
+The range and IQR each depend on only a couple of scores. The variance and SD use *every* score because they use each value to calculate distance from the mean.
+
+Start with the example you did by hand in lecture: five students' hours of sleep. In lecture you found $M = 7$, $SS = 20$, $s^2 = 5$, and $s = 2.24$. Let's make R walk through the same five steps.
+
+```{r sd-by-hand}
+sleep <- c(4, 6, 7, 8, 10)
+
+mean(sleep)                                   # step 1: find the mean
+
+deviations <- sleep - mean(sleep)             # step 2: how far is each score from the mean?
+deviations
+
+squared_deviations <- deviations^2            # step 3: square each deviation...
+sum_squares <- sum(squared_deviations)        #         ...and add them up ("sum of squares")
+sum_squares
+
+variance_sleep <- sum_squares / (length(sleep) - 1)   # step 4: divide by N - 1 = sample variance
+variance_sleep
+
+sd_sleep <- sqrt(variance_sleep)              # step 5: square root = standard deviation
+sd_sleep
+```
+
+R's shortcut functions give the same answers:
+
+```{r sd-shortcut}
+var(sleep)
+sd(sleep)
+```
+
+**Your answer:** In step 3, why do we *square* the deviations before summing, instead of just adding them up as-is? (Hint: run `sum(deviations)` in the Console.)
+
+*(Type your answer here.)*
+
+**Your answer:** The variance here is 5 and the SD is 2.24. What are the *units* of each? Which one would you report to a friend, and how would you say it in a sentence?
+
+*(Type your answer here.)*
+
+## Same mean, different spread
+
+Two intro psych sections took the same 10-point quiz:
+
+```{r two-sections}
+section_A <- c(6, 7, 7, 8, 7, 7, 6, 8, 7, 7)
+section_B <- c(2, 10, 4, 9, 7, 3, 10, 8, 10, 7)
+
+mean(section_A)
+mean(section_B)
+```
+
+Same mean, but clearly not the same data.
+
+**Try it:** Compute the SD of each section using the shortcut function.
+
+```{r try-sd}
+# EDIT THESE LINES, THEN RUN:
+sd_A <- 0   # REPLACE 0 with code computing section A's standard deviation
+sd_B <- 0   # REPLACE 0 with code computing section B's standard deviation
+
+sd_A
+sd_B
+```
+
+**Your answer:** In plain English, what do the two SDs tell you about how the sections differ, even though their means are identical?
+
+*(Type your answer here.)*
+
+## Population or sample?
+
+`var()` and `sd()` divide by $N - 1$, because they assume your data are a **sample**. If the scores are the whole **population** you care about, you divide by $N$ instead. There is no built-in function for that, but the recipe handles it:
+
+```{r pop-variance}
+sum_squares / length(sleep)          # population variance: divide by N (= 5)
+sum_squares / (length(sleep) - 1)    # sample variance: divide by N - 1 (= 4)
+```
+
+**Your answer:** Is the variance or standard deviation larger? Will that *always* be true? Why?
+
+*(Type your answer here.)*
+
+---
+
+# 3) Building intuition: predict first, then check
+
+The arithmetic is R's job. *Your* job is to know what the numbers mean, which means being able to predict roughly what they will be. For each problem below, **commit to a prediction before running the chunk.**
+
+## Problem 1: Rank the spreads
+
+```{r p1-data}
+group_1 <- c(10, 10, 10, 10, 10, 10)
+group_2 <- c(8, 9, 10, 10, 11, 12)
+group_3 <- c(2, 6, 10, 10, 14, 18)
+```
+
+**Predict first:** All three groups have a mean of 10. Rank them from smallest SD to largest. What *exactly* will the SD of `group_1` be?
+
+*(Type your prediction here.)*
+
+```{r p1-check}
+sd(group_1)
+sd(group_2)
+sd(group_3)
+```
+
+**Your answer:** Why is the SD of `group_1` what it is? And `group_3`'s deviations are each 4 times as big as `group_2`'s. How do their SDs compare? How would their *variances* compare?
+
+*(Type your answer here.)*
+
+## Problem 2: Same range, different spread
+
+```{r p2-data}
+data_1 <- c(2, 9, 10, 10, 10, 11, 18)
+data_2 <- c(2, 4, 6, 10, 14, 16, 18)
+```
+
+**Predict first:** Both datasets have a mean of 10, a minimum of 2, and a maximum of 18, so the same range. Do they have the same SD? The same IQR? If not, which dataset has a larger SD and larger IQR?
+
+*(Type your prediction here.)*
+
+```{r p2-check}
+max(data_1) - min(data_1)
+max(data_2) - min(data_2)
+
+sd(data_1)
+sd(data_2)
+
+# IQRs with the lecture method (median = 10 in both; halves are the 3 scores on each side)
+median(c(10, 11, 18)) - median(c(2, 9, 10))     # IQR of data_1
+median(c(14, 16, 18)) - median(c(2, 4, 6))      # IQR of data_2
+```
+
+**Your answer:** Explain the result. What does this tell you about the limits of the range as a measure of spread?
+
+*(Type your answer here.)*
+
+## Problem 3: Everyone gets a 5-point curve
+
+```{r p3-data}
+exam <- c(62, 70, 75, 78, 80, 85, 91)
+exam_curved <- exam + 5     # adds 5 to every score
+```
+
+**Predict first:** Compared with `exam`, what happens to the mean, the range, and the SD of `exam_curved`?
+
+*(Type your prediction here.)*
+
+```{r p3-check}
+mean(exam);  mean(exam_curved)
+max(exam) - min(exam);  max(exam_curved) - min(exam_curved)
+sd(exam);  sd(exam_curved)
+```
+
+**Your answer:** Why doesn't the SD change?
+
+*(Type your answer here.)*
+
+## Problem 4: Changing units
+
+A researcher recorded sleep in hours, and a collaborator wants it in minutes.
+
+```{r p4-data}
+sleep_hours <- c(5, 6, 6, 7, 7, 7, 8, 8, 9, 9)
+sleep_minutes <- sleep_hours * 60
+```
+
+**Predict first:** `sd(sleep_hours)` is about 1.32 and `var(sleep_hours)` is about 1.73. What will the SD and the variance of `sleep_minutes` be? (Rough numbers are fine.)
+
+*(Type your prediction here.)*
+
+```{r p4-check}
+sd(sleep_hours);   sd(sleep_minutes)
+var(sleep_hours);  var(sleep_minutes)
+
+sd(sleep_minutes) / sd(sleep_hours)      # how many times bigger is the SD?
+var(sleep_minutes) / var(sleep_hours)    # how many times bigger is the variance?
+```
+
+**Your answer:** The SD got 60 times bigger. How much bigger did the variance get, and why? Did the students' sleep actually become more variable?
+
+*(Type your answer here.)*
+
+## Problem 5: One outlier, three measures
+
+Ten students' scores on a reaction-time task (in milliseconds). Then one student gets distracted by their phone on the last trial.
+
+```{r p5-data}
+rt         <- c(310, 325, 330, 340, 345, 350, 355, 360, 370, 385)
+rt_outlier <- c(310, 325, 330, 340, 345, 350, 355, 360, 370, 985)
+```
+
+**Predict first:** Rank the range, the IQR, and the SD from *most* affected by the outlier to *least* affected.
+
+*(Type your prediction here.)*
+
+```{r p5-check}
+# Range
+max(rt) - min(rt);  max(rt_outlier) - min(rt_outlier)
+
+# IQR, lecture method (10 scores, so the halves are the bottom five and the top five)
+median(c(350, 355, 360, 370, 385)) - median(c(310, 325, 330, 340, 345))
+median(c(350, 355, 360, 370, 985)) - median(c(310, 325, 330, 340, 345))
+
+# SD
+sd(rt);  sd(rt_outlier)
+```
+
+**Your answer:** What happened to each measure (i.e., range, IQR, and SD)? If you had to describe the spread of `rt_outlier` to someone with a single number, which would you choose, and why?
+
+*(Type your answer here.)*
+
+## Problem 6: Build your own
+
+**Try it:** Make up **five** quiz scores, each between 0 and 10, whose **mean is exactly 5**. First make the SD as **small** as you possibly can. Then make it as **large** as you possibly can. Experiment: change the numbers and re-run until you can't do any better.
+
+```{r p6}
+# EDIT THESE LINES, THEN RUN (as many times as you like):
+smallest_sd <- c(3, 4, 5, 6, 7)   # REPLACE with five scores (mean = 5) with the smallest possible SD
+largest_sd  <- c(3, 4, 5, 6, 7)   # REPLACE with five scores (mean = 5) with the largest possible SD
+
+mean(smallest_sd);  sd(smallest_sd)
+mean(largest_sd);   sd(largest_sd)
+```
+
+**Your answer:** What were your best datasets? Describe the general strategy for making an SD large.
+
+*(Type your answer here.)*
+
+## Problem 7: Guess the SD from a picture
+
+Run this chunk to draw three histograms. All three have a mean near 50.
+
+```{r p7-plot, fig.width = 8, fig.height = 3}
+set.seed(211)  # DO NOT CHANGE
+mystery <- data.frame(
+  score = c(rnorm(200, mean = 50, sd = 2), rnorm(200, mean = 50, sd = 6), rnorm(200, mean = 50, sd = 12)),
+  dataset = rep(c("X", "Y", "Z"), each = 200)
+)
+
+ggplot(mystery, aes(x = score)) +
+  geom_histogram(binwidth = 2, fill = "lightblue", color = "black") +
+  facet_wrap(~ dataset) +
+  labs(x = "Score", y = "Count") +
+  theme_classic()
+```
+
+**Predict first:** Remember, the SD is the *typical distance between a score and the mean*. Write down a number for each dataset's SD.
+
+*(Type your prediction here.)*
+
+```{r p7-check}
+sd(mystery$score[mystery$dataset == "X"])
+sd(mystery$score[mystery$dataset == "Y"])
+sd(mystery$score[mystery$dataset == "Z"])
+```
+
+**Your answer:** How close were you? Look at dataset Z: roughly what fraction of the scores fall within one SD of the mean (between about 39 and 61)? Are there scores *more* than one SD away?
+
+*(Type your answer here.)*
+
+---
+
+# 4) Variability in real data
+
+Back to the Pixar films. Critics' scores come from two sites: Metacritic and Rotten Tomatoes (both 0 to 100).
+
+```{r pixar-means}
+mean(pixar_data$metacritic)
+mean(pixar_data$rotten_tomatoes)
+```
+
+**Try it:** Compute the SD of each.
+
+```{r try-pixar}
+# EDIT THESE LINES, THEN RUN:
+sd_meta <- 0   # REPLACE 0 with the SD of the metacritic column
+sd_rt   <- 0   # REPLACE 0 with the SD of the rotten_tomatoes column
+
+sd_meta
+sd_rt
+```
+
+Now look at the spread with boxplots (from lecture: the box is the IQR, the line is the median, and points beyond the whiskers are potential outliers). Remember that R locates Q1 and Q3 with a slightly different convention than our by-hand method, so its box edges can differ a little from yours.
+
+```{r pixar-boxplot, fig.width = 5, fig.height = 4}
+ggplot(pixar_data, aes(x = film_rating, y = rotten_tomatoes)) +
+  geom_boxplot(fill = "lightblue") +
+  labs(title = "Rotten Tomatoes Scores by Film Rating",
+       x = "Film Rating", y = "Rotten Tomatoes Score") +
+  theme_classic()
+```
+
+**Your answer:** (a) Interpret the SD of the Rotten Tomatoes scores in a sentence. (b) Which rating group, G or PG, has the more variable Rotten Tomatoes scores, and how can you tell from the boxplot? (c) Find the lowest point on the plot. Run `min(pixar_data$rotten_tomatoes)` and look in the data to see which film it is. How do you think that one film affects the SD of the Rotten Tomatoes scores?
+
+*(Type your answer here.)*
+
+---
+
+# 5) Populations and samples
+
+In real research we almost never measure the whole **population**. We measure a **sample** and hope it represents the population. Let's simulate a population so that (for once!) we know the truth, and then see how samples behave.
+
+```{r population}
+set.seed(211)  # DO NOT CHANGE
+population <- rnorm(1000, mean = 70, sd = 12)  # 1000 well-being scores
+
+mean(population)   # the TRUE population mean
+sd(population)     # the TRUE population SD (close enough: with N = 1000, dividing by N or N - 1 barely matters)
+```
+
+Now do what a researcher actually does, and draw a random sample:
+
+```{r one-sample}
+my_sample <- sample(population, 20)   # randomly grab 20 scores
+mean(my_sample)
+sd(my_sample)
+```
+
+**Your answer:** Are your sample mean and sample SD exactly equal to the population values? Should they be?
+
+*(Type your answer here.)*
+
+**Try it:** Run the chunk below five or six times (click ▶ repeatedly) and watch the sample mean change. Then EDIT it to draw samples of **200** instead of 20, and run it several more times.
+
+```{r try-sampling}
+# Run me several times! Then change the sample size and run several more times.
+another_sample <- sample(population, 20)   # EDIT the 20 to 200 on your later runs
+mean(another_sample)
+```
+
+**Your answer:** With n = 20, roughly how much did the sample means bounce around? What changed with n = 200? Why does that make sense?
+
+*(Type your answer here.)*
+
+**Your answer:** A news headline says "BU students average 6.4 hours of sleep," based on a random sample of 50 students. A second random sample of 50 different students finds 6.7 hours. Does this mean one of the surveys was done incorrectly?
+
+*(Type your answer here.)*
+
+---
+
+# ✅ Before you leave
+
+- [ ] I computed a range and an IQR using the method from lecture.
+- [ ] I computed a variance and SD with the five-step recipe, and checked them against `var()` and `sd()`.
+- [ ] I can explain why adding a constant leaves the SD alone, and why multiplying changes the SD and variance differently.
+- [ ] I can say which measures of spread are most and least affected by an outlier.
+- [ ] I can look at a histogram and give a reasonable guess for its SD.
+- [ ] I drew samples from a population and watched sample means vary.
+- [ ] I knitted to HTML and showed my TF.
