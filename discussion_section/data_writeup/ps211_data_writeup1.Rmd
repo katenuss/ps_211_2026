@@ -1,0 +1,305 @@
+---
+title: 'PS 211 — Data Write-Up #1'
+subtitle: 'Fall 2026 · Due Monday, Nov. 9 at 11:59 p.m.'
+author: "GROUP MEMBER NAMES HERE"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Instructions
+
+It's time to analyze some data! In this assignment your group (2–3 people) will pick a real psychology dataset, ask a question that can be answered by comparing two groups or two conditions, state your hypotheses, run a *t* test in R, and report what you found in APA style with a figure.
+
+**This file is the assignment.** You will fill it in over three discussion sections and submit it once. Each part below says what goes in it and how it's graded.
+
+| When | What you'll complete |
+|---|---|
+| Discussion 4 (Sept. 30) | Parts 1–3: choose a dataset, write your research question and hypotheses (*before* looking at the data), then take a first look |
+| Discussion 8 (Oct. 28) | Part 4: descriptive statistics and an assumption check; another group reviews your Parts 1–4 |
+| Discussion 9 (Nov. 4) | Parts 5–7: run the test, make the figure, interpret |
+| Monday, Nov. 9, 11:59 p.m. | Submit |
+
+**The one rule that matters most:** decide your research question, variables, and hypotheses (Parts 1–3) *before* you look at the data. Researchers commit to their hypotheses first because deciding afterward makes it far too easy to "discover" whatever the numbers happen to show. Once you've looked, don't rewrite Parts 2–3 to match the results. (Fixing a level name that was spelled differently than you expected is fine; changing which group you predict will be higher is not.)
+
+**Datasets.** Choose one from the Discussion 4 menu (course website → Discussion Section → Discussion 4). The card for each dataset lists the columns, what one row represents, and the source to cite. You may not use a dataset that isn't on the menu unless your TF has approved it in writing before Discussion 8.
+
+**Group work.** Everyone in the group works on every part. Submit **one** file per group with all names at the top via Slack to Kate and Rola. Work in this file on one person's computer (or share it), and keep the CSV in the same `ps211` project folder as this file.
+
+**Writing counts.** This is a report, not a worksheet. Write in complete sentences and proofread; grammar and spelling are part of the grade.
+
+**AI and collaboration.** Per the syllabus, you may use AI tools and talk to people outside your group, but you must say so in the statement at the end of this file.
+
+## Rubric (100 points)
+
+| Part | What is graded | Points |
+|---|---|---|
+| 1. Dataset | Dataset named and cited; one-sentence description; what one row is; *n* | 5 |
+| 2. Question & variables | Clear, answerable research question; IV with its two levels (or the two paired measures); DV; why a *t* test fits, and which kind | 15 |
+| 3. Hypotheses | Null and alternative hypotheses in words; one- vs. two-tailed with a justification; alpha | 10 |
+| 4. Descriptives | *M*, *SD*, and *n* for each group in a table; a sentence on the shape of each group and whether the SDs are similar | 10 |
+| 5. The test | Correct test run on the right groups; *t*, *df*, *p*, 95% CI, and Cohen's *d* reported in APA format | 20 |
+| 6. Figure | One figure showing the group means with a measure of uncertainty or spread; labeled axes; a caption that says what the reader should see | 15 |
+| 7. Interpretation | Decision about H0 in plain language; size of the effect in plain language; one design limitation and one sample limitation; a follow-up question | 15 |
+| Code & writing | Every chunk runs and shows its output; code is commented; file knits; names at the top; proofread; AI/collaboration statement completed | 10 |
+
+## How to submit
+
+Knit this file to HTML (the **Knit** button) and send the `.html` file to Kate and Rola on Slack, once per group. If knitting fails, the error message names the chunk; fix that chunk and knit again. A file that doesn't knit can't be graded.
+
+## If you see this error, it means…
+
+- `'xxx.csv' does not exist` → R can't find your data file. Is it in your `ps211` folder, and is the project open?
+- `object 'xxx' not found` → you used a name R doesn't know: usually a typo in a column name, or a chunk above this one hasn't been run yet. Check spelling and capitalization, then run the chunks from the top.
+- `count()` shows a level you didn't expect, or `nrow(group_1)` is `0` → the level name in your `filter()` doesn't match the data exactly. Copy it from the `count()` output.
+- `mean()` returns `NA` → there's a missing value in that column. Tell your TF; the menu datasets shouldn't have any in the columns you're using.
+- `Error in t.test.default: not enough 'x' observations` → one of your groups is empty. See the point above.
+
+---
+
+# Packages
+
+```{r libraries}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("dplyr")
+# install.packages("ggplot2")
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+---
+
+# Part 1: Your dataset (5 points)
+
+*Complete in Discussion 4.* In two or three sentences: which dataset you chose (file name), what it is (who was studied, how, and what was measured), what one row represents, and how many rows it has. Cite the source as it appears on the dataset's card.
+
+WRITE YOUR ANSWER HERE.
+
+---
+
+# Part 2: Research question and variables (15 points)
+
+*Complete in Discussion 4, before looking at the data.*
+
+**Research question.** One clear sentence of the form "Do [group A] differ from [group B] in [DV]?" or, for a paired design, "Does [DV] change from [condition 1] to [condition 2]?"
+
+WRITE YOUR RESEARCH QUESTION HERE.
+
+**Variables.** Name your independent variable and its two levels (or, for a paired design, the two columns you will compare), and your dependent variable. Say what scale the DV is measured on.
+
+WRITE YOUR ANSWER HERE.
+
+**Why a t test, and which kind.** Say whether you'll run an *independent-samples* *t* test (two separate groups of people) or a *paired-samples* *t* test (the same people measured twice), and why that matches how the data were collected.
+
+WRITE YOUR ANSWER HERE.
+
+#### Rubric
+- 5 points: research question is clear, specific, and answerable by comparing exactly two groups or two conditions on a numeric DV.
+- 5 points: IV and its two levels (or the two paired measures) and the DV are correctly identified.
+- 3 points: correct choice of independent vs. paired, with a correct reason.
+- 2 points: complete sentences, grammar, and spelling.
+
+---
+
+# Part 3: Hypotheses (10 points)
+
+*Complete in Discussion 4, before looking at the data.*
+
+State your null hypothesis and your alternative hypothesis in words. Say whether your test is one-tailed or two-tailed, which group you predict will score higher if one-tailed, and give one sentence of reasoning. State the alpha level you will use.
+
+**Null hypothesis (H0):** WRITE HERE.
+
+**Alternative hypothesis (H1):** WRITE HERE.
+
+**One- or two-tailed, and why:** WRITE HERE.
+
+**Alpha:** WRITE HERE.
+
+#### Rubric
+- 3 points: H0 correctly stated.
+- 3 points: H1 correctly stated.
+- 3 points: direction is chosen and justified.
+- 1 point: alpha stated.
+
+---
+
+# Part 4: Descriptive statistics (10 points)
+
+*Start in Discussion 4; finish in Discussion 8.*
+
+Load your data and compute the mean, standard deviation, and *n* of your DV for each of your two groups. You wrote exactly this code in Discussion 4 (Part 3 of that worksheet): `read_csv()`, then `filter()` to each group, then `mean()`, `sd()`, and `nrow()`. For a paired design, the two "groups" are two columns of the same data frame, so you don't need `filter()`.
+
+```{r part4-load-data}
+# Load your dataset here.
+
+
+```
+
+```{r part4-descriptives}
+# Compute the mean, SD, and n of your DV for EACH group here.
+# Name your two filtered data frames group_1 and group_2: later parts of this file assume those names.
+
+
+```
+
+Now put the numbers in this table (edit the cells; keep the vertical bars):
+
+| Group | *M* | *SD* | *n* |
+|---|---|---|---|
+| GROUP 1 NAME | | | |
+| GROUP 2 NAME | | | |
+
+**Assumption check.** Run the chunk below to see a histogram of the DV for each group (this exploratory plot is for you, not for the report, so it is hidden when you knit). Then write two or three sentences: is each group's distribution roughly symmetric, or clearly skewed? Are the two SDs similar (a rule of thumb: the larger SD is less than twice the smaller)? Anything else a reader should know before trusting a comparison of means?
+
+```{r part4-histograms, fig.show = "hide"}
+# Two histograms, one per group, following the Discussion 2 pattern:
+#   ggplot(group_1, aes(x = ___)) + geom_histogram(bins = 15, fill = "lightgrey", color = "black") + theme_classic()
+
+
+```
+
+WRITE YOUR ASSUMPTION-CHECK SENTENCES HERE.
+
+#### Rubric
+- 4 points: correct *M*, *SD*, and *n* for both groups, in the table.
+- 4 points: assumption check describes shape and compares the SDs, using the histograms and the numbers.
+- 2 points: code runs, is commented, and uses the names `group_1` and `group_2`.
+
+---
+
+# Part 5: Run your t test (20 points)
+
+*Complete in Discussion 9.*
+
+Fill in the blanks in **one** of the two code blocks below (delete or leave commented the one you don't need), then run it. In the two-vector form used here, `alternative = "greater"` tests whether the **first** group's mean is greater than the second's, `"less"` tests the reverse, and `"two.sided"` tests for any difference. Make sure this matches Part 3.
+
+```{r part5-ttest}
+# ---- Independent-samples t test (two separate groups) ----
+# Uncomment the next two lines and fill in your DV column name:
+# test_result <- t.test(group_1$___, group_2$___, var.equal = TRUE, alternative = "___")
+# test_result
+
+# ---- Paired-samples t test (the same people measured twice) ----
+# Uncomment the next two lines and fill in the two column names:
+# test_result <- t.test(my_data$___, my_data$___, paired = TRUE, alternative = "___")
+# test_result
+
+# ---- If your test is one-tailed ----
+# R then prints a one-sided interval (one end is Inf). For the write-up, report the ordinary two-sided 95% CI:
+# run the same t.test() line once more with alternative = "two.sided" and copy its interval.
+# Your t, df, and p still come from the one-tailed run above.
+```
+
+**Effect size.** Compute Cohen's *d* yourself, from the formula in Lecture 11. For an independent-samples test, *d* is the difference between the means divided by the pooled SD; when the two groups are about the same size, the pooled SD is the square root of the average of the two variances. For a paired test, *d* is the mean of the differences divided by the SD of the differences.
+
+```{r part5-cohens-d}
+# ---- Independent samples ----
+# pooled_sd <- sqrt((sd(group_1$___)^2 + sd(group_2$___)^2) / 2)
+# d <- (mean(group_1$___) - mean(group_2$___)) / pooled_sd
+# d
+
+# ---- Paired samples ----
+# differences <- my_data$___ - my_data$___
+# d <- mean(differences) / sd(differences)
+# d
+```
+
+**Report the result in APA style.** One or two sentences that include the descriptives and the inferential statistics:
+
+WRITE YOUR APA RESULTS SENTENCE(S) HERE.
+
+#### Rubric
+- 6 points: the right test, run on the right groups, with the direction matching Part 3.
+- 4 points: Cohen's *d* computed correctly from the formula.
+- 8 points: APA sentence correctly reports *M* and *SD* for both groups, *t*, *df*, *p*, the 95% CI, and *d*, in APA format.
+- 2 points: code runs and is commented.
+
+---
+
+# Part 6: Figure (15 points)
+
+*Complete in Discussion 9.*
+
+Make **one** figure that shows the two group means with error bars for the standard error of each mean (*SE* = *SD* / √*n*). Build the small summary table yourself, then plot it. A boxplot of the two groups (Discussion 3 style) is also an acceptable alternative.
+
+```{r part6-figure, fig.width = 5, fig.height = 4}
+# Step 1: a two-row summary table. Fill in the blanks (for a paired design, use the two columns instead of group_1/group_2).
+# summary_df <- data.frame(
+#   group = c("___", "___"),
+#   mean  = c(mean(group_1$___), mean(group_2$___)),
+#   se    = c(sd(group_1$___) / sqrt(nrow(group_1)), sd(group_2$___) / sqrt(nrow(group_2)))
+# )
+# summary_df
+
+# Step 2: the plot. Fill in the labels.
+# ggplot(summary_df, aes(x = group, y = mean)) +
+#   geom_point(size = 3) +
+#   geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.15) +
+#   labs(title = "___", x = "___", y = "___") +
+#   theme_classic()
+
+# Optional (independent samples): show every participant behind the means by adding this layer before geom_point():
+#   geom_jitter(data = bind_rows(group_1, group_2), aes(x = ___, y = ___), width = 0.08, alpha = 0.3, color = "grey50") +
+# (bind_rows() stacks your two groups back into one data frame.)
+```
+
+**Caption.** One or two sentences under the figure: what is plotted, what each part of the figure represents, and what the reader should notice.
+
+WRITE YOUR CAPTION HERE.
+
+#### Rubric
+- 5 points: figure shows both group means with SE error bars (or an acceptable alternative), built from your own summary table.
+- 4 points: axes and title are labeled in plain language, with units where relevant.
+- 4 points: caption explains the plot and the error bars.
+- 2 points: figure matches the numbers in Part 4.
+
+---
+
+# Part 7: Interpretation (15 points)
+
+*Complete in Discussion 9.*
+
+Write one short paragraph for each of the following.
+
+**Decision.** Do you reject the null hypothesis or not, and what does that mean in plain language for your research question?
+
+WRITE HERE.
+
+**How big is the effect?** Using Cohen's *d* and the raw difference between the means, say how large the difference is in practical terms. (A statistically significant difference can be tiny; a non-significant one can be large but uncertain.)
+
+WRITE HERE.
+
+**Limitations.** One limitation that comes from the *design* (were people randomly assigned, or did they come with their group already? What does that allow you to say about cause?) and one that comes from the *sample* (who was studied, and who do the results apply to?).
+
+WRITE HERE.
+
+**What next?** One follow-up question a researcher could ask, and what data they'd need.
+
+WRITE HERE.
+
+#### Rubric
+- 4 points: correct decision about H0, stated in plain language.
+- 4 points: effect size interpreted sensibly.
+- 5 points: one design limitation and one sample limitation, both specific to this dataset.
+- 2 points: a reasonable follow-up question.
+
+---
+
+# Code & writing (10 points)
+
+Before you submit, check: every chunk runs and its output appears in the knitted file; each chunk has at least one comment saying what it does; all group members' names are at the top; the whole thing is proofread; and the statement below is filled in.
+
+# AI and collaboration statement
+
+- Everyone who worked on this assignment is listed at the top of the file: YES / NO
+- We used an AI tool (e.g., ChatGPT, Claude) for this assignment: YES / NO. *If yes, which tool and how?* WRITE HERE.
+- We got help from people outside our group (TF and instructor excluded): YES / NO. *If yes, who and how?* WRITE HERE.

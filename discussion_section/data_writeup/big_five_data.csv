@@ -1,0 +1,2186 @@
+participant,gender,education,age,agreeableness,conscientiousness,extraversion,neuroticism,openness
+6,female,some college,21,4.6,5.6,5.6,3,5
+8,male,high school graduate,19,2.6,3.4,2.4,4.2,4.2
+11,male,some high school,21,4.6,4.2,4.2,3,4.8
+23,male,graduate degree,68,5.6,2.8,4,2,5.4
+24,female,high school graduate,27,5.4,3.8,5.2,4.8,5.8
+25,male,some high school,18,4.8,5.2,5,2,5.4
+26,female,some college,20,5,4.8,6,1.8,4.6
+27,female,graduate degree,51,4,5.8,4,3.2,5.6
+29,female,some college,33,3.8,4.2,5.2,2.8,4
+30,female,some college,18,4.8,3.6,5.4,3.4,4.8
+32,female,some college,41,5.6,4.6,5,2.4,5
+33,male,graduate degree,23,5.2,3.2,1.2,2.6,4.8
+36,male,some college,23,3.2,3,3,3.8,3.6
+37,male,some college,20,5.2,4.4,1.8,2.2,4
+38,male,some college,21,3.8,4.8,3.6,5,4.2
+40,female,graduate degree,48,4.6,5.2,4.6,1.4,5.8
+41,female,some college,40,5.4,3.8,3.8,2.6,4
+43,male,some high school,18,4.8,4.2,3.8,2.2,4.2
+44,male,college graduate,20,4,3.2,3,3.2,3.2
+45,female,graduate degree,24,5.8,4.2,4.8,2.2,5.2
+46,male,some college,25,6,3.8,4,3.6,5.2
+47,male,high school graduate,22,3.4,3.2,3.4,3.8,3.6
+48,female,some high school,18,5,2.4,3.6,3,4.2
+49,female,some high school,43,3.8,4.4,3.4,4.6,4
+50,male,some college,20,6,5,6,2.2,5.6
+51,female,some college,24,5.6,3.2,4.6,4.8,4.8
+52,female,college graduate,26,5.2,4.8,3.8,2.8,3.8
+53,male,college graduate,26,4.4,4,5.4,1.4,4.4
+54,female,some college,25,4,4,3.2,5.4,3
+55,male,college graduate,25,6,5.2,5.4,2.4,4.8
+56,male,graduate degree,26,4.6,3.8,4.2,3.6,5.8
+57,female,some college,21,3.2,4.6,3.2,4.4,4.6
+58,male,graduate degree,24,3.8,4.4,3.6,4,4.4
+59,female,high school graduate,50,5,5.4,2.8,3.8,3.8
+60,male,graduate degree,29,4.2,4.8,5,1.8,4.6
+61,male,some high school,32,4.2,2.8,3.2,4.2,3
+62,male,some high school,18,4.2,4.2,2.8,4.6,4.4
+64,female,some college,26,4,5.2,5.8,3,5.2
+65,female,graduate degree,27,5.8,5,3.6,4.6,5.2
+67,male,college graduate,21,4.4,2.2,2.4,3.6,4.8
+68,male,some college,21,2.4,2.6,3.4,2.2,6
+69,female,graduate degree,36,4.6,4.8,4.6,2.2,4.6
+70,female,high school graduate,48,5.4,5.2,2.8,2.4,4.8
+71,female,some college,22,4.8,5.4,4.4,2.4,5
+73,male,some college,21,3.8,4.6,4.8,4.4,4
+74,female,some college,20,5,5.2,3.2,3,5
+75,female,some college,23,4.6,5.4,4.6,2,5
+76,female,college graduate,43,5.2,4.8,5.4,2.4,4.2
+79,female,some college,54,3.2,3.2,3.6,2.8,3
+80,male,high school graduate,20,5,2.8,3.8,3.2,4.2
+81,male,college graduate,28,5,4.4,3.6,3.2,5.4
+82,female,college graduate,38,3.8,4.8,2.8,5,6
+84,male,some college,27,5.8,5.6,4.8,2.4,4
+85,female,some high school,18,5,4.6,3.8,4.6,4.8
+86,male,some college,29,4.4,3.6,3.4,2.8,3.2
+87,female,college graduate,50,5.2,4.6,3.8,2.4,3.6
+88,female,some college,50,5.4,3.6,4.8,2,5
+89,female,some college,20,5.2,4.2,5,2.2,4.2
+91,female,college graduate,56,5.2,4.4,4.8,1.6,5.4
+92,female,college graduate,29,4.8,4.2,3.6,3.4,5.6
+93,female,graduate degree,29,4.6,2.6,3.6,4.2,2.8
+94,female,graduate degree,48,5.4,5.8,5.4,3.6,5.6
+95,female,some high school,30,5,5,3.8,4,3
+96,female,high school graduate,21,3.6,4.8,2.2,5,4.2
+97,male,some college,19,2.2,1.4,1,4,5.2
+98,male,graduate degree,42,5.2,5.2,3.6,1.2,5.6
+99,female,some college,18,3.8,4.2,3,5.4,4.4
+100,female,college graduate,50,4,3.4,3.2,1.4,4
+102,male,graduate degree,25,3.6,3.8,4.2,3.2,4.6
+103,male,graduate degree,47,4.4,4.8,3.6,4.6,5.6
+104,female,some high school,18,4.6,1.8,2.4,2,3.6
+105,female,college graduate,37,3.6,5.2,1.4,4.8,3.8
+106,female,college graduate,33,5.8,3,4,4,4.6
+109,female,some college,21,5.4,3.4,4.8,4.6,5
+110,female,some college,27,5,3.4,4.8,5.6,4.2
+111,female,some college,19,6,4,4.4,2.8,5.4
+113,female,some college,19,5.4,4.8,4.2,1.4,4.8
+114,female,graduate degree,29,6,4.8,3.2,4.4,5.8
+115,female,graduate degree,23,5.2,4.8,5.8,2,5.4
+116,male,graduate degree,23,2,1.8,1.8,2.8,2.6
+117,male,some college,20,4.4,4.8,4.8,2,5.4
+118,male,college graduate,24,1.8,2.4,1.6,2.8,5.2
+119,male,graduate degree,24,4.2,4.6,5,3.2,5.4
+120,male,graduate degree,26,5.8,4.2,5.6,2.2,6
+121,female,some college,25,5,4.4,5.6,3,5
+122,male,college graduate,24,4.4,3.6,2,4,3.6
+123,male,graduate degree,24,3.6,5.6,5.4,3.4,5.6
+124,male,graduate degree,28,4.4,4,5,3,4.8
+125,male,college graduate,22,4.8,3.2,3.4,2.2,5.4
+126,male,graduate degree,26,4.4,4.2,2.2,3.4,5.8
+127,male,graduate degree,25,5.4,4.6,4.8,2.8,4.4
+128,male,college graduate,23,4.6,4,4.6,2.8,5.4
+129,male,some college,22,4,2.4,2.6,3.2,5
+131,female,college graduate,25,4.2,3.4,4.4,4.2,4.6
+132,male,some college,25,4.4,3.8,4.4,5,4.8
+134,female,some college,20,3.6,3.4,3.4,4.6,3.4
+135,female,some college,25,6,3.6,4,5.4,4.6
+136,female,some college,49,5.8,3,4,3.8,5
+138,female,some college,25,5.6,5.6,5,3,5.4
+139,female,some college,25,5.6,4.6,5.2,4.4,4.8
+141,male,some college,21,2.6,3,1.4,4.4,3.4
+142,female,some college,22,4.8,4.4,5.2,5.2,3.2
+143,female,some college,37,3.8,5,5,4.2,4.4
+144,female,some college,20,5.8,3.6,4.4,1.8,4
+145,female,some high school,22,4.2,3.2,4.4,2.4,5.2
+146,female,graduate degree,41,4,4.4,2.8,2,5.6
+147,female,graduate degree,22,5.4,5.2,5,4.6,5.4
+148,male,graduate degree,24,4.8,3.8,4,3.2,4.4
+149,female,college graduate,23,4.2,3.8,5.2,1,4.8
+150,male,college graduate,32,5.4,5,3.8,3.4,5.2
+151,male,graduate degree,43,4.4,2.4,3.6,4,5.2
+152,female,college graduate,30,5.8,5.2,5.2,1.8,6
+153,female,high school graduate,50,5.2,3,4.2,2.2,4.6
+154,male,some high school,18,3,5,5.6,2.4,5
+156,female,graduate degree,34,5,4.2,5,3.6,5
+157,female,high school graduate,18,5.8,3.6,5.4,2.2,4.6
+158,female,graduate degree,24,4.8,2.6,3.4,4,4.8
+159,male,high school graduate,18,3.4,3.4,3.4,2.4,5.8
+160,female,some college,22,4.6,5.4,3.8,4.2,3.6
+162,female,some college,19,5,3.4,4.6,3.2,4.8
+163,male,some college,20,4.8,2.4,4.4,3,4
+164,male,some college,24,4,4,3,1.8,2.2
+165,female,some college,20,6,5,5,3,4
+166,male,graduate degree,34,4.8,2,4.6,1.4,4.6
+167,male,some college,21,5,5,5.8,1.4,5.2
+169,female,high school graduate,18,5.2,5,4.8,4,5.6
+171,female,graduate degree,27,3.8,3.2,3.8,3.4,3.6
+172,male,graduate degree,33,4.4,5,5,3.8,4.2
+173,male,some college,20,5.2,3.4,5,3.2,4.4
+174,female,some college,19,5,4.2,4.2,2.4,4.6
+176,female,some college,18,3.4,3.8,3,5,3.6
+177,female,college graduate,35,5.8,3.8,3.8,2,5.8
+178,female,some college,23,4.6,5.6,3,4.2,5
+179,female,graduate degree,27,3.4,3.6,3.8,3.6,3.8
+180,male,some college,18,3,3.2,4.8,1.6,5.4
+181,male,high school graduate,31,3.2,3.2,3,4.6,6
+183,male,some high school,53,4.2,3.2,2.8,2.4,3.6
+184,male,graduate degree,29,2.6,3,2.8,4.4,5.2
+185,male,high school graduate,19,3.6,4.6,3.2,4.2,6
+186,female,some high school,29,5.2,3.2,4.4,5.2,1.4
+187,male,graduate degree,41,5,3.6,4.6,1.4,5.4
+188,female,graduate degree,31,3.4,6,5.4,1.4,5.8
+189,female,some college,45,4.6,5.2,3,4.8,4
+190,female,high school graduate,47,5,5.2,5.6,4.4,5.6
+191,male,college graduate,27,4,2.8,3.6,2.4,5
+192,female,high school graduate,24,5,4,4.4,4.4,5.6
+193,male,college graduate,20,4,4,3.4,3,4.2
+194,male,high school graduate,23,3.6,3.4,4.6,2.4,3.6
+195,male,graduate degree,28,4.6,4.6,3.4,3.8,4.4
+197,male,some high school,18,4.8,3.6,5.6,2.8,4.2
+200,female,some high school,18,5.2,4.2,4.6,2.2,5.4
+203,female,some high school,18,4.4,3.8,4.2,3.6,3.2
+207,female,some high school,18,5,3.2,3.2,3.4,3.8
+209,female,college graduate,25,5.4,3,5.4,3.2,4.2
+210,male,graduate degree,48,3,2.6,3.8,2,4.6
+211,female,college graduate,27,5,4.6,5,1.8,5.6
+217,female,some college,32,6,5.2,5.8,2.8,4.6
+218,male,some college,22,4,4,5.2,3.8,3.8
+219,male,some college,21,4,5,4.8,2.6,4.6
+220,male,graduate degree,29,2.2,3,2.8,3,5.4
+223,female,graduate degree,48,5.6,4.6,5.4,1.2,4.4
+224,female,college graduate,39,5.4,3.6,4.6,2.4,5
+225,female,college graduate,50,5.6,4.4,5.2,3,5.6
+226,female,graduate degree,26,5.6,4.2,4,4,4.8
+227,female,high school graduate,21,4.2,3.8,3.4,3.2,4
+229,female,graduate degree,37,5.4,4,4.8,1.8,4.6
+230,female,graduate degree,38,5.4,5,4.8,2,5.6
+231,male,some college,19,4.2,4.2,4.4,2,4
+233,female,some college,20,3.8,5.4,4.8,2.4,5
+234,female,graduate degree,34,4,4.6,2.6,2.6,5
+235,female,some college,38,5.4,5.6,5.4,2,5.2
+236,female,some college,18,4.4,3,4.4,4.4,3
+238,male,some college,19,5.8,2.8,4.4,3,4.4
+239,male,some college,19,4.2,4.6,2.8,1.8,4.8
+240,male,some college,21,5.2,5.4,5,3,4.4
+243,female,graduate degree,41,4.6,4.4,4.8,1.8,4.4
+244,male,some college,40,5.6,5,4.6,1.4,4.6
+245,female,graduate degree,44,3.4,5,4.4,3.2,5.6
+246,male,some college,25,4.8,3.2,4,3,3.8
+248,male,some college,24,3.6,4.2,4,2.2,2.8
+250,female,some high school,22,4.6,3.2,5,2.4,4.6
+251,female,some college,19,5.2,4.4,4,1.8,4.2
+252,female,some college,23,4.6,5.2,3.2,3.2,4.6
+253,female,some college,38,2.6,5.6,5.8,1,4.8
+254,male,high school graduate,26,5.2,6,5,1.4,4
+255,female,some college,46,4.8,4.8,5,2,3.8
+256,female,high school graduate,24,4,4.4,3.6,2.6,4
+257,female,some high school,18,4.8,5.2,5.2,2.2,4.2
+258,male,high school graduate,48,5.6,3.4,3.4,3.2,5
+259,female,some college,30,5.8,4.4,4.8,3.8,4.6
+260,male,high school graduate,22,4.4,3.4,4,2.8,3.8
+261,male,some college,20,3.6,3,3.6,4.4,4.4
+262,male,graduate degree,36,3.4,5.2,3.8,3.8,6
+263,male,some high school,18,5,4.6,6,3.6,3.8
+264,male,some college,27,5.4,5.6,4.8,2.8,5.6
+265,female,high school graduate,30,4,4,5.8,1.2,3.2
+266,male,some college,18,4.6,5.4,4.6,1.6,3.4
+267,male,some college,20,4.8,4.2,3.6,4,3.6
+268,female,some college,55,5.2,5.2,4.6,1.8,4.2
+270,male,college graduate,28,3.8,3.6,3.8,3.4,4.2
+271,female,some college,19,4.6,3.4,4.8,5.2,3.8
+274,male,some high school,31,5.8,5,5.2,3.6,4.6
+275,female,some college,50,4.4,4.2,5.8,4.6,5
+276,female,some college,31,5.4,5,4.8,3,4
+277,female,graduate degree,27,5.6,5.4,5.4,1.8,5.2
+279,male,some college,18,5.2,4,5.2,4.4,5.8
+280,female,some college,20,5,3.4,3.8,4.6,3.6
+281,male,some college,21,4.2,3.2,3,3.8,4.4
+282,female,graduate degree,32,5.8,5.2,5.4,2.8,5
+283,female,some college,30,3.2,2.6,3,2.6,3
+284,female,some college,24,4.8,4,4.2,4.2,4
+285,female,some high school,35,4.8,3.6,3.6,5.4,3.6
+286,female,some college,19,5.4,5,5.2,3.6,4.4
+287,female,some college,23,5,4.8,3.2,5.6,5.2
+289,male,college graduate,21,6,4.2,6,2.2,6
+290,female,some college,22,5.8,5,4.2,4,3.4
+291,female,some college,20,5.4,3,3.6,3.4,3
+292,male,college graduate,26,5,5.2,4.8,1,4.6
+294,female,graduate degree,25,5,3.8,5.6,4,4.8
+295,female,graduate degree,28,5.4,3.2,5.6,5.4,5.6
+299,male,some high school,29,5,5,2.8,2.2,3.2
+300,female,high school graduate,19,3.8,3.8,3.4,3.4,4
+301,female,college graduate,47,5.4,4.2,4.6,3.8,6
+302,female,college graduate,52,5,4.4,3.4,1.4,5
+303,female,college graduate,22,5.4,3.4,2.4,2.4,3.4
+304,male,some college,18,4.8,3.8,4.8,3.4,4.2
+305,female,some college,30,4.2,5.2,4.8,3.8,5.2
+307,male,some college,31,2.4,4.2,2.8,4,5.2
+308,male,high school graduate,56,5.6,5.6,3.8,4,3.8
+309,female,college graduate,28,4,5.6,5.2,2.4,4.2
+312,female,some college,23,5.2,5.4,3.8,3.6,4.2
+313,female,some college,20,5.2,4.6,4.6,1.2,4.8
+314,female,high school graduate,27,6,5.2,5.8,2.2,4.2
+315,male,high school graduate,25,4.2,4,5.4,4.8,5.4
+316,female,high school graduate,27,4.2,5.2,3.8,5.2,5.2
+318,female,some college,18,3.4,4.4,3.2,5.8,5
+319,male,some high school,18,3.4,3.6,4.6,2.4,5.2
+320,male,some college,21,5.8,5,4.8,2,4.2
+321,male,high school graduate,19,3.4,5.8,3.8,4.2,6
+322,female,high school graduate,18,5.8,4.6,5.6,1.8,4.6
+323,male,college graduate,29,2.6,4.6,2.8,5.2,5.6
+324,male,college graduate,33,3.8,3.8,3.4,4,3.4
+325,male,some college,31,4,3.4,2.8,3.8,4.2
+326,female,graduate degree,33,5.6,4.6,5,2.6,5.8
+329,female,college graduate,45,5.2,3.2,6,5.8,5.2
+330,female,graduate degree,44,4,4,3.4,3,5.6
+331,female,some college,18,5.6,3.6,3.6,4.6,6
+333,female,college graduate,45,3,4.4,3.6,5.4,4.6
+334,female,high school graduate,18,5.6,5.4,5,2.6,5.8
+337,female,some college,29,4.8,4.8,5.6,5,4.4
+338,female,some high school,51,6,6,5.2,2,5.4
+339,female,high school graduate,50,5,3.6,2.8,4.2,3.6
+340,female,high school graduate,36,4,4.2,3,4,4.2
+343,female,graduate degree,38,4.4,3.2,2.8,3.8,3
+345,female,graduate degree,53,4.8,3.8,5.6,2.6,5.4
+346,female,graduate degree,35,5.2,4.4,4.8,4.2,5.2
+347,female,some college,21,5,2.8,2.8,4.2,4.6
+348,male,some college,29,4.6,4.4,3.8,5.4,3
+349,female,graduate degree,36,5.2,5.4,5.2,3.4,5.2
+350,female,some college,19,4.2,4.4,4,4,4
+351,female,some college,23,4.6,5,4,4.2,5
+352,female,high school graduate,39,5.2,5.4,4.6,3.8,4.2
+353,female,some college,19,3.6,3.2,4.4,3.2,5.6
+355,female,some college,18,4.6,3.6,5.4,2.4,4.6
+358,male,some college,20,5,3.8,2.2,3.6,5.2
+360,female,some college,20,4.8,5.2,5.2,2.8,4.4
+361,male,some high school,25,5.2,5.2,4.6,4.8,4.4
+362,female,graduate degree,64,4.8,2,5.6,4.6,6
+363,female,high school graduate,18,5,4.6,4.8,2.2,5.8
+364,female,some college,20,5.4,3.2,4.2,3.4,5
+365,female,some high school,19,4.2,2.8,3.4,4,4.4
+366,female,graduate degree,32,5.2,5.6,4.2,2.8,5.8
+368,male,high school graduate,45,5.2,4,6,3.8,5.6
+369,male,some high school,18,4.2,2.4,1.6,4.2,4.4
+370,female,graduate degree,28,5,3,5.6,6,4.8
+371,female,graduate degree,22,4,4.4,2.6,3.2,4.6
+372,female,college graduate,25,4,4.4,3.6,3.4,5.4
+373,female,graduate degree,34,6,5.4,6,1,6
+374,female,graduate degree,42,4.6,4.8,3.4,3.6,5.4
+375,female,some college,37,4.6,4.2,4.6,2.8,4.6
+376,female,some college,42,5.8,6,5.4,1,6
+377,female,graduate degree,23,5.2,5.2,4,2.4,5.4
+378,female,college graduate,29,3.6,4,5.2,3.6,4
+379,male,high school graduate,18,3,4.6,1.6,1.6,4.4
+380,female,some college,22,5.4,5,5.2,1,3.6
+382,female,some college,38,4,4.6,4.2,4,4.6
+383,female,high school graduate,53,5,5,4.8,3.6,4.8
+385,male,some college,18,5,4.2,4.4,3,4.6
+386,female,college graduate,31,5.8,5.6,4.8,2.6,5
+387,female,some high school,32,5,5,3.8,1.4,4.2
+390,female,high school graduate,23,4,5,4.4,2.2,3.2
+391,female,college graduate,34,4.6,3,4,3.8,5.4
+392,male,graduate degree,29,5.8,4.6,4.8,4.2,5.6
+393,female,some college,51,5,4.6,3.2,2.4,3.8
+394,female,some college,22,6,4.2,5.4,2.8,5.8
+395,female,some college,38,5,4.4,4.4,2,4.8
+398,female,some college,19,4.4,5.2,4,2.6,3.6
+399,female,some college,33,5,4.2,4.4,4.6,3.6
+400,female,some high school,40,5.4,3.8,5,4.4,4.6
+401,female,graduate degree,26,4.2,3.2,3.6,2.2,4
+403,female,some college,30,4.4,5.6,5,2.6,5.4
+405,female,some college,32,4.4,5.2,4.4,4.2,5.8
+406,male,high school graduate,30,3.2,3,3,4.4,5.6
+407,female,college graduate,32,5.4,5.6,5.2,2.4,5.4
+408,female,graduate degree,29,5.2,4.4,4.8,4.8,5.4
+409,male,some college,27,4.2,5.4,3.8,3,3.4
+410,female,some college,48,3.6,4.8,1.8,2.6,2.6
+411,female,college graduate,39,5.6,4,4.6,1,5.2
+412,female,some college,22,5.2,3.8,4,4.6,2.6
+413,female,some college,26,4.6,2.8,3.6,5.6,5.6
+414,female,some college,26,3,5.6,2,3.6,5.8
+415,female,high school graduate,39,4.6,3.8,4.6,3.2,5.6
+416,female,some college,32,5.2,3.2,4.6,3.8,4
+417,female,some college,52,5.8,4.2,2.4,3.8,3.6
+418,female,some college,40,5,4.6,4.2,4.6,4.2
+419,female,high school graduate,40,5.4,5.2,5.6,2.6,4.4
+420,female,some college,40,6,4.8,3.6,1.6,5.8
+421,female,some college,40,5.6,4.4,4.4,5.8,5
+423,female,some college,23,5.8,5.4,3.2,4.4,4.6
+426,female,high school graduate,51,5.8,5.8,5.8,1.4,5.8
+428,female,some college,20,6,4.8,5.8,1.6,5.2
+429,female,some high school,19,5.4,4,5.2,5,4.6
+430,male,graduate degree,28,3.6,2.6,3,3.8,4.8
+431,male,some high school,35,4.4,5.2,4.2,3.4,5.4
+432,male,some high school,35,4.4,5.2,4.2,2.8,5.4
+433,male,some high school,35,4.4,5.2,4.2,2.8,5.4
+434,male,some high school,35,4.4,5.2,4.2,3.2,5.4
+435,male,some high school,35,5,4.6,4,3.2,5.4
+436,male,some high school,35,5,4.6,4.4,3.2,5.4
+437,male,some high school,35,5,4.6,4.4,3.2,5
+438,female,college graduate,32,4.6,2.2,4.4,1.8,3.2
+439,female,some college,24,4.6,6,4.6,4.6,6
+440,female,some high school,23,5.6,4.6,4.8,1.8,6
+441,male,some college,39,4.2,5.4,4,5.4,4.4
+443,female,some high school,26,4.6,3.2,3.2,5.8,3.6
+444,male,some college,28,4.2,4,3.8,3.6,4
+445,female,some high school,23,5.8,4.4,4.8,2,5.2
+446,male,some college,24,5.2,4.6,3.6,1.8,3.6
+447,female,some college,29,5.4,4,4.6,2,4.6
+449,male,some college,29,1.6,6,1.2,1,4.6
+450,female,some college,26,5.8,6,5.2,2.4,5.8
+453,male,some college,30,5.4,5.2,5.6,2.8,5.6
+454,female,some college,36,4.8,4.4,5,3.2,5
+455,female,some college,33,5.6,5.4,5.6,3.8,4.2
+456,male,some college,23,5,4.8,4,1.6,4
+457,female,high school graduate,22,6,5,6,2.4,6
+459,male,high school graduate,28,2.6,2.6,1.4,2.6,5.8
+460,female,some college,36,3.4,5,4.4,4.6,4.6
+461,female,some college,29,4.8,3.6,4.2,2,4
+462,female,graduate degree,59,5,2,3,5,4.2
+463,female,some college,19,5.6,5.2,4.8,1.6,5.4
+464,male,some college,27,5.4,4.2,5.2,5,5.8
+465,female,college graduate,41,4.4,4.4,4,3,4.6
+466,female,college graduate,27,5.4,4.4,4.8,1.2,4.8
+468,female,graduate degree,60,4.8,3.8,5.2,4.6,5.6
+469,female,some college,52,5.6,4.4,1.8,4.2,3.6
+471,female,some college,20,5,4.4,4,4.2,5
+472,female,some college,25,5.8,5,4.8,1,4.4
+473,female,some college,24,5.8,5.6,4,3.8,3.8
+474,female,high school graduate,25,3.2,3.6,3.6,3.6,3.4
+475,female,high school graduate,30,3.8,3.6,3.4,2.8,3.8
+476,female,some college,19,2,2.8,2.6,3.8,3.6
+478,female,some college,52,5.8,6,3.6,2.6,5.2
+479,female,some college,27,5,3.2,5.2,4.6,3
+480,female,some college,55,6,5.2,6,4.2,5.2
+481,female,graduate degree,39,5.2,4.4,5.6,4.4,5.8
+482,female,some college,39,6,5.4,5.4,2.8,5.6
+483,female,some college,39,4,4.6,2,2.6,2.6
+485,female,some college,51,5,5,5.6,1.4,5.4
+486,female,some college,25,5.8,4.8,3,2.4,4.2
+488,female,high school graduate,42,4.8,3.8,4,4.2,3.6
+489,female,college graduate,24,5.2,5.4,4.8,4.8,5.6
+490,female,some college,46,5.4,5,3.2,2.4,4.8
+491,female,some college,37,5.4,4,5,3.2,4.8
+492,female,some college,24,4.8,5,3.6,2.8,2.6
+494,female,college graduate,50,4.6,5.8,5.6,3,5.4
+496,male,high school graduate,23,4.2,4.8,5.2,4.4,4.6
+497,female,some college,18,4.6,5.6,4.8,2.4,5.2
+498,male,high school graduate,21,4.4,5,4.6,2.6,4.6
+499,female,some college,26,4.2,3.4,5.2,5.6,4.4
+500,female,some college,53,5.6,5.4,4.4,4.4,4.8
+501,female,high school graduate,26,5.6,4.8,5.2,1.2,4.2
+502,male,some college,30,6,5.6,5,1.4,4.6
+504,female,some college,34,5,4.6,4.2,3.6,4.6
+505,female,some college,28,4.2,5,4.6,3.2,4.6
+507,male,some college,21,5.6,5.4,4.4,3.4,4.4
+508,female,some college,20,6,3.6,5.2,5.2,3.4
+509,male,some high school,26,5.2,4.8,4.4,3.6,5.6
+510,female,some college,18,5.6,4.8,4.4,3,3.6
+511,female,some college,39,5,4.4,4.6,3.2,4.2
+512,female,some college,45,4,5.8,5.4,1,4.2
+513,female,some college,20,4.8,5.2,5.8,4.4,5.2
+514,male,some college,43,4.4,4.8,4.8,1.6,5.2
+515,female,some college,23,4.6,4.8,2.6,2.8,4
+516,female,some college,25,5,4.4,4.6,3.6,4.6
+517,female,some college,51,5.4,5.6,4.2,4.4,4.2
+518,female,some college,26,5,4.8,3.8,4.6,5.2
+519,male,some college,28,6,5.8,5.8,1.2,5.8
+520,female,some college,23,5,5.8,5.4,3,4.2
+521,female,some college,34,5.2,3.6,4.2,3.8,4.2
+522,male,some college,23,4.8,4.4,4,1.8,5
+524,female,some college,35,5.6,5.4,5.6,4.4,3.4
+526,female,high school graduate,27,5,5.8,6,5,5
+527,male,college graduate,45,4.8,4,4.6,3,5
+528,male,high school graduate,60,5.6,5.2,5.8,1.2,6
+529,female,some college,27,5,4.6,3.4,3.6,3.6
+531,female,some college,21,5.2,4.4,3.6,3.6,5
+532,female,some college,25,4.4,3.8,5,4.8,4
+533,female,high school graduate,51,5.4,5,4.2,6,5.4
+534,female,some college,27,5.2,3.8,4.2,2.6,3.6
+535,male,some college,24,4.2,4.2,1.6,5,5.2
+536,female,some high school,21,5.6,4.4,5.2,2,3.2
+538,male,high school graduate,30,3.2,2.8,4,4.6,5.2
+540,female,high school graduate,22,4.8,4,4.4,4.4,4.4
+541,female,some college,28,4.6,5,3.6,2.4,4
+542,female,some college,24,3.8,4.8,4.6,4.6,5.6
+543,female,some college,31,5.8,3.4,3.8,4.6,3.4
+544,female,some college,43,5.4,4.8,4.4,3,4.8
+545,male,some college,60,4.8,4.6,4.4,2.4,4
+546,male,some college,36,4.4,3.6,2.6,3.6,3.8
+548,male,some college,21,4.4,3,5.6,1.8,5
+549,female,college graduate,21,5.2,5.6,5.4,1.8,5.4
+550,female,some high school,19,4.4,5,4.4,4.8,4.6
+551,female,some college,36,5,4.6,3.4,1,4
+552,male,college graduate,42,3.2,3.4,2.8,5.2,4.2
+553,male,high school graduate,24,4.4,1.8,5,2.6,3.2
+554,female,some college,44,6,5.6,5.6,1.8,4
+555,female,some college,30,5.4,4.4,4,4.4,3.2
+556,female,some college,23,5.4,3.8,5.4,3,4.4
+557,female,high school graduate,26,3.8,2.8,4.6,4.8,4.8
+559,male,some college,29,4.8,4,3.8,2.6,4
+560,female,some college,47,5.8,5.8,5,2.6,5.6
+561,male,some college,44,4.8,5.2,4.2,1.6,4
+562,male,some college,25,4.4,3.8,3.8,5,3.8
+563,female,some college,28,5.2,5,5,3.6,4.8
+564,female,college graduate,32,5.8,5.2,5.2,3.4,5.6
+565,female,some college,37,4.2,3.2,3.4,2.8,3.2
+566,female,some college,39,6,5.2,5.4,4.2,4.8
+567,male,high school graduate,40,5.6,3.6,5,1.6,5.2
+568,female,college graduate,26,5.6,5.8,5.4,3.2,4.2
+569,male,some college,27,4,3.6,4,3,3
+570,female,some college,41,4.2,2.8,3.8,3.8,2.2
+571,female,some college,34,5.2,2.6,2.6,4.2,3.2
+572,female,some college,23,6,3.4,6,1.2,3.4
+573,male,some college,31,5,4.6,5.6,4.8,5.6
+574,female,some college,38,5,5.6,3,2.8,4
+575,female,some college,44,5.4,4,3.8,2.2,4
+576,female,some college,31,4.4,4,5.8,3,5.6
+577,male,graduate degree,33,5.6,4.4,4.6,4.2,5.4
+579,male,some college,46,5.4,6,5.6,1,4.2
+580,female,some college,36,5,4.8,4.4,6,4.4
+581,female,some college,28,5,4,3.6,3.2,2.6
+582,female,some college,28,5.6,3.2,3.8,2,4
+583,female,some college,42,5.4,5.6,5.2,1.6,5.6
+584,female,some college,32,5.2,4.2,4.8,2.4,4.2
+585,female,some college,19,3.2,3,3,3.6,4.2
+586,female,some college,25,5,4,4.8,4,3.6
+587,female,graduate degree,37,4.8,4.4,4.2,4,3.8
+588,female,some college,29,5.6,5,5.4,3.2,4.6
+589,female,some college,32,3.2,4,4.4,5.8,3.2
+590,male,some college,27,5.4,4.6,5.6,2,3.8
+591,female,some college,27,4.8,4.8,3.6,2.6,5
+594,female,some college,38,4.4,5.2,5,3.8,3.8
+595,female,some high school,22,5.4,4.6,4.8,2.2,5.4
+596,female,some high school,23,5.4,5,4.4,4,4
+597,female,some college,25,4.2,4.2,3.8,2,4
+599,female,some college,33,5.4,5.2,4.4,2.2,4.4
+600,female,high school graduate,28,5,4.8,5.8,2,2.8
+601,female,some college,43,6,5,3.8,2,5.4
+602,male,some high school,30,5.4,5,5.2,1.2,3.6
+603,female,some college,27,4.4,3.4,3.6,4,3.4
+604,female,some college,19,5.2,5,5.6,2.2,4
+605,female,high school graduate,23,5.2,3.2,5.4,2.8,5.6
+607,female,some high school,22,3.6,4.2,3.8,4.2,3.2
+608,male,some college,40,5.4,3.4,4,1.8,5
+609,female,some college,40,5.6,3.8,2.6,4,3.6
+612,female,some college,54,6,5.8,6,1.2,4.6
+615,male,some college,52,5.4,4.4,4,1.8,4.6
+616,female,some college,25,6,5.6,4,1.4,6
+617,male,some college,46,5.6,5.8,4,4,5.4
+618,male,some college,19,4,4,3.6,2.8,4.2
+620,female,some college,27,4.4,3.6,4.2,4.2,4.8
+621,female,some college,27,5.2,3.8,4.2,4,5.4
+622,male,some college,34,5.2,5.8,4.4,2.4,6
+623,female,some college,21,5,5.2,3.6,3.8,5
+624,female,high school graduate,29,5.2,6,6,2,5.2
+626,female,high school graduate,41,4,3.8,3,5.4,3.8
+628,female,some college,30,3.8,2.8,2,5.8,2.8
+629,female,high school graduate,50,5,5,4.6,2.4,4.6
+630,female,some college,43,3.8,4.8,3.8,3.8,3.2
+631,female,graduate degree,32,5.6,3.2,5,2.4,5.6
+632,male,some college,19,2.6,4.8,3.8,5.6,4.2
+633,female,college graduate,22,5.8,4.8,3.6,4.4,5.6
+634,female,some college,21,5,4.6,4.2,2.2,3.8
+635,male,graduate degree,50,3.2,3.4,2.4,4.2,5.4
+636,female,college graduate,27,5.6,5.4,3.8,4.4,4
+637,female,some college,48,5,4.6,3.4,2.2,3.2
+640,male,some college,37,5.2,5,6,1.8,5.2
+641,female,some college,18,4.6,4,4.2,2.6,5.2
+642,female,some college,18,4.8,4,3.8,3,5
+643,female,some college,24,5.6,5,4,3.8,4.4
+644,female,some college,23,5.4,3.4,4.8,3.6,4.4
+646,female,high school graduate,32,6,5.4,4.2,2.8,3.8
+647,male,college graduate,37,5,3.6,3.6,1.8,5.4
+648,male,some college,19,5.8,5.4,3,2.8,5
+649,female,some college,29,4,3.6,2.6,3.6,4.8
+650,female,some college,20,4.4,5.2,5,1,4.8
+651,female,college graduate,26,5.6,4.4,5.2,1.4,4.6
+652,female,college graduate,33,4,3.6,2.4,4.8,6
+653,female,graduate degree,38,3.8,3.4,3,3.4,4.4
+654,male,high school graduate,26,5.8,4.8,4.8,3.2,4.6
+656,male,some college,36,5.2,5.2,4.4,1.4,4.8
+657,female,some college,41,6,5.2,3.6,2,5.4
+658,female,graduate degree,34,5.6,4.2,3.8,3.8,5
+659,female,some college,35,5.4,3.2,3.2,3.6,4
+660,female,some college,40,5.2,5,4.2,3,4
+661,female,some college,33,1,6,2,5,6
+662,female,some college,28,4.2,5,3.6,4,3.4
+663,female,some college,29,4.8,3.8,5.2,5.2,4.2
+665,female,some college,50,4.8,5,4.8,2,4.4
+667,female,some college,19,4.2,4.8,3.4,4.6,2.6
+668,female,high school graduate,25,5,4.4,5.2,5,4.2
+669,female,some college,31,4.4,3,4,4.4,3.4
+670,female,college graduate,32,4.8,4.4,5,3.6,4
+671,female,some college,32,5.8,4.6,4.8,2.8,5.4
+673,female,some college,22,5.4,5.4,4,3.2,5.2
+674,female,some college,23,5,6,2.6,4.4,4.4
+675,female,some high school,18,4.8,3.2,4,1,4.2
+680,male,high school graduate,51,4.6,4.4,2.2,3.2,4.6
+681,female,college graduate,44,4.4,4.4,4.4,2.8,5.8
+682,female,some college,23,4,4.4,4.6,4.6,4.4
+684,female,some college,26,5.4,3.6,6,3.2,5.6
+685,female,some college,24,5,3.2,3.8,4.2,4.4
+686,female,some college,52,6,3.4,5,5.6,4.6
+687,female,some college,43,5.8,6,5.8,1,5.6
+691,female,college graduate,25,5.4,5.6,4.2,4.8,5.2
+692,female,high school graduate,26,6,6,6,1,5.6
+693,female,high school graduate,41,4,3.6,3,5.2,4
+694,female,some high school,21,4.2,3.2,3.6,5.2,5.4
+695,female,some college,23,5.6,5,3.4,3.4,4.6
+696,male,college graduate,34,3.2,4.6,1.8,2.4,4.8
+697,female,some college,41,6,5.8,4.6,1.6,5.4
+698,female,some college,23,4.4,4.2,4.4,3,5.8
+699,male,high school graduate,24,5.6,4.8,3.8,4.2,4
+700,female,college graduate,45,5.4,5.2,2.6,5.2,4.2
+701,female,some college,43,4.8,5.2,5.2,2.4,4.2
+708,female,college graduate,27,5.6,5,4.8,1.6,5
+709,female,graduate degree,37,6,5.6,4.8,5.2,4
+710,female,high school graduate,25,4.8,4.6,5,2,3.4
+712,female,some college,21,5,4.8,4.6,2.6,3.4
+715,male,some college,27,4.2,2.8,4,2,3.6
+717,male,some college,30,4.2,2.8,4.6,1.4,4.8
+718,male,some college,23,5.2,4,2.8,2.4,4.6
+720,female,some college,26,4,4.8,2.6,4.6,4.6
+722,female,some college,35,4.4,3.4,3.4,3,4.8
+723,male,some college,18,4,4.6,4.4,1,5.4
+724,male,some college,19,3.2,5,2.4,4,3.8
+725,male,high school graduate,42,4.8,5.2,3.2,4.2,4
+726,female,some college,19,5.6,5.2,5.2,3.2,4.8
+727,female,some college,35,5.6,4,5.8,5.2,4.4
+729,male,some college,19,4.8,4,4.6,2.6,3.8
+730,female,some college,41,4.6,4.6,3.6,3.4,4.6
+731,female,college graduate,23,5.8,5.2,5.2,2.6,4.6
+733,male,some high school,19,5,4,5.6,2.4,4.8
+734,female,some college,45,5,3.2,5.8,2.2,5.8
+735,female,some college,44,5,5.8,5.4,3,5.2
+736,male,some college,21,4.2,4.2,2.2,1.8,5.2
+737,female,some high school,19,5.2,5,5.4,2.8,4
+738,male,some college,18,4.6,4.8,3.6,4.4,5.2
+739,male,graduate degree,34,4.8,4.2,3,3.2,6
+741,female,graduate degree,53,5.6,5.8,5.4,2,5.8
+742,female,some college,36,5.4,4,4,2.8,4.2
+743,male,some high school,19,3.6,3.6,3.2,5,4.6
+745,male,graduate degree,23,4.2,4.4,5.2,4,5.2
+746,female,some college,19,5.8,4.8,4.8,1.4,4.2
+747,female,some college,26,4.2,4.2,4.2,2.8,3.4
+748,female,high school graduate,23,4.6,4.6,4.8,4,4
+749,male,some college,25,4.6,3,5,1.4,4
+765,female,some college,24,5.2,4.4,2.8,3.4,5.2
+766,male,some college,18,5.8,4.4,5.6,2.6,5
+767,male,some college,22,4.4,3.6,4,3.4,5.2
+768,female,some college,27,5.6,5.6,5.8,2.2,5.8
+769,female,some college,32,5,4.6,3.6,1.4,3
+770,male,some high school,34,5.8,4.8,4.2,3,5.4
+771,female,college graduate,22,4.6,5,5.2,3,6
+772,male,graduate degree,21,4.8,4,4.2,2.8,4.2
+773,female,some college,24,5.2,5,4,4.2,5.4
+774,female,some college,19,4,3,2.4,4.8,4.4
+776,female,some college,20,4.8,5,4.2,3,5.4
+777,female,high school graduate,19,3.6,2.2,4.8,5.2,4
+778,female,college graduate,23,5.4,4.8,2.4,3.8,4.4
+779,male,some high school,19,3.2,3.2,3.4,2.8,3.2
+780,female,some college,21,5.4,3.4,5,2.2,5.2
+782,male,some college,21,4.8,4,5.4,3.2,6
+783,male,some college,25,5,4.6,4,3.8,5
+784,female,some college,22,4.4,3.4,4.6,2.4,4.2
+785,male,some college,21,4.8,5.6,4.6,1,5.8
+787,male,some college,21,3.4,4.4,4.8,3.4,4.2
+788,female,high school graduate,19,4,4.4,4.4,2.4,4.8
+790,female,high school graduate,31,4.6,4.6,5.4,2.6,3.8
+791,female,college graduate,34,4.6,4.2,3.6,2.4,4.4
+793,female,some high school,37,4.6,4.4,4.6,2,5.2
+794,female,graduate degree,39,4.8,3.6,5.4,2.4,4.2
+804,male,graduate degree,74,2.6,5.6,3.6,2,6
+807,male,college graduate,48,2.4,6,5.8,2,5
+808,female,some college,32,4.4,3.8,4.8,3.4,4.8
+809,female,college graduate,44,4.4,5.4,5,2.2,5.8
+810,female,some college,40,5.8,5.4,5.6,3.2,3.8
+811,female,college graduate,23,5,4.6,5.4,2.6,4.6
+812,female,some college,40,5.2,5,5.4,3.2,4.6
+813,female,some college,39,6,4.8,4.8,1.8,4.8
+815,female,some college,25,3.8,3.2,3,5.2,2.8
+816,female,some high school,24,5,4.4,3.6,1.2,4.6
+819,male,college graduate,34,4.6,4.8,4.8,2,4.8
+820,female,some college,20,3.8,3.4,4.2,3.8,4.8
+821,female,some college,63,4.4,2.2,3.8,4.2,5.6
+823,female,graduate degree,28,6,5,6,3.4,6
+825,female,some college,39,4.2,4.8,4,3.8,3.6
+826,male,college graduate,35,4.8,5,5.6,1.2,5
+828,male,some college,20,4.2,4.4,3.8,2,5.4
+829,female,some college,23,5.4,5.6,3.8,1.6,2.6
+831,female,high school graduate,42,5,4,4.4,1.2,3.2
+833,female,some college,19,5.2,3,3.8,5,4.6
+835,female,some college,22,4,3.8,4.4,4.2,4.8
+836,female,some college,23,5,4.4,5.4,2.6,4.6
+837,female,some college,24,5.8,5.4,5.6,2.6,4.8
+838,female,college graduate,25,5.8,5.8,4.8,4.2,5.2
+839,female,some college,21,4.6,3.4,4.6,5.8,2
+840,female,college graduate,39,4.2,4,3.6,4,4
+841,male,graduate degree,31,4.8,4.4,5,1.8,4
+842,male,some high school,18,3.6,4.8,4.8,3.6,4
+843,male,some college,20,2.8,5.8,4.4,1.6,5.8
+844,male,some college,20,2.4,6,4.2,1.4,5.4
+846,male,college graduate,24,4.8,4.6,3,1.2,4.6
+849,male,some college,22,5.8,4.2,4.8,3.4,5
+850,female,some college,21,5,3.6,4.2,4,5
+851,female,college graduate,23,4.6,3,3.2,3.6,3.2
+853,female,some college,20,5.2,3.8,4,5.4,4.4
+855,male,high school graduate,48,4.2,2.4,3,5.2,4.6
+856,female,graduate degree,29,5.4,5.4,4.6,2.4,4
+857,female,some college,23,4.6,4.2,2.6,3.6,4.4
+858,female,some high school,34,5.6,5.2,5,3.2,5.2
+859,male,some college,21,4.2,4,5.2,1.8,4.6
+860,female,some college,27,5,5,4,4.8,4
+861,female,college graduate,28,3.8,2.8,2.8,1,2.4
+864,male,college graduate,41,5.4,5.4,4.4,2.8,4
+865,female,high school graduate,34,5.2,2.8,4.4,5.2,5.8
+866,male,college graduate,32,6,5.6,5.6,1,4.8
+867,male,some high school,31,5,4.8,3,3,4
+868,female,some college,22,3.6,4.2,3.8,3.2,6
+869,female,some college,31,5.4,5.4,5.2,4.2,4
+871,male,high school graduate,35,4.6,3,1.8,2.6,4.6
+872,female,high school graduate,48,5,5,4.2,2.2,4.2
+873,male,graduate degree,34,4.8,4.8,5,2,5.2
+874,female,graduate degree,31,5.4,4.8,4.8,2.8,5.8
+875,male,college graduate,32,4.4,3.6,3.2,1.8,5
+876,female,some college,20,3.8,3,2.4,5.2,4.4
+877,female,some college,19,3.8,4.6,5.2,1.6,5.4
+878,female,graduate degree,50,5.4,4.4,4.4,2.2,3.6
+879,female,some college,35,5,6,5,4.2,3.8
+880,female,high school graduate,23,5,2.6,2.4,2.6,3.4
+881,male,some high school,18,3.2,4,2.6,2.8,5.4
+882,female,some high school,21,5.2,4.8,5.2,1.8,3.8
+883,female,some college,20,5.2,3.8,3.2,3.6,5.2
+884,male,graduate degree,54,5.4,3,4.8,4,4.4
+885,female,some college,51,4.4,5,3.2,2.8,3.8
+886,female,high school graduate,20,4.4,4,4.4,2.4,4
+887,female,some high school,38,4.8,4.8,1.8,4.4,3.2
+888,female,college graduate,53,4.6,4.6,5.4,3.6,3.8
+890,female,some high school,33,3.2,6,4,1.8,4.2
+893,female,high school graduate,38,5.8,5,4.6,3,5.6
+895,female,graduate degree,34,5,4.4,5,2.4,5
+897,female,some high school,20,3.8,2.4,1.2,3.8,3.6
+898,female,college graduate,27,4.6,5.4,5,4,5.6
+899,female,high school graduate,42,4.6,4.2,5.6,1.8,4
+900,female,some high school,18,3.8,4.6,3.2,1.8,5.6
+906,female,some high school,20,5.2,3,3.6,5.2,4.8
+907,female,some college,19,4.4,3.8,5.2,3,3.4
+908,male,some college,20,5.2,4,4,3,4.6
+909,female,some college,19,5.2,3.8,4.6,2.6,4.2
+910,male,some college,20,5.2,4.6,5.6,1.4,5.8
+911,female,some high school,43,4.6,4,5.4,2.8,3.6
+912,female,graduate degree,43,5.8,5.6,4.6,1.4,5.8
+915,male,college graduate,24,3.8,2.8,3.6,4.8,5.4
+916,female,some college,20,4.4,3.2,3.6,2.6,5.2
+917,female,high school graduate,23,5.8,4.4,5.2,2.8,6
+918,female,some college,25,4.6,5.4,4.8,2.6,4.8
+919,female,college graduate,25,4.6,3,5,4,3.8
+920,male,graduate degree,37,4.6,5,5.4,2.4,6
+921,male,graduate degree,51,4.4,3.6,3.6,4.2,4.4
+922,female,some college,36,5.4,5.4,3.4,3,5.6
+924,male,graduate degree,56,4.8,4.6,4.2,2,5.8
+925,male,some college,19,5.6,4.4,5.2,4.8,4.8
+926,female,graduate degree,41,5.8,4.8,4.6,4,4.8
+927,male,some college,20,4,2.8,5,2.8,4.2
+928,male,some college,22,3.8,5,5.8,2,4.8
+929,female,some college,38,5,2.4,3,4.8,2.6
+930,male,graduate degree,52,2,5.2,2.6,2.6,5.8
+931,female,some college,37,4.2,5.2,2.8,5.8,3.4
+932,female,high school graduate,27,4.4,3.6,3.4,4,4
+933,female,some college,19,5.2,6,5.2,3,4.2
+934,female,high school graduate,45,6,4.4,4.4,4.6,2.2
+935,female,some high school,28,3.2,1.8,3.4,3.6,4
+936,female,some college,31,5.6,5.6,5.8,1,5.2
+938,female,graduate degree,31,5.6,4.6,5,3.8,2.8
+939,female,some high school,28,5.4,5.4,5.2,4.2,5
+940,male,some college,21,4,2.4,1.2,3.8,3
+941,female,high school graduate,19,3.8,3.8,2,3.6,3.8
+942,female,some college,27,5.4,5.4,3.6,2,4.6
+943,male,some college,21,4,5.4,4.4,3.2,5
+944,male,some college,23,3.8,4.2,4.8,2.4,5.8
+945,female,college graduate,29,5.6,4.4,5.2,3.4,3.8
+946,male,some college,24,4.4,4.4,3.6,2.8,3.8
+948,male,some college,22,3.8,4,5.6,3.4,4.6
+949,female,college graduate,41,5.4,3.4,4,5.8,4
+950,male,some college,26,5.4,4.6,3,1.4,5.4
+952,female,some college,50,4.8,5.2,4.4,4,2.8
+953,female,graduate degree,29,4.6,3.8,4.2,2.6,4.6
+954,male,some college,20,4.6,3.8,3.2,2.4,4.4
+955,female,graduate degree,55,3.6,3.6,5,3.4,4.8
+956,female,some college,22,4.8,3.6,4,4.4,3.8
+957,female,some college,35,4.2,5.8,3.4,4,5.2
+958,female,some college,20,5.2,3.4,3.2,2.4,3.2
+959,male,high school graduate,49,4,4,2.8,3.6,4.8
+960,female,graduate degree,39,5,4.6,4.6,2,4.4
+962,female,some college,25,5.2,3.6,4.2,3.8,4.6
+963,male,graduate degree,25,5.8,3.8,2.6,3,6
+965,male,college graduate,38,4.6,3.2,4.6,2,5.4
+968,female,some college,19,3,3.4,4.6,5,4.6
+969,female,college graduate,56,6,4,5,1.8,4.8
+970,female,college graduate,28,5.4,3.2,4,4.2,4.6
+972,female,some college,26,5.6,5.6,4.8,4,3.8
+973,female,some college,46,4,4.4,5,4,4.8
+974,female,some college,21,4.8,4.6,3.4,1.8,3.2
+975,female,some college,46,5,5.6,4.6,4.4,4.2
+977,female,some college,19,3.2,5.4,1.6,6,2.8
+979,male,graduate degree,22,5.2,3.2,2.6,2.6,4.8
+981,female,some college,27,5.4,3.2,4.4,3.6,4.6
+982,female,college graduate,20,5.8,5,5.4,4.2,6
+983,male,graduate degree,21,4.8,5.8,4.2,3.6,5.2
+984,female,some college,21,5.4,5.4,3.8,3.6,4.2
+985,female,college graduate,55,6,4.6,5.6,1.8,4.8
+986,female,some college,24,5.4,2.8,3.4,3.2,3.8
+987,male,college graduate,25,4.8,4.4,3.2,1.8,4.6
+988,male,graduate degree,39,4,5.6,4.2,2.8,4
+989,female,some college,39,5.4,3.2,5.2,4.4,5.2
+990,female,some college,21,4.8,3.8,5,3.6,5
+991,female,graduate degree,37,4.4,3.8,3.2,2.8,4.4
+992,male,high school graduate,22,2.6,3,2.6,1.8,5.2
+993,female,college graduate,24,5.4,4,4.8,1,5.4
+994,female,some college,21,4.8,4.2,5,4.4,4.4
+996,male,some college,19,5,4,4.8,5.2,5.6
+997,male,some college,21,4.8,4,4.2,1.6,4.4
+998,male,graduate degree,30,4.8,3.8,4.6,2.8,5.2
+999,female,some high school,18,5.2,3.8,4,4,4.8
+1000,female,college graduate,53,4,3.6,3.2,5.2,5
+1002,female,college graduate,48,3.4,4.4,3,4.2,4.4
+1003,female,college graduate,30,5.4,4.8,4,3,3.8
+1004,female,some college,25,5.2,3.8,3.4,3.4,3
+1005,female,college graduate,35,4.6,2.2,4,2.8,5
+1007,female,some college,41,4.6,4,3.2,5,5
+1008,female,some college,41,5.2,5.2,5,1.2,4.8
+1009,female,some college,37,6,6,5.4,1,5
+1010,female,some college,60,4.8,4.6,4.4,3,4
+1011,female,some college,23,5.4,4.2,5.2,3.4,5.2
+1013,female,high school graduate,19,4.6,4.8,2.8,1.6,5.6
+1015,male,high school graduate,19,3.4,4.4,2.6,4.4,4.8
+1016,male,some high school,24,5.4,2.8,5.4,2.2,5.6
+1017,female,some college,21,4.4,5,3,3.6,3.8
+1018,female,some college,29,4.8,5.4,4.6,1.4,5
+1019,female,college graduate,25,5.2,3.6,4.8,3.6,3.4
+1020,female,college graduate,25,5.2,3.8,4.8,2,3.6
+1021,female,some college,18,4.4,5.6,4.8,2.4,4
+1022,female,graduate degree,37,5.2,3.2,4.4,5.8,4
+1024,female,some college,21,5.4,5.2,3.4,2.8,3.6
+1025,female,some high school,34,5.4,4.6,4.8,3.4,4.6
+1026,female,high school graduate,38,5.8,4.6,5.4,1.8,4
+1027,male,college graduate,30,4,3,4,4.4,4.2
+1029,female,some college,23,4.6,5.6,4,4.4,4.4
+1031,male,some college,37,4.6,5.2,5.2,1.4,6
+1032,male,college graduate,30,4.8,5.2,3,2.2,3.2
+1033,female,some college,21,4.4,6,5.6,3.4,4.8
+1034,female,some college,32,4.6,3.6,1.8,4.8,4.2
+1036,female,college graduate,55,4.6,3.4,3.2,2.8,5
+1038,female,graduate degree,22,6,3.8,5.2,2.4,5.2
+1039,male,some college,21,5.6,3.4,5,2,5
+1041,female,graduate degree,41,4.8,4.6,3.8,1.6,4.2
+1043,female,graduate degree,52,4.6,4.2,3.8,2.8,4.8
+1044,female,some high school,18,4.8,4.2,5.4,4,5.8
+1046,female,graduate degree,55,3.6,4.8,3.4,2.4,3.4
+1047,female,college graduate,43,5,5.4,5.6,1,4.8
+1048,male,some college,22,3,4,2.6,4.6,4.4
+1049,female,college graduate,25,5,5.2,4.4,3.6,5.2
+1050,female,some college,27,3,4.8,4,3,5.4
+1051,female,high school graduate,48,6,6,6,2.4,5.6
+1052,female,graduate degree,31,3.6,4.8,3,3.6,5.6
+1053,female,some college,24,4.8,4.8,5.4,3,4.2
+1055,male,some college,24,5.8,4,6,2.8,5.4
+1056,female,some college,21,5,5.6,4.6,4,5
+1057,female,some college,27,5,3.2,5.6,4.6,5.6
+1058,male,some high school,18,1.4,3,1.6,1,4.6
+1059,male,some college,24,4.8,5.2,3.6,2.8,4.2
+1061,female,some high school,19,4,3.6,2.6,4.8,4.8
+1062,female,graduate degree,52,5.6,6,3.2,2.2,4.6
+1063,male,some high school,18,5.6,3.2,3.6,3.6,5.4
+1064,male,some college,30,4.8,5.4,4,1.4,5
+1065,male,some high school,18,4,3,3.4,3.6,5.4
+1066,female,college graduate,22,2.2,4.6,4.6,3.4,5.4
+1067,male,college graduate,46,4,4.8,2.8,1.4,5.8
+1069,male,college graduate,28,4.4,3.8,3.2,4.2,5.2
+1070,female,some college,19,4.8,4.6,5,3.8,4.4
+1072,female,college graduate,24,2.2,4.4,3.8,2.2,4.6
+1073,female,college graduate,22,3.8,4,3.8,3.8,5
+1075,female,college graduate,24,5,3.6,4.8,1,5
+1076,male,some college,23,3.6,2.8,3.2,3.2,4.6
+1077,male,college graduate,23,4.4,3.2,3.6,2.2,6
+1078,female,graduate degree,22,5.2,4.4,4.2,5,5
+1079,male,graduate degree,24,3.4,5,3.8,2.4,4.8
+1080,female,some college,26,5.6,5,4.4,2,5
+1082,male,some high school,35,3.6,3.6,3.6,2.4,3.8
+1083,female,some college,43,5.6,4.6,4.8,1.8,4.6
+1085,female,graduate degree,37,5.4,5.6,5.4,1.4,6
+1086,female,some college,21,6,5.4,5.4,1.4,4.8
+1087,female,some college,21,4.6,3.6,5.6,2.8,3.4
+1088,female,graduate degree,25,4.6,4.2,2.8,1.8,3.8
+1089,male,some college,27,4.6,4.8,5,2.6,3.2
+1090,male,college graduate,22,4.2,4.2,3.2,2.8,5.2
+1091,female,some college,19,5.2,5.2,3.8,4.4,4.6
+1093,male,some high school,21,3.8,3.2,2.6,1.6,5.4
+1097,female,high school graduate,19,5.8,5.4,5.4,3.6,5.4
+1098,female,some college,22,5.2,2.4,3.4,3.8,5.4
+1099,female,some college,18,4.6,3.2,4.2,2.4,5.4
+1101,female,college graduate,22,3.6,2.4,2.8,3.8,3.6
+1102,female,some college,31,5.8,5.2,5,5.4,6
+1103,male,some high school,22,4.4,4.6,1,2.6,4.2
+1104,male,college graduate,23,4.4,4,4,2.6,4.4
+1105,female,some college,22,5.6,3.8,3.8,3.6,5.2
+1108,male,some high school,20,3.8,3.4,2.6,2.8,3.8
+1109,female,some college,28,5.8,3.8,3.6,4,5.8
+1110,male,college graduate,35,5.2,5.6,5.2,1,5.6
+1111,female,some college,20,4.4,4.8,3,3.4,4.6
+1112,female,college graduate,36,4.8,4.6,5.4,2,5.6
+1114,male,college graduate,28,4.2,3.6,2.2,2,5.4
+1115,female,high school graduate,40,4.4,3.2,2.8,2.8,2.6
+1116,female,some college,20,2.8,4.8,2.8,2.6,3.2
+1117,male,some college,23,4.2,3.4,1.2,2.6,4.2
+1118,female,some college,18,3.6,5,4.2,3.6,5.8
+1121,female,some college,22,4.4,3.4,4.6,2.2,5.2
+1123,male,high school graduate,32,3.6,3.4,3.8,3.4,5.6
+1124,male,some college,25,4,3.8,3.8,3.8,4.8
+1125,female,graduate degree,28,4.4,3.2,3,3.2,4.8
+1127,female,high school graduate,40,5,5,6,3.2,6
+1128,female,some college,28,5.2,5,5.2,1.6,5.2
+1129,female,high school graduate,33,4.6,3.8,4.6,3.2,4.6
+1130,female,college graduate,39,5.4,5.4,4.6,3.4,2.8
+1131,male,some college,20,5.4,3.8,4.2,1.4,4.6
+1133,female,graduate degree,28,5.4,4.6,4,3.2,4.6
+1134,female,some college,21,4.6,6,5.4,4,5.8
+1135,male,some college,36,5,5.4,5.4,1,5.8
+1136,female,graduate degree,50,5,5.4,3,2.4,5
+1138,female,some college,46,6,3.6,4.4,2.4,4.2
+1140,female,some college,38,6,5.2,6,1,5.8
+1144,male,high school graduate,19,4.4,5.4,4.6,1.8,3.6
+1146,female,graduate degree,29,4.8,3,3.4,3.2,4.4
+1147,female,some college,25,5.2,4.8,4.6,3.2,4.2
+1148,male,some college,25,4.6,3.2,2.6,5.4,3.6
+1149,male,some college,25,4.2,4,3,4.8,4.2
+1150,female,some college,21,4.2,3.4,4,5.8,5.8
+1151,female,some college,19,3.8,3,1.4,2.8,5
+1152,female,some college,40,5.6,3.4,3,2.6,3.2
+1154,female,college graduate,38,6,5.6,5,1.4,5.2
+1156,female,college graduate,43,5.4,3.6,4.2,3.6,3.6
+1157,female,college graduate,36,3.4,5,5.6,2.6,4.2
+1158,female,high school graduate,86,4.2,3.8,3,1.6,4.4
+1159,female,college graduate,24,4.6,3,5,3.4,4.4
+1161,female,college graduate,33,5.2,5,4.8,2.4,4.8
+1162,female,graduate degree,26,2.6,5.2,1.8,2.6,5.6
+1165,female,some high school,18,2.8,5.8,4.8,3.8,5
+1166,female,college graduate,50,4.8,2.4,4.8,3.4,5.6
+1168,female,college graduate,59,5.4,2.4,5,2.6,4.6
+1169,female,some college,19,3.6,2,3.8,2.8,5.2
+1170,female,some college,20,4.6,4.6,4.8,2,4
+1171,male,some college,19,3.8,3.6,3.4,2.4,4.6
+1173,male,high school graduate,20,4.6,3.4,4.8,4.6,5
+1174,female,graduate degree,24,4.4,4.4,3.8,4,4.2
+1175,male,some college,18,4.8,4.4,3.4,1.8,4.8
+1177,female,high school graduate,44,4.2,4.4,5.6,2.8,4.8
+1178,female,some college,32,5.8,4.6,5.6,4,5.4
+1179,male,graduate degree,27,5.2,4.6,3.6,2.2,4.8
+1181,female,high school graduate,20,4.8,3.6,4.2,4.6,3.4
+1182,female,high school graduate,54,4.6,2,5,3,4.8
+1183,female,graduate degree,25,5.4,2,5.6,4.4,5.2
+1184,female,high school graduate,43,5.6,6,5,1,4
+1185,male,high school graduate,20,2.4,2.2,1.2,3.6,4.8
+1186,male,some college,20,4,3.2,3.8,3.8,4.2
+1187,female,some college,28,5.6,4.2,3.4,5.8,5.6
+1188,male,college graduate,38,3.4,3.4,3.4,4.4,4.2
+1189,female,college graduate,23,2.6,4.4,3.8,2.2,4.6
+1190,female,some college,26,3.6,4.4,4,2.8,4.8
+1191,male,college graduate,31,4.8,3.4,4.8,3.2,5.2
+1192,female,high school graduate,53,4.8,3,4,3.6,4.6
+1193,female,graduate degree,45,5,4.2,4.8,3,4.8
+1194,female,college graduate,20,5.2,3.8,4.6,3.8,5.2
+1195,female,graduate degree,52,5.4,5,4.8,2.8,5.4
+1196,male,some high school,19,2.6,3,1,4,4.2
+1197,female,some high school,31,4.8,3.8,5,1.8,5.4
+1198,female,some college,18,3.6,4.8,4,2.8,3.6
+1199,female,some college,23,4,3,3.6,1.8,3.8
+1200,female,some college,18,5.4,5.2,4.4,2.2,3.8
+1201,female,college graduate,29,5.4,2.2,4.8,1.6,5
+1202,male,graduate degree,46,5.4,5.4,4.2,4.8,5.2
+1203,male,graduate degree,58,3.8,4,4.4,3.6,4.8
+1204,female,graduate degree,38,5.6,4.6,4.4,1.8,5.8
+1205,female,graduate degree,27,2.2,2.4,2.2,4.2,3
+1206,female,graduate degree,41,5.6,5.2,5.2,5.4,5.6
+1207,female,some high school,58,5.4,3.2,4,2.4,4.4
+1208,male,college graduate,34,5.6,5.8,5.6,2,4
+1210,female,graduate degree,33,4.8,4,5.6,1.2,5.8
+1211,male,some college,19,3.4,4.8,4.2,2.6,4.4
+1212,female,some college,18,4.6,3.8,4,3.8,4.4
+1213,female,some college,20,4.6,1,3.4,6,5
+1214,female,some college,27,5,3.2,5.2,4.2,5.6
+1215,female,some college,20,5.4,5.2,5.2,2.2,4.8
+1217,male,graduate degree,32,2.6,1.2,2.4,4.6,5.6
+1218,female,graduate degree,32,5.2,3.6,2.6,3,4.6
+1219,male,high school graduate,45,5,5,4.2,2.4,5.2
+1222,male,some high school,35,4.8,3.2,5.2,3,4.8
+1223,female,graduate degree,26,5.8,4.8,3.8,3,5.2
+1225,female,some college,28,6,3.8,4.8,2.8,4.6
+1226,female,some college,26,5.8,4.6,5.8,2.4,4.4
+1227,female,some college,26,5,2.8,4.4,2.8,4.2
+1230,male,graduate degree,30,4,4,2.8,4,5
+1231,male,high school graduate,43,5,5,4.4,1.4,4.4
+1232,male,high school graduate,38,4,2.4,4.6,5.4,4.2
+1233,female,some college,19,4.6,5.2,4.2,1,5.4
+1234,female,high school graduate,22,4.8,2.4,2.4,4.6,4.4
+1235,female,college graduate,34,4,5,4,5.4,5.6
+1237,male,some college,26,4.4,4.8,5.2,1.6,5
+1238,male,graduate degree,45,5.4,5.4,5,2.4,5.8
+1240,male,graduate degree,40,5.4,3.8,5.4,3,5.2
+1242,male,high school graduate,61,3.6,4.8,3.2,4,5.6
+1244,female,some college,49,5.4,4.8,4.4,1.6,5.2
+1245,male,college graduate,38,4.4,4.6,4.6,3.6,5.4
+1248,female,college graduate,38,6,5,5.6,2.6,4.4
+1249,female,some high school,28,5.8,4.8,4.6,1.4,5.2
+1250,male,some college,20,4.4,5.6,6,1.4,4.8
+1252,female,graduate degree,29,4,4,2.6,4,4
+1253,female,some high school,19,4.6,3.6,3,6,5.4
+1255,male,high school graduate,19,5.2,4.2,4.6,1.2,5.2
+1256,male,some college,18,4.8,5.2,4,3.2,4.4
+1257,female,some college,18,2.8,4.2,5.6,3.4,3.4
+1259,female,college graduate,34,4.8,4.2,4.4,2.4,3.8
+1260,female,college graduate,45,6,4.6,5,1.8,5.6
+1262,male,some college,18,3.6,3.6,3.6,2.4,3.8
+1263,female,some college,37,3.4,4.8,4,4.6,3.6
+1264,female,some college,24,3.4,4.8,4.6,1.6,4
+1265,male,some college,29,4.2,4.4,4.4,2.2,3.6
+1266,female,graduate degree,60,5.2,4.6,5.2,3.2,5
+1267,female,some college,25,6,6,4.4,6,6
+1268,female,high school graduate,32,3.4,4.8,4.4,1.2,5.8
+1269,male,some high school,21,4.8,5,3.8,1,3.8
+1270,male,high school graduate,26,5.8,3.4,4.8,4,5
+1271,female,graduate degree,43,5,4.6,3.6,2.8,3.8
+1272,female,college graduate,25,5.4,3.6,4.4,3.8,3.8
+1273,male,college graduate,25,4.6,3.4,3.8,5,4.8
+1274,female,some college,20,4.2,4.4,4.8,1.8,4.6
+1276,female,graduate degree,28,5.2,3.8,4.8,2.4,5.4
+1277,male,some college,23,3.2,5.2,4.4,2.6,5.8
+1278,female,college graduate,23,5,4.2,5.2,2.4,4.4
+1280,female,some college,19,5,5.4,5.4,2.8,4.2
+1281,female,some high school,20,4.4,2,2,4.8,3
+1282,male,graduate degree,60,5,4,4,2.2,4.4
+1283,male,college graduate,40,5,3.4,2,4.8,4.2
+1284,female,some college,19,4.2,5.2,4.6,1.6,4.2
+1285,female,some college,18,4.6,3.6,4.4,3.8,3.4
+1286,female,some high school,21,4.2,5,1.8,1.6,3.8
+1287,female,some college,49,5.4,3.6,3.8,2.4,4.6
+1288,female,some high school,24,4.2,5.2,3.4,5,4.6
+1289,male,some college,20,4.6,5.2,4.8,2,3.4
+1290,female,some college,20,5,3.8,4.2,2.6,4.2
+1291,female,graduate degree,28,4,3.8,3.8,4,4.8
+1295,male,some college,28,3.6,5,2,2.8,4.2
+1296,male,college graduate,29,4.2,2.6,2.2,2.8,3.4
+1297,male,some college,22,4.2,4,4.6,2.4,4.2
+1298,male,high school graduate,26,4.4,2.6,4.2,4.6,4.6
+1299,male,high school graduate,20,2.8,2.8,1.4,4,5.4
+1301,male,some college,18,3,1,3.4,5.2,3.8
+1302,male,graduate degree,38,4.6,3.2,3.2,3,5.2
+1303,female,some college,19,5.8,4.6,5.4,2.4,4.2
+1304,female,some college,23,5,5.4,2.2,3.6,3.4
+1305,male,college graduate,32,4,4.6,4.4,1.4,5.4
+1306,female,some college,36,4.8,5.4,4.6,1.4,5.2
+1308,male,college graduate,37,3.2,3.8,2.6,2,5.8
+1309,male,some college,23,2.6,2.8,1.2,3.8,2.4
+1310,female,some college,22,6,3.8,4,2.2,4.4
+1311,female,college graduate,33,4.6,4.6,4,3,4
+1312,female,some college,20,5.4,5.6,4.6,2,5.6
+1313,male,high school graduate,43,3.8,6,5,4.8,5.6
+1314,female,some college,21,5.6,4.2,4,2.6,4.8
+1315,female,some college,34,5,5.6,6,2.2,5.2
+1316,male,some college,25,4.4,5,4.8,4.2,4.6
+1317,male,some college,30,3.6,4.2,4.6,2.8,5
+1318,female,college graduate,57,4.8,3.8,4,2.2,5
+1320,female,some college,24,6,3.8,4.4,2.6,4
+1321,male,some college,23,4.4,4.6,5.4,1.8,6
+1322,male,high school graduate,31,5.4,4.4,5,1.2,4
+1323,male,college graduate,50,5.2,5.2,4.2,1.6,5.2
+1324,male,some high school,18,4,4.8,3.8,3.6,4.8
+1325,male,some college,23,4.6,2.4,4.6,2.6,3.6
+1326,female,some college,27,4.2,3.8,2.8,3.6,4.6
+1327,male,some college,21,5.2,5.2,4.8,1,4.4
+1328,female,some college,21,3.8,4.4,3.4,2.6,3.6
+1330,male,some high school,30,2.8,2.8,4,3,3.4
+1331,female,some college,37,4.6,5.2,4.6,3.2,4.8
+1333,male,some college,19,4.8,2.6,1.6,6,4.2
+1334,female,some college,26,4.4,3.8,3.2,2,4.2
+1336,male,graduate degree,25,4,3.2,4,3.4,4
+1337,female,high school graduate,22,4.8,2.4,5.2,5.4,6
+1338,female,some college,19,4,3.8,3,4,3.2
+1339,female,some college,19,5,3.6,4.8,2.8,5
+1340,female,some college,19,5.2,5.8,4.2,3.2,4.6
+1343,female,college graduate,54,5,4.6,4.2,4.2,5
+1346,male,some college,20,4.8,4.8,5,2,4.4
+1347,female,graduate degree,28,4.2,3.2,6,4,5.4
+1348,female,college graduate,35,4.2,4.8,4.6,5.8,5.4
+1349,male,graduate degree,67,4,2.4,2.6,3.6,4.2
+1350,female,some college,26,5.6,5.6,5.4,2.4,4.6
+1351,male,some college,23,3.8,5.6,6,2.2,6
+1352,male,some high school,43,5.4,4,3.8,2.4,4.2
+1353,female,some college,20,5.4,4.8,3.8,4.4,4.8
+1356,male,some college,20,4.8,5,4.8,1.8,5.2
+1357,male,college graduate,28,4.4,3.2,2.6,2.2,5.6
+1358,male,college graduate,28,4.8,5.6,2,3.6,5.4
+1359,female,some college,25,2.8,4.8,2,2,5
+1360,female,some college,25,3,5,3,1.8,5.2
+1361,female,college graduate,35,3.6,3,4.4,5,4.4
+1363,male,some college,56,4.2,3.8,3.8,3.8,4.4
+1364,female,some college,20,4.2,5.6,5.2,2.6,4.8
+1365,female,some college,39,5.8,6,3.6,3.6,4.2
+1366,male,high school graduate,35,5,5.2,2,5.2,5.4
+1367,female,some college,22,5.4,4.6,5,2,5.4
+1368,female,some college,26,4.4,4.8,4.4,3.8,4
+1369,female,some high school,31,4.6,3.4,4.4,1.6,5
+1370,female,college graduate,50,6,5.4,4.8,3.4,4.4
+1372,male,college graduate,23,2.2,6,3.8,1.2,5.6
+1373,female,graduate degree,40,5.6,3.8,4.4,4.4,3.6
+1374,female,high school graduate,44,6,2.6,5.2,2,4
+1376,male,college graduate,43,2.6,4.6,3.4,2.6,3.8
+1377,female,some college,20,4,3.6,4.2,1.6,4.6
+1378,male,some college,24,4.2,5.4,4.6,3.2,4
+1379,male,college graduate,55,6,5.6,4,1,5
+1380,female,graduate degree,45,5.4,2.4,5.6,2,4.2
+1381,female,graduate degree,25,5.8,3,6,2.6,4.8
+1382,female,some college,21,5.6,3.6,4.8,2.4,5.2
+1383,female,high school graduate,38,4.8,6,2.8,1.2,4.8
+1385,male,high school graduate,30,5.8,4,5,1.6,4.8
+1387,female,some college,27,6,5.4,5.2,2.4,4.6
+1388,female,some college,48,4.6,2.6,3.6,5,3.6
+1390,female,some college,21,5.8,4.8,4.2,2.8,5.4
+1391,male,high school graduate,23,4,2.8,3.8,3.6,2.8
+1392,female,some college,20,3,2.6,3.6,2.6,3.4
+1393,female,some college,23,5.8,4.4,4.4,4.2,4.4
+1394,female,college graduate,24,5.2,4.6,4.4,3.4,4.6
+1395,female,high school graduate,29,5.6,5.4,3.6,2.6,4.2
+1396,female,graduate degree,30,4.2,4.2,3.6,5.4,4.2
+1397,female,some college,33,5,4.4,4.2,4.6,5.2
+1399,female,graduate degree,26,2.4,4.2,3.6,5.2,5
+1400,male,college graduate,41,3.4,3.4,3.6,2.2,5.4
+1401,male,some high school,19,3.6,5,4,3.8,4.4
+1402,female,some high school,20,1.8,2.6,1.8,5.4,4.4
+1403,female,graduate degree,44,4.4,5.6,4,3.6,4.6
+1404,female,some college,27,5.8,3.4,4.4,2.2,5.2
+1406,female,graduate degree,40,4.4,4,2.6,3,5
+1408,female,some college,20,4.4,4.8,2.8,3.8,4.8
+1409,female,high school graduate,25,4.6,4.6,4,2.4,4.2
+1410,male,some college,18,3,3.6,2.8,2.2,4.2
+1411,female,some college,22,5.6,2.8,5.4,2,4
+1412,male,high school graduate,27,4.2,4.2,3.6,2.2,4.8
+1413,female,some high school,18,3.6,4.4,4.2,5.8,6
+1414,female,college graduate,24,4.8,2.8,5.2,4.2,5.6
+1415,male,graduate degree,35,4.8,4.8,4.8,2,4
+1416,male,graduate degree,40,5.4,4,5,2.8,5.6
+1418,female,college graduate,24,5.4,3.8,4.8,4.2,5.2
+1420,female,college graduate,54,4,5.8,4.2,3.8,3
+1421,female,college graduate,29,4.4,4,3.2,3.8,4.4
+1422,male,some college,26,5.2,3.4,4.8,4,5.4
+1423,female,some college,26,5.2,4.2,4.4,1.8,4.8
+1424,female,college graduate,26,4,5.2,3.6,3.4,4.4
+1425,female,some college,39,5.8,5.6,4.8,2.4,4.6
+1426,female,some high school,18,3.2,2.6,2.2,5,3.2
+1427,female,high school graduate,28,4,5.6,4,2.4,4.2
+1429,male,graduate degree,27,5.2,4.2,3.8,2.8,3.8
+1430,male,some college,23,2,3,3,1,3
+1431,female,some college,32,5.6,5.6,5.2,3.8,5.6
+1432,male,graduate degree,56,6,4.8,5.8,1.6,6
+1433,female,some college,19,5,4.6,5,3.6,5.2
+1435,female,college graduate,41,5.2,5.8,3.4,5.2,3.6
+1436,male,graduate degree,67,4.2,5,3.2,1,5.8
+1437,male,high school graduate,36,3.4,5,2,3,5
+1438,female,graduate degree,32,5.2,4.4,5.2,4,5
+1439,female,college graduate,21,2.8,3.6,1.4,3.8,5.2
+1440,female,some college,18,3.6,4.8,1.8,3.4,3.8
+1441,female,graduate degree,29,3.4,4.4,2.8,4.8,5.4
+1442,female,some college,26,4.2,3.6,4.4,4,3.4
+1443,female,some college,19,2.8,4.4,1.6,3.2,4
+1445,male,college graduate,32,3.8,4.6,4.4,2.6,5
+1446,female,some college,18,5.2,4,3.4,4.2,5
+1447,female,some college,19,5.2,4.8,5,2,4.2
+1448,male,graduate degree,63,3.8,5,5.2,1,6
+1449,female,graduate degree,27,5.6,6,5.2,1.6,5.6
+1450,female,some college,20,2.8,2.6,1.6,4.4,3.4
+1451,female,some college,54,4.6,4.2,2.4,3,5.2
+1452,male,graduate degree,25,3.8,1.8,1.4,3.2,3
+1453,male,college graduate,46,3.6,3,3,4.2,3.4
+1455,female,graduate degree,38,4,5.4,2.2,2.8,3
+1456,female,some college,32,5,4.6,5.8,2,5.6
+1457,male,college graduate,24,4.6,5.4,3.6,2.8,5.2
+1458,female,some high school,54,4.6,4.4,3.2,2.2,4.8
+1459,male,college graduate,38,2.6,3.4,2.2,3,5.6
+1460,female,some college,29,5.2,5.2,5,3.8,3.4
+1461,male,graduate degree,24,4.8,2.8,2.6,2.6,4.4
+1462,female,graduate degree,23,5,2.4,4.6,3.8,4.4
+1464,male,high school graduate,19,5.8,3.2,4.6,2.8,5.4
+1465,female,some college,28,3.8,3,2.6,4.2,2.2
+1466,female,some college,20,5.8,5,5,2.8,5
+1467,female,some college,29,4.6,5,4.2,2.8,4.6
+1469,female,high school graduate,23,4,3.6,3.6,5.6,3.8
+1470,female,high school graduate,23,2.6,3.8,4.2,5.6,3.8
+1472,female,some college,19,4.6,2.2,5.2,2.8,5.2
+1475,female,some college,27,3.6,3,2.8,5.6,4.2
+1476,male,some college,21,2.6,4,2,1.4,4.2
+1478,female,college graduate,28,5,4.8,5.2,3.2,4.4
+1479,female,some college,33,4.6,4.2,3.6,2.4,4.8
+1480,female,some college,27,4.8,1.8,1.8,6,4.2
+1481,female,some college,52,5.4,3.8,5,1.6,3.8
+1482,female,graduate degree,36,4.4,4.2,2.6,3.6,4.2
+1483,female,graduate degree,36,5,5.2,2.8,3,4.6
+1484,female,graduate degree,29,5.4,4.4,4.8,4.6,5.2
+1485,female,some college,20,5,5.2,5.4,2,4.4
+1487,male,college graduate,37,3.4,5.2,3.4,3.8,5.2
+1488,female,graduate degree,42,5.6,4.4,4.8,2.4,5
+1489,male,some college,19,4.4,3.2,5,3,6
+1490,male,college graduate,30,5.4,3.8,4.4,3.6,4.6
+1491,male,some college,18,4.2,3.6,4.6,2.4,5.2
+1493,female,college graduate,27,4.8,5,3.2,3.6,4.4
+1494,male,high school graduate,18,5.2,5.8,5.2,3.4,5.4
+1495,male,high school graduate,24,2.2,3.4,2,1,5.4
+1496,female,some college,20,3.4,3,2,1.4,5.4
+1498,female,some college,21,4,5,4.8,3,3.8
+1499,female,some college,21,4,4,3.6,3.8,4.2
+1500,female,graduate degree,66,5.6,5,5,1.2,4.8
+1501,female,some high school,22,5.4,4.4,5,3,4.4
+1502,male,some high school,49,4.2,5.6,4.8,3.2,3.8
+1504,female,college graduate,19,3.2,4.4,3.2,3.2,5.6
+1505,female,college graduate,19,3,4.4,3,2.8,5.6
+1506,female,graduate degree,32,5.6,1,3,5.8,6
+1507,female,some college,29,5.8,4.6,5.8,2.8,5.2
+1508,female,college graduate,31,3.8,3.8,4.8,2.6,6
+1509,male,high school graduate,21,5.4,3.4,5.4,3.2,6
+1510,female,high school graduate,27,5.4,4.8,5.2,1.6,5.4
+1511,female,some college,23,3.4,2.6,4.8,4.8,3.4
+1512,female,some college,20,4.8,4.2,4,3.2,5.4
+1513,female,high school graduate,57,4.2,4,3.2,3,3
+1514,female,high school graduate,38,4,5.6,4.2,3.6,5.6
+1515,female,high school graduate,18,4.8,3.2,3.8,3.2,5.4
+1516,male,high school graduate,23,4.6,3.6,3.6,6,3.6
+1517,female,some college,34,5,5.4,4.4,3.2,4.2
+1518,male,college graduate,67,4.8,3.2,2.2,5.2,5.2
+1519,female,some college,30,4.6,3.4,5.8,4.6,4
+1520,female,graduate degree,31,4.2,4.2,4.2,3.6,5.6
+1521,male,college graduate,54,3.8,5.2,1.4,2.6,5.6
+1522,male,graduate degree,32,4.2,5,4,1.4,3.8
+1524,female,some college,20,3.8,5.6,5,3.6,5
+1525,female,some high school,20,1.8,1.4,1.6,5.6,3.8
+1526,female,some college,34,5.4,5.8,5.2,4,5.4
+1529,male,some college,27,4.4,4.2,5.4,2,5.8
+1530,male,some college,19,4,3.2,3,5,5.2
+1532,male,some college,21,5,4,4,1.8,4.4
+1533,female,some college,23,2.8,2.8,4.4,3.4,4.8
+1534,male,college graduate,42,4,4.6,2.8,1,5.4
+1535,female,some college,27,5.4,2.8,5.4,4.6,4.4
+1536,male,some college,19,4.8,2.6,3.6,4.4,3.6
+1537,female,some college,21,4.8,4.2,4.4,4.4,4.8
+1539,female,graduate degree,58,5.4,3.6,2.6,3.4,3.8
+1540,female,some college,20,4.4,5,3,6,4.8
+1541,male,some college,29,4.4,5.6,5,1.6,4.8
+1542,female,some college,18,5,2.8,4.8,3.6,4.4
+1543,female,some high school,18,3,2.8,4.6,4.2,4.6
+1544,female,high school graduate,21,4.4,4.6,4.4,2.2,3.4
+1545,female,graduate degree,36,5.8,4.6,4.8,4.6,5.4
+1546,female,some college,18,3.8,4.8,4.8,3,4.2
+1547,female,graduate degree,53,6,4.8,5.4,1.8,4.8
+1548,male,college graduate,23,5,2.4,3.4,4.2,2.6
+1549,female,some college,19,2.6,4.4,2.4,4.2,2.4
+1550,male,some college,22,4.2,4.2,4.2,4.4,4.4
+1552,female,some college,20,5.2,5.6,4.8,2.2,5.6
+1553,female,college graduate,24,3.6,3,4.2,3,5
+1554,female,high school graduate,23,4.8,4,4.6,2.6,4.8
+1555,male,some college,20,4.4,3.8,3.8,5,3.8
+1556,female,college graduate,33,5.4,4.6,5,5.2,5
+1559,female,some college,21,4,4.4,3.4,2.2,5.8
+1560,female,graduate degree,31,4,4.2,4,6,4.6
+1561,female,high school graduate,57,4,5.4,4.4,1,4.8
+1562,female,some college,20,6,4,4.8,3.8,5.4
+1563,female,high school graduate,19,4.6,4,4.4,5,4.4
+1564,female,high school graduate,19,4.6,5,4.4,4,5.4
+1565,female,high school graduate,19,4,4.4,3.6,4,5.4
+1566,female,high school graduate,19,4,5.8,3.6,2.6,5.4
+1567,female,high school graduate,19,4,5.4,3.6,2.6,5.4
+1568,female,high school graduate,19,4,5.4,3.6,2.2,5
+1569,female,high school graduate,19,4,5.4,3.6,2.8,5.6
+1570,female,high school graduate,19,4,5.4,3.6,2.2,4.6
+1571,female,high school graduate,19,4,5.4,3.6,3.2,5.6
+1572,female,high school graduate,19,4,5.4,4.6,3.2,5.6
+1573,female,some college,19,3.4,4.2,3.6,2,2.8
+1574,male,graduate degree,42,4,4.2,2.4,5.2,4
+1575,female,graduate degree,46,4.4,4.4,4.6,6,3.2
+1577,female,some college,20,4.4,4.2,3.2,3.2,3.8
+1578,female,college graduate,20,3.8,3.6,3.8,4.6,4.4
+1580,male,high school graduate,25,5.4,5.4,5,1.4,4.6
+1581,female,high school graduate,19,4,4.6,4.4,3.2,4
+1584,female,some college,19,3.6,4.2,3,2,4.4
+1585,male,some college,34,5.2,5.4,5,1.4,3.8
+1586,male,some college,29,3.2,3.4,2.8,2.6,5.6
+1587,female,high school graduate,36,4.2,3.8,4.8,1.8,3.4
+1588,male,some high school,18,3.2,4.4,3,4,5.8
+1589,male,some college,25,4.4,3.2,3.2,2.6,3.4
+1590,female,some college,30,3.6,4.4,3.6,3.8,3.8
+1591,male,graduate degree,32,5,4.6,5.4,2.4,5.2
+1592,female,some college,32,4.6,3.2,3,5,3.8
+1594,female,some college,19,2,3.6,3.4,3.6,4
+1595,male,graduate degree,29,5.2,5.6,4.8,4.2,5.6
+1597,female,some college,27,4.8,4,4.2,2.6,3.8
+1598,female,graduate degree,41,5.4,4,4,4,6
+1599,female,college graduate,28,3,3.6,4,3.8,6
+1600,male,graduate degree,26,3.8,4.4,3.6,1.8,5.2
+1602,female,college graduate,43,4,4.4,4.4,4.4,5.6
+1603,female,graduate degree,37,5.2,4.4,3,4,5.2
+1605,male,graduate degree,20,6,6,4.8,2.8,4.8
+1607,male,graduate degree,21,5.4,6,5,2,5.4
+1608,female,college graduate,22,3,5.8,2,3,4.6
+1609,female,some college,20,5.2,3.4,4.4,2.8,5.6
+1610,female,some college,27,4.6,4.6,3.4,2.2,4.8
+1611,female,high school graduate,55,4.8,5,3.2,2.2,4.4
+1612,female,some college,39,4.6,3.8,3.4,3,4.4
+1613,female,graduate degree,31,4.2,3,4.4,4.8,5
+1614,female,graduate degree,33,3,5.4,5.4,1.2,6
+1615,female,college graduate,24,4.8,5.2,4.8,2.4,5
+1617,male,some college,50,4.4,4,3.4,2.8,4.8
+1618,male,college graduate,22,5.2,4.4,5.4,1.8,4.6
+1619,female,some college,52,6,4,5.6,1.4,4.4
+1620,female,graduate degree,32,4.2,2.8,4,4,3.8
+1621,male,graduate degree,25,3.6,3.6,2.6,1.6,4
+1622,female,some college,23,3.6,3.6,3.8,3.8,3.2
+1623,female,high school graduate,19,3.8,3.4,4,4,4.2
+1624,female,graduate degree,33,5.4,4.8,5.4,2.2,5.6
+1625,male,college graduate,46,4.4,3.6,4.4,2.4,5.2
+1627,female,college graduate,37,4.2,2.8,1.4,4.4,4.2
+1628,female,some college,19,3.4,3.8,2.8,2,4.4
+1630,female,college graduate,44,2.8,3.4,4.6,1.8,5.6
+1631,female,some college,31,5.2,5.8,5,2.4,5.4
+1632,female,some college,22,4.8,5.6,5.8,2.2,5.2
+1633,male,some college,20,4.2,3.8,4.2,2,4
+1635,female,some college,19,5,5.2,5.2,2,4.4
+1636,female,some college,19,4.2,2,2,4,5
+1637,female,some college,40,5.8,4.4,4.8,4,4.2
+1638,female,graduate degree,30,5.2,5.2,3.8,3.6,4.6
+1639,male,graduate degree,53,6,6,6,1,6
+1640,male,some college,20,5.8,2.2,4.4,1.4,4.6
+1642,female,college graduate,56,5.6,4.6,5.4,2.2,5.4
+1643,female,high school graduate,31,5.2,2.4,5,4.8,3.8
+1644,male,some college,20,3.2,4.8,3.4,3,4
+1645,female,high school graduate,25,3,4.4,2,4.4,5.8
+1646,female,some college,20,4,3.4,4.6,5,4.2
+1647,female,some college,31,5.4,3.8,5.4,2.6,4.4
+1649,female,college graduate,27,5,4.6,5,2.4,5.2
+1651,female,some college,31,4.4,3.8,4,3,3.8
+1652,female,some college,21,4.2,2.6,3.8,4,3.8
+1653,female,some college,20,6,4.6,5,3.2,5.2
+1654,female,some college,18,5.2,3.8,3.6,2.6,5
+1656,female,high school graduate,24,5.8,5.4,5.6,3.4,5.6
+1657,female,some college,45,5.2,5.4,4,1.2,3.2
+1658,male,some high school,40,5.4,4,4.2,2.8,5
+1659,male,graduate degree,28,5,3.8,4.2,4.6,4.8
+1660,male,high school graduate,24,3,3.8,3.2,2,6
+1661,male,some high school,25,4.6,5.8,4.6,2.8,6
+1662,female,high school graduate,20,3.8,3.4,5.2,4,3.8
+1664,female,some college,19,4,3.2,5,3,3.8
+1665,female,graduate degree,39,5.4,3.6,4.6,4.4,5.6
+1666,male,college graduate,39,6,4.8,5,1.2,4.6
+1668,female,high school graduate,19,4.8,4.2,5,4,3.6
+1669,male,some college,23,4.8,4.4,5,3.8,4
+1671,female,graduate degree,43,5.2,3.8,3.8,2.4,4.4
+1672,male,some college,20,3.8,5,5,2.4,4.4
+1673,male,some college,19,4.2,3.8,4.2,5.4,3.6
+1674,female,some high school,62,6,3.8,5.4,3.8,6
+1675,female,some college,20,4.6,3.2,4.6,5,5.2
+1676,female,college graduate,22,3.4,3.6,2.6,4.8,5.8
+1677,female,high school graduate,21,3.4,5.6,3.6,3.2,3.6
+1678,female,some college,23,5.8,5,4.6,4.2,5
+1679,female,some college,18,3.6,5.2,5,3.4,4.6
+1680,female,some college,18,3.6,2.8,6,2.4,5.6
+1681,male,some college,19,5.2,3.6,3,5.2,4
+1682,male,some college,18,4.8,4,4,3,3.8
+1684,male,college graduate,24,5.6,6,4.8,1.4,4.8
+1685,female,some college,23,4.8,3.6,3,5.2,5.4
+1686,female,some college,22,6,5.2,6,2.2,4
+1688,female,some college,34,4.6,3,3.8,5.6,3.4
+1689,male,graduate degree,43,4.6,4,3.8,2.2,4.6
+1690,male,graduate degree,33,3.2,4.2,3.2,2.4,4.8
+1691,female,high school graduate,25,3.6,4.6,5,3.2,5
+1694,female,graduate degree,38,4.8,4.4,3.4,4.6,4.8
+1695,female,college graduate,22,6,6,5.6,4.8,5.2
+1696,female,some college,39,4.8,4.6,5,2,4.2
+1697,female,some college,34,5.4,4,5.2,4.4,4
+1698,female,graduate degree,54,5.8,5.6,4.8,1.2,4.4
+1699,male,some college,56,5.2,5.2,4.4,1.6,4.4
+1700,female,some college,21,4.8,4.4,3.8,4.2,5.6
+1701,female,graduate degree,30,4.2,3.2,4.4,4,4.4
+1702,male,college graduate,22,4,3.6,2.4,4.4,3.2
+1703,female,graduate degree,31,4.8,4.8,5.6,2.6,4
+1705,female,graduate degree,24,4.4,4.2,4,3.4,5.4
+1706,female,graduate degree,23,5,3.6,4.2,3.6,3.4
+1707,male,some high school,21,3.6,4.2,3.8,2.6,3.2
+1708,male,some college,26,3.8,5.2,3.6,2.8,4.4
+1709,female,college graduate,21,3.4,4,2.8,4,5.2
+1711,female,high school graduate,35,4.4,3,5,4.2,5.2
+1713,female,some college,39,4.8,3.6,3.8,2.8,3.8
+1714,female,high school graduate,40,4.8,3.6,3,4,4.6
+1715,female,some college,41,5.2,4.2,3.4,2.2,3
+1717,female,college graduate,40,5.6,3.2,4.2,2.6,5
+1718,male,some high school,36,6,6,5.2,1.8,5.8
+1719,male,some high school,24,3.4,2.8,4.6,1.8,5.2
+1720,male,some high school,19,4.4,4.4,2.6,1.2,5.4
+1721,female,college graduate,22,2.4,2.8,3.4,5,5.4
+1722,female,college graduate,38,6,5,6,1,4
+1725,female,college graduate,20,3.4,4,2.6,4.2,3.4
+1726,female,some college,32,4.4,2.6,4,1.8,5.4
+1727,male,college graduate,23,5.2,2.8,4.6,4.8,3.2
+1728,male,high school graduate,20,3.6,5.2,2.4,4.6,6
+1729,female,college graduate,28,4.4,3.2,4.8,3,4.4
+1730,female,some college,20,5,4.4,4,4,4
+1731,female,some college,20,5.6,3.2,4,2.8,3.8
+1732,female,graduate degree,48,5.8,5.2,4.4,3.4,5
+1733,female,college graduate,28,4.4,3.4,4.8,2.2,4.6
+1734,female,college graduate,28,4.4,3.6,5,2.2,4.6
+1735,female,college graduate,28,4.8,3.6,5.2,2.2,5
+1736,female,college graduate,28,4.4,3.6,5.2,2.4,5
+1737,female,some college,29,4.4,3.6,3.6,4,4
+1738,male,college graduate,28,4.4,4.2,4.6,2.8,4.6
+1739,female,some college,21,5,4.2,5,4.2,5.8
+1740,female,graduate degree,26,3.4,5.8,3.6,3.2,4.6
+1741,male,some college,40,5.6,3.6,5.2,2,3.4
+1742,female,high school graduate,25,5.4,4.2,4.6,3.2,5.2
+1743,male,some high school,23,3.6,3.8,2.8,4.8,5.4
+1744,male,some college,19,4.8,3.4,2.2,1.8,4.6
+1746,female,graduate degree,53,5.4,3.2,3.6,2.8,4.2
+1747,male,college graduate,21,5.6,3.8,4.6,3.8,3.8
+1748,female,graduate degree,31,5.6,5,4.8,5,6
+1749,female,some college,29,5.8,5.2,3.8,3.6,5
+1750,female,college graduate,50,5.8,5.8,4,1.6,5.6
+1751,male,college graduate,54,3.2,5.6,4.4,2.6,5.4
+1753,female,some college,21,5.2,5.6,4.6,3.4,5.4
+1754,male,some college,22,5.4,2.4,4,1.6,4.8
+1755,female,graduate degree,32,4.8,2,3.4,2.4,3.8
+1756,female,some college,46,5.2,5.4,5.2,1.4,5.2
+1757,female,some college,40,5.8,6,4,5.6,4.8
+1758,female,graduate degree,52,6,5.4,4.6,1.4,5.4
+1759,female,some college,50,3,2.8,4,6,3.2
+1760,female,some college,19,5.2,4,4.4,4.2,4.2
+1761,female,graduate degree,25,5,3.2,3.6,3.8,3.6
+1762,male,some college,19,5.6,2.6,2.8,4.6,5.6
+1763,male,college graduate,22,6,5.2,4,4,3.6
+1765,female,graduate degree,29,5.4,3,5.6,4,3.6
+1766,female,graduate degree,38,4.8,4.8,4.8,3.6,4
+1767,male,graduate degree,32,4,4.6,1.8,3,5.8
+1768,female,some college,23,5.2,3.2,5.4,4.2,4.4
+1769,male,some high school,44,3,3.4,3,1,3.2
+1770,female,some college,35,4.6,5.2,4.4,4.4,4.4
+1771,male,graduate degree,21,5,4.6,3.6,2.2,3.2
+1772,female,graduate degree,29,5.4,4,4.2,2.2,4
+1773,male,college graduate,21,4.2,4.8,3.4,2.8,4
+1775,female,college graduate,23,3.8,4.2,4.2,4.8,4
+1777,female,some college,21,4.8,5.2,2.6,5.4,5.4
+1778,female,graduate degree,42,5.6,4.8,5.4,2.4,4.6
+1779,female,college graduate,30,4,3,2.6,3.4,4.6
+1780,male,high school graduate,39,3.8,3.4,4.6,4.6,5
+1782,female,graduate degree,36,5.6,5,5.4,1.6,4.8
+1783,female,college graduate,18,4,4.6,4.6,6,5.2
+1784,male,some high school,20,4.6,5.6,5.6,1,4.8
+1785,male,graduate degree,21,1.8,3,3.6,4.6,4.2
+1786,male,high school graduate,20,4.6,3.4,4.4,3.6,5.6
+1787,female,college graduate,35,5.4,5.4,3.4,3.4,6
+1788,female,some college,26,5.6,4.8,5,2.6,3.6
+1789,male,college graduate,26,4,3.2,3.4,4.4,4
+1790,female,high school graduate,40,6,3,4.6,6,6
+1791,male,college graduate,23,4.4,4.2,4.4,2,5.2
+1792,male,graduate degree,25,3,3.8,3.4,3.4,4.8
+1793,female,graduate degree,38,5.4,5,4.8,4.4,5.4
+1794,female,graduate degree,27,4.4,5,3.6,4.2,5
+1796,female,some high school,27,4.8,4.4,5.6,2.2,3.8
+1797,male,graduate degree,32,5.2,5.4,5.6,1.2,4.2
+1798,male,graduate degree,39,5.6,4.2,5.8,2.6,5.6
+1799,female,some college,31,4.6,5,5,4.4,4.8
+1800,male,graduate degree,31,3,4,4,5.4,4
+1801,female,high school graduate,20,5.8,4.6,5.4,2.6,4.6
+1802,female,graduate degree,32,4.8,4.8,5.2,2.6,4.2
+1803,female,some college,42,6,4.8,4,3,5
+1805,female,some college,26,4,4,4,3.4,4.2
+1806,male,some college,23,3.8,4.2,4,2.2,6
+1807,male,some college,32,5.4,3.6,3.6,4.6,5.4
+1808,female,graduate degree,27,4.6,5,2.6,4.6,5.8
+1809,female,some college,19,5.6,5,2.4,3.2,4.4
+1811,female,some college,31,6,5,5.6,2.4,5
+1812,female,graduate degree,25,4.8,4.4,4,2.6,2.6
+1813,female,graduate degree,29,6,4.4,5,2.6,5.4
+1814,male,some college,42,5.4,2.8,5.8,1.4,3.8
+1815,female,some college,39,4,5,5.2,4.2,4
+1817,male,graduate degree,24,5.4,5.2,5.6,2,4.8
+1819,male,graduate degree,30,5.8,4.8,5.4,2,4.8
+1820,female,college graduate,21,2.8,5.4,2.4,2.8,3.4
+1822,female,some college,25,5.2,5.2,5.4,2,5.2
+1823,female,high school graduate,48,5.4,3.4,5,2.2,5
+1824,female,some college,40,4.4,2,3.4,5.8,2.6
+1825,male,college graduate,44,4.4,4.2,3.8,4.2,5
+1826,female,college graduate,36,4.6,4.6,4,4.8,5
+1827,female,high school graduate,28,2.4,2.4,2.8,4.2,5.2
+1828,male,some college,39,5.4,4.8,4.4,1.6,5
+1830,male,some college,33,5.2,5.8,5.4,1.4,5.4
+1831,female,some college,21,5,4.2,4,1.4,4
+1832,male,some college,19,4.6,5.8,4.6,3.4,5.2
+1833,male,college graduate,45,4,3.8,4,3,5.2
+1834,female,college graduate,49,4.4,4.4,2.8,2.2,4
+1835,female,college graduate,23,4.4,5,4,3.2,4.6
+1836,female,some college,27,4.8,4.2,5,1.4,5.6
+1839,male,graduate degree,29,5.6,4.8,4.8,3.4,4.8
+1841,female,high school graduate,30,4,2.4,3.2,5.2,3.2
+1842,female,some college,25,4.8,4.6,4.6,2.8,5
+1844,female,some college,27,6,4.4,6,1.6,5.6
+1845,female,some college,29,5.4,4.8,2.8,5.2,5.6
+1846,male,graduate degree,26,5.2,5,5.8,1,6
+1847,male,college graduate,32,5.4,4.2,5.6,1.6,3.8
+1848,male,graduate degree,29,2.6,6,2.6,3.2,5
+1850,male,graduate degree,54,5.2,4,2.8,4.4,5.6
+1851,female,some college,20,5.2,4.8,5.4,3.2,5.2
+1854,female,some college,22,3.4,2.4,1.4,5.4,4.6
+1855,female,high school graduate,35,5.2,5.6,4.4,3.4,4.4
+1856,female,college graduate,24,5.6,2.4,5.6,4.2,4.4
+1857,male,graduate degree,38,5.2,5.8,5.2,1,4.8
+1858,female,some college,20,5.8,4.2,4.6,3.2,4.4
+1859,female,some college,33,5.2,5.6,5,3.2,5
+1860,female,some college,26,6,5.4,6,5.4,5
+1861,male,some college,19,5.4,3.8,5.2,2.6,4.4
+1862,male,some college,21,5.2,4.4,4.2,2.8,5.2
+1863,female,some college,28,6,5.6,5,2.4,5.8
+1865,female,some college,36,5.4,3.6,5.2,1.6,4.8
+1867,male,college graduate,24,5.4,3,4,4,5.4
+1868,female,college graduate,34,4,3.4,4.2,5.4,4.4
+1869,female,some college,43,5.6,4.8,5,1.4,4.6
+1871,female,graduate degree,44,4.2,3.2,3.2,4.2,4.2
+1872,male,some college,20,5.4,2,2.8,5.4,3.8
+1874,female,graduate degree,45,5.6,5.2,4,3.8,5.2
+1875,female,high school graduate,27,5,4.2,5.6,2,4.8
+1878,female,some college,30,5.6,4.2,5,1.6,5.2
+1879,female,some high school,53,5.6,4.2,4,1.2,4.6
+1880,female,graduate degree,35,2.4,5.4,3.8,2.8,5.6
+1881,female,some college,25,5.6,5.4,4,4,5.4
+1882,male,some college,21,6,4,5.2,2.2,6
+1884,female,some college,62,5.4,4.4,5.2,1.8,4.4
+1885,female,some college,44,4.2,2.8,5.8,3.6,5
+1886,female,some college,49,4.8,4.8,4.2,4.2,4.4
+1888,female,some college,29,4.8,4.8,3.6,2.4,4.6
+1889,female,some college,21,5.6,5,5,2.6,4.4
+1890,female,some college,23,5.2,5,5.8,1.8,5
+1891,female,graduate degree,37,4.2,3.6,3,2.6,4.2
+1892,male,some college,38,4,5,5,5.2,4.4
+1894,female,some college,26,2.8,4.6,5.4,3,4.6
+1895,male,some college,29,4.8,4.4,4.4,4.2,4.6
+1897,female,graduate degree,50,5.4,2.2,5.4,1.6,5
+1898,female,some college,24,4.6,4.8,3.2,3.6,4.2
+1899,female,some college,45,5.4,4.2,4.8,3.8,5
+1900,female,some college,32,5,5.6,4.8,4,5
+1901,male,some college,19,4.6,4.6,4.4,4.4,5.2
+1903,male,some college,21,5.6,4.8,5.4,4,5.2
+1904,female,some college,38,5.8,5.4,4,2,3.6
+1905,female,some college,20,5,5.8,5,2.6,4.6
+1906,female,high school graduate,28,4,5,2.8,5.6,3.4
+1907,male,high school graduate,25,3.4,3,1.6,4.4,5.8
+1909,female,some college,47,6,4,4.8,3.6,4.4
+1911,female,some college,55,2.8,4.8,4.2,3,4
+1912,female,some college,31,4.8,4.2,4.2,3,3.8
+1913,female,some high school,24,5.2,4.6,4,3,4.4
+1915,female,college graduate,43,5.6,5.4,6,1.8,4.4
+1916,female,some college,30,3.2,4,1.8,2.6,5.8
+1917,male,some college,38,5,6,6,3.4,6
+1919,female,college graduate,49,4.8,3.8,3,6,5.6
+1921,male,graduate degree,23,4.8,4.8,4.4,2.4,5
+1923,female,some college,50,5.6,5.4,5,1.8,4.8
+1924,male,college graduate,25,5.4,3.8,5.2,3.2,4.4
+1925,female,some college,40,2.6,5.4,5.6,4.6,4
+1926,female,some college,25,6,6,6,3,5.8
+1927,male,college graduate,21,2.6,3.8,3.6,3.6,4.2
+1928,female,some college,23,5.2,4.8,4.6,3.6,3.8
+1929,male,college graduate,22,4,3.8,3.2,6,4.2
+1930,male,some college,19,3.2,3.8,3,4.2,4.4
+1931,female,some high school,32,4.6,3.8,3.8,2.8,4
+1933,female,graduate degree,40,3,4.4,3.6,3.8,5.6
+1934,female,graduate degree,28,5.8,5.8,3.6,3.6,4.8
+1935,female,some college,33,5.6,5.2,4.2,2.8,5
+1936,female,some college,23,5.2,4,4.4,3.4,4.2
+1937,male,college graduate,22,4.4,2.6,3,3.6,3.8
+1938,female,some college,40,3.6,5.4,2.6,5,4.2
+1939,male,some college,35,4,4.6,3,4.6,5.4
+1941,female,some high school,44,4.8,4.8,5.6,2.8,4.2
+1942,female,some college,20,2.8,3.4,3.4,6,3.8
+1943,male,graduate degree,23,5.8,4.8,4.6,4.4,4.8
+1944,female,some college,21,4.8,4,3.6,3.4,4.2
+1945,male,some college,52,5.8,4.6,5.4,1.8,4.6
+1946,female,some college,21,4.8,4.6,4.6,2.8,4.2
+1947,female,some college,22,5.6,6,5.6,3,5.6
+1948,female,college graduate,24,4.2,4.6,3.2,1.4,4.4
+1949,male,some college,24,5,4.2,4,3.4,4
+1950,male,some college,20,3.2,3.8,3.6,4.4,5
+1951,female,college graduate,24,4.8,4.4,3.4,1,4.6
+1952,female,some college,28,5.6,5.8,5.6,1.8,5.2
+1954,male,college graduate,22,4.8,5,5.2,2.8,4.8
+1955,female,some college,33,6,5,5.2,2,4.6
+1956,female,some college,50,5.2,3.2,4.2,1,4.8
+1957,female,some college,20,6,6,5.4,3.8,5.4
+1958,female,college graduate,21,6,4.2,4.8,4.2,3.2
+1959,male,graduate degree,24,5.8,4.6,5.8,3.4,5
+1960,male,graduate degree,23,4.2,4.4,4.6,4.2,4.8
+1962,female,college graduate,40,4.4,3.4,3.8,2,4.6
+1963,female,graduate degree,28,5.6,3.8,4.2,2,4
+1964,female,high school graduate,30,4,3.2,5.4,6,4.6
+1965,male,some high school,39,5.2,5.6,5.8,2.6,5
+1966,male,some college,36,4.6,4.8,4,2.8,3.6
+1967,male,some college,27,4.4,5,5.6,2.6,4.8
+1968,female,some college,46,5,5.4,5,3.2,4.2
+1969,female,some college,57,4.6,5.2,6,3,4.4
+1970,male,some college,30,4,4,3.8,2.8,3.4
+1971,male,some college,38,5,5.2,5.4,3.6,4.6
+1972,female,some college,41,5.4,4.4,4.2,1.8,3.6
+1973,female,some college,27,5.6,4,6,4,6
+1974,female,some college,29,6,3.8,5.2,3.6,5
+1975,female,some college,51,5.6,3.6,4.8,4,4.6
+1976,female,some college,40,5.4,5,5.2,1,5
+1978,male,graduate degree,25,3.6,3.4,4.2,2.6,4.8
+1979,female,some college,33,5.8,4.4,4,2.8,2.4
+1980,male,some college,36,5.4,5.8,5,3.8,4.8
+1981,female,some college,41,4.6,4.4,2.2,3.4,3.6
+1984,female,high school graduate,25,4.8,5.2,6,2.2,5.4
+1985,female,high school graduate,23,5.2,4.4,5.2,3,3.2
+1987,female,some college,32,5,3.6,5,4.6,4.4
+1988,male,some college,26,3.6,4.6,3.6,4.4,3.2
+1990,female,some college,27,5.2,3.4,4.8,2.6,4.2
+1991,female,college graduate,24,5,4.4,3.6,2.2,4.4
+1992,female,some college,43,5.6,3.8,4,3.8,3.4
+1993,female,some college,41,5.8,5,4.8,2.8,3.8
+1994,female,some college,31,5,4.6,3.6,5.4,4.2
+1995,male,some college,39,4.2,5,5,3.4,4.8
+1996,female,some college,40,5.6,3.8,3.4,3.2,4.2
+1997,female,some college,26,4.8,5.4,3.2,2.2,3.6
+1998,female,some college,40,3.8,4,5,1,4.8
+1999,female,high school graduate,26,5.2,5,4.2,1.8,4.6
+2000,female,some high school,18,5.6,3.8,4.6,5,5.2
+2001,female,some college,23,4.6,3.8,4.2,5.8,4.2
+2002,female,some college,27,4.6,5.8,6,4.2,5.8
+2003,female,some college,53,5.6,5.2,4,1.6,4.8
+2004,female,some college,21,4.4,4,1.6,5,4
+2005,female,some college,30,5.4,4.8,5.6,3.4,4.6
+2006,male,high school graduate,31,5.2,4.8,3.8,2.2,4.8
+2007,male,some college,26,4.8,4.2,5.8,2.2,5
+2008,female,some college,21,4.4,3.2,4,4,4.2
+2010,female,some college,27,5.2,3.4,3.6,3,4.6
+2011,male,some college,27,4.4,5.2,4.8,3.4,4.6
+2012,female,some college,34,5.6,5.8,5.8,1.8,4.6
+2013,female,some college,34,5.4,3.8,4.6,3.4,4.2
+2014,female,some college,22,4.6,4.2,4.2,3.8,5
+2015,male,some college,27,5.6,4.8,5.6,1.2,5.4
+2016,female,high school graduate,33,6,3.2,4.8,5.6,5.8
+2017,female,graduate degree,23,5.4,3.8,5.2,3.8,4.2
+2019,female,some college,23,4,5.4,1.8,6,5.8
+2020,female,some college,35,4.4,5.2,3.8,1.6,4.8
+2022,female,high school graduate,28,4.6,3.8,3.6,3.2,3.8
+2023,female,some college,29,6,4,4.6,3.6,3.8
+2025,female,college graduate,28,4,4,3.8,2.4,3.4
+2026,female,college graduate,53,5.8,5.8,3.8,1.6,4.8
+2027,female,some college,47,4.2,4.2,5,3.4,3.8
+2028,female,some college,31,5.4,4.8,4.4,3.4,4.8
+2029,female,some high school,22,5.6,4.8,5,3.8,4.2
+2030,male,college graduate,45,4.6,3.4,2.8,3,4.4
+2032,female,some college,48,6,5.6,6,3.4,5
+2033,male,college graduate,39,4.8,2.4,3.4,2.8,4.8
+2034,female,some college,33,5.2,5.8,6,1.2,6
+2035,male,some college,28,4.8,5.2,5.6,2.4,5
+2036,female,some college,20,5.4,4.6,3,2.8,4.8
+2038,female,college graduate,25,5.6,3,2.8,1.8,3.6
+2039,female,some college,41,5.8,4.8,4.2,2.6,3.2
+2042,female,some college,34,5.2,5,4.8,2,5
+2043,male,some college,19,2,3,3,1,3
+2044,female,graduate degree,31,5.8,4.6,5,3.6,5.2
+2045,female,graduate degree,29,5.4,5.6,3.2,4,3.6
+2046,male,some college,35,3.6,4.8,2.2,3.4,3.6
+2047,female,graduate degree,20,5,4.6,3.6,3.8,4.4
+2048,male,some college,35,3.4,5.6,3,4.6,4
+2049,male,graduate degree,20,5.4,3.8,4.2,2.6,4
+2050,female,high school graduate,23,5,4,2.4,3.8,5.2
+2051,female,some college,28,5.2,3.6,4.4,2,4.2
+2052,male,graduate degree,28,4.6,5,4.8,2.4,4.4
+2053,male,high school graduate,47,3.8,3,1.6,1.6,3
+2054,female,graduate degree,20,4.4,6,2,3.2,2.8
+2056,female,some college,25,5.8,5,5.4,2,4.8
+2058,female,some college,50,5.8,5.6,5,1.4,5.2
+2059,male,some college,38,5.2,5.4,5.8,1.6,5
+2060,female,some college,36,5.6,5.8,5,3.8,5
+2061,male,college graduate,55,4.6,5.6,6,1.2,5.8
+2062,female,some college,19,5.6,5.4,4.6,4,4.4
+2063,female,high school graduate,41,5.4,5,5.2,3.6,3.6
+2065,female,some college,26,4.4,5.2,3.6,4.2,3.6
+2066,female,some college,40,5,4.4,4.4,4.2,3.2
+2067,male,some college,40,3.8,2.4,6,3.6,5.8
+2068,female,high school graduate,52,4.8,4.8,4.6,1.8,4.8
+2069,male,some college,35,4.4,3.4,4.8,2.6,4
+2071,female,graduate degree,33,4.8,5.2,6,3.2,6
+2072,male,some high school,46,4,4.6,2.6,3.4,3.6
+2074,female,graduate degree,31,4.4,5.4,4,2.8,4.2
+2075,female,some college,30,5.4,3,5,4.4,5
+2076,female,some college,37,6,5,4.8,2.6,5.6
+2077,female,college graduate,48,4.4,3.6,2.6,4,4.6
+2078,female,some college,30,6,5.8,5.2,1.8,4.2
+2080,female,some college,31,4,3.2,5.2,3.8,3.2
+2081,female,some college,20,5,5.2,5.2,2,4.6
+2082,female,some college,32,6,4,3,5.4,5.4
+2083,female,some college,18,5.4,5.2,3.8,3.6,4.4
+2084,female,some college,27,4.8,4.4,3.8,3,3.8
+2085,male,some college,23,5.6,4.8,1.4,3.2,4.2
+2086,female,some college,36,4.4,4.2,3.4,4.2,5
+2087,male,graduate degree,21,2.6,4.2,3.8,4.8,3.8
+2088,female,some college,19,6,5.2,5.4,3,5
+2090,female,graduate degree,50,6,5.8,5.6,1.8,5.8
+2091,male,some college,20,2.6,3.2,4,4.8,5.2
+2092,female,high school graduate,35,4.6,3.2,4,6,5.2
+2093,male,some college,21,4.6,4,3.4,4.4,3.8
+2095,female,some college,20,3,5.4,3,4.6,5.6
+2096,female,high school graduate,42,5.8,5.8,4.8,1.8,5.4
+2097,female,graduate degree,24,6,4.8,5.6,2.6,5.8
+2098,female,graduate degree,52,4.2,2,3.2,2.2,4.4
+2101,female,graduate degree,32,5.4,5.4,4.2,4.8,5.6
+2102,female,graduate degree,50,5.2,4,4.6,3,4.6
+2104,female,graduate degree,35,5.4,3.6,6,5.2,5.8
+2105,male,some college,28,6,3,4.8,4.8,5.8
+2106,female,some college,25,5.8,5,5.6,2,5.4
+2107,male,graduate degree,31,4.4,2,4.6,4,5.8
+2108,male,some college,22,5.4,6,5,2,4.4
+2109,male,graduate degree,33,4.2,5.4,4.8,1.8,4.8
+2110,female,college graduate,33,4.4,3.4,3.8,4.4,3.6
+2111,male,some college,58,3.6,4.4,1.6,1.8,4.4
+2112,male,graduate degree,26,2.6,2.6,3.6,2.8,5
+2113,female,some high school,26,5.8,5.6,4,2.8,5.2
+2114,female,some college,30,4.6,4.6,3.8,3.4,3.8
+2115,female,high school graduate,26,5.4,4.2,4,5.4,4.4
+2116,female,graduate degree,24,5.8,5.4,4,1.8,4.8
+2117,male,some college,51,4.8,2.8,5.6,3.8,3.2
+2118,female,some college,18,5.2,4.6,3.8,4,4.6
+2119,female,college graduate,34,5.4,5.2,5.2,2.8,4.6
+2120,female,some college,20,5.4,5.2,4.4,1.6,4
+2121,female,graduate degree,30,5.6,5.4,4.8,2.8,4.8
+2122,male,some high school,21,5.2,4.4,6,2.4,5.4
+2123,male,some high school,21,4.4,4.4,5.8,3.2,5.4
+2124,male,graduate degree,23,4,4,3.2,4.2,3.6
+2125,male,graduate degree,23,4.2,3.8,4,3.4,3.8
+2126,female,some college,21,3.8,6,5.4,2,3.4
+2127,female,some college,20,5.8,4.2,4,1.8,4.6
+2128,female,high school graduate,23,4.8,4.8,3.8,3.6,4.4
+2129,male,graduate degree,37,5,3.2,4.6,3,6
+2130,female,some college,31,5.4,4,5,2.8,4.2
+2131,female,some college,28,4.8,4.6,5.4,4.4,4.2
+2133,female,some college,18,4.2,5.2,2.8,2.8,4.4
+2134,female,high school graduate,53,5,4.4,3.2,1.6,4.8
+2135,female,some college,21,5.6,5.4,5,2.8,4.2
+2137,female,some college,36,5.4,4.8,3.6,2.4,5.4
+2138,female,some college,25,6,4.8,3.6,3,5.4
+2139,female,some high school,18,4,2,2.6,4.8,5.6
+2140,male,college graduate,38,2.8,4.6,2.8,2.8,5.4
+2142,male,high school graduate,48,5.2,3.4,4.2,3,4.6
+2143,female,some college,20,6,5.6,3.8,3.4,4.4
+2144,male,graduate degree,29,4.2,2.8,3.6,1.8,4.8
+2145,female,some college,19,5,5,4.8,2.4,3.8
+2147,female,some college,21,3.4,4.8,4.6,3.4,5.6
+2149,male,some college,31,4.8,4.6,3.8,4,3.4
+2150,male,graduate degree,26,4.4,4.8,3.2,2.2,3.6
+2152,female,some college,19,4.8,4.8,2.8,1.8,4.6
+2153,female,some college,19,5.8,5,5.2,1.6,4.2
+2154,female,some college,20,5.8,4.8,4.2,2,3.4
+2155,male,high school graduate,34,4.8,3.6,3.6,3.4,5.6
+2156,female,some college,20,5.4,4,4.6,2.8,4.4
+2157,female,high school graduate,28,5.6,4.6,4.2,4.4,5.6
+2158,male,high school graduate,27,4.8,3.4,3.2,3.8,4.8
+2159,male,graduate degree,36,3.4,4,3,4,5.4
+2160,female,some high school,19,3,4,3,1,6
+2161,male,college graduate,26,4.6,4.8,4.2,1.4,3
+2162,female,high school graduate,42,3,4.6,1.6,5.4,3.8
+2164,female,some college,31,6,4.4,5.2,1.8,5.2
+2165,male,some college,20,5,3.6,4.6,1.8,4.2
+2166,male,some college,19,4.8,4.8,2.8,4,3.8
+2167,female,some college,19,5.6,4.4,3.6,1.4,4.4
+2168,male,college graduate,24,4,4,2.8,3.8,4.4
+2169,female,some college,19,4.4,3.6,1.8,2,5
+2170,female,some college,22,5.2,2.6,3.2,4,3.4
+2171,female,graduate degree,40,4.4,3.4,4.4,4.2,5.2
+2172,female,some college,24,4.8,4.8,3.8,3,4.6
+2173,female,some college,20,5.4,4.8,4,2.2,3.6
+2174,female,college graduate,31,4.4,4,2.8,3.2,4.4
+2175,female,some college,18,5.8,5.6,4.4,3.4,5
+2178,female,some college,19,5,5.2,4.8,3.6,5.2
+2179,female,some college,20,4.6,5.2,1.8,1.8,5
+2180,female,some college,20,5.8,5.4,5.2,1.4,5.2
+2181,female,some college,20,4.6,4.8,3.8,3,4.6
+2182,female,some college,34,5.8,5,5.4,4,4.8
+2184,female,some college,20,5,5,5,3.8,5.4
+2185,female,college graduate,24,4.6,2.2,3.2,3.4,4.4
+2186,female,some college,20,4.8,3.8,3,3.4,4.6
+2187,female,some college,19,5.8,4.4,4.6,2,4.6
+2188,male,some college,20,4,4.4,4.6,3,5.2
+2189,female,some college,27,5.4,5.8,2.4,5.4,3.8
+2190,female,some college,21,3.8,4.8,4.4,5.8,5.8
+2191,male,graduate degree,28,4.2,3.6,3.8,3.4,3.4
+2192,female,college graduate,43,5.8,5,5.8,1,6
+2193,male,some college,19,5.4,3.8,4.4,1.4,5
+2194,female,college graduate,44,4,3.4,4,1.8,5.2
+2196,female,some college,18,5.8,3.4,4,2.4,4.4
+2197,female,college graduate,56,5,4,3.8,3,4.4
+2198,female,high school graduate,20,4.8,4,4.6,2.2,4
+2199,female,some college,19,5.6,4.4,5.2,1.8,4.6
+2200,male,graduate degree,51,4,3.4,2.8,4.8,5.8
+2201,female,some college,25,5.2,5.4,4.2,2.2,5.6
+2202,female,some college,20,5,3.8,3.6,2.4,5
+2203,female,some college,19,5.2,5.6,5.4,1.6,4.4
+2205,female,some college,20,5.4,4.6,3.4,4.6,3.6
+2206,female,college graduate,24,5.2,4.2,3.4,3.2,3.6
+2207,female,some college,20,4.4,3.4,4.6,3.6,6
+2208,male,graduate degree,58,5.4,4.2,4.6,2.4,5.8
+2210,female,some college,20,5,4.2,4.8,2.2,4
+2211,male,some college,28,3.2,5.4,3,3.8,5
+2212,female,graduate degree,25,5.6,1.8,5,2.8,6
+2213,female,some college,30,4.4,4.4,3.8,5,4.2
+2214,female,some college,49,5.8,2.8,5.2,2,5.4
+2216,female,some college,26,4.6,4.6,4,4.2,5.6
+2217,female,some college,48,6,5.8,2,2.2,2.8
+2219,female,some college,22,5.6,3.8,5.4,2.8,5.4
+2220,female,graduate degree,45,6,2.6,5,1,6
+2225,male,high school graduate,22,5.2,4.2,4,3.8,5.6
+2226,male,high school graduate,30,4.6,4,4.2,3.2,4.8
+2227,male,some college,19,2.4,3,1.8,1.4,5.4
+2228,female,college graduate,34,3.8,5,4.6,2.8,5.6
+2229,male,high school graduate,52,4,4,4.4,3,4.2
+2230,female,some college,19,4.2,5.2,4.4,3.6,5.2
+2232,male,some college,21,4.6,3.8,4,3.8,4.8
+2233,male,some college,22,4.8,4.2,4.8,3.8,4.4
+2234,female,some college,21,3.4,4.6,2.2,3.2,5
+2235,female,some college,19,3.6,3,2,4.8,5
+2236,female,graduate degree,30,5.2,4.6,3.6,3.2,5.8
+2238,female,some college,25,4.8,5.6,4.6,1.6,5.6
+2239,female,some college,18,5.4,5.8,5,1.8,4.8
+2240,female,graduate degree,33,4.8,5.4,5.8,2.2,5
+2241,male,college graduate,30,3.4,3.2,2.4,4.2,5
+2243,female,college graduate,27,4.8,4.8,5.6,3.8,4.2
+2244,female,some college,39,4.2,3,3.8,3.4,3.2
+2245,female,some college,21,5.2,4.8,4,2.8,4.6
+2247,female,some college,20,4.6,5,3.6,2.8,4.8
+2248,female,college graduate,31,5.6,5.4,3.6,2.4,5.6
+2249,male,some college,18,4.4,5,4.8,2,3.8
+2250,female,some college,29,6,5.2,5,3.8,4.4
+2252,female,high school graduate,20,5,4.2,5.2,2,3.6
+2253,female,some college,21,5.4,2.2,3.8,1.2,3.4
+2254,female,some college,20,5.4,3.6,3.8,3,4.6
+2255,female,college graduate,33,3.8,4.6,3.8,1.4,3.8
+2256,female,some college,19,4.8,4.4,5.4,2.2,3.6
+2257,female,some college,20,3,5,4.8,3.8,4.2
+2258,female,graduate degree,51,4.4,4.8,4.6,2,5
+2259,female,some college,30,5.8,4.2,5,1,4.4
+2260,male,some college,20,4.4,4,3.4,2.8,4.6
+2261,male,some high school,22,5.2,3.2,2.2,2.2,5
+2262,male,some high school,18,5,3.6,3,4.4,4.2
+2263,male,high school graduate,34,5.8,3.8,5.6,1.8,5
+2264,male,some high school,23,4.8,3.6,4.8,2.8,3.2
+2265,female,some college,23,5,4.8,3.8,4.4,4
+2266,male,high school graduate,29,4.2,4.4,3.4,4,4.6
+2267,female,some college,21,5.2,5.2,3.4,4.2,5.6
+2268,female,college graduate,24,5.6,5,4.6,1.6,3.6
+2269,female,some college,50,6,3.8,5,1,4.8
+2270,female,some college,24,4.6,5.4,4.8,1,4.8
+2274,female,some college,19,5.2,3.8,3.8,3.2,2.8
+2275,female,some college,39,5,3.4,3.6,2.6,4.2
+2276,female,some high school,18,4.2,4,5,4.4,4
+2277,female,graduate degree,42,6,5,5.4,2.8,4.8
+2278,female,graduate degree,40,5,4.4,2.4,2.4,3.2
+2279,female,some high school,20,4.2,4.4,3.4,2.8,3.2
+2280,female,some college,57,5.4,3.6,4,2.6,3.6
+2281,male,some college,19,2.8,4.8,2.8,3.2,5.2
+2282,female,some college,26,3.6,6,2,3.8,4.6
+2283,female,some college,22,5.4,5.2,3.8,2.2,5
+2284,female,some college,19,5.6,4.8,4.4,2.2,4.6
+2285,female,high school graduate,29,3.8,4.6,4.4,5.8,3.6
+2286,male,some college,21,4.4,4.6,5.6,2.4,5
+2287,male,some college,18,3.4,5.8,3.2,1.4,3.2
+2288,female,some college,63,6,4.8,5.8,1,5
+2289,female,college graduate,25,5.4,4.8,3.2,3.2,5.4
+2290,female,college graduate,25,5.4,6,5.8,2,5.2
+2293,female,college graduate,48,4.6,5,3.4,5,5.2
+2294,male,some college,20,4.6,3.6,5.2,2.4,4
+2295,female,some college,19,4.8,4.6,5.4,3.2,4.4
+2296,female,some college,37,4.2,4.2,4,4.6,3.4
+2297,female,some college,20,5.2,4.8,4.6,2.2,3.8
+2298,male,some college,20,4.4,4.2,5,1.8,3.4
+2299,female,some college,33,5,5.8,5.2,2.8,6
+2300,female,some college,20,3.8,4.2,4.4,2.2,3.6
+2301,male,some college,18,4,4.6,4.2,3.6,4.4
+2302,female,some high school,18,5,4,2.6,3.2,5.2
+2303,female,some college,20,5,3.8,4,2.8,3.8
+2305,female,some college,23,6,5.4,4.4,1.2,3.6
+2306,male,some college,25,3.6,4.2,3.4,4.4,4.6
+2308,female,some college,48,5.6,4.2,5.6,1.4,4.6
+2309,female,some high school,44,5.2,4.4,4,3,5.4
+2310,female,some high school,46,4.4,4.4,4,3,4.2
+2311,male,some college,19,4.8,5.2,1.8,3.8,4.8
+2312,female,some college,23,5.2,5.4,4.4,2.8,4.4
+2313,male,some college,23,2,5.8,1,1,5
+2315,male,college graduate,56,6,5,5,4.4,6
+2318,male,college graduate,22,3.2,2,2.6,4.4,6
+2319,female,graduate degree,25,4,5.2,4.8,4.4,3.8
+2320,female,college graduate,44,5,5,5.6,1.4,5.8
+2321,male,some college,36,3.8,3.6,4.2,3.6,3.8
+2322,male,college graduate,36,4.2,4.6,3.2,1.2,5.2
+2323,male,some college,26,3.2,2.8,3.8,4.8,4
+2324,female,some college,27,5,4.4,6,4.6,5.4
+2325,male,college graduate,27,5.4,3.6,4.2,5.4,4.4
+2326,female,some college,24,4.4,4.2,3.2,4.6,5.2
+2327,female,graduate degree,33,3.6,4,1.2,5.6,4.4
+2328,female,some college,19,4.8,3.8,3.2,3.2,3
+2331,female,some college,22,4,4,3.6,4,4.4
+2332,male,college graduate,35,5.4,5.2,3.6,2.8,5.4
+2333,female,some college,20,5.8,5.6,5.4,2.2,4.8
+2335,female,college graduate,34,5.8,5,4.6,3.2,5.2
+2336,female,some high school,24,4.4,3.2,5,3.4,5.2
+2337,male,some college,29,4.2,5,3.8,2,5.8
+2338,female,some college,21,5.4,4.6,4.4,2.8,4.4
+2339,female,graduate degree,27,3.8,4.2,2.8,3.6,4.8
+2340,female,high school graduate,22,3.4,3,3.4,4.8,4.8
+2341,female,college graduate,28,4.6,4.6,3.2,4,5.2
+2343,female,graduate degree,48,5,4.8,4.6,3.2,5.8
+2344,male,some college,31,3.8,5.6,3.4,2.6,5.2
+2345,male,college graduate,52,5.2,3.8,3.2,5.2,5
+2346,female,some high school,41,6,6,2,6,4.6
+2347,female,college graduate,22,4.4,2.4,5.4,3.8,4.2
+2348,male,college graduate,48,3.8,3.6,4.4,2.6,4.6
+2349,female,college graduate,30,5.2,4.2,5.4,2,4.2
+2351,male,some college,37,4,4.2,4,3.6,3.4
+2354,female,college graduate,37,5,4.4,2.8,3.4,4.6
+2355,female,graduate degree,61,6,4.6,5,1.6,5.4
+2357,male,some college,20,5.4,4.4,4.4,1.6,5.4
+2358,male,college graduate,32,3.4,4.4,4.6,3.6,5
+2359,female,college graduate,22,4.2,3.8,4.6,3.4,4
+2360,male,some college,20,3.8,4,2.8,3.6,3.8
+2361,female,graduate degree,33,5.8,5.4,5.8,1.6,4.8
+2362,female,some college,23,3.4,4.2,5.4,2.8,5
+2363,male,some college,21,5.4,5.6,5.8,1,5.6
+2364,male,some college,43,4.8,3.8,3.4,3.2,4.2
+2365,female,some high school,47,4.8,4.6,2.6,3.2,2
+2367,female,some college,26,5.2,5.4,4.2,2,5.2
+2369,female,college graduate,23,4.8,4.4,4.8,4.2,4.6
+2371,female,graduate degree,47,5.2,6,5.2,2.2,6
+2373,male,high school graduate,20,4.2,3.6,4.6,3.6,5.4
+2374,female,some college,20,4,4.2,4.8,3.2,3.6
+2375,female,some college,44,5.4,4.8,5.4,4.2,4.4
+2376,female,some college,20,3.2,5.2,4.8,3.8,4.6
+2377,female,some college,29,5,3.8,5,4,4.4
+2378,female,some college,20,5.2,4.4,3.8,3.6,4.4
+2379,female,graduate degree,54,5.6,4.8,4.6,3.2,4.6
+2380,female,some college,34,4,3.6,4.4,3.6,3.4
+2381,male,some college,28,3.2,3.2,4.6,3.2,4.6
+2383,female,some high school,20,5.4,4.6,5.4,1.6,4.4
+2385,female,college graduate,24,5.8,4.8,5,4,3.8
+2386,male,some college,20,5.2,4.2,6,2,5
+2387,female,some high school,20,4.4,2.6,3.6,4,4
+2388,female,some college,19,4.2,5.2,5.2,3.4,5.2
+2389,female,college graduate,34,6,3.4,3.6,3.2,3.6
+2390,female,graduate degree,44,4.2,4.4,3.8,4.8,5.8
+2391,female,graduate degree,32,2.8,4.2,4.4,2,3.2
+2392,female,graduate degree,38,3.6,4.4,3.6,4.2,3
+2393,male,graduate degree,26,3.2,2.4,3,4.8,5.2
+2395,female,some college,30,5.4,5.2,5,2.8,5.4
+2397,female,graduate degree,25,5.2,4.8,3.6,3,4.8
+2398,female,some college,19,5.4,6,6,4.2,6
+2400,female,college graduate,29,4.2,4.8,6,2.6,6
+2402,male,graduate degree,23,4,4.8,3.2,4.2,5.6
+2404,female,college graduate,39,4.2,4,4.2,2.2,4.4
+2405,male,high school graduate,36,6,5,6,1.6,5.4
+2406,female,college graduate,46,5.6,3.6,3.6,3,5.6
+2407,male,some college,20,4.6,4.4,5.4,3.4,5
+2408,male,some college,21,4.8,4.6,3,2,5.2
+2409,female,some college,20,5,4.2,3,4.4,5.2
+2410,female,some college,18,5.6,5,4.6,3.2,4.8
+2411,female,graduate degree,47,4.6,6,2.6,4.8,6
+2412,female,some college,19,3.6,5.8,4.8,3.6,5.6
+2413,female,some college,38,6,5.4,4.6,2.2,4.2
+2414,female,some college,28,5,4.2,4,2.6,4.4
+2416,female,some college,20,4,3.6,3.6,4.6,5.2
+2417,female,graduate degree,35,4.2,4.4,2.4,2.2,3.8
+2419,male,some college,20,5.4,2.2,5.2,3.2,3.4
+2420,female,graduate degree,35,3.8,5.8,2.6,1.8,3
+2423,female,some college,30,4.4,2,2.8,4.8,3.2
+2424,male,some college,34,3.4,4.8,3.4,3,5.8
+2425,female,high school graduate,47,5.8,5.2,4,1.6,5
+2426,male,graduate degree,58,5.4,5.6,4,3.4,4.2
+2427,male,some college,29,5.8,5,5.8,1,5.8
+2428,female,some college,47,5.8,4.8,3.6,1.8,4.6
+2429,female,some college,20,4.8,4.6,5.4,5.8,5.2
+2430,female,some high school,21,5,4.8,5.6,4.4,4.8
+2431,male,some high school,20,4.8,4.8,3.4,1.4,4
+2432,male,some college,40,5.2,5,3,1.4,4.8
+2434,male,some college,23,6,5.2,6,3.2,5.8
+2435,female,graduate degree,32,5.4,4.8,5.4,1.8,4.6
+2436,female,some high school,18,6,5.4,4.2,3.4,5
+2437,male,some college,22,4.8,4.4,3.8,1.8,4
+2438,female,some college,25,5.8,3.4,5.8,2.8,4.6
+2439,male,graduate degree,26,4.4,4.2,2.6,1.4,3
+2440,female,some college,29,5.6,4.2,4.4,2,4.4
+2441,female,some college,24,5,3.4,5,1.4,4
+2442,female,some college,46,5.8,4.6,5.6,2.6,4.6
+2443,female,graduate degree,56,5.4,2.8,3.2,1.4,4
+2444,female,high school graduate,39,4.8,3.4,3.8,1.4,5.2
+2445,male,graduate degree,39,4.4,4.6,4.6,2.4,5.6
+2446,female,some high school,42,4.2,4.4,3.2,3.6,3.4
+2447,male,graduate degree,32,5,3,5.8,4.4,5
+2449,female,some college,19,4.2,4.6,3.8,3,4.2
+2450,female,graduate degree,62,4.4,2.2,2.4,2.6,3
+2451,female,college graduate,36,5,4.6,1.6,4,2.2
+2452,male,some high school,18,5.8,5.4,2.6,3.2,6
+2453,female,graduate degree,31,4.8,3.4,5.4,4.4,5.2
+2454,male,some college,24,4.8,5,4.6,2,4.4
+2455,female,some high school,20,5,4.8,4.2,2.8,4.6
+2456,male,college graduate,30,4,3.4,4.2,3.6,4.4
+2457,female,graduate degree,23,4.8,5,6,3.2,4.6
+2458,female,high school graduate,23,4.6,3.4,4.6,2.8,4.2
+2459,female,some college,18,5.8,5.8,5.6,3.6,5
+2460,female,graduate degree,27,3.8,4.6,3,3,4.8
+2461,female,college graduate,24,5.4,4.8,4.8,2.6,4.2
+2462,female,some college,19,5.4,4,4,3.8,4.6
+2463,female,some college,39,5.8,4.2,4.8,5,5.4
+2467,female,some college,19,5,3.6,2.4,3.8,4.2
+2470,female,college graduate,36,2.8,2.2,3,3.6,5.4
+2471,female,college graduate,31,4.8,4.4,3.8,2.4,5.2
+2472,male,some college,36,5.2,4.8,4.4,5.6,4
+2473,male,graduate degree,31,4.4,5.4,5,4.2,6
+2476,male,some college,19,2.4,5,2.4,5.8,4.8
+2478,female,some college,19,5,5.8,4.2,4.2,4.8
+2480,female,some high school,18,2.8,5.4,4,4.8,4.6
+2484,female,some college,20,4,2.8,2.4,4,3.2
+2485,female,some college,20,4,4.2,3.4,4.2,3.6
+2487,male,college graduate,30,2.4,4.6,1.8,2.4,3.2
+2489,female,graduate degree,37,5.4,3,4,2.8,5.8
+2490,male,college graduate,31,3.4,4.8,2.8,5.8,5.8
+2491,female,college graduate,32,4.8,4.8,3.6,3.8,4
+2492,male,some high school,19,5.2,3.2,5.2,2,5.4
+2493,male,some college,42,4.2,4.6,4.4,3.8,3.4
+2495,female,college graduate,24,5.8,4.6,4.6,4.2,4.8
+2496,female,graduate degree,27,6,4.6,3.2,1.4,4.8
+2497,male,some college,21,5,4.6,2.6,2.4,5.2
+2499,male,high school graduate,48,1.8,5,1.4,2.4,3.2
+2500,male,some college,21,4.4,4,3.6,2.2,5.8
+2501,female,high school graduate,31,3.8,3.8,3.4,3.6,5.4
+2502,female,college graduate,22,5.4,5.4,5.2,2.6,5.8
+2503,female,some college,23,4.2,4,4.6,3.6,3.4
+2504,female,graduate degree,23,4.6,5.4,3.8,4,3
+2506,female,graduate degree,35,5.2,4.6,4.4,2.8,6
+2507,female,some college,21,4.4,4,5.8,3,6
+2508,female,some college,22,4.6,1.8,5,4.6,4.4
+2509,male,graduate degree,28,5,3.6,2.8,3,4.4
+2510,female,some college,20,4.8,4.2,4.2,3.6,3.2
+2511,female,college graduate,51,3.8,4,4.2,1.4,5
+2512,female,high school graduate,19,3.4,3.4,4.4,4.8,4.6
+2513,female,college graduate,24,3.8,4.6,4.6,2.8,4.6
+2514,female,graduate degree,45,5.6,5.6,5,2.4,5.8
+2516,male,some college,26,4.6,5,4,1.6,4.6
+2517,male,high school graduate,22,3.6,2.8,4.2,3.2,4.2
+2518,female,college graduate,50,4.4,3.6,2.4,4,3.4
+2519,female,graduate degree,36,5.4,4.4,4.8,3,5.4
+2520,male,college graduate,50,3.8,3.4,1.2,5.4,5.6
+2521,male,high school graduate,22,5.2,4,3.6,4.6,5.6
+2522,female,college graduate,23,2,3.8,1.4,2.6,3.6
+2525,male,some college,21,2.6,4.2,1.6,3,5.2
+2526,female,some college,23,4.6,4.6,4,4.4,4.4
+2527,female,graduate degree,35,5.6,3.2,4.8,1,3.8
+2528,female,graduate degree,33,5,4.2,4,1.6,4.4
+2530,male,high school graduate,29,5.6,5.4,6,1,6
+2531,male,some college,21,4.6,5.4,4.4,2.8,5
+2532,male,some college,31,4.8,3.6,2.6,4.2,4.2
+2533,male,some college,21,4.2,4.8,5.4,2.4,5
+2534,male,graduate degree,26,2.4,5,3.4,2.2,5.8
+2535,female,some college,20,6,5.6,5.4,3.6,4.2
+2536,female,graduate degree,56,4.4,3.2,4.6,3.8,4
+2538,male,high school graduate,65,3.6,4.4,4,4.4,4
+2539,female,some college,34,4,4.8,4.2,3.6,5.2
+2540,female,college graduate,29,5,5,3.2,3.6,4.6
+2541,female,college graduate,21,4.2,4.2,4.4,5,3.6
+2544,male,college graduate,27,2.6,3,2.2,3,5.2
+2545,female,college graduate,45,5.6,5.8,5.2,2,5.2
+2547,female,some college,20,5,5,4.6,3.8,4.8
+2548,female,high school graduate,20,5.2,5.4,4.8,2.4,5.2
+2549,male,college graduate,43,4.6,5.2,1.2,2.6,4.8
+2550,female,graduate degree,26,5,5.6,4.2,2.4,4.8
+2551,male,college graduate,55,5.2,5.6,4,1.2,4.2
+2552,female,graduate degree,38,6,4.8,5.2,3,5.8
+2554,female,some high school,19,4.6,4.6,2.8,4.4,3.8
+2556,female,some college,21,4.8,4.2,4.2,1.8,4
+2557,female,graduate degree,40,5.8,3.6,5.6,3.8,5.4
+2559,male,some college,23,4,5,3.8,3.4,3.6
+2560,male,some high school,18,5,5.4,4.6,6,6
+2561,male,some college,32,5,4.2,4.6,1.6,4.4
+2562,male,some high school,49,5.2,4.2,3.8,2.6,5.8
+2563,female,some college,42,5.6,5.2,5.6,1.2,5
+2565,female,some college,23,4.6,4,5,4.8,3.6
+2566,female,graduate degree,30,5.4,5.4,3,3,5.8
+2567,female,some high school,24,4.2,4.6,4.4,3.2,3.6
+2568,male,graduate degree,26,2.8,3.6,2,2.2,4.4
+2569,male,some college,21,4.8,3,4.8,2,4.8
+2571,male,graduate degree,23,5.4,2.8,4,2,5.4
+2572,female,high school graduate,61,6,6,5.4,1,3.8
+2574,male,college graduate,28,5.4,3.4,5.6,3,5
+2575,male,some college,25,2.6,4.6,2.6,3.8,4.6
+2576,male,graduate degree,34,5.4,5.2,5.4,2.2,5.6
+2577,female,high school graduate,21,4,4.2,3.4,3.6,4
+2579,female,graduate degree,23,2.8,1.8,3.2,3.4,3.6
+2581,male,some college,20,5,3.8,2.4,1.8,3
+2582,female,some college,19,4.2,5,2.8,1.4,4.2
+2583,female,some college,36,5.2,2,5.4,1,6
+2584,female,some college,18,5.6,4.8,5,1.4,3.4
+2585,female,some college,19,4.6,3.6,2.2,2,2.6
+2586,female,some college,22,4.2,2.2,4.8,4.8,3.4
+2587,female,some college,19,5.8,4.2,4.6,2.2,5.6
+2588,female,some college,24,4,3.8,4.8,3,4.4
+2590,female,some college,18,5.6,4.6,5.2,4.4,5.8
+2591,male,some college,22,5,5,5.4,3.6,3.8
+2592,male,high school graduate,27,5.4,2.4,4,5.2,5.8
+2605,male,some college,20,4.4,4.4,4.6,2.4,4.2
+2606,male,some college,23,1.8,5.8,4.2,4.6,5.6
+2608,male,some college,20,4.2,4.2,4.4,3.4,4.2
+2623,female,college graduate,24,5,4.6,4.4,3.6,4.6
+2625,female,some high school,19,3.6,3.2,1.6,3.2,4.2
+2626,male,some college,44,4.4,4.6,3.4,5,5.6
+2627,male,graduate degree,29,3.4,1.8,2.2,2.6,4.6
+2628,female,college graduate,23,4.6,1.4,3.4,4.6,5
+2629,male,some college,25,3.4,4.4,3.8,2.2,4.6
+2630,female,some college,57,4.8,5.2,5,1.4,5
+2631,female,some college,19,4.8,4.4,3.2,3.2,4.6
+2632,female,college graduate,26,4.8,5,4.4,4,3.4
+2633,female,some college,19,3.2,3.4,3.2,2.6,4.8
+2634,male,college graduate,34,2.8,5,2,1.8,5
+2635,female,some college,19,4.8,3.4,2.8,2.8,4.2
+2636,male,some college,38,3.4,3.6,4.6,2.2,3.6
+2637,female,some college,20,4.8,4.4,5,3.2,4.2
+2638,male,high school graduate,22,4.6,3.4,4.8,2.6,3.8
+2639,female,some college,25,4.4,5.6,4.4,3.6,3.8
+2640,male,graduate degree,33,4.4,3.2,2,3.2,5.6
+2641,female,some college,38,5.2,6,5.8,1.2,4.4
+2642,female,graduate degree,19,5.4,3.6,5.2,4.6,4
+2643,female,graduate degree,35,5.2,4.4,3.6,3.8,5.4
+2649,male,graduate degree,40,3.8,4.6,3.8,2.2,4
+2654,female,college graduate,42,5.8,4.6,5,1.4,4.4
+2655,male,graduate degree,27,5.6,3,5.8,3.2,5.2
+2656,male,college graduate,31,4.2,4.6,3.4,2.2,3.8
+2658,male,graduate degree,44,5.2,3.4,4,4,5.6
+2659,male,high school graduate,37,2.8,5,4.2,5,4.4
+2660,male,high school graduate,33,4.8,5.4,5.2,1,5
+2661,male,some college,26,5,5,3,2,5.2
+2662,female,some college,33,5.8,4.4,4.8,3.2,5.4
+2663,male,some college,26,4.8,3.4,5.2,3.6,4.2
+2664,male,college graduate,46,5.4,5.8,5.8,2,5.4
+2665,female,college graduate,19,6,5.2,4.6,3.2,4.8
+2666,female,some college,22,5.2,4.4,4,4.6,4.8
+2668,male,high school graduate,28,2.2,1.2,2,2.4,4.8
+2669,female,college graduate,29,6,4.2,6,5.2,4.6
+2670,female,graduate degree,31,4.6,3.8,3.6,4.2,4.4
+2671,female,some college,18,4.6,3.2,3.8,4.2,3.8
+2672,female,some college,29,5,4.6,3,4.8,4.8
+2673,male,high school graduate,20,4.6,5.4,4,3.2,3.8
+2674,male,high school graduate,22,3.4,4.2,3.6,3,3
+2675,male,graduate degree,45,5.6,3.2,5.4,2.6,5
+2676,male,some high school,19,3.6,4.4,3.4,2.6,3.6
+2677,male,some college,39,6,6,6,1.6,6
+2678,male,some college,21,2.6,2.8,2.4,3,5.2
+2679,male,graduate degree,46,4.2,4,2.4,4,4.8
+2681,female,college graduate,34,5.4,5.4,6,4.2,5.4
+2682,female,some high school,24,5,4.6,4.4,3.6,3.6
+2684,female,some college,20,5.6,4.4,4.4,2.2,4.4
+2685,male,graduate degree,43,5,5.6,4.8,2.2,5.2
+2686,female,high school graduate,38,5.8,5,5.2,1.6,4.6
+2687,female,college graduate,51,5.2,5.2,4.6,1.2,3.8
+2688,female,high school graduate,20,2.8,1.6,1.2,4,4.8
+2689,female,college graduate,27,1.6,3,1.2,2.4,5.4
+2690,female,graduate degree,23,5,3.6,3,2.8,4.6
+2692,female,graduate degree,27,4.2,5.2,3,4.8,6
+2693,male,some college,25,5.2,5.6,5.2,1,5.8
+2694,male,some college,23,3.4,5.6,2.2,3,3.4
+2695,female,some college,38,3.4,3.6,2.6,4.2,5.6
+2696,female,some college,18,4.2,4.6,4.8,4.6,4.8
+2697,male,college graduate,25,5.2,3.6,5.8,2.6,5.8
+2698,female,some college,19,4.4,4,1.8,4,5.4
+2699,male,high school graduate,27,6,6,6,1,5.6
+2700,female,graduate degree,25,4.4,5,2.8,2.4,5
+2701,female,some college,22,5.6,5.8,4.6,3.2,4.8
+2704,female,some college,22,5,4.2,4.8,4.4,4.8
+2709,female,some college,48,5,4.4,4,2.6,4.2
+2710,female,college graduate,28,5.2,2.2,5.2,1.2,4.4
+2711,male,some college,20,4.4,4.6,4.4,3.4,5.2
+2712,male,high school graduate,54,4.8,4.8,4.2,1,4
+2713,male,some college,22,4.2,4,2.8,2.2,3.8
+2714,female,some high school,23,4.2,4.4,3.4,4.4,4
+2716,female,high school graduate,32,4.2,3.6,3.6,5.2,4.4
+2718,female,some college,22,4.8,4.8,4.6,3.8,3.4
+2719,female,some college,23,5.2,3.2,2.6,4.2,3.8
+2720,female,graduate degree,40,5.2,5.6,5,3,5
+2721,female,high school graduate,22,2.2,2.4,3.8,3,4.6
+2722,female,some college,56,5.6,2.8,4,5.8,4.8
+2723,male,some high school,43,3.8,5.6,3.2,4,5.4
+2725,male,college graduate,28,4.4,5.4,5.4,3.4,5.4
+2727,male,graduate degree,43,3.8,4.4,2.8,4,5.2
+2728,male,some college,19,4.8,3.8,5.2,2.6,5
+2729,female,graduate degree,25,4.6,5.8,4,2.6,5.6
+2730,male,some college,22,4.8,4.4,3.2,2,3.8
+2731,female,high school graduate,39,4.2,2.4,5,5.4,4.6
+2732,male,some college,38,2.4,3.8,2,4.4,3.6
+2735,male,graduate degree,36,2.6,4.4,3.6,4,4.4
+2736,female,high school graduate,38,4.8,4.4,4.4,4.6,4.2
+2737,female,some college,18,3.8,3.6,4.6,3.8,5.4
+2738,female,college graduate,47,4.8,4,2.8,2.8,4
+2739,female,some high school,40,3.8,4.4,4.4,2,5.4
+2740,male,some college,21,4.6,4.8,3.8,1.6,4.4
+2742,female,some college,25,5.4,4.6,4.2,4.4,4.2
+2745,female,college graduate,52,5.2,5,6,4.2,6
+2746,male,graduate degree,28,5.8,4.2,3.6,1.8,6
+2747,female,graduate degree,26,6,5.8,5,4.4,6
+2748,male,some college,26,2.6,2.8,1.2,3.4,5
+2751,female,some college,22,4.8,4,4,6,3.6
+2753,male,college graduate,23,5,4.8,4.2,3.2,4.8
+2754,male,college graduate,35,4.8,3.6,4.8,2,5.8
+2755,male,some college,29,1.6,2.6,2.6,2,4.2
+2756,female,college graduate,33,5,4.2,4.4,3.2,3.8
+2757,male,some college,21,4.8,4.8,2.4,1,3.8
+2758,female,high school graduate,42,5,5.6,3.6,3,4
+2760,female,college graduate,31,4.4,3.6,4.4,4.2,4
+2761,female,college graduate,37,4.2,4.4,3.4,4.2,5
+2763,female,college graduate,26,5,5.4,4.4,1.8,5
+2764,female,some college,25,3.8,3.8,2.6,3.8,5
+2765,female,some high school,18,4,3.6,1.2,5.4,3.4
+2766,male,high school graduate,19,3.4,3,4.2,3.8,5.4
+2767,male,high school graduate,33,5,5,3.4,4,3.4
+2768,female,college graduate,23,5.4,6,3.8,4.4,3.2
+2769,female,some college,31,4.2,5,3.4,4.8,4.2
+2771,male,some college,23,4,4.6,4,1.4,5.6
+2772,male,some college,25,4.2,3.6,4,3.4,3.6
+2773,male,some college,20,5.6,4.4,4.2,1,4.8
+2774,female,some college,25,4.2,3.6,2.2,4.2,4.6
+2775,female,some high school,45,4,4.6,4.2,5.2,3.8
+2776,male,some college,26,5,5.2,3.8,2.2,4.2
+2777,male,high school graduate,36,6,5.8,6,1,5.8
+2778,female,some college,32,6,5.8,4.8,1.4,5.6
+2780,female,college graduate,30,5,5.4,5,2.2,4.2
+2781,male,college graduate,47,5,4.4,1,3,5.8
+2782,female,some college,22,5.4,3.8,5.2,3.2,5.2
+2784,female,some high school,21,5.6,4.6,5.4,4,5.2
+2785,female,graduate degree,40,4.6,4.8,2.6,2,5.4
+2786,female,some college,24,5.6,5.4,5.8,4,5.6
+2787,female,some college,47,4.6,3.2,3.2,3.2,5.4
+2788,male,high school graduate,29,5.6,4.8,5.2,2.4,5.2
+2790,female,graduate degree,33,4,5.6,4.8,3,3.6
+2791,female,some college,23,4.4,3.6,3,3.4,4.4
+2792,female,some college,22,3,3,3.4,4.8,3.6
+2793,female,some college,22,4.6,3.8,4.6,4.2,3.6
+2794,female,college graduate,24,3,4.2,2.4,5.4,5.2
+2798,female,college graduate,29,4,5.4,5,2.8,5
+2799,male,college graduate,31,2.8,4.2,4.6,4.2,5.2
+2800,female,college graduate,50,3,4.2,2.6,1.4,4.6

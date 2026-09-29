@@ -1,0 +1,179 @@
+---
+title: 'PS 211 — Data Write-Up #1 — WORKED EXAMPLE'
+subtitle: 'Fall 2026 · Halloween candy (a dataset that is not on the menu)'
+author: "Kate Nussenbaum & Rola Adebogun"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# How to use this example
+
+This is the Write-Up #1 template filled in, start to finish, using the Halloween candy data from Discussion 4. Nobody can use this dataset for the assignment, so nothing here can be copied directly; what you *can* copy is the shape: how much to write in each part, what the code looks like once the blanks are filled, and what an APA results sentence contains. Where the example makes a choice (one-tailed vs. two-tailed, which figure), it says why.
+
+---
+
+# Packages
+
+```{r libraries}
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+---
+
+# Part 1: Your dataset (5 points)
+
+We used `candy_data.csv`, FiveThirtyEight's 2017 Halloween candy power ranking (Hickey, 2017). About 8,000 online respondents were shown two candies at a time and clicked the one they would rather receive, for roughly 269,000 matchups; the dataset records, for each candy, the percentage of its matchups it won (`winpercent`) along with nine yes/no descriptors (chocolate, fruity, caramel, and so on) and its sugar and price percentiles. One row is one candy, and there are 85 rows (83 candies plus a dime and a quarter that FiveThirtyEight included as comparison items).
+
+---
+
+# Part 2: Research question and variables (15 points)
+
+**Research question.** Do candies that contain chocolate win a higher percentage of head-to-head matchups than candies that do not?
+
+**Variables.** The independent variable is whether a candy contains chocolate (`chocolate`), with two levels: contains chocolate (coded 1) and does not (coded 0). The dependent variable is the candy's win percentage (`winpercent`), the percentage of its matchups that it won, measured on a 0–100 scale.
+
+**Why a t test, and which kind.** Each candy is in exactly one group (it either has chocolate or it doesn't), and the two groups are made up of different candies, so this is an independent-samples *t* test: it compares the mean win percentage of two separate groups on a numeric outcome.
+
+---
+
+# Part 3: Hypotheses (10 points)
+
+**Null hypothesis (H0):** Candies with chocolate and candies without chocolate have the same mean win percentage.
+
+**Alternative hypothesis (H1):** Candies with chocolate have a higher mean win percentage than candies without chocolate.
+
+**One- or two-tailed, and why:** One-tailed, predicting that chocolate candies score higher. Chocolate is the most common ingredient in best-selling candy bars and is widely rated as a favorite flavor, so we expected people to prefer chocolate candies in a head-to-head choice; a result in the opposite direction would have been surprising rather than merely interesting. (Two-tailed would also have been defensible; the point is that we chose before looking at the data.)
+
+**Alpha:** .05.
+
+---
+
+# Part 4: Descriptive statistics (10 points)
+
+```{r part4-load-data}
+# Load the candy data (the CSV is in the same project folder as this file)
+candy <- read_csv("candy_data.csv")
+```
+
+```{r part4-descriptives}
+# Split the candies into the two groups defined by the IV
+group_1 <- filter(candy, chocolate == 1)   # candies WITH chocolate
+group_2 <- filter(candy, chocolate == 0)   # candies WITHOUT chocolate
+
+# Mean, SD, and n of the DV (winpercent) for each group
+mean(group_1$winpercent)
+sd(group_1$winpercent)
+nrow(group_1)
+
+mean(group_2$winpercent)
+sd(group_2$winpercent)
+nrow(group_2)
+```
+
+| Group | *M* | *SD* | *n* |
+|---|---|---|---|
+| Contains chocolate | 60.92 | 12.81 | 37 |
+| No chocolate | 42.14 | 10.22 | 48 |
+
+**Assumption check.**
+
+```{r part4-histograms, fig.show = "hide"}
+# Exploratory histograms, one per group (hidden in the knitted file)
+ggplot(group_1, aes(x = winpercent)) +
+  geom_histogram(bins = 12, fill = "lightgrey", color = "black") +
+  labs(title = "Chocolate candies", x = "Win percentage", y = "Candies") +
+  theme_classic()
+
+ggplot(group_2, aes(x = winpercent)) +
+  geom_histogram(bins = 12, fill = "lightgrey", color = "black") +
+  labs(title = "Non-chocolate candies", x = "Win percentage", y = "Candies") +
+  theme_classic()
+```
+
+Both groups' distributions are roughly symmetric with a single peak; the chocolate group is spread across about 35–85 and the non-chocolate group across about 22–67, with one non-chocolate candy (Starburst) sitting above the rest of its group. The SDs are similar (12.8 vs. 10.2; the larger is well under twice the smaller), so comparing the means with a test that assumes equal variances is reasonable. The groups are of unequal size (37 vs. 48), which the test handles.
+
+---
+
+# Part 5: Run your t test (20 points)
+
+```{r part5-ttest}
+# Independent-samples t test, one-tailed: is the mean of group_1 (chocolate) GREATER than group_2 (no chocolate)?
+test_result <- t.test(group_1$winpercent, group_2$winpercent, var.equal = TRUE, alternative = "greater")
+test_result
+
+# Because the test is one-tailed, R printed a one-sided interval above. Re-run two-sided to get the 95% CI for the report:
+t.test(group_1$winpercent, group_2$winpercent, var.equal = TRUE, alternative = "two.sided")$conf.int
+```
+
+**Effect size.**
+
+```{r part5-cohens-d}
+# Cohen's d for independent samples: difference in means divided by the pooled SD
+pooled_sd <- sqrt((sd(group_1$winpercent)^2 + sd(group_2$winpercent)^2) / 2)
+d <- (mean(group_1$winpercent) - mean(group_2$winpercent)) / pooled_sd
+d
+```
+
+**Report the result in APA style.** Candies containing chocolate won a higher percentage of their matchups (*M* = 60.92, *SD* = 12.81) than candies without chocolate (*M* = 42.14, *SD* = 10.22), *t*(83) = 7.52, *p* < .001 (one-tailed), 95% CI [13.81, 23.75], *d* = 1.62.
+
+---
+
+# Part 6: Figure (15 points)
+
+```{r part6-figure, fig.width = 5, fig.height = 4}
+# Step 1: a two-row summary table with each group's mean and standard error (SE = SD / sqrt(n))
+summary_df <- data.frame(
+  group = c("Contains chocolate", "No chocolate"),
+  mean  = c(mean(group_1$winpercent), mean(group_2$winpercent)),
+  se    = c(sd(group_1$winpercent) / sqrt(nrow(group_1)), sd(group_2$winpercent) / sqrt(nrow(group_2)))
+)
+summary_df
+
+# Step 2: the plot: every candy as a grey point, the group mean as a black point, and ±1 SE error bars
+ggplot(summary_df, aes(x = group, y = mean)) +
+  geom_jitter(data = bind_rows(group_1, group_2),
+              aes(x = ifelse(chocolate == 1, "Contains chocolate", "No chocolate"), y = winpercent),
+              width = 0.08, alpha = 0.3, color = "grey50") +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.15) +
+  labs(title = "Candy popularity by chocolate content",
+       x = "Candy type", y = "Win percentage (% of matchups won)") +
+  theme_classic()
+```
+
+**Caption.** *Figure 1.* Mean win percentage for candies with and without chocolate. Black points are group means, error bars show ±1 standard error of the mean, and grey points are individual candies. Chocolate candies won about 19 percentage points more of their matchups on average, and the two groups overlap only at the top of the non-chocolate range.
+
+*(Note on the raw-points layer: the 0/1 column had to be relabeled inside `aes()` so the points land on the same x-axis categories as the means. With a text IV such as `film` or `sex`, `aes(x = film, y = ...)` is enough, as long as the labels in `summary_df$group` match the data's level names exactly.)*
+
+---
+
+# Part 7: Interpretation (15 points)
+
+**Decision.** We reject the null hypothesis. The difference between the two group means is far larger than sampling variability alone would produce (*p* < .001), so we conclude that, among these candies, the ones containing chocolate really are chosen more often in head-to-head matchups.
+
+**How big is the effect?** Large. Chocolate candies won about 61% of their matchups versus 42% for the rest, a gap of roughly 19 points, and Cohen's *d* = 1.62 means the two group means are more than one and a half standard deviations apart. In practical terms, a typical chocolate candy beats most non-chocolate candies; the best non-chocolate candies (Starburst, Skittles) only reach the middle of the chocolate group.
+
+**Limitations.** Design: candies were not randomly assigned to contain chocolate, so this is an observational comparison. Chocolate candies differ from the others in many ways at once (they are more often bars, more often contain peanuts or caramel, and tend to be pricier), so we cannot say that chocolate itself causes the preference. Sample: respondents were self-selected visitors to a website, and the candies are a fixed set of 85 mostly American products, so the result describes those voters' preferences among those candies rather than everyone's preferences among all candy.
+
+**What next?** Does the chocolate advantage hold among candy *bars* only, where the other ingredients are more similar? That would need the same matchup data restricted to bars (`bar == 1`), or, better, a new study that varies chocolate while holding form and price constant.
+
+---
+
+# Code & writing (10 points)
+
+Every chunk above runs and shows its output, each has a comment, names are at the top, and the text was proofread. Knit to HTML and send the `.html` file to Kate and Rola on Slack, once per group.
+
+# AI and collaboration statement
+
+- Everyone who worked on this assignment is listed at the top of the file: YES
+- We used an AI tool for this assignment: NO
+- We got help from people outside our group: NO

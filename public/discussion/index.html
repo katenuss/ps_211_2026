@@ -75,7 +75,7 @@ async function urlExists(url) {
   // One entry per discussion section. `files` lists what should appear for that
   // section; a button is enabled only once the file actually exists on the site,
   // so you can list files ahead of time and post them when ready.
-  //   label: button text · file: filename inside discussion_section/
+  //   label: button text · file: path inside discussion_section/ (subfolders OK, e.g. data_writeup/x.csv)
   //   primary: true for the main worksheet button
   const DISCUSSIONS = [
     { n: 1,  date: 'Sept. 9',  title: 'Intro to R and RStudio',
@@ -91,15 +91,15 @@ async function urlExists(url) {
       files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion03_variability_sampling.Rmd', primary: true } ] },
     { n: 4,  date: 'Sept. 30', title: 'R practice: loading & exploring data; intro to Data Write-Up #1',
       files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion04_meet_your_data.Rmd', primary: true },
-               { label: 'Write-Up #1 assignment (.Rmd)', file: 'ps211_data_writeup1.Rmd' },
-               { label: 'Write-Up #1 worked example (.Rmd)', file: 'ps211_data_writeup1_example.Rmd' },
-               { label: 'Candy data (.csv)', file: 'candy_data.csv' },
-               { label: 'Emotion & films (.csv)', file: 'emotion_films_data.csv' },
-               { label: 'Media influence (.csv)', file: 'media_influence_data.csv' },
-               { label: 'Big Five (.csv)', file: 'big_five_data.csv' },
-               { label: 'Kids cognition (.csv)', file: 'kids_cognition_data.csv' },
-               { label: 'Sleep deprivation (.csv)', file: 'sleep_deprivation_data.csv' },
-               { label: 'Course evals (.csv)', file: 'course_evals_data.csv' } ] },
+               { label: 'Write-Up #1 assignment (.Rmd)', file: 'data_writeup/ps211_data_writeup1.Rmd' },
+               { label: 'Write-Up #1 worked example (.Rmd)', file: 'data_writeup/ps211_data_writeup1_example.Rmd' },
+               { label: 'Candy data (.csv)', file: 'data_writeup/candy_data.csv' },
+               { label: 'Emotion & films (.csv)', file: 'data_writeup/emotion_films_data.csv' },
+               { label: 'Media influence (.csv)', file: 'data_writeup/media_influence_data.csv' },
+               { label: 'Big Five (.csv)', file: 'data_writeup/big_five_data.csv' },
+               { label: 'Kids cognition (.csv)', file: 'data_writeup/kids_cognition_data.csv' },
+               { label: 'Sleep deprivation (.csv)', file: 'data_writeup/sleep_deprivation_data.csv' },
+               { label: 'Course evals (.csv)', file: 'data_writeup/course_evals_data.csv' } ] },
     { n: 5,  date: 'Oct. 7',   title: 'R practice: Central Limit Theorem simulations & standard error',
       files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion05_CLT_SE.Rmd', primary: true } ] },
     { n: 6,  date: 'Oct. 14',  title: 'R practice: z scores to percentiles & hypothesis testing basics',
@@ -108,10 +108,10 @@ async function urlExists(url) {
       files: [ { label: 'Download worksheet (.Rmd)', file: 'ps211_discussion07_hypothesis_tests_CIs.Rmd', primary: true } ] },
     { n: 8,  date: 'Oct. 28',  title: 'Data Write-Up #1: analysis plan, descriptive statistics & peer review',
       files: [ { label: 'Session guide (.Rmd)', file: 'ps211_discussion08_writeup_plan.Rmd', primary: true },
-               { label: 'Write-Up #1 assignment (.Rmd)', file: 'ps211_data_writeup1.Rmd' } ] },
+               { label: 'Write-Up #1 assignment (.Rmd)', file: 'data_writeup/ps211_data_writeup1.Rmd' } ] },
     { n: 9,  date: 'Nov. 4',   title: 'Data Write-Up #1: run your t test, make your figure & interpret (due Mon. Nov. 9)',
       files: [ { label: 'Session guide (.Rmd)', file: 'ps211_discussion09_writeup_test_figure.Rmd', primary: true },
-               { label: 'Write-Up #1 assignment (.Rmd)', file: 'ps211_data_writeup1.Rmd' } ] },
+               { label: 'Write-Up #1 assignment (.Rmd)', file: 'data_writeup/ps211_data_writeup1.Rmd' } ] },
     { n: 10, date: 'Nov. 11',  title: 'Exam 3 review & practice',
       files: [] },
     { n: 11, date: 'Nov. 18',  title: 'R practice for ANOVA; intro to Data Write-Up #2; form new groups & choose new datasets',
@@ -168,7 +168,7 @@ async function urlExists(url) {
         const checks = await Promise.all(d.files.map(f => urlExists(`${FILES}/${f.file}`)));
         d.files.forEach((f, i) => {
           const kind = f.primary ? 'primary' : 'ghost';
-          if (checks[i]) buttons.push(btn(f.label, `${FILES}/${f.file}`, kind, true, '', f.file));
+          if (checks[i]) buttons.push(btn(f.label, `${FILES}/${f.file}`, kind, true, '', f.file.split('/').pop()));
           else           buttons.push(btn(f.label, '', kind, false, 'Not yet posted'));
         });
       }
