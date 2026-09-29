@@ -64,6 +64,8 @@ Probability, null and research hypotheses, one- vs. two-tailed tests, rejecting 
 
 <p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="34rem">The exam will ask you to <i>apply</i> these concepts to new scenarios, so that is what we will practice today. We will spend the most time on Part 2.</SpeechBubble></p>
 
+<p v-click><SpeechBubble color="blue" shape="round" position="bl" maxWidth="34rem">pollev.com/katenussenbaum950 </SpeechBubble></p>
+
 ---
 layout: cover
 color: indigo-light

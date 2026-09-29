@@ -1,0 +1,330 @@
+---
+title: 'PS 211 — Discussion Worksheet #4 — ANSWER KEY'
+subtitle: 'Fall 2026 · Meet your data: loading, exploring & comparing groups (intro to the Data Write-Up)'
+author: "ANSWER KEY"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+Today, we will introduce the **Data Write-Up** (two assignments worth 20% of your grade), and we will practice the R skills that both write-up starts with: getting a dataset into R, examining it, pulling out the columns you care about, and comparing groups.
+
+Almost nothing today is new code. You saw most of it in Discussions 1 and 2. The goal is to get comfortable enough to do it on a dataset you've *never seen before*, because that is exactly what your write-up will ask of you.
+
+Run chunks top-to-bottom; edit where it says **EDIT**; answer at each **"Your answer:"**.
+
+**Setup:** download `candy_data.csv` from the course website and save it in your `ps211` project folder (the same folder this worksheet lives in). In Part 4 you'll download one more file.
+
+---
+
+# 0) The Data Write-Up, in one page
+
+Twice this semester you will do what researchers actually do with data: ask a question, state hypotheses, run the right test, and write up what you found.
+
+- **What:** Two write-ups, each worth 10% of your grade. **Write-Up #1** uses a **t test** to compare **two groups** (Lectures 12–14). **Write-Up #2** uses an **ANOVA** to compare **three or more groups** (Lectures 15–16).
+- **When:** Write-Up #1 is due **Monday, Nov. 9 at 11:59 p.m.**; Write-Up #2 is due **Tuesday, Dec. 8 at 11:59 p.m.** Most of the work happens *in discussion section* (Discussions 4, 8, and 9 for Write-Up #1), with your TF in the room.
+- **Who:** Groups of 2–3. One submission per group, with everyone's name at the top.
+- **With what data:** A real psychology dataset from the menu in Part 4 of this worksheet. Every dataset there has been checked to make sure it can support a write-up. Each write-up uses a *different* dataset: you'll choose a new one (and may form a new group) for Write-Up #2.
+- **Deliverable:** One knitted R Markdown report per group, built in the assignment file `ps211_data_writeup1.Rmd` (on the course website next to this worksheet, with the full rubric). It has a section for each step below; you'll fill in Parts 1–3 today and the rest in Discussions 8 and 9, then submit that one file. 
+
+**The shape of every write-up.** The steps will be the same for both write-ups.
+
+| Step | What it means | Where you learn it |
+|---|---|---|
+| 1. Research question | Define one clear question the data can answer | Lectures 1–2 · **today** |
+| 2. Variables | Determine the IV and its levels; the DV | Lecture 2 · **today** |
+| 3. Hypotheses | Determine your null and alternative hypothesis; one- or two-tailed | Lecture 6 **today** |
+| 4. Descriptives | Determine the mean, SD, and *n* for each group | Lectures 4–5 · **today** |
+| 5. The test | Run your test! *t* test (Write-Up #1) or ANOVA (Write-Up #2) | Lectures 12–16 · Discussions 8–9 |
+| 6. Results | Complete your APA-style write-up and create a corresponding figure | Lecture 14 · Discussions 8–9 |
+
+Today covers steps 1, 2, 3, and 4: load a dataset, find your IV and DV, determine your hypothesis, and compare the groups descriptively. The test itself comes later in the semester.
+
+**Do this now:** find your group (2–3 people) and type your group members' names here so you can find each other in later sections. You can work together on the same R Markdown sheet. Make sure you save this edited file on ONE person's computer. 
+
+*(Group members: Rola, Kate, and a penguin.)*
+
+---
+
+## Packages (run this once at the top)
+
+```{r libraries, message = FALSE}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("dplyr")
+# install.packages("ggplot2")
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+---
+
+# 1) Loading a dataset and looking around
+
+Our practice dataset for today is about Halloween candy. 🎃 In 2017, FiveThirtyEight ran an online "candy power ranking": about 8,000 people were shown two candies at a time and clicked the one they'd rather get, for roughly 269,000 matchups in total. The column `winpercent` is the percentage of its matchups that each candy won. The other columns describe each candy (does it have chocolate? is it a bar? how sugary is it?).
+
+Reading a CSV file into R takes one line. Remember its three parts: `read_csv()` does the reading, the filename goes in quotes, and `candy <-` stores the result in a variable so you can use it later.
+
+```{r load-candy, message = FALSE}
+candy <- read_csv("candy_data.csv")
+```
+
+**If you got an error** like `'candy_data.csv' does not exist`: R looked in its working directory and didn't find the file. Check that (a) you downloaded it, (b) it's in your `ps211` folder, and (c) you have the `ps211` project open (its name appears in the top-right corner of RStudio). You will hit this error again in your life; knowing the fix is the skill.
+
+A table stored in R is called a **data frame**. With *any* new data frame, ask the same four questions first: *How big is it? What are the columns called? What does one row represent? What type is each column?*
+
+```{r look-around}
+nrow(candy)       # how many rows?
+ncol(candy)       # how many columns?
+colnames(candy)   # what are the columns called?
+head(candy)       # the first 6 rows
+```
+
+Remember the abbreviations: `<dbl>` means numbers, `<chr>` means text. You can also see the whole spreadsheet by clicking `candy` in the Environment pane (top right). Scroll through it for a minute: two of the "candies" are a dime and a quarter, which FiveThirtyEight slipped into the matchups as a comparison. Real datasets have quirks like this, and you only find them by looking.
+
+**Your answer:** (a) How many candies are in the dataset? (b) What does one row represent? (c) Which column is text, and what are the others?
+
+**Sample answer:** (a) 85 rows, so 85 candies (well, 83 candies plus a dime and a quarter). (b) One row is one candy: its name, nine yes/no features, its sugar and price percentiles, and the percentage of matchups it won. (c) `candy_name` is the only text column (`<chr>`). The other twelve are stored as numbers (`<dbl>`), although nine of them are 0/1 codes for yes/no features rather than measurements.
+
+---
+
+# 2) Pulling out one column
+
+To pull a single column out of a data frame, use the dollar sign: `dataframe$column_name`. (Tip: type `candy$` and pause; RStudio pops up the list of column names so you never have to remember spelling.)
+
+```{r dollar}
+candy$candy_name    # every candy name
+candy$winpercent    # every win percentage
+```
+
+A column pulled out this way is a **vector**, the same kind of thing as `c(6, 7, 8)` from Discussion 1. So anything you can do to a vector, you can do to a column:
+
+```{r column-functions}
+length(candy$winpercent)   # how many values? (should match nrow)
+mean(candy$winpercent)
+sd(candy$winpercent)
+median(candy$winpercent)
+max(candy$winpercent)
+```
+
+**Your answer:** In one sentence each, what do the mean and the SD of `winpercent` tell you about the candies?
+
+**Sample answer:** The mean is about 50%, which makes sense: every matchup has one winner and one loser, so on average a candy wins about half the time. The SD is about 14.7 points, so a typical candy's win percentage sits about 15 points above or below 50; the candies span roughly 22% (Nik L Nip) to 84% (Reese's Peanut Butter Cup).
+
+## Which candy won?
+
+`max()` told you the best win percentage, but not *which* candy earned it. `arrange()` sorts the whole data frame by a column; wrap the column in `desc()` to sort from highest to lowest. Then `head()` shows the top of the sorted table.
+
+```{r arrange}
+head(arrange(candy, desc(winpercent)))    # the six most-loved candies
+head(arrange(candy, winpercent))          # the six least-loved candies
+```
+
+## Numbers that are secretly categories
+
+Now look at the `chocolate` column with `count()`, the function that built your frequency tables in Discussion 2:
+
+```{r count-chocolate}
+count(candy, chocolate)
+```
+
+`chocolate` is `1` if the candy contains chocolate and `0` if it doesn't. R stores it as a number (`<dbl>`), but it is really a **nominal** variable with two levels. Lecture 2 alert: a variable's type depends on what its values *mean*, not on whether they're typed as digits. It's fine to `count()` a 0/1 column, but treating it as a continuous DV would be nonsense.
+
+**Try it:** Edit the chunk to (a) count how many candies are `fruity`, and (b) get the mean and SD of `sugarpercent` (the candy's sugar content as a percentile among these candies).
+
+```{r try-columns}
+count(candy, fruity)
+
+mean_sugar <- mean(candy$sugarpercent)
+sd_sugar   <- sd(candy$sugarpercent)
+
+mean_sugar
+sd_sugar
+```
+
+**Your answer:** Write-Up #1 needs an IV that is **categorical with two levels** and a DV that is **numeric**. Which columns of `candy` could serve as an IV? Which could serve as a DV? Which column is neither?
+
+**Sample answer:** Possible IVs are the nine 0/1 columns (`chocolate`, `fruity`, `caramel`, `peanutyalmondy`, `nougat`, `crispedricewafer`, `hard`, `bar`, `pluribus`): each is nominal with exactly two levels. Possible DVs are the three genuinely numeric columns: `winpercent`, `sugarpercent`, `pricepercent`. `candy_name` is neither: it is an identifier, every value is different, so it cannot form groups, and it is not a quantity. (38 candies are fruity; the mean sugar percentile is about 0.48 with SD about 0.28.)
+
+---
+
+# 3) Keeping only some rows, and comparing two groups
+
+Here is a two-group question of exactly the kind your write-up will ask: *Do candies with chocolate win more matchups than candies without?* The descriptive version of the answer is two numbers: the mean `winpercent` for chocolate candies and the mean for everything else. To get them, we need a way to keep *only some rows* of a data frame.
+
+`filter(dataframe, condition)` keeps the rows where the condition is true. Two things to notice: the condition uses a **double** equals sign `==` (meaning "is equal to"; a single `=` means something else in R), and inside `filter()` you write the bare column name, with no `candy$`, because `filter()` already knows which data frame you mean.
+
+```{r filter}
+chocolate_candy <- filter(candy, chocolate == 1)   # keep only the rows where chocolate is 1
+
+nrow(chocolate_candy)     # how many candies survived the filter?
+head(chocolate_candy)
+```
+
+Now do the same for the candies *without* chocolate, and pull the DV out of each smaller data frame with `$`:
+
+```{r group-means}
+other_candy <- filter(candy, chocolate == 0)
+
+mean(chocolate_candy$winpercent)   # mean win percentage, chocolate candies
+mean(other_candy$winpercent)       # mean win percentage, everything else
+
+sd(chocolate_candy$winpercent)
+sd(other_candy$winpercent)
+```
+
+**Your answer:** Which group wins more matchups on average, and by roughly how many percentage points? Are the two SDs similar? Then the question we *can't* answer yet: given what you learned about sampling in Lecture 6, why can't we conclude from these two means alone that chocolate candies are "really" more popular?
+
+**Sample answer:** Chocolate candies won about 61% of their matchups on average (*SD* ≈ 12.8, *n* = 37); the rest won about 42% (*SD* ≈ 10.2, *n* = 48). That is a gap of roughly 19 percentage points, and the two SDs are in the same ballpark. What we can't say yet: these 85 candies and these voters are one sample. A different set of candies, or a different 8,000 voters, would give somewhat different means just from sampling variability. To decide whether a 19-point gap is bigger than sampling variability alone would produce, we need a hypothesis test, which is what the *t* test in Lectures 12–14 does. (Spoiler: this gap is far too big to be chance, but we don't have the tool to show that yet.)
+
+## Filtering on text, and other conditions
+
+When a column holds text, the value you're matching goes in quotes. You can also filter with `>`, `<`, and `!=` ("not equal to").
+
+```{r filter-more}
+filter(candy, candy_name == "Twix")     # text values go in quotes; capitalization matters
+filter(candy, winpercent > 70)          # numeric conditions work too
+```
+
+**Try it:** Compare *fruity* candies with *non-fruity* candies. Edit the two `filter()` lines so that each keeps the right rows.
+
+```{r try-fruity}
+fruity_candy <- filter(candy, fruity == 1)
+not_fruity   <- filter(candy, fruity == 0)
+
+mean(fruity_candy$winpercent)
+mean(not_fruity$winpercent)
+```
+
+## A picture of two groups
+
+A boxplot with the IV on the x-axis and the DV on the y-axis is the standard picture of a two-group comparison. It's the same code as the film-rating boxplot in Discussion 3, with one addition: `factor(chocolate)` tells ggplot to treat the 0/1 column as categories rather than as a number.
+
+```{r boxplot, fig.width = 5, fig.height = 4}
+ggplot(candy, aes(x = factor(chocolate), y = winpercent)) +
+  geom_boxplot(fill = "lightblue") +
+  labs(title = "Candy Popularity by Chocolate Content",
+       x = "Contains chocolate (0 = no, 1 = yes)", y = "Win percentage") +
+  theme_classic()
+```
+
+**Your answer:** Does the picture agree with the means you computed? Name one thing the boxplot shows you that the two means don't.
+
+**Sample answer:** Yes: the chocolate box sits well above the other one (medians of about 61 and 42, close to the means). The boxplot also shows the *spread* and the *overlap* of the two groups: the boxes (the middle 50% of each group) barely overlap, the non-chocolate group has one high outlier (Starburst, 67%), and the best non-chocolate candies still lose to a typical chocolate candy. Two means alone can't show any of that. (Fruity candies, by the way, average about 44% versus 55% for non-fruity ones.)
+
+---
+
+# 4) Meet the write-up datasets
+
+Your group will pick **one** dataset for Write-Up #1. All six are real psychology datasets, all are posted on the course website, and each supports a two-group comparison: either two groups of *different* people (a two-level categorical column as the IV) or the *same* people measured twice (a paired design). Write-Up #2 uses a different dataset, chosen from a second menu later in the semester.
+
+**🎬 Emotion induction experiment** · `emotion_films_data.csv` · 330 participants
+
+- *One row =* one participant, randomly assigned to watch a 9-minute film clip: `sad` (a Holocaust documentary), `horror` (*Halloween*), `neutral` (a nature documentary), or `comedy` (*Parenthood*). Mood was measured before and after the film.
+- *Two groups:* pick any two films and `filter()` down to them, e.g. `sad` vs. `comedy`. *Paired:* the same measure `_before` vs. `_after` the film. (For Write-Up #2: all four films.)
+- *Possible DVs:* `positive_affect_after`, `negative_affect_after`, `energetic_arousal_after`, `tense_arousal_after`, and their `_before` versions; personality scores `extraversion`, `neuroticism`, `impulsivity`, `sociability`.
+- *Heads up:* a true experiment with random assignment, so causal language about the film is allowed.
+- *Source:* Rafaeli, E., & Revelle, W. (2006). A premature consensus: Are happiness and sadness truly opposite affects? *Motivation and Emotion, 30*(1), 1–12. Collected in the Personality, Motivation and Cognition Lab, Northwestern University; via the `psychTools` R package.
+
+**📰 Presumed media influence experiment** · `media_influence_data.csv` · 123 participants
+
+- *One row =* one participant who read a news story about an upcoming sugar shortage, randomly assigned to be told the story would run on the newspaper's `front_page` or an `inside_page`.
+- *Possible IVs:* `condition` (front_page / inside_page); also `gender`.
+- *Possible DVs:* `presumed_media_influence` (how much they thought the story would influence *other people*), `issue_importance`, `intention_to_act` (intention to buy sugar before the shortage).
+- *Heads up:* a true experiment, but a small sample.
+- *Source:* Tal-Or, N., Cohen, J., Tsfati, Y., & Gunther, A. C. (2010). Testing causal direction in the influence of presumed media influence. *Communication Research, 37*(6), 801–824. Via Hayes (2018) and the `psych` R package.
+
+**🧠 Big Five personality** · `big_five_data.csv` · 2,185 adults
+
+- *One row =* one adult who completed a 25-item personality questionnaire online for the SAPA project. Each trait score is the mean of five items rated 1–6.
+- *Possible IVs:* `gender` (female / male). (For Write-Up #2: `education`, five levels.)
+- *Possible DVs:* `agreeableness`, `conscientiousness`, `extraversion`, `neuroticism`, `openness`, `age`.
+- *Heads up:* with a sample this large, even tiny differences come out "significant"; effect size will matter.
+- *Source:* Revelle, W., Wilt, J., & Rosenthal, A. (2010). Individual differences in cognition: New methods for examining the personality-cognition link. In A. Gruszka, G. Matthews, & B. Szymura (Eds.), *Handbook of individual differences in cognition* (pp. 27–49). Springer. Data from the SAPA project (sapa-project.org), via the `psychTools` R package (`bfi`). Respondents under 18 and incomplete questionnaires removed.
+
+**🧒 Children's cognitive abilities (1939)** · `kids_cognition_data.csv` · 301 seventh- and eighth-graders
+
+- *One row =* one child at one of two Chicago-area schools who took a battery of cognitive tests in 1939. Higher scores mean better performance.
+- *Possible IVs:* `sex` (boy / girl), `grade` (7 / 8), `school` (Pasteur / Grant-White).
+- *Possible DVs:* spatial tests (`visual_perception`, `cubes`, `lozenges`); verbal tests (`general_information`, `paragraph_comprehension`, `sentence_completion`, `word_meaning`); speeded tests (`addition_speed`, `counting_dots_speed`); memory tests (`word_recognition_memory`, `figure_recognition_memory`); reasoning (`deduction`, `number_puzzles`); `age_years`.
+- *Heads up:* no column with three or more groups, so this one is for Write-Up #1 only.
+- *Source:* Holzinger, K. J., & Swineford, F. (1939). *A study in factor analysis: The stability of a bi-factor solution* (Supplementary Educational Monographs No. 48). University of Chicago. Raw scores via the `psychTools` R package.
+
+**😴 Sleep deprivation and reaction time** · `sleep_deprivation_data.csv` · 18 participants
+
+- *One row =* one participant in a sleep-restriction study. Each column is that person's average reaction time (in ms) on a vigilance task on one day, `reaction_day0` through `reaction_day9`. Days 0–1 were practice, day 2 was the baseline, and from then on participants were limited to 3 hours in bed per night.
+- *Design:* **paired.** The same people are measured every day, so you compare two days *within* participants (e.g. `reaction_day2`, the baseline, vs. `reaction_day9`). (For Write-Up #2: repeated-measures ANOVA across days.)
+- *Heads up:* only 18 participants. This is the menu's cleanest paired-samples design.
+- *Source:* Belenky, G., Wesensten, N. J., Thorne, D. R., Thomas, M. L., Sing, H. C., Redmond, D. P., Russo, M. B., & Balkin, T. J. (2003). Patterns of performance degradation and restoration during sleep restriction and subsequent recovery: A sleep dose-response study. *Journal of Sleep Research, 12*(1), 1–12. Via the `lme4` R package (`sleepstudy`).
+
+**🎓 Beauty in the classroom** · `course_evals_data.csv` · 463 course sections at the University of Texas at Austin
+
+- *One row =* one course section, taught by one of 94 professors. Six students rated each professor's attractiveness from a photo; `bty_avg` is their average.
+- *Possible IVs:* `gender` (female / male), `pic_outfit` (formal / not formal), `pic_color` (color / black&white), `cls_level` (lower / upper). (For Write-Up #2: `rank`, three levels.)
+- *Possible DVs:* `score` (mean student evaluation, 1–5), `bty_avg` (1–10), `age`, `cls_students`.
+- *Heads up:* observational data (nobody was randomly assigned a face), and the same professor appears in several rows.
+- *Source:* Hamermesh, D. S., & Parker, A. (2005). Beauty in the classroom: Instructors' pulchritude and putative pedagogical productivity. *Economics of Education Review, 24*(4), 369–376. Via the `openintro` R package.
+
+## Step 1: Decide before you look
+
+With your group, pick a dataset (and a backup). Then download the assignment file, `ps211_data_writeup1.Rmd`, from the course website, save it in your `ps211` folder on **one** group member's computer, and fill in its **Parts 1–3** now, **using only the dataset's card above, not the data itself**: the dataset description, your research question, your IV with its two levels (for the sleep study, the two columns you'll compare), your DV, which kind of *t* test fits and why, your null and alternative hypotheses, one- or two-tailed with a sentence of reasoning, and alpha.
+
+This ordering is deliberate: researchers commit to their question and hypotheses *before* they see the data, because deciding afterward makes it far too easy to "discover" whatever the numbers happen to show. The assignment file says the same thing at the top, and Part 3 of it will be graded on exactly this.
+
+**Your answer:** Copy your research question and your alternative hypothesis here, so your TF can check them on this sheet.
+
+**Sample answer (emotion experiment), as it would appear in Parts 2–3 of the assignment file:** (a) `emotion_films_data.csv`. (b) One participant, randomly assigned to one film. (c) Do people who watch a comedy report more positive affect afterward than people who watch a sad documentary? (d) `film`, comparing `sad` and `comedy` (the other two films get filtered out). (e) `positive_affect_after`. (f) H0: after the film, mean positive affect is the same in the comedy group and the sad-film group. (g) H1: after the film, mean positive affect is higher in the comedy group than in the sad-film group. (h) One-tailed, predicting comedy > sad: a comedy is designed to make people feel good and a documentary about a concentration camp is not, so a difference in the other direction would be very surprising. (A two-tailed version, "the two groups differ," is also acceptable if the group argues it has no strong directional prediction; what matters is that the direction is chosen *before* Step 2 and justified.) What to check across groups: the IV names exactly two levels, the DV is a measurement rather than a code or an identifier, H0 says "no difference / the same," H1 says the opposite in the predicted direction, and the reasoning in (h) is about the psychology, not about what the numbers might show.
+
+## Step 2: Now look
+
+Download the CSV into your `ps211` folder and run the Parts 1–3 recipe on it, here first. Edit the filename first; the chunk uses the candy file until you do. (If you chose the sleep study, your two "groups" are two columns rather than two sets of rows: skip the `filter()` lines and compare, say, `mean(my_data$reaction_day2)` with `mean(my_data$reaction_day9)`.)
+
+```{r your-dataset, message = FALSE}
+my_data <- read_csv("emotion_films_data.csv")   # worked example: the emotion-induction experiment
+
+nrow(my_data)
+colnames(my_data)
+head(my_data)
+```
+
+Now compute the descriptives for the two groups you named in Step 1. Remember: text levels go in quotes, like `film == "sad"`; 0/1 levels don't.
+
+```{r your-groups}
+# Worked example: IV = film (text levels, so quotes), keeping two of its four levels; DV = positive_affect_after
+count(my_data, film)
+
+group_1 <- filter(my_data, film == "sad")
+group_2 <- filter(my_data, film == "comedy")
+
+mean(group_1$positive_affect_after)
+mean(group_2$positive_affect_after)
+sd(group_1$positive_affect_after)
+sd(group_2$positive_affect_after)
+nrow(group_1)
+nrow(group_2)
+```
+
+Once the chunk above runs on your data, copy your working lines into **Part 4** of the assignment file (the two chunks there are empty on purpose: that's where your code lives from now on). Name your filtered data frames `group_1` and `group_2` there too; the later parts of the assignment assume those names.
+
+**Your answer:** (a) Did the means come out in the direction you predicted in Step 1? By how much do they differ, and are the SDs similar? (b) Did anything about the data force you to change your plan (a level spelled differently than you expected, more than two levels, a column that wasn't what you thought)? Say what, if so. (c) Looking at the two means and SDs, what can't you conclude yet, and what will you need before you can?
+
+**Sample answer (emotion experiment):** (a) Yes. The comedy group averaged about 11.8 on positive affect after the film (*SD* ≈ 6.3, *n* = 84) versus about 7.3 after the sad film (*SD* ≈ 5.9, *n* = 83), a difference of about 4.5 points in the predicted direction, with similar SDs. (b) `film` has four levels, not two, so the plan needs `filter()` to keep just `sad` and `comedy`; the level names are lowercase and must be typed exactly. (c) We can't yet say whether a 4.5-point gap is more than we'd expect from sampling variability alone: two different random groups of 80-odd people will never have identical means. Deciding that takes a hypothesis test (the *t* test, Lectures 12–14), which compares the gap between the means to how much the individual scores vary. Groups using the sleep study should have compared two `reaction_day` columns (e.g. day 2 vs. day 9: about 265 vs. 351 ms) and noted that the same 18 people appear in both.
+
+---
+
+# ✅ Before you leave
+
+- [ ] I loaded a CSV into R and checked its size, its column names, and each column's type.
+- [ ] I pulled a column out with `$` and computed its mean and SD.
+- [ ] I can tell a categorical column from a numeric one, even when the categories are coded as 0/1.
+- [ ] I used `filter()` to keep only some rows, and compared two groups' means.
+- [ ] My group chose a write-up dataset, wrote Parts 1–3 of the assignment file *before* looking at the data, and then checked the group means against our prediction.
+- [ ] Our Part 4 code is in the assignment file, and the file is saved on one group member's computer.
+
+**Next time:** we put Thursday's z-scores to work and meet the Central Limit Theorem. 🔔
