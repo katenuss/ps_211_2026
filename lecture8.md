@@ -61,7 +61,7 @@ align: lt
 </div>
 <div>
 
-**z distribution** — mean = 0, SD = 1, same shape as the raw scores.
+**z distribution (standard normal)** — what any normal distribution becomes when converted to z scores: normal, mean = 0, SD = 1.
 
 </div>
 </div>

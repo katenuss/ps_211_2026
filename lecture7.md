@@ -255,7 +255,7 @@ align: lt-lt-lt
 :: right ::
 
   <p v-click>
-<img src="/images/lecture6/sumo_normal.png" alt="Sumo results normal dist" class="w-3/4 mx-auto"/>
+<img src="/images/lecture6/sumo_normal.png" alt="Sumo results normal dist" class="w-2/3 mx-auto"/>
 <div class="text-xs text-gray-500 mt-2">Data: Duggan & Levitt (2002), <i>American Economic Review, 92</i>(5).</div>
 
 </p>
@@ -394,7 +394,7 @@ align: lt
 :: title ::
 # Review: Standard Deviation
 
-<img src="/images/lecture6/i-am-back.png" alt="I am back meme" class="w-1/4 mx-auto"/>
+<img src="/images/lecture6/i-am-back.png" alt="I am back meme" class="w-1/5 mx-auto"/>
 
 :: content ::
 - **Variance:** average squared deviation from the mean  
@@ -562,8 +562,7 @@ columns: is-5-7
 
 - Back to the sleep data. What if we convert **every** student's score to a z score?
 - A z score does not change the data. It **relabels the x-axis**.
-- The top ruler is in hours. The bottom ruler is in "SDs from the mean."
-- 9 hours and $z = +1$ are the *same place* on the plot.
+- Top ruler: hours. Bottom ruler: "SDs from the mean." 9 hours and $z = +1$ are the *same place* on the plot.
 
 <p v-click>
 
@@ -590,7 +589,7 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# The Z Distribution
+# Standardizing every score
 
 <StickyNote color="amber-light" title="Definition" width="100%">
 z score: How many standard deviations a score is from the mean of its distribution.
@@ -598,15 +597,15 @@ z score: How many standard deviations a score is from the mean of its distributi
 
 :: left ::
 
-- A $z$ distribution is a distribution of $z$ scores.  
-- Properties:  
+- A distribution of $z$ scores always has:  
   - Mean = 0  
   - SD = 1  
+  - The same shape as the raw scores  
 
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
-Why is the mean of a z distribution always 0?
+Why is the mean of a distribution of z scores always 0?
 </Admonition>
 
 </p>
@@ -619,7 +618,7 @@ The formula subtracts $M$ from every score, which slides the center of the distr
 
 
 :: right ::
-<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
+<img src="/images/lecture6/z_dist.png" alt="Distribution of z scores" class="w-full mx-auto"/>
 
 <div class="text-xs text-gray-500 mt-2">This picture shows raw scores that were normal. Standardizing never changes the shape of a distribution.</div>
 
@@ -631,7 +630,7 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# The Z Distribution (Continued)
+# Standardizing every score (continued)
 
 <StickyNote color="amber-light" title="Definition" width="100%">
 z score: How many standard deviations a score is from the mean of its distribution.
@@ -639,15 +638,14 @@ z score: How many standard deviations a score is from the mean of its distributi
 
 :: left ::
 
-- A $z$ distribution is a distribution of $z$ scores.  
-- Properties:  
+- A distribution of $z$ scores always has:  
   - Mean = 0  
   - SD = 1  
 
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
-Why is the SD of a z distribution always 1?
+Why is the SD of a distribution of z scores always 1?
 </Admonition>
 
 </p>
@@ -660,7 +658,7 @@ The formula divides every distance from the mean by $s$. If a raw score is 1 SD 
 
 
 :: right ::
-<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
+<img src="/images/lecture6/z_dist.png" alt="Distribution of z scores" class="w-full mx-auto"/>
 
 
 <p v-click>
@@ -937,13 +935,13 @@ columns: is-5-7
 
 :: left ::
 
-The same 253 college students reported how many alcoholic drinks they have per week. The distribution is **positively skewed**.
+The same 253 students reported their alcoholic drinks per week. The distribution is **positively skewed**.
 
 <Admonition title="Multiple choice" color="teal-light" width="100%">
 
 If we convert every student's score to a z score, what will the distribution of z scores look like?
 
-- **A)** Normal, because z distributions are normal.
+- **A)** Normal, because z scores are always normal.
 - **B)** Positively skewed, with mean 0 and SD 1.
 - **C)** Negatively skewed, because the signs flip.
 - **D)** Uniform.
@@ -974,25 +972,25 @@ columns: is-5-7
 ---
 
 :: title ::
-# A new question: what percent of scores are below mine?
+# What percent of scores are below mine?
 
 :: left ::
 
 - ==Percentile==: the percentage of scores **below** a given score.
 - You sleep 9 hours. What percent of students sleep less than you?
-- When we have the raw data, we can just **count**: 220 of 253 students, or **87%**.
+- With the raw data, we can just **count**: 220 of 253 students, or **87%**.
 
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
-What if we do not have the raw data? Suppose all we know is that sleep is roughly normal, with M = 8 and SD = 1.
+What if we do not have the raw data? All we know: sleep is roughly normal, M = 8, SD = 1.
 </Admonition>
 
 </p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-We can still get very close, because **every normal distribution has the same shape**. The next four slides build that idea one step at a time.
+We can still get very close, because **every normal distribution has the same shape**. The next few slides show why.
 
 </Admonition></p>
 
@@ -1001,6 +999,27 @@ We can still get very close, because **every normal distribution has the same sh
 <img src="/images/lecture7/sleep_percentile_count.png" alt="Sleep histogram with students below 9 hours shaded" class="w-full mx-auto"/>
 
 <div class="text-xs text-gray-500 mt-2">Data: Onyper, Thacher, Gilbert, & Gradess (2012), <i>Chronobiology International</i>.</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Counting scores = measuring area
+
+:: content ::
+
+- In a histogram, every score adds one block of the same size. So the **share of the area** left of 9 hours is the **share of the scores** below 9 hours.
+
+<img src="/images/lecture7/area_blocks_to_curve.png" alt="Histogram of blocks, histogram with narrow bars, and smooth curve, each shaded left of 9 hours" class="w-2/3 mx-auto"/>
+
+<p v-click>
+
+**Area under the curve** between two values = the percent of scores between them. Total area = 100%.
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -1014,23 +1033,21 @@ columns: is-6-6
 
 :: left ::
 
-- Normal distributions can differ in only two ways:
-  - where the center is (the **mean**)
-  - how spread out the scores are (the **SD**)
-- Measure in "SDs from the mean" and those two differences disappear.
+- Normal distributions differ in only two ways: the **mean** (center) and the **SD** (spread).
+- Measure in "SDs from the mean" and those differences disappear.
 - In **every** normal distribution, about 84% of scores fall below the score that is 1 SD above the mean.
 
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
-GRE Verbal scores are roughly normal, with μ = 151.4 and σ = 8.4. About what percent of test takers score below 159.8?
+GRE Verbal scores are roughly normal (μ = 151.4, σ = 8.4). About what percent of test takers score below 159.8?
 </Admonition>
 
 </p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-159.8 is 1 SD above the mean (151.4 + 8.4), so about **84%**. The same answer as for 9 hours of sleep, or for a height of 82.4 inches in the NBA.
+159.8 is 1 SD above the mean (151.4 + 8.4), so about **84%**. Same answer as for 9 hours of sleep, or 82.4 inches in the NBA.
 
 </Admonition></p>
 
@@ -1053,7 +1070,7 @@ columns: is-5-7
 :: left ::
 
 - Convert any normal distribution to z scores and you always get the **same** curve.
-- Its name: the ==standard normal distribution== (normal shape, mean = 0, SD = 1).
+- Its name: the ==standard normal distribution==, also called the **z distribution** (normal shape, mean = 0, SD = 1).
 - "Standard" means there is only **one** of it. It does not depend on the units, the mean, or the SD of the raw scores.
 
 <p v-click>
@@ -1134,7 +1151,7 @@ Counting the real data gave 87% below 9 hours. The curve says 84%. Close but not
 
 :: right ::
 
-<img src="/images/lecture7/z_to_percentile_examples.png" alt="Standard normal curves shaded below z = 1 and below z = -2" class="w-2/3 mx-auto"/>
+<img src="/images/lecture7/z_to_percentile_examples.png" alt="Standard normal curves shaded below z = 1 and below z = -2" class="w-5/6 mx-auto"/>
 
 <p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">What about z = 0.5 or z = 1.37? A <b>z table</b> gives the exact percentile for any z score. We'll practice using z tables in Lecture 9. For now, focus on the idea that a z score tells you where a score sits in its distribution.</StickyNote></p>
 
@@ -1228,47 +1245,6 @@ Only the reference curve changes. Today it is the standard normal. Later it will
 </p>
 
 ---
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# R Demo: Z Scores and Percentiles
-
-:: left ::
-- Let's do a quick demo in R to calculate z scores and percentiles.
-
-
-```r
-# Sample data: Happiness scores of countries
-happiness_scores <- c(7.313, 6.48, 4.362, 5.5, 3.8, 6.9, 4.12)
-
-# Calculate mean and standard deviation
-mean_happiness <- mean(happiness_scores)
-sd_happiness <- sd(happiness_scores)
-
-# Calculate z scores
-z_scores <- (happiness_scores - mean_happiness) / sd_happiness
-z_scores
-
-# Convert z scores to percentiles with the 'pnorm' function
-percentiles <- pnorm(z_scores) * 100
-percentiles
-```
-
-
-:: right ::
-
-- `pnorm(z)` gives the area to the **left** of `z` on the standard normal curve.
-- Now let's try some R practice! 
-- We will use the dataset "quakes" which contains information about earthquakes, including their magnitudes.
-- Imagine you experience an earthquake of magnitude 6. What percentage of earthquakes off the coast of Fiji are less severe than the one you experienced?
-
-<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">You'll get hands-on practice computing z scores and percentiles in R — no need to memorize this code today.</StickyNote></p>
-
----
 layout: top-title
 color: indigo-light
 align: lt
@@ -1279,7 +1255,7 @@ align: lt
 
 :: content ::
 
-<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div class="grid grid-cols-2 gap-x-8 gap-y-1 text-base">
 <div>
 
 **Normal distribution** — bell-shaped, symmetric, unimodal.
@@ -1297,12 +1273,12 @@ align: lt
 </div>
 <div>
 
-**z distribution** — a distribution of z scores. Mean = 0, SD = 1. Same shape as the raw scores.
+**Distribution of z scores** — mean = 0, SD = 1, same shape as the raw scores.
 
 </div>
 <div>
 
-**Standard normal distribution** — what any normal distribution becomes when converted to z scores: normal, mean = 0, SD = 1. Its areas are known in advance.
+**Standard normal (z) distribution** — any normal distribution after converting to z scores: mean = 0, SD = 1. Its areas are known.
 
 </div>
 <div>
@@ -1312,7 +1288,7 @@ align: lt
 </div>
 <div>
 
-**Percentile** — the percentage of scores below a given score. If the distribution is normal, a z score tells you the percentile.
+**Percentile** — the percentage of scores below a given score. In a normal distribution, the z score tells you the percentile.
 
 </div>
 </div>
