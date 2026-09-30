@@ -23,14 +23,11 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- ==Exam 2== covers Lectures 7-10.
-- Exam 2 Review is Tuesday, October 20.
-- Exam 2 is Thursday, October 22.
-- There are no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
-  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
-- Please bring questions to office hours rather than Slack for anything requiring a longer discussion.
+- Exam 1 grades will be posted next Tuesday (after everyone takes it).
+- We will go over difficult questions in class. 
+- We will *not* return individual exams, but you are welcome to come to our office hours to see what questions you got wrong.
+- The data-writeup assignment was introduced yesterday in your discussions. 
+- The due date has shifted -- now due **Nov. 9.** Most work will be completed in discussion section!
 
 ---
 layout: top-title
@@ -46,17 +43,17 @@ align: lt
 Before Exam 1 we learned to **describe** data. For the rest of the course we learn to **draw conclusions** from data. The next four lectures build one idea at a time:
 
 <div class="grid grid-cols-4 gap-3 mt-4 text-sm">
-<div class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-3"><b>Lecture 7 (today)</b><br/>z scores: how unusual is <i>one score</i>?</div>
+<div class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-3"><b>Lecture 7 (today)</b><br/>Z scores: How unusual is <i>one score</i>?</div>
 <div class="border-2 border-gray-300 rounded-lg p-3"><b>Lecture 8</b><br/>The Central Limit Theorem and standard error: how much do <i>sample means</i> bounce around?</div>
-<div class="border-2 border-gray-300 rounded-lg p-3"><b>Lecture 9</b><br/>z tables: turning "how unusual" into a <i>probability</i></div>
-<div class="border-2 border-gray-300 rounded-lg p-3"><b>Lecture 10</b><br/>Hypothesis tests and confidence intervals: is this result more than chance?</div>
+<div class="border-2 border-gray-300 rounded-lg p-3"><b>Lecture 9</b><br/>Z tables: Turning "how unusual" into a <i>probability</i></div>
+<div class="border-2 border-gray-300 rounded-lg p-3"><b>Lecture 10</b><br/>Hypothesis tests and confidence intervals: Does this result reflect a true difference in populations?</div>
 </div>
 
 <p v-click>
 
 <div class="flex items-center gap-4 mt-6">
 <IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Each lecture leans on the one before it. If a term feels shaky, check the "Key terms" slide at the end of each deck before the next class.</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Each lecture depends on the one before it. If you are still not so sure what a term means, check the "Key terms" slide at the end of each deck before the next class.</SpeechBubble>
 </div>
 
 </p>
@@ -97,7 +94,7 @@ Its numbers are **statistics**: $M$, $s$.
 </div>
 <div>
 
-**Null hypothesis ($H_0$)** — no difference; anything we see is chance.
+**Null hypothesis ($H_0$)** — no difference; any difference we observe is due to chance.
 
 </div>
 <div>
@@ -213,27 +210,55 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Cheater Detection Using Normal Curves
+# Deviations from normality
 
 :: left ::
 
 - We often expect natural patterns to be normally distributed.  
-- Deviations from normality can indicate **cheating** or **manipulation**, or more generally that something is off.
-
-<p v-click>
-
-### Study of sumo wrestlers:
-  - 26% finished with 8 wins  
-  - 12.2% finished with 7 wins  
-  - Expected (if normal): ~19.6% for both outcomes  
-</p>
-
-<div class="text-xs text-gray-500 mt-2">Data: Duggan & Levitt (2002), <i>American Economic Review, 92</i>(5).</div>
-
+- Deviations from normality can indicate that something is off: *Something* affected the distribution of scores.
 
 :: right ::
 
-<img src="/images/lecture6/sumo_normal.png" alt="Sumo results normal dist" class="w-1/2 mx-auto"/>
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="34rem">
+Looking for scores that do not fit the expected pattern is called "anomaly detection." It is used in many fields, including fraud detection.
+</SpeechBubble>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+
+:: title ::
+# Cheater detection with normal curves
+
+:: left ::
+
+### Study of sumo wrestlers:
+  - In Japanese sumo tournaments, wrestlers compete in 15 bouts each.
+  - Wrestlers who finish with a winning record (8 or more wins) rise in the rankings and enjoy greater prestige, higher salaries, etc.
+
+  <p v-click>
+
+  - Over a decade of matches: 
+    - 26% finished with 8 wins  
+    - 12.2% finished with 7 wins  
+  - Expected (if wins are normally distributed): ~19.6% for both outcomes  
+
+</p>
+
+:: right ::
+
+  <p v-click>
+<img src="/images/lecture6/sumo_normal.png" alt="Sumo results normal dist" class="w-3/4 mx-auto"/>
+<div class="text-xs text-gray-500 mt-2">Data: Duggan & Levitt (2002), <i>American Economic Review, 92</i>(5).</div>
+
+</p>
 
 <p v-click>
 
@@ -245,18 +270,10 @@ Why might the sumo results deviate from a normal distribution?
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-Sumo wrestlers were throwing matches to help wrestlers who had won 7 matches win their 8th (and have a winning season / advance rounds).
+Sumo wrestlers were rigging matches to help wrestlers who had won 7 matches win their 8th (and have a winning season).
 
 </Admonition></p>
 
-
-<p v-click>
-
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="34rem">
-This is also called "anomaly detection" and is used in many fields, including fraud detection.
-</SpeechBubble>
-
-</p>
 
 ---
 layout: top-title-two-cols
@@ -293,6 +310,7 @@ No film scored below 3 stars. Fandango was rounding ratings *up*, and it profits
 
 <div class="text-xs text-gray-500 mt-2">Data: Hickey, W. (2015). Be suspicious of online movie ratings, especially Fandango's. <i>FiveThirtyEight</i>.</div>
 
+
 ---
 layout: top-title-two-cols
 color: indigo-light
@@ -303,7 +321,6 @@ align: lt-lt-lt
 # More Scores = More “Normal”
 
 :: left ::
-
 - As sample size increases, samples drawn from normally distributed populations look more normal.
 - Larger samples better approximate the true population distribution.
 - Small samples can look irregular.  
@@ -344,6 +361,7 @@ align: lt
 
 </p>
 
+
 ---
 layout: top-title
 color: indigo-light
@@ -361,7 +379,6 @@ align: lt
 - We can then directly compare *z* scores from different distributions.
 
 <p v-click>
-
 <StickyNote color="amber-light" title="Definition" width="100%">
 z score: How many standard deviations a score is from the mean of its distribution.
 </StickyNote>
@@ -390,89 +407,6 @@ $$ s = \sqrt{\frac{\sum (X_i - M)^2}{N-1}} $$
 - SD tells us the **typical deviation** from the mean.  
 - Larger SD = more spread.  
 
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# The Z Distribution
-
-<StickyNote color="amber-light" title="Definition" width="100%">
-z score: How many standard deviations a score is from the mean of its distribution.
-</StickyNote>
-
-:: left ::
-
-- A $z$ distribution is a distribution of $z$ scores.  
-- Properties:  
-  - Mean = 0  
-  - SD = 1  
-
-<p v-click>
-
-<Admonition title="Question" color="teal-light" width="100%">
-Why is the mean of a z distribution always 0?
-</Admonition>
-
-</p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-The mean is **0 standard deviations from the mean**!
-
-</Admonition></p>
-
-
-:: right ::
-<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# The Z Distribution (Continued)
-
-<StickyNote color="amber-light" title="Definition" width="100%">
-z score: How many standard deviations a score is from the mean of its distribution.
-</StickyNote>
-
-:: left ::
-
-- A $z$ distribution is a distribution of $z$ scores.  
-- Properties:  
-  - Mean = 0  
-  - SD = 1  
-
-<p v-click>
-
-<Admonition title="Question" color="teal-light" width="100%">
-Why is the SD of a z distribution always 1?
-</Admonition>
-
-</p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-If a raw score is 1 SD above the mean, its z score is 1. If a raw score is 2 SDs above the mean, its z score is 2. And so on. Thus, the SD of the z distribution is always 1.
-
-</Admonition></p>
-
-
-:: right ::
-<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
-
-
-<p v-click>
-Understanding a score's relation to the mean of its distribution gives us important information.
-
-</p>
 
 ---
 layout: top-title
@@ -504,40 +438,6 @@ Your $z = 1$, roommate's $z = 0.5$, lab partner's $z = -2$
 </Admonition>
 
 <div class="text-xs text-gray-500 mt-2">Data: Onyper, Thacher, Gilbert, & Gradess (2012), <i>Chronobiology International</i>. Actual values: M = 7.97 h, SD = 0.96 h.</div>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
-columns: is-5-7
----
-
-:: title ::
-# Seeing z scores: a second ruler under the same data
-
-:: left ::
-
-- A z score does not change the data. It **relabels the x-axis**.
-- The top ruler is in hours. The bottom ruler is in "SDs from the mean."
-- 9 hours and $z = +1$ are the *same place* on the plot.
-
-<p v-click>
-
-<Admonition title="Question" color="teal-light" width="100%">
-A student has z = −2. About how many hours do they sleep? Are they unusual?
-</Admonition>
-
-</p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-About 6 hours (2 SDs below the mean). Yes: very few students are that far from the mean.
-
-</Admonition></p>
-
-:: right ::
-
-<img src="/images/lecture7/sleep_hist_z.png" alt="Sleep histogram with z-score axis" class="w-full mx-auto"/>
 
 ---
 layout: top-title-two-cols
@@ -647,6 +547,126 @@ $$ X = z \times SD + M $$
 - SD = 1.138  
 
 $$ X = (0.963)(1.138) + 5.382 \approx 6.48 $$  
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Seeing z scores: a second ruler under the same data
+
+:: left ::
+
+- Back to the sleep data. What if we convert **every** student's score to a z score?
+- A z score does not change the data. It **relabels the x-axis**.
+- The top ruler is in hours. The bottom ruler is in "SDs from the mean."
+- 9 hours and $z = +1$ are the *same place* on the plot.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+A student has z = −2. About how many hours do they sleep? Are they unusual?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+About 6 hours (2 SDs below the mean). Yes: very few students are that far from the mean.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture7/sleep_hist_z.png" alt="Sleep histogram with z-score axis" class="w-full mx-auto"/>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# The Z Distribution
+
+<StickyNote color="amber-light" title="Definition" width="100%">
+z score: How many standard deviations a score is from the mean of its distribution.
+</StickyNote>
+
+:: left ::
+
+- A $z$ distribution is a distribution of $z$ scores.  
+- Properties:  
+  - Mean = 0  
+  - SD = 1  
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Why is the mean of a z distribution always 0?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The formula subtracts $M$ from every score, which slides the center of the distribution to 0. The mean is **0 standard deviations from the mean**!
+
+</Admonition></p>
+
+
+:: right ::
+<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-2">This picture shows raw scores that were normal. Standardizing never changes the shape of a distribution.</div>
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# The Z Distribution (Continued)
+
+<StickyNote color="amber-light" title="Definition" width="100%">
+z score: How many standard deviations a score is from the mean of its distribution.
+</StickyNote>
+
+:: left ::
+
+- A $z$ distribution is a distribution of $z$ scores.  
+- Properties:  
+  - Mean = 0  
+  - SD = 1  
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Why is the SD of a z distribution always 1?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The formula divides every distance from the mean by $s$. If a raw score is 1 SD above the mean, its z score is 1. If a raw score is 2 SDs above the mean, its z score is 2. And so on. The typical distance from the mean, $s$, becomes $s / s = 1$.
+
+</Admonition></p>
+
+
+:: right ::
+<img src="/images/lecture6/z_dist.png" alt="Z distribution" class="w-full mx-auto"/>
+
+
+<p v-click>
+Understanding a score's relation to the mean of its distribution gives us important information.
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -944,7 +964,179 @@ If we convert every student's score to a z score, what will the distribution of 
 
 </p>
 
-<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">You can compute a z score for any distribution. But converting z scores to <i>percentiles</i> (next slide) only works when the distribution is normal.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Heads up" width="100%">You can compute a z score for any distribution. But converting z scores to <i>percentiles</i> (coming up next) only works when the distribution is normal.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# A new question: what percent of scores are below mine?
+
+:: left ::
+
+- ==Percentile==: the percentage of scores **below** a given score.
+- You sleep 9 hours. What percent of students sleep less than you?
+- When we have the raw data, we can just **count**: 220 of 253 students, or **87%**.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+What if we do not have the raw data? Suppose all we know is that sleep is roughly normal, with M = 8 and SD = 1.
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+We can still get very close, because **every normal distribution has the same shape**. The next four slides build that idea one step at a time.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture7/sleep_percentile_count.png" alt="Sleep histogram with students below 9 hours shaded" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-2">Data: Onyper, Thacher, Gilbert, & Gradess (2012), <i>Chronobiology International</i>.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Step 1: Every normal distribution has the same shape
+
+:: left ::
+
+- Normal distributions can differ in only two ways:
+  - where the center is (the **mean**)
+  - how spread out the scores are (the **SD**)
+- Measure in "SDs from the mean" and those two differences disappear.
+- In **every** normal distribution, about 84% of scores fall below the score that is 1 SD above the mean.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+GRE Verbal scores are roughly normal, with μ = 151.4 and σ = 8.4. About what percent of test takers score below 159.8?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+159.8 is 1 SD above the mean (151.4 + 8.4), so about **84%**. The same answer as for 9 hours of sleep, or for a height of 82.4 inches in the NBA.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture7/normals_same_shape.png" alt="Three normal distributions in different units, each with 84 percent below one SD above the mean" class="w-3/4 mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-2">Means and SDs: Onyper et al. (2012); ETS GRE interpretive data (2022 to 2025); NBA 2018-19 season (openintro). Curves are idealized normal distributions.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Step 2: z scores give us one standard curve
+
+:: left ::
+
+- Convert any normal distribution to z scores and you always get the **same** curve.
+- Its name: the ==standard normal distribution== (normal shape, mean = 0, SD = 1).
+- "Standard" means there is only **one** of it. It does not depend on the units, the mean, or the SD of the raw scores.
+
+<p v-click>
+
+**Why this matters:** the areas under this one curve only had to be worked out once. We can reuse them for sleep, GRE scores, heights, and anything else that is normal.
+
+</p>
+
+:: right ::
+
+<img src="/images/lecture7/normals_to_standard.png" alt="Three normal distributions converted to one standard normal distribution" class="w-full mx-auto"/>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Step 3: The areas under that curve are known
+
+:: left ::
+
+- Area under the curve = percentage of scores.
+- 50% of scores fall below $z = 0$ (the mean).
+- 84% fall below $z = 1$; 16% fall below $z = -1$.
+- 68% fall between $z = -1$ and $z = +1$.
+- 95% fall between $z = -2$ and $z = +2$.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Use the figure: where does the 84% come from?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+50% of scores are below the mean. Another 34% are between $z = 0$ and $z = 1$. 50% + 34% = 84%.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture7/standard_normal_areas.png" alt="Standard normal curve with the percentage of scores in each band and the percentile at each z score" class="w-full mx-auto"/>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Step 4: From a z score to a percentile
+
+:: left ::
+
+1. Convert the raw score to a z score.
+2. Find that z score on the standard normal curve.
+3. The area to the **left** of it is the percentile.
+
+<p v-click>
+
+**Our example** (sleep: M = 8, SD = 1)
+- You, 9 hours: $z = 1$ → about the **84th percentile**
+- Lab partner, 6 hours: $z = -2$ → about the **2nd percentile**
+
+</p>
+
+<p v-click><Admonition title="Reality check" color="indigo-light" width="100%">
+
+Counting the real data gave 87% below 9 hours. The curve says 84%. Close but not identical, because real data are only *approximately* normal.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture7/z_to_percentile_examples.png" alt="Standard normal curves shaded below z = 1 and below z = -2" class="w-2/3 mx-auto"/>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">What about z = 0.5 or z = 1.37? A <b>z table</b> gives the exact percentile for any z score. We'll practice using z tables in Lecture 9. For now, focus on the idea that a z score tells you where a score sits in its distribution.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -953,30 +1145,87 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Z Scores, Normal Distributions, and Percentiles
+# Multiple choice practice: z scores and percentiles
 
 :: left ::
 
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-- $z$ scores allow us to determine **percentiles**.  
-- ==Percentile==: percentage of scores below a given score.
-- Normal distributions are standard, so we know the percentage of scores below any $z$ score.
+Scores on a test are normally distributed. Your z score is −1. About what percent of people scored **below** you?
 
+- **A)** 1%
+- **B)** 16%
+- **C)** 34%
+- **D)** 84%
 
-<img src="/images/lecture6/z_percentile.png" alt="Z scores percentiles" class="w-full mx-auto"/>
+</Admonition>
 
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
+**B.** 50% of scores are below the mean, and 34% of scores sit between $z = -1$ and $z = 0$. 50 − 34 = 16. C is the area *between* −1 and 0. D is the percent below $z = +1$.
+
+</Admonition>
 
 :: right ::
 
-- 100% of scores fall below $z = +\infty$; 0% fall below $z = -\infty$.
-- 50% of scores fall below $z = 0$ (the mean).
-- 84% of scores fall below $z = 1$ (1 SD above the mean).
-- 68% of scores fall between $z = -1$ and $z = +1$ (within 1 SD of the mean).
+<p v-click>
 
-- **Can use a z table to find exact percentiles for any z score.** 
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
 
-<p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">We'll practice using z tables to find exact percentiles in an upcoming lecture — for now, focus on the idea that a z score tells you where a score sits in its distribution.</StickyNote></p>
+Drinks per week is positively skewed (M = 5.6, SD = 4.1). On a normal curve, about 2% of scores fall below z = −2. What percent of these students are below z = −2?
+
+- **A)** About 2%. The landmarks fit any distribution.
+- **B)** 0%. z = −2 would be −2.6 drinks per week.
+- **C)** About 16%.
+- **D)** Can't tell: skewed data have no z scores.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** $X = (-2)(4.1) + 5.6 = -2.6$ drinks, and nobody drinks less than 0. Any distribution has z scores (so not D), but the percentages only apply when the raw scores are roughly normal.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# The big idea: standard distributions
+
+:: left ::
+
+We just used a recipe that the rest of the course repeats:
+
+1. Start with a result in raw units (hours, points, inches).
+2. **Standardize** it: convert it to a number that does not depend on the units.
+3. Find it on a **standard distribution**: a reference curve whose areas are already known.
+4. Read off a percentage: how unusual is this result?
+
+<p v-click>
+
+Only the reference curve changes. Today it is the standard normal. Later it will be a *t* distribution or an *F* distribution.
+
+</p>
+
+:: right ::
+
+<img src="/images/lecture7/reference_curves.png" alt="Three reference distributions: standard normal, t, and F" class="w-full mx-auto"/>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="26rem">You don't need to know anything about t or F yet. Just remember the recipe: standardize, find your place on a known curve, read the area.</SpeechBubble>
+</div>
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -1012,6 +1261,7 @@ percentiles
 
 :: right ::
 
+- `pnorm(z)` gives the area to the **left** of `z` on the standard normal curve.
 - Now let's try some R practice! 
 - We will use the dataset "quakes" which contains information about earthquakes, including their magnitudes.
 - Imagine you experience an earthquake of magnitude 6. What percentage of earthquakes off the coast of Fiji are less severe than the one you experienced?
@@ -1048,6 +1298,11 @@ align: lt
 <div>
 
 **z distribution** — a distribution of z scores. Mean = 0, SD = 1. Same shape as the raw scores.
+
+</div>
+<div>
+
+**Standard normal distribution** — what any normal distribution becomes when converted to z scores: normal, mean = 0, SD = 1. Its areas are known in advance.
 
 </div>
 <div>
