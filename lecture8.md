@@ -23,13 +23,10 @@ align: lt
 # Updates and reminders
 
 :: content ::
-- ==Exam 2== covers Lectures 7-10.
-- Exam 2 Review is Tuesday, October 20.
+- ==Exam 1== grades have been posted.
+- It went well! Median: 31.5/33
 - Exam 2 is Thursday, October 22.
-- Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
-  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- Exam 2 will be harder!
 - Heads up: there is **no class** next Tuesday, October 13 (substitute Monday schedule).
 
 ---
@@ -70,8 +67,9 @@ align: lt
 
 <div class="flex items-center gap-4 mt-6">
 <IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">A z score answers one question: how unusual is this <i>one score</i>, compared to the other scores in its distribution?</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">A z score answers one question: How unusual is this <i>one score</i>, compared to the other scores in its distribution?</SpeechBubble>
 </div>
+
 
 </p>
 
@@ -88,18 +86,18 @@ align: lt-lt-lt
 
 <Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-College students sleep M = 8 hours per night, SD = 1 hour. Your friend sleeps 6.5 hours. Which equation gives her z score?
+The Exam 1 mean was 30.8. The standard deviation was 3.2. If you scored X, how could you compute your z score?
 
-- **A)** (8 − 6.5) / 1 = 1.5
-- **B)** 6.5 / 8 = 0.81
-- **C)** (6.5 − 8) / 1 = −1.5
-- **D)** (6.5 − 1) / 8 = 0.69
+- **A)** (X − 30.8) / 3.2
+- **B)** (30.8 - X) / 3.2 
+- **C)** 3.2 * X  + 30.8
+- **D)** You cannot compute a z score because the exam grades were not normally distributed.
 
 </Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**C.** Score minus mean, divided by SD. She is below the mean, so z is negative.
+**A.** Score minus mean, divided by SD.
 
 </Admonition>
 
@@ -127,6 +125,85 @@ On an exam, your z score is +0.2. On a quiz, your z score is −1.4. Which is tr
 </Admonition></p>
 
 ---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# How funny are you?
+
+:: left ::
+
+<Admonition title="Try it" color="teal-light" width="100%">
+
+Compared with the average BU student, how good are you at **recognizing what's funny**? Write down your percentile: 0 (the very bottom), 50 (exactly average), 99 (the very top).
+
+</Admonition>
+
+<p v-click>
+
+- Kruger and Dunning (1999) asked **65 Cornell undergraduates** this question, right after they rated how funny 30 jokes were.
+- Their average answer: the **66th percentile**.
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+If students knew exactly where they stood, about what would the average answer be?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+About **50**. By definition, half of students are below the 50th percentile and half are above, so true percentiles average 50.
+
+But these are only 65 students. Maybe this sample just happened to include a lot of funny people.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="The famous part" width="100%">This study gave us the <b>Dunning–Kruger effect</b>: students who scored in the bottom quarter on the joke test (12th percentile) rated themselves at the 58th.</StickyNote></p>
+
+<div class="text-xs text-gray-500 mt-2">Data: Kruger, J., & Dunning, D. (1999). Unskilled and unaware of it: How difficulties in recognizing one's own incompetence lead to inflated self-assessments. <i>Journal of Personality and Social Psychology, 77</i>(6), 1121–1134 (Study 1).</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Is 66 unusual? Compared to what?
+
+:: left ::
+
+- **One student** who says "66th percentile" is not unusual. A third of students really are above it.
+
+<p v-click>
+
+- But 66 is the **mean of 65 students**. Could that happen by chance?
+
+</p>
+
+<p v-click>
+
+- "Unusual" needs a comparison: a world where **nothing special is going on**. Students know where they stand, and any gap from 50 is due to chance.
+- That world is the ==null hypothesis==: $\mu = 50$.
+
+</p>
+
+:: right ::
+
+<img src="/images/lecture8/kd_null_scores.png" alt="The null world: true percentiles are flat, with one student at 66" class="w-5/6 mx-auto"/>
+
+<p v-click><StickyNote color="amber-light" title="What we are missing" width="100%">To decide, we need to know what the <b>means of 65 students</b> look like in the null world. We can't say yet. That is today.</StickyNote></p>
+
+---
 layout: top-title
 color: indigo-light
 align: lt
@@ -142,12 +219,48 @@ align: lt
 
 <p v-click>
 
-- So the question becomes: how unusual is a **sample mean**?
+- So the question becomes: how unusual is a **sample mean**? (Is 66 unusual for the mean of 65 students?)
 - To answer that, we need to know how sample means behave: what shape their distribution has, where it is centered, and **how spread out it is**.
 
 </p>
 
-<p v-click><StickyNote color="amber-light" title="Today's plan" width="100%">1. The Central Limit Theorem: the <i>shape</i> of a distribution of sample means.<br/>2. Why sample variance divides by N − 1.<br/>3. The standard error: the <i>spread</i> of a distribution of sample means.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Today's plan" width="100%">1. The Central Limit Theorem: the <i>shape</i> of a distribution of sample means.<br/>2. The standard error: the <i>spread</i> of a distribution of sample means.<br/>3. Why sample variance divides by N − 1.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why do we need to know the shape?
+
+:: content ::
+
+- Last time: z score → percentile, using the normal curve. That shortcut only works when the distribution is **roughly normal**.
+- Drinks per week (skewed): the curve says 2% of students are below z = −2. The real answer is 0%.
+
+<p v-click>
+
+- With **scores**, there is a backup: we have all the scores, so we can **count** (220 of 253 students sleep less than 9 hours).
+
+</p>
+
+<p v-click>
+
+- With **means**, there is no backup. We run one study, so we have **one mean**. There are no other means to count.
+- And our null world is not normal at all: true percentiles are flat (every percentile is equally common).
+
+</p>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">To say how unusual a mean is, we must know the shape of the distribution of means <i>without ever seeing it</i>. Luckily, there is a theorem for that.</SpeechBubble>
+</div>
+
+</p>
 
 ---
 layout: top-title
@@ -177,7 +290,7 @@ A "distribution of sample means" is the distribution of the means of multiple sa
 
 <p v-click>
 
-**Example:** We want to estimate the average height of all PS 211 students. Each class, we measure the height of 5 randomly selected students and calculate the mean height of those 5 students. We repeat this process many times, each time selecting a new random sample of 5 students and calculating the mean height. The distribution of these sample means will be approximately normal, even if the original distribution of individual heights is not normal.
+**Example:** We want to estimate the average height of all PS 211 students. Each class, we measure the height of 10 randomly selected students and calculate the mean height of those 10 students. We repeat this process many times, each time selecting a new random sample of 10 students and calculating the mean height. The distribution of these sample means will be approximately normal, even if the original distribution of individual heights is not normal.
 </p>
 
 ---
@@ -266,6 +379,38 @@ As the sample size increases, the distribution of means approaches a normal dist
 layout: top-title
 color: indigo-light
 align: lt
+clicks: 10
+---
+
+:: title ::
+# Build a distribution of means, one sample at a time
+
+:: content ::
+
+<CltDemo :n="5" />
+
+<div class="text-xs text-gray-500">Data: Spotify Web API via the spotifyr R package; compiled for TidyTuesday (January 2020).</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+clicks: 6
+---
+
+:: title ::
+# Same recipe, bigger samples: n = 30
+
+:: content ::
+
+<CltDemo :n="30" />
+
+<div class="text-xs text-gray-500">Data: Spotify Web API via the spotifyr R package; compiled for TidyTuesday (January 2020).</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
 ---
 
 :: title ::
@@ -317,21 +462,6 @@ Why is the distribution of means less variable than the distribution of raw scor
 The distribution of means is less variable because averaging reduces the impact of extreme values. When we take the mean of a sample, we are essentially smoothing out the variability that exists in individual scores.
 
 </Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Central Limit Theorem: Video Explanation
-
-:: content ::
-Let's watch someone else explain this!
-
-https://www.youtube.com/watch?v=YAlJCEDH2uY
-
 
 ---
 layout: top-title-two-cols
@@ -387,236 +517,6 @@ Now you sample 100 songs, record their **mean**, and repeat this 5,000 times. Yo
 </Admonition></p>
 
 <p v-click><StickyNote color="amber-light" title="Heads up" width="100%">This is the most common CLT mistake: a bigger sample does not make the <i>scores</i> normal. It makes the distribution of <i>means</i> normal.</StickyNote></p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Recall: Sample variance uses N − 1
-
-:: left ::
-
-<AdmonitionType type="info" width="100%">Back in Lecture 5 we said: if your data are a sample, divide by N − 1. Now that you have seen how sample statistics behave across many samples, we can see why.</AdmonitionType>
-
-- The formula for the variance of a **sample** is:
-
-$$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
-
-<p v-click>
-
-*What changed from the population formula?*
-
-1. We use $M$ (the sample mean) instead of $\mu$ (the population mean).
-2. We divide by $N-1$ instead of $N$. 
-3. We use $s^2$ (the sample variance) instead of $\sigma^2$ (the population variance).
-
-</p>
-
-:: right ::
-
-
-<p v-click>
-
-**Why do we divide by N-1 instead of N?**
-
-<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Sample statistics are estimates
-
-:: left ::
-
-- We almost never have the whole population. We have a sample, and we use it to **estimate** the population's parameters:
-  - The sample mean $M$ is our estimate of $\mu$
-  - The sample variance $s^2$ is our estimate of $\sigma^2$
-- A good estimate is **unbiased**: any single sample might land too high or too low, but ==across many samples, the estimates average out to the true value.==
-
-<p v-click>
-
-- **The mean passes this test.** Take a sample, compute $M$; repeat thousands of times — exactly what we just did with the dice. The $M$s scatter around $\mu$, but they center on it. So the best guess for $\mu$ is simply $M$. No correction needed.
-
-</p>
-
-:: right ::
-
-<p v-click>
-
-<img src="/images/lecture8/n1_means_unbiased.png" alt="sample means center on the population mean" class="mx-auto w-full" />
-
-</p>
-
-<p v-click>
-
-<Admonition title="Question" color="teal-light" width="100%">If we compute the variance of a sample the same way we did for a population (deviations from M, divided by N), is that an unbiased estimate of σ²?</Admonition>
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# The variance estimate is biased. Why?
-
-:: left ::
-
-<Admonition title="Answer" color="green-light" width="100%">
-
-No. Computed that way, the sample variance is ==systematically too small==. It's a **biased** estimate of $\sigma^2$.
-
-</Admonition>
-
-<p v-click>
-
-- The culprit is $M$. We measure deviations from the **sample** mean because we don't know $\mu$.
-- But $M$ is computed *from these very scores*, so it sits right in the middle of them: it is the point that makes their squared deviations as small as possible. $\mu$ is somewhere else, so deviations from $\mu$ would be larger.
-
-</p>
-
-<p v-click>
-
-- The sum of squared deviations from $M$ is **always ≤** the sum from $\mu$, so dividing by $N$ gives a variance that is too small on average.
-
-</p>
-
-:: right ::
-
-<p v-click>
-
-<img src="/images/lecture8/n1_M_vs_mu.png" alt="deviations from M are smaller than deviations from mu" class="mx-auto w-full" />
-
-</p>
-
-<p v-click>
-
-<StickyNote color="amber-light" title="Same sample, two reference points" width="100%">
-Sample 70, 75, 85 from a population with μ = 80. Measured from M = 76.67 the squared deviations sum to 116.67; measured from μ they sum to 150. Using M shrinks the spread.
-</StickyNote>
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Fixing the bias: divide by N − 1
-
-:: left ::
-
-- Dividing by $N-1$ instead of $N$ makes each estimate a little bigger — by just the right amount, on average, to undo the shrinkage from using $M$.
-
-<p v-click>
-
-- **Simulation:** 20,000 samples of 3 scores from a population with $\sigma^2 = 50$.
-  - Divide by $N$: the estimates average **33.4**. Biased low.
-  - Divide by $N-1$: the estimates average **50.1**. Unbiased.
-
-</p>
-
-<p v-click>
-
-<StickyNote color="indigo-light" title="Another way to see it" width="100%">
-Deviations from M always sum to zero. So once you know N − 1 of them, the last one is fixed — only N − 1 deviations carry independent information about spread. We divide by the number of <i>free</i> deviations.
-</StickyNote>
-
-</p>
-
-:: right ::
-
-<p v-click>
-
-<img src="/images/lecture8/n1_simulation.png" alt="variance estimates with N vs N-1" class="mx-auto w-full" />
-
-</p>
-
-<p v-click>
-
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="26rem">
-N − 1 doesn't make any single estimate correct. It makes the estimates correct <i>on average</i>. And notice the bias matters most when N is small: 1/3 is a big correction, 1/300 is not.
-</SpeechBubble>
-
-</p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Why N-1? (Continued)
-
-:: left ::
-
-*Suppose we have a population with the following scores: 70, 75, 80, 85, 90.*
-
-1. Compute the population mean.
-2. Compute the population variance.
-
-
-*Now imagine we take a sample of 3 scores from this population: 70, 75, 85.*
-
-3. Compute the sample mean.
-4. Compute the sample variance using N in the denominator.
-5. Compute the sample variance using N-1 in the denominator.
-
-
-:: right ::
-
-<img src="/images/lecture4/mathmeme.jpg" alt="math" class="mx-auto w-3/4" />
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Code to the rescue!
-
-:: content ::
-
-```r
-# Population data
-population_scores <- c(70, 75, 80, 85, 90)
-population_mean <- mean(population_scores)
-population_variance <- sum((population_scores - population_mean)^2) / length(population_scores)
-
-# Sample data
-sample_scores <- c(70, 75, 85)
-sample_mean <- mean(sample_scores)
-sample_variance_N <- sum((sample_scores - sample_mean)^2) / length(sample_scores)
-sample_variance_N_minus_1 <- sum((sample_scores - sample_mean)^2) / (length(sample_scores) - 1)
-```
-
-<p v-click>
-
-- Population Variance: 50
-- Sample Variance (N): 38.89
-- Sample Variance (N-1): 58.33
-
-</p>
-
-<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">You'll write R code like this yourselves — today, just focus on how the code mirrors the formulas.</StickyNote></p>
-
 
 ---
 layout: top-title
@@ -735,7 +635,7 @@ align: lt
 Both are standard deviations. They describe the spread of **different things**.
 
 <div class="grid grid-cols-2 gap-6 mt-2 text-base">
-<div class="border-2 border-red-300 bg-red-50 rounded-lg p-4">
+<div class="border-2 border-red-300 bg-red-50 rounded-lg px-4 py-2">
 
 ### Standard deviation (SD)
 
@@ -745,7 +645,7 @@ Both are standard deviations. They describe the spread of **different things**.
 - More data does **not** make it smaller.
 
 </div>
-<div class="border-2 border-indigo-300 bg-indigo-50 rounded-lg p-4">
+<div class="border-2 border-indigo-300 bg-indigo-50 rounded-lg px-4 py-2">
 
 ### Standard error (SE)
 
@@ -757,7 +657,7 @@ Both are standard deviations. They describe the spread of **different things**.
 </div>
 </div>
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="44rem">SD is about <i>people</i> (or songs). SE is about <i>means</i>. You only collect one sample, so you never see the distribution of means. The SE tells you how wide it must be.</SpeechBubble></p>
+<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="52rem">SD is about <i>individual scores</i>. SE is about <i>means</i>. You only collect one sample, so you never see the distribution of means. The SE tells you how wide it must be.</SpeechBubble></p>
 
 ---
 layout: top-title-two-cols
@@ -792,7 +692,7 @@ $$SE = \frac{\sigma}{\sqrt{n}}$$
 
 :: right ::
 
-<img src="/images/lecture8/se_by_n.png" alt="Distributions of sample means for n = 4, 25, 100" class="w-full mx-auto"/>
+<img src="/images/lecture8/se_by_n.png" alt="Distributions of sample means for n = 4, 25, 100" class="w-5/6 mx-auto"/>
 
 ---
 layout: top-title-two-cols
@@ -922,7 +822,7 @@ The standard error is important because it helps researchers understand how much
 </Admonition></p>
 
 <p v-click>
-<img src="/images/lecture6/barplot_sem.png" alt="Error bars" class="w-3/4 mx-auto"/>
+<img src="/images/lecture6/barplot_sem.png" alt="Error bars" class="w-2/3 mx-auto"/>
 </p>
 
 
@@ -1004,6 +904,174 @@ The SD is about 1 hour, but the SE is about 0.06 hours (under 4 minutes). Put ea
 </Admonition></p>
 
 <div class="text-xs text-gray-500 mt-2">Data: Onyper, S. V., Thacher, P. V., Gilbert, J. W., & Gradess, S. G. (2012). Class start times, sleep, and academic performance in college. <i>Chronobiology International, 29</i>(3), 318–335.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Recall: Sample variance uses N − 1
+
+:: left ::
+
+<AdmonitionType type="info" width="100%">We just used <i>s</i> in place of σ. Is <i>s</i> a fair stand-in? Only because of a rule from Lecture 5: if your data are a sample, divide by N − 1. Now that you have seen how sample statistics behave across many samples, we can see why.</AdmonitionType>
+
+- The formula for the variance of a **sample** is:
+
+$$s^2 = \frac{\sum_{i=1}^{N} (X_i - M)^2}{N-1}$$
+
+<p v-click>
+
+*What changed from the population formula?*
+
+1. We use $M$ (the sample mean) instead of $\mu$ (the population mean).
+2. We divide by $N-1$ instead of $N$. 
+3. We use $s^2$ (the sample variance) instead of $\sigma^2$ (the population variance).
+
+</p>
+
+:: right ::
+
+
+<p v-click>
+
+**Why do we divide by N-1 instead of N?**
+
+<img src="/images/lecture4/but_why.png" alt="why" class="mx-auto w-1/2" />
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Sample statistics are estimates
+
+:: left ::
+
+- We almost never have the whole population. We have a sample, and we use it to **estimate** the population's parameters:
+  - The sample mean $M$ is our estimate of $\mu$
+  - The sample variance $s^2$ is our estimate of $\sigma^2$
+- A good estimate is **unbiased**: any single sample might land too high or too low, but ==across many samples, the estimates average out to the true value.==
+
+<p v-click>
+
+- **The mean passes this test.** Take a sample, compute $M$; repeat thousands of times — exactly what we did with the dice and the songs. The $M$s scatter around $\mu$, but they center on it. So the best guess for $\mu$ is simply $M$. No correction needed.
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/n1_means_unbiased.png" alt="sample means center on the population mean" class="mx-auto w-full" />
+
+</p>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">If we compute the variance of a sample the same way we did for a population (deviations from M, divided by N), is that an unbiased estimate of σ²?</Admonition>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# The variance estimate is biased. Why?
+
+:: left ::
+
+<Admonition title="Answer" color="green-light" width="100%">
+
+No. Computed that way, the sample variance is ==systematically too small==. It's a **biased** estimate of $\sigma^2$.
+
+</Admonition>
+
+<p v-click>
+
+- The culprit is $M$. We measure deviations from the **sample** mean because we don't know $\mu$.
+- But $M$ is computed *from these very scores*, so it sits right in the middle of them: it is the point that makes their squared deviations as small as possible. $\mu$ is somewhere else, so deviations from $\mu$ would be larger.
+
+</p>
+
+<p v-click>
+
+- The sum of squared deviations from $M$ is **always ≤** the sum from $\mu$, so dividing by $N$ gives a variance that is too small on average.
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/n1_M_vs_mu.png" alt="deviations from M are smaller than deviations from mu" class="mx-auto w-full" />
+
+</p>
+
+<p v-click>
+
+<StickyNote color="amber-light" title="Same sample, two reference points" width="100%">
+Sample 70, 75, 85 from a population with μ = 80. Measured from M = 76.67 the squared deviations sum to 116.67; measured from μ they sum to 150. Using M shrinks the spread.
+</StickyNote>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Fixing the bias: divide by N − 1
+
+:: left ::
+
+- Dividing by $N-1$ instead of $N$ makes each estimate a little bigger — by just the right amount, on average, to undo the shrinkage from using $M$.
+
+<p v-click>
+
+- **Simulation:** 20,000 samples of 3 scores from a population with $\sigma^2 = 50$.
+  - Divide by $N$: the estimates average **33.4**. Biased low.
+  - Divide by $N-1$: the estimates average **50.1**. Unbiased.
+
+</p>
+
+<p v-click>
+
+<StickyNote color="indigo-light" title="Another way to see it" width="100%">
+Deviations from M always sum to zero. So once you know N − 1 of them, the last one is fixed — only N − 1 deviations carry independent information about spread. We divide by the number of <i>free</i> deviations.
+</StickyNote>
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/n1_simulation.png" alt="variance estimates with N vs N-1" class="mx-auto w-full" />
+
+</p>
+
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="22rem">
+N − 1 doesn't make any single estimate correct. It makes the estimates correct <i>on average</i>. And notice the bias matters most when N is small: 1/3 is a big correction, 1/300 is not.
+</SpeechBubble>
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -1161,6 +1229,50 @@ You build one distribution of means from samples of **n = 10**, and another from
 </Admonition></p>
 
 <p v-click><StickyNote color="green-light" title="Coming attractions" width="100%">Next lecture: z = (M − μ) / SE. A very common Exam 2 error is dividing by the SD when you should divide by the SE.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Back to our question: is a mean of 66 unusual?
+
+:: left ::
+
+<Admonition title="Our example: how funny are you?" color="indigo-light" width="100%">
+
+**Null world:** students know where they stand. $\mu = 50$, $\sigma = 28.9$.<br/>**The study:** $n = 65$, $M = 66$.
+
+</Admonition>
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+In the null world, what do the means of 65 students look like? (1) What shape? (2) What SE? (3) How many SEs is 66 from 50?
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+1. Approximately **normal** (CLT), even though the scores are flat.
+2. $SE = 28.9 / \sqrt{65} = 3.6$
+3. $66 - 50 = 16$ points: more than **4 SEs** above.
+
+</Admonition></p>
+
+<div class="text-xs text-gray-500 mt-2">Data: Kruger & Dunning (1999), <i>Journal of Personality and Social Psychology, 77</i>(6), Study 1.</div>
+
+:: right ::
+
+<p v-click>
+
+<img src="/images/lecture8/kd_scores_vs_means.png" alt="66 is ordinary for one score but far outside the distribution of means of 65" class="w-5/6 mx-auto"/>
+
+</p>
+
+<p v-click><StickyNote color="amber-light" title="Conclusion" width="100%">A mean of 66 almost never happens in the null world, so the null world is probably the wrong picture. On average, students <b>overestimate</b> how funny they are.</StickyNote></p>
 
 ---
 layout: top-title-two-cols

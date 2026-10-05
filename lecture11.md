@@ -24,8 +24,8 @@ align: lt
 
 :: content ::
 - Exam 2 is done — grades will be posted soon.
-- Keep an eye out for our first ==Data Write-Up== (t-test-based), due **Tuesday, November 17** at 11:59 p.m.
-  - Discussion 8 (Wed. 10/28) introduces Data Write-Up 1 — you'll form groups and start finding datasets.
+- Keep an eye out for our first ==Data Write-Up== (t-test-based), due **Monday, November 9** at 11:59 p.m.
+  - In Discussion 8 (Wed. 10/28), you'll practice today's material (effect size & power) in R, then finish your descriptive statistics for Data Write-Up 1 and trade feedback with another group.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
   - Thursday (10/29): Lecture 12 (parametric assumptions & intro to *t* tests)

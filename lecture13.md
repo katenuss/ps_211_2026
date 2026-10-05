@@ -23,7 +23,8 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Tuesday, November 17** at 11:59 p.m. Today and Thursday, you'll have both paired- and independent-samples *t* tests in hand for it.
+- No standalone homework this week. Instead, finish our first ==Data Write-Up== (t-test-based), due **Monday, November 9** at 11:59 p.m.
+  - **Tomorrow in Discussion 9** you'll run your *t* test, make your figure, and interpret your results, so today ends with a preview of the independent-samples *t* test.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
   - Thursday (11/5): Lecture 14 — Independent-Samples *t* Tests (in R)
@@ -764,7 +765,7 @@ align: lt
 APA style tells us **how to clearly report statistics** so others can understand and replicate our work.
 It ensures clarity and consistency across psychology and related sciences.
 
-<p v-click><StickyNote color="amber-light" title="Why this matters" width="60%">You'll report your *t*-test results in APA style in Data Write-Up 1 (due Tuesday, November 17) — today's templates are exactly what you'll use.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Why this matters" width="60%">You'll report your *t*-test results in APA style in Data Write-Up 1 (due Monday, November 9) — today's templates are exactly what you'll use.</StickyNote></p>
 
 ---
 layout: top-title
@@ -1010,9 +1011,203 @@ align: lt
 - Report CI in brackets.
 
 ---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Preview: Independent-Samples *t* Tests
+
+:: content ::
+- So far today, every participant was in **both** conditions (within-subjects) → paired-samples *t* test.
+- Most of your Data Write-Up datasets compare **two separate groups of people** (between-subjects) → ==independent-samples *t* test==.
+- You will run this test **tomorrow in Discussion 9**. On Thursday, we will go through where its formulas come from.
+
+<p v-click><StickyNote color="amber-light" title="The goal for the next 10 minutes" width="70%">Know <strong>when</strong> to use an independent-samples <em>t</em> test, how to <strong>run</strong> it in R, and how to <strong>read</strong> and <strong>report</strong> the output. The math comes Thursday.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Same Logic, Different Standard Error
+
+:: content ::
+Every *t* test asks: how far is what we observed from what $H_0$ predicts, in standard error units?
+
+$$t = \frac{\text{observed difference} - \text{difference under } H_0}{SE}$$
+
+<p v-click>
+
+| | Paired samples | Independent samples |
+|---|---|---|
+| **Design** | Within-subjects | Between-subjects |
+| **We analyze** | One set of difference scores | Two separate sets of scores |
+| **Observed difference** | $M_{difference}$ | $M_1 - M_2$ |
+| **Standard error** | From one *SD* and one *n* | From **both** *SD*s and **both** *n*s |
+| **df** | $n - 1$ | $n_1 + n_2 - 2$ |
+
+</p>
+
+<p v-click>
+
+Everything else works the same way: *p* value, decision, confidence interval, Cohen's *d*.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Which *t* Test?
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+Forty students are randomly assigned to study with music or in silence, and then everyone takes the same quiz. Which test compares the two conditions?
+
+**A.** Single-sample *t* test &nbsp;&nbsp; **B.** Paired-samples *t* test &nbsp;&nbsp; **C.** Independent-samples *t* test
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** Each student is in only one condition, so the two sets of quiz scores come from different people.
+
+</Admonition>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+Eighteen participants complete a reaction-time task after a normal night of sleep and again after a night of restricted sleep. Which test compares the two nights?
+
+**A.** Single-sample *t* test &nbsp;&nbsp; **B.** Paired-samples *t* test &nbsp;&nbsp; **C.** Independent-samples *t* test
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** Every participant is measured in both conditions, so we analyze one set of difference scores.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: Degrees of Freedom
+
+:: content ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+A researcher compares the anxiety scores of 20 first-year students and 22 seniors with an independent-samples *t* test. What are the degrees of freedom?
+
+**A.** 19 &nbsp;&nbsp; **B.** 21 &nbsp;&nbsp; **C.** 40 &nbsp;&nbsp; **D.** 42
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** df = n₁ + n₂ − 2 = 20 + 22 − 2 = 40. We lose one degree of freedom for each group, because we estimate a standard deviation from each sample.
+
+</Admonition>
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+What if the same 20 students were measured as first-years and again as seniors?
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Now it is a paired-samples *t* test on 20 difference scores, so df = n − 1 = 19.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Running an Independent-Samples *t* Test in R
+
+:: left ::
+Do candies with chocolate win more matchups than candies without? (This is the worked example posted with your Data Write-Up.)
+
+```r
+# group_1 = chocolate candies
+# group_2 = non-chocolate candies
+t.test(group_1$winpercent,
+       group_2$winpercent,
+       var.equal = TRUE)
+```
+
+- Give R the DV for each group.
+- `var.equal = TRUE` tells R to combine the two groups' variability into one estimate (Thursday!).
+- For a paired test, you would use `paired = TRUE` instead.
+
+:: right ::
+
+```text
+	Two Sample t-test
+
+t = 7.5187, df = 83, p-value = 5.86e-11
+95 percent confidence interval:
+ 13.81121 23.74649
+sample estimates:
+mean of x mean of y
+ 60.92135  42.14250
+```
+
+<p v-click>
+
+- **t = 7.52**: the difference between the means (18.78) is 7.5 standard errors from 0.
+- **df = 83**: 37 + 48 − 2.
+- **p-value = 5.86e-11**: scientific notation for .0000000000586, so *p* < .001.
+- **95% CI**: plausible values for the population difference; it does not include 0.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Reporting an Independent-Samples *t* Test
+
+:: content ::
+**Template** (the same as for the other *t* tests)
+
+$t(df) = X.XX, \ p = P, \ d = D, \text{ 95\% CI [LL, UL]}$
+
+**Example**
+
+Candies containing chocolate won a higher percentage of their matchups (*M* = 60.92, *SD* = 12.81) than candies without chocolate (*M* = 42.14, *SD* = 10.22), *t*(83) = 7.52, *p* < .001, *d* = 1.62, 95% CI \[13.81, 23.75].
+
+✅ State the means and SDs for **both** groups, and say which group was higher.
+
+<p v-click><StickyNote color="green-light" title="For tomorrow" width="70%">Bring your group's Data Write-Up file to Discussion 9. You'll practice all three <em>t</em> tests in R, then run the test for your own dataset.</StickyNote></p>
+
+---
 layout: cover
 color: indigo-light
 ---
 
 # That's all for today!
-We will continue with independent-samples *t* Tests (in R) on Thursday!
+Tomorrow in discussion: run your own *t* test. Thursday: how independent-samples *t* tests work under the hood.

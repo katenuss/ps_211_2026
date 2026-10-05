@@ -25,7 +25,6 @@ align: lt
 :: content ::
 - ==Exam 3== grades are posted.
   - We will go over difficult questions in class if needed.
-- **Data Write-Up #1 (t-test based) is due TODAY (Tuesday, November 17) at 11:59 p.m.!**
 - No standalone homework this week — keep in mind our second ==Data Write-Up== (ANOVA-based) is due **Tuesday, December 8** at 11:59 p.m.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - This week:

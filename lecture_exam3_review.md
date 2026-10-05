@@ -27,8 +27,7 @@ align: lt
     - It covers **Lectures 11-14** (effect size & power, parametric assumptions, and single-sample, paired-samples, and independent-samples *t* tests — plus APA-style reporting).
     - A review sheet has been posted.
     - You will *not* need a calculator.
-- ==Discussion 10== (Wed. 11/11) is a Data Write-Up 1 work session — bring your dataset and your questions.
-- ==Data Write-Up #1== (t-test-based) is due **Tuesday, November 17** at 11:59 p.m. — come to office hours if you want to talk through it.
+- ==Discussion 10== (Wed. 11/11) is Exam 3 review & practice.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 
 ---

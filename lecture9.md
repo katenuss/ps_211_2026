@@ -27,7 +27,7 @@ align: lt
 - Exam 2 Review is Tuesday, October 20.
 - Exam 2 is Thursday, October 22.
 - Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
+  - Write-Up 1 (t-test based): due Monday, November 9 at 11:59 p.m.
   - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Heads up: there is **no class** next Tuesday, October 13 (substitute Monday schedule).

@@ -23,7 +23,7 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- No standalone homework this week — instead, keep an eye out for our first ==Data Write-Up== (t-test-based), due **Tuesday, November 17** at 11:59 p.m. You now have both paired- and independent-samples *t* tests in hand for it.
+- ==Data Write-Up #1== is due **Monday, November 9** at 11:59 p.m. After today, re-read your APA results sentence (Part 5) and your interpretation (Part 7) before you submit.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Coming up:
   - Tuesday (11/10): Exam 3 Review

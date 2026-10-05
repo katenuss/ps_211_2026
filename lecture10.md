@@ -28,7 +28,7 @@ align: lt
 - Discussion 7 is Wednesday, October 21: Exam 2 review & R practice (hypothesis testing & confidence intervals).
 - Exam 2 is next Thursday, October 22.
 - Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Tuesday, November 17 at 11:59 p.m.
+  - Write-Up 1 (t-test based): due Monday, November 9 at 11:59 p.m.
   - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
 - Reminder: there was **no class** this past Tuesday, October 13 (substitute Monday schedule) — that's why today picks up right where we left off!
