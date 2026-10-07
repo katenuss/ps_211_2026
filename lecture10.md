@@ -27,11 +27,6 @@ align: lt
 - Exam 2 Review is next Tuesday, October 20.
 - Discussion 7 is Wednesday, October 21: Exam 2 review & R practice (hypothesis testing & confidence intervals).
 - Exam 2 is next Thursday, October 22.
-- Reminder: no standalone homeworks this semester. Instead, you'll complete **2 Data Write-Ups** (10% of your grade each):
-  - Write-Up 1 (t-test based): due Monday, November 9 at 11:59 p.m.
-  - Write-Up 2 (ANOVA based): due Tuesday, December 8 at 11:59 p.m.
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
-- Reminder: there was **no class** this past Tuesday, October 13 (substitute Monday schedule) — that's why today picks up right where we left off!
 
 
 ---
@@ -48,22 +43,22 @@ align: lt
 <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
 <div>
 
-**z table** — gives the proportion of a normal distribution below each z score. Area above = 1 − table entry.
+**Comparison distribution** — what results would look like if $H_0$ were true (the "null world").
 
 </div>
 <div>
 
-**"Extreme" score** — far out in a tail, with only a small proportion of scores beyond it.
+**Alpha (α)** — the proportion of the null world we call "extreme," chosen in advance (usually .05).
 
 </div>
 <div>
 
-**Comparison distribution** — what we compare our result against. For a sample mean, it is the distribution of *means*.
+**Critical value** — the cutoff on the comparison distribution. Two-tailed, α = .05: ±1.96.
 
 </div>
 <div>
 
-**z statistic for a mean** — $z = \frac{M - \mu}{SE}$, where $SE = \frac{\sigma}{\sqrt{n}}$
+**Test statistic** — signal ÷ noise. For a z test, $z = \frac{M - \mu}{SE}$.
 
 </div>
 </div>
@@ -72,7 +67,7 @@ align: lt
 
 <div class="flex items-center gap-4 mt-6">
 <IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Today we add one thing: a rule for deciding when "extreme" is extreme enough. That rule turns a z statistic into a hypothesis test.</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Last time we built the six steps of a hypothesis test. Today: p values, lots of practice, and confidence intervals.</SpeechBubble>
 </div>
 
 </p>
@@ -111,7 +106,7 @@ IQ scores have μ = 100 and σ = 15. A sample of n = 25 students has M = 106. Wh
 
 <Admonition title="Multiple choice 2" color="teal-light" width="100%">
 
-The z table entry for z = 2.0 is .9772. If the students were really just a random sample from the general population, how often would a sample mean land this far **above** μ?
+`pnorm(2.0)` returns .9772. If the students were really just a random sample from the general population, how often would a sample mean land this far **above** μ?
 
 - **A)** About 98% of the time
 - **B)** About 50% of the time
@@ -124,7 +119,7 @@ The z table entry for z = 2.0 is .9772. If the students were really just a rando
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**C.** 1 − .9772 = .0228. Rare, but not impossible. Is "about 2% of the time" rare enough to conclude these students are different? That is today's question.
+**C.** 1 − .9772 = .0228. Rare, but not impossible. Is "about 2% of the time" rare enough to conclude these students are different? That is the question a hypothesis test answers.
 
 </Admonition></p>
 
@@ -135,354 +130,25 @@ align: lt
 ---
 
 :: title ::
-# Z Statistics for Distribution of *Means*
-
-:: content ::
-If we want to think about the *z* statistic for a **group**, we need to change a few things:
-
-1. We use ==means== instead of raw scores.
-2. We calculate the mean and ==standard error== for the distribution of means.
-3. Then we calculate a *z* statistic for the sample mean.
-
-<p v-click>
-
-<Admonition title="Question" color="teal-light" width="100%">
-When might this be useful?
-</Admonition>
-
-</p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-**All the time!**
-
-*We often want to know if a sample is different from a population.*
-
-</Admonition></p>
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Example: Dating Profiles
-
-:: left ::
-Researchers are studying online dating profile ratings.
-- They have a sample of 30 profiles from Rhode Island (RI).
-- RI sample (n=30): $M = 2.84$
-- U.S. population: $\mu = 2.5$, $SD = 0.833$  
-- **Is the RI sample mean different from the U.S. mean?**
-
-:: right ::
-<Admonition title="Question" color="teal-light" width="100%">
-What is the standard error for the distribution of means?
-</Admonition>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-$SE = SD/\sqrt{n} = 0.833/\sqrt{30} \approx 0.152$
-
-</Admonition></p>
-
-<Admonition title="Question" color="teal-light" width="100%">
-What does this standard error tell us?
-</Admonition>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-A typical sample mean computed from samples of size $n=30$ will be about 0.152 away from the population mean ($\mu$) of 2.5.
-
-</Admonition></p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Example: Dating Profiles (Continued)
-
-:: left ::
-Researchers are studying online dating profile ratings.
-- They have a sample of 30 profiles from Rhode Island (RI).
-- RI sample (n=30): $M = 2.84$
-- U.S. population: $\mu = 2.5$, $SD = 0.833$  
-- **Is the RI sample mean different from the U.S. mean?**
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">
-How would we calculate a z statistic to determine how "extreme" the RI sample mean is?
-</Admonition>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-1. Calculate standard error: $SE = 0.833/\sqrt{30} \approx 0.152$
-2. Calculate z statistic for the sample mean, using the population mean and standard error:
-
-$z = (M - \mu) / SE$
-
-$z = (2.84 - 2.5) / 0.152 \approx 2.24$
-
-</Admonition></p>
-
-
-<p v-click>
-The RI sample mean is more than 2 standard errors above the U.S. mean.  
-
-We need to conduct a formal hypothesis test to determine if this difference is **statistically significant**.  
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Review: Hypotheses
-
-:: content ::
-- **Null hypothesis ($H_0$):** There is no real difference. The populations from which samples are drawn are the same / equal. Any observed difference is due to chance.
-
-==The goal of hypothesis testing is to determine how likely our sample data would be if the null hypothesis were true.==
-
-**We do statistics to either: reject or fail to reject the null hypothesis.**
-
-We do not "prove" that the null hypothesis is true. We can only fail to reject it if we don't have enough evidence against it.
-
-*Absence of evidence is not evidence of absence. There could still be a difference that we just didn't detect.*
-
-<p v-click>
-
-- **Research hypothesis or alternative hypothesis ($H_1$):** What the researcher expects to find. Sometimes states the direction of the effect (e.g., group A will have a higher mean than group B).
-
-*The research hypothesis is the hypothesis that would be true if the null hypothesis is false.*
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Hypothesis Testing
-
-:: content ::
-- We use statistics to formally test hypotheses.
-- Statistical analyses are based on certain assumptions about the dataset.
-- ==Statistical assumptions== describe the ideal conditions for hypothesis testing. (More on this later!)
-- We want to ensure these assumptions are (mostly) met so that we can make accurate inferences.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The logic behind every hypothesis test
-
-:: content ::
-
-Every test in this course, from today through December, runs on the same three ideas:
-
-1. **Assume nothing is going on.** Pretend the null hypothesis is true.
-2. **Picture the "null world."** If $H_0$ were true and we ran this study thousands of times, what results would we get? That is the **comparison distribution**.
-3. **Find our result in that world.** If a result like ours would be very rare in the null world, we stop believing in the null world: we reject $H_0$.
-
-<p v-click>
-
-And every test statistic is the same kind of number:
-
-$$\text{test statistic} = \frac{\text{what we observed} - \text{what } H_0 \text{ predicts}}{\text{how much results bounce around by chance}}$$
-
-</p>
-
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="40rem">Signal divided by noise. For a z test: the signal is M − μ, and the noise is the standard error. The six steps just organize this logic so that nothing gets skipped.</SpeechBubble></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Six Steps of Hypothesis Testing: at a glance
+# Recap: the six steps of hypothesis testing
 
 :: content ::
 
 <table class="compact-table text-base">
-<thead><tr><th></th><th>Step</th><th>The question you are answering</th><th>For a z test</th></tr></thead>
+<thead><tr><th></th><th>Step</th><th>The question</th><th>For a z test</th></tr></thead>
 <tbody>
-<tr><td rowspan="4"><b>Before looking at the result</b></td><td><b>1.</b> Populations, comparison distribution, assumptions</td><td>Who is being compared, and which test fits?</td><td>Sample mean vs. a population with known μ and σ → z test</td></tr>
+<tr><td rowspan="4"><b>Before looking at the result</b></td><td><b>1.</b> Populations, comparison distribution, assumptions</td><td>Who is being compared, and which test fits?</td><td>One sample mean vs. a population with known μ and σ</td></tr>
 <tr><td><b>2.</b> Hypotheses</td><td>What are the two competing claims?</td><td>H₀: μ₁ = μ₂ &nbsp; H₁: μ₁ ≠ μ₂ (or &lt;, &gt;)</td></tr>
-<tr><td><b>3.</b> Characteristics of the comparison distribution</td><td>What would results look like if H₀ were true?</td><td>Distribution of means: center μ, spread SE = σ/√n</td></tr>
+<tr><td><b>3.</b> Characteristics of the comparison distribution</td><td>If H₀ were true, what results would we expect?</td><td>Center μ, spread SE = σ/√n, normal shape</td></tr>
 <tr><td><b>4.</b> Critical values</td><td>How extreme is extreme enough?</td><td>α = .05, two-tailed → ±1.96</td></tr>
-<tr><td rowspan="2"><b>With the result</b></td><td><b>5.</b> Test statistic</td><td>How far is our result from what H₀ predicts, in SE units?</td><td>z = (M − μ) / SE</td></tr>
+<tr><td rowspan="2"><b>With the result</b></td><td><b>5.</b> Test statistic</td><td>How far is our result from what H₀ predicts, compared to chance?</td><td>z = (M − μ) / SE</td></tr>
 <tr><td><b>6.</b> Decision</td><td>Is it past the cutoff? What do we conclude?</td><td>Reject or fail to reject H₀, then say it in plain English</td></tr>
 </tbody>
 </table>
 
-<p v-click><StickyNote color="amber-light" title="Why the order matters" width="100%">Steps 1 to 4 are decided <i>before</i> you look at your result. Choosing the cutoff after you see the data is like drawing the target around the arrow.</StickyNote></p>
+<p v-click><Admonition title="Last time: dating profiles" color="indigo-light" width="100%">
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Six Steps of Hypothesis Testing
-
-:: content ::
-1. Identify the populations, comparison distribution, and assumptions  
-- What populations are represented by the sample(s)?  
-- What is the comparison distribution? Is it a distribution of means? Raw scores?
-- What assumptions, if any, do our data meet? (More on this later!)
-  - This helps us choose the right statistical test!
-
-<p v-click><Admonition title="Our example: dating profiles" color="indigo-light" width="100%">
-
-Population 1: all Rhode Island profiles. Population 2: all U.S. profiles. We have a sample **mean** (n = 30) and we know the U.S. μ and σ, so the comparison distribution is a **distribution of means**, and the test is a **z test**.
-
-</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-2. State null and research hypotheses  
-- Your hypotheses should be about the **population(s)**, not the **sample(s)**. Remember, we want to make inferences about populations! 
-
-<p v-click><Admonition title="Our example: dating profiles" color="indigo-light" width="100%">
-
-$H_0$: RI profiles are rated the same as U.S. profiles on average: $\mu_{RI} = 2.5$. &nbsp; $H_1$: they are rated differently: $\mu_{RI} \neq 2.5$ (non-directional, so two-tailed).
-
-</Admonition></p>
-
-<p v-click>
-
-3. Determine characteristics of **comparison distribution.**  
-- The comparison distribution = the distribution based on the null hypothesis.
-- For *z* tests, we determine the mean and standard error of the comparison distribution and use this to calculate our test statistic.
-
-</p>
-
-<p v-click><Admonition title="Our example: dating profiles" color="indigo-light" width="100%">
-
-If $H_0$ is true, means of 30 profiles are normally distributed with center $\mu_M = 2.5$ and $SE = 0.833/\sqrt{30} = 0.152$.
-
-</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-4. Determine ==critical values==, or cutoffs  
-- The critical value defines the boundaries of the "extreme" scores. They determine how extreme the data must be (e.g., how large the *z* statistic must be) to reject the null hypothesis.
-- The standard in psychological research is typically .05 or 5%. 
-- For a "two-tailed" test, this means we reject the null hypothesis if the test statistic falls in the upper or lower 2.5% of our distribution.
-
-<img src="/images/lecture7/z_critical.png" alt="Critical Regions" class="w-3/4 mx-auto"/>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-4. Determine ==critical values==, or cutoffs  
-- The critical region is the area in the tails of the distribution beyond the critical values. Values that fall in the critical region are considered extreme enough to reject the null hypothesis.
-- The probabilities used to determine the critical values in hypothesis testing are called alpha levels.
-
-
-<img src="/images/lecture7/z_critical.png" alt="Critical Regions" class="w-3/5 mx-auto"/>
-
-<p v-click><Admonition title="Our example: dating profiles" color="indigo-light" width="100%">
-
-α = .05, two-tailed → 2.5% in each tail → the z table gives critical values of **−1.96 and +1.96**.
-
-</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-5. Calculate test statistic
-- All the information from the previous steps is used to calculate the test statistic.
-- We will focus on the *z* statistic for now, but these same steps apply for other test statistics (to be discussed later in the course!)
-- Once we have our test statistic, we can compare it to the critical values from step 4 to determine whether the sample data is extreme enough to reject the null hypothesis.  
-
-<img src="/images/lecture7/p_val.png" alt="z stat and p" class="w-1/4 mx-auto"/>
-
-<p v-click><Admonition title="Our example: dating profiles" color="indigo-light" width="100%">
-
-$z = (M - \mu)/SE = (2.84 - 2.5)/0.152 = 2.24$. The RI mean is 2.24 standard errors above what $H_0$ predicts.
-
-</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Six Steps of Hypothesis Testing (Continued)
-
-:: content ::
-
-6. Determine whether you can reject the null hypothesis.
-- Reject if: The test statistic is beyond the cutoff
-- Fail to reject if: The test statistic is not beyond the cutoff
-- This usually involves comparing *p* values (obtained probabilities) to *alpha* values (predetermined cutoffs).
-- If we reject the null hypothesis, we say our results are ==statistically significant.==
-
-**Statistically significant**: Data are more extreme than what we would expect by chance if there truly were no actual difference.
-
-<p v-click><Admonition title="Our example: dating profiles" color="indigo-light" width="100%">
-
-2.24 is beyond +1.96, so we **reject $H_0$**. In plain English: Rhode Island profiles are rated significantly higher than U.S. profiles on average.
+RI sample (n = 30, $M = 2.84$) vs. the U.S. ($\mu = 2.5$, $\sigma = 0.833$): $SE = 0.152$, so $z = 2.24$. That is beyond +1.96, so we **rejected $H_0$**.
 
 </Admonition></p>
 
@@ -506,7 +172,7 @@ In Step 6 you can compare **z statistics** or compare **probabilities**. They al
 
 - Compare your **test statistic** to the **cutoff**.
 - Dating profiles: $z = 2.24$ is beyond $1.96$ → reject $H_0$.
-- This is how we work by hand, with tables.
+- This is how we work by hand.
 
 </div>
 <div class="border-2 border-indigo-300 bg-indigo-50 rounded-lg p-4">
@@ -533,14 +199,15 @@ align: lt
 
 :: content ::
 
-We will learn many tests this semester. The six steps stay the same. Only **two things** ever change:
+We will learn many tests this semester. The six steps and their questions stay the same. Only the answers to **three steps** change:
 
 <table class="compact-table text-base">
-<thead><tr><th></th><th>z test (today)</th><th><i>t</i> tests (Lectures 12–14)</th><th>ANOVA (Lectures 15–16)</th></tr></thead>
+<thead><tr><th></th><th>z test</th><th><i>t</i> tests (Lectures 12–14)</th><th>ANOVA (Lectures 15–16)</th></tr></thead>
 <tbody>
-<tr><td><b>The comparison distribution</b> (Steps 1 and 3, and the table you use in Step 4)</td><td>z distribution</td><td><i>t</i> distribution</td><td><i>F</i> distribution</td></tr>
-<tr><td><b>The formula for signal ÷ noise</b> (Step 5)</td><td>(M − μ) / SE</td><td>(M − μ) / estimated SE</td><td>variance between groups / variance within groups</td></tr>
-<tr><td><b>Everything else</b> (Steps 2, 4, 6)</td><td colspan="3">Identical: state H₀ and H₁, choose alpha and find the cutoff, compare, decide, conclude in plain English.</td></tr>
+<tr><td><b>Step 1:</b> which test fits?</td><td>One mean, σ known</td><td>One or two means, σ unknown</td><td>Three or more means</td></tr>
+<tr><td><b>Step 3:</b> the comparison distribution</td><td>z distribution. SE = σ/√n</td><td><i>t</i> distribution. SE estimated from the sample, plus degrees of freedom</td><td><i>F</i> distribution. Two degrees of freedom</td></tr>
+<tr><td><b>Step 5:</b> signal ÷ noise</td><td>(M − μ) / SE</td><td>(M − μ) / estimated SE</td><td>variance between groups / variance within groups</td></tr>
+<tr><td><b>Steps 2, 4, 6</b></td><td colspan="3">Same logic every time: state H₀ and H₁, choose alpha and find the cutoff in the comparison distribution, compare, decide, conclude in plain English.</td></tr>
 </tbody>
 </table>
 
@@ -548,7 +215,7 @@ We will learn many tests this semester. The six steps stay the same. Only **two 
 
 <div class="flex items-center gap-4 mt-4">
 <IceCream :size="80" mood="blissful" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">If you understand today's z test, you already understand the skeleton of every test in this course. New tests only swap in a new comparison distribution and a new way to measure noise.</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">If you understand the z test, you already understand the skeleton of every test in this course. New tests only swap in a new comparison distribution and a new way to measure noise.</SpeechBubble>
 </div>
 
 </p>
@@ -705,12 +372,12 @@ align: lt-lt-lt
 <br>
 
 <Admonition title="Question" color="teal-light" width="100%">
-Use what you have learned today to come up with an answer!
+Use the six steps to come up with an answer!
 </Admonition>
 
 :: right ::
 
-<img src="/images/lecture7/z_table_2.gif" alt="z table" class="w-3/4 mx-auto"/>
+<StickyNote color="amber-light" title="Hints" width="100%">Which distribution do you compare a sample <i>mean</i> to? What is its standard error? Which R function gives the area beyond a z score?</StickyNote>
 
 
 ---
@@ -772,7 +439,7 @@ align: lt
 <p v-click>
 
 - **Step 6:** Next, we want to determine ==how extreme== this *z* score is. Route 1: $-2.5$ is beyond our cutoff of $-1.645$, so we reject $H_0$. Route 2: find the *p* value.
-- We can use our *z* table to look up the percentile, which is $1 - .9938 = .0062.$
+- `pnorm(-2.5)` gives the area below our *z* score: $.0062.$
 
 </p>
 
@@ -864,7 +531,7 @@ columns: is-5-7
 
 **6.** −2.17 is beyond −1.96 → **reject $H_0$**. Her songs are significantly less positive than songs in general.
 
-Route 2 gives the same answer: the table entry for 2.17 is .9850, so $p = 2 \times .0150 = .03 < .05$.
+Route 2 gives the same answer: `pnorm(2.17)` = .9850, so $p = 2 \times .0150 = .03 < .05$.
 
 </Admonition>
 
@@ -1099,7 +766,7 @@ align: lt
 # Calculating confidence intervals with *z* distributions (Continued)
 
 :: content ::
-3. Find the corresponding *z* scores for these bounds using a *z* table or computer programming.
+3. Find the corresponding *z* scores for these bounds using `qnorm()`.
 - For the upper bound (.975), the *z* score is approximately 1.96.
 - For the lower bound (.025), the *z* score is approximately -1.96.
 4. Convert the z statistic to raw scores. 
@@ -1260,27 +927,7 @@ align: lt
 
 :: content ::
 
-<div class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm">
-<div>
-
-**Comparison distribution** — what results would look like if $H_0$ were true (the "null world").
-
-</div>
-<div>
-
-**Alpha (α)** — the probability we use to define "extreme enough," chosen in advance (usually .05).
-
-</div>
-<div>
-
-**Critical value / critical region** — the cutoff(s) on the comparison distribution, and the tail area beyond them. Two-tailed, α = .05: ±1.96.
-
-</div>
-<div>
-
-**Test statistic** — signal ÷ noise. For a z test, $z = \frac{M - \mu}{SE}$.
-
-</div>
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
 <div>
 
 **p value** — the probability of a result at least this extreme *if $H_0$ were true*. Not the probability that $H_0$ is true.
@@ -1288,7 +935,12 @@ align: lt
 </div>
 <div>
 
-**Statistically significant** — test statistic beyond the cutoff (equivalently, p < α), so we reject $H_0$.
+**Two routes to a decision** — test statistic beyond the cutoff, or p < α. They always agree.
+
+</div>
+<div>
+
+**One-tailed vs. two-tailed test** — all of α in one tail (directional $H_1$) vs. split across both tails.
 
 </div>
 <div>
