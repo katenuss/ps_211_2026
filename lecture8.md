@@ -842,7 +842,7 @@ align: lt-lt-lt
 $$ SE = \frac{5}{\sqrt{25}} = \frac{5}{5} = 1 $$
 
 <Admonition title="Question" color="teal-light" width="100%">
-What if we take samples of size $n = 9$? What if we take samples of size $n = 100$? Which will have a smaller SE? Why?
+What if we take samples of size n = 9? What if we take samples of size n = 100? Which will have a smaller SE? Why?
 </Admonition>
 
 
