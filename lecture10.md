@@ -897,26 +897,6 @@ You repeat the study with 80 candy bars instead of 20. What happens to the 95% C
 </Admonition></p>
 
 ---
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# R Demo: Z Scores, Percentiles, and Confidence Intervals
-
-:: left ::
-- Let's do a demo in R to calculate z scores, percentiles, and confidence intervals. 
-- This will help prepare you for the Data Write-Ups later this semester, which involve R coding.
-
-<p v-click><StickyNote color="green-light" title="In discussion section" width="100%">Discussion 7 (Wednesday, October 21) is Exam 2 review plus R practice with hypothesis testing and confidence intervals — perfect timing before the exam!</StickyNote></p>
-
-
-
-
-
----
 layout: top-title
 color: indigo-light
 align: lt

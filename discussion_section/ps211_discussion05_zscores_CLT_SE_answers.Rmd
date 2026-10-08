@@ -1,0 +1,387 @@
+---
+title: 'PS 211 — Discussion Worksheet #5 — ANSWER KEY'
+subtitle: 'Fall 2026 · z scores, the Central Limit Theorem & standard error (Lectures 7 and 8)'
+author: "ANSWER KEY"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+Today has two parts, one for each lecture since Exam 1:
+
+- **Part A (about 20 minutes): z scores** (Lecture 7). How unusual is *one score*?
+- **Part B (about 25 minutes): the Central Limit Theorem and standard error** (Lecture 8). How unusual is *a sample mean*?
+
+Both parts use the same real dataset: the sleep study of 253 college students from lecture (the "you sleep 9 hours, your lab partner sleeps 6" example). Download `college_sleep_data.csv` and put it in your project folder, next to this file.
+
+Run chunks top to bottom; edit where it says **EDIT**; type an answer at each **"Your answer:"**. If you fall behind the suggested times, keep going and finish at home.
+
+---
+
+## Packages and data (run this once at the top)
+
+```{r libraries, message = FALSE}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("ggplot2")
+
+library(readr)
+library(ggplot2)
+
+sleep <- read_csv("college_sleep_data.csv")
+
+head(sleep)
+```
+
+Each row is one student. The columns we will use:
+
+| Column | What it is |
+|---|---|
+| `sleep_hours` | average hours of sleep per night |
+| `gpa` | grade point average (0 to 4) |
+| `classes_missed` | number of classes missed during the semester |
+
+*Data: Onyper, Thacher, Gilbert, & Gradess (2012), Chronobiology International. 253 students at a liberal arts college in the northeastern U.S.*
+
+---
+
+# Part A: z scores (Lecture 7)
+
+A **z score** tells you how many standard deviations a score is from the mean of its distribution:
+
+$$z = \frac{X - M}{s}$$
+
+# 1) One score, one z score *(4 min)*
+
+First we need the mean and SD of sleep:
+
+```{r sleep-mean-sd}
+mean_sleep <- mean(sleep$sleep_hours)
+sd_sleep   <- sd(sleep$sleep_hours)
+
+mean_sleep
+sd_sleep
+```
+
+You sleep 9 hours a night. Your lab partner sleeps 6. Your z score is done for you; edit the next line to compute your lab partner's.
+
+```{r z-one-score}
+z_you <- (9 - mean_sleep) / sd_sleep
+
+# EDIT THIS LINE, THEN RUN:
+z_partner <- (6 - mean_sleep) / sd_sleep
+
+z_you
+z_partner
+```
+
+**Your answer (1a):** Put both z scores into words. (Start with: "You sleep about ___ standard deviations ___ the average student...")
+
+**Sample answer:** You sleep about 1.07 standard deviations above the average student (z = 1.07). Your lab partner sleeps about 2.04 standard deviations below the average student (z = −2.04). The sign gives the direction (above or below the mean); the number gives the distance in SDs.
+
+**Your answer (1b):** No code for this one. Using the rounded values from lecture (M = 8 hours, SD = 1 hour): a student has a z score of **+1.5** for sleep. How many hours do they sleep? Which formula did you use?
+
+**Sample answer:** X = M + z × s = 8 + (1.5)(1) = 9.5 hours. This is the z score formula rearranged to solve for the raw score.
+
+**Try it (1c):** Now do the same conversion in R with the exact mean and SD.
+
+```{r z-to-raw}
+# EDIT THIS LINE, THEN RUN (hint: X = M + z * s):
+hours_from_z <- mean_sleep + 1.5 * sd_sleep
+
+hours_from_z
+```
+
+---
+
+# 2) Comparing apples and oranges *(4 min)*
+
+Student 3 in this dataset sleeps **5.02 hours** a night and has a **2.97 GPA**. Both are below average. Which one is *more unusual*?
+
+You can't compare 5.02 hours with 2.97 grade points directly: different units, different spreads. z scores put both on the same ruler.
+
+```{r z-compare}
+mean_gpa <- mean(sleep$gpa)
+sd_gpa   <- sd(sleep$gpa)
+
+z_sleep_student3 <- (5.02 - mean_sleep) / sd_sleep
+
+# EDIT THIS LINE, THEN RUN:
+z_gpa_student3 <- (2.97 - mean_gpa) / sd_gpa
+
+z_sleep_student3
+z_gpa_student3
+```
+
+**Your answer:** Which is more unusual for Student 3, their sleep or their GPA? How do you know?
+
+**Sample answer:** Their sleep. Sleep z = −3.05: more than three standard deviations below the average student, which is very rare. GPA z = −0.68: less than one standard deviation below average, which is ordinary. The z score farther from 0 (in either direction) is the more unusual score.
+
+---
+
+# 3) Standardizing every score *(5 min)*
+
+R can apply the formula to a whole column at once. Here is a z score for every student's sleep:
+
+```{r standardize-sleep}
+sleep$sleep_z <- (sleep$sleep_hours - mean_sleep) / sd_sleep
+
+head(sleep[, c("sleep_hours", "sleep_z")])
+
+round(mean(sleep$sleep_z), 10)
+sd(sleep$sleep_z)
+```
+
+**Try it:** Create a z score for every student's number of classes missed. Then run the rest of the chunk to plot the raw scores and the z scores.
+
+```{r standardize-missed}
+mean_missed <- mean(sleep$classes_missed)
+sd_missed   <- sd(sleep$classes_missed)
+
+# EDIT THIS LINE, THEN RUN:
+sleep$missed_z <- (sleep$classes_missed - mean_missed) / sd_missed
+
+round(mean(sleep$missed_z), 10)
+sd(sleep$missed_z)
+
+ggplot(sleep, aes(x = classes_missed)) +
+  geom_histogram(binwidth = 1, fill = "lightgrey", color = "black") +
+  labs(title = "Raw scores: classes missed", x = "Classes missed", y = "Number of students") +
+  theme_classic()
+
+ggplot(sleep, aes(x = missed_z)) +
+  geom_histogram(binwidth = 1 / sd_missed, fill = "lightgreen", color = "black") +
+  labs(title = "z scores: classes missed", x = "z score", y = "Number of students") +
+  theme_classic()
+```
+
+**Your answer (3a):** What are the mean and SD of the sleep z scores? Of the classes-missed z scores? Why do they come out the same for two such different variables?
+
+**Sample answer:** Mean 0 and SD 1 for both. Every distribution of z scores has a mean of 0 (subtracting M from every score re-centers the distribution at 0) and an SD of 1 (dividing by s makes the typical distance from the mean s / s = 1).
+
+**Your answer (3b):** Classes missed is skewed right. Did converting to z scores make the distribution normal? What changed between the two histograms, and what stayed the same?
+
+**Sample answer:** No. The two histograms have exactly the same shape (still skewed right). Only the labels on the x-axis changed: the center is now 0 and the units are standard deviations. Standardizing relabels the axis; it does not change the shape.
+
+---
+
+# 4) From z scores to percentiles with `pnorm()` *(7 min)*
+
+In lecture we saw landmarks on the **standard normal (z) distribution**: about 2% of scores fall below z = −2, 16% below z = −1, 50% below z = 0, 84% below z = +1, and 98% below z = +2.
+
+The landmarks only cover a few z scores. For any other z score, R has a function: **`pnorm(z)` gives the area under the standard normal curve to the *left* of z**, which is the proportion of scores below it. Multiply by 100 and you have the percentile.
+
+First, check that `pnorm()` reproduces the landmarks:
+
+```{r pnorm-landmarks}
+pnorm(0)     # landmark: 0.50
+pnorm(1)     # landmark: 0.84
+pnorm(-1)    # landmark: 0.16
+```
+
+Now use it on z scores that are not landmarks. Your z score for sleep was 1.07 and your lab partner's was −2.04 (Section 1).
+
+```{r pnorm-sleep}
+pnorm(z_you)
+
+# EDIT THIS LINE, THEN RUN:
+pnorm(z_partner)
+```
+
+**Your answer (4a):** What are your and your lab partner's percentiles for sleep? Put each one in a sentence. ("I sleep more than about ___% of students...")
+
+**Sample answer:** `pnorm(1.07)` = 0.858, so I am at about the 86th percentile: I sleep more than about 86% of students. `pnorm(-2.04)` = 0.021, so my lab partner is at about the 2nd percentile: they sleep more than only about 2% of students.
+
+`pnorm()` assumes the scores follow a normal curve. Do the real data agree? We can count. `sleep$sleep_hours < 9` asks, for every student, "does this student sleep less than 9 hours?" (TRUE or FALSE), and `mean()` of that gives the proportion of TRUEs.
+
+```{r pnorm-check}
+mean(sleep$sleep_hours < 9)   # counted in the real data; pnorm said 0.858
+mean(sleep$sleep_hours < 6)   # counted in the real data; pnorm said 0.021
+```
+
+Now the same check for classes missed, at z = −1:
+
+```{r pnorm-missed}
+pnorm(-1)                     # what the normal curve says
+
+mean(sleep$missed_z < -1)     # counted in the real data
+
+mean_missed + (-1) * sd_missed   # how many classes missed is z = -1?
+```
+
+**Your answer (4b):** `pnorm()` matches the real data well for sleep and badly for classes missed. Why? (Look at the last number the chunk printed, and think about the shapes of the two distributions.)
+
+**Sample answer:** `pnorm()` gives areas under the *normal* curve, so it only describes distributions that are roughly normal. Sleep is roughly normal: 87% of students really do sleep less than 9 hours (`pnorm` said 86%) and 3% sleep less than 6 hours (`pnorm` said 2%). Classes missed is skewed right and cannot go below 0. There, z = −1 would be about −1 classes missed, which is impossible, so 0% of students are below it, not the 16% that `pnorm(-1)` gives. You can compute a z score for any distribution, but you can only turn it into a percentile with `pnorm()` (or the landmarks, or a z table) when the distribution is approximately normal.
+
+---
+
+# Part B: the Central Limit Theorem & standard error (Lecture 8)
+
+Part A asked how unusual *one score* is. Part B asks how unusual *a sample mean* is. To answer, we need to know what sample means look like.
+
+# 5) A decidedly non-normal population *(3 min)*
+
+For Part B, we will treat these 253 students as our **population**, so we know the true population mean and SD of the number of classes missed.
+
+```{r population}
+pop <- sleep$classes_missed
+
+ggplot(sleep, aes(x = classes_missed)) +
+  geom_histogram(binwidth = 1, fill = "lightblue", color = "black") +
+  labs(title = "Individual students (the population)",
+       x = "Classes missed", y = "Number of students") +
+  theme_classic()
+
+mean(pop)   # population mean
+sd(pop)     # population SD
+```
+
+**Your answer:** Describe the shape of this population. Is it normal?
+
+**Sample answer:** Not normal. It is strongly skewed right: more than a third of students missed 0 classes, most missed 2 or fewer, and a long tail reaches up to 20.
+
+---
+
+# 6) The distribution of sample means *(7 min)*
+
+Instead of asking "what does one student look like?", we ask: **"if I took a sample of 30 students over and over, what would the collection of sample means look like?"**
+
+The `for` loop below repeats the sample-then-average recipe 1,000 times and saves each mean. (`replace = TRUE` lets the same student be drawn more than once, which treats our 253 students as a stand-in for a much larger population of students like them.)
+
+```{r sampling-distribution}
+set.seed(211)  # DO NOT CHANGE
+
+n <- 30                  # size of each sample
+num_samples <- 1000      # how many samples we take
+
+sample_means <- numeric(num_samples)               # an empty container for 1,000 means
+for (i in 1:num_samples) {
+  one_sample <- sample(pop, n, replace = TRUE)     # draw 30 students
+  sample_means[i] <- mean(one_sample)              # save that sample's mean
+}
+
+ggplot(data.frame(sample_means), aes(x = sample_means)) +
+  geom_histogram(binwidth = 0.1, fill = "lightgreen", color = "black") +
+  labs(title = "Distribution of 1,000 sample means (n = 30 each)",
+       x = "Sample mean (classes missed)", y = "Number of samples") +
+  theme_classic()
+
+mean(sample_means)
+```
+
+**Your answer (6a):** Compare this histogram to the population histogram in Section 5. What happened to the shape, the center, and the spread? (Check the x-axes!)
+
+**Sample answer:** Shape: the distribution of means is roughly normal (bell-shaped, with only a little of the skew left) even though the population is strongly skewed. Center: it is centered on the population mean (about 2.2). Spread: it is much narrower; individual students range from 0 to 20, but nearly all sample means fall between about 1 and 4. This is the Central Limit Theorem.
+
+**Your answer (6b):** About 15% of individual students missed 5 or more classes. So why does a *sample mean* of 5 essentially never happen?
+
+**Sample answer:** For a sample of 30 to average 5, many of the 30 students would have to be frequent class-skippers at the same time. A random sample almost always mixes a few high scores with many low ones, and averaging cancels the extremes out. Extreme individuals are common; extreme averages are rare.
+
+---
+
+# 7) Standard error: the SD of that distribution *(6 min)*
+
+The standard deviation of the distribution of sample means has its own name: the **standard error (SE)**. We can get it two ways: by brute force (we have 1,000 sample means, so just take their SD) or with the formula:
+
+$$SE = \frac{SD}{\sqrt{n}}$$
+
+```{r standard-error}
+sd(sample_means)        # brute force: SD of our 1,000 simulated means
+
+sd(pop) / sqrt(30)      # formula: population SD divided by the square root of n
+```
+
+Very close! The formula predicts what the simulation shows, without having to take 1,000 samples.
+
+**Try it:** Use the formula to compute the SE for samples of **n = 120**.
+
+```{r try-se}
+# EDIT THIS LINE, THEN RUN:
+se_120 <- sd(pop) / sqrt(120)
+
+se_120
+```
+
+**Your answer (7a):** The SE for n = 120 is half the SE for n = 30. Why *half* when the sample is four times bigger? And what does a smaller SE mean, in plain English, about how much you can trust one sample's mean?
+
+**Sample answer:** SE = SD / √n, and √120 is exactly twice √30, so quadrupling n only halves the SE (n is under a square root). A smaller SE means sample means cluster more tightly around the population mean, so any one sample's mean is likely to be close to the truth.
+
+**Your answer (7b):** For classes missed, the SD is about 3.2 and the SE (for n = 30) is about 0.59. Complete both sentences: "The SD tells us how much ___ typically differ from ___." "The SE tells us how much ___ typically differ from ___."
+
+**Sample answer:** The SD tells us how much *individual students* typically differ from *the mean* (about 3.2 classes). The SE tells us how much *sample means (of 30 students)* typically differ from *the population mean* (about 0.59 classes). SD describes the spread of scores; SE describes the spread of sample means.
+
+---
+
+# 8) Watch n work *(4 min)*
+
+This chunk runs the whole simulation twice, once with small samples (n = 5) and once with big ones (n = 100), and plots the two distributions of means on the same axes:
+
+```{r n-comparison}
+set.seed(211)  # DO NOT CHANGE
+
+simulate_means <- function(sample_size) {
+  means <- numeric(1000)
+  for (i in 1:1000) {
+    means[i] <- mean(sample(pop, sample_size, replace = TRUE))
+  }
+  means
+}
+
+means_small <- simulate_means(5)
+means_big   <- simulate_means(100)
+
+df_compare <- data.frame(
+  sample_mean = c(means_small, means_big),
+  n = factor(rep(c("n = 5", "n = 100"), each = 1000), levels = c("n = 5", "n = 100"))
+)
+
+ggplot(df_compare, aes(x = sample_mean, fill = n)) +
+  geom_histogram(binwidth = 0.2, color = "black", alpha = 0.6, position = "identity") +
+  labs(title = "Sample means from small vs. large samples",
+       x = "Sample mean (classes missed)", y = "Number of samples") +
+  theme_classic()
+
+sd(means_small)   # SE when n = 5
+sd(means_big)     # SE when n = 100
+```
+
+**Your answer:** You read two polls of BU students' study hours: one surveyed 5 students, one surveyed 100. Both report a mean. Using today's ideas (distributions of means and SE), which poll's mean do you trust more, and *why*?
+
+**Sample answer:** The 100-person poll. Means of 100 students have a much smaller standard error (here about 0.3 vs. 1.5), so its mean is likely to sit close to the true population mean. The 5-person poll's mean comes from a wide distribution of means and could easily be far off just by chance.
+
+---
+
+# 9) Is this sample mean unusual? *(4 min)*
+
+Back to the question from lecture: unusual *compared to what?*
+
+Suppose the 30 students in one 8 a.m. class missed a mean of **4 classes** each. Is 4 unusual? It depends on whether 4 is one student's score or the mean of 30 students.
+
+```{r unusual}
+mean(pop >= 4)             # proportion of individual STUDENTS who missed 4 or more classes
+
+# EDIT THIS LINE, THEN RUN:
+mean(sample_means >= 4)
+```
+
+**Your answer:** Why is 4 ordinary for one student but very unusual for the mean of 30 students? What might you conclude about this 8 a.m. class?
+
+**Sample answer:** About 21% of individual students missed 4 or more classes, so one student at 4 is ordinary. But means of 30 students vary much less than individual students (SE of about 0.59 vs. SD of about 3.2), so a mean of 4 is about 3 standard errors above the population mean of 2.2, and fewer than 1% of our 1,000 random samples had a mean that high. A random sample of 30 would rarely produce a mean of 4 by chance, so students in this 8 a.m. class probably miss more classes than students in general. (This is the logic of hypothesis testing, coming in Lecture 10.)
+
+---
+
+# ✅ Before you leave
+
+- [ ] I computed z scores in both directions (raw score → z and z → raw score).
+- [ ] I used z scores to compare scores from two different scales.
+- [ ] I standardized a whole column and saw that the mean becomes 0, the SD becomes 1, and the shape stays the same.
+- [ ] I used `pnorm()` to turn a z score into a percentile, and I know it only works when the distribution is roughly normal.
+- [ ] I simulated a distribution of sample means and saw the Central Limit Theorem turn a skewed population into a roughly normal distribution of means.
+- [ ] I computed standard error two ways (simulation and formula) and they agreed.
+- [ ] I can explain the difference between SD and SE, and how sample size changes SE.
+
+**Next time:** more practice with percentiles (including z tables, for exams without R), and a z score for a sample mean.
