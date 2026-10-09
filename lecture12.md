@@ -164,6 +164,38 @@ align: lt
 ---
 
 :: title ::
+# What changes from test to test? Almost nothing.
+
+:: content ::
+
+We will learn many tests this semester. The six steps and their questions stay the same. Only the answers to **three steps** change:
+
+<table class="compact-table text-base">
+<thead><tr><th></th><th>z test</th><th><i>t</i> tests (Lectures 12–14)</th><th>ANOVA (Lectures 15–16)</th></tr></thead>
+<tbody>
+<tr><td><b>Step 1:</b> which test fits?</td><td>One mean, σ known</td><td>One or two means, σ unknown</td><td>Three or more means</td></tr>
+<tr><td><b>Step 3:</b> the comparison distribution</td><td>z distribution. SE = σ/√n</td><td><i>t</i> distribution. SE estimated from the sample, plus degrees of freedom</td><td><i>F</i> distribution. Two degrees of freedom</td></tr>
+<tr><td><b>Step 5:</b> signal ÷ noise</td><td>(M − μ) / SE</td><td>(M − μ) / estimated SE</td><td>variance between groups / variance within groups</td></tr>
+<tr><td><b>Steps 2, 4, 6</b></td><td colspan="3">Same logic every time: state H₀ and H₁, choose alpha and find the cutoff in the comparison distribution, compare, decide, conclude in plain English.</td></tr>
+</tbody>
+</table>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="blissful" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">If you understand the z test, you already understand the skeleton of every test in this course. New tests only swap in a new comparison distribution and a new way to measure noise.</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
 
 # Normal distributions vs. *t* distributions
 
