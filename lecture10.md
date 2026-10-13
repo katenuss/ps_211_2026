@@ -1057,6 +1057,117 @@ Yes: 51 is inside the interval. So 51 is a plausible value for her true mean, wh
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Running a *z* test in R: by hand
+
+:: left ::
+
+Ariana Grande again: do her 43 songs differ in positivity from songs in general?
+
+```r
+mu    <- 51   # population mean
+sigma <- 23   # population SD
+
+ariana <- filter(songs, artist == "Ariana Grande")
+n <- nrow(ariana)
+se <- sigma / sqrt(n)
+M <- mean(ariana$positivity)
+z <- (M - mu) / se
+p <- 2 * pnorm(z)
+```
+
+<div class="text-base">
+
+- `pnorm(z)` is the area below z. Our z is negative, so that is our tail. `2 *` adds the other tail.
+
+</div>
+
+<p v-click="2"><StickyNote color="amber-light" title="Not exactly our numbers?" width="100%">By hand we got z = −2.17 because we rounded M and the SE along the way. R keeps every decimal. Same decision.</StickyNote></p>
+
+:: right ::
+
+```text
+> se
+[1] 3.507467
+> M
+[1] 43.43023
+> z
+[1] -2.158186
+> p
+[1] 0.03091335
+```
+
+<div v-click="1" class="text-base">
+
+- **se = 3.51**: Step 3. The SD of the distribution of means.
+- **M = 43.43**: the sample mean.
+- **z = −2.16**: Step 5. Her mean is 2.16 SEs below 51.
+- **p = 0.031**: Step 6. Below α = .05, so we reject $H_0$ (Route 2).
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Running a *z* test in R: z.test()
+
+:: left ::
+
+Same test, one function. `z.test()` does every step from the last slide for us.
+
+```r
+library(BSDA)   # has z.test()
+
+# ariana = her 43 songs
+z.test(ariana$positivity,
+       mu = 51, sigma.x = 23)
+```
+
+<div class="text-base">
+
+- Give R the sample's scores, the population mean $H_0$ predicts (`mu`), and the population SD (`sigma.x`).
+- Same numbers as by hand, plus a CI.
+
+</div>
+
+<p v-click="2"><StickyNote color="amber-light" title="Coming attractions" width="100%">The output of <code>t.test()</code> has this same layout. Learn to read one and you can read the other.</StickyNote></p>
+
+:: right ::
+
+```text
+	One-sample z-Test
+
+z = -2.1582, p-value = 0.03091
+alternative hypothesis: true mean is not equal to 51
+95 percent confidence interval:
+ 36.55572 50.30474
+sample estimates:
+mean of x
+ 43.43023
+```
+
+<div v-click="1" class="text-base">
+
+- **z = −2.16**: Step 5. Her mean is 2.16 SEs below 51.
+- **p-value = 0.031**: below α = .05, so we reject $H_0$ (Route 2). R prints no alpha and no decision: those are ours.
+- **alternative hypothesis**: our $H_1$, a two-tailed test.
+- **95% CI**: 36.6 to 50.3. Excludes 51, matching the test.
+- **mean of x**: *M* = 43.4.
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
 ---
 
 :: title ::
