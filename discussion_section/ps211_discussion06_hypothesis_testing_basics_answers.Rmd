@@ -1,0 +1,409 @@
+---
+title: 'PS 211 — Discussion Worksheet #6 — ANSWER KEY'
+subtitle: 'Fall 2026 · Error bars, percentiles & the six steps of hypothesis testing (Lecture 9)'
+author: "ANSWER KEY"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+Today practices everything from Lecture 9, in three parts:
+
+- **Part A (about 15 minutes): bar plots with error bars.** The difference between SD and SE, as a picture.
+- **Part B (about 8 minutes): `pnorm()` and `qnorm()`.** The area *above* a z score, and going backwards from a percentile to a score.
+- **Part C (about 22 minutes): the six steps of hypothesis testing.** Two complete z tests, start to finish.
+
+All three parts use the sleep study of 253 college students from lecture and from last week. If `college_sleep_data.csv` is not already in your project folder, download it and put it next to this file.
+
+Run chunks top to bottom; edit where it says **EDIT**; type an answer at each **"Your answer:"**. If you fall behind the suggested times, keep going and finish at home.
+
+---
+
+## Packages and data (run this once at the top)
+
+```{r libraries, message = FALSE}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("dplyr")
+# install.packages("ggplot2")
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+sleep <- read_csv("college_sleep_data.csv")
+
+head(sleep)
+```
+
+Each row is one student. The columns we will use:
+
+| Column | What it is |
+|---|---|
+| `chronotype` | "Lark" (morning person), "Owl" (evening person), or "Neither" |
+| `gpa` | grade point average (0 to 4) |
+| `sleep_hours` | average hours of sleep per night |
+| `classes_missed` | number of classes missed during the semester |
+| `class_year` | 1 = first-year, 2 = sophomore, 3 = junior, 4 = senior |
+
+*Data: Onyper, Thacher, Gilbert, & Gradess (2012), Chronobiology International. 253 students at a liberal arts college in the northeastern U.S.*
+
+---
+
+# Part A: bar plots with error bars
+
+In lecture we asked: **are morning people better students?** We looked at a bar plot of mean GPA for larks, owls, and everyone else, with error bars. Now you will build that plot yourself.
+
+# 1) Three groups: mean, SD, and SE *(6 min)*
+
+First, split the students into the three groups. `filter()` (from Discussion 4) keeps only the rows where a condition is true. Remember the double equals sign and the quotes around text.
+
+```{r groups}
+larks   <- filter(sleep, chronotype == "Lark")
+neither <- filter(sleep, chronotype == "Neither")
+
+# EDIT THIS LINE, THEN RUN:
+owls <- filter(sleep, chronotype == "Owl")
+
+nrow(larks)
+nrow(neither)
+nrow(owls)     # check: there should be 49 owls
+```
+
+A plot of means needs a small **summary table**: one row per group, holding that group's *n*, mean, and SD. The standard error of each mean then comes from the formula you used last week:
+
+$$SE = \frac{SD}{\sqrt{n}}$$
+
+```{r summary-table}
+summary_df <- data.frame(
+  group = c("Lark", "Neither", "Owl"),
+  n     = c(nrow(larks), nrow(neither), nrow(owls)),
+  mean  = c(mean(larks$gpa), mean(neither$gpa), mean(owls$gpa)),
+  sd    = c(sd(larks$gpa), sd(neither$gpa), sd(owls$gpa))
+)
+
+# EDIT THIS LINE, THEN RUN:
+summary_df$se <- summary_df$sd / sqrt(summary_df$n)
+
+summary_df
+```
+
+**Your answer (1a):** Now think about the difference between SD and SE. For larks, the SD is about 0.40 GPA points and the SE is about 0.06. Complete both sentences: "0.40 tells us how much ___ typically differ from ___." "0.06 tells us how much ___ typically differ from ___."
+
+**Sample answer:** 0.40 (the SD) tells us how much *individual larks' GPAs* typically differ from *the larks' mean GPA*. 0.06 (the SE) tells us how much *the mean GPA of a sample of 41 larks* would typically differ from *the true mean GPA of all larks*. SD is the spread of scores; SE is the precision of a mean.
+
+**Your answer (1b):** The three SDs are almost the same (about 0.4). Which group has the smallest SE, and why? Predict: which group will have the shortest error bar?
+
+**Sample answer:** "Neither" has the smallest SE (0.03, about half of the others) because it has by far the largest sample (n = 163 vs. 41 and 49), and SE = SD / √n. Same spread of scores, more data, more precise mean. Its error bar will be the shortest.
+
+---
+
+# 2) The bar plot *(5 min)*
+
+The plot has two layers. `geom_col()` draws one bar per group, as tall as that group's mean. `geom_errorbar()` adds a vertical line to each bar that runs from `ymin` to `ymax`.
+
+Right now the error bars start and end at the mean, so they have no length. Edit the `geom_errorbar()` line so that each one runs from **one SE below the mean** to **one SE above the mean**.
+
+```{r barplot, fig.width = 5, fig.height = 4}
+ggplot(summary_df, aes(x = group, y = mean)) +
+  geom_col(fill = "lightblue", color = "black") +
+  # EDIT THE NEXT LINE, THEN RUN:
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.15) +
+  coord_cartesian(ylim = c(2.8, 3.5)) +
+  labs(title = "Mean GPA by chronotype",
+       x = "Chronotype", y = "Mean GPA (error bars = +/- 1 SE)") +
+  theme_classic()
+```
+
+*(A caution about `coord_cartesian(ylim = c(2.8, 3.5))`: it zooms the y-axis in so that you can see the error bars, as on the lecture slide. Bars that do not start at 0 make differences look bigger than they are, so always check the axis before judging the size of a difference.)*
+
+**Your answer (2a):** Read your plot. Which group has the highest mean GPA? Which group's mean is estimated most precisely, and how can you see that in the plot?
+
+**Sample answer:** Larks have the highest mean GPA (about 3.33), then "Neither" (3.24), then owls (3.20). The "Neither" mean is the most precise: its error bar is the shortest (about ±0.03, compared with about ±0.06 for larks and owls).
+
+**Your answer (2b):** The larks' bar is about 0.13 GPA points taller than the owls' bar, and each of those two means has an SE of about 0.06. Why can't we conclude from the bar heights alone that morning people in general get better grades?
+
+**Sample answer:** These are sample means, and sample means bounce around from sample to sample. The error bars show how much: each mean could easily be off by 0.06 or more in either direction, and the gap between the groups (0.13) is only about two SEs. A gap that size might reflect a real difference between larks and owls, or it might be the kind of difference that chance alone produces. Deciding between those two explanations takes a hypothesis test (Part C).
+
+---
+
+# 3) What if the error bars showed the SD? *(4 min)*
+
+Error bars do not always show the SE. Here is the same plot again. Change `se` to `sd` in **two** places so that the error bars show ±1 SD instead, and fix the y-axis label to match.
+
+```{r barplot-sd, fig.width = 5, fig.height = 4}
+ggplot(summary_df, aes(x = group, y = mean)) +
+  geom_col(fill = "lightgreen", color = "black") +
+  # EDIT THE NEXT LINE (change se to sd, twice), THEN RUN:
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.15) +
+  coord_cartesian(ylim = c(2.6, 3.9)) +
+  labs(title = "Mean GPA by chronotype",
+       x = "Chronotype", y = "Mean GPA (error bars = +/- 1 SD)") +
+  theme_classic()
+```
+
+**Your answer:** Compare the two plots. Which error bars are longer, and why? In the SE plot the "Neither" bar was much shorter than the others; is that still true in the SD plot? What question does each kind of error bar answer, and why must a figure caption always say which one is shown?
+
+**Sample answer:** The SD bars are much longer (about ±0.4 instead of ±0.03 to ±0.06), because individual students vary far more than means of groups do. In the SD plot all three error bars are about the same length, because the spread of individual GPAs is similar in every group and the SD does not shrink when n grows. SD error bars answer "how much do individual students differ from one another?" SE error bars answer "how precisely do we know each group's mean?" The two look identical on a plot but mean different things, so the caption has to say which one the reader is looking at.
+
+---
+
+# Part B: `pnorm()` and `qnorm()`
+
+# 4) Above a z score, and backwards from a percentile *(8 min)*
+
+Last week: `pnorm(z)` gives the proportion of the z distribution **below** z. You sleep 9 hours a night; your z score was 1.07, and `pnorm()` put you at about the 86th percentile.
+
+The total area under the curve is 1. So the proportion **above** a z score is 1 minus the proportion below it.
+
+```{r upper-tail}
+mean_sleep <- mean(sleep$sleep_hours)
+sd_sleep   <- sd(sleep$sleep_hours)
+
+z_you <- (9 - mean_sleep) / sd_sleep
+z_you
+
+pnorm(z_you)                    # proportion of students who sleep LESS than you
+
+# EDIT THIS LINE, THEN RUN:
+prop_more <- 1 - pnorm(z_you)
+
+prop_more
+
+mean(sleep$sleep_hours > 9)     # check: the proportion counted in the real data
+```
+
+**Your answer (4a):** According to the normal curve, what percentage of students sleep more than you do? Does the real data agree?
+
+**Sample answer:** `1 - pnorm(1.07)` = 0.142, so about 14% of students sleep more than 9 hours. Counting in the real data gives 12%. The two agree well because sleep is roughly normally distributed.
+
+`qnorm()` is the opposite of `pnorm()`: you give it a **proportion below**, and it gives back the **z score**. Suppose you want to be in the top 10% of sleepers. How many hours do you need?
+
+```{r qnorm}
+z_top10 <- qnorm(0.90)     # the z score with 90% of the distribution below it
+z_top10
+
+# EDIT THIS LINE, THEN RUN (hint: X = M + z * s):
+hours_top10 <- mean_sleep + z_top10 * sd_sleep
+
+hours_top10
+
+quantile(sleep$sleep_hours, 0.90)   # check: the 90th percentile counted in the real data
+```
+
+**Your answer (4b):** How many hours of sleep puts you in the top 10%? Why did we ask for `qnorm(0.90)` and not `qnorm(0.10)`?
+
+**Sample answer:** About 9.2 hours (z = 1.28, and 7.97 + 1.28 × 0.965 = 9.20). The real data's 90th percentile is 9.07 hours, so the normal curve is close. `qnorm()` takes the proportion *below* the score. Being in the top 10% means 90% of students are below you, so we ask for 0.90. `qnorm(0.10)` would give the cutoff for the *bottom* 10% (z = −1.28).
+
+One pair of z scores matters more than any other in this course:
+
+```{r cutoffs}
+qnorm(0.975)   # the z score with 97.5% of the distribution below it
+qnorm(0.025)   # the z score with 2.5% of the distribution below it
+```
+
+**Your answer (4c):** What proportion of the z distribution lies *between* these two z scores? What proportion lies *outside* them (both tails added together)?
+
+**Sample answer:** 95% lies between −1.96 and +1.96 (97.5% − 2.5%). The remaining 5% lies outside: 2.5% in the lower tail and 2.5% in the upper tail. These are the critical values for a two-tailed test with alpha = .05, which we need in Part C.
+
+---
+
+# Part C: the six steps of hypothesis testing
+
+Parts A and B described data. Part C makes a decision with it. As in last week's worksheet, we will treat the 253 students as our **population**, so that we know the population mean (μ) and SD (σ). That is what a z test requires.
+
+The six steps from lecture, each with the question it answers:
+
+| | Step | The question |
+|---|---|---|
+| **Before looking at the result** | 1. Populations, comparison distribution, assumptions | Who is being compared, and which test fits? |
+| | 2. Hypotheses | What are the two competing claims? |
+| | 3. Characteristics of the comparison distribution | If H0 were true, what results would we expect? |
+| | 4. Critical values | How extreme is extreme enough? |
+| **With the result** | 5. Test statistic | How far is our result from what H0 predicts, compared to chance? |
+| | 6. Decision | Is it past the cutoff? What do we conclude? |
+
+# 5) Do night owls miss a different number of classes? *(13 min)*
+
+There are 49 night owls in the dataset. Do owls miss a different number of classes, on average, than college students in general? Steps 1 to 4 come *before* we look at the owls' mean, so don't peek.
+
+```{r population}
+mu    <- mean(sleep$classes_missed)   # population mean
+sigma <- sd(sleep$classes_missed)     # population SD
+
+mu
+sigma
+```
+
+## Step 1: Populations, comparison distribution, and assumptions
+
+**Your answer (Step 1):** Name the two populations being compared. Is the comparison distribution a distribution of *scores* or a distribution of *means*, and why? Last week you saw that classes missed is strongly skewed; why can we still use the normal curve here?
+
+**Sample answer:** Population 1: all night-owl college students (the students our 49 owls represent). Population 2: college students in general (μ = 2.21, σ = 3.24). We have a sample *mean* and we know the population's μ and σ, so the comparison distribution is a distribution of means and the test is a z test. Individual scores are skewed, but the Central Limit Theorem says that means of samples this large (n = 49) are approximately normally distributed anyway.
+
+## Step 2: Hypotheses
+
+**Your answer (Step 2):** State the null hypothesis (H0) and the research hypothesis (H1), in words and in symbols. Is this test one-tailed or two-tailed?
+
+**Sample answer:** H0: night owls miss the same number of classes on average as students in general (μ_owls = 2.21). H1: night owls miss a different number of classes on average than students in general (μ_owls ≠ 2.21). Two-tailed: the question asks about a difference in either direction. Both hypotheses are about populations, not about our sample.
+
+## Step 3: Characteristics of the comparison distribution
+
+```{r step3}
+n <- nrow(owls)
+n
+
+# EDIT THIS LINE, THEN RUN:
+se <- sigma / sqrt(n)
+
+se
+```
+
+**Your answer (Step 3):** Describe the comparison distribution (the "null world"): what is its center, its spread, and its shape?
+
+**Sample answer:** If H0 is true, means of samples of 49 students are approximately normally distributed, centered on μ = 2.21, with a standard error of 3.24 / √49 = 0.46.
+
+## Step 4: Critical values
+
+We will use alpha = .05, two-tailed.
+
+```{r step4}
+# EDIT THIS LINE, THEN RUN:
+z_crit <- qnorm(0.975)
+
+z_crit
+```
+
+**Your answer (Step 4):** What are the two critical values? In your own words, what is alpha?
+
+**Sample answer:** The critical values are −1.96 and +1.96. Alpha is the proportion of the null world that we agree, in advance, to call "extreme": here the most extreme 5% of sample means (2.5% in each tail). If our result lands there, we will reject H0.
+
+## Step 5: Test statistic
+
+Now we look at the result.
+
+```{r step5}
+M <- mean(owls$classes_missed)
+M
+
+# EDIT THIS LINE, THEN RUN:
+z <- (M - mu) / se
+
+z
+```
+
+Run the next chunk (no editing) to see your z statistic on the comparison distribution. The pink tails are the critical regions; the blue line is your z.
+
+```{r step5-picture, fig.width = 6, fig.height = 3.5}
+curve_df <- data.frame(z_value = seq(-5, 5, by = 0.01))
+curve_df$height <- dnorm(curve_df$z_value)
+
+ggplot(curve_df, aes(x = z_value, y = height)) +
+  geom_area(data = filter(curve_df, z_value <= -z_crit), fill = "pink") +
+  geom_area(data = filter(curve_df, z_value >= z_crit), fill = "pink") +
+  geom_line() +
+  geom_vline(xintercept = z, color = "blue", linewidth = 1) +
+  labs(title = "The comparison distribution (the null world)",
+       x = "z statistic", y = NULL) +
+  theme_classic()
+```
+
+**Your answer (Step 5):** A classmate computes (4.20 − 2.21) / 3.24 = 0.61 and says "owls are only 0.6 SDs above average, so nothing unusual is going on." What mistake did they make, and what question does their number answer instead?
+
+**Sample answer:** They divided by σ (the SD of individual scores) when they should have divided by the standard error. Their 0.61 answers "how unusual would it be for *one student* to miss 4.2 classes?" (not unusual). We have the *mean of 49 students*, and means bounce around much less than individual scores, so it has to be compared to the distribution of means: z = (4.20 − 2.21) / 0.46 = 4.31.
+
+## Step 6: Decision
+
+**Your answer (Step 6):** Is your z statistic beyond a critical value? State your decision (reject or fail to reject H0), then say what it means in plain English.
+
+**Sample answer:** Yes: 4.31 is far beyond +1.96, so we reject H0. The result is statistically significant. In plain English: night owls miss significantly more classes on average (about 4.2 per semester) than college students in general (about 2.2).
+
+---
+
+# 6) Your turn: do larks have different GPAs? *(9 min)*
+
+Back to the question from Part A. Your bar plot showed that larks have the highest mean GPA. Is the larks' mean GPA significantly different from the mean GPA of students in general? Work through all six steps (alpha = .05, two-tailed).
+
+```{r larks-test}
+mu_gpa    <- mean(sleep$gpa)   # population mean
+sigma_gpa <- sd(sleep$gpa)     # population SD
+n_larks   <- nrow(larks)
+
+mu_gpa
+sigma_gpa
+n_larks
+
+# EDIT THESE THREE LINES, THEN RUN:
+se_gpa  <- sigma_gpa / sqrt(n_larks)
+M_larks <- mean(larks$gpa)
+z_larks <- (M_larks - mu_gpa) / se_gpa
+
+se_gpa
+M_larks
+z_larks
+```
+
+*(Why is this SE slightly different from the larks' SE in Part A? There we used the larks' own SD, because that was all we had. A z test uses the population's σ, because H0 says the larks come from that population.)*
+
+**Your answer (6a), Steps 1 and 2:** Name the two populations and the comparison distribution, then state H0 and H1.
+
+**Sample answer:** Population 1: all morning-lark college students. Population 2: college students in general (μ = 3.24, σ = 0.40). We have a sample mean and a known μ and σ, so the comparison distribution is a distribution of means (z test). H0: larks have the same mean GPA as students in general (μ_larks = 3.24). H1: larks have a different mean GPA (μ_larks ≠ 3.24).
+
+**Your answer (6b), Steps 3 and 4:** Describe the comparison distribution (center, spread, shape) and give the critical values.
+
+**Sample answer:** If H0 is true, means of 41 students are approximately normal, centered on 3.24, with SE = 0.40 / √41 = 0.063. Critical values for alpha = .05, two-tailed: −1.96 and +1.96.
+
+**Your answer (6c), Steps 5 and 6:** Report the z statistic, your decision, and a plain-English conclusion.
+
+**Sample answer:** z = (3.33 − 3.24) / 0.063 = 1.38. That is between −1.96 and +1.96, so it is not in a critical region: we fail to reject H0. In plain English: we do not have enough evidence to say that larks' mean GPA differs from the mean GPA of students in general.
+
+As with the Taylor Swift example in lecture, we can ask how often chance alone would produce a mean this high:
+
+```{r larks-how-often}
+1 - pnorm(z_larks)   # proportion of the null world with a z statistic this high or higher
+```
+
+**Your answer (6d):** If you drew 41 students at random, about how often would their mean GPA be as high as the larks' mean, or higher? Then: a classmate concludes "so we've proven that morning people get the same grades as everyone else." What is wrong with that sentence?
+
+**Sample answer:** About 8% of the time (`1 - pnorm(1.38)` = 0.084), so a mean like the larks' is not rare in the null world. But failing to reject H0 does not prove H0 is true. It means we did not find enough evidence against it. Larks might really have slightly higher GPAs, and a sample of 41 was too small to detect a difference that size. Absence of evidence is not evidence of absence.
+
+---
+
+# 7) If you have time: first-years *(optional)*
+
+The 47 first-year students (`class_year == 1`) are another sample. Do first-years miss a different number of classes than students in general? You already have `mu`, `sigma`, and `z_crit` from Section 5, and the hypotheses and critical values are the same as for the owls. Write the code for Step 5 yourself, then make your decision.
+
+```{r first-years}
+first_years <- filter(sleep, class_year == 1)
+
+n_fy  <- nrow(first_years)
+se_fy <- sigma / sqrt(n_fy)
+M_fy  <- mean(first_years$classes_missed)
+z_fy  <- (M_fy - mu) / se_fy
+
+n_fy
+se_fy
+M_fy
+z_fy
+```
+
+**Your answer:** What is the z statistic? It is negative: what does that tell you, and can a negative z statistic be in a critical region? State your decision and conclusion.
+
+**Sample answer:** z = (1.26 − 2.21) / 0.47 = −2.02. The negative sign means the first-years' mean is *below* the population mean. In a two-tailed test both tails count, and −2.02 is beyond −1.96, so it is in the lower critical region: we reject H0. First-years miss significantly fewer classes on average (about 1.3) than students in general (about 2.2). Notice how much closer this one is to the cutoff than the owls' z of 4.31.
+
+---
+
+# ✅ Before you leave
+
+- [ ] I built a summary table of group means, SDs, and SEs, and made a bar plot with ±1 SE error bars.
+- [ ] I can explain what SD error bars and SE error bars each tell a reader.
+- [ ] I used `1 - pnorm(z)` for the area above a z score and `qnorm()` to go from a proportion back to a z score.
+- [ ] I computed a z statistic for a sample mean using the standard error, not the SD.
+- [ ] I worked through all six steps of a z test twice: once rejecting H0 and once failing to reject it.
+- [ ] I can explain why "fail to reject H0" does not mean "H0 is true."
+
+**Next time:** Thursday's lecture adds p values and confidence intervals. Next week's discussion is practice for Exam 2.
