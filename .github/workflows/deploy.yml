@@ -100,6 +100,7 @@ jobs:
               --include 'ps211_discussion04_meet_your_data_answers.Rmd' \
               --include 'ps211_discussion05_zscores_CLT_SE_answers.Rmd' \
               --include 'ps211_discussion06_hypothesis_testing_basics_answers.Rmd' \
+               --include 'ps211_discussion07_hypothesis_tests_CIs_answers.Rmd' \
               --exclude '*_answers*' --exclude '.*' --exclude '*.Rproj' \
               discussion_section/ dist/discussion_section/
           fi
