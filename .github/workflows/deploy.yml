@@ -98,6 +98,8 @@ jobs:
               --include 'ps211_discussion01_intro_to_R_answers.Rmd' \
               --include 'ps211_discussion02_descriptives_answers.Rmd' \
               --include 'ps211_discussion04_meet_your_data_answers.Rmd' \
+              --include 'ps211_discussion05_zscores_CLT_SE_answers.Rmd' \
+              --include 'ps211_discussion06_hypothesis_testing_basics_answers.Rmd' \
               --exclude '*_answers*' --exclude '.*' --exclude '*.Rproj' \
               discussion_section/ dist/discussion_section/
           fi

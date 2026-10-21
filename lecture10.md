@@ -95,7 +95,7 @@ IQ scores have μ = 100 and σ = 15. A sample of n = 25 students has M = 106. Wh
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**B.** It is a *mean*, so divide by the standard error: 15/√25 = 3.
+**B.** It is a *mean*, so divide by the standard error: 15/√25 = 2.
 
 </Admonition>
 

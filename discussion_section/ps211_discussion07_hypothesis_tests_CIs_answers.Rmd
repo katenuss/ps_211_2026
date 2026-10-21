@@ -1,0 +1,517 @@
+---
+title: 'PS 211 — Discussion Worksheet #7 — ANSWER KEY'
+subtitle: 'Fall 2026 · p values, one- and two-tailed tests & confidence intervals, plus Exam 2 review (Lectures 7 to 10)'
+author: "ANSWER KEY"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+# How this worksheet works
+
+Exam 2 is tomorrow and covers Lectures 7 to 10. Today has three parts:
+
+- **Part A (about 9 minutes): quick recap of Lectures 7 to 9.** z scores, percentiles, the Central Limit Theorem, and standard error.
+- **Part B (about 27 minutes): Lecture 10.** p values, one-tailed and two-tailed tests, and confidence intervals.
+- **Part C (about 8 minutes): exam-style questions.** No R needed.
+
+Everything uses the Spotify data from lecture: the 28,356 songs behind the Taylor Swift, Ariana Grande, and Drake examples. Download `spotify_songs_data.csv` and put it in your project folder, next to this file.
+
+Run chunks top to bottom; edit where it says **EDIT**; type an answer at each **"Your answer:"**. You will not be asked to write code on the exam, but you will be asked to read output like the output you produce today. If you run out of time, finish at home as exam practice.
+
+---
+
+## Packages and data (run this once at the top)
+
+```{r libraries, message = FALSE}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("dplyr")
+# install.packages("ggplot2")
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+songs <- read_csv("spotify_songs_data.csv")
+
+nrow(songs)
+head(songs)
+```
+
+Each row is one track on Spotify. The columns we will use:
+
+| Column | What it is |
+|---|---|
+| `track_name` | the song's title |
+| `artist` | the artist's name |
+| `positivity` | how happy the song sounds: 0 = sad or angry, 100 = happy and cheerful (Spotify calls this "valence") |
+| `danceability` | how suitable the song is for dancing, 0 to 100 |
+| `duration_min` | the song's length in minutes |
+
+*Data: Spotify Web API via the spotifyr R package (Thompson, Parry, Phipps, & Wolff), compiled for TidyTuesday (January 2020), so songs through 2019 only. Some songs appear more than once, because the single and the album version are separate tracks on Spotify.*
+
+---
+
+# Part A: recap of Lectures 7 to 9
+
+# 1) One song: z scores and percentiles *(4 min)*
+
+"Old Town Road" by Lil Nas X is famously short and famously danceable. How unusual is it? A **z score** says how many standard deviations a score is from the mean: $z = (X - M) / s$.
+
+```{r one-song}
+old_town_road <- filter(songs, track_name == "Old Town Road")
+old_town_road[, c("track_name", "artist", "duration_min", "danceability")]
+
+mean_length <- mean(songs$duration_min)
+sd_length   <- sd(songs$duration_min)
+mean_dance  <- mean(songs$danceability)
+sd_dance    <- sd(songs$danceability)
+
+z_length <- (1.88 - mean_length) / sd_length
+
+# EDIT THIS LINE, THEN RUN:
+z_dance <- (90.8 - mean_dance) / sd_dance
+
+z_length
+z_dance
+```
+
+**Your answer (1a):** Put both z scores into words. Is the song more unusual for its length or for its danceability? What do the signs of the two z scores tell you?
+
+**Sample answer:** The song is about 1.86 standard deviations *shorter* than the average song (z = −1.86) and about 1.75 standard deviations *more danceable* than the average song (z = 1.75). It is unusual in both ways, and slightly more unusual for its length, because −1.86 is a little farther from 0. The sign gives the direction (below or above the mean); the size gives the distance.
+
+```{r percentile}
+pnorm(z_dance)                     # proportion below, according to the normal curve
+mean(songs$danceability < 90.8)    # proportion below, counted in the real data
+```
+
+**Your answer (1b):** According to `pnorm()`, what is the song's percentile for danceability? The count from the real data is close but not identical. What does `pnorm()` assume about the distribution of scores?
+
+**Sample answer:** `pnorm(1.75)` = 0.96, so the normal curve puts the song at about the 96th percentile: more danceable than about 96% of songs. Counting gives 98%. `pnorm()` gives areas under a *normal* curve, so it is only as accurate as the distribution is normal. Danceability is roughly bell-shaped but somewhat skewed, so the answer is approximately right. For a strongly skewed variable it could be far off.
+
+---
+
+# 2) From songs to means of songs *(5 min)*
+
+For the rest of the worksheet we treat all 28,356 songs as the **population**, and we work with positivity.
+
+```{r population, fig.width = 5.5, fig.height = 3.5}
+mean(songs$positivity)
+sd(songs$positivity)
+
+mu    <- 51   # population mean, rounded as in lecture
+sigma <- 23   # population SD, rounded as in lecture
+
+ggplot(songs, aes(x = positivity)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  coord_cartesian(xlim = c(0, 100)) +
+  labs(title = "Individual songs (the population)",
+       x = "Positivity", y = "Number of songs") +
+  theme_classic()
+```
+
+Now imagine making random 25-song playlists and recording each playlist's **mean** positivity. The loop below does that 1,000 times.
+
+```{r sampling-distribution, fig.width = 5.5, fig.height = 3.5}
+set.seed(211)  # DO NOT CHANGE
+
+sample_means <- numeric(1000)                            # an empty container for 1,000 means
+for (i in 1:1000) {
+  sample_means[i] <- mean(sample(songs$positivity, 25))  # draw 25 songs, save their mean
+}
+
+ggplot(data.frame(sample_means), aes(x = sample_means)) +
+  geom_histogram(binwidth = 1, fill = "lightgreen", color = "black") +
+  coord_cartesian(xlim = c(0, 100)) +
+  labs(title = "Distribution of 1,000 sample means (n = 25 each)",
+       x = "Mean positivity of 25 songs", y = "Number of samples") +
+  theme_classic()
+
+sd(sample_means)     # the SD of our 1,000 simulated means
+
+# EDIT THIS LINE, THEN RUN:
+se_25 <- sigma / sqrt(25)
+
+se_25
+```
+
+**Your answer (2a):** Compare the two histograms (they have the same x-axis). What happened to the shape, the center, and the spread? What is the SD of the distribution of means called, and did the formula predict it?
+
+**Sample answer:** Shape: individual songs are spread across the whole 0 to 100 range in a broad, flat-topped hump that is not normal, but the means form a narrow, approximately normal bell (the Central Limit Theorem). Center: both are centered near 51. Spread: individual songs have an SD of 23, while the means have an SD of only about 4.6 (the simulation gives 4.61). The SD of a distribution of means is the standard error, and the formula σ / √n = 23 / √25 = 4.6 predicts the simulation closely.
+
+**Your answer (2b):** What would the standard error be for playlists of 100 songs? How many times bigger does a sample have to be to cut the standard error in half?
+
+**Sample answer:** 23 / √100 = 2.3. That is half of 4.6, and it took a sample four times as big (100 vs. 25). Because n is under a square root, you need four times the data to halve the SE.
+
+---
+
+# Part B: Lecture 10
+
+# 3) A two-tailed z test with a p value *(10 min)*
+
+There are 27 Frank Ocean songs in the dataset. **Does the positivity of Frank Ocean's songs differ from that of songs in general?** We will use alpha = .05, two-tailed.
+
+```{r frank-setup}
+frank <- filter(songs, artist == "Frank Ocean")
+
+n <- nrow(frank)
+n
+
+z_crit <- qnorm(0.975)   # the upper critical value for alpha = .05, two-tailed
+z_crit
+```
+
+**Your answer (3a), Steps 1 to 4:** Name the populations and the comparison distribution, state H0 and H1, and give the critical values.
+
+**Sample answer:** Step 1: Frank Ocean's songs vs. songs in general (μ = 51, σ = 23). We have a sample mean and a known μ and σ, so the comparison distribution is a distribution of means, and the test is a z test. Step 2: H0: μ_Frank = 51. H1: μ_Frank ≠ 51. Step 3: if H0 is true, means of 27 songs are approximately normal, centered on 51, with SE = 23 / √27. Step 4: alpha = .05, two-tailed, so the critical values are −1.96 and +1.96.
+
+```{r frank-test}
+# EDIT THIS LINE, THEN RUN:
+se <- sigma / sqrt(n)
+
+M <- mean(frank$positivity)
+
+# EDIT THIS LINE, THEN RUN:
+z <- (M - mu) / se
+
+se
+M
+z
+```
+
+**Your answer (3b), Step 5:** One song with a positivity of 41 would have a z score of (41 − 51) / 23 = −0.43. The mean of Frank Ocean's 27 songs is also 41, but its z statistic is much farther from 0. Why?
+
+**Sample answer:** A single song is compared to the distribution of *songs*, whose SD is 23. A mean of 27 songs is compared to the distribution of *means*, whose SD is the standard error, 23 / √27 = 4.43. Means bounce around much less than individual songs do, so a mean of 41 is far more surprising than one song at 41: z = (41 − 51) / 4.43 = −2.26.
+
+**Step 6, two routes.** Route 1 compares the z statistic to the critical values. Route 2 compares the **p value** to alpha. The p value is the probability of a result at least as extreme as ours if H0 were true. Our z is negative, so the tail beyond it is the area *below* it, which `pnorm()` gives directly. For a two-tailed test we count both tails, so we double it.
+
+```{r frank-p}
+pnorm(z)            # the area below our z statistic: one tail
+
+# EDIT THIS LINE, THEN RUN:
+p <- 2 * pnorm(z)
+
+p
+```
+
+Run the next chunk (no editing) to see the p value as an area. The blue tails together are the p value. The dashed red lines are the critical values.
+
+```{r frank-picture, fig.width = 6, fig.height = 3.5}
+curve_df <- data.frame(z_value = seq(-4, 4, by = 0.01))
+curve_df$height <- dnorm(curve_df$z_value)
+
+ggplot(curve_df, aes(x = z_value, y = height)) +
+  geom_area(data = filter(curve_df, z_value <= -abs(z)), fill = "steelblue") +
+  geom_area(data = filter(curve_df, z_value >= abs(z)), fill = "steelblue") +
+  geom_line() +
+  geom_vline(xintercept = c(-z_crit, z_crit), color = "red", linetype = "dashed") +
+  labs(title = "The null world: blue area = p value, red lines = critical values",
+       x = "z statistic", y = NULL) +
+  theme_classic()
+```
+
+**Your answer (3c), Step 6:** Make the decision by Route 1 (z vs. the critical values) and by Route 2 (p vs. alpha). Do the two routes agree? State the conclusion in plain English.
+
+**Sample answer:** Route 1: z = −2.26 is beyond −1.96, so we reject H0. Route 2: p = .024 is less than alpha = .05, so we reject H0. They agree, and they always will: a z statistic beyond the cutoff is the same thing as a tail area smaller than alpha. In plain English: Frank Ocean's songs are significantly less positive on average than songs in general.
+
+**Your answer (3d):** Finish this sentence: "A p value of .024 means that if ___, then ___." A classmate says "so there is a 2.4% chance that the null hypothesis is true." What is wrong with that?
+
+**Sample answer:** "If the null hypothesis were true (Frank Ocean's songs are like songs in general), then a sample mean at least this far from 51, in either direction, would occur about 2.4% of the time." A p value is a statement about the *data*, assuming H0 is true. It is not the probability that H0 is true (or false).
+
+```{r alpha-01}
+qnorm(0.995)   # the upper critical value for alpha = .01, two-tailed
+```
+
+**Your answer (3e):** Suppose we had chosen alpha = .01 before looking at the data. What would the decision be, by each route? Did the z statistic or the p value change? Why does alpha have to be chosen in advance?
+
+**Sample answer:** With alpha = .01 the critical values are ±2.58. Route 1: −2.26 is not beyond −2.58, so we fail to reject H0. Route 2: p = .024 is greater than .01, so we fail to reject H0. The z statistic and the p value are exactly the same; only the standard for "extreme enough" changed. If you could pick alpha after seeing the result, you could always pick whichever one gives the answer you want.
+
+---
+
+# 4) A one-tailed test *(6 min)*
+
+Before looking at any data, you predict that Eminem's songs are **less** positive than songs in general. That is a directional research hypothesis, so the test is one-tailed: all 5% of alpha goes in the lower tail.
+
+```{r eminem}
+eminem <- filter(songs, artist == "Eminem")
+
+n_em  <- nrow(eminem)
+se_em <- sigma / sqrt(n_em)
+M_em  <- mean(eminem$positivity)
+z_em  <- (M_em - mu) / se_em
+
+n_em
+M_em
+z_em
+
+# EDIT THIS LINE, THEN RUN:
+z_crit_one <- qnorm(0.05)
+
+z_crit_one
+
+# EDIT THIS LINE, THEN RUN:
+p_one <- pnorm(z_em)
+
+p_one
+```
+
+**Your answer (4a):** State H0 and H1 in symbols. Where is the critical region, and why is the cutoff closer to 0 than the two-tailed cutoff of −1.96?
+
+**Sample answer:** H0: μ_Eminem = 51. H1: μ_Eminem < 51. The critical region is the lowest 5% of the comparison distribution, below z = −1.645. A two-tailed test splits the 5% into 2.5% in each tail, which pushes each cutoff farther out (±1.96). A one-tailed test puts all 5% in one tail, so the cutoff sits closer to the center.
+
+**Your answer (4b):** What is your decision, by both routes? State the conclusion in plain English.
+
+**Sample answer:** Route 1: z = −1.88 is beyond −1.645, so we reject H0. Route 2: p = .030 is less than .05, so we reject H0. Eminem's songs are significantly less positive on average than songs in general.
+
+**Your answer (4c):** If this had been a two-tailed test, the p value would be doubled. What would the decision have been? What has to be true about *when* you chose the one-tailed test for the "reject" decision to be legitimate?
+
+**Sample answer:** Two-tailed, p = 2 × .030 = .060, which is greater than .05 (and z = −1.88 is not beyond −1.96), so we would fail to reject H0. Same data, different decision. The one-tailed result only counts if the direction was predicted *before* looking at the data. Choosing one tail after seeing which way the result came out makes it too easy to reject H0.
+
+---
+
+# 5) Confidence intervals *(8 min)*
+
+Frank Ocean's sample mean (about 41) is a **point estimate**: a single best guess about the positivity of his music. A **confidence interval** is an interval estimate: a range of plausible values, centered on the sample mean.
+
+$$95\% \; CI = M \pm z_{crit} \times SE$$
+
+```{r frank-ci}
+# These are still Frank Ocean's values from Section 3:
+M
+se
+z_crit
+
+# EDIT THESE TWO LINES, THEN RUN:
+lower <- M - z_crit * se
+upper <- M + z_crit * se
+
+lower
+upper
+```
+
+**Your answer (5a):** Report the 95% confidence interval. Is 51, the mean of songs in general, inside it? How does that fit with the decision you made in Section 3?
+
+**Sample answer:** 95% CI: 32.3 to 49.7. The interval does not contain 51, which fits the test: we rejected H0 with a two-tailed test at alpha = .05. When the 95% CI excludes the null value, the two-tailed test at alpha = .05 rejects H0; when it includes the null value, the test fails to reject.
+
+**Your answer (5b):** A classmate says "there is a 95% chance that the true mean is between 32.3 and 49.7." What is the more accurate way to say what "95% confident" means?
+
+**Sample answer:** The 95% describes the procedure, not this one interval. If we repeated the study many times and built an interval each time, about 95% of those intervals would contain the true population mean. The true mean is a fixed number; any one interval either contains it or does not.
+
+The next chunk (no editing) builds 95% confidence intervals for four artists and plots them. The dashed line is the mean of songs in general.
+
+```{r ci-plot, fig.width = 5.5, fig.height = 4}
+kanye  <- filter(songs, artist == "Kanye West")
+queen  <- filter(songs, artist == "Queen")
+taylor <- filter(songs, artist == "Taylor Swift")
+
+ci_df <- data.frame(
+  artist = c("Frank Ocean", "Kanye West", "Queen", "Taylor Swift"),
+  n      = c(nrow(frank), nrow(kanye), nrow(queen), nrow(taylor)),
+  mean   = c(mean(frank$positivity), mean(kanye$positivity),
+             mean(queen$positivity), mean(taylor$positivity))
+)
+
+ci_df$se    <- sigma / sqrt(ci_df$n)
+ci_df$lower <- ci_df$mean - z_crit * ci_df$se
+ci_df$upper <- ci_df$mean + z_crit * ci_df$se
+
+ci_df
+
+ggplot(ci_df, aes(x = artist, y = mean)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.15) +
+  geom_hline(yintercept = mu, linetype = "dashed") +
+  labs(title = "Mean positivity with 95% confidence intervals",
+       x = "Artist", y = "Mean positivity (error bars = 95% CI)") +
+  theme_classic()
+```
+
+**Your answer (5c):** Using only the plot: for which artists would a two-tailed z test at alpha = .05 reject H0? How can you tell without computing a z statistic?
+
+**Sample answer:** Frank Ocean and Queen: their intervals do not cross the dashed line at 51. Kanye West's and Taylor Swift's intervals include 51, so those tests would fail to reject H0. A 95% CI that excludes the null value goes with a two-tailed test at alpha = .05 that rejects.
+
+**Your answer (5d):** Kanye West's mean is about as far below 51 as Frank Ocean's, and Queen's mean is closer to 51 than either. Yet Queen's interval excludes 51 and Kanye West's includes it. Why? (Look at the `n` and `se` columns of the table.)
+
+**Sample answer:** The width of a confidence interval is set by the standard error, and the SE depends on the sample size. Queen has 130 songs in the dataset, so SE = 23 / √130 = 2.0 and the interval is narrow (about ±4). Kanye West has only 17, so SE = 23 / √17 = 5.6 and the interval is wide (about ±11). A larger sample gives a more precise estimate of the mean, so a smaller difference from 51 can be detected. (These error bars are longer than the ±1 SE bars from last week: a 95% CI is ±1.96 SE.)
+
+---
+
+# 6) What does "95% confident" mean? *(3 min)*
+
+In real research you get one sample and one interval. Here we know the true population mean (51), so we can check the procedure: draw 100 random samples of 25 songs, build a 95% CI from each, and count how many capture 51. Run the chunk (no editing).
+
+```{r ci-simulation, fig.width = 5.5, fig.height = 5.5}
+set.seed(211)  # DO NOT CHANGE
+
+means_100 <- numeric(100)
+for (i in 1:100) {
+  means_100[i] <- mean(sample(songs$positivity, 25))
+}
+
+sim_df <- data.frame(sample_number = 1:100, mean = means_100)
+sim_df$lower    <- sim_df$mean - z_crit * se_25
+sim_df$upper    <- sim_df$mean + z_crit * se_25
+sim_df$captured <- sim_df$lower <= mu & sim_df$upper >= mu
+
+sum(sim_df$captured)   # how many of the 100 intervals contain the true mean?
+
+ggplot(sim_df, aes(y = sample_number, color = captured)) +
+  geom_segment(aes(x = lower, xend = upper, yend = sample_number)) +
+  geom_point(aes(x = mean), size = 1) +
+  geom_vline(xintercept = mu, linetype = "dashed") +
+  scale_color_manual(values = c("TRUE" = "steelblue", "FALSE" = "red")) +
+  labs(title = "100 samples of 25 songs, each with its 95% CI",
+       x = "Positivity", y = "Sample number", color = "Captured 51?") +
+  theme_classic()
+```
+
+**Your answer:** How many of the 100 intervals captured the true mean? The intervals are all the same width, so what is it that changes from sample to sample? If you had drawn only one of these samples, could you tell whether your interval was a blue one or a red one?
+
+**Sample answer:** 96 of the 100 intervals captured 51 (about 95%, as promised; a different set of 100 samples would give a slightly different count). What changes from sample to sample is the sample mean, and the interval is centered on it, so the intervals slide left and right while μ stays put. With a single sample you cannot tell whether you got a blue interval or a red one. You only know that the procedure captures the true mean about 95% of the time.
+
+---
+
+# Part C: exam-style questions
+
+# 7) Practice questions, Lectures 7 to 10 *(8 min)*
+
+No R and no calculator for these. When an answer choice shows an equation, the arithmetic is correct. Your job is to decide whether it is the right equation with the right numbers in the right places.
+
+**Question 1.** Song tempos on Spotify have a mean of 121 beats per minute (BPM) and a standard deviation of 27 BPM. "Blinding Lights" has a tempo of 171 BPM. What is its z score?
+
+- **A)** 171 / 27 = 6.33
+- **B)** (171 − 121) / 27 = 1.85
+- **C)** (121 − 171) / 27 = −1.85
+- **D)** 171 − 121 = 50
+
+**Your answer (Q1):**
+
+**Sample answer:** **B.** A z score is the distance from the mean (score minus mean, in that order) divided by the standard deviation.
+
+**Question 2.** Song lengths on Spotify are positively skewed, with μ = 3.8 minutes and σ = 1.0 minute. You make 1,000 random playlists of 25 songs each and record each playlist's mean song length. Which best describes the distribution of those 1,000 means?
+
+- **A)** Positively skewed, centered on 3.8, with a standard deviation of 1.0.
+- **B)** Approximately normal, centered on 3.8, with a standard deviation of 1.0 / √25 = 0.2.
+- **C)** Approximately normal, centered on 0, with a standard deviation of 1.
+- **D)** Positively skewed, centered on 3.8, with a standard deviation of 1.0 / 25 = 0.04.
+
+**Your answer (Q2):**
+
+**Sample answer:** **B.** The Central Limit Theorem gives the shape (approximately normal, even though the songs are skewed). The means are centered on μ, and their SD is the standard error, σ / √n. (C describes a distribution of z scores.)
+
+**Question 3.** Means of 25-song playlists have a standard error of 0.2 minutes. How many songs per playlist would you need for a standard error of 0.1 minutes?
+
+- **A)** 50, because twice as many songs gives half the standard error.
+- **B)** 100, because 1.0 / √100 = 0.1.
+- **C)** 250, because the standard error shrinks by a factor of 10.
+- **D)** It cannot be done. The standard error depends only on σ.
+
+**Your answer (Q3):**
+
+**Sample answer:** **B.** The sample size is under a square root, so halving the SE takes four times as many songs.
+
+**Question 4.** One 25-song playlist has a mean song length of 4.1 minutes, so its z statistic is (4.1 − 3.8) / 0.2 = 1.5. You ask R for the proportion of the z distribution that falls below 1.5, and it returns 0.933. If playlists were random samples of songs, how often would a playlist's mean length be 4.1 minutes or more?
+
+- **A)** About 93.3% of the time.
+- **B)** About 6.7% of the time, because 1 − 0.933 = 0.067.
+- **C)** About 43.3% of the time, because 0.933 − 0.50 = 0.433.
+- **D)** About 1.5% of the time.
+
+**Your answer (Q4):**
+
+**Sample answer:** **B.** R returned the area *below* z = 1.5. The total area is 1, so the area above is 1 − 0.933.
+
+**Questions 5 to 7** use this scenario. Your friend says the songs on her running playlist are not typical. Song tempos on Spotify have μ = 121 BPM and σ = 27 BPM. Before looking at the playlist, you plan a two-tailed z test with an alpha level of .05. Her playlist has 36 songs. You run the test in R and get this output:
+
+```
+sample mean = 127, n = 36
+z = 1.33, p-value = 0.18
+95 percent confidence interval: 118.18 to 135.82
+```
+
+**Question 5.** Which statement about this result is correct?
+
+- **A)** p is greater than alpha, so you fail to reject the null hypothesis. If the null hypothesis were true, a sample mean at least this far from 121 would occur about 18% of the time.
+- **B)** p is greater than alpha, so you reject the null hypothesis.
+- **C)** There is an 18% chance that her playlist is a typical one.
+- **D)** z = 1.33 is beyond the critical value of 1.96, so you reject the null hypothesis.
+
+**Your answer (Q5):**
+
+**Sample answer:** **A.** You reject only when p is *less* than alpha (or, equivalently, when z is beyond the cutoff; 1.33 is not beyond 1.96). A p value is the probability of data this extreme if H0 were true, never the probability that a hypothesis is true.
+
+**Question 6.** Which statement about the confidence interval is correct?
+
+- **A)** 95% of the songs on her playlist have tempos between 118.18 and 135.82 BPM.
+- **B)** The interval contains 121, which is consistent with failing to reject the null hypothesis.
+- **C)** The interval contains 127, so you should reject the null hypothesis.
+- **D)** R computed it as 121 ± 1.96 × (27 / √36).
+
+**Your answer (Q6):**
+
+**Sample answer:** **B.** The null value (121) is inside the interval, which matches a two-tailed test at alpha = .05 that fails to reject. A confuses a CI for a mean with the spread of individual songs (SD vs. SE again). The interval always contains the sample mean, because it is centered on it: 127 ± 1.96 × (27 / √36), which is why C and D are wrong.
+
+**Question 7.** Your friend keeps adding songs until the playlist has 144 songs, and its mean tempo is still 127 BPM. Compared with the 36-song playlist, what changes?
+
+- **A)** Nothing. The sample mean is the same, so the z statistic and the confidence interval are the same.
+- **B)** The standard error doubles, so the z statistic is cut in half and the confidence interval gets wider.
+- **C)** The standard error is cut in half (27 / √144 = 2.25), so the z statistic doubles to 2.67 and the confidence interval gets narrower.
+- **D)** The z statistic stays the same, but the p value gets smaller.
+
+**Your answer (Q7):**
+
+**Sample answer:** **C.** Four times the data halves the standard error. The same 6 BPM difference is now 2.67 standard errors from 121, which is beyond 1.96, so you would reject H0. The 95% CI shrinks to 127 ± 1.96 × 2.25, about 122.6 to 131.4, which no longer contains 121.
+
+---
+
+# 8) If you have time: pick your own artist *(optional)*
+
+Run a two-tailed z test and build a 95% confidence interval for any artist you like. Choose one with at least 20 songs in the dataset. The first chunk counts songs per artist; to scroll through the whole list, type `View(artist_counts)` in the Console.
+
+```{r artist-counts}
+artist_counts <- count(songs, artist, sort = TRUE)
+filter(artist_counts, n >= 20)
+```
+
+```{r my-artist}
+# EDIT THIS LINE: put your artist's name in the quotes, spelled exactly as in the data
+my_artist <- filter(songs, artist == "Taylor Swift")
+
+n_my  <- nrow(my_artist)
+se_my <- sigma / sqrt(n_my)
+M_my  <- mean(my_artist$positivity)
+z_my  <- (M_my - mu) / se_my
+
+p_my <- 2 * (1 - pnorm(z_my))   # z is positive here, so the tail beyond it is the area above it
+
+lower_my <- M_my - z_crit * se_my
+upper_my <- M_my + z_crit * se_my
+
+n_my
+M_my
+z_my
+p_my
+lower_my
+upper_my
+```
+
+**Your answer:** Report your artist's z statistic, p value, and 95% CI. State your decision and conclusion. Do the test and the confidence interval agree?
+
+**Sample answer:** Answers depend on the artist. For Taylor Swift (the example from lecture): n = 24, M = 57.1, z = 1.31, p = .19, 95% CI 47.9 to 66.3. The z statistic is not beyond 1.96 and p is greater than .05, so we fail to reject H0: we did not find evidence that the positivity of her songs differs from that of songs in general. The interval contains 51, so the test and the CI agree.
+
+---
+
+# ✅ Before you leave
+
+- [ ] I can compute and interpret a z score for one score, and I know when `pnorm()` gives a trustworthy percentile.
+- [ ] I can explain the difference between SD and SE, and what happens to the SE as n grows.
+- [ ] I ran a two-tailed z test and made the decision two ways: z vs. the critical values, and p vs. alpha.
+- [ ] I can say what a p value is, and what it is not.
+- [ ] I can explain how a one-tailed test differs from a two-tailed test, and why the choice comes before the data.
+- [ ] I computed a 95% confidence interval and can say what "95% confident" means.
+- [ ] I can connect a 95% CI to a two-tailed test at alpha = .05.
+
+Good luck on Exam 2!
