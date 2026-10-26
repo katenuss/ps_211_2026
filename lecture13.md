@@ -11,7 +11,7 @@ exportFilename: ps211_fall2026_lecture13
 
 # PS 211: Introduction to Experimental Design
 ## Fall 2026 · Section C1
-### Lecture 13: Paired-Samples *t*-Tests & Reporting Results in APA Style
+### Lecture 13: Paired-Samples *t* Tests & Reporting Results in APA Style
 
 ---
 layout: top-title
@@ -23,13 +23,13 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- No standalone homework this week. Instead, finish our first ==Data Write-Up== (t-test-based), due **Monday, November 9** at 11:59 p.m.
+- ==Data Write-Up #1== (t-test-based) is due **Monday, November 9** at 11:59 p.m.
   - **Tomorrow in Discussion 9** you'll run your *t* test, make your figure, and interpret your results, so today ends with a preview of the independent-samples *t* test.
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays, 2:30 – 3:30 p.m. (Rola)
 - Coming up:
-  - Thursday (11/5): Lecture 14 — Independent-Samples *t* Tests (in R)
+  - Thursday (11/5): Lecture 14 — Independent-samples *t* tests (in R)
   - Tuesday (11/10): Exam 3 Review
-  - Thursday (11/12): Exam 3 (covers Lectures 11-14)
+  - Thursday (11/12): Exam 3 (covers Lectures 11–14)
 
 ---
 layout: top-title
@@ -38,25 +38,39 @@ align: lt
 ---
 
 :: title ::
-# Types of *t* Tests
+# Last time: key terms
 
 :: content ::
-There are 3 types of *t* tests, used in different research scenarios:
 
-1. **Single-sample *t* test** – Compare a sample mean to a population mean when the population SD is unknown.
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div>
 
-<div class="mt-0 w-full flex justify-center">
-<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  This is what we went over already!
+**Single-sample *t* test** — compares a sample mean to a population mean when **σ is unknown**: the z test with the sample's s standing in for σ.
+
+</div>
+<div>
+
+**Estimated standard error** — $s_M = s/\sqrt{n}$. Then $t = (M - \mu)/s_M$: how many estimated SEs the sample mean is from what $H_0$ predicts.
+
+</div>
+<div>
+
+**t distribution** — the null world for t. Heavier tails than z (because s is only an estimate), one curve per **degrees of freedom** (df = n − 1). Cutoffs from `qt()`, p values from `pt()` or `t.test()`.
+
+</div>
+<div>
+
+**Assumptions of parametric tests** — normality (the CLT usually covers it), equal variance, independence, no extreme outliers.
+
 </div>
 </div>
-
-<br>
 
 <p v-click>
 
-2. **Paired-sample *t* test** – Compare two samples when every participant is in both samples (within-subjects design).
-3. **Independent-samples *t* test** – Compare two samples when participants are in only one group (between-subjects design).
+<div class="flex items-center gap-4 mt-6">
+<IceCream :size="80" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Today: the same test for <b>before-and-after</b> designs, then how to write any result up the way journals (and your Data Write-Up) expect.</SpeechBubble>
+</div>
 
 </p>
 
@@ -67,34 +81,139 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Between- vs Within-Subjects Designs
+# Warm-up: check your understanding
 
 :: left ::
-### Within-Subjects
-- Each participant experiences **all** levels of the independent variable.
-- Comparisons are made *over time or conditions* for the same people.
+
+Thursday's sleep study, **Drug 1** (the other form of the sedative): the same 10 patients' extra hours of sleep, tested against μ = 0.
+
+```text
+t = 1.3257, df = 9, p-value = 0.2176
+95 percent confidence interval:
+ -0.5297804  2.0297804
+mean of x 
+     0.75 
+```
+
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
+
+With α = .05, two-tailed, what is the best conclusion?
+
+- **A)** There is a 22% chance that $H_0$ is true.
+- **B)** Drug 1 significantly increased sleep, by 0.75 hours.
+- **C)** The test is invalid because n = 10 is too small.
+- **D)** We did not find evidence that Drug 1 changes sleep; 0 is inside the CI.
+
+</Admonition>
+
+:: right ::
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**D.** p = .22 > .05 and the CI \[−0.53, 2.03] contains 0. (A) misreads p. \(C): small n is exactly what df = 9 and the wider cutoff (±2.26) account for. Drug 2 worked; Drug 1, we cannot tell.
+
+</Admonition>
 
 <p v-click>
 
-<Admonition title="Question" color="teal-light" width="100%">
-What is an advantage of a within-subjects design?
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+Two single-sample *t* tests: n = 10 and n = 100. Which needs a **larger** t to reject $H_0$?
+
+- **A)** n = 100: more data, stricter standards.
+- **B)** Neither; the cutoff is always ±1.96.
+- **C)** n = 10: with df = 9 the t distribution has heavier tails, so the cutoff is farther from 0.
+- **D)** n = 10: small samples have larger standard errors.
+
 </Admonition>
 
 </p>
 
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**C.** df = 9 → ±2.26; df = 99 → ±1.98. (D) is true but separate: a larger SE makes t *smaller*, a different reason small studies struggle to reject.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Three types of *t* tests
+
+:: content ::
+All three ask the same question: did these means come from the same population? They differ in **where the two means come from**.
+
+1. **Single-sample *t* test** – a sample mean vs. a known population mean, σ unknown.
+
+<div class="mt-0 w-full flex justify-center">
+<div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
+  Last Thursday: the sleeping drug, body temperature. (The drug's "extra hours of sleep" were difference scores already: drug night − no-drug night.)
+</div>
+</div>
+
+<br>
+
+<p v-click>
+
+2. **Paired-samples *t* test** – two measurements of the **same** participants (within-subjects design). ==Today.==
+3. **Independent-samples *t* test** – two **different** groups of participants (between-subjects design). Preview today, details Thursday.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Between- vs. within-subjects designs (Lecture 2)
+
+:: left ::
+### Within-subjects
+- Each participant experiences **all** levels of the independent variable.
+- Comparisons are made *over time or across conditions* for the same people.
+
+<p v-click>
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+What is an advantage of a within-subjects design?
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Every participant is their own control. Differences between people (talent, mood, age) cancel out, which removes a huge source of noise. Fewer participants needed.
+
+</Admonition></p>
 
 :: right ::
-### Between-Subjects
+### Between-subjects
 - Each participant experiences **only one** level of the independent variable.
 - Comparisons are made *between different people*.
 
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
+
 What is an advantage of a between-subjects design?
+
 </Admonition>
 
 </p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+No carry-over: nobody practices the task, gets tired, or guesses the hypothesis from seeing both conditions. Sometimes it is the only option (you cannot be both a first-year and a senior at once).
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -103,532 +222,126 @@ align: lt
 ---
 
 :: title ::
-# Which *t* Test Should I Use?
+# Which *t* test should I use?
 
 :: content ::
-- **Within-groups design** → use a *paired-samples t test*
-- **Between-groups design** → use an *independent-samples t test*
+- **Within-subjects design** (each participant measured twice) → ==paired-samples *t* test==
+- **Between-subjects design** (two separate groups) → ==independent-samples *t* test==
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
-For the paired *t*, we must first create **difference scores** for each participant (e.g., after – before; Condition 1 - Condition 2).
+<p v-click>
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="36rem">
+For the paired test, the first move is always the same: compute a <b>difference score</b> for each participant (after − before, Condition 1 − Condition 2). Then the test is a single-sample t test on those differences.
 </SpeechBubble>
 
+</p>
+
+<p v-click><StickyNote color="amber-light" title="The 'participant' need not be a person" width="80%">A film rated on two websites, a candy tasted by the same panel twice, a city measured in two years: if the same unit produces both scores, the scores are paired.</StickyNote></p>
+
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-6-6
 ---
 
 :: title ::
-# What is a Paired-Samples *t* Test?
+# Our example: Fandango vs. IMDb (back to Lecture 7)
 
-:: content ::
-- Compares two means for a **within-groups** design in which each participant experiences both levels of an independent variable.
-- Can also be used for **before-and-after** comparisons.
+:: left ::
 
+- In 2015, FiveThirtyEight's Walt Hickey noticed that **Fandango**, which sells movie tickets, seemed to give almost every film 4 or 5 stars.
+- He pulled every film with at least 30 Fandango reviews (**146 films**) and compared its Fandango stars with its ratings on other sites.
+- In Lecture 7 we looked at the *shape* of Fandango's distribution. Today we can **test** the claim: *are the same films rated higher on Fandango than on IMDb?*
 
-<p v-click>
+<div class="text-xs text-gray-500 mt-2">Data: Hickey, W. (2015). Be suspicious of online movie ratings, especially Fandango's. <i>FiveThirtyEight</i>. IMDb's 10-point ratings divided by 2 to match Fandango's 5-star scale.</div>
 
-<Admonition title="Question" color="teal-light" width="100%">
-Imagine you want to measure "Stroop Interference" by testing participants' reaction times on a color-naming task where the words are either congruent or incongruent with the ink color. How would you design this study to test for differences in reaction times using a paired-samples *t* test?
-</Admonition>
+:: right ::
 
-</p>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
 
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-- Have each participant complete both the congruent and incongruent conditions of the Stroop task.
-- Measure their reaction times for each condition.
-- Use a paired-samples *t* test to compare the mean difference in reaction times across all participants to determine if there is a significant effect of condition on reaction time.
+What is the "participant" here? Is this a within- or between-subjects comparison?
 
 </Admonition></p>
 
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+Each **film** is a participant, and each film has *two* scores: one from Fandango and one from IMDb. Same units, measured twice → **within-subjects** → paired-samples *t* test.
 
-:: title ::
-# Distributions of Mean *Differences*
+</Admonition></p>
 
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
 
-:: content ::
+Why not just compare the average Fandango rating with the average IMDb rating as two separate groups?
 
-**Another distribution!**
-
-<img src="/images/lecture10/ohno.jpg"  class="w-1/6 mx-auto"/>
-
-
-<br>
-
-To start a paired-samples *t*, we must create a **distribution of mean differences** by subtracting the two scores for each participant and then sampling means of those differences repeatedly.
-
-- Step 1: Randomly sample n participants.
-- Step 2: Compute each participant's difference score (Condition 2 – Condition 1).
-- Step 3: Compute the mean of these differences across all participants in a sample.
-- Step 4: Repeat many times to build a distribution of mean differences for a population.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Example: Distribution of Mean Differences
-
-:: content ::
-
-A researcher wants to determine whether students sleep more when internet access in their dorms is restricted at night. She has 30 students report their average nightly sleep duration for one week *with* internet access and one week *without* internet access.
-
-To conduct a paired-samples *t* test, she needs to determine the probability that the observed mean difference in sleep duration occurred by chance, assuming no true difference in sleep duration across conditions.
-
-To do this, she needs to create a **distribution of mean differences** under the null hypothesis:
-- Assume no true difference in sleep duration across conditions.
-- Randomly sample 30 (or n) students from this (simulated) population and compute the mean difference in sleep duration for each sample.
-- Repeat this process many times to build a distribution of mean differences.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Example: Distribution of Mean Differences
-
-:: content ::
-
-<div class="flex justify-center space-x-6">
-  <img src="/images/lecture10/mean_diff_sleep_hist_n30_null.png" alt="n30" class="w-1/3" />
-  <img src="/images/lecture10/mean_diff_sleep_hist_n10_null.png" alt="n10" class="w-1/3" />
-</div>
-
-<p v-click>
-
-<Admonition title="Question" color="teal-light" width="100%">
-Will the shape of these null distributions always be normal?
-</Admonition>
-
-</p>
+</Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-Yes, if the sample size is sufficiently large. Due to the Central Limit Theorem, the distribution of the mean differences will approach normality as the sample size increases.
+Because the films are the same. A great film is rated high on both sites and a bad one low on both; that film-to-film variation is noise we can subtract out by looking at each film's *difference*.
 
 </Admonition></p>
 
 ---
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Conducting a Paired-Sample *t* Test
-
-:: left ::
-
-Under the **null hypothesis**, we assume there is no average difference in sleep duration across the population:
-$$\mu_1 - \mu_2 = 0$$
-
-<img src="/images/lecture10/mean_diff_sleep_hist_n30_null.png"  class="w-3/4 mx-auto" />
-
-:: right ::
-
-- We can use this distribution of mean differences to determine the **probability of observing a mean difference as extreme as the one in our sample**, assuming the null hypothesis is true.
-
-- If the researcher observes a mean difference in sleep duration of 0.5 hours in her sample of 30 students, she can calculate the *t* statistic to see how many standard errors this observed mean difference is away from the null hypothesis mean difference of 0.
-
-
-
----
 layout: top-title
 color: indigo-light
 align: lt
 ---
 
 :: title ::
-# Steps of a Paired-Sample *t* Test
+# A psychology example: the Stroop task
 
 :: content ::
-
-1. Identify populations, distribution, & assumptions.
-2. State null and research hypotheses.
-3. Determine characteristics of comparison distribution.
-4. Determine critical values (cutoffs).
-5. Calculate test statistic.
-6. Make a decision.
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-# Example: Sleep and Internet Access
-
-:: left ::
-A researcher wants to determine whether students sleep more when internet access in their dorms is restricted at night. She has 5 students report their average nightly sleep duration for one week *with* internet access and one week *without* internet access.
-
-- Hours of sleep **with** internet access:
-  - 6.5, 7.0, 6.0, 5.5, 6.0
-
-- Hours of sleep **without** internet access:
-  - 7.0, 7.5, 5.5, 6.0, 7.0
-
-:: right ::
-
-<p v-click>
-
-We'll test if mean hours of sleep differ across conditions using a **paired-samples *t test.***
-
-<img src="/images/lecture10/t_test_meme.jpg"  class="w-3/4 mx-auto" />
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Step 1: Populations & Assumptions
-
-:: content ::
-- Group 1: Sleep reports with internet access.
-- Group 2: Sleep reports without internet access.
-- Distribution: Differences between paired scores.
-- Assumptions:
-  - DV is numeric.
-  - Random sample of students.
-  - Population distribution (including SD in average numbers of sleep) is unknown.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Step 2: Hypotheses
-
-:: content ::
-- **Null (H₀):**  μ₁ = μ₂  (no mean difference)
-  - or equivalently:  μ₁ − μ₂ = 0
-  - In words: Students sleep the same amount with or without internet access.
-
-- **Research (H₁):**  μ₁ ≠ μ₂  (there is a difference)
-  - or equivalently:  μ₁ − μ₂ ≠ 0
-  - In words: Students sleep different amounts with vs. without internet access.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Step 3: Determine Characteristics of the Comparison Distribution
-
-:: content ::
-Under the null, the mean of the comparison distribution = 0. Because we don't know the population SD, we must estimate the standard deviation from the sample data, just like in a single-sample *t* test.
-
-<div class="text-xs w-2/3 mx-auto mt-2" style="line-height:1.1">
-
-<table class="border-collapse w-full">
- <thead>
-    <tr>
-      <th>Participant</th>
-      <th>With Internet</th>
-      <th>Without Internet</th>
-      <th>Difference (D)</th>
-      <th>D − Mean D (0.4)</th>
-      <th>Squared Deviation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>6.5</td><td>7.0</td><td>0.5</td><td>0.1</td><td>0.01</td></tr>
-    <tr><td>2</td><td>7.0</td><td>7.5</td><td>0.5</td><td>0.1</td><td>0.01</td></tr>
-    <tr><td>3</td><td>6.0</td><td>5.5</td><td>-0.5</td><td>-0.9</td><td>0.81</td></tr>
-    <tr><td>4</td><td>5.5</td><td>6.0</td><td>0.5</td><td>0.1</td><td>0.01</td></tr>
-    <tr><td>5</td><td>6.0</td><td>7.0</td><td>1.0</td><td>0.6</td><td>0.36</td></tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sum of Squares (SS)</strong></td>
-      <td><strong>1.20</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sample Variance (s² = SS / 4)</strong></td>
-      <td><strong>0.30</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sample SD (√s²)</strong></td>
-      <td><strong>0.55</strong></td>
-    </tr>
-  </tfoot>
-</table>
-
-</div>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Step 3: Determine Characteristics of the Comparison Distribution
-
-:: content ::
-- Now, we can compute the standard error (SE) of the mean differences:
-  $$SE = \frac{s}{\sqrt{n}} = \frac{0.55}{\sqrt{5}} = 0.246$$
-- Thus, our comparison distribution has:
-  - Mean = 0
-  - SE = 0.246
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Step 4: Determine the Critical Values (or Cutoffs)
-
-:: content ::
-- df = N – 1 = 4
-- The critical values are determined by the t-distribution with 4 degrees of freedom.
-- We will use an alpha level of .05 for a two-tailed test.
-- We can find out critical values from a t-table or computer program:
-→ $t_{crit}= ± 2.776$
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Steps 5: Calculate the Test Statistic
-
-:: content ::
-- We calculate our *t* value using the formula:
-  $$t = \frac{M_{diff}-\mu_D}{SE}$$
-  where:
-  - $M_{diff}$ = sample mean difference
-  - $\mu_D$ = hypothesized population mean difference (0 under H₀)
-  - SE = standard error of the mean differences
-
-$$t = \frac{M_{diff}-0}{SE} = \frac{0.4}{0.246} = 1.63$$
-
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Steps 6: Make a Decision
-
-:: content ::
-- Compare calculated *t* to critical values:
-  - Calculated *t* = 1.63
-  - Critical values = ± 2.776
-
-1.63 < 2.776 → **Fail to Reject H₀**
-
-<img src="/images/lecture10/p_meme.jpg"  class="w-1/4 mx-auto" />
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Confidence Intervals for Paired-Sample *t* Tests
-
-:: content ::
-
-- A **confidence interval (CI)** provides a range of values within which we are fairly certain the true population parameter lies.
-- For a paired-samples *t* test, we can construct a CI around the sample mean difference to estimate the range of plausible values for the true mean difference in the population.
-- A 95% CI means that if we were to take many samples and construct a CI for each sample, approximately 95% of those intervals would contain the true population mean difference.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Computing a 95% Confidence Interval for the Mean Difference
-
-:: content ::
-- To compute a 95% confidence interval for the mean difference, we can use the following formula:
-  $$CI = M_{diff} \pm t_{crit} \times SE$$
-
-<p v-click>
-
-*Why can we use this formula?*
-- This formula is similar to the one used for single-sample *t* tests, but here we are using the mean difference and the standard error of the mean differences.
-
-</p>
-
-<p v-click>
-
-- Plugging in our values:
-  $$CI = 0.4 \pm 2.776 \times 0.246$$
-- This gives us:
-  $$CI = 0.4 \pm 0.683 = [-.283, 1.083] $$
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Interpreting the Confidence Interval
-
-:: content ::
-- The sample mean (0.4) is centered within CI [-0.283, 1.083].
-- If we repeated this study many times, ≈ 95% of CIs would contain the true population mean difference.
-- Because the CI includes 0, we cannot rule out the possibility that there is no true difference in sleep duration across conditions.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Beyond Hypothesis Testing: Effect Size
-
-:: content ::
-- The effect size indicates the magnitude of the difference between conditions in standard deviation units.
-
-- For paired-samples *t* tests, we can use **Cohen's d** to quantify effect size:
-  $$d = \frac{M_{diff} - 0}{s}$$
-  where:
-  - $M_{diff}$ = sample mean difference
-  - $s$ = sample standard deviation of the differences
-
-- Using our example:
-  $$d = \frac{0.4}{0.55} = 0.73$$
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Beyond Hypothesis Testing: Effect Size
-
-:: content ::
-
- $$d = \frac{0.4}{0.55} = 0.73$$
-
-- Interpretation:
-- $d = 0.2$ → small effect.
-- $d = 0.5$ → medium effect.
-- $d = 0.8$ → large effect.
-
-*If this study were repeated with a larger sample size, we might find a significant (and meaningful) effect!*
-
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
----
-
-:: title ::
-
-# Practice: Paired-Samples *t* Test
-
-:: left ::
-
-*Students complete a short quiz twice — once with music, once in silence. The instructor wants to know if background music helps or hurts performance.*
-
-- Scores with music: 7, 6, 5, 8, 7
-- Scores without music: 8, 6, 7, 9, 8
 
 <Admonition title="Question" color="teal-light" width="100%">
-What would you tell the instructor about the effect of background music on quiz performance?
+
+You want to measure **Stroop interference**: people are slower to name the ink color of a word when the word is an incongruent color name (the word RED printed in blue) than when it is congruent (RED in red). How would you design this study so that a paired-samples *t* test is the right analysis?
+
 </Admonition>
 
-:: right ::
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-<p v-click>
+- Have **each participant** complete both the congruent and the incongruent condition (in a counterbalanced order).
+- Record each participant's mean reaction time in each condition, then compute one difference score per person (incongruent − congruent).
+- Test whether the mean of those difference scores is different from 0.
 
-**Hint 1:** You will need to compute:
-- The difference in each pair of scores
-- The mean and standard deviation of the differences
-- The standard error of the mean differences
-- The *t* statistic
+</Admonition></p>
 
-</p>
-
-
-<p v-click>
-
-**Hint 2:** Using an alpha level of .05 for a two-tailed test, the critical values for df = 4 are ± 2.776.
-
-</p>
-
-<p v-click>
-
-**Hint 3:** It doesn't matter whether you subtract "with music - without music" or "without music - with music," as long as you are consistent. The magnitude of the *t* statistic will be the same; only the sign will differ.
-
-</p>
-
+<p v-click><StickyNote color="amber-light" title="Why within-subjects here?" width="80%">People differ enormously in baseline speed. Comparing each person to themselves removes that difference entirely, so even a modest interference effect is easy to detect.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
+columns: is-5-7
 ---
 
 :: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
+# A distribution of mean *differences*
 
 :: left ::
 
-1. Step 1: Populations & Assumptions
-- Group 1: Quiz scores with music.
-- Group 2: Quiz scores without music.
-- Distribution: Differences between paired scores.
-- Assumptions:
-  - DV is numeric.
-  - Random sample of students.
-  - Population distribution (including SD in quiz scores) is unknown.
+**Another distribution!** <img src="/images/lecture10/ohno.jpg" alt="Oh no" class="inline-block w-1/5 ml-2"/>
+
+The comparison distribution for a paired test is a **distribution of mean differences**. Imagine $H_0$ is true (the sites do not differ) and we:
+
+1. Randomly sample n films.
+2. Compute each film's difference score (Fandango − IMDb).
+3. Compute the **mean** of those n differences.
+4. Repeat many times.
 
 :: right ::
 
-2. Step 2: Hypotheses
-- **Null (H₀):**  μ₁ = μ₂  (no mean difference)
-  - or equivalently:  μ₁ − μ₂ = 0
-  - In words: Music does not affect quiz performance.
+<img src="/images/lecture13/mean_diff_null_n5_n146.png" alt="Simulated null distributions of mean differences for n = 5 and n = 146" class="w-full mx-auto"/>
 
-- **Research (H₁):**  μ₁ ≠ μ₂  (there is a difference)
-  - or equivalently:  μ₁ − μ₂ ≠ 0
-  - In words: Music affects quiz performance.
+<p v-click>
 
+- **Center 0**: if the sites did not differ, mean differences scatter around zero.
+- **Spread**: $s_M = s_D/\sqrt{n}$, where $s_D$ is the SD of the difference scores.
+- **Shape**: a *t* distribution with df = n − 1, since we estimate $s_D$ from the sample.
+- Sound familiar? It is the single-sample *t* test's null world, for difference scores, with μ = 0.
+
+</p>
 
 ---
 layout: top-title
@@ -637,48 +350,250 @@ align: lt
 ---
 
 :: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
+# Six steps for a paired-samples *t* test
 
 :: content ::
 
-3. Step 3: Determine Characteristics of the Comparison Distribution
+==Used to compare two measurements of the same participants (within-subjects designs).==
 
-<div class="text-xs w-2/3 mx-auto mt-2" style="line-height:1.1">
-
-<table class="border-collapse w-full">
-  <thead>
-    <tr>
-      <th>Participant</th>
-      <th>With Music</th>
-      <th>Without Music</th>
-      <th>Difference (D)</th>
-      <th>D − Mean D (-1)</th>
-      <th>Squared Deviation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>7</td><td>8</td><td>-1</td><td>0</td><td>0</td></tr>
-    <tr><td>2</td><td>6</td><td>6</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>3</td><td>5</td><td>7</td><td>-2</td><td>-1</td><td>1</td></tr>
-    <tr><td>4</td><td>8</td><td>9</td><td>-1</td><td>0</td><td>0</td></tr>
-    <tr><td>5</td><td>7</td><td>8</td><td>-1</td><td>0</td><td>0</td></tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sum of Squares (SS)</strong></td>
-      <td><strong>2.00</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sample Variance (s² = SS / 4)</strong></td>
-      <td><strong>0.50</strong></td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align:right;"><strong>Sample SD (√s²)</strong></td>
-      <td><strong>0.71</strong></td>
-    </tr>
-  </tfoot>
+<table class="compact-table text-sm">
+<thead><tr><th>Step</th><th>The question</th><th>Single-sample <i>t</i> test</th><th>Paired-samples <i>t</i> test</th></tr></thead>
+<tbody>
+<tr><td><b>1.</b> Populations, comparison distribution, assumptions</td><td>Who is being compared, and which test fits?</td><td>One sample mean vs. a population mean, σ unknown</td><td><b>Two scores per participant</b>; we test the <b>difference scores</b> (numeric, roughly normal, no wild outliers)</td></tr>
+<tr><td><b>2.</b> Hypotheses</td><td>What are the two competing claims?</td><td>H₀: μ = μ₀ &nbsp; H₁: μ ≠ μ₀</td><td>H₀: μ<sub>D</sub> = 0 (no average difference) &nbsp; H₁: μ<sub>D</sub> ≠ 0 (or &lt;, &gt;)</td></tr>
+<tr><td><b>3.</b> Characteristics of the comparison distribution</td><td>If H₀ were true, what results would we expect?</td><td>Center μ, s<sub>M</sub> = s/√n, <i>t</i> with df = n − 1</td><td>Center <b>0</b>, s<sub>M</sub> = <b>s<sub>D</sub></b>/√n, <i>t</i> with df = n − 1 (n = number of <b>pairs</b>)</td></tr>
+<tr><td><b>4.</b> Critical values</td><td>How extreme is extreme enough?</td><td colspan="2">α = .05, two-tailed → ±t<sub>crit</sub> for our df. Identical.</td></tr>
+<tr><td><b>5.</b> Test statistic</td><td>How far is our result from what H₀ predicts, compared to chance?</td><td>t = (M − μ) / s<sub>M</sub></td><td>t = (<b>M<sub>D</sub></b> − 0) / s<sub>M</sub></td></tr>
+<tr><td><b>6.</b> Decision</td><td>Is it past the cutoff? What do we conclude?</td><td colspan="2">Reject or fail to reject H₀, then say it in plain English. Identical.</td></tr>
+</tbody>
 </table>
+
+<p v-click><StickyNote color="amber-light" title="The only real change" width="90%">Turn two columns of scores into one column of differences; then it is a single-sample t test against μ = 0.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Worked example: five films, by hand
+
+:: left ::
+
+To see the machinery, start with five films most of you know:
+
+<table class="compact-table text-sm">
+<thead><tr><th>Film</th><th>IMDb (÷2)</th><th>Fandango</th></tr></thead>
+<tbody>
+<tr><td>Avengers: Age of Ultron</td><td>3.90</td><td>5.0</td></tr>
+<tr><td>Inside Out</td><td>4.30</td><td>4.5</td></tr>
+<tr><td>Jurassic World</td><td>3.65</td><td>4.5</td></tr>
+<tr><td>Minions</td><td>3.35</td><td>4.0</td></tr>
+<tr><td>Mad Max: Fury Road</td><td>4.15</td><td>4.5</td></tr>
+</tbody>
+</table>
+
+<p v-click><Admonition title="Steps 1 and 2" color="green-light" width="100%">
+
+**1.** Five films, each rated on both sites → paired-samples *t* test on the difference scores. Ratings are numeric; n = 5 is tiny, so we lean on the differences being roughly normal.
+
+**2.** $H_0$: $\mu_D = 0$ (same ratings on both sites). &nbsp; $H_1$: $\mu_D \neq 0$.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture13/fandango_five_films.png" alt="Fandango and IMDb ratings for five films" class="w-11/12 mx-auto"/>
+
+<p v-click><StickyNote color="amber-light" title="Direction" width="100%">We will compute Fandango − IMDb, so a positive difference means Fandango rated the film higher. Either direction works, as long as you are consistent and remember which you chose.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Step 3: describe the comparison distribution
+
+:: left ::
+
+Under $H_0$ the center is 0. We estimate the spread from the difference scores, just as in a single-sample *t* test:
+
+<table class="compact-table text-sm">
+<thead><tr><th>Film</th><th>IMDb</th><th>Fandango</th><th>D</th><th>D − M<sub>D</sub></th><th>(D − M<sub>D</sub>)²</th></tr></thead>
+<tbody>
+<tr><td>Avengers</td><td>3.90</td><td>5.0</td><td>1.10</td><td>0.47</td><td>0.2209</td></tr>
+<tr><td>Inside Out</td><td>4.30</td><td>4.5</td><td>0.20</td><td>−0.43</td><td>0.1849</td></tr>
+<tr><td>Jurassic World</td><td>3.65</td><td>4.5</td><td>0.85</td><td>0.22</td><td>0.0484</td></tr>
+<tr><td>Minions</td><td>3.35</td><td>4.0</td><td>0.65</td><td>0.02</td><td>0.0004</td></tr>
+<tr><td>Mad Max</td><td>4.15</td><td>4.5</td><td>0.35</td><td>−0.28</td><td>0.0784</td></tr>
+<tr><td colspan="3" style="text-align:right"><b>Mean difference M<sub>D</sub></b></td><td><b>0.63</b></td><td style="text-align:right"><b>SS</b></td><td><b>0.533</b></td></tr>
+</tbody>
+</table>
+
+:: right ::
+
+<p v-click>
+
+- Variance of the differences: $s_D^2 = SS/(n-1) = 0.533/4 = 0.133$
+- SD of the differences: $s_D = \sqrt{0.133} = 0.365$
+- Standard error of the mean difference:
+
+$$s_M = \frac{s_D}{\sqrt{n}} = \frac{0.365}{\sqrt{5}} = 0.163$$
+
+</p>
+
+<p v-click><StickyNote color="amber-light" title="So the null world is..." width="100%">a t distribution with df = 4, centered on 0, with spread 0.163. "If the sites did not differ, mean differences of 5 films would typically land within about 0.16 stars of zero."</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Steps 4, 5, and 6
+
+:: left ::
+
+<Admonition title="Step 4: cutoffs" color="green-light" width="100%">
+
+df = n − 1 = 4, α = .05, two-tailed → `qt(0.975, 4)` → **±2.776**. (Five pairs is a tiny sample, so the cutoff is far out.)
+
+</Admonition>
+
+<p v-click><Admonition title="Step 5: test statistic" color="green-light" width="100%">
+
+$$t = \frac{M_D - 0}{s_M} = \frac{0.63}{0.163} = 3.86$$
+
+The mean difference is 3.86 standard errors above zero.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Step 6: decision" color="green-light" width="100%">
+
+3.86 is beyond 2.776 → **reject $H_0$**. Route 2: `2 * pt(-3.86, 4)` = .018 < .05. Even with five films, Fandango's ratings are significantly higher than IMDb's.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture13/null_world_fandango_t4.png" alt="The t distribution with df = 4, cutoffs, and the observed t" class="w-full mx-auto"/>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Suppose we had subtracted the other way (IMDb − Fandango). What changes?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Only the sign: $M_D = -0.63$, $t = -3.86$, same p, same decision. The conclusion ("Fandango higher") is the same; just read the direction correctly.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Confidence interval and effect size for a paired test
+
+:: left ::
+
+Both work as before, now built around the **mean difference**:
+
+$$CI = M_D \pm t_{crit} \times s_M$$
+
+$$d = \frac{M_D}{s_D}$$
+
+- The CI is a range of plausible values for the **population mean difference**, $\mu_D$. If it excludes 0, the test rejects.
+- For d, divide by the SD of the **difference scores**: how many SDs of difference is the average difference?
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Compute both for the five films: $M_D = 0.63$, $s_D = 0.365$, $s_M = 0.163$, $t_{crit} = 2.776$.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+CI: $0.63 \pm 2.776 \times 0.163 = 0.63 \pm 0.45$ → **\[0.18, 1.08]** stars. Excludes 0. Wide, because n = 5.
+
+$d = 0.63/0.365 = 1.73$: a very large effect.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Reading the interval" width="100%">Fandango's bonus is plausibly anywhere from a fifth of a star to a full star. Five films cannot pin it down. 146 films can: next slide.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# All 146 films in R: t.test(..., paired = TRUE)
+
+:: left ::
+
+```r
+# films: one row per film, with
+# fandango_stars and imdb_stars (IMDb / 2)
+t.test(films$fandango_stars,
+       films$imdb_stars,
+       paired = TRUE)
+```
+
+<div class="text-base">
+
+- Give R the two columns and `paired = TRUE`. R computes the differences (first minus second).
+- Forget `paired = TRUE` and R treats the 292 ratings as two unrelated groups: the wrong test for this design.
+
+</div>
+
+<p v-click="2">
+
+```r
+# Cohen's d for a paired test
+d_scores <- films$fandango_stars - films$imdb_stars
+mean(d_scores) / sd(d_scores)   # 1.54
+```
+
+</p>
+
+:: right ::
+
+```text
+	Paired t-test
+
+data:  films$fandango_stars and films$imdb_stars
+t = 18.667, df = 145, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.6442555 0.7968404
+sample estimates:
+mean difference 
+      0.7205479 
+```
+
+<div v-click="1" class="text-base">
+
+- **t = 18.67, df = 145**: the mean difference is 18.7 SEs above 0; 146 pairs → 145 df.
+- **p-value < 2.2e-16**: the smallest number R prints. Report *p* < .001.
+- **95% CI**: films score **0.64 to 0.80 stars** higher on Fandango, on average. Nowhere near 0.
+- **mean difference** = 0.72 stars.
 
 </div>
 
@@ -686,29 +601,130 @@ align: lt
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
+columns: is-6-6
 ---
 
 :: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
+# What the 146 difference scores look like
 
 :: left ::
 
-3. Step 3: Determine Characteristics of the Comparison Distribution (continued)
-- Now, we can compute the standard error (SE) of the mean differences:
-  $$SE = \frac{s}{\sqrt{n}} = \frac{0.71}{\sqrt{5}} = 0.318$$
-- Thus, our comparison distribution has:
-  - Mean = 0
-  - SE = 0.318
+<img src="/images/lecture13/fandango_diff_hist.png" alt="Histogram of Fandango minus IMDb difference scores" class="w-full mx-auto"/>
 
 :: right ::
-4. Step 4: Determine the Critical Values (or Cutoffs)
-- df = N – 1 = 4
-- The critical values are determined by the t-distribution with 4 degrees of freedom.
-- We will use an alpha level of .05 for a two-tailed test.
-- We can find out critical values from a t-table or computer program (and were told it here):
-→ $t_{crit}= ± 2.776$
 
+- Only **10 of 146** films scored lower on Fandango than on IMDb. The typical film got about three-quarters of a star more.
+- $d = 1.54$: the average difference is one and a half SDs of difference. Enormous.
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Five films gave t = 3.86 and a CI of \[0.18, 1.08]. All 146 gave t = 18.67 and \[0.64, 0.80]. The effect size barely changed (1.73 vs. 1.54). What did the extra films buy us?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**Precision.** The SE fell from 0.163 to 0.039, so the interval is a quarter as wide and the t statistic is five times larger. Lecture 11 again: n changes the test statistic and the CI, not the effect size.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# What if you forget paired = TRUE?
+
+:: left ::
+
+Same 292 ratings, but R now treats them as two unrelated groups of films:
+
+```r
+t.test(films$fandango_stars, films$imdb_stars,
+       var.equal = TRUE)      # no paired = TRUE
+```
+
+```text
+	Two Sample t-test
+
+t = 12.053, df = 290, p-value < 2.2e-16
+95 percent confidence interval:
+ 0.6029 0.8382
+sample estimates:
+mean of x mean of y 
+ 4.089041  3.368493 
+```
+
+<p v-click>
+
+- The means are identical, so the difference is still 0.72. But $t$ fell from **18.67 to 12.05**, the CI is wider, and df doubled to 290 (R thinks there are 292 films).
+
+</p>
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Why is the paired test so much stronger when the means are the same either way?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+A great film is rated high on both sites and a bad film low on both. The independent test counts that film-to-film variation as noise in its SE. The paired test subtracts it out: each film is compared only to itself, so the SE comes from how much the *differences* vary (s<sub>D</sub> = 0.47), not from how much films differ from one another.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="green-light" title="In Discussion 9" width="100%">You run exactly this contrast on the Pixar data: Rotten Tomatoes vs. Metacritic for the same 23 films. Paired: t(22) = 5.20, p &lt; .001. Wrong (independent) test: t(44) = 2.36, p = .023. Same means, half the t.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Practice: does Fandango round up?
+
+:: left ::
+
+Hickey's second finding: Fandango's page showed each film's stars **and**, hidden in the page's code, its actual average rating. The stars seemed to always round *up*.
+
+<img src="/images/lecture13/fandango_roundup.png" alt="Stars displayed minus actual rating for 146 films" class="w-10/12 mx-auto"/>
+
+```text
+	Paired t-test: fandango_stars and actual_rating
+t = 19.299, df = 145, p-value < 2.2e-16
+95 percent confidence interval:
+ 0.2188638 0.2688075
+sample estimates:
+mean difference 
+      0.2438356 
+```
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+With your neighbors: (1) Why is this a paired test? (2) State $H_0$ and $H_1$ in words. (3) Step 6: what do you decide, by Route 2, and what does it mean?
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+(1) Each film supplies both numbers: the stars shown and its actual rating. Same unit, two scores.
+
+(2) $H_0$: on average, stars shown = actual rating ($\mu_D = 0$). $H_1$: they differ.
+
+(3) p < .001, so reject $H_0$. Displayed stars are significantly higher than the actual ratings: on average by 0.24 stars (95% CI \[0.22, 0.27]), and never lower for a single film. Fandango was rounding up.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Afterward" width="100%">FiveThirtyEight published this in October 2015. Fandango said the rounding was a bug and fixed it.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -717,40 +733,58 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Practice: Paired-Samples *t* Test (Solution)
+# Multiple choice practice: paired-samples *t* tests
 
 :: left ::
 
-5. Step 5: Calculate the Test Statistic
-- We calculate our *t* value using the formula:
-  $$t = \frac{M_{diff}-\mu_D}{SE}$$
-  where:
-  - $M_{diff}$ = sample mean difference
-  - $\mu_D$ = hypothesized population mean difference (0 under H₀)
-  - SE = standard error of the mean differences
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-$$t = \frac{M_{diff}-0}{SE} = \frac{-1}{0.318} = -3.14$$
+Twenty students take a memory test, sleep 8 hours, and take an equivalent test the next day. A paired *t* test gives $M_D = 2.1$ words (after − before), $t(19) = 2.40$, $p = .027$. Which statement is correct?
 
-:: right ::
+- **A)** Students recalled significantly more words after sleep, by about 2 words on average.
+- **B)** df should be 38, because there are 40 test scores.
+- **C)** We cannot reject $H_0$ because t is less than 2.776.
+- **D)** The result proves that sleep improves memory for everyone.
 
-<p v-click>
-
-6. Step 6: Make a Decision
-
-- Compare calculated *t* to critical values:
-  - Calculated *t* = -3.14
-  - Critical values = ± 2.776
-  - -3.14 < -2.776 → **Reject H₀**
-
-</p>
+</Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-The results suggest that background music has a significant effect on quiz performance, with students performing *worse* when music is played during the quiz.
+**A.** df = number of *pairs* − 1 = 19 (B is wrong). The cutoff for df = 19 is ±2.09, not 2.776 \(C). (D) overclaims: it is a claim about the mean, and this design has no control group for the retest.
 
 </Admonition>
 
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+Which of these is **not** a paired design?
+
+- **A)** Each participant's anxiety before and after a 6-week mindfulness course.
+- **B)** Reaction times of 30 students who drank coffee vs. 30 other students who drank water.
+- **C)** Each candy's win percentage in 2017 and again in a 2024 rerun of the matchups.
+- **D)** Each professor's evaluation score in a lower-level and an upper-level course.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** Different people in the two groups: nobody has two scores, so there is nothing to pair. That is an independent-samples design (Thursday). In A, C, and D the same unit supplies both scores.
+
+</Admonition></p>
+
+---
+layout: section
+color: indigo-light
+align: lt
+---
+
+You have a result. Now...
+# Reporting results in APA style
 
 ---
 layout: top-title
@@ -759,13 +793,20 @@ align: lt
 ---
 
 :: title ::
-# Reporting Results in APA Style
+# What is APA style, and why use it?
 
 :: content ::
-APA style tells us **how to clearly report statistics** so others can understand and replicate our work.
-It ensures clarity and consistency across psychology and related sciences.
 
-<p v-click><StickyNote color="amber-light" title="Why this matters" width="60%">You'll report your *t*-test results in APA style in Data Write-Up 1 (due Monday, November 9) — today's templates are exactly what you'll use.</StickyNote></p>
+- **APA** = *American Psychological Association*. Its style guide sets a standard format for reporting statistics, so that any reader can see **what test you ran, what you found, and how sure you are** in one sentence.
+- Required by nearly every psychology journal, and by your Data Write-Up.
+
+<p v-click>
+
+<StickyNote color="amber-light" title="APA style tells us how to..." width="70%">• write numbers and statistics (italics, decimals, leading zeros)<br/>• report the result of a test (<i>t</i>, <i>z</i>, <i>F</i>, df, <i>p</i>)<br/>• report effect sizes and confidence intervals</StickyNote>
+
+</p>
+
+<p v-click><StickyNote color="green-light" title="Why this matters for you" width="70%">Part 5 of Data Write-Up #1 is one APA-style sentence. Today's templates are exactly what you will use tomorrow in Discussion 9.</StickyNote></p>
 
 ---
 layout: top-title
@@ -774,20 +815,22 @@ align: lt
 ---
 
 :: title ::
-
-# What is APA Style?
+# Always include these elements
 
 :: content ::
 
-- **APA** = *American Psychological Association*
-- A standardized format for writing and reporting scientific results
-- Ensures clarity, transparency, and consistency across research papers
+<table class="compact-table text-base">
+<thead><tr><th>Element</th><th>What it tells the reader</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><b>Descriptive statistics</b></td><td>What the data looked like: mean and SD for each group or condition</td><td><i>M</i> = 4.09, <i>SD</i> = 0.54</td></tr>
+<tr><td><b>Test statistic and df</b></td><td>Which test you ran and how big the sample was</td><td><i>t</i>(145)</td></tr>
+<tr><td><b>Test value</b></td><td>Signal ÷ noise</td><td><i>t</i>(145) = 18.67</td></tr>
+<tr><td><b>p value</b></td><td>Probability of a result this extreme if H₀ were true</td><td><i>p</i> = .004, or <i>p</i> &lt; .001</td></tr>
+<tr><td><b>Direction</b></td><td>Which group or condition was higher: a plain-English verb</td><td>"were rated higher on Fandango than..."</td></tr>
+</tbody>
+</table>
 
-<StickyNote color="amber-light" title="APA style guides how we..." width="100%">
-• write numbers and statistics
-• report results of tests (*t*, *z*, *F*, etc.)
-• format p-values, CIs, and effect sizes
-</StickyNote>
+<p v-click><StickyNote color="amber-light" title="Strongly recommended, and required in this course" width="100%"><b>Effect size</b> (<i>d</i> = 1.54) tells the reader how big. <b>Confidence interval</b> (95% CI [0.64, 0.80]) tells them how precise. Most journals now require both. There is no reason to leave them out.</StickyNote></p>
 
 ---
 layout: top-title
@@ -796,38 +839,28 @@ align: lt
 ---
 
 :: title ::
-
-# Why Use APA Style?
+# Formatting rules (APA 7th edition)
 
 :: content ::
-- Helps readers quickly interpret results.
-- Makes research **replicable** and **comparable**.
-- Prevents ambiguity — everyone reports in the same format.
-- Required by most psychology journals and conferences.
 
-<div class="mt-3 italic text-gray-700">
-Think of APA as the "grammar rules" of scientific writing.
-</div>
+- **Italicize** statistical symbols: *t*, *z*, *p*, *M*, *SD*, *F*, *r*, *d*. Not the numbers, not the df.
+- **Two decimal places** for test statistics, means, SDs, effect sizes, and CI bounds (unless the scale calls for more or fewer).
+- ***p* values:** three decimal places with **no leading zero**, because p cannot exceed 1: *p* = .027, not *p* = 0.027. Below .001, write *p* < .001.
+- **Confidence intervals** in brackets: 95% CI \[0.64, 0.80].
+- **Degrees of freedom** in parentheses right after the symbol: *t*(145).
+- **Order** within the sentence: statistic with df, *p*, *d*, CI. Commas between them.
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
 
-:: title ::
-# Always Include These Elements
+Spot the errors: "The t-test was significant (T = 18.667, P = 0.000, DF = 145)."
 
-:: content ::
-| Element | Description | Example |
-|----------|--------------|----------|
-| **Test statistic** | Which test you ran (*t*, *z*, *F*) | *t* |
-| **Degrees of freedom (df)** | Indicates sample size info | *t*(28)|
-| **Test value** | The computed statistic | *t*(28) = 2.45 |
-| **p value** | Probability under H₀ | *p* = .004 or *p* < .001 |
-| **Descriptive stats** | Means, SDs for each group | *M* = 5.3, *SD* = 1.2 |
+</Admonition></p>
 
-✅ These should appear in **every** statistical report.
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Lowercase italic *t* and *p*; df in parentheses after *t*; two decimals; *p* is never exactly 0, write *p* < .001; and no descriptives, direction, *d*, or CI anywhere. → *t*(145) = 18.67, *p* < .001.
+
+</Admonition></p>
 
 ---
 layout: top-title
@@ -836,61 +869,24 @@ align: lt
 ---
 
 :: title ::
-# Technically optional (but strongly recommended)
-
-:: content ::
-| Element | Why Include It | Example |
-|----------|----------------|----------|
-| **Effect size** | Shows *magnitude* of difference | *d* = 0.68 |
-| **Confidence interval (CI)** | Range of plausible values | 95% CI \[0.12, 1.24] |
-| **Exact p value** | More informative than *p* < .05 | *p* = .037 |
-
-<div class="mt-3 text-gray-600">
-
-- Including these helps readers understand *how strong* and *how precise* your findings are.
-- Many journals now require effect sizes, CIs, and exact p-values.
-- There is no reason *not* to include them!
-</div>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Formatting Rules (APA 7th Edition)
-
-:: content ::
-- Italicize *t*, *z*, *p*, *M*, *SD*, *F*, *r*
-- Use **two decimal places** for statistics (except *p*)
-- Report *p* values as:
-  - *p* = .042 (no leading zero)
-  - *p* < .001 (for very small values)
-- Match decimal precision across CIs and descriptive stats
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Reporting a *z* Test
+# Reporting a *z* test
 
 :: content ::
 
 **Template**
 
-$M = X, \ SD = Y, \ z = Z, \ p = P, \ d = D,  \text{ 95\% CI [LL, UL]}$
+Group (*M* = X, *SD* = Y) was \[higher/lower/did not differ] than the population (μ = Z), *z* = Z.ZZ, *p* = .PPP, *d* = D.DD, 95% CI \[LL, UL].
 
-**Example**
+**Example (Lecture 9's dating profiles)**
 
-Students' average rent (*M* = $920, *SD* = $192) was significantly higher than the population mean of $500, *z* = 9.39, *p* < .001, *d* = 4.20, 95% CI \[$832, $1008].
+Rhode Island dating profiles (*M* = 2.84, *n* = 30) were rated significantly higher than profiles nationwide (μ = 2.50, σ = 0.83), *z* = 2.24, *p* = .025, *d* = 0.41, 95% CI \[2.54, 3.14].
 
-✅ No *degrees of freedom* are reported for *z* tests. *Z* tests are based on known population parameters, not sample estimates, so df are not applicable.
+<p v-click>
+
+- No **degrees of freedom** for a z test: it uses the known population σ rather than an estimate, so there is no df.
+- Here *d* uses σ = 0.83 and the CI is the z-based interval, M ± 1.96 × SE (SE = 0.152). We report σ because that is what the test used; the sample *SD* goes in too when you have it.
+
+</p>
 
 ---
 layout: top-title
@@ -899,22 +895,24 @@ align: lt
 ---
 
 :: title ::
-# Reporting a One-Sample *t* Test
+# Reporting a single-sample *t* test
 
 :: content ::
 
 **Template**
 
-$t(df) = X.XX, \ p = P, \ d = D, \text{ 95\% CI [LL, UL]}$
+Sample (*M* = X, *SD* = Y) was \[higher/lower/did not differ] than the comparison value (Z), *t*(df) = T.TT, *p* = .PPP, *d* = D.DD, 95% CI \[LL, UL].
 
-**Example**
+**Example (Lecture 12)**
 
-The sample's mean reaction time (*M* = 312 ms, *SD* = 28) was significantly faster than the population mean of 350 ms, *t*(14) = −5.68, *p* < .001, *d* = 1.47, 95% CI \[−50.1, −21.9].
+The mean oral temperature of 130 healthy adults (*M* = 98.25°F, *SD* = 0.73) was significantly lower than the textbook value of 98.6°F, *t*(129) = −5.45, *p* < .001, *d* = −0.48, 95% CI \[98.12, 98.38].
 
-<br>
+<p v-click>
 
-✅ State the **known or hypothesized** population mean and the sample mean and SD.
+- State the **comparison value** (98.6) and the sample's **M and SD**.
+- The CI here is for the population **mean** (98.12 to 98.38), which is what R's `t.test()` reports.
 
+</p>
 
 ---
 layout: top-title
@@ -923,21 +921,67 @@ align: lt
 ---
 
 :: title ::
-
-# Reporting a Paired-Samples *t* Test
+# Reporting a paired-samples *t* test
 
 :: content ::
+
 **Template**
 
-$t(df) = X.XX, \ p = P, \ d = D, \text{ 95\% CI [LL, UL]}$
+Scores were \[higher/lower] in Condition 1 (*M* = X₁, *SD* = Y₁) than in Condition 2 (*M* = X₂, *SD* = Y₂), *t*(df) = T.TT, *p* = .PPP, *d* = D.DD, 95% CI \[LL, UL].
 
-**Example**
+**Example (today)**
 
-Participants recalled more words after caffeine (*M* = 12.3, *SD* = 2.1) than without caffeine (*M* = 9.8, *SD* = 2.5), *t*(19) = 3.42, *p* = .003, *d* = 0.76, 95% CI \[0.92, 4.11].
+Films were rated higher on Fandango (*M* = 4.09, *SD* = 0.54) than on IMDb (*M* = 3.37, *SD* = 0.48), *t*(145) = 18.67, *p* < .001, *d* = 1.54, 95% CI \[0.64, 0.80].
 
-<br>
+<p v-click>
 
-✅ State the means and SDs for **both** conditions.
+- Report the **M and SD of both conditions**, not just the difference, so readers can see the raw numbers.
+- The CI is for the **mean difference** (0.64 to 0.80 stars), so it should exclude 0 whenever the test rejects.
+- *d* = mean difference ÷ SD of the differences.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# APA practice
+
+:: left ::
+
+<Admonition title="Practice 1: rewrite in APA style" color="teal-light" width="100%">
+
+"Patients on Drug 2 slept 2.33 extra hours on average (s.d.=2.00) which was significantly more than zero. The T test was significant (P = .005; t = 3.68; DF=9). Cohen's D = 1.16 and the 95% confidence interval was (0.90 , 3.76)."
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Patients given Drug 2 slept significantly longer than on nights without it (*M* = 2.33 extra hours, *SD* = 2.00; μ = 0), *t*(9) = 3.68, *p* = .005, *d* = 1.16, 95% CI \[0.90, 3.76].
+
+*Fixed:* italic symbols; *SD* not s.d.; *t*(df) = value; *p* with no leading zero; standard order (*t*, *p*, *d*, CI); brackets for the CI; one sentence.
+
+</Admonition></p>
+
+:: right ::
+
+<p v-click><Admonition title="Practice 2: write the sentence" color="teal-light" width="100%">
+
+Fandango's rounding: stars shown (*M* = 4.09, *SD* = 0.54) vs. actual rating (*M* = 3.85, *SD* = 0.50), *t*(145) = 19.30, *p* < .001, *d* = 1.60, 95% CI \[0.22, 0.27]. Write the APA sentence.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The stars Fandango displayed (*M* = 4.09, *SD* = 0.54) were significantly higher than the films' actual average ratings (*M* = 3.85, *SD* = 0.50), *t*(145) = 19.30, *p* < .001, *d* = 1.60, 95% CI \[0.22, 0.27].
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Then interpret" width="100%">The APA sentence reports. The next sentence <i>interprets</i>: "On average, Fandango rounded ratings up by about a quarter of a star, and no film was rounded down." That is Part 7 of your write-up.</StickyNote></p>
 
 ---
 layout: top-title
@@ -946,81 +990,10 @@ align: lt
 ---
 
 :: title ::
-# Putting It All Together
+# Preview: independent-samples *t* tests
 
 :: content ::
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-
-### Always Include
-- Test type and statistic (*t*, *z*, etc.)
-- df (for *t* tests)
-- *p* value
-- Descriptive stats (*M*, *SD*)
-
-</div>
-
-<div>
-
-### Usually Include
-- Effect size (*d*, *r*, etc.)
-- Confidence interval
-- Directional phrasing ("significantly greater than…")
-
-</div>
-
-</div>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# APA Reporting: Practice 🧠
-
-:: content ::
-**Rewrite in APA style:**
-
-Participants slept on average 7.6 hours (s.d.=0.8) which was not significantly different from the national mean of 7.5. The T test was not significant (P = .66; t = .45; DF=19). Cohen's D = 0.06 and the 95% confidence interval was (-0.42 , 0.62).
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Practice: Answer
-
-:: content ::
-
-#### 😴 Correct Example — One-Sample *t*
-
-> Participants slept an average of 7.6 hours (*SD* = 0.8), which did not differ significantly from the national mean of 7.5,
-> *t*(19) = 0.45, *p* = .66, *d* = 0.06, 95% CI \[−0.42, 0.62].
-
-*What was fixed?*
-- Italicize statistical symbols (*t*, *p*, *d*, *M*, *SD*).
-- Write numbers and units clearly ("7.6 hours").
-- Keep *p* = .66 (not *P* = 0.66), and report *t*(df) = value, *p*, *d*, and 95% CI in this order.
-- Report CI in brackets.
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Preview: Independent-Samples *t* Tests
-
-:: content ::
-- So far today, every participant was in **both** conditions (within-subjects) → paired-samples *t* test.
+- So far today, every participant (film) was in **both** conditions (within-subjects) → paired-samples *t* test.
 - Most of your Data Write-Up datasets compare **two separate groups of people** (between-subjects) → ==independent-samples *t* test==.
 - You will run this test **tomorrow in Discussion 9**. On Thursday, we will go through where its formulas come from.
 
@@ -1033,7 +1006,7 @@ align: lt
 ---
 
 :: title ::
-# Same Logic, Different Standard Error
+# Same logic, different standard error
 
 :: content ::
 Every *t* test asks: how far is what we observed from what $H_0$ predicts, in standard error units?
@@ -1046,7 +1019,7 @@ $$t = \frac{\text{observed difference} - \text{difference under } H_0}{SE}$$
 |---|---|---|
 | **Design** | Within-subjects | Between-subjects |
 | **We analyze** | One set of difference scores | Two separate sets of scores |
-| **Observed difference** | $M_{difference}$ | $M_1 - M_2$ |
+| **Observed difference** | $M_D$ | $M_1 - M_2$ |
 | **Standard error** | From one *SD* and one *n* | From **both** *SD*s and **both** *n*s |
 | **df** | $n - 1$ | $n_1 + n_2 - 2$ |
 
@@ -1065,14 +1038,16 @@ align: lt
 ---
 
 :: title ::
-# Practice: Which *t* Test?
+# Practice: which *t* test?
 
 :: content ::
 
 <Admonition title="Question" color="teal-light" width="100%">
+
 Forty students are randomly assigned to study with music or in silence, and then everyone takes the same quiz. Which test compares the two conditions?
 
 **A.** Single-sample *t* test &nbsp;&nbsp; **B.** Paired-samples *t* test &nbsp;&nbsp; **C.** Independent-samples *t* test
+
 </Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
@@ -1084,9 +1059,11 @@ Forty students are randomly assigned to study with music or in silence, and then
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
+
 Eighteen participants complete a reaction-time task after a normal night of sleep and again after a night of restricted sleep. Which test compares the two nights?
 
 **A.** Single-sample *t* test &nbsp;&nbsp; **B.** Paired-samples *t* test &nbsp;&nbsp; **C.** Independent-samples *t* test
+
 </Admonition>
 
 </p>
@@ -1104,7 +1081,7 @@ align: lt
 ---
 
 :: title ::
-# Practice: Degrees of Freedom
+# Practice: degrees of freedom
 
 :: content ::
 
@@ -1125,7 +1102,9 @@ A researcher compares the anxiety scores of 20 first-year students and 22 senior
 <p v-click>
 
 <Admonition title="Question" color="teal-light" width="100%">
+
 What if the same 20 students were measured as first-years and again as seniors?
+
 </Admonition>
 
 </p>
@@ -1143,7 +1122,7 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Running an Independent-Samples *t* Test in R
+# Running an independent-samples *t* test in R
 
 :: left ::
 Do candies with chocolate win more matchups than candies without? (This is the worked example posted with your Data Write-Up.)
@@ -1189,12 +1168,12 @@ align: lt
 ---
 
 :: title ::
-# Reporting an Independent-Samples *t* Test
+# Reporting an independent-samples *t* test
 
 :: content ::
 **Template** (the same as for the other *t* tests)
 
-$t(df) = X.XX, \ p = P, \ d = D, \text{ 95\% CI [LL, UL]}$
+Group 1 (*M* = X₁, *SD* = Y₁) scored \[higher/lower] than Group 2 (*M* = X₂, *SD* = Y₂), *t*(df) = T.TT, *p* = .PPP, *d* = D.DD, 95% CI \[LL, UL].
 
 **Example**
 
@@ -1203,6 +1182,42 @@ Candies containing chocolate won a higher percentage of their matchups (*M* = 60
 ✅ State the means and SDs for **both** groups, and say which group was higher.
 
 <p v-click><StickyNote color="green-light" title="For tomorrow" width="70%">Bring your group's Data Write-Up file to Discussion 9. You'll practice all three <em>t</em> tests in R, then run the test for your own dataset.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Key terms from today
+
+:: content ::
+
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div>
+
+**Paired-samples *t* test** — for within-subjects designs: two scores per participant. Compute a **difference score** for each, then run a single-sample *t* test on the differences against μ = 0.
+
+</div>
+<div>
+
+**Distribution of mean differences** — the null world: mean difference scores centered on 0, spread $s_M = s_D/\sqrt{n}$, *t* with df = (number of pairs) − 1.
+
+</div>
+<div>
+
+**Effect size and CI for a paired test** — $d = M_D / s_D$; $CI = M_D \pm t_{crit} \times s_M$, a range of plausible values for the true mean difference.
+
+</div>
+<div>
+
+**APA style** — one sentence with descriptives for each condition, direction in words, *t*(df) = value, *p*, *d*, and the 95% CI. Italic symbols, no leading zero on *p*.
+
+</div>
+</div>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="70%">Thursday: where the independent-samples t test's standard error comes from, and a published study that settled who talks more.</StickyNote></p>
 
 ---
 layout: cover
