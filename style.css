@@ -46,3 +46,18 @@
   padding: 0.15rem 0.5rem;
   line-height: 1.2;
 }
+
+/* PDF export fix (2026-10-27). In top-title-two-cols slides whose body padding box runs a few px past
+   the 552px page, Chromium's print pagination pushes the whole two-column flex row to a page that
+   never exists, so the exported page shows only the title bar. Give the neversink layout wrapper a
+   definite height so the body shrinks to the page instead of overflowing it. No change on screen
+   except that the invisible bottom padding of an over-full slide is trimmed. */
+.slidev-page > div:not(.slidev-layout) {
+  height: 100%;
+}
+.slidev-page .slidev-layout.toptitle.content {
+  min-height: 0;
+}
+.slidev-page .flex.flex-col > .slidecolor {
+  flex-shrink: 0;
+}
