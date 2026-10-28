@@ -950,6 +950,35 @@ When we run "post-hoc tests," we are essentially running *t* tests with built-in
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Preview: the same math, outside ANOVA
+
+:: left ::
+
+- Every extra test is another ticket in the 5% lottery. With 10 tests and nothing real, the chance that *something* comes out $p < .05$ is **40%**.
+- Post-hoc corrections pay for the extra tickets.
+
+<p v-click>
+
+- Researchers who run many tests, skip the correction, and report only the winner are ==**p-hacking**==: the same alpha inflation, hidden inside a single study.
+
+</p>
+
+<p v-click><StickyNote color="amber-light" title="Lecture 19" width="100%">The last lecture is about this: how researchers' everyday choices inflate false positives, the replication crisis that followed, and how the field is fixing it.</StickyNote></p>
+
+:: right ::
+
+<img src="/images/lecture19/many_outcomes.png" alt="Chance of at least one p below .05 as a function of the number of tests run" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-1">Two groups of n = 20, no real effect anywhere; 20,000 fake studies per point.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
 ---
 
 :: title ::

@@ -23,14 +23,25 @@ align: lt
 # Updates and Reminders
 
 :: content ::
-- Exam 2 grades are posted. We will go over any questions that gave many people trouble in the review session.
-- ==Data Write-Up #1== (t-test-based) is due **Monday, November 9** at 11:59 p.m.
-  - Next Wednesday in Discussion 9 (11/4), you will run all three *t* tests on the Pixar data, then the test for your own dataset, make your figure, and write your interpretation.
+- Exam 2 grades are posted. We will go over hard questions today. Median: 29/33 (88%).
+- A ==grade calculator== has been posted on Slack.
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays, 2:30 – 3:30 p.m. (Rola)
 - Coming up:
   - Tuesday (11/3): Lecture 13 (paired-samples *t* tests & reporting results in APA style)
   - Thursday (11/5): Lecture 14 (independent-samples *t* tests)
   - Exam 3: **Thursday, November 12** (covers Lectures 11–14)
+
+- ==Data Write-Up #1== (t-test-based) is due **Monday, November 9** at 11:59 p.m.
+- ==Course feedback survey== closes tomorrow.
+
+---
+layout: section
+color: indigo-light
+align: lt
+---
+
+Before anything new...
+# Finishing Lecture 11: statistical power
 
 ---
 layout: top-title
@@ -39,41 +50,36 @@ align: lt
 ---
 
 :: title ::
-# Last time: key terms
+# When and how do we use power?
 
 :: content ::
 
-<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
-<div>
+Researchers use ==power analysis== in two ways:
 
-**Effect size (Cohen's d)** — how many standard deviations apart two means are: $d = (M_1 - M_2)/SD$. Unaffected by n. 0.2 small, 0.5 medium, 0.8 large.
+1. ==Before== the study (*a priori*): "I expect a medium effect. How many participants do I need for 80% power?" This is the important one, now required by many journals and funders. It is why papers say "we recruited 128 participants" rather than "as many as we could."
 
-</div>
-<div>
-
-**Significant ≠ big** — the test statistic and p depend on n; d does not. A huge sample makes a tiny difference "significant."
-
-</div>
-<div>
-
-**Statistical power** — the probability of detecting an effect that is real. Target: 0.80. Goes up with larger n, larger effects, less variability.
-
-</div>
-<div>
-
-**Type II error (β)** — missing a real effect. Power = 1 − β. With low power, "not significant" mostly means "could not tell."
-
-</div>
-</div>
+2. ==After== the study (*post hoc*): "Given my n and the effect I expected, what was my power?" Useful for interpreting a null result: if power was 0.25, "not significant" tells you little.
 
 <p v-click>
 
-<div class="flex items-center gap-4 mt-6">
-<IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Today: the one ingredient the z test needs that researchers almost never have, and what we do about it. Meet the <b>t test</b>.</SpeechBubble>
-</div>
+- The numbers come from software or online calculators. The inputs are always **effect size, sample size, alpha, and tails**. Give it any three and it returns the fourth.
 
 </p>
+
+<div class="flex items-start gap-6 mt-2">
+<p v-click>
+
+```r
+power_sim(n = 20, d = 0.5)              # 0.61
+power_sim(n = 64, d = 0.5)              # 0.98  larger sample
+power_sim(n = 20, d = 0.2)              # 0.14  smaller effect
+power_sim(n = 20, d = 0.5, alpha = .01) # 0.37  stricter alpha
+```
+
+<div class="text-sm text-gray-600 mt-1">In Discussion 8, <code>power_sim()</code> drew 5,000 fake samples with a real effect and counted how often the z test rejected. Can you predict the direction of each change? Exact power numbers come from software, but you should know whether different factors will increase or decrease power.</div>
+
+</p>
+</div>
 
 ---
 layout: top-title-two-cols
@@ -82,24 +88,24 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Warm-up: check your understanding
+# Multiple choice practice: power
 
 :: left ::
 
 <Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-Two studies find that students who nap score higher on a memory test. Study A: $n = 30$, $d = 0.6$, $p = .11$. Study B: $n = 3{,}000$, $d = 0.1$, $p < .001$. Which statement is best?
+A researcher tests whether a new study app improves grades, with 15 students. The app really does help ($d = 0.3$). She finds $p = .40$. What most likely happened?
 
-- **A)** Study A found a bigger effect but had less power to detect it.
-- **B)** Study B found a bigger effect, because its p is smaller.
-- **C)** Study A's result is a Type I error.
-- **D)** The two studies contradict each other.
+- **A)** A Type I error.
+- **B)** The app does not work.
+- **C)** She should lower alpha to .01 and try again.
+- **D)** A Type II error, because the study had low power.
 
 </Admonition>
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**A.** d is the size of the effect; p mixes size with sample size. Study A's medium effect with n = 30 had only moderate power, so a nonsignificant result is not surprising.
+**D.** A real effect that was not detected is a Type II error. With a small effect and n = 15, power is only about 0.2, so this outcome was the *expected* one. Lowering alpha \(C) would reduce power further.
 
 </Admonition>
 
@@ -109,12 +115,12 @@ Two studies find that students who nap score higher on a memory test. Study A: $
 
 <Admonition title="Multiple choice 2" color="teal-light" width="100%">
 
-Which of these would **lower** a study's power?
+Which change would **increase** the power of a study without increasing the Type I error rate?
 
-- **A)** Recruiting 200 participants instead of 50.
-- **B)** Studying a manipulation with a larger true effect.
-- **C)** Raising alpha from .05 to .10.
-- **D)** Measuring the outcome with a noisy, unreliable questionnaire.
+- **A)** Recruiting more participants.
+- **B)** Raising alpha from .05 to .10.
+- **C)** Using a less reliable questionnaire to save time.
+- **D)** Switching to a two-tailed test after seeing the data favor one direction.
 
 </Admonition>
 
@@ -122,9 +128,106 @@ Which of these would **lower** a study's power?
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**D.** More noise means a larger SD, a larger SE, and a smaller test statistic for the same real difference. (A), (B), and \(C) all raise power.
+**A.** More data shrinks the SE. (B) raises power but also raises Type I errors. \(C) adds noise, lowering power. (D) is backwards and, done after seeing the data, is cheating either way.
 
 </Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Multiple choice practice: putting it together
+
+:: left ::
+
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
+
+Study A: $n = 2{,}000$, $p = .001$, $d = 0.10$. Study B: $n = 40$, $p = .03$, $d = 0.70$. Which statement is best?
+
+- **A)** Study A found the bigger effect, because its p value is smaller.
+- **B)** The studies found the same effect.
+- **C)** Study B found the bigger effect; Study A's tiny effect was detectable only because of its huge sample.
+- **D)** Study B's result cannot be trusted because n = 40 is too small for any conclusion.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** p values depend on n; effect sizes do not. (D) overreaches: with a large effect, n = 40 can give decent power.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+What is the relationship between β and power?
+
+- **A)** They are the same thing.
+- **B)** Power = 1 − β.
+- **C)** Power = α − β.
+- **D)** They are unrelated.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** When the effect is real, we either detect it (power) or miss it (β). Those two possibilities add to 1.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Key terms from Lecture 11 (now complete)
+
+:: content ::
+
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div>
+
+**Effect size** — the magnitude of a difference in standardized units. Unaffected by sample size.
+
+</div>
+<div>
+
+**Cohen's d** — how many standard deviations apart two means are. For a z test, $d = (M - \mu)/\sigma$. Conventions: 0.2 small, 0.5 medium, 0.8 large. (Two samples, no σ: Lecture 14.)
+
+</div>
+<div>
+
+**Significant ≠ big** — p depends on n; d does not. With enough data, any nonzero difference is "significant."
+
+</div>
+<div>
+
+**Type II error (β)** — failing to reject $H_0$ when it is false: missing a real effect.
+
+</div>
+<div>
+
+**Statistical power** — the probability of detecting an effect that is real: $1 - \beta$. Target: 0.80.
+
+</div>
+<div>
+
+**What raises power** — larger n, larger effect, less variability, larger α, one-tailed test. Only the first three are free of cost.
+
+</div>
+</div>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="70%">Today: what to do when you do not know σ (which is almost always). The t test is the z test with one ingredient swapped, and effect size comes right back.</StickyNote></p>
 
 ---
 layout: section
@@ -146,14 +249,13 @@ align: lt
 
 :: content ::
 
-- In Lecture 9, Step 1 of every hypothesis test included "check the test's assumptions (more on this later!)." It is later.
+- Lecture 9's Step 1 said "check the test's assumptions (more on this later!)." It is now later!
 - The z test, and every test we will learn until Lecture 19, is a ==**parametric**== test: it works by assuming the data follow a distribution with known **parameters** (for the normal distribution: a mean and a standard deviation).
-- That assumption is what lets us draw the null world as a smooth curve and read areas off it.
+- That assumption is what lets us draw the null world as a smooth curve and read areas off it. It also means the outcome must be **numeric** (hours, milliseconds, degrees: something with a mean), not categories or rankings. Lecture 19 covers the tests for those.
 
 <p v-click>
 
-- **Parametric** tests generally have more ==power== than **non-parametric** tests, *because* they lean on these assumptions.
-- The price: if the assumptions are badly wrong, the p values are wrong too.
+- **Parametric** tests generally have more ==power== than **non-parametric** tests *because* they lean on these assumptions. The price: if the assumptions are badly wrong, the p values are wrong too.
 
 </p>
 
@@ -244,6 +346,37 @@ align: lt
 ### 4. No extreme outliers
 - A single wild score can drag the mean and inflate the SD. One person who sleeps 14 hours in a sample of 20 changes everything.
 - Look at your data (histograms, box plots) before testing, and decide what to do with outliers *before* you see whether they help your hypothesis.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Which assumptions go with which test?
+
+:: content ::
+
+These are assumptions of the whole **parametric family**, not of the z test alone. Not every test needs every one:
+
+<table class="compact-table text-sm">
+<thead><tr><th>Assumption</th><th>z test<br/>(L10)</th><th>Single-sample <i>t</i><br/>(today)</th><th>Paired <i>t</i><br/>(L13)</th><th>Independent <i>t</i><br/>(L14)</th><th>ANOVA<br/>(L15–16)</th></tr></thead>
+<tbody>
+<tr><td>Outcome is numeric (interval or ratio), so it has a mean</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Comparison distribution is normal</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Observations are independent</td><td>✓</td><td>✓</td><td>✓ (the pairs)</td><td>✓</td><td>✓</td></tr>
+<tr><td>Groups have equal variance</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Population σ is known</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+
+<p v-click>
+
+- The first three rows are the price of admission for every test in this course. Equal variance only matters once there are separate groups to compare. Known σ is the z test's special requirement, and the reason we are about to replace it.
+- Outliers are not an assumption so much as a **check you run every time**: one wild score can break any of these tests.
 
 </p>
 
@@ -533,10 +666,34 @@ columns: is-5-7
 
 :: left ::
 
-A simulation with $H_0$ true: 20,000 samples of $n = 5$, one mean each.
+Where the two curves come from. A simulation with $H_0$ true (μ = 0), repeated 20,000 times:
 
-- **Left:** divide each $M - \mu$ by the *true* SE → z statistics. A normal curve; 5% beyond ±1.96.
-- **Right:** divide by the *estimated* SE, $s/\sqrt{5}$, which differs from sample to sample → t statistics.
+1. Draw a sample of $n = 5$ and compute its mean, $M$.
+2. Ask the usual question, *how many standard errors is $M$ from μ?*, **twice with the same $M$**: divide by the **true** SE, $\sigma/\sqrt{5}$, to get a **z**; divide by the SE **estimated from that sample**, $s/\sqrt{5}$, to get a **t**.
+3. Pile up the 20,000 z's (left) and the 20,000 t's (right).
+
+:: right ::
+
+<img src="/images/lecture12/t_simulation_n5.png" alt="z statistics vs t statistics from 20,000 samples of n = 5" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-1">Each panel is the same 20,000 sample means. Only the denominator differs.</div>
+
+<p v-click><StickyNote color="amber-light" title="Why divide at all?" width="100%">Dividing by the SE turns "M is 0.8 hours from μ" into "M is 1.6 standard errors from μ", the only scale on which ±1.96 means anything. It is Steps 2 and 3 of the swap, applied 20,000 times.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Same means, different denominators
+
+:: left ::
+
+- **Left panel:** every z uses the *same* denominator, because $\sigma/\sqrt{5}$ never changes. The z's are just the sample means rescaled: a normal curve, 5% beyond ±1.96.
+- **Right panel:** every t uses *its own sample's* $s$. The denominator changes from sample to sample.
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">
 
@@ -546,7 +703,7 @@ Why do extreme t values happen more than twice as often as extreme z values?
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-Some samples happen to have a small s. Then the denominator is too small and t is inflated. With n = 5, that happens a lot.
+Some samples happen to have a small $s$. Then the denominator is too small and t comes out inflated, even though $M$ is nothing special. With n = 5 that happens a lot.
 
 </Admonition></p>
 
@@ -617,23 +774,49 @@ columns: is-6-6
 
 <p v-click>
 
-- To compute $s$, we first compute $M$ from the same data. That uses up one degree of freedom, which is why $s$ divides by $n - 1$.
-- For a **single-sample *t* test**: $df = n - 1$.
-- The df tells us *how much independent information* went into estimating σ, and therefore which *t* distribution is our null world.
+- Look at the same bill as **deviations from the mean**: −5, +2, and... the third deviation *has* to be +3, because deviations from a mean always add up to zero. Knowing the mean costs you one free number.
 
 </p>
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">
 
-The sleep study, n = 10 patients. The body temperature study (later today), n = 130 people. What are the df?
+One study has n = 10 patients, another has n = 130 adults. If you knew each sample's mean and all but one of its scores, could you fill in the missing score? How many scores are free to vary in each?
 
 </Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-9 and 129.
+Yes, in both. 9 scores are free in the first study and 129 in the second; the last one is forced by the mean. $df = n - 1$.
 
 </Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Why s divides by n − 1, and why t needs df
+
+:: left ::
+
+- $s$ is built from the deviations $(X - M)$. But we computed $M$ from the *same* scores, so the deviations are not all free: they must add up to zero, and the last one is fixed by the others.
+- The n deviations therefore contain only **n − 1 independent pieces of information** about spread. Dividing by n − 1 averages over the information that is actually there. That is the "n − 1" from Lecture 5, explained.
+
+<p v-click><StickyNote color="amber-light" title="In one line" width="100%">Computing M from the data "uses up" one degree of freedom because it forces the last deviation. Divide by what is left: n − 1.</StickyNote></p>
+
+:: right ::
+
+<p v-click>
+
+- A single-sample *t* test estimates σ from one sample, so $df = n - 1$: 9 for the sleep study.
+- The df says how much information went into estimating σ, and therefore **which *t* distribution is the null world**: few df, heavy tails; many df, nearly the z distribution.
+
+</p>
+
+<p v-click><StickyNote color="green-light" title="Coming up" width="100%">Tests that estimate more things spend more df. The independent-samples t test estimates two means, so df = n₁ + n₂ − 2 (Lecture 14).</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -666,17 +849,7 @@ columns: is-6-6
 
 <img src="/images/lecture12/t_crit_vs_df.png" alt="Critical t as a function of degrees of freedom" class="w-full mx-auto"/>
 
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
-
-For Route 2 we need a p value: the area beyond our t. Which R function would you guess does that?
-
-</Admonition></p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-`pt(t, df)` gives the area below t in the t distribution with that df, exactly as `pnorm()` does for z. Two tails → double it. (You will never do this by hand; `t.test()` reports p directly.)
-
-</Admonition></p>
+<p v-click><StickyNote color="green-light" title="And for Route 2" width="100%">The p value is the area beyond our t in the t distribution with our df. In R, <code>pt()</code> does for t what <code>pnorm()</code> did for z: <code>2 * pt(-3.68, 9)</code> = .005 for Drug 2. You will never do this by hand; <code>t.test()</code> reports p directly.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -939,11 +1112,9 @@ In 1992, researchers at the University of Maryland measured the oral temperature
 
 - $M = 98.25$°F, $s = 0.73$°F
 
-<Admonition title="Question" color="teal-light" width="100%">
+==Is the true average body temperature 98.6°F, or is the famous number wrong?==
 
-Work through all six steps with your neighbors (α = .05, two-tailed). Is 98.6 the right number?
-
-</Admonition>
+<p v-click><StickyNote color="amber-light" title="How, not what" width="100%">These numbers are not meant for hand calculation. The next two slides ask <i>how</i> you would test this; R does the arithmetic.</StickyNote></p>
 
 <div class="text-xs text-gray-500 mt-2">Data: Mackowiak, P. A., Wasserman, S. S., & Levine, M. M. (1992). <i>JAMA, 268</i>(12), 1578–1580; dataset from Shoemaker (1996), <i>Journal of Statistics Education</i>.</div>
 
@@ -951,15 +1122,105 @@ Work through all six steps with your neighbors (α = .05, two-tailed). Is 98.6 t
 
 <img src="/images/lecture12/body_temp_hist.png" alt="Histogram of 130 body temperatures" class="w-full mx-auto"/>
 
-<p v-click><Admonition title="Steps 1 to 4" color="green-light" width="100%">
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
 
-**1.** These adults vs. the claimed population (μ = 98.6). One mean, σ unknown → single-sample *t* test. Temperature is numeric, n = 130, roughly normal, no wild outliers.
+:: title ::
+# Body temperature: how would you test it?
 
-**2.** $H_0$: μ = 98.6. &nbsp; $H_1$: μ ≠ 98.6.
+:: left ::
 
-**3.** Center 98.6, $s_M = 0.73/\sqrt{130} = 0.064$, *t* with df = 129.
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-**4.** `qt(0.975, 129)` → cutoffs **±1.98**.
+Which test, and why?
+
+- **A)** Single-sample *t* test: one sample mean vs. a claimed population mean (98.6), σ unknown.
+- **B)** z test: μ = 98.6 is known, so we have what we need.
+- **C)** Paired-samples *t* test: each person is compared with 98.6.
+- **D)** No test is needed: 98.25 is obviously different from 98.6.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** We know the claimed μ but not σ; 0.73 is the sample's s. (B) confuses knowing μ with knowing σ.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+If $H_0$ is true, what does the comparison distribution look like?
+
+- **A)** Normal, centered on 98.25, spread 0.73.
+- **B)** *t* with df = 130, centered on 98.6, spread 0.73.
+- **C)** Normal, centered on 98.6, spread $0.73/\sqrt{130}$.
+- **D)** *t* with df = 129, centered on 98.6, spread $s_M = 0.73/\sqrt{130} \approx 0.064$.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**D.** Centered on what $H_0$ claims, with the spread of *means*, and a *t* distribution because σ was estimated. (A) describes the sample, not the null world. \(C) forgets that σ was estimated.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Body temperature: finishing the test
+
+:: left ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+How would you find the cutoffs (α = .05, two-tailed), and roughly what are they?
+
+- **A)** ±1.96, because every two-tailed test at α = .05 uses ±1.96.
+- **B)** From the *t* distribution with df = 129 (`qt(0.975, 129)`): ±1.98, almost the same as z because df is large.
+- **C)** ±2.262, the same as the sleep study.
+- **D)** They depend on M, so they cannot be found until t is computed.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**B.** Cutoffs come from the null world, which depends on df, not on the data. With 129 df the t curve is nearly normal.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+R reports `t = -5.45, df = 129, p-value = 2.4e-07`. What does t = −5.45 mean?
+
+- **A)** The sample mean is 5.45 degrees below 98.6.
+- **B)** 5.45% of people have a temperature below 98.6.
+- **C)** The sample mean is 5.45 *estimated standard errors* below 98.6: far beyond −1.98, so reject $H_0$.
+- **D)** The test is invalid because t is negative.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**C.** t counts standard errors, not degrees. The sign only says which direction.
 
 </Admonition></p>
 
@@ -971,35 +1232,9 @@ columns: is-6-6
 ---
 
 :: title ::
-# Body temperature: Steps 5 and 6
+# Body temperature: the result
 
 :: left ::
-
-<Admonition title="Steps 5 and 6" color="green-light" width="100%">
-
-**5.** $t = (98.25 - 98.6)/0.064 = -5.47$
-
-**6.** −5.47 is far beyond −1.98 → **reject $H_0$**. Normal body temperature is significantly lower than 98.6°F.
-
-</Admonition>
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
-
-The difference is only 0.35 degrees. How can that be so significant? And is it a big effect?
-
-</Admonition></p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-Lecture 11: n = 130 makes $s_M$ tiny (0.064), so a small difference is 5.5 SEs from 98.6. The effect size is $d = -0.35/0.73 = -0.48$: medium. Real, and big enough to matter when you decide whether someone has a fever.
-
-</Admonition></p>
-
-:: right ::
-
-<img src="/images/lecture12/null_world_bodytemp.png" alt="The t distribution with df = 129 and the observed t" class="w-10/12 mx-auto"/>
-
-<p v-click>
 
 ```text
 	One Sample t-test
@@ -1014,9 +1249,28 @@ mean of x
  98.24923 
 ```
 
-<div class="text-sm mt-1">Plausible values for the true mean: 98.12 to 98.38. 98.6 is not among them. Wunderlich's thermometers read high.</div>
+<div class="text-base mt-2">
 
-</p>
+- **Step 6:** −5.45 is far beyond −1.98, and p < .05 → **reject $H_0$**. Normal body temperature is significantly lower than 98.6°F.
+- Plausible values for the true mean: 98.12 to 98.38. 98.6 is not among them. Wunderlich's thermometers read high.
+
+</div>
+
+:: right ::
+
+<img src="/images/lecture12/null_world_bodytemp.png" alt="The t distribution with df = 129 and the observed t" class="w-10/12 mx-auto"/>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+The difference is only 0.35 degrees. How can that be so significant? And is it a big effect?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Lecture 11: n = 130 makes $s_M$ tiny (0.064), so a small difference is 5.5 SEs from 98.6. The effect size is $d = -0.35/0.73 = -0.48$: medium. Real, and big enough to matter when you decide whether someone has a fever.
+
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -1063,13 +1317,13 @@ mean of x
 
 <p v-click><Admonition title="Question" color="teal-light" width="100%">
 
-Where does df = 22 come from? What is the decision? And how would you write that p value in APA style?
+Where does df = 22 come from? What is the decision?
 
 </Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-23 films − 1. $t = 9.89$ is far beyond the cutoff for df = 22 (±2.07), and p = .0000000015 → reject: Pixar films average well above "Fresh" (89, CI 83 to 95). In APA style: *p* < .001, never "1.489e-09".
+23 films − 1. $t = 9.89$ is far beyond the cutoff for df = 22 (±2.07), and p = 0.0000000015 → reject: Pixar films average well above "Fresh" (89, CI 83 to 95). How to write a p value like that properly is Tuesday's topic (APA style).
 
 </Admonition></p>
 
@@ -1120,7 +1374,7 @@ Your friend computes $t = (162 - 150)/18 = 0.67$ and concludes the claim holds. 
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**B.** Same mistake as with z: a *mean* is compared to the spread of *means*. With $t = 2.31$ and a cutoff of ±2.20 (df = 11), we reject: these lattes have more caffeine than claimed.
+**B.** A *mean* is compared with the spread of *means* (the standard error), not with the spread of individual scores. With $t = 2.31$ and a cutoff of ±2.20 (df = 11), we reject: these lattes have more caffeine than claimed.
 
 </Admonition></p>
 
