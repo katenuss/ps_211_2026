@@ -1,0 +1,270 @@
+---
+title: 'PS 211 — Discussion Worksheet #8'
+subtitle: 'Fall 2026 · Effect size & power, then Data Write-Up #1: analysis plan & peer review'
+author: "Your Name"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# How today works
+
+Today has two halves.
+
+| Time | What |
+|---|---|
+| First ~20 minutes | **Part A (this worksheet):** practice with effect size and power from Lecture 11. Work with the people next to you. |
+| Rest of section | **Part B (your Data Write-Up file):** finish Part 4 of `ps211_data_writeup1.Rmd` with your group, then trade files with another group for peer review. |
+
+Part A is practice for Exam 3. Next week (Discussion 9) you will extend Cohen's *d* to two groups and compute it for your own data.
+
+Run chunks top-to-bottom; edit where it says **EDIT**; answer at each **"Your answer:"**.
+
+**Setup:** you need `candy_data.csv` (from Discussion 4) in your `ps211` project folder.
+
+---
+
+## Packages (run this once at the top)
+
+```{r libraries}
+library(readr)
+library(dplyr)
+```
+
+---
+
+# Part A: Effect size & power (20 minutes)
+
+## 1) Cohen's *d*: how big is the difference? (7 min)
+
+A *p* value tells you whether a difference is likely to be real. It does not tell you whether the difference is **big**. Cohen's *d* does: it is the difference between two means, measured in standard deviations. For the tests we know so far (a sample mean against a population mean), that is
+
+$$d = \frac{M - \mu}{\sigma}$$
+
+We'll use the Halloween candy data from Discussion 4. Remember: each row is a candy, and `winpercent` is the percentage of head-to-head matchups the candy won. There is no outside population here, so we will do what Lecture 11 did: treat **all 85 candies as the population** (that gives us mu and sigma), and treat a type of candy as the sample.
+
+```{r load-candy}
+candy <- read_csv("candy_data.csv")
+```
+
+**Example: fruity candies.** Run this chunk and read each line.
+
+```{r d-fruity}
+# The whole data set plays the role of the population
+mu    <- mean(candy$winpercent)
+sigma <- sd(candy$winpercent)
+mu
+sigma
+
+# Our sample: the fruity candies
+fruity <- filter(candy, fruity == 1)
+M <- mean(fruity$winpercent)
+M
+
+# Cohen's d: how many population SDs is the sample mean from mu?
+d <- (M - mu) / sigma
+d
+```
+
+**Your answer (1a):** Using Cohen's conventions (0.2 = small, 0.5 = medium, 0.8 = large), how big is this effect? What does the **negative** sign tell you?
+
+*(Type your answer here.)*
+
+**Your turn: are chocolate candies sweeter than candies in general?** Use `sugarpercent` as the DV. This time you write the code, following the example above: the population is all 85 candies, the sample is the chocolate candies (`chocolate == 1`).
+
+```{r d-sugar}
+# EDIT: the population values for sugarpercent
+mu_sugar    <- 0    # REPLACE 0 with the mean of sugarpercent for all candies
+sigma_sugar <- 1    # REPLACE 1 with the SD of sugarpercent for all candies
+
+# EDIT: the sample
+choc <- candy       # REPLACE candy with a filter() call
+
+# EDIT: Cohen's d for sugarpercent
+d_sugar <- 0        # REPLACE 0 with the formula for d
+d_sugar
+```
+
+**Your answer (1b):** What is *d*, and how would you describe the size of the difference in sugar content in plain language?
+
+*(Type your answer here.)*
+
+---
+
+## 2) Statistically significant is not the same as big (5 min)
+
+IQ tests are designed so that the population mean is **mu = 100** and the population SD is **sigma = 15**. A company claims its brain-training app raises IQ. Suppose app users really do average **M = 101**.
+
+**Your answer (2a) — predict first:** The difference is 1 IQ point. Before running anything: is that a big effect? Will a study find it "statistically significant"?
+
+*(Type your prediction here.)*
+
+Now compute the effect size and the *z* statistic (the same *z* test as Discussion 7) for two different studies: one with 25 app users and one with 10,000.
+
+```{r big-n}
+mu <- 100
+sigma <- 15
+M <- 101
+
+# EDIT: Cohen's d for a z test is the difference between the means divided by the population SD
+d_app <- 0    # REPLACE 0 with the formula
+d_app
+
+# Study 1: n = 25
+SE_small <- sigma / sqrt(25)
+z_small <- (M - mu) / SE_small
+z_small
+
+# EDIT: Study 2: n = 10000. Compute the SE and the z statistic.
+SE_large <- 1    # REPLACE 1 with the SE formula
+z_large <- 0     # REPLACE 0 with the z formula
+z_large
+```
+
+**Your answer (2b):** With a two-tailed test at alpha = .05, the cutoffs are ±1.96. Which study rejects the null hypothesis? Did the effect size change between the two studies?
+
+*(Type your answer here.)*
+
+**Your answer (2c):** The company advertises "scientifically proven to raise IQ (*p* < .001)!" based on Study 2. In one sentence, what would you want a customer to know?
+
+*(Type your answer here.)*
+
+---
+
+## 3) Power: will your study find the effect? (8 min)
+
+**Power** is the probability of rejecting the null hypothesis when it really is false. We can estimate it by simulation: pretend the effect is real, run thousands of imaginary studies, and count how often they reach significance.
+
+Run this chunk once. It creates a function called `power_sim()`. You do not need to understand every line; the comments say what each step does.
+
+```{r power-function}
+power_sim <- function(n, d, alpha = 0.05) {
+  set.seed(211)                                  # so everyone gets the same answer
+  mu <- 100                                      # population mean under the null hypothesis
+  sigma <- 15                                    # population SD
+  true_mean <- mu + d * sigma                    # the REAL mean of the group we are studying
+  significant <- replicate(5000, {               # run 5,000 imaginary studies
+    M <- mean(rnorm(n, mean = true_mean, sd = sigma))   # collect a sample of size n
+    z <- (M - mu) / (sigma / sqrt(n))                   # z test against mu
+    abs(z) > qnorm(1 - alpha / 2)                       # was it significant (two-tailed)?
+  })
+  mean(significant)                              # proportion of studies that rejected H0
+}
+```
+
+**Example.** A real, medium-sized effect (*d* = 0.5) studied with 20 participants:
+
+```{r power-example}
+power_sim(n = 20, d = 0.5)
+```
+
+**Your answer (3a):** What is the power of this study? If the effect is real, what percentage of the time would a researcher with *n* = 20 **miss** it? What is that kind of mistake called?
+
+*(Type your answer here.)*
+
+**Your answer (3b) — predict first:** For each change below, will power go **up** or **down** compared with the example? Write your predictions before running the next chunk.
+
+1. Increase the sample size to *n* = 64.
+2. The true effect is small (*d* = 0.2) instead of medium.
+3. Use a stricter alpha of .01.
+
+*(Type your predictions here.)*
+
+```{r power-try}
+# 1. Larger sample
+power_sim(n = 64, d = 0.5)
+
+# 2. Smaller effect
+power_sim(n = 20, d = 0.2)
+
+# 3. Stricter alpha
+power_sim(n = 20, d = 0.5, alpha = 0.01)
+```
+
+**Your answer (3c):** Were your predictions right? For each one, explain **why** power changed, using what you know about standard error and critical values.
+
+*(Type your answer here.)*
+
+**How many participants do you need?** The convention is to aim for power of at least **.80**. Change `n` below until the power for a medium effect (*d* = 0.5) first reaches .80.
+
+```{r power-n}
+# EDIT: change n until power is at least .80
+power_sim(n = 20, d = 0.5)
+```
+
+**Your answer (3d):** About how many participants does this study need for 80% power? Now try *d* = 0.2 in the chunk above: roughly how many would you need to detect a **small** effect?
+
+*(Type your answer here.)*
+
+**Your answer (3e) — connect to your write-up:** Look at the *n* for each of your two groups in your Data Write-Up. If your *t* test next week is **not** significant, give two different explanations for that result.
+
+*(Type your answer here.)*
+
+---
+
+# Part B: Data Write-Up #1 — analysis plan & peer review (rest of section)
+
+Close this worksheet and open your group's `ps211_data_writeup1.Rmd`. Nothing in Part B is typed here except the peer-review notes at the end.
+
+> **One correction to the assignment file.** Part 5 of the template says to compute Cohen's *d* "from the formula in Lecture 11." That is out of date: Lecture 11 covered *d* for a single sample against a population (what you did in Part A today). The two-group version, which uses a **pooled SD**, is introduced in Lecture 14 (Thursday, Nov. 5), and Discussion 9 walks you through computing it for your own data. The formula hint in the template (the square root of the average of the two variances) is the shortcut for groups of **equal size**; if your two groups have different *n*s, use the pooled SD from Discussion 9 instead. You do not need *d* for anything you are doing today.
+
+## Step 1: Get your file running again (5 min)
+
+- Open the `ps211` project, then open your group's assignment file.
+- Run every chunk from the top (Run → Run All). If you get an error, check the "If you see this error" box at the top of the assignment.
+- Re-read your Parts 1–3. **Do not change your research question or hypotheses** now that you have seen the data.
+
+## Step 2: Finish Part 4 (10 min)
+
+- Mean, SD, and *n* for each group are computed in the `part4-descriptives` chunk, with the data frames named `group_1` and `group_2`.
+- The numbers are typed into the table.
+- The two histograms are made, and your assumption-check sentences describe the **shape** of each group and compare the two **SDs**.
+
+## Step 3: Peer review (10 min)
+
+Trade laptops (or files) with another group. Read their Parts 1–4 and answer the questions below about **their** write-up. Then tell them what you wrote.
+
+**Group you reviewed:**
+
+*(Names here.)*
+
+**Review (1): Research question.** Can it be answered by comparing exactly two groups (or two conditions) on one numeric DV? If not, what should change?
+
+*(Type your review here.)*
+
+**Review (2): Which *t* test.** Did they choose independent or paired? Based on how the data were collected (different people in each group, or the same people measured twice), is that the right choice?
+
+*(Type your review here.)*
+
+**Review (3): Hypotheses.** Are H0 and H1 both stated? If the test is one-tailed, is the direction justified by something other than the data?
+
+*(Type your review here.)*
+
+**Review (4): Descriptives.** Do the numbers in their table match the output of their code? Do their assumption-check sentences mention both shape and SDs?
+
+*(Type your review here.)*
+
+**Review (5):** One thing this group did well, and one specific suggestion.
+
+*(Type your review here.)*
+
+## Step 4: Revise (remaining time)
+
+Use the feedback you received to fix Parts 1–4. Save the file, and make sure everyone in the group knows whose computer it lives on.
+
+---
+
+# ✅ Before you leave
+
+- [ ] I computed Cohen's *d* from a sample mean, a population mean, and a population SD, and interpreted its size.
+- [ ] I can explain why a tiny effect can be statistically significant.
+- [ ] I can name three things that change a study's power, and in which direction.
+- [ ] Our group's Parts 1–4 are complete, and another group has reviewed them.
+
+**Next week (Discussion 9):** you'll practice *t* tests in R, learn the two-group version of Cohen's *d* (the pooled SD from Lecture 14), then run the test for your own data. Bring your group's assignment file.
