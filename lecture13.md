@@ -230,13 +230,20 @@ align: lt
 
 <p v-click>
 
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="36rem">
-For the paired test, the first move is always the same: compute a <b>difference score</b> for each participant (after − before, Condition 1 − Condition 2). Then the test is a single-sample t test on those differences.
-</SpeechBubble>
+- For the paired test, the first move is always the same: compute a **difference score** for each participant (after − before, Condition 1 − Condition 2). Then the test is a single-sample *t* test on those differences.
 
 </p>
 
 <p v-click><StickyNote color="amber-light" title="The 'participant' need not be a person" width="80%">A film rated on two websites, a candy tasted by the same panel twice, a city measured in two years: if the same unit produces both scores, the scores are paired.</StickyNote></p>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="70" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Two designs, two tests, one question to ask first: does each unit have <b>two</b> scores, or does each score come from a <b>different</b> unit?</SpeechBubble>
+</div>
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -283,31 +290,42 @@ Because the films are the same. A great film is rated high on both sites and a b
 </Admonition></p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-6-6
 ---
 
 :: title ::
 # A psychology example: the Stroop task
 
-:: content ::
+:: left ::
+
+<img src="/images/lecture13/stroop_task.png" alt="Congruent and incongruent Stroop items: color words printed in matching or mismatching ink" class="w-full mx-auto"/>
+
+<div class="text-sm mt-2">
+
+**Stroop interference**: people are slower to name the ink color when the word is an *incongruent* color name (RED printed in blue) than when it is *congruent* (RED in red). Try the right-hand panel out loud.
+
+</div>
+
+:: right ::
 
 <Admonition title="Question" color="teal-light" width="100%">
 
-You want to measure **Stroop interference**: people are slower to name the ink color of a word when the word is an incongruent color name (the word RED printed in blue) than when it is congruent (RED in red). How would you design this study so that a paired-samples *t* test is the right analysis?
+How would you design this study so that a paired-samples *t* test is the right analysis?
 
 </Admonition>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-- Have **each participant** complete both the congruent and the incongruent condition (in a counterbalanced order).
-- Record each participant's mean reaction time in each condition, then compute one difference score per person (incongruent − congruent).
-- Test whether the mean of those difference scores is different from 0.
+- Have **each participant** do both conditions (counterbalanced order).
+- Record each person's mean reaction time in each condition, then compute one difference score per person (incongruent − congruent).
+- Test whether the mean of those differences is different from 0.
 
 </Admonition></p>
 
-<p v-click><StickyNote color="amber-light" title="Why within-subjects here?" width="80%">People differ enormously in baseline speed. Comparing each person to themselves removes that difference entirely, so even a modest interference effect is easy to detect.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Why within-subjects here?" width="100%">People differ enormously in baseline speed. Comparing each person to themselves removes that difference entirely, so even a modest interference effect is easy to detect.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -321,7 +339,7 @@ columns: is-5-7
 
 :: left ::
 
-**Another distribution!** <img src="/images/lecture10/ohno.jpg" alt="Oh no" class="inline-block w-1/5 ml-2"/>
+<div class="flex items-center gap-4 mb-2"><span class="text-lg"><b>Another distribution!</b></span><img src="/images/lecture10/ohno.jpg" alt="Oh no" class="w-2/5 rounded-lg"/></div>
 
 The comparison distribution for a paired test is a **distribution of mean differences**. Imagine $H_0$ is true (the sites do not differ) and we:
 
@@ -678,7 +696,7 @@ A great film is rated high on both sites and a bad film low on both. The indepen
 
 </Admonition></p>
 
-<p v-click><StickyNote color="green-light" title="In Discussion 9" width="100%">You run exactly this contrast on the Pixar data: Rotten Tomatoes vs. Metacritic for the same 23 films. Paired: t(22) = 5.20, p &lt; .001. Wrong (independent) test: t(44) = 2.36, p = .023. Same means, half the t.</StickyNote></p>
+<p v-click><StickyNote color="green-light" title="In Discussion 9" width="100%">You run exactly this contrast on the Pixar data: Rotten Tomatoes vs. Metacritic for the same 23 films. Paired: t = 5.20 with df = 22, p &lt; .001. Wrong (independent) test: t = 2.36 with df = 44, p = .023. Same means, half the t.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -739,7 +757,7 @@ align: lt-lt-lt
 
 <Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-Twenty students take a memory test, sleep 8 hours, and take an equivalent test the next day. A paired *t* test gives $M_D = 2.1$ words (after − before), $t(19) = 2.40$, $p = .027$. Which statement is correct?
+Twenty students study a word list and take a recall test, sleep 8 hours, then take an equivalent test the next day. On average they recall **2.1 more words** after sleeping. A paired *t* test on the 20 difference scores gives $t = 2.40$ with df = 19, $p = .027$. Which statement is correct?
 
 - **A)** Students recalled significantly more words after sleep, by about 2 words on average.
 - **B)** df should be 38, because there are 40 test scores.
@@ -750,7 +768,7 @@ Twenty students take a memory test, sleep 8 hours, and take an equivalent test t
 
 <Admonition title="Answer" color="green-light" width="100%" v-click>
 
-**A.** df = number of *pairs* − 1 = 19 (B is wrong). The cutoff for df = 19 is ±2.09, not 2.776 \(C). (D) overclaims: it is a claim about the mean, and this design has no control group for the retest.
+**A.** df = number of *pairs* − 1 = 19, not 38 (B). The cutoff for df = 19 is ±2.09, not 2.776 \(C). (D) overclaims: the test is about the *mean* difference, and this design has no control group for the retest.
 
 </Admonition>
 
@@ -990,6 +1008,32 @@ align: lt
 ---
 
 :: title ::
+# Why does a standardized style matter?
+
+:: content ::
+
+- **Readers find the key numbers instantly.** Every paper puts the test, df, *p*, effect size and CI in the same place, in the same order. A reader can scan a results section in seconds.
+- **Nothing gets left out.** The template forces you to report the sample size (df), the direction, how big (*d*) and how precise (CI), not just "it was significant."
+- **Results can be checked.** From *t*(145) = 18.67 a reader can recompute *p* and judge the sample size; from *d* and the CI they can judge whether the effect matters.
+- **Results can be compared and combined.** Meta-analyses pool hundreds of studies, which only works because they all report the same quantities the same way.
+- **It signals care.** Sloppy reporting makes readers doubt the analysis behind it.
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-4">
+<IceCream :size="80" mood="shocked" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem">A warning: we <b>WILL</b> be sticklers about you sticking to this <b>EXACT</b> style in your Data Write-Up. Typos <b>WILL</b> be penalized. Make sure you hand in something extremely polished!</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
 # Preview: independent-samples *t* tests
 
 :: content ::
@@ -1028,6 +1072,42 @@ $$t = \frac{\text{observed difference} - \text{difference under } H_0}{SE}$$
 <p v-click>
 
 Everything else works the same way: *p* value, decision, confidence interval, Cohen's *d*.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Thursday: where that standard error comes from
+
+:: left ::
+
+- With two separate groups there is no difference score to take. Each group has its own mean, its own spread, and its own $n$.
+- The signal is $M_1 - M_2$. The noise must describe how much *that difference* would bounce around if we drew two new samples, so the SE has to combine the **spread of both groups** and the **size of both samples**.
+
+<p v-click>
+
+- On Thursday we build that SE step by step: how to **combine two sample variances into one noise estimate**, how that becomes the standard error of a difference between two means, and why $df = n_1 + n_2 - 2$.
+
+</p>
+
+:: right ::
+
+<p v-click><StickyNote color="amber-light" title="A preview of the logic" width="100%">Paired test: one sample of differences → one SD → one SE. Independent test: two samples → two SDs → one SE built from both. Same idea, one more ingredient.</StickyNote></p>
+
+<p v-click><StickyNote color="green-light" title="For tomorrow" width="100%">In Discussion 9 you only need to <b>run and read</b> the test; R computes the SE for you.</StickyNote></p>
+
+<p v-click>
+
+<div class="flex items-center gap-3 mt-3">
+<IceCream :size="70" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem">The six steps do not change. Only Step 3's recipe for the noise does.</SpeechBubble>
+</div>
 
 </p>
 
