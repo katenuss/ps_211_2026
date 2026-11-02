@@ -32,47 +32,294 @@ align: lt
   - Thursday (11/12): Exam 3 (covers Lectures 11–14)
 
 ---
+layout: section
+color: indigo-light
+align: lt
+---
+
+Before anything new...
+# Finishing Lecture 12: the single-sample *t* test
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Why s divides by n − 1, and why t needs df
+
+:: left ::
+
+- $s$ is built from the deviations $(X - M)$. But we computed $M$ from the *same* scores, so the deviations are not all free: they must add up to zero, and the last one is fixed by the others.
+- The n deviations therefore contain only **n − 1 independent pieces of information** about spread. Dividing by n − 1 averages over the information that is actually there. That is the "n − 1" from Lecture 5, explained.
+
+<p v-click><StickyNote color="amber-light" title="In one line" width="100%">Computing M from the data "uses up" one degree of freedom because it forces the last deviation. Divide by what is left: n − 1.</StickyNote></p>
+
+:: right ::
+
+<p v-click>
+
+- A single-sample *t* test estimates σ from one sample, so $df = n - 1$: 9 for the sleep study.
+- The df says how much information went into estimating σ, and therefore **which *t* distribution is the null world**: few df, heavy tails; many df, nearly the z distribution.
+
+</p>
+
+<p v-click><StickyNote color="green-light" title="Coming up" width="100%">Tests that estimate more things spend more df. The independent-samples t test estimates two means, so df = n₁ + n₂ − 2 (Lecture 14).</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Step 4 for a *t* test: critical values depend on df
+
+:: left ::
+
+- For z, the two-tailed α = .05 cutoffs are always ±1.96. For *t*, they come from the *t* distribution with our df. In R, `qt()` is the *t* version of `qnorm()`:
+
+<table class="compact-table text-sm">
+<thead><tr><th>df</th><th>Ask R</th><th>Cutoffs (α = .05, two-tailed)</th></tr></thead>
+<tbody>
+<tr><td>4</td><td><code>qt(0.975, 4)</code></td><td>±2.776</td></tr>
+<tr><td>10</td><td><code>qt(0.975, 10)</code></td><td>±2.228</td></tr>
+<tr><td>30</td><td><code>qt(0.975, 30)</code></td><td>±2.042</td></tr>
+<tr><td>129</td><td><code>qt(0.975, 129)</code></td><td>±1.979</td></tr>
+<tr><td>∞</td><td><code>qnorm(0.975)</code></td><td>±1.960</td></tr>
+</tbody>
+</table>
+
+<p v-click><StickyNote color="amber-light" title="Reading the table" width="100%">Smaller sample → heavier tails → cutoff <b>farther out</b>. A small study needs a bigger t to reject H₀: the price of estimating σ.</StickyNote></p>
+
+:: right ::
+
+<img src="/images/lecture12/t_crit_vs_df.png" alt="Critical t as a function of degrees of freedom" class="w-full mx-auto"/>
+
+<p v-click><StickyNote color="green-light" title="And for Route 2" width="100%">The p value is the area beyond our t in the t distribution with our df. In R, <code>pt()</code> does for t what <code>pnorm()</code> did for z: <code>2 * pt(-3.68, 9)</code> = .005 for Drug 2. You will never do this by hand; <code>t.test()</code> reports p directly.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# A brief aside: why is it called "Student's" *t*?
+
+:: left ::
+
+- The *t* distribution was worked out in 1908 by **William Sealy Gosset**, a chemist at the **Guinness brewery** in Dublin.
+- His problem was ours: judging batches of barley and hops from **small samples**, where "σ is known" fails. He needed a test that was honest about estimating σ from a handful of observations.
+- Guinness did not let employees publish, so he wrote as **"Student."** The worked example in his 1908 paper: the **same sleep data** we are using today.
+
+<p v-click><StickyNote color="amber-light" title="Moral" width="100%">The t test exists because a brewer wanted to make decisions from small samples without fooling himself. Heavier tails are the honesty.</StickyNote></p>
+
+:: right ::
+
+<img src="/images/lecture11/guinness.jpg" alt="Guinness" class="w-3/4 mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-2">Student. (1908). The probable error of a mean. <i>Biometrika, 6</i>(1), 1–25.</div>
+
+---
+layout: section
+color: indigo-light
+align: lt
+---
+
+Putting the pieces together...
+# The single-sample *t* test
+
+---
 layout: top-title
 color: indigo-light
 align: lt
 ---
 
 :: title ::
-# Last time: key terms
+# Six steps for a single-sample *t* test
 
 :: content ::
 
-<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
-<div>
+==Used to compare a sample mean to a population mean when σ is unknown.==
 
-**Single-sample *t* test** — compares a sample mean to a population mean when **σ is unknown**: the z test with the sample's s standing in for σ.
+<table class="compact-table text-sm">
+<thead><tr><th>Step</th><th>The question</th><th>z test</th><th>Single-sample <i>t</i> test</th></tr></thead>
+<tbody>
+<tr><td><b>1.</b> Populations, comparison distribution, assumptions</td><td>Who is being compared, and which test fits?</td><td>One sample mean vs. a population with known μ and σ</td><td>One sample mean vs. a population with known μ, <b>σ unknown</b></td></tr>
+<tr><td><b>2.</b> Hypotheses</td><td>What are the two competing claims?</td><td colspan="2">H₀: μ₁ = μ₂ &nbsp; H₁: μ₁ ≠ μ₂ (or &lt;, &gt;). Identical.</td></tr>
+<tr><td><b>3.</b> Characteristics of the comparison distribution</td><td>If H₀ were true, what results would we expect?</td><td>Center μ, spread SE = σ/√n, normal</td><td>Center μ, spread <b>s<sub>M</sub> = s/√n</b>, <b><i>t</i> distribution, df = n − 1</b></td></tr>
+<tr><td><b>4.</b> Critical values</td><td>How extreme is extreme enough?</td><td>α = .05, two-tailed → ±1.96</td><td>α = .05, two-tailed → <b>±t<sub>crit</sub> for our df</b></td></tr>
+<tr><td><b>5.</b> Test statistic</td><td>How far is our result from what H₀ predicts, compared to chance?</td><td>z = (M − μ) / SE</td><td><b>t = (M − μ) / s<sub>M</sub></b></td></tr>
+<tr><td><b>6.</b> Decision</td><td>Is it past the cutoff? What do we conclude?</td><td colspan="2">Reject or fail to reject H₀, then say it in plain English. Identical.</td></tr>
+</tbody>
+</table>
+
+<p v-click><StickyNote color="amber-light" title="Three changes, all in bold" width="90%">Step 1 names the situation (σ unknown), Step 3 adds s<sub>M</sub> and df, Steps 4 and 5 use t instead of z. Everything else is Lecture 9.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Worked example: Drug 2, σ unknown
+
+:: left ::
+
+Ten patients, extra hours of sleep on Drug 2: $M = 2.33$, $s = 2.00$. Does the drug change how much people sleep (μ = 0 means no effect)?
+
+<p v-click><Admonition title="Steps 1 to 4" color="green-light" width="100%">
+
+**1.** These patients vs. a population where the drug does nothing. One sample mean, μ known, σ **unknown** → **single-sample *t* test**. Assumptions: hours are numeric; n = 10 is small, so we rely on the population being roughly normal; no wild outliers (5.5 is the largest).
+
+**2.** $H_0$: $\mu = 0$. &nbsp; $H_1$: $\mu \neq 0$ (two-tailed).
+
+**3.** If $H_0$ is true: center 0, $s_M = 2.00/\sqrt{10} = 0.63$, *t* distribution with $df = 9$.
+
+**4.** α = .05, two-tailed, df = 9 → `qt(0.975, 9)` → cutoffs **±2.262**.
+
+</Admonition></p>
+
+:: right ::
+
+<p v-click><Admonition title="Steps 5 and 6" color="green-light" width="100%">
+
+**5.** $t = (2.33 - 0)/0.63 = 3.68$
+
+**6.** 3.68 is beyond 2.262 → **reject $H_0$**. Route 2: `2 * pt(-3.68, 9)` = .005 < .05. Patients slept significantly longer on Drug 2.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="What changed from a z test" width="100%">Step 3 uses s<sub>M</sub> (estimated) instead of SE (known), and the null world is t with df = 9, so the cutoff is 2.262 rather than 1.96. The same data would have been judged against a looser standard if we had pretended to know σ.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Confidence intervals and effect size with *t*
+
+:: left ::
+
+Both work exactly as before, with the *t* ingredients swapped in:
+
+$$CI = M \pm t_{crit} \times s_M$$
+
+$$d = \frac{M - \mu}{s}$$
+
+- $t_{crit}$ comes from `qt()` with our df (not 1.96).
+- For d, divide by the **sample SD**, our stand-in for σ.
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Compute the 95% CI and Cohen's d for Drug 2: $M = 2.33$, $s = 2.00$, $s_M = 0.63$, $t_{crit} = 2.262$.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+CI: $2.33 \pm 2.262 \times 0.63 = 2.33 \pm 1.43$ → **\[0.90, 3.76]** extra hours. Excludes 0, matching the test.
+
+$d = (2.33 - 0)/2.00 = 1.16$: a large effect. The drug added more than a full standard deviation's worth of sleep.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Width check" width="100%">With 1.96 in place of 2.262 the interval would be [1.09, 3.57]. The t-based interval is wider: the honest price of estimating σ from 10 people. With a large n the two are nearly identical.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Running a single-sample *t* test in R: t.test()
+
+:: left ::
+
+One function does Steps 3 to 6:
+
+```r
+sleep <- read_csv("sleep_data.csv")
+drug2 <- filter(sleep, drug == 2)
+
+t.test(drug2$extra, mu = 0)
+```
+
+<div class="text-base">
+
+- Give R the sample's scores and the population mean $H_0$ predicts (`mu`).
+- No σ needed. R estimates s, computes $s_M$, finds df, and reports t, p, and a CI.
 
 </div>
-<div>
 
-**Estimated standard error** — $s_M = s/\sqrt{n}$. Then $t = (M - \mu)/s_M$: how many estimated SEs the sample mean is from what $H_0$ predicts.
+<p v-click="2"><StickyNote color="amber-light" title="Same layout as z.test()" width="100%">If you can read the Lecture 10 output, you can read this one. The only new line is <code>df = 9</code>.</StickyNote></p>
+
+:: right ::
+
+```text
+	One Sample t-test
+
+data:  drug2$extra
+t = 3.6799, df = 9, p-value = 0.005076
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.8976775 3.7623225
+sample estimates:
+mean of x
+     2.33
+```
+
+<div v-click="1" class="text-base">
+
+- **t = 3.68**: Step 5. The mean is 3.68 estimated SEs above 0.
+- **df = 9**: which t distribution is the null world (n − 1).
+- **p-value = 0.005**: Step 6, Route 2. Below α = .05, so reject $H_0$.
+- **95% CI**: 0.90 to 3.76 extra hours. Excludes 0.
+- **mean of x**: *M* = 2.33. R does not print s or d; compute them separately.
 
 </div>
-<div>
 
-**t distribution** — the null world for t. Heavier tails than z (because s is only an estimate), one curve per **degrees of freedom** (df = n − 1). Cutoffs from `qt()`, p values from `pt()` or `t.test()`.
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
 
-</div>
-<div>
+:: title ::
+# Practice: is normal body temperature really 98.6°F?
 
-**Assumptions of parametric tests** — normality (the CLT usually covers it), equal variance, independence, no extreme outliers.
+:: left ::
 
-</div>
-</div>
+Everyone "knows" normal body temperature is 98.6°F. The number comes from Carl Wunderlich, who in 1868 compiled over a million armpit readings from 25,000 patients.
 
-<p v-click>
+In 1992, researchers at the University of Maryland measured the oral temperature of **130 healthy adults**:
 
-<div class="flex items-center gap-4 mt-6">
-<IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Today: the same test for <b>before-and-after</b> designs, then how to write any result up the way journals (and your Data Write-Up) expect.</SpeechBubble>
-</div>
+- $M = 98.25$°F, $s = 0.73$°F
 
-</p>
+==Is the true average body temperature 98.6°F, or is the famous number wrong?==
+
+<p v-click><StickyNote color="amber-light" title="How, not what" width="100%">These numbers are not meant for hand calculation. The next two slides ask <i>how</i> you would test this; R does the arithmetic.</StickyNote></p>
+
+<div class="text-xs text-gray-500 mt-2">Data: Mackowiak, P. A., Wasserman, S. S., & Levine, M. M. (1992). <i>JAMA, 268</i>(12), 1578–1580; dataset from Shoemaker (1996), <i>Journal of Statistics Education</i>.</div>
+
+:: right ::
+
+<img src="/images/lecture12/body_temp_hist.png" alt="Histogram of 130 body temperatures" class="w-full mx-auto"/>
 
 ---
 layout: top-title-two-cols
@@ -81,49 +328,39 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Warm-up: check your understanding
+# Body temperature: how would you test it?
 
 :: left ::
 
-Thursday's sleep study, **Drug 1** (the other form of the sedative): the same 10 patients' extra hours of sleep, tested against μ = 0.
-
-```text
-t = 1.3257, df = 9, p-value = 0.2176
-95 percent confidence interval:
- -0.5297804  2.0297804
-mean of x 
-     0.75 
-```
-
 <Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-With α = .05, two-tailed, what is the best conclusion?
+Which test, and why?
 
-- **A)** There is a 22% chance that $H_0$ is true.
-- **B)** Drug 1 significantly increased sleep, by 0.75 hours.
-- **C)** The test is invalid because n = 10 is too small.
-- **D)** We did not find evidence that Drug 1 changes sleep; 0 is inside the CI.
+- **A)** Single-sample *t* test: one sample mean vs. a claimed population mean (98.6), σ unknown.
+- **B)** z test: μ = 98.6 is known, so we have what we need.
+- **C)** Paired-samples *t* test: each person is compared with 98.6.
+- **D)** No test is needed: 98.25 is obviously different from 98.6.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** We know the claimed μ but not σ; 0.73 is the sample's s. (B) confuses knowing μ with knowing σ.
 
 </Admonition>
 
 :: right ::
 
-<Admonition title="Answer" color="green-light" width="100%" v-click>
-
-**D.** p = .22 > .05 and the CI \[−0.53, 2.03] contains 0. (A) misreads p. \(C): small n is exactly what df = 9 and the wider cutoff (±2.26) account for. Drug 2 worked; Drug 1, we cannot tell.
-
-</Admonition>
-
 <p v-click>
 
 <Admonition title="Multiple choice 2" color="teal-light" width="100%">
 
-Two single-sample *t* tests: n = 10 and n = 100. Which needs a **larger** t to reject $H_0$?
+If $H_0$ is true, what does the comparison distribution look like?
 
-- **A)** n = 100: more data, stricter standards.
-- **B)** Neither; the cutoff is always ±1.96.
-- **C)** n = 10: with df = 9 the t distribution has heavier tails, so the cutoff is farther from 0.
-- **D)** n = 10: small samples have larger standard errors.
+- **A)** Normal, centered on 98.25, spread 0.73.
+- **B)** *t* with df = 130, centered on 98.6, spread 0.73.
+- **C)** Normal, centered on 98.6, spread $0.73/\sqrt{130}$.
+- **D)** *t* with df = 129, centered on 98.6, spread $s_M = 0.73/\sqrt{130} \approx 0.064$.
 
 </Admonition>
 
@@ -131,9 +368,260 @@ Two single-sample *t* tests: n = 10 and n = 100. Which needs a **larger** t to r
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**C.** df = 9 → ±2.26; df = 99 → ±1.98. (D) is true but separate: a larger SE makes t *smaller*, a different reason small studies struggle to reject.
+**D.** Centered on what $H_0$ claims, with the spread of *means*, and a *t* distribution because σ was estimated. (A) describes the sample, not the null world. \(C) forgets that σ was estimated.
 
 </Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Body temperature: finishing the test
+
+:: left ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+How would you find the cutoffs (α = .05, two-tailed), and roughly what are they?
+
+- **A)** ±1.96, because every two-tailed test at α = .05 uses ±1.96.
+- **B)** From the *t* distribution with df = 129 (`qt(0.975, 129)`): ±1.98, almost the same as z because df is large.
+- **C)** ±2.262, the same as the sleep study.
+- **D)** They depend on M, so they cannot be found until t is computed.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**B.** Cutoffs come from the null world, which depends on df, not on the data. With 129 df the t curve is nearly normal.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+R reports `t = -5.45, df = 129, p-value = 2.4e-07`. What does t = −5.45 mean?
+
+- **A)** The sample mean is 5.45 degrees below 98.6.
+- **B)** 5.45% of people have a temperature below 98.6.
+- **C)** The sample mean is 5.45 *estimated standard errors* below 98.6: far beyond −1.98, so reject $H_0$.
+- **D)** The test is invalid because t is negative.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**C.** t counts standard errors, not degrees. The sign only says which direction.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Body temperature: the result
+
+:: left ::
+
+```text
+	One Sample t-test
+
+data:  temps$temperature
+t = -5.4548, df = 129, p-value = 2.411e-07
+alternative hypothesis: true mean is not equal to 98.6
+95 percent confidence interval:
+ 98.12200 98.37646
+sample estimates:
+mean of x 
+ 98.24923 
+```
+
+<div class="text-base mt-2">
+
+- **Step 6:** −5.45 is far beyond −1.98, and p < .05 → **reject $H_0$**. Normal body temperature is significantly lower than 98.6°F.
+- Plausible values for the true mean: 98.12 to 98.38. 98.6 is not among them. Wunderlich's thermometers read high.
+
+</div>
+
+:: right ::
+
+<img src="/images/lecture12/null_world_bodytemp.png" alt="The t distribution with df = 129 and the observed t" class="w-10/12 mx-auto"/>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+The difference is only 0.35 degrees. How can that be so significant? And is it a big effect?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Lecture 11: n = 130 makes $s_M$ tiny (0.064), so a small difference is 5.5 SEs from 98.6. The effect size is $d = -0.35/0.73 = -0.48$: medium. Real, and big enough to matter when you decide whether someone has a fever.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Preview: Discussion 9, test 1 of 3
+
+:: left ::
+
+Tomorrow's worksheet runs all three *t* tests on the Pixar data from Discussions 1–3. The first is a single-sample test: Rotten Tomatoes calls a film "Fresh" at 60 or above. **Is the average Pixar film's score different from 60?**
+
+```r
+pixar <- read_csv("pixar_data.csv")
+
+# By hand first (you fill in SE and t)
+M <- mean(pixar$rotten_tomatoes)
+s <- sd(pixar$rotten_tomatoes)
+n <- nrow(pixar)
+
+# Then let R do it
+t.test(pixar$rotten_tomatoes, mu = 60)
+```
+
+<div class="text-xs text-gray-500 mt-1">Data: 23 Pixar films; pixarfilms R package (Wikipedia, Metacritic, Rotten Tomatoes).</div>
+
+:: right ::
+
+```text
+	One Sample t-test
+
+data:  pixar$rotten_tomatoes
+t = 9.8852, df = 22, p-value = 1.489e-09
+alternative hypothesis: true mean is not equal to 60
+95 percent confidence interval:
+ 83.05332 95.29451
+sample estimates:
+mean of x 
+ 89.17391 
+```
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Where does df = 22 come from? What is the decision?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+23 films − 1. $t = 9.89$ is far beyond the cutoff for df = 22 (±2.07), and p = 0.0000000015 → reject: Pixar films average well above "Fresh" (89, CI 83 to 95). How to write a p value like that properly comes later today (APA style).
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Multiple choice practice: z or *t*?
+
+:: left ::
+
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
+
+A coffee chain claims its lattes contain 150 mg of caffeine on average. You test 12 lattes and find $M = 162$ mg, $s = 18$ mg. Which test, and why?
+
+- **A)** z test, because you know the population mean.
+- **B)** z test, because you have the standard deviation.
+- **C)** *t* test, because you are comparing a sample mean to a population mean and do not know σ.
+- **D)** Neither; n = 12 is too small for any test.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** The 18 mg is the *sample's* SD, an estimate. (D) is wrong: small n is exactly what the t distribution is for; it just uses a wider cutoff (df = 11 → ±2.20).
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+Your friend computes $t = (162 - 150)/18 = 0.67$ and concludes the claim holds. What is wrong?
+
+- **A)** Nothing; the conclusion is correct.
+- **B)** The denominator should be $18/\sqrt{12} = 5.2$, the estimated standard error, giving $t = 2.31$.
+- **C)** The numerator should be 150 − 162.
+- **D)** She should have divided by 11 instead of 18.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** A *mean* is compared with the spread of *means* (the standard error), not with the spread of individual scores. With $t = 2.31$ and a cutoff of ±2.20 (df = 11), we reject: these lattes have more caffeine than claimed.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Key terms from Lecture 12 (now complete)
+
+:: content ::
+
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div>
+
+**Parametric test** — assumes the data follow a distribution with known parameters (normality, equal variance, independence, no extreme outliers). More power, if the assumptions hold.
+
+</div>
+<div>
+
+**Single-sample *t* test** — compares a sample mean to a population mean when **σ is unknown**. The z test with s in place of σ.
+
+</div>
+<div>
+
+**Estimated standard error** — $s_M = s/\sqrt{n}$. The spread of the distribution of means, estimated from the sample.
+
+</div>
+<div>
+
+**t statistic** — $t = (M - \mu)/s_M$. How many estimated SEs the sample mean is from what $H_0$ predicts.
+
+</div>
+<div>
+
+**t distribution** — the null world for t: like z but with heavier tails, one curve per df. Approaches z as n grows. Cutoffs from `qt()`, p values from `pt()`.
+
+</div>
+<div>
+
+**Degrees of freedom** — scores free to vary after estimating from the sample. Single sample: df = n − 1. Picks which t distribution is the null world.
+
+</div>
+</div>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="70%">Next: the same test for <b>before-and-after</b> designs (the paired-samples t test), plus how to write up any result in APA style.</StickyNote></p>
 
 ---
 layout: top-title
@@ -151,7 +639,7 @@ All three ask the same question: did these means come from the same population? 
 
 <div class="mt-0 w-full flex justify-center">
 <div class="bg-blue-100 border-2 border-blue-300 rounded-lg shadow-md p-3 transform">
-  Last Thursday: the sleeping drug, body temperature. (The drug's "extra hours of sleep" were difference scores already: drug night − no-drug night.)
+  Just now: the sleeping drug, body temperature. (The drug's "extra hours of sleep" were difference scores already: drug night − no-drug night.)
 </div>
 </div>
 
@@ -623,37 +1111,6 @@ columns: is-6-6
 ---
 
 :: title ::
-# What the 146 difference scores look like
-
-:: left ::
-
-<img src="/images/lecture13/fandango_diff_hist.png" alt="Histogram of Fandango minus IMDb difference scores" class="w-full mx-auto"/>
-
-:: right ::
-
-- Only **10 of 146** films scored lower on Fandango than on IMDb. The typical film got about three-quarters of a star more.
-- $d = 1.54$: the average difference is one and a half SDs of difference. Enormous.
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
-
-Five films gave t = 3.86 and a CI of \[0.18, 1.08]. All 146 gave t = 18.67 and \[0.64, 0.80]. The effect size barely changed (1.73 vs. 1.54). What did the extra films buy us?
-
-</Admonition></p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-**Precision.** The SE fell from 0.163 to 0.039, so the interval is a quarter as wide and the t statistic is five times larger. Lecture 11 again: n changes the test statistic and the CI, not the effect size.
-
-</Admonition></p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
-columns: is-6-6
----
-
-:: title ::
 # What if you forget paired = TRUE?
 
 :: left ::
@@ -697,52 +1154,6 @@ A great film is rated high on both sites and a bad film low on both. The indepen
 </Admonition></p>
 
 <p v-click><StickyNote color="green-light" title="In Discussion 9" width="100%">You run exactly this contrast on the Pixar data: Rotten Tomatoes vs. Metacritic for the same 23 films. Paired: t = 5.20 with df = 22, p &lt; .001. Wrong (independent) test: t = 2.36 with df = 44, p = .023. Same means, half the t.</StickyNote></p>
-
----
-layout: top-title-two-cols
-color: indigo-light
-align: lt-lt-lt
-columns: is-6-6
----
-
-:: title ::
-# Practice: does Fandango round up?
-
-:: left ::
-
-Hickey's second finding: Fandango's page showed each film's stars **and**, hidden in the page's code, its actual average rating. The stars seemed to always round *up*.
-
-<img src="/images/lecture13/fandango_roundup.png" alt="Stars displayed minus actual rating for 146 films" class="w-10/12 mx-auto"/>
-
-```text
-	Paired t-test: fandango_stars and actual_rating
-t = 19.299, df = 145, p-value < 2.2e-16
-95 percent confidence interval:
- 0.2188638 0.2688075
-sample estimates:
-mean difference 
-      0.2438356 
-```
-
-:: right ::
-
-<Admonition title="Question" color="teal-light" width="100%">
-
-With your neighbors: (1) Why is this a paired test? (2) State $H_0$ and $H_1$ in words. (3) Step 6: what do you decide, by Route 2, and what does it mean?
-
-</Admonition>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-(1) Each film supplies both numbers: the stars shown and its actual rating. Same unit, two scores.
-
-(2) $H_0$: on average, stars shown = actual rating ($\mu_D = 0$). $H_1$: they differ.
-
-(3) p < .001, so reject $H_0$. Displayed stars are significantly higher than the actual ratings: on average by 0.24 stars (95% CI \[0.22, 0.27]), and never lower for a single film. Fandango was rounding up.
-
-</Admonition></p>
-
-<p v-click><StickyNote color="amber-light" title="Afterward" width="100%">FiveThirtyEight published this in October 2015. Fandango said the rounding was a bug and fixed it.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -989,7 +1400,7 @@ Patients given Drug 2 slept significantly longer than on nights without it (*M* 
 
 <p v-click><Admonition title="Practice 2: write the sentence" color="teal-light" width="100%">
 
-Fandango's rounding: stars shown (*M* = 4.09, *SD* = 0.54) vs. actual rating (*M* = 3.85, *SD* = 0.50), *t*(145) = 19.30, *p* < .001, *d* = 1.60, 95% CI \[0.22, 0.27]. Write the APA sentence.
+Hickey's second finding: each film's page showed its stars and, hidden in the page code, its actual average rating. Paired test on the 146 films: stars shown (*M* = 4.09, *SD* = 0.54) vs. actual rating (*M* = 3.85, *SD* = 0.50), *t*(145) = 19.30, *p* < .001, *d* = 1.60, 95% CI \[0.22, 0.27]. Write the APA sentence.
 
 </Admonition></p>
 
