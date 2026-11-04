@@ -297,7 +297,7 @@ align: lt
 <table class="compact-table text-sm">
 <thead><tr><th>Test</th><th>Signal (numerator)</th><th>Spread of scores</th><th>Standard error (spread of the null world)</th><th>Null world</th></tr></thead>
 <tbody>
-<tr><td><b>z test</b> (L10)</td><td>M − μ</td><td>σ, <b>known</b></td><td>SE = σ / √n</td><td>normal: cutoffs ±1.96</td></tr>
+<tr><td><b>z test</b> (L10)</td><td>M − μ</td><td>σ, <b>known</b></td><td>SE = σ / √n</td><td>normal (z)</td></tr>
 <tr><td><b>Single-sample <i>t</i></b> (L12)</td><td>M − μ</td><td>s, estimated (÷ n − 1)</td><td>s<sub>M</sub> = s / √n</td><td><i>t</i>, df = n − 1</td></tr>
 <tr><td><b>Paired-samples <i>t</i></b> (L13)</td><td>M<sub>D</sub> − 0</td><td>s<sub>D</sub>, the SD of the difference scores</td><td>s<sub>M</sub> = s<sub>D</sub> / √n &nbsp;(n = number of pairs)</td><td><i>t</i>, df = n − 1</td></tr>
 <tr><td><b>Independent-samples <i>t</i></b> (today)</td><td>(M₁ − M₂) − 0</td><td>s₁ and s₂: <b>two</b> sample SDs</td><td><b>?</b> &nbsp;(today's job: one SE built from both groups)</td><td><i>t</i>, df = n₁ + n₂ − 2</td></tr>
@@ -380,7 +380,7 @@ The null world is a distribution of differences between <b>two</b> independent g
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
-columns: is-5-7
+columns: is-6-6
 ---
 
 :: title ::
@@ -388,14 +388,18 @@ columns: is-5-7
 
 :: left ::
 
-So far: one sample vs. a **known population**. Usually there is none, just **two samples**.
+<div class="text-[15px] leading-snug">
 
-Friendly & Franklin (1980): participants learned a **40-word list** over several study-then-recall trials.
+Until now, every test compared **one set of scores** with a known value (μ, or 0). Now there is no known value, just **two separate samples**.
 
-- **Standard order (SFR, n = 10):** reshuffled every trial.
-- **Recalled words first (n = 10):** each new trial showed the words you had just recalled first, then the ones you missed.
+Friendly & Franklin (1980): **20 people**, each assigned to **one** of two conditions, learned a **40-word list** over several study-then-recall trials. Two separate groups of 10, each person measured once:
+
+- **Standard free recall (SFR, n = 10):** the list reshuffled every trial (the usual procedure).
+- **Recalled words first (n = 10):** a *different* 10 people; each new trial showed the words just recalled first, then the ones missed.
 
 ==Does seeing your recalled words first help you learn the rest?==
+
+</div>
 
 <div class="text-xs text-gray-500 mt-1">Friendly &amp; Franklin (1980), <i>Memory &amp; Cognition, 8</i>, 265–270; data via the carData R package.</div>
 
@@ -481,7 +485,7 @@ align: lt
 ---
 
 :: title ::
-# Step 3: the standard error of the difference, in three moves
+# Step 3: the standard error, in three moves
 
 :: content ::
 
@@ -491,15 +495,15 @@ $$s^2_{pooled} = \frac{df_1}{df_{total}}\, s^2_1 + \frac{df_2}{df_{total}}\, s^2
 
 <p v-click>
 
-2. **Turn it into the variance of a mean, twice, and add.** Each group's mean has variance $s^2_{pooled}/n$. A *difference* between two independent means wobbles more than either mean alone, so the two uncertainties add:
+2. **Turn it into the variance of a mean, twice, and add.** Each group's mean has variance $s^2_{pooled}/n$ (the $s^2/n$ move from before). A *difference* between two independent means wobbles more than either mean alone, so the two add. The result is the variance of **mean differences**, not of scores: a squared standard error.
 
-$$s^2_{difference} = \frac{s^2_{pooled}}{n_1} + \frac{s^2_{pooled}}{n_2}$$
+$$SE^2_{difference} = \frac{s^2_{pooled}}{n_1} + \frac{s^2_{pooled}}{n_2}$$
 
 </p>
 
 <p v-click>
 
-3. **Take the square root:** $SE_{difference} = \sqrt{s^2_{difference}}$. This is the spread of the null world.
+3. **Take the square root:** $SE_{difference} = \sqrt{SE^2_{difference}}$. This is the spread of the null world. For one mean, $\sqrt{s^2/n}$ is just $s/\sqrt{n}$ written differently; we go through variances here because **variances add and SDs do not**.
 
 </p>
 
@@ -553,7 +557,7 @@ align: lt
 <table class="compact-table text-sm">
 <thead><tr><th>Test</th><th>Signal (numerator)</th><th>Spread of scores</th><th>Standard error (spread of the null world)</th><th>Null world</th></tr></thead>
 <tbody>
-<tr><td><b>z test</b> (L10)</td><td>M − μ</td><td>σ, <b>known</b></td><td>SE = σ / √n</td><td>normal: cutoffs ±1.96</td></tr>
+<tr><td><b>z test</b> (L10)</td><td>M − μ</td><td>σ, <b>known</b></td><td>SE = σ / √n</td><td>normal (z)</td></tr>
 <tr><td><b>Single-sample <i>t</i></b> (L12)</td><td>M − μ</td><td>s, estimated (÷ n − 1)</td><td>s<sub>M</sub> = s / √n</td><td><i>t</i>, df = n − 1</td></tr>
 <tr><td><b>Paired-samples <i>t</i></b> (L13)</td><td>M<sub>D</sub> − 0</td><td>s<sub>D</sub>, the SD of the difference scores</td><td>s<sub>M</sub> = s<sub>D</sub> / √n &nbsp;(n = number of pairs)</td><td><i>t</i>, df = n − 1</td></tr>
 <tr><td><b>Independent-samples <i>t</i></b> (today)</td><td>(M₁ − M₂) − 0</td><td>s₁ and s₂, pooled into s²<sub>pooled</sub></td><td><b>SE<sub>difference</sub> = √( s²<sub>pooled</sub>/n₁ + s²<sub>pooled</sub>/n₂ )</b></td><td><i>t</i>, df = n₁ + n₂ − 2</td></tr>
@@ -566,6 +570,41 @@ align: lt
 - Signal ÷ noise, as always: $t = (M_1 - M_2) / SE_{difference}$.
 
 </p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Two more things to report: the CI and Cohen's d
+
+:: left ::
+
+Same recipes as for every test so far, with the independent-samples ingredients. We will compute both for the worked example:
+
+$$CI = (M_1 - M_2) \pm t_{crit} \times SE_{difference}$$
+
+$$d = \frac{M_1 - M_2}{s_{pooled}}, \qquad s_{pooled} = \sqrt{s^2_{pooled}}$$
+
+- The CI is a range of plausible values for the **population difference** $\mu_1 - \mu_2$. Excludes 0 ⇔ the test rejects.
+- For d, divide by the **pooled SD**, our best estimate of how much individual scores vary.
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Your Data Write-Up template computes d with the pooled SD. Why not the SD of one group, or of all scores lumped together?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+One group's SD ignores half the data. Lumping both groups together inflates the SD with the very difference you are measuring (the two means pull the scores apart). The pooled SD uses all the data while measuring spread *within* groups.
+
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -616,53 +655,116 @@ columns: is-6-6
 ---
 
 :: title ::
-# Worked example: ten people per group
+# Worked example: five people per group
 
 :: left ::
 
-<table class="compact-table text-xs">
-<thead><tr><th>Standard order</th><th>X − M</th><th>(X − M)²</th><th>Recalled first</th><th>X − M</th><th>(X − M)²</th></tr></thead>
+To do it by hand, take **five people from each group** (all twenty come back in R):
+
+<table class="compact-table text-sm">
+<thead><tr><th>Standard order</th><th>X − M₁</th><th>(X − M₁)²</th><th>Recalled first</th><th>X − M₂</th><th>(X − M₂)²</th></tr></thead>
 <tbody>
-<tr><td>39</td><td>8.7</td><td>75.69</td><td>40</td><td>3.4</td><td>11.56</td></tr>
-<tr><td>25</td><td>−5.3</td><td>28.09</td><td>38</td><td>1.4</td><td>1.96</td></tr>
-<tr><td>37</td><td>6.7</td><td>44.89</td><td>39</td><td>2.4</td><td>5.76</td></tr>
-<tr><td>25</td><td>−5.3</td><td>28.09</td><td>37</td><td>0.4</td><td>0.16</td></tr>
-<tr><td>29</td><td>−1.3</td><td>1.69</td><td>39</td><td>2.4</td><td>5.76</td></tr>
-<tr><td>39</td><td>8.7</td><td>75.69</td><td>24</td><td>−12.6</td><td>158.76</td></tr>
-<tr><td>21</td><td>−9.3</td><td>86.49</td><td>30</td><td>−6.6</td><td>43.56</td></tr>
-<tr><td>39</td><td>8.7</td><td>75.69</td><td>39</td><td>2.4</td><td>5.76</td></tr>
-<tr><td>24</td><td>−6.3</td><td>39.69</td><td>40</td><td>3.4</td><td>11.56</td></tr>
-<tr><td>25</td><td>−5.3</td><td>28.09</td><td>40</td><td>3.4</td><td>11.56</td></tr>
-<tr><td><b>M₁ = 30.3</b></td><td></td><td><b>SS₁ = 484.1</b></td><td><b>M₂ = 36.6</b></td><td></td><td><b>SS₂ = 256.4</b></td></tr>
+<tr><td>21</td><td>−6</td><td>36</td><td>30</td><td>−7</td><td>49</td></tr>
+<tr><td>25</td><td>−2</td><td>4</td><td>38</td><td>1</td><td>1</td></tr>
+<tr><td>25</td><td>−2</td><td>4</td><td>39</td><td>2</td><td>4</td></tr>
+<tr><td>25</td><td>−2</td><td>4</td><td>39</td><td>2</td><td>4</td></tr>
+<tr><td>39</td><td>12</td><td>144</td><td>39</td><td>2</td><td>4</td></tr>
+<tr><td><b>M₁ = 27</b></td><td></td><td><b>SS₁ = 192</b></td><td><b>M₂ = 37</b></td><td></td><td><b>SS₂ = 62</b></td></tr>
 </tbody>
 </table>
 
-<p v-click><Admonition title="Steps 1 and 2" color="green-light" width="100%">
+<div class="text-sm text-gray-600 mt-1">Sum each group, divide by 5 for the mean; subtract the mean from each score; square; add up.</div>
 
-**1.** Two separate groups, one score each → independent-samples *t* test. Words recalled is numeric; spreads are similar-ish (SDs 7.3 and 5.3); n = 10 per group is small, so we lean on normality.
+:: right ::
 
-**2.** $H_0$: $\mu_1 = \mu_2$. &nbsp; $H_1$: $\mu_1 \neq \mu_2$ (two-tailed).
+<p v-click><Admonition title="Step 1: which test, and are the assumptions OK?" color="green-light" width="100%">
+
+Two separate groups, one score each → **independent-samples *t* test**. Words recalled is numeric. Spreads: SDs 6.9 and 3.9, within a factor of two. n = 5 per group is tiny, so we lean on the population being roughly normal.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Step 2: hypotheses" color="green-light" width="100%">
+
+$H_0$: $\mu_1 = \mu_2$ (the method makes no difference). &nbsp; $H_1$: $\mu_1 \neq \mu_2$ (two-tailed).
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Signal, so far" width="100%">The means differ by 37 − 27 = <b>10 words</b>. Steps 3 to 5 ask: is 10 words a lot, relative to how much two groups of five would differ by chance?</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Step 3, move 1: each group's variance, then pool
+
+:: left ::
+
+Each group's variance is its SS divided by its df, $n - 1 = 4$:
+
+- Standard order: $s_1^2 = 192 / 4 = 48.0$
+- Recalled first: $s_2^2 = 62 / 4 = 15.5$
+
+<p v-click>
+
+Pool them. With equal n, the df-weighted average is just the average:
+
+$$s^2_{pooled} = \frac{4 \times 48.0 + 4 \times 15.5}{8} = \frac{48.0 + 15.5}{2} = 31.75$$
+
+</p>
+
+:: right ::
+
+<p v-click><Admonition title="What is this number?" color="green-light" width="100%">
+
+31.75 is our single best estimate of how much **individual scores** vary within a group, using both groups' data. Its square root, $s_{pooled} = \sqrt{31.75} = 5.63$ words, is the pooled SD. We will need it again for Cohen's d.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Check the pooling" width="100%">31.75 sits between 15.5 and 48.0, as a pooled variance always must. If yours does not, something went wrong.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Step 3, moves 2 and 3: the standard error
+
+:: left ::
+
+**Move 2.** Turn the variance of scores into the variance of a *mean*, once per group, and add:
+
+$$SE^2_{difference} = \frac{31.75}{5} + \frac{31.75}{5} = 6.35 + 6.35 = 12.7$$
+
+<p v-click>
+
+**Move 3.** Take the square root:
+
+$$SE_{difference} = \sqrt{12.7} = 3.56 \text{ words}$$
+
+</p>
+
+<p v-click><Admonition title="The null world, described" color="green-light" width="100%">
+
+If the method did nothing: differences between two group means would be centered on **0**, spread out with SD **3.56 words**, shaped like a ***t* distribution with df = 5 + 5 − 2 = 8**.
 
 </Admonition></p>
 
 :: right ::
 
-<p v-click><Admonition title="Step 3: describe the null world" color="green-light" width="100%">
+<p v-click><Admonition title="What does 3.56 words mean?" color="green-light" width="100%">
 
-Each group's variance: its SS ÷ its df (9):
-
-- Standard order: $s_1^2 = 484.1/9 = 53.8$
-- Recalled first: $s_2^2 = 256.4/9 = 28.5$
-
-Pool (equal n, so just average): $s^2_{pooled} = (53.8 + 28.5)/2 = 41.1$
-
-$$SE_{difference} = \sqrt{\frac{41.1}{10} + \frac{41.1}{10}} = \sqrt{8.23} = 2.87$$
-
-Null world: center 0, spread 2.87, *t* with df = 10 + 10 − 2 = 18.
+It is how far apart two groups of five would **typically** land *if the method did nothing*: run the experiment over and over with no real effect, and the difference between the two means would usually be within about 3.6 words of zero. Our observed difference, 10 words, is going to be judged against that.
 
 </Admonition></p>
 
-<p v-click><StickyNote color="amber-light" title="Check the pooling" width="100%">41.1 sits between 28.5 and 53.8, as a pooled variance always must. If yours does not, something went wrong.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Compare" width="100%">The pooled SD (5.63) is the spread of <i>people</i>. The SE (3.56) is the spread of <i>differences between means</i>. Smaller, because means average out individual noise, and because there are five people behind each mean.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -676,45 +778,106 @@ columns: is-5-7
 
 :: left ::
 
-<Admonition title="Step 4" color="green-light" width="100%">
+<Admonition title="Step 4: cutoffs" color="green-light" width="100%">
 
-df = 18, α = .05, two-tailed → `qt(0.975, 18)` → cutoffs **±2.101**.
+df = 8, α = .05, two-tailed → `qt(0.975, 8)` → cutoffs **±2.306**. Small df, so farther out than 1.96.
 
 </Admonition>
 
-<p v-click><Admonition title="Step 5" color="green-light" width="100%">
+<p v-click><Admonition title="Step 5: the test statistic" color="green-light" width="100%">
 
-$$t = \frac{M_2 - M_1}{SE_{difference}} = \frac{36.6 - 30.3}{2.87} = 2.20$$
+$$t = \frac{M_2 - M_1}{SE_{difference}} = \frac{37 - 27}{3.56} = 2.81$$
 
-</Admonition></p>
-
-<p v-click><Admonition title="Step 6" color="green-light" width="100%">
-
-2.20 **is** beyond 2.101 → **reject $H_0$**. Route 2: p = .041. Showing people their recalled words first helped them learn the rest.
+The observed difference is 2.8 standard errors from what $H_0$ predicts.
 
 </Admonition></p>
 
-<p v-click><Admonition title="CI and effect size" color="green-light" width="100%">
+<p v-click><Admonition title="Step 6: decide" color="green-light" width="100%">
 
-CI: $6.3 \pm 2.101 \times 2.87$ → **\[0.3, 12.3]** words. Excludes 0, barely.
-
-$d = 6.3 / \sqrt{41.1} = 6.3/6.41 = 0.98$: a large effect.
+2.81 **is** beyond 2.306 → **reject $H_0$**. Route 2: p = .023 < .05. Seeing their recalled words first helped people learn the rest.
 
 </Admonition></p>
 
 :: right ::
 
-<img src="/images/lecture14/null_world_recall.png" alt="t distribution with df = 18, cutoffs, and the observed t" class="w-full mx-auto"/>
+<img src="/images/lecture14/null_world_recall5.png" alt="t distribution with df = 8, cutoffs ±2.306, and the observed t = 2.81" class="w-full mx-auto"/>
 
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
+<p v-click><StickyNote color="amber-light" title="Reading the picture" width="100%">If the method did nothing, a t this far from 0 would happen about 2.3% of the time. Rare enough that we conclude the method does something.</StickyNote></p>
 
-The effect is large (d ≈ 1) and significant, yet the CI runs from a third of a word to twelve words. What does that tell us?
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# The confidence interval, step by step
+
+:: left ::
+
+$$CI = (M_2 - M_1) \pm t_{crit} \times SE_{difference}$$
+
+1. The observed difference: $37 - 27 = 10$ words.
+2. The cutoff for our df: $t_{crit} = 2.306$ (the same number as Step 4).
+3. The standard error: $3.56$ words (from Step 3).
+
+<p v-click>
+
+$$10 \pm 2.306 \times 3.56 = 10 \pm 8.2 \;\rightarrow\; \textbf{[1.8, 18.2] words}$$
+
+</p>
+
+:: right ::
+
+<p v-click><Admonition title="What it means" color="green-light" width="100%">
+
+The interval is **centered on our observed difference, 10 words**, and stretches 8.2 words either way: the plausible values for the **true** benefit run from about **2 to 18 words**. The observed difference is always inside its own CI; the question is whether **0** is inside too. Here it is not, which is the same verdict as the test (it always is: CI excludes 0 ⇔ reject $H_0$).
 
 </Admonition></p>
 
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
+<p v-click><Admonition title="Why so wide?" color="green-light" width="100%">
 
-The study is precise enough to say the method helps, not how *much*. With 10 per group, power for an effect this size is only about **0.55**: a near coin flip. A replication could easily land on "not significant." Small samples give wide intervals.
+Two groups of five. The interval's half-width is $t_{crit} \times SE$, and both pieces are large when n is small: a far-out cutoff (2.306) times a big SE (3.56). We can say the method helps; we cannot say whether it helps by 2 words or by 18.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Cohen's d, step by step
+
+:: left ::
+
+$$d = \frac{M_2 - M_1}{s_{pooled}}$$
+
+1. The observed difference: $10$ words.
+2. The pooled **SD** (not the SE!): $s_{pooled} = \sqrt{31.75} = 5.63$ words, from Step 3.
+
+<p v-click>
+
+$$d = \frac{10}{5.63} = 1.78$$
+
+</p>
+
+<p v-click><StickyNote color="amber-light" title="SD, not SE" width="100%">d divides by how much <i>people</i> differ (5.63), not by how much <i>means</i> differ (3.56). That is why d does not shrink or grow with n, while t and the CI do.</StickyNote></p>
+
+:: right ::
+
+<p v-click><Admonition title="What it means" color="green-light" width="100%">
+
+The two group means are **1.8 standard deviations apart**. By Cohen's conventions (0.2 small, 0.5 medium, 0.8 large) that is very large: the typical person in the recalled-first group remembered more words than almost everyone in the standard group.
+
+</Admonition></p>
+
+<p v-click><Admonition title="Putting the two together" color="green-light" width="100%">
+
+**d says: big.** **The CI says: we are not sure how big.** Both are true. With five per group the estimate of the effect is itself noisy; with all twenty people (next slide) d comes out at 0.98, still large, and the interval narrows.
 
 </Admonition></p>
 
@@ -726,7 +889,7 @@ columns: is-5-7
 ---
 
 :: title ::
-# The same test in R: t.test(..., var.equal = TRUE)
+# All twenty people in R: t.test(..., var.equal = TRUE)
 
 :: left ::
 
@@ -777,9 +940,9 @@ mean of x mean of y
 
 <div v-click="1" class="text-base">
 
-- **t = 2.20, df = 18**: exactly our hand computation. R put `before` first, so the difference is 36.6 − 30.3.
+- **t = 2.20, df = 18**: the same test on all 20 people (by hand, five per group, we got t = 2.81 with df = 8). R put `before` first, so the difference is 36.6 − 30.3 = 6.3.
 - **p-value = 0.041** < .05 → **reject $H_0$**.
-- **95% CI**: the true benefit is plausibly **0.3 to 12.3 words**. R prints seven decimals; report two.
+- **95% CI**: the true benefit is plausibly **0.3 to 12.3 words**: narrower than the five-per-group interval, as more data should give. R prints seven decimals; report two.
 - No SDs and no d: compute them yourself, as in your write-up.
 
 </div>
@@ -810,23 +973,61 @@ mean of x mean of y
  165.6846  244.2183
 ```
 
-Musicians: $s_1 = 55.8$; non-musicians: $s_2 = 89.4$.
-
 <div class="text-xs text-gray-500 mt-1">Data: AudioVisual, Stat2Data R package (Cannon et al., <i>Stat2</i>).</div>
 
 :: right ::
 
-<img src="/images/lecture14/musicians_rt_dots.png" alt="Reaction times for musicians and non-musicians" class="w-full mx-auto"/>
+<img src="/images/lecture14/musicians_rt_dots.png" alt="Reaction times for musicians and non-musicians" class="w-10/12 mx-auto"/>
 
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
+<p v-click><Admonition title="Question 1" color="teal-light" width="100%">
 
-Where does df = 34 come from? What is the decision? And with unequal n, how do you get the pooled variance for d?
+Where does df = 34 come from?
 
 </Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-13 + 23 − 2. p = .007 → reject: musicians were about 79 ms faster. Weight each variance by its df: $s^2_{pooled} = (12 \times 55.8^2 + 22 \times 89.4^2)/34 = 6{,}263$, so $s_{pooled} = 79.1$ and $d = 78.5/79.1 = 0.99$. (Simply averaging the variances would give 1.05: close here, wrong in general.)
+13 + 23 − 2. Two groups, two SDs estimated, one df lost for each.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Musicians: the decision, and d with unequal n
+
+:: left ::
+
+<Admonition title="Question 2" color="teal-light" width="100%">
+
+What is the decision, and what does the CI add?
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+p = .007 < .05 → **reject $H_0$**: musicians were faster, by about 79 ms (244 − 166). The CI says the true advantage is plausibly anywhere from 23 ms to 134 ms: real, but not pinned down.
+
+</Admonition></p>
+
+:: right ::
+
+<p v-click><Admonition title="Question 3" color="teal-light" width="100%">
+
+Musicians: $s_1 = 55.8$ ms; non-musicians: $s_2 = 89.4$ ms. With unequal n, how do you get the pooled SD for Cohen's d?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Weight each variance by its df, then divide by the total df:
+
+$s^2_{pooled} = (12 \times 55.8^2 + 22 \times 89.4^2) / 34 \approx 6{,}270$, so $s_{pooled} \approx 79$ ms and $d = 78.5 / 79 = 0.99$: a large effect. (Simply averaging the two variances gives 1.05: close here, wrong in general.)
 
 </Admonition></p>
 
@@ -838,22 +1039,14 @@ columns: is-5-7
 ---
 
 :: title ::
-# What if you forget var.equal = TRUE?
+# One R detail: var.equal = TRUE
 
 :: left ::
 
-R's default is **Welch's *t* test**, which does *not* assume equal variances. It uses each group's own variance in the SE and adjusts the df downward (usually to a decimal).
-
-```r
-t.test(musician$rt, nonmusician$rt)   # no var.equal
-```
-
-<p v-click>
-
-- Same decision, different numbers: $t = -3.24$, df = 33.6, $p = .003$ (vs. $-2.86$, 34, $.007$). The two differ most when the SDs *and* the ns differ, as here. For the recall study (equal n) Welch gives t = 2.20, df = 16.4: nearly identical.
-- Welch is a perfectly good test; many statisticians prefer it. We use `var.equal = TRUE` because it matches the formulas we learn and the df is a whole number.
-
-</p>
+- R's default `t.test()` runs **Welch's *t* test**, a version that does **not** assume equal variances. Its df comes out as a decimal.
+- When the two SDs are similar, Welch and the pooled test give nearly the same answer.
+- When one SD is more than about twice the other (Lecture 12's rule of thumb), Welch is the right choice: just leave out `var.equal = TRUE`.
+- In this course we add `var.equal = TRUE` so R's output matches what we compute by hand.
 
 :: right ::
 
@@ -870,7 +1063,7 @@ mean of x mean of y
  165.6846  244.2183
 ```
 
-<p v-click><StickyNote color="amber-light" title="How to tell which you ran" width="100%">The first line of the output says <b>Welch</b>, and the df is not a whole number. If you see that in your write-up output, add <code>var.equal = TRUE</code> and re-run.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="How to tell which you ran" width="100%">The first line of the output says <b>Welch</b>, and the df is not a whole number. If you see that in your write-up output, add <code>var.equal = TRUE</code> and re-run. Same decision here either way.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -891,74 +1084,121 @@ Mehl et al. (2007) had **396 college students** wear a recorder that sampled the
 - **Women** (n = 210): $M = 16{,}215$ words/day, $s = 7{,}301$
 - **Men** (n = 186): $M = 15{,}669$ words/day, $s = 8{,}633$
 
-<Admonition title="Question" color="teal-light" width="100%">
+<p v-click><Admonition title="The result" color="green-light" width="100%">
 
-Set up Steps 1–4, then compute $SE_{difference}$, t, and d. (Hints: $s_1^2 = 53{,}304{,}601$, $s_2^2 = 74{,}528{,}689$, $1/210 + 1/186 = 0.01014$.)
-
-</Admonition>
-
-:: right ::
-
-<img src="/images/lecture14/mehl_words_per_day.png" alt="Distributions of words per day for women and men" class="w-11/12 mx-auto"/>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-**1–2.** Two separate groups → independent-samples *t*. $H_0$: $\mu_W = \mu_M$; $H_1$: $\mu_W \neq \mu_M$.
-**3.** $s^2_{pooled} = (209 \times 53{,}304{,}601 + 185 \times 74{,}528{,}689)/394 = 63{,}270{,}226$; $s_{pooled} = 7{,}954$; $SE = \sqrt{63{,}270{,}226 \times 0.01014} = 801$.
-**4.** df = 394 → ±1.97. **5.** $t = 546/801 = 0.68$. **6.** Not beyond 1.97; p = .50 → **fail to reject**. $d = 546/7{,}954 = 0.07$; 95% CI \[−1,029, 2,121].
+$t(394) = 0.68$, $p = .50$, $d = 0.07$, 95% CI for women − men: **\[−1,029, 2,121] words per day**.
 
 </Admonition></p>
 
 <div class="text-xs text-gray-500 mt-1">Mehl, M. R., Vazire, S., Ramírez-Esparza, N., Slatcher, R. B., & Pennebaker, J. W. (2007). Are women really more talkative than men? <i>Science, 317</i>, 82.</div>
 
+:: right ::
+
+<img src="/images/lecture14/mehl_words_per_day.png" alt="Distributions of words per day for women and men" class="w-full mx-auto"/>
+
+<p v-click><StickyNote color="amber-light" title="No arithmetic this time" width="100%">The numbers are too big to do by hand and that is not the point. The next two slides ask what the result <i>means</i>, in the style of the exam.</StickyNote></p>
+
 ---
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
-columns: is-6-6
 ---
 
 :: title ::
-# Interpreting the talkativeness result
+# Talkativeness: the test and the decision
 
 :: left ::
 
-<Admonition title="Question" color="teal-light" width="100%">
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-Does this study show that men and women talk the same amount?
+Which test is this, and what is its null world?
+
+- **A)** A z test, because with n = 396 the t distribution is normal anyway.
+- **B)** A paired-samples *t* test, because every woman was matched with a man.
+- **C)** An independent-samples *t* test: two separate groups, so the null world is centered on 0, with a spread built from both SDs and both ns, and df = 210 + 186 − 2 = 394.
+- **D)** A single-sample *t* test of the women against 20,000 words.
 
 </Admonition>
 
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
+<Admonition title="Answer" color="green-light" width="100%" v-click>
 
-Not quite: we never accept $H_0$. What it shows is that any difference is **tiny**: $d = 0.07$, and the CI says the true difference is somewhere between women talking ~1,000 words *less* and ~2,100 words *more* per day, out of about 16,000. The 20,000-vs-7,000 claim (a difference of roughly $d = 1.6$) is ruled out completely.
+**C.** Nobody is measured twice, and σ is unknown. With df = 394 the t curve is nearly normal, but it is still a t test.
 
-</Admonition></p>
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
-
-n = 396 is a decent sample. Why was it not enough to detect a difference, if one exists?
-
-</Admonition></p>
-
-<p v-click><Admonition title="Answer" color="green-light" width="100%">
-
-For d = 0.07, power with these ns is about **0.11**. Detecting an effect that small with 80% power would take about 3,250 people *per group*. The study was more than adequate for the question that mattered: is the difference large?
-
-</Admonition></p>
+</Admonition>
 
 :: right ::
 
-<p v-click><StickyNote color="amber-light" title="Two kinds of null results" width="100%"><b>Pixar before vs. after 2010 (Discussion 9):</b> not significant, but d = 0.72 and a CI from −2 to +22 points. "We could not tell." <br/><b>Mehl et al.:</b> not significant, d = 0.07, CI tightly around 0. "If there is a difference, it is small." Same decision, opposite lessons. The CI and d are what separate them.</StickyNote></p>
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+$t(394) = 0.68$, $p = .50$. What can the researchers conclude?
+
+- **A)** They fail to reject $H_0$: the data provide no evidence of a difference in talkativeness.
+- **B)** Men and women talk exactly the same amount.
+- **C)** The study was too small to conclude anything.
+- **D)** Women talk more, just not significantly.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**A.** (B) accepts $H_0$, which we never do. (D) treats a 546-word gap that is well inside chance as a finding. \(C): 396 people is not small; what the study could or could not detect is the next question.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Talkativeness: what the CI and d add
+
+:: left ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+$d = 0.07$ and the 95% CI for the difference (women − men) is \[−1,029, 2,121] words per day. Which statement is best?
+
+- **A)** The CI including 0 proves there is no difference.
+- **B)** $d = 0.07$ means women say 7% more words than men.
+- **C)** The null result is uninformative, as null results always are.
+- **D)** The interval is centered on the observed difference (546 words) and also includes 0: any true difference is plausibly between about 1,000 words *fewer* and 2,100 *more* per day for women, out of roughly 16,000. The 20,000-vs-7,000 claim is ruled out.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**D.** A CI is built around the observed difference, so that is always inside; a non-significant result is one whose CI contains 0 too. The claimed gap ($d \approx 1.6$) is far outside it.
+
+</Admonition>
+
+:: right ::
 
 <p v-click>
 
-<div class="flex items-center gap-4 mt-4">
-<IceCream :size="70" mood="blissful" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="26rem">The most talkative participant said about 47,000 words a day; the least talkative, about 500. Both were men.</SpeechBubble>
-</div>
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+With these sample sizes, power to detect an effect as small as $d = 0.07$ is only about 0.11. Why is that not a problem for the study's conclusion?
+
+- **A)** Because power only matters when a result is significant.
+- **B)** Because the question was whether women talk *far* more than men ($d \approx 1.6$), and the study had plenty of power for a difference that big. What it could not detect is a tiny difference, which nobody had claimed.
+- **C)** Because a sample of 396 is always enough.
+- **D)** It is a problem: the study should not have been published.
+
+</Admonition>
 
 </p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** Power is always relative to an effect size. Detecting d = 0.07 with 80% power would take about 3,250 people per group.
+
+</Admonition></p>
 
 ---
 layout: top-title-two-cols
@@ -968,30 +1208,38 @@ columns: is-6-6
 ---
 
 :: title ::
-# CI and effect size for independent samples
+# Two kinds of null results
 
 :: left ::
 
-Same recipe, with the independent-samples ingredients:
+<div class="border-2 border-gray-300 rounded-lg p-3 text-sm">
+<b>Pixar before vs. after 2010 (Discussion 9)</b><br/>
+Not significant: t(21) = 1.71, p = .10. But d = 0.72 and the CI runs from −2 to +22 points.<br/><br/>
+<span class="text-indigo-700"><b>Lesson: "we could not tell."</b></span> The effect may well be real; 23 films was not enough to find out.
+</div>
 
-$$CI = (M_1 - M_2) \pm t_{crit} \times SE_{difference}$$
-
-$$d = \frac{M_1 - M_2}{s_{pooled}}, \qquad s_{pooled} = \sqrt{s^2_{pooled}}$$
-
-- The CI is a range of plausible values for the **population difference** $\mu_1 - \mu_2$. Excludes 0 ⇔ the test rejects.
-- For d, divide by the **pooled SD**, our best estimate of how much individual scores vary.
+<div class="border-2 border-gray-300 rounded-lg p-3 text-sm mt-3">
+<b>Mehl et al.: women vs. men</b><br/>
+Not significant: t(394) = 0.68, p = .50. d = 0.07 and the CI sits tightly around 0.<br/><br/>
+<span class="text-indigo-700"><b>Lesson: "if there is a difference, it is small."</b></span> The study answers the question.
+</div>
 
 :: right ::
 
-<p v-click><Admonition title="Question" color="teal-light" width="100%">
+<p v-click><Admonition title="Multiple choice 5" color="teal-light" width="100%">
 
-Your Data Write-Up template computes d with the pooled SD. Why not the SD of one group, or of all scores lumped together?
+The Pixar difference (after − before) was 10 points, 95% CI \[−2, 22]. Which statement is correct?
+
+- **A)** The CI contains 0, so the true difference is 0.
+- **B)** The CI contains 0 *and* the observed difference of 10 (it is centered on 10). Because 0 is inside, the result is not significant; because 22 is inside, a large effect is still plausible.
+- **C)** The CI should not contain the observed difference.
+- **D)** A CI that contains 0 is an error in the calculation.
 
 </Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-One group's SD ignores half the data. Lumping both groups together inflates the SD with the very difference you are measuring (the two means pull the scores apart). The pooled SD uses all the data while measuring spread *within* groups.
+**B.** Every CI is built around the observed difference, so it is always inside. What varies is whether 0 is inside too (not significant) or outside (significant), and how wide the interval is. "Fail to reject" on its own tells you almost nothing; the CI and d separate "could not tell" from "the effect is small."
 
 </Admonition></p>
 
