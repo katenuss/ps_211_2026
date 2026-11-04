@@ -135,6 +135,183 @@ Yesterday's third test: Pixar films before 2010 (n = 10) vs. 2010 or later (n = 
 </Admonition></p>
 
 ---
+layout: section
+color: indigo-light
+align: lt
+---
+
+Before the new test, one more look at...
+# Where a *t* distribution comes from
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# The paired test's null world, built step by step
+
+:: left ::
+
+<div class="text-[15px] leading-snug">
+
+Suppose the drug does **nothing** ($H_0$ is true). Then:
+
+1. **The population.** "With drug" and "without drug" scores come from the same place, so each person's **difference score** $D$ comes from a population centered on $\mu_D = 0$ (top; we gave it $\sigma_D = 2$ hours).
+2. **One sample.** Draw $n = 10$ people, measure each twice, compute each person's $D$ (bottom: ten orange dots).
+3. **Summarize it.** $M_D$ (the orange line) and $s_D$, the SD of the ten differences, dividing by $n - 1 = 9$. Then $s_M = s_D/\sqrt{10}$.
+4. **The test statistic.** $t = M_D / s_M$: how many *estimated* standard errors $M_D$ is from 0.
+
+</div>
+
+:: right ::
+
+<img src="/images/lecture14/paired_null_steps_1to4.png" alt="The population of difference scores under H0, and one sample of ten differences" class="w-11/12 mx-auto"/>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Step 5: repeat 20,000 times, and pile up the results
+
+:: content ::
+
+<img src="/images/lecture14/paired_null_step5.png" alt="Histograms of 20,000 sample mean differences and 20,000 t statistics" class="w-full mx-auto"/>
+
+<p v-click>
+
+- **Left:** pile up the 20,000 sample means. A normal curve with SD $\sigma_D/\sqrt{n}$: exactly what the Central Limit Theorem promised in Lecture 8.
+- **Right:** pile up the 20,000 $t$ statistics instead. Heavier tails: 8% of them land beyond ±1.96, not 5%. *This* pile is the null world the paired test uses, and it is a $t$ distribution with df = 9.
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Why a *t* distribution and not a normal one?
+
+:: left ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+The Central Limit Theorem says sample means are normally distributed. Doesn't a *t*-shaped null world contradict it?
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+No. The means **are** normal (left panel): the CLT is a statement about $M_D$. The test statistic is a different quantity, $M_D$ **divided by** $s_M$, and $s_M$ is estimated from the same sample, so it is a little different every time. In samples where $s_D$ happens to come out small, the denominator is too small and $t$ comes out too big. Those extra-large $t$'s are the heavy tails.
+
+</Admonition>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+What if we knew $\sigma_D$ and divided by the *true* standard error instead?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Every $t$ would turn into a $z$: same numerator, a fixed denominator. The pile would be exactly the normal curve, which is why the z test could use ±1.96. The $t$ distribution is the price of estimating the SE.
+
+</Admonition></p>
+
+:: right ::
+
+<p v-click><StickyNote color="amber-light" title="No conflict with the CLT" width="100%">The CLT describes the <b>numerator</b>. The t distribution describes numerator ÷ <b>estimated</b> denominator. The df says how many scores went into estimating s<sub>D</sub>, and so how much s<sub>D</sub> can vary from sample to sample: with few df it varies a lot (heavy tails); with many df it hardly varies at all, and t is nearly normal.</StickyNote></p>
+
+<p v-click>
+
+<div class="flex items-center gap-3 mt-4">
+<IceCream :size="70" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="20rem">Same story for every t test, including today's: a normal numerator over an estimated standard error.</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# n − 1 and √n are doing different jobs
+
+:: left ::
+
+Two divisions, two reasons. Both appear in every *t* test.
+
+- **$n - 1$, inside the SD.** $s_D = \sqrt{SS/(n-1)}$ estimates how spread out *individual* difference scores are. We divide by $n - 1$ rather than $n$ because computing $M_D$ from the same data used up one degree of freedom (Lecture 12); dividing by $n$ would make $s_D$ too small on average. This is a **correction to an estimate**.
+
+<p v-click>
+
+- **$\sqrt{n}$, going from scores to means.** $s_M = s_D/\sqrt{n}$ converts the spread of *scores* into the spread of *means*. A mean of $n$ scores varies less than a single score, by exactly $\sqrt{n}$ (Lecture 8). This is **not a correction**; it is a different quantity.
+
+</p>
+
+:: right ::
+
+<p v-click>
+
+**Drug 2, in order:**
+
+<Admonition title="Step A: the spread of scores" color="green-light" width="100%">
+
+$s_D = \sqrt{SS/(n-1)} = \sqrt{36.08/9} = 2.00$ hours: how far a typical patient's difference sits from the mean difference. The $n - 1$ lives here.
+
+</Admonition>
+
+<Admonition title="Step B: the spread of means" color="green-light" width="100%">
+
+$s_M = s_D/\sqrt{n} = 2.00/\sqrt{10} = 0.63$ hours: how far a sample's mean difference typically lands from the true one. The $\sqrt{n}$ lives here.
+
+</Admonition>
+
+</p>
+
+<p v-click><StickyNote color="amber-light" title="In one line" width="100%">n − 1 corrects the estimate of the spread; √n shrinks it to the scale of means. Different jobs, and both happen in every t test.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Every standard error so far, on one slide
+
+:: content ::
+
+<table class="compact-table text-sm">
+<thead><tr><th>Test</th><th>Signal (numerator)</th><th>Spread of scores</th><th>Standard error (spread of the null world)</th><th>Null world</th></tr></thead>
+<tbody>
+<tr><td><b>z test</b> (L10)</td><td>M − μ</td><td>σ, <b>known</b></td><td>SE = σ / √n</td><td>normal: cutoffs ±1.96</td></tr>
+<tr><td><b>Single-sample <i>t</i></b> (L12)</td><td>M − μ</td><td>s, estimated (÷ n − 1)</td><td>s<sub>M</sub> = s / √n</td><td><i>t</i>, df = n − 1</td></tr>
+<tr><td><b>Paired-samples <i>t</i></b> (L13)</td><td>M<sub>D</sub> − 0</td><td>s<sub>D</sub>, the SD of the difference scores</td><td>s<sub>M</sub> = s<sub>D</sub> / √n &nbsp;(n = number of pairs)</td><td><i>t</i>, df = n − 1</td></tr>
+<tr><td><b>Independent-samples <i>t</i></b> (today)</td><td>(M₁ − M₂) − 0</td><td>s₁ and s₂: <b>two</b> sample SDs</td><td><b>?</b> &nbsp;(today's job: one SE built from both groups)</td><td><i>t</i>, df = n₁ + n₂ − 2</td></tr>
+</tbody>
+</table>
+
+<p v-click>
+
+- Every test statistic is **signal ÷ its row's standard error**. The null world is $t$ whenever the SE was estimated, and normal only when σ was known.
+- Rows 2 and 3 are the same test; the paired version just runs it on difference scores. Today's whole job is to fill in the blank in the last row. We will come back to this table once we have.
+
+</p>
+
+---
 layout: top-title
 color: indigo-light
 align: lt
@@ -361,6 +538,34 @@ Good news: in practice you will almost never compute this by hand; R does it ins
 </p>
 
 <p v-click><StickyNote color="amber-light" title="Equal n special case" width="80%">When n₁ = n₂ = n, the pooled variance is just the average of the two variances, and SE<sub>difference</sub> = √(2 s²<sub>pooled</sub> / n). That is the case we will do by hand.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The table, completed
+
+:: content ::
+
+<table class="compact-table text-sm">
+<thead><tr><th>Test</th><th>Signal (numerator)</th><th>Spread of scores</th><th>Standard error (spread of the null world)</th><th>Null world</th></tr></thead>
+<tbody>
+<tr><td><b>z test</b> (L10)</td><td>M − μ</td><td>σ, <b>known</b></td><td>SE = σ / √n</td><td>normal: cutoffs ±1.96</td></tr>
+<tr><td><b>Single-sample <i>t</i></b> (L12)</td><td>M − μ</td><td>s, estimated (÷ n − 1)</td><td>s<sub>M</sub> = s / √n</td><td><i>t</i>, df = n − 1</td></tr>
+<tr><td><b>Paired-samples <i>t</i></b> (L13)</td><td>M<sub>D</sub> − 0</td><td>s<sub>D</sub>, the SD of the difference scores</td><td>s<sub>M</sub> = s<sub>D</sub> / √n &nbsp;(n = number of pairs)</td><td><i>t</i>, df = n − 1</td></tr>
+<tr><td><b>Independent-samples <i>t</i></b> (today)</td><td>(M₁ − M₂) − 0</td><td>s₁ and s₂, pooled into s²<sub>pooled</sub></td><td><b>SE<sub>difference</sub> = √( s²<sub>pooled</sub>/n₁ + s²<sub>pooled</sub>/n₂ )</b></td><td><i>t</i>, df = n₁ + n₂ − 2</td></tr>
+</tbody>
+</table>
+
+<p v-click>
+
+- The new row follows the same pattern as the others: **spread of scores → spread of means**. The only differences are that the spread of scores comes from two samples (so it is pooled), and that a *difference* between two means collects noise from both (so the two variances-of-a-mean add).
+- Signal ÷ noise, as always: $t = (M_1 - M_2) / SE_{difference}$.
+
+</p>
 
 ---
 layout: top-title-two-cols
@@ -791,21 +996,106 @@ One group's SD ignores half the data. Lumping both groups together inflates the 
 </Admonition></p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
 
 :: title ::
-# Worksheet time!
+# Multiple choice practice: the logic of the test
 
-:: content ::
+:: left ::
 
-- The shared worksheet walks you through the steps of an independent-samples *t* test, by hand and then in R.
-- Work through it with a partner or small group.
-- We will go over the solution together in the review session.
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
 
-<p v-click><StickyNote color="amber-light" title="Checklist for the by-hand part" width="70%">Means of both groups → variance of both groups → pooled variance → SE<sub>difference</sub> → df = n₁ + n₂ − 2 → cutoff → t → decision → CI and d.</StickyNote></p>
+A study compares sleep quality (1–10) in 30 students who use a screen before bed and 30 who read a paper book. Why does this test need a *pooled* variance when the paired test did not?
+
+- **A)** There are two separate groups, so two sample SDs; the test needs one combined noise estimate. The paired test had one set of difference scores and one SD.
+- **B)** Because the two groups have different means.
+- **C)** Because pooling makes the result more likely to be significant.
+- **D)** Because the paired test has no variance to estimate.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** Pooling is bookkeeping for having two samples, nothing more. (B) describes the signal, not the noise. \(C) is backwards: pooling is about estimating noise honestly.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+Which of these violates an assumption of the independent-samples *t* test?
+
+- **A)** The 30 screen users were recruited as roommate pairs who keep the same hours.
+- **B)** The two groups have different sizes.
+- **C)** One group's mean is higher than the other's.
+- **D)** Sleep quality was rated on a 1–10 scale.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**A.** Roommates' scores are not independent of each other. (B) is fine: df and the pooled variance handle unequal n. \(C) is the hypothesis, not a problem. (D) is a numeric outcome.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Multiple choice practice: reading the output
+
+:: left ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+For the sleep study, R reports `t = -2.3, df = 58, p-value = 0.025`. What does df = 58 tell you?
+
+- **A)** 58 participants in total.
+- **B)** 60 participants in total: 30 + 30 − 2, one df spent estimating each group's SD.
+- **C)** 58 pairs of participants.
+- **D)** That the cutoff is ±1.96.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**B.** Two groups, two SDs estimated, two df lost. \(C) would be a paired design. (D): with df = 58 the cutoff is ±2.00, close to but not 1.96.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+Before running the test you notice the SDs are 1.1 (screen) and 3.9 (book). What should you do?
+
+- **A)** Nothing; the *t* test is robust to everything.
+- **B)** Switch to a paired-samples *t* test.
+- **C)** Use the version of the test that does not assume equal variances (Welch's, R's default), because the larger SD is more than twice the smaller.
+- **D)** Drop the group with the larger SD.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**C.** Lecture 12's rule of thumb: SDs within a factor of two are fine; these are not. (B) needs two scores per person, which this design does not have.
+
+</Admonition></p>
 
 ---
 layout: top-title
