@@ -37,6 +37,22 @@ align: lt
 ---
 
 :: title ::
+# Before we start, a word from an honest reviewer
+
+:: content ::
+
+<div class="flex items-center justify-center gap-8 mt-2">
+<img src="/images/lecture14/data_writeup_critic_web.jpg" alt="A very young reviewer" class="h-[400px] rounded-lg shadow-md"/>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="22rem"><span class="text-xl">I don't care about your data write-ups!</span></SpeechBubble>
+</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
 # Last time: key terms
 
 :: content ::
