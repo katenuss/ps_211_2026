@@ -71,6 +71,19 @@ jobs:
               --base "/${REPO}/${slug}/" \
               --out "dist/${slug}"
 
+            # Vite copies ALL of public/ into every deck's build, so 16 decks
+            # meant 16 copies of public/images (~30 MB each) and a 500+ MB
+            # artifact that made the Pages deploy time out. Keep only the
+            # image folders this deck actually references; files at the top
+            # of images/ (lab_logo.png etc.) are always kept.
+            keep=$(grep -o '/images/[A-Za-z0-9_-]*/' "$f" | sort -u | sed 's#/images/##; s#/$##')
+            for d in "dist/${slug}"/images/*/; do
+              [ -d "$d" ] || continue
+              dn=$(basename "$d")
+              if ! grep -qx "$dn" <<< "$keep"; then rm -rf "$d"; fi
+            done
+            echo "🧹 $slug keeps image folders: $(echo $keep)"
+
             echo "📄 Exporting $f → dist/pdfs/ps211_fall2026_${slug}.pdf"
             # NOTE: do NOT add --per-slide here. In Slidev 52.x, --per-slide
             # captures only click state 0 and silently drops every v-click reveal.
@@ -167,3 +180,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 1200000   # 20 min (default 10) before "Timeout reached, aborting!"
