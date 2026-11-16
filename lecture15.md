@@ -23,14 +23,40 @@ align: lt
 # Updates & Reminders
 
 :: content ::
-- ==Exam 3== grades are posted.
-  - We will go over difficult questions in class if needed.
-- No standalone homework this week — keep in mind our second ==Data Write-Up== (ANOVA-based) is due **Tuesday, December 8** at 11:59 p.m.
-- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate)
-- This week:
-  - Lecture 15 (today): One-Way ANOVA
-  - Discussion 11 (Wed. 11/18): R practice for ANOVA + intro to Data Write-Up #2
-  - Lecture 16 (Thurs): Repeated-Measures ANOVA & Two-Way ANOVA
+
+<div class="text-base">
+
+- ==Exam 3== grades are posted. We will go over difficult questions in class if needed.
+- ==Data Write-Up #2== (ANOVA-based) starts **tomorrow in Discussion 11**: new groups, new datasets. Due **Tuesday, December 8** at 11:59 p.m.
+- ==Exam 4== (the last exam) is **Thursday, December 10**, in class. **There will be no make-ups.**
+- Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays, 2:30 – 3:30 p.m. (Rola)
+
+</div>
+
+<div class="grid grid-cols-2 gap-x-8 text-sm mt-2">
+<div>
+
+**Coming up**
+
+- Wed. 11/18: Discussion 11 (R practice for ANOVA; Write-Up #2 begins)
+- Thurs. 11/19: Lecture 16 (repeated-measures & two-way ANOVA)
+- Tues. 11/24: Lecture 17 (correlation)
+- **No discussion Wed. 11/25, no class Thurs. 11/26 (Thanksgiving)**
+
+</div>
+<div>
+
+&nbsp;
+
+- Tues. 12/1: Lecture 18 (regression)
+- Wed. 12/2: Discussion 12 (Write-Up #2 work session)
+- Thurs. 12/3: Lecture 19 (research ethics & chi-square)
+- Tues. 12/8: Exam 4 Review; **Write-Up #2 due**
+- Wed. 12/9: Discussion 13 (wrap-up & Exam 4 practice)
+- Thurs. 12/10: **Exam 4** (Lectures 15–19)
+
+</div>
+</div>
 
 ---
 layout: top-title
@@ -39,19 +65,160 @@ align: lt
 ---
 
 :: title ::
-
-# What's coming up
+# Where we are: the home stretch
 
 :: content ::
-- Two more "gradeable" assignments left in the course:
-  - Data Write-Up #2 (ANOVA-based, due Tues. 12/8)
-  - Exam 4 (Thurs. 12/10)
-- Next week (11/24):
-  - Lecture 17 (Tues): Correlation
-  - **No discussion Wed. 11/25 and no class Thurs. 11/26 — Thanksgiving break**
-- Week of 12/1:
-  - Lecture 18 (Tues): Regression
-  - Lecture 19 (Thurs): Chi-Square & Non-Parametric Tests
+
+Three exams down. Every test so far compared **one or two means**. The last five lectures widen what "the data" can look like, but the logic does not change:
+
+<div class="grid grid-cols-5 gap-2 mt-4 text-sm">
+<div class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-2"><b>Lecture 15 (today)</b><br/>One-way ANOVA: three or more separate groups, one test</div>
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Lecture 16</b><br/>Repeated-measures ANOVA (same people in every condition) & two-way ANOVA (two IVs at once)</div>
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Lecture 17</b><br/>Correlation: when <i>both</i> variables are numeric</div>
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Lecture 18</b><br/>Regression: using one variable to <i>predict</i> another</div>
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Lecture 19</b><br/>Research ethics (p-hacking, the replication crisis) & chi-square for categorical outcomes</div>
+</div>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-6">
+<IceCream :size="80" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="38rem">Same question every time: is what we saw bigger than what chance alone would produce? Only the shape of the data, and so the test statistic, changes.</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# The rest of the course on one slide
+
+:: content ::
+
+<table class="compact-table text-sm">
+<thead><tr><th>IV (or predictor)</th><th>DV (or outcome)</th><th>Test</th><th>Lecture</th><th>Our real example</th></tr></thead>
+<tbody>
+<tr class="text-gray-400"><td>Categorical, 2 groups or conditions</td><td>Numeric</td><td><i>t</i> tests</td><td>12–14</td><td>Done ✓</td></tr>
+<tr><td><b>Categorical, 3+ separate groups</b></td><td>Numeric</td><td><b>One-way ANOVA</b></td><td><b>15</b></td><td>Three ways to teach reading</td></tr>
+<tr><td>Categorical, 3+ conditions, same people</td><td>Numeric</td><td>Repeated-measures ANOVA</td><td>16</td><td>Caffeine, chocolate & finger tapping</td></tr>
+<tr><td>Two categorical IVs</td><td>Numeric</td><td>Two-way ANOVA</td><td>16</td><td>Who conforms, and to whom?</td></tr>
+<tr><td>Numeric</td><td>Numeric</td><td>Correlation & regression</td><td>17–18</td><td>Sleep, drinking & GPA; predicting college GPA</td></tr>
+<tr><td>Categorical</td><td>Categorical</td><td>Chi-square</td><td>19</td><td>Which hand is on top when you clap?</td></tr>
+</tbody>
+</table>
+
+<div class="flex items-start gap-6 mt-3">
+<p v-click><StickyNote color="amber-light" title="Data Write-Up #2" width="100%">An ANOVA on a real psychology dataset. Starts tomorrow (Discussion 11), work session Dec. 2 (Discussion 12), due Tues. Dec. 8.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Exam 4" width="100%">Thurs. Dec. 10, Lectures 15–19. Same format as before: recognize which situation you are in, and read the result correctly.</StickyNote></p>
+</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Last time: key terms
+
+:: content ::
+
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div>
+
+**Independent-samples *t* test** — compares the means of two separate groups (between-subjects). $t = (M_1 - M_2)/SE_{difference}$, df = n₁ + n₂ − 2.
+
+</div>
+<div>
+
+**Pooled variance** — the df-weighted average of the two groups' variances: one estimate of how much individual scores vary.
+
+</div>
+<div>
+
+**Standard error of the difference** — noise from both groups' means, added. Shrinks as either n grows.
+
+</div>
+<div>
+
+**Equal-variance assumption** — the groups should have similar spreads (rule of thumb: the larger SD less than twice the smaller). `var.equal = TRUE` pools them.
+
+</div>
+</div>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-6">
+<IceCream :size="80" mood="excited" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Exam 3 is behind you. Today's question: what if there are three groups? Pooled variance comes back, under a new name.</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Warm-up: check your understanding
+
+:: left ::
+
+Fourth-graders taught reading with a new method (DRTA, n = 22) vs. the traditional method (Basal, n = 22), on a reading comprehension test:
+
+```text
+t = 2.8679, df = 42, p-value = 0.006436
+95 percent confidence interval:
+ 1.683708 9.679928
+mean of x mean of y 
+ 46.72727  41.04545 
+```
+
+<Admonition title="Multiple choice 1" color="teal-light" width="100%">
+
+Which statement is correct?
+
+- **A)** df should be 43: there are 44 children.
+- **B)** DRTA children scored significantly higher, by about 5.7 points; the true difference is plausibly 1.7 to 9.7.
+- **C)** 95% of DRTA children scored 1.7 to 9.7 points higher.
+- **D)** Not significant, because the CI is wide.
+
+</Admonition>
+
+:: right ::
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**B.** Two groups: 22 + 22 − 2 = 42 (A). \(C) confuses a CI for the *mean* difference with individual children. (D): the CI excludes 0, so it agrees with p < .05.
+
+</Admonition>
+
+<p v-click>
+
+<Admonition title="Multiple choice 2" color="teal-light" width="100%">
+
+The SDs were 5.6 (Basal) and 7.4 (DRTA). Was `var.equal = TRUE` reasonable?
+
+- **A)** No: any difference in SDs breaks the assumption.
+- **B)** No: the design calls for a paired test.
+- **C)** Yes, because the p value is small.
+- **D)** Yes: 7.4 is less than twice 5.6, so the spreads are similar enough to pool.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**D.** Lecture 12's rule of thumb. (B): different children in each group. \(C): assumptions are checked before the test, not judged by its result.
+
+</Admonition></p>
 
 ---
 layout: section
@@ -59,66 +226,336 @@ color: indigo-light
 align: lt
 ---
 
-Moving to our next topic...
+The study had a third group...
 # One-Way ANOVA
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-5-7
 ---
 
 :: title ::
+# Our example: three ways to teach reading
 
-# Are We Worse Drivers When on the Phone?
+:: left ::
 
-:: content ::
+<div class="text-[15px] leading-snug">
 
-A simple *t*-test compares driving ability when talking vs. not talking on the phone.
+**66 fourth-graders**, **randomly assigned** to one of three ways of being taught reading (22 per group):
 
-<p v-click>
+- **Basal:** traditional textbook method
+- **DRTA:** predict, then read to check
+- **Strategies:** think aloud while reading
 
-But what if we wanted to compare **more than two conditions**?
-</p>
+Then everyone took the same standardized **reading comprehension test**.
 
+</div>
 
-<p v-click>
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
 
-💭 Possible conditions:
-– Driving alone
-– With a passenger
-– On a cell phone
-– On a video call
+What are the IV (and its levels) and the DV? Can we make a causal claim?
 
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Can I Use a *t* Test to Compare >2 Groups?
-
-:: content ::
-
-If you used a *t*-test for every possible combination, you'd run many tests!
-
-- Driving alone vs. passenger
-- Driving alone vs. video call
-- Driving alone vs. cell phone
-- Passenger vs. video call
-- Passenger vs. cell phone
-- Video call vs. cell phone
-
-That's **6 *t*-tests!**
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">Is there any problem with that? 🤔</Admonition></p>
+</Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-Yes — it **increases the chance of a Type I error** (false positive).
+IV: teaching method (3 levels). DV: comprehension score (numeric). Random assignment → yes, a causal claim is justified.
+
+</Admonition></p>
+
+:: right ::
+
+<img src="/images/lecture15/reading_dots.png" alt="Reading comprehension scores for the three teaching methods, with group means and the grand mean" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-2">Data: Baumann, Seifert-Kessell, & Jones (1992), <i>Journal of Reading Behavior</i>; via Moore & McCabe (1993); R package <code>carData</code> (<code>Baumann</code>).</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why not just run three *t* tests?
+
+:: content ::
+
+Three groups means three pairs: Basal vs. DRTA, Basal vs. Strategies, DRTA vs. Strategies.
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Each *t* test uses α = .05. Is there a problem with running all three?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Yes. Each test is another 5% chance of a **Type I error** (rejecting H₀ when it is true). Run several, and the chance that *at least one* is a false positive grows. This is **alpha inflation**.
+
+</Admonition></p>
+
+<div v-click class="mt-3">
+
+If H₀ is true everywhere, the chance that a single test correctly fails to reject is .95. For several tests, multiply:
+
+<table class="compact-table text-base">
+<thead><tr><th>Groups</th><th>Pairs (<i>t</i> tests)</th><th>P(no false positives)</th><th>P(at least one false positive)</th></tr></thead>
+<tbody>
+<tr><td>2</td><td>1</td><td>.95</td><td>.05</td></tr>
+<tr><td>3</td><td>3</td><td>.95³ = .86</td><td><b>.14</b></td></tr>
+<tr><td>4</td><td>6</td><td>.95⁶ = .74</td><td><b>.26</b></td></tr>
+<tr><td>5</td><td>10</td><td>.95¹⁰ = .60</td><td><b>.40</b></td></tr>
+</tbody>
+</table>
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Multiple choice practice: alpha inflation
+
+:: left ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+A researcher compares 4 study techniques and runs all 6 pairwise *t* tests at α = .05. In truth, technique makes no difference. What is the chance that **at least one** test comes out significant?
+
+- **A)** 5%, because each test uses α = .05
+- **B)** 30%: 6 × 5%
+- **C)** About 26%
+- **D)** 0%, because there is no real effect
+
+</Admonition>
+
+:: right ::
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** 1 − .95⁶ ≈ .26. (A) is the rate *per test*, not for the whole set. (B) is close, but adding overcounts (with 20 tests, adding would give 100%). (D): with no real effect, every significant result is a false positive, and each test still has a 5% chance of one.
+
+</Admonition>
+
+<p v-click><StickyNote color="amber-light" title="What we want" width="100%">One test of "are these means all the same?" that keeps the false-positive rate at 5% no matter how many groups there are. That is ANOVA.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# One test for all the groups: the *F* statistic
+
+:: content ::
+
+**ANOVA** (*analysis of variance*) compares the means of 3+ groups in a single test. Its test statistic, ***F***, is another signal-to-noise ratio:
+
+<div class="grid grid-cols-3 gap-4 mt-4 text-center">
+<div v-click class="border-2 border-gray-300 rounded-lg p-3">
+
+$$z = \frac{M - \mu}{\sigma_M}$$
+
+one mean vs. a known population
+
+</div>
+<div v-click class="border-2 border-gray-300 rounded-lg p-3">
+
+$$t = \frac{M_1 - M_2}{SE_{difference}}$$
+
+two means: a *difference* is the signal
+
+</div>
+<div v-click class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-3">
+
+$$F = \frac{\text{between-groups variance}}{\text{within-groups variance}}$$
+
+3+ means: how *spread out* the means are is the signal
+
+</div>
+</div>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-5">
+<IceCream :size="70" mood="shocked" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem">With three means there is no single difference to put on top. So ANOVA asks how much the group means vary around the grand mean, compared with how much individual scores vary inside the groups.</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Two sources of variability
+
+:: content ::
+
+<img src="/images/lecture15/between_within.png" alt="Left: group means compared with the grand mean. Right: each score compared with its own group mean" class="w-full mx-auto"/>
+
+<div class="grid grid-cols-2 gap-8 text-[15px] leading-snug">
+<div v-click>
+
+**Between-groups variance (signal).** How far each *group mean* sits from the **grand mean** (the mean of all 66 scores). Reflects the IV, plus a little chance.
+
+</div>
+<div v-click>
+
+**Within-groups variance (noise).** How far each *score* sits from its *own group's* mean. Children taught the same way still differ: chance, individual differences, measurement error.
+
+</div>
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Multiple choice practice: what makes *F* bigger?
+
+:: left ::
+
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+Imagine re-running the reading study. Which change would make *F* **larger**, if the group means stayed exactly where they are?
+
+- **A)** Children within each group score more similarly to one another (less spread inside each group).
+- **B)** Children within each group differ more from one another.
+- **C)** Adding 10 points to every child's score.
+- **D)** Nothing: *F* only depends on the group means.
+
+</Admonition>
+
+:: right ::
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** Less within-group spread shrinks the denominator (the noise), so the same gaps between means stand out more. (B) does the opposite. \(C) moves every mean and every score together, so no spread changes and *F* stays the same. (D) ignores the denominator.
+
+</Admonition>
+
+<p v-click><StickyNote color="amber-light" title="Sound familiar?" width="100%">Same as the <i>t</i> test: a bigger difference or a smaller SD makes <i>t</i> larger. ANOVA just measures "difference" as the spread of the means.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Setting up the hypotheses
+
+:: left ::
+
+**Null hypothesis (H₀):** all the population means are equal.
+
+$$\mu_{Basal} = \mu_{DRTA} = \mu_{Strategies}$$
+
+**Research hypothesis (H₁):** **at least one** population mean differs from the others.
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Is H₁ "all three means are different"?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+No. H₁ is simply "not all equal." One method could beat the other two, which tie. A significant *F* does not say *which* means differ (that comes later today).
+
+</Admonition></p>
+
+:: right ::
+
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+
+There is no "direction" for H₁. *F* is a ratio of two variances, so it can never be negative, and every *F* test is **one-tailed**: only a large *F* counts against H₀.
+
+</SpeechBubble>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# The null world for *F*
+
+:: left ::
+
+<img src="/images/lecture15/null_F.png" alt="Histogram of 20,000 F statistics from fake studies with no real effect; the top 5 percent is shaded beyond 3.14 and the observed F of 4.48 is marked" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-1">20,000 fake reading studies: 3 groups of 22, all drawn from one population (H₀ true).</div>
+
+:: right ::
+
+<div class="text-[15px] leading-snug">
+
+The same recipe as the *t* distribution in Lecture 14: simulate studies where H₀ is true, compute *F* for each, pile them up.
+
+- *F* is never negative. When H₀ is true it is usually **near 1** (signal ≈ noise).
+- The shape depends on **two dfs**: between groups (k − 1 = 2) and within groups (N − k = 63).
+- The cutoff for the top 5% is **3.14**. Our *F* of 4.48 is beyond it.
+
+</div>
+
+<p v-click><StickyNote color="amber-light" title="F tables" width="100%">Textbooks print tables of <i>F</i> cutoffs for each pair of dfs. R gives you the exact p value, so we will not use them.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Where the two variances come from
+
+:: content ::
+
+ANOVA splits the **total variability** into the two parts from the picture. Each part is a **sum of squares (SS)**, as in Lecture 5: deviations, squared, added up.
+
+$$SS_\text{Total} = SS_\text{Between} + SS_\text{Within}$$
+
+<div class="grid grid-cols-2 gap-8 mt-2 text-[15px] leading-snug">
+<div v-click>
+
+$$SS_\text{Between} = \sum n_i (M_i - M_G)^2$$
+
+Each group mean minus the grand mean $M_G$, squared, weighted by the group's size, summed over groups.
+
+</div>
+<div v-click>
+
+$$SS_\text{Within} = \sum \sum (X - M_i)^2$$
+
+Each score minus its own group mean, squared, summed within each group, then across groups.
+
+</div>
+</div>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Why does $SS_\text{Within}$ have **two** summation signs?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The inner Σ adds up squared deviations for every child *within one group*; the outer Σ repeats that for each group and adds the groups' totals. It is the pooled-variance idea from Lecture 14, extended to any number of groups.
 
 </Admonition></p>
 
@@ -129,26 +566,36 @@ align: lt
 ---
 
 :: title ::
-# Why You Can't Do Many *t* Tests
+# From sums of squares to *F*
 
 :: content ::
-- Each test carries a 5% chance (*α* = .05) of a **Type I error** — falsely rejecting the null.
-  - There is a 5% chance of concluding there is a difference when there really isn't one.
-  - There is a 95% chance of correctly *failing* to reject the null.
-- The more *t*-tests you do, the higher your overall risk of error.
-- This problem is called **alpha inflation**.
 
-<p v-click>
+A sum of squares grows just because there are more things being added. Dividing by its **degrees of freedom** turns it into an average, a **mean square (MS)**: a variance.
 
-With one test → 95% chance of correctly retaining the null & 5% chance of a false positive
+<div class="grid grid-cols-2 gap-8 mt-2">
+<div v-click>
 
+$$MS_\text{Between} = \frac{SS_\text{Between}}{df_\text{Between}}, \quad df_\text{Between} = k - 1$$
 
-With two tests -> 95% chance of correctly retaining the null **twice** → $(0.95)^2 = 0.903$ → 10% chance of error
+k = number of groups
 
+</div>
+<div v-click>
 
-With three tests → 95% chance of correctly retaining the null **three** times → $(0.95)^3 = 0.857$ → 14% chance of error
+$$MS_\text{Within} = \frac{SS_\text{Within}}{df_\text{Within}}, \quad df_\text{Within} = N - k$$
 
-</p>
+N = total number of participants
+
+</div>
+</div>
+
+<div v-click class="mt-4">
+
+$$F = \frac{MS_\text{Between}}{MS_\text{Within}}$$
+
+</div>
+
+<p v-click><StickyNote color="amber-light" title="Why N − k?" width="70%">Each group's spread is measured around its own mean, and estimating each of those k means uses up one df: the same reason the independent-samples <i>t</i> test has n₁ + n₂ − 2. <b>MS<sub>Within</sub> is the pooled variance</b>, now from k groups.</StickyNote></p>
 
 ---
 layout: top-title
@@ -157,22 +604,28 @@ align: lt
 ---
 
 :: title ::
-# Why You Can't Do Many *t* Tests (continued)
+# The source table, one column at a time
 
 :: content ::
 
-<p v-click>
+ANOVA results are laid out in a **source table**. For the reading study (k = 3 groups, N = 66):
 
-So if you did 6 *t*-tests (like in our example), you'd have **a 54% chance of a Type I error!**
+<table class="compact-table text-base">
+<thead><tr><th>Source</th><th>SS</th><th>df</th><th>MS</th><th><i>F</i></th></tr></thead>
+<tbody>
+<tr><td>Between groups (method)</td><td>357.3</td><td><span v-click="1">k − 1 = 2</span></td><td><span v-click="2">357.3 / 2 = 178.6</span></td><td><span v-click="3"><b>178.6 / 39.9 = 4.48</b></span></td></tr>
+<tr><td>Within groups (error)</td><td>2,511.7</td><td><span v-click="1">N − k = 63</span></td><td><span v-click="2">2,511.7 / 63 = 39.9</span></td><td></td></tr>
+<tr><td><b>Total</b></td><td>2,869.0</td><td><span v-click="1">N − 1 = 65</span></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<p v-click="4">
+
+The cutoff for *F*(2, 63) at α = .05 is 3.14. 4.48 > 3.14, so **reject H₀**: the three teaching methods did not produce the same mean comprehension. (Exact *p* = .015.)
+
 </p>
 
-<p v-click>
-
-<AdmonitionType type="warning" width="100%">
-Multiple t-tests inflate the error rate. We need a single test for 3+ groups.
-</AdmonitionType>
-
-</p>
+<p v-click="5"><StickyNote color="amber-light" title="What you need to know" width="70%">What each column means and how they connect (SS → MS → <i>F</i>). You will not compute sums of squares by hand: R does that, and the exam gives you its output.</StickyNote></p>
 
 ---
 layout: top-title
@@ -181,69 +634,23 @@ align: lt
 ---
 
 :: title ::
-# The Solution: Using the *F* Statistic
-
-:: content ::
-When we want to compare **3 or more means**, we use the **F distribution** — the foundation of ANOVA.
-
-<p v-click>
-
-Like *z* and *t* tests, the *F* statistic is a **ratio**:
-
-</p>
-
-<p v-click>
-
-$$z = \frac{\text{Difference Between Means}}{\text{Standard Error}}$$
-
-</p>
-
-<br>
-
-<p v-click>
-
-$$t = \frac{\text{Difference Between Means}}{\text{Standard Error}}$$
-
-</p>
-
-<br>
-
-
-<p v-click>
-$$
-F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
-$$
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Solution: Using the *F* Statistic
-
+# Six steps for a one-way ANOVA
 
 :: content ::
 
-$$
-F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
-$$
+<table class="compact-table text-sm">
+<thead><tr><th>Step</th><th>Independent-samples <i>t</i> test</th><th>One-way between-groups ANOVA</th></tr></thead>
+<tbody>
+<tr><td><b>1.</b> Populations, comparison distribution, assumptions</td><td>Two separate groups</td><td><b>Three or more separate groups</b> (one categorical IV). DV numeric, roughly normal in each group, similar variances, independent observations</td></tr>
+<tr><td><b>2.</b> Hypotheses</td><td>H₀: μ₁ = μ₂ &nbsp; H₁: μ₁ ≠ μ₂</td><td>H₀: μ₁ = μ₂ = μ₃ = … &nbsp; H₁: <b>at least one</b> μ differs</td></tr>
+<tr><td><b>3.</b> Characteristics of the comparison distribution</td><td><i>t</i>, df = n₁ + n₂ − 2</td><td><b><i>F</i></b>, df<sub>Between</sub> = k − 1 and df<sub>Within</sub> = N − k</td></tr>
+<tr><td><b>4.</b> Critical values</td><td>α = .05, two-tailed → ±<i>t</i><sub>crit</sub></td><td>α = .05, <b>always one cutoff, in the upper tail</b></td></tr>
+<tr><td><b>5.</b> Test statistic</td><td><i>t</i> = (M₁ − M₂) / SE<sub>difference</sub></td><td><i>F</i> = MS<sub>Between</sub> / MS<sub>Within</sub></td></tr>
+<tr><td><b>6.</b> Decision</td><td colspan="2">Reject or fail to reject H₀, and say it in plain English. <b>New for ANOVA:</b> if you reject, follow up to find out <i>which</i> means differ.</td></tr>
+</tbody>
+</table>
 
-
-<p v-click>
-
-- The **numerator** captures how far apart the group means are.
-- The **denominator** captures how much variability exists within each group.
-</p>
-
-<p v-click>
-
-The bigger the ratio, the more evidence that not all groups come from the same population.
-</p>
-
+<p v-click><StickyNote color="amber-light" title="Check" width="70%">With exactly two groups, a one-way ANOVA and an independent-samples <i>t</i> test give the same p value (<i>F</i> = <i>t</i>²). ANOVA is the <i>t</i> test, generalized.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -252,154 +659,71 @@ align: lt-lt-lt
 ---
 
 :: title ::
-# Intuition for the *F* Statistic
+# How big is the effect? η² (eta squared)
 
 :: left ::
 
-- Think of the *F* statistic as an expansion of the *z* and *t* statistics:
-  - *z* → can do one thing
-  - *t* → can do a few things
-  - *F* → can do lots of things
-- Each builds on the same idea: comparing variability due to chance vs. systematic differences.
+A significant *F* says the means are not all equal. **Effect size** says how much it matters:
+
+$$\eta^2 = \frac{SS_\text{Between}}{SS_\text{Total}}$$
+
+The **proportion of all the variability** in the DV that is explained by group membership. (In a one-way ANOVA, η² is the same as R², which comes back in Lecture 18.)
+
+<p v-click>
+
+Reading study: η² = 357.3 / 2,869.0 = **.12**. Teaching method accounts for 12% of the differences among children's scores; the other 88% is everything else about the children.
+
+</p>
 
 :: right ::
 
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
-The *F* statistic captures both the **differences between groups** and the **noise within them**.
+
+Rough guide (Cohen, 1988): small ≈ .01, medium ≈ .06, large ≈ .14. Context matters: 12% from a few weeks of teaching is a lot.
+
 </SpeechBubble>
 
-<p v-click><Admonition title="Question" color="teal-light" width="100%">Which part of this equation captures systematic differences between groups? Which part captures "noise" within groups?</Admonition></p>
-
-<p v-click>
-
-$$
-F = \frac{\text{Between-Groups Variance}}{\text{Within-Groups Variance}}
-$$
-
-</p>
+<p v-click><StickyNote color="amber-light" title="Same as d" width="100%">Like Cohen's d, η² does not depend on sample size. With a huge sample, a tiny η² can still be significant, so report both.</StickyNote></p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-7-5
 ---
 
 :: title ::
-# Characteristics of the *F* Distribution
+# The same test in R: `aov()`
 
-:: content ::
-- *F* is a **ratio of two variances** (between-groups / within-groups).
-  - Variances are based on sums of squares (SS), so *F* is always **positive**.
-- The *F* distribution is a *series* of distributions (like the *t* distribution)
-  - There are **two values for degrees of freedom** in every *F* test:
-    - One for the numerator (*df₁* = between-groups)
-    - One for the denominator (*df₂* = within-groups)
+:: left ::
 
-<p v-click>
+```r
+reading_model <- aov(comprehension ~ method,
+                     data = reading)
+summary(reading_model)
+```
 
-Like *t*, the *F* distribution changes shape depending on the sample size and number of groups.
-</p>
+```text
+            Df Sum Sq Mean Sq F value Pr(>F)  
+method       2  357.3  178.65   4.481 0.0152 *
+Residuals   63 2511.7   39.87                 
+```
 
-<p v-click>
+The formula `comprehension ~ method` reads "comprehension **as explained by** method": DV on the left, IV on the right. The IV column holds each child's group label.
 
-To use *F*, your data must be on a **numeric (interval or ratio)** scale.
-</p>
+:: right ::
 
+<div class="text-[15px] leading-snug">
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+The output is the source table:
 
-:: title ::
-# The *F* Table and Degrees of Freedom
+- **`method`** row: between groups
+- **`Residuals`** row: within groups ("residual" = what is left over after the groups are taken into account)
+- **`Pr(>F)`**: the p value
 
-:: content ::
-- The *F* table expands the *t* table by adding **another dimension** for the number of groups.
-- There's an *F* distribution for every combination of:
-  - Sample size (→ *df₁*, numerator)
-  - Number of groups (→ *df₂*, denominator)
+</div>
 
-<p v-click>
-
-*F*(df₁, df₂) helps us decide whether group differences are larger than expected by chance.
-</p>
-
-<p v-click>
-
-*In practice, most people don't use the *F* table directly — statistical software calculates the exact p-value for you!*
-
-The important thing to understand is that your *p* value depends on ==both== degrees of freedom, which are determined by:
-1. your sample size and
-2. your number of groups.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# ANOVA Overview
-
-:: content ::
-==An **ANOVA** (*Analysis of Variance*) compares **differences between 3+ groups using one test.**==
-
-<p v-click>
-
-#### One-way between-groups ANOVA
-- Hypothesis test used to compare means across **more than two independent groups**:
-  - Groups are defined by a single independent variable (IV) with 3+ levels.
-    - These levels are **categorical** (nominal/ordinal).
-    - A between-groups ANOVA is used for a design where each participant appears in only one group.
-  - The dependent variable (DV) is **numeric** (interval/ratio).
-
-</p>
-
-<p v-click>
-
-Example: Comparing mean driving performance across four phone-use conditions.
-
-</p>
-
-<p v-click>
-
-*Phone-use conditions: Categorical IV with 4 levels*
-
-*Driving performance: Numeric DV*
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# ANOVA: What Are We Analyzing?
-
-:: content ::
-Even though the test is called an **analysis of variance**, what we're really doing is comparing **means**.
-
-<p v-click>
-
-We ask:
-*Are the differences among group means larger than we would expect from random chance?*
-
-</p>
-
-<p v-click>
-
-If the groups come from the same population, their means should be similar.
-
-If the means are *very different*, that suggests at least one group differs systematically.
-</p>
+<p v-click><StickyNote color="green-light" title="Tomorrow in Discussion 11" width="100%">You'll run <code>aov()</code> and <code>summary()</code> yourselves, plot group means with error bars, and start Data Write-Up #2, which is built around this output.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -408,265 +732,58 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# The Two Sources of Variability
+# Multiple choice practice: reading the output
 
 :: left ::
-### 1️⃣ Between-Groups Variance
-- How far apart are the **group means**?
-- Captures **systematic differences** due to the independent variable.
 
-### 2️⃣ Within-Groups Variance
-- How spread out are scores **inside each group**?
-- Captures **unsystematic noise** — individual differences or measurement error.
+<Admonition title="Multiple choice 5" color="teal-light" width="100%">
+
+In the output above, why is the `Residuals` df **63**?
+
+- **A)** 66 children minus 3: one df lost for each group's mean.
+- **B)** 66 children minus 3 outliers.
+- **C)** Only 63 children finished the study.
+- **D)** It is df<sub>Between</sub> × 31.5.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** df<sub>Within</sub> = N − k = 66 − 3. Nothing was dropped (B, C). (D) is numerology: df<sub>Within</sub> does not depend on df<sub>Between</sub>.
+
+</Admonition>
 
 :: right ::
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
-When between-group variability ≫ within-group variability, the *F* ratio becomes large → **evidence against the null**.
-</SpeechBubble>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# How Do We Compute Between vs. Within Variability?
-
-:: content ::
-
-ANOVA divides the **total variability** in a dataset into two parts:
-
-$$
-SS_\text{Total} = SS_\text{Between} + SS_\text{Within}
-$$
-
 
 <p v-click>
 
-#### Recap: Sum of Squares (SS) Refresher
+<Admonition title="Multiple choice 6" color="teal-light" width="100%">
 
-To calculate variance, we compute the **sum of squared deviations** from the mean.
+Which conclusion does `F = 4.481, p = .0152` support?
 
-1. Subtract the mean from each score.
-2. Square each deviation.
-3. Add them up.
+- **A)** All three methods produced different mean scores.
+- **B)** DRTA is the best method.
+- **C)** The methods did not differ; *p* is above .01.
+- **D)** At least one method's mean differs from another's; we don't yet know which.
 
-$$SS = \sum{(X - \bar{X})^2}$$
-
-- This is the **Sum of Squares (SS)**.
+</Admonition>
 
 </p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# 1️⃣ Between-Groups Variability (*SS<sub>Between</sub>*)
-
-:: content ::
-- Start with the **mean of each group** (*M₁, M₂, M₃, …*).
-- Compute how far each group mean is from the **grand mean** (*M<sub>G</sub>*, the mean of all scores).
-- Weight each squared deviation by the **group size** (*n*).
-- Add them up.
-
-$$
-SS_\text{Between} = \sum n_i (M_i - M_G)^2
-$$
-
-This reflects the variability **explained by group membership**.
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# 2️⃣ Within-Groups Variability (*SS<sub>Within</sub>*)
-
-
-:: content ::
-
-- For each group, measure how much each individual score deviates from its group mean.
-- Square those deviations and sum them across all groups.
-
-$$
-SS_\text{Within} = \sum \sum (X_{ij} - M_i)^2
-$$
-
-This captures **unexplained variability** — random noise and individual differences.
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">Why are there ==two== summation symbols?</Admonition></p>
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-- The inner Σ says: For a given group i, sum the squared deviations of each person's score (j) from that group's mean
-- The outer Σ says: Now repeat that process for each group, and add them all up.
+**D.** That is all H₁ says. (A) and (B) need follow-up tests. \(C) uses the wrong alpha: we set .05 in advance.
 
 </Admonition></p>
 
 ---
-layout: top-title
+layout: section
 color: indigo-light
 align: lt
 ---
 
-:: title ::
-
-# Converting Sums of Squares to the *F* Statistic
-
-:: content ::
-
-We then divide each sum of squares by its degrees of freedom to obtain **mean squares (MS):**
-
-$$
-MS_\text{Between} = \frac{SS_\text{Between}}{df_\text{Between}}, \quad
-MS_\text{Within} = \frac{SS_\text{Within}}{df_\text{Within}}
-$$
-
-<p v-click>
-
-Where:
-- $df_\text{Between} = k - 1$ (k = number of groups)
-- $df_\text{Within} = N - k$ (N = total sample size)
-
-</p>
-
-
-<p v-click>
-Finally, we compare the two:
-
-$$
-F = \frac{MS_\text{Between}}{MS_\text{Within}}
-$$
-
-</p>
-
-<p v-click>
-
-A large *F* value indicates that between-group variability is much greater than within-group variability → evidence against the null hypothesis.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The Logic of the *F* Statistic
-
-:: content ::
-At its core, ANOVA is a **signal-to-noise ratio**:
-
-$$
-F = \frac{\text{Systematic variance (between groups)}}{\text{Random variance (within groups)}}
-$$
-
-- **Signal** → variability explained by your independent variable
-- **Noise** → variability due to chance
-
-<p v-click>
-
-If *F* ≈ 1 → group differences are about what chance would produce.
-If *F* >> 1 → the manipulation explains meaningful variance.
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Comparing *F* to *t*
-
-:: content ::
-At its core, the *F* statistic is a **signal-to-noise ratio**.
-
-$$
-F = \frac{\text{Systematic variance (between groups)}}{\text{Random variance (within groups)}}
-$$
-
-<br>
-
-<p v-click>
-
-==The *t* statistic can also be expressed as a signal-to-noise ratio:==
-
-$$
-t = \frac{\text{Difference Between Means}}{\text{Standard Error}}
-$$
-
-</p>
-
-<p v-click>
-
-- The measures are different, but the logic is the same.
-- The numerator reflects systematic differences between groups, while the denominator reflects random noise.
-
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Interpreting *F*
-
-:: content ::
-- *F* values can't be negative.
-- The **larger the *F***, the stronger the evidence that not all group means are equal.
-- Whether an *F* is "large enough" depends on its **critical value** from the *F* distribution (*df₁*, *df₂*).
-
-<p v-click>
-
-If your observed *F* > critical *F*, you reject H₀ and conclude that ==at least one mean== differs from the others.
-</p>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The F Statistic Visualized: Between-Group Variance
-
-:: content ::
-
-<img src="/images/lecture13/anova_mean_demo.png"  class="w-3/4 mx-auto"/>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# The F Statistic Visualized: Within-Group Variance
-
-:: content ::
-
-<img src="/images/lecture13/anova_var_demo.png"  class="w-3/4 mx-auto"/>
-
+A significant *F*: now what?
+# Which groups differ?
 
 ---
 layout: top-title-two-cols
@@ -675,28 +792,30 @@ align: lt-lt-lt
 ---
 
 :: title ::
-
-# Setting Up the Hypotheses
+# Planned vs. post-hoc comparisons
 
 :: left ::
 
-**Null hypothesis (H₀):**
-All population means are equal.
-$$
-\mu_1 = \mu_2 = \mu_3 = \dots
-$$
+A significant ANOVA says **at least one** mean differs. To find out which, we compare pairs of groups, with care.
 
-**Research hypothesis (H₁):**
-At least one population mean differs.
+**Planned (a priori) comparisons**
+- Decided *before* seeing the data, from the hypothesis
+- A few specific tests → little or no correction
+
+**Post-hoc comparisons**
+- Done *after* a significant *F*, to explore where the differences are
+- Often every pair → **must correct** to keep α = .05 overall
 
 :: right ::
 
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
-Unlike a *t*-test, ANOVA does not tell us *which* means differ — only that **not all of them are the same**.
 
-We are *always* testing if the between-group variance is larger than the within-group variance. Because of this, *F* tests are *always* **one-tailed.**
+A post-hoc test is a *t* test with a built-in correction: each comparison has to clear a higher bar, so the whole *set* keeps a 5% false-positive rate.
+
 </SpeechBubble>
 
+<p v-click><StickyNote color="amber-light" title="Only after a significant F" width="100%">If the ANOVA is not significant, stop. Running pairwise tests anyway is hunting for a result.</StickyNote></p>
+
 ---
 layout: top-title
 color: indigo-light
@@ -704,247 +823,155 @@ align: lt
 ---
 
 :: title ::
-# Why Use ANOVA Instead of Multiple *t* Tests?
+# Common post-hoc corrections
 
 :: content ::
-- Keeps the **Type I error rate** at 5%.
-- Tests all group differences **in one analysis**.
-- Provides the foundation for **multi-factor and repeated-measures** designs.
-  - We will talk about repeated-measures designs soon.
+
+<table class="compact-table text-base">
+<thead><tr><th>Test</th><th>Key idea</th><th>How strict?</th><th>Typical use</th></tr></thead>
+<tbody>
+<tr><td><b>Bonferroni</b></td><td>Divide α by the number of comparisons</td><td>Strict when there are many tests</td><td>A small number of comparisons</td></tr>
+<tr><td><b>Tukey HSD</b></td><td>Compares every pair at once with one adjusted cutoff</td><td>Middle ground</td><td>All pairwise comparisons; the most common choice</td></tr>
+<tr><td><b>Scheffé</b></td><td>Protects every possible comparison, including combinations of groups</td><td>Most conservative</td><td>Exploratory analyses</td></tr>
+</tbody>
+</table>
 
 <p v-click>
 
-ANOVA is the statistically correct, efficient way to ask:
-<br>
-
-==“Are these group means different enough that it's unlikely to be chance?”==
+**Bonferroni with our three methods:** 3 pairwise comparisons, so each one must reach *p* < .05 / 3 = **.0167** to count as significant.
 
 </p>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Assumptions of One-Way ANOVA
-
-:: content ::
-Every ANOVA relies on three key assumptions, which represent the ideal conditions for valid results:
-
-1. **Random selection** of participants
-2. **Normality** — each group's population is roughly normal
-3. **Homogeneity of variance** — groups have similar spread
-  - ==Homoscedastic== populations are those that have the same variance.
-  - ==Heteroscedastic== populations are those that have different variances.
-
 <p v-click>
 
-When these hold, *F* is robust and trustworthy.
-If they're violated, be cautious in interpreting results, or may need to use non-parametric alternatives.
-</p>
+Whichever you use, **say which** in your write-up. All of them trade a little power for protection against false positives.
 
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Example: One-Way ANOVA (Source Table)
-
-:: content ::
-Imagine we conduct a one-way ANOVA comparing driving performance across four driving conditions: 1. No phone, 2. Passenger, 3. Cell phone, and 4. Video call.
-
-In total, we have 40 participants divided among the four groups (n = 10 per group).
-
-The between-groups and within-groups sums of squares are:
-| Source          | SS      | df  | MS       | F      |
-|-----------------|---------|-----|----------|--------|
-| Between Groups  | 450.0   |    |    |    |
-| Within Groups   | 100.0  |  |     |        |
-| **Total**       | 550.0  |  |          |        |
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">What should go in the df column?</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Example: One-Way ANOVA (Source Table)
-
-:: content ::
-
-The between-groups and within-groups sums of squares are:
-| Source          | SS      | df  | MS       | F      |
-|-----------------|---------|-----|----------|--------|
-| Between Groups  | 450.0   | K-1 = 3   |    |    |
-| Within Groups   | 100.0  | N-K = 36 |     |        |
-| **Total**       | 550.0  | 39 |          |        |
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">What should go in the MS column?</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Example: One-Way ANOVA (Source Table)
-
-:: content ::
-
-The between-groups and within-groups sums of squares are:
-| Source          | SS      | df  | MS       | F      |
-|-----------------|---------|-----|----------|--------|
-| Between Groups  | 450.0   | K-1 = 3   | SS/df = 150.0   |    |
-| Within Groups   | 100.0  | N-K = 36 |  SS/df = 2.78   |        |
-| **Total**       | 550.0  | 39 |          |        |
-
-<p v-click><Admonition title="Question" color="teal-light" width="100%">What should go in the *F* column?</Admonition></p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Example: One-Way ANOVA (Source Table)
-
-:: content ::
-
-The between-groups and within-groups sums of squares are:
-| Source          | SS      | df  | MS       | F      |
-|-----------------|---------|-----|----------|--------|
-| Between Groups  | 450.0   | K-1 = 3   | SS/df = 150.0   | MS_Between / MS_Within = 54.0  |
-| Within Groups   | 100.0  | N-K = 36 |  SS/df = 2.78   |        |
-| **Total**       | 550.0  | 39 |          |        |
-
-<p v-click>
-
-**Final ANOVA result: *F*(3, 36) = 54.0**
-
-*We need to look up the critical F value for (3, 36) df to determine significance, or use software to get the exact p-value.*
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-
-# Beyond Significance: Measuring Effect Size
-
-:: content ::
-A significant *F* tells us that not all group means are equal —
-but **how big** is that difference in practical terms?
-
-<p v-click>
-
-That's where **effect size** comes in.
-For ANOVA, we most often report **η² (eta squared)** or **R²**. (In a one-way ANOVA, they are equivalent.)
-
-$$
-\eta^2 = \frac{SS_\text{Between}}{SS_\text{Total}}
-$$
-
-It represents the **proportion of total variance** in the dependent variable that is explained by the independent variable.
 </p>
 
 ---
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
+columns: is-7-5
 ---
 
 :: title ::
-# Understanding η² and R² Conceptually
+# Tukey HSD on the reading data
 
 :: left ::
-- Think of *η²* like a “percentage of variance explained.”
-- *η² = .20* means 20 % of the variability in your data is accounted for by your experimental manipulation (group membership).
-- Larger *η²* → stronger effect.
+
+```r
+TukeyHSD(reading_model)
+```
+
+```text
+                 diff       lwr       upr  p adj
+DRTA-Basal   5.681818  1.112137 10.251499 0.0111
+Strat-Basal  3.227273 -1.342408  7.796953 0.2150
+Strat-DRTA  -2.454545 -7.024226  2.115135 0.4064
+```
+
+- **`diff`**: difference between the two group means
+- **`lwr`, `upr`**: a 95% CI for that difference, widened for the three comparisons
+- **`p adj`**: p value adjusted for the three comparisons
 
 :: right ::
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
-🧠  Quick interpretation guide (Cohen, 1988):
-• Small ≈ .01 • Medium ≈ .06 • Large ≈ .14
 
-These cutoffs are rough — context matters.
-</SpeechBubble>
+<Admonition title="Multiple choice 7" color="teal-light" width="100%">
+
+What do the Tukey tests show?
+
+- **A)** All three methods differ.
+- **B)** DRTA beat Basal; neither of the other two pairs differs significantly.
+- **C)** Strategies beat Basal, because its diff is positive.
+- **D)** DRTA beat both other methods.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**B.** Only DRTA−Basal has *p* adj < .05, and its CI excludes 0. The other two CIs include 0. \(C) and (D) read the direction of a difference but ignore whether it is significant.
+
+</Admonition>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-6-6
 ---
 
 :: title ::
-# Example: Reporting Effect Size
+# A real experiment: can a song make you feel older?
 
-:: content ::
-Imagine we find:
-> *F*(2, 36) = 5.47, *p* = .008, *η²* = .23
+:: left ::
 
-That means **23 %** of the variance in scores is explained by our independent variable.
+**The study.** 44 University of Pennsylvania undergraduates were randomly assigned to listen to one of three songs on headphones:
 
-<p v-click>
+- ***Kalimba***: an instrumental track that came with Windows 7 (the control)
+- ***Hot Potato***: a children's song by The Wiggles
+- ***When I'm Sixty-Four***: the Beatles, singing about getting old
 
-Including effect sizes helps readers judge:
-- whether the difference is **meaningful**, not just statistically significant,
-- and whether findings might replicate with new samples.
-</p>
+Then, in a "separate" survey, they answered: **How old do you feel?** (1 = very young, 5 = very old)
 
+<div class="text-xs text-gray-500 mt-2">Simmons, Nelson & Simonsohn (2011), <i>Psychological Science</i>, Study 1. Data: Simmons et al. (2014), <i>Journal of Open Psychology Data</i>; R package <code>ds4psy</code> (<code>falsePosPsy_all</code>).</div>
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+What are the IV (and its levels) and the DV? Which test fits, and could it support a causal claim?
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+IV: song (3 levels). DV: how old you feel (a 1–5 rating, treated as numeric). Three separate groups of people → **one-way between-groups ANOVA**. Random assignment → a significant *F* would support a causal claim.
+
+</Admonition></p>
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-7-5
 ---
 
 :: title ::
-# When *F* Is Significant: What's Next?
+# Can a song make you feel older? The results
 
-:: content ::
-- A significant ANOVA tells us that **at least one group differs**, but not *which* ones.
+:: left ::
 
-<p v-click>
+<img src="/images/lecture15/songs_feelold.png" alt="How old each participant felt after each of the three songs, with group means and standard errors" class="w-full mx-auto"/>
 
-- To find out *which* groups differ, we use **follow-up tests** called *post-hoc comparisons*.
-</p>
+<div class="text-xs text-gray-500 mt-1">Dots: individual participants (jittered). Black: group mean ± 1 SE. n = 13, 17, 14.</div>
 
----
-layout: top-title
-color: indigo-light
-align: lt
----
+:: right ::
 
-:: title ::
-# Why Not Just Run More *t*-Tests?
+```r
+song_model <- aov(feel_old ~ song, data = songs)
+summary(song_model)
+```
 
-:: content ::
-Because each extra *t*-test increases the risk of **Type I error** (false positives).
+```text
+          Df Sum Sq Mean Sq F value Pr(>F)
+song       2  1.773  0.8867    2.48 0.0962
+Residuals 41 14.658  0.3575
+```
 
-<p v-click>
+<Admonition title="Question" color="teal-light" width="100%">
 
-Post-hoc procedures control that risk by adjusting the critical value or significance threshold.
-When we run "post-hoc tests," we are essentially running *t* tests with built-in corrections for multiple comparisons.
+What can we conclude? Should we run Tukey tests?
 
-</p>
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+*F*(2, 41) = 2.48, *p* = .096, η² = .11. The songs did not differ significantly, so we stop: post-hoc tests come only after a significant *F*. With about 14 people per group, power is low, so this is not evidence that songs have *no* effect.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Keep this study in mind" width="100%">The researchers published a significant result from these same data. Lecture 19 shows how.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -976,136 +1003,266 @@ columns: is-5-7
 <div class="text-xs text-gray-500 mt-1">Two groups of n = 20, no real effect anywhere; 20,000 fake studies per point.</div>
 
 ---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Reporting a one-way ANOVA in APA style
+
+:: content ::
+
+Include: the type of ANOVA, each group's *M* and *SD*, ***F*(df<sub>Between</sub>, df<sub>Within</sub>)**, *p*, **η²**, and which post-hoc test you used and what it showed.
+
+<div v-click class="border-l-4 border-indigo-400 pl-4 mt-3 text-[17px] leading-snug">
+
+A one-way between-groups ANOVA compared reading comprehension across three teaching methods. Comprehension differed by method, *F*(2, 63) = 4.48, *p* = .015, η² = .12. Tukey HSD comparisons showed that children taught with DRTA (*M* = 46.7, *SD* = 7.4) scored higher than children taught with the basal method (*M* = 41.0, *SD* = 5.6), *p* = .011. Children taught think-aloud strategies (*M* = 44.3, *SD* = 5.8) did not differ significantly from either group (*p*s > .21).
+
+</div>
+
+<p v-click><StickyNote color="amber-light" title="Same rules as Lecture 13" width="80%">Italic statistical symbols, no leading zero on <i>p</i> or η², direction in words, and two dfs for <i>F</i>: between first, then within.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Assumptions of one-way ANOVA
+
+:: content ::
+
+The same assumptions as the independent-samples *t* test, for every group:
+
+1. **Numeric DV** (interval or ratio), so it has a mean
+2. **Independent observations**: each person is in one group and counted once (random selection is the ideal)
+3. **Normality**: each group's population is roughly normal. With about 30+ per group, the CLT makes this matter much less.
+4. **Homogeneity of variance**: the groups have similar spreads
+   - ==Homoscedastic==: same variance. ==Heteroscedastic==: different variances.
+   - Rule of thumb from Lecture 12: the largest SD should be less than twice the smallest.
+
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Practice: owls, larks, and missed classes
+
+:: left ::
+
+Our sleep data from Discussions 5–6: **253 college students** who called themselves larks (morning people), owls (night people), or neither. Do they miss different numbers of classes?
+
+<table class="compact-table text-base">
+<thead><tr><th></th><th>n</th><th><i>M</i></th><th><i>SD</i></th></tr></thead>
+<tbody>
+<tr><td>Lark</td><td>41</td><td>1.56</td><td>2.00</td></tr>
+<tr><td>Neither</td><td>163</td><td>1.77</td><td>2.36</td></tr>
+<tr><td>Owl</td><td>49</td><td>4.20</td><td>5.29</td></tr>
+</tbody>
+</table>
+
+```text
+             Df Sum Sq Mean Sq F value   Pr(>F)    
+chronotype    2  243.2  121.62   12.65 5.82e-06 ***
+Residuals   250 2402.7    9.61                     
+```
+
+<div class="text-xs text-gray-500 mt-1">Data: Onyper, Thacher, Gilbert, & Gradess (2012), <i>Chronobiology International</i>; Lock5Data (<code>SleepStudy</code>).</div>
+
+:: right ::
+
+<img src="/images/lecture15/chronotype_missed.png" alt="Classes missed by chronotype, individual students and group means with standard-error bars" class="w-11/12 mx-auto"/>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+What are df<sub>Between</sub> and df<sub>Within</sub>, and what is η²?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+3 − 1 = 2 and 253 − 3 = 250. η² = 243.2 / (243.2 + 2,402.7) = .09.
+
+</Admonition></p>
+
+---
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
 ---
 
 :: title ::
-# Planned vs. Post-Hoc Comparisons
+# Owls: what can we conclude?
 
 :: left ::
-**Planned (a priori)**
-- Decided *before* data collection
-- Test specific hypotheses
-- Fewer tests → no need for strong correction
 
-**Post-hoc**
-- Done *after* seeing results
-- Explore where the differences lie
-- Need corrections to keep α = .05 overall
+<Admonition title="Multiple choice 8" color="teal-light" width="100%">
+
+Tukey tests show owls missed more classes than both larks and "neither" (*p*s < .001), who did not differ. Which conclusion is justified?
+
+- **A)** Being a night owl causes students to miss class.
+- **B)** Owls should be assigned afternoon classes.
+- **C)** Owls missed significantly more classes than the other students; we can't say why.
+- **D)** No conclusion: one-way ANOVA needs equal group sizes.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** Chronotype was not assigned, so this is observational: owls might differ in many ways (later bedtimes, heavier course loads). (A) and (B) both assume a cause. (D): unequal ns are fine.
+
+</Admonition>
 
 :: right ::
-<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
-Think of post-hoc tests as “honest ways to peek under the hood” after finding a significant overall *F*.
-
-In general, with post-hoc tests, we adjust the size of the effect needed to declare significance to control for multiple comparisons.
-</SpeechBubble>
-
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Common Post-Hoc Test Corrections
-
-:: content ::
-
-| Test | Key Idea | Conservative? | Typical Use |
-|------|-----------|---------------|--------------|
-| **Scheffé** | Controls α for all possible contrasts | Most conservative | Exploratory analyses |
-| **Tukey HSD** | Tests all pairwise mean comparisons equally | Moderate | Balanced designs |
-| **Bonferroni** | Divides α by number of comparisons | Flexible | Small number of tests |
 
 <p v-click>
 
-All aim to protect against **false positives** while allowing fair comparisons among multiple groups.
+<Admonition title="Multiple choice 9" color="teal-light" width="100%">
+
+Look at the SDs: 2.00, 2.36, 5.29. Which assumption should worry us?
+
+- **A)** Independent observations
+- **B)** Homogeneity of variance: 5.29 is more than twice 2.00
+- **C)** Numeric DV
+- **D)** None; the ANOVA was significant
+
+</Admonition>
 
 </p>
 
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** The owls' SD is more than twice the larks', so the equal-variance assumption is questionable, and the result should be read with that caution in mind. (The skewed counts are less of a worry with groups this large.) (D): assumptions are about the data, not the result.
+
+</Admonition></p>
+
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
 ---
 
 :: title ::
-# Conceptual Takeaway
+# A non-significant ANOVA: GPA by chronotype
 
-:: content ::
-- **Scheffé:** “Play it safe” — harder to reach significance
-- **Tukey HSD:** “Middle ground” — good balance of safety and power
-- **Bonferroni:** “Divide and conquer” — simple, but can be overly strict when many tests
+:: left ::
 
+Same students. Do larks, owls, and "neither" differ in **GPA**?
 
-<p v-click>
+<table class="compact-table text-base">
+<thead><tr><th></th><th>Lark</th><th>Neither</th><th>Owl</th></tr></thead>
+<tbody>
+<tr><td><i>M</i> (<i>SD</i>)</td><td>3.33 (0.40)</td><td>3.24 (0.39)</td><td>3.20 (0.44)</td></tr>
+</tbody>
+</table>
 
-Different journals or software packages may default to different methods —  always report which you used.
-</p>
-
-<p v-click>
-
-**Bonferroni example:** You run an ANOVA with 4 groups (6 pairwise comparisons) and find a significant effect. You now want to know *which* groups differ. To keep overall α = .05, each *t* test must meet *p* < .0083 (.05/6) to be significant.
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# Reporting One-Way ANOVA Results in APA format
-
-:: content ::
-When reporting ANOVA results, include:
-- The type of ANOVA (e.g., one-way between-groups)
-- The *F* statistic with degrees of freedom
-- The *p* value
-- Effect size (e.g., *η²* or *R²*)
-- Results of post-hoc tests if applicable
-
-<p v-click>
-
-==Example write-up:==
-A one-way between-groups ANOVA was conducted to compare the effect of phone use on driving performance. There was a significant effect of phone use condition on driving performance, *F*(3, 36) = 54.0, *p* < .001, *η²* = .82. Post-hoc comparisons using the Tukey HSD test indicated that the video call condition resulted in significantly worse driving performance compared to the no phone condition (*p* = .023) and the passenger condition (*p* < .001). No other comparisons were significant (*p*s > .05).
-
-</p>
-
----
-layout: top-title
-color: indigo-light
-align: lt
----
-
-:: title ::
-# One-Way ANOVA in R
-
-:: content ::
-
-To perform a one-way ANOVA in R, you can use the `aov()` function. Here's a basic example:
-
-```r
-# Example data
-data <- data.frame(
-  performance = c(85, 90, 78, 88, 92, 80, 75, 95, 89, 84,
-                  70, 65, 72, 68, 74, 66, 69, 71, 73, 67),
-  condition = factor(rep(c("No Phone", "Passenger", "Cell Phone", "Video Call"), each = 5))
-)
-# Perform one-way ANOVA
-anova_result <- aov(performance ~ condition, data = data)
-
-# View summary
-summary(anova_result)
-
+```text
+             Df Sum Sq Mean Sq F value Pr(>F)
+chronotype    2   0.43   0.215   1.319  0.269
+Residuals   250  40.76   0.163               
 ```
 
-<p v-click><StickyNote color="green-light" title="In discussion section" width="60%">Tomorrow (Wed. 11/18) you'll run one-way ANOVAs in R yourselves — and get an introduction to Data Write-Up #2, which is ANOVA-based.</StickyNote></p>
+:: right ::
 
+<Admonition title="Multiple choice 10" color="teal-light" width="100%">
+
+What should the researchers do next?
+
+- **A)** Report that they found no significant GPA difference among chronotypes (η² = .01), and stop: no post-hoc tests.
+- **B)** Run Tukey tests to find the hidden difference between larks and owls.
+- **C)** Conclude that chronotype is unrelated to GPA in every population.
+- **D)** Switch to α = .30 so the result is significant.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** Post-hoc tests only follow a significant *F* (B). Failing to reject is not proof of no difference \(C), though with 253 students and η² = .01, any difference is likely small. (D) changes the rule after seeing the data.
+
+</Admonition>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# What changed from test to test?
+
+:: content ::
+
+<table class="compact-table text-sm">
+<thead><tr><th></th><th>Single-sample <i>t</i></th><th>Paired-samples <i>t</i></th><th>Independent-samples <i>t</i></th><th>One-way ANOVA</th></tr></thead>
+<tbody>
+<tr><td><b>Step 1:</b> which test fits?</td><td>One mean, σ unknown</td><td>Two scores per participant</td><td>Two separate groups</td><td><b>Three or more separate groups</b></td></tr>
+<tr><td><b>Step 3:</b> noise</td><td>s/√n</td><td>s<sub>D</sub>/√n</td><td>from both SDs and both ns</td><td><b>MS<sub>Within</sub></b>: the pooled variance of all groups</td></tr>
+<tr><td><b>Step 3:</b> shape</td><td><i>t</i>, df = n − 1</td><td><i>t</i>, df = n − 1</td><td><i>t</i>, df = n₁ + n₂ − 2</td><td><b><i>F</i>, df = (k − 1, N − k)</b></td></tr>
+<tr><td><b>Step 4:</b> tails</td><td>one or two</td><td>one or two</td><td>one or two</td><td><b>always one (upper)</b></td></tr>
+<tr><td><b>Step 5:</b> signal ÷ noise</td><td>(M − μ)/s<sub>M</sub></td><td>M<sub>D</sub>/s<sub>M</sub></td><td>(M₁ − M₂)/SE<sub>diff</sub></td><td><b>MS<sub>Between</sub>/MS<sub>Within</sub></b></td></tr>
+<tr><td><b>Effect size</b></td><td><i>d</i></td><td><i>d</i></td><td><i>d</i></td><td><b>η²</b></td></tr>
+<tr><td><b>In R</b></td><td><code>t.test(x, mu = )</code></td><td><code>t.test(x, y, paired = TRUE)</code></td><td><code>t.test(x, y, var.equal = TRUE)</code></td><td><b><code>summary(aov(dv ~ group))</code></b></td></tr>
+</tbody>
+</table>
+
+<p v-click>
+
+<div class="flex items-center gap-4 mt-3">
+<IceCream :size="70" mood="blissful" color="#FDA7DC" />
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="40rem">Thursday: what if the same people are in every condition (like the paired t test), and what if there are two IVs at once?</SpeechBubble>
+</div>
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Key terms from today
+
+:: content ::
+
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 text-base">
+<div>
+
+**Alpha inflation** — running many tests raises the chance that at least one is a false positive (3 tests: 14%; 6 tests: 26%).
+
+</div>
+<div>
+
+**One-way between-groups ANOVA** — one test of whether 3+ separate groups have the same mean. H₁: at least one differs.
+
+</div>
+<div>
+
+***F* statistic** — between-groups variance ÷ within-groups variance (MS<sub>Between</sub>/MS<sub>Within</sub>). Never negative; near 1 when H₀ is true; one-tailed; two dfs (k − 1, N − k).
+
+</div>
+<div>
+
+**Sums of squares & mean squares** — SS<sub>Total</sub> = SS<sub>Between</sub> + SS<sub>Within</sub>; MS = SS/df. The source table lays them out.
+
+</div>
+<div>
+
+**η² (eta squared)** — SS<sub>Between</sub>/SS<sub>Total</sub>: the proportion of variability explained by the groups. Small .01, medium .06, large .14.
+
+</div>
+<div>
+
+**Post-hoc tests** — pairwise comparisons after a significant *F*, corrected for multiple comparisons (Tukey HSD, Bonferroni, Scheffé).
+
+</div>
+</div>
 
 ---
 layout: cover
@@ -1113,6 +1270,4 @@ color: indigo-light
 ---
 
 # That's all for today!
-Thursday: Repeated-Measures ANOVA & Two-Way ANOVA
-
-- Don't forget: Data Write-Up #1 is due tonight at 11:59 p.m.!
+Tomorrow: Discussion 11 (ANOVA in R; Data Write-Up #2 begins). Thursday: repeated-measures & two-way ANOVA.

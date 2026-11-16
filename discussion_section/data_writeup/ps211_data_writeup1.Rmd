@@ -158,9 +158,9 @@ Now put the numbers in this table (edit the cells; keep the vertical bars):
 | GROUP 1 NAME | | | |
 | GROUP 2 NAME | | | |
 
-**Assumption check.** Run the chunk below to see a histogram of the DV for each group (this exploratory plot is for you, not for the report, so it is hidden when you knit). Then write two or three sentences: is each group's distribution roughly symmetric, or clearly skewed? Are the two SDs similar (a rule of thumb: the larger SD is less than twice the smaller)? Anything else a reader should know before trusting a comparison of means?
+**Assumption check.** Run the chunk below to make a histogram of the DV for each group. The histograms appear in your knitted report, so the graders can check your assumption check against them. Then write two or three sentences: is each group's distribution roughly symmetric, or clearly skewed? Are the two SDs similar (a rule of thumb: the larger SD is less than twice the smaller)? Anything else a reader should know before trusting a comparison of means?
 
-```{r part4-histograms, fig.show = "hide"}
+```{r part4-histograms, fig.width = 5, fig.height = 3.5}
 # Two histograms, one per group, following the Discussion 2 pattern:
 #   ggplot(group_1, aes(x = ___)) + geom_histogram(bins = 15, fill = "lightgrey", color = "black") + theme_classic()
 

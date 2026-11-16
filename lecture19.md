@@ -24,7 +24,7 @@ align: lt
 
 :: content ::
 - Reminder: our second ==Data Write-Up== (ANOVA-based) is due **this coming Tuesday, December 8** at 11:59 p.m. — don't leave it to the last minute!
-- ==Exam 4== is on **Thursday, Dec. 10** during class.
+- ==Exam 4== is on **Thursday, Dec. 10** during class. **There will be no make-ups.**
    - Review sheet will be posted today or tomorrow.
     - Focuses on Lectures 15 - 19.
     - **NO MAKE-UPS**
@@ -534,6 +534,58 @@ t.test(creativity ~ group, data = cleaned, var.equal = TRUE)
 </Admonition></p>
 
 <p v-click><StickyNote color="amber-light" title="Every number in the first version is true" width="100%">The finding is not. Ten outcomes, peeking, and a convenient outlier turned noise into p = .015.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Now p-hack real data: the song studies
+
+:: left ::
+
+The authors posted their raw data. First, the honest analyses: **every song, nothing added**.
+
+```r
+# Study 1 (Lecture 15): how old do you feel?
+summary(aov(feel_old ~ song, data = study1))
+#> song: F(2, 41) = 2.48, p = .096
+# Study 2: actual age, from birth date
+summary(aov(age ~ song, data = study2))
+#> song: F(2, 31) = 0.45, p = .643
+```
+
+<p v-click>
+
+The published versions: **drop one song** and **add father's age**.
+
+```r
+anova(lm(feel_old ~ dad_age + song, data = study1_two_songs))
+#> song: F(1, 27) = 5.06, p = .033
+anova(lm(age ~ dad_age + song, data = study2_two_songs))
+#> song: F(1, 17) = 4.92, p = .040
+```
+
+</p>
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+Neither study found anything with all three songs. Which two choices turned them into significant, published findings?
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Reporting only two of the three songs, and adding a covariate (father's age) chosen after looking. Without the covariate, Study 2 gives *t*(18) = 1.00, *p* = .33.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Sharing data is part of the fix" width="100%">Because the data are public, anyone can rerun both versions. Simmons, Nelson & Simonsohn (2014), <i>Journal of Open Psychology Data</i>; R package <code>ds4psy</code>.</StickyNote></p>
 
 ---
 layout: top-title-two-cols

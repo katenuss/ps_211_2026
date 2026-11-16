@@ -86,8 +86,8 @@ nrow(group_2)
 
 **Assumption check.**
 
-```{r part4-histograms, fig.show = "hide"}
-# Exploratory histograms, one per group (hidden in the knitted file)
+```{r part4-histograms, fig.width = 5, fig.height = 3.5}
+# Histograms, one per group, to check the shape of each distribution
 ggplot(group_1, aes(x = winpercent)) +
   geom_histogram(bins = 12, fill = "lightgrey", color = "black") +
   labs(title = "Chocolate candies", x = "Win percentage", y = "Candies") +

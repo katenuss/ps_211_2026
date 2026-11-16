@@ -25,7 +25,7 @@ align: lt
 :: content ::
 - Today is our last regular class session before Exam 4!
 - Reminder: ==Data Write-Up #2== is due **TONIGHT (Tuesday, December 8) at 11:59 p.m.!**
-- ==Exam 4== is on **Thursday, Dec. 10** during class — covers Lectures 15-19.
+- ==Exam 4== is on **Thursday, Dec. 10** during class — covers Lectures 15-19. **There will be no make-ups.**
   - Thursday, Dec. 10 is also the **last day of classes** for the semester.
   - **NO MAKE-UPS**
 - Discussion 13 (Wed. 12/9): course wrap-up & Exam 4 practice.
