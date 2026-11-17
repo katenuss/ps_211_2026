@@ -857,6 +857,77 @@ Reject $H_0$: $\chi^2(2) = 19.3$, $p < .001$. Half of the left-handers put the l
 <p v-click><StickyNote color="amber-light" title="About that warning" width="100%">Only 18 left-handers, so two <i>expected</i> counts are below 5, and the chi-square null world is a rough approximation. The fix is Fisher's exact test, <code>fisher.test()</code>: p = .0001, same conclusion. An assumption check, like Lecture 12's.</StickyNote></p>
 
 ---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# A puzzle from the news: twins in the Senate
+
+:: content ::
+
+<img src="/images/lecture15/senate_twins.png" alt="WAPT News graphic: Senate Democrats Scott Colom, Mark Kelly, Patty Murray, and Brian Schatz, each of whom has an identical twin" class="w-7/12 mx-auto rounded"/>
+
+<div class="text-center mt-3">
+
+With Scott Colom's win in Mississippi, **4 of the 56 Democratic senators are identical twins**. About **1 in 200 people** is an identical twin.<br/>Are identical twins more likely to become Democratic senators? The outcome is a **category** (twin or not), so we count.
+
+</div>
+
+<div class="text-xs text-gray-500 text-center mt-2">Image and story: Ware (2026, Nov. 12), "Scott Colom's win adds a fourth identical twin to Senate Democrats," WAPT News.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Twins in the Senate: goodness-of-fit
+
+:: left ::
+
+| | Twin | Not a twin |
+|---|:---:|:---:|
+| Observed | 4 | 52 |
+| Expected if $H_0$ (1 in 200) | 0.28 | 55.72 |
+
+```r
+chisq.test(c(4, 52), p = c(1/200, 199/200))
+#> X-squared = 49.671, df = 1, p-value = 1.818e-12
+#> Warning: Chi-squared approximation may be incorrect
+```
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+Can we trust this χ² test? Look at the expected counts.
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Not really. With 56 senators, chance predicts only 0.28 twins, far below 5, so the chi-square null world is a poor approximation (that's the warning).
+
+</Admonition></p>
+
+<p v-click>
+
+The exact test for one proportion counts every way 56 people could include 4+ twins:
+
+```r
+binom.test(4, 56, p = 1/200, alternative = "greater")
+#> p-value = 0.0001865
+```
+
+Four twins is very unlikely by chance, *p* < .001. Why twins win elections is another question: this is observational data.
+
+</p>
+
+---
 layout: top-title-two-cols
 color: indigo-light
 align: lt-lt-lt
