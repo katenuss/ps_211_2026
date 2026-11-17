@@ -24,10 +24,10 @@ align: lt
 
 :: content ::
 
-<div class="text-base">
+<div class="text-[15px]">
 
-- ==Exam 3== grades are posted. We will go over difficult questions in class if needed.
-- ==Data Write-Up #2== (ANOVA-based) starts **tomorrow in Discussion 11**: new groups, new datasets. Due **Tuesday, December 8** at 11:59 p.m.
+- ==Exam 3== grades are posted. We'll go over the difficult questions in a moment.
+- ==Data Write-Up #2== (ANOVA-based) starts **tomorrow in Discussion 11**: new datasets, and new groups if you'd like. **Message Rola** to say whether you're sticking with your Write-Up #1 group or joining a new one. Due **Tuesday, December 8** at 11:59 p.m.
 - ==Exam 4== (the last exam) is **Thursday, December 10**, in class. **There will be no make-ups.**
 - Office hours: Tuesdays, 8:45 – 10:45 a.m. (Kate); Wednesdays, 2:30 – 3:30 p.m. (Rola)
 
@@ -58,6 +58,69 @@ align: lt
 </div>
 </div>
 
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Before we start: twins in the Senate?
+
+:: content ::
+
+<img src="/images/lecture15/senate_twins.png" alt="WAPT News graphic: Senate Democrats Scott Colom, Mark Kelly, Patty Murray, and Brian Schatz, each of whom has an identical twin" class="w-7/12 mx-auto rounded"/>
+
+<div class="text-center mt-3">
+
+With Scott Colom's win in Mississippi, **4 of the 56 Democratic senators are identical twins**. About **1 in 200 people** is an identical twin.<br/>Are identical twins more likely to become Democratic senators? **Statistics to the rescue!**
+
+</div>
+
+<div class="text-xs text-gray-500 text-center mt-2">Image and story: Ware (2026, Nov. 12), "Scott Colom's win adds a fourth identical twin to Senate Democrats," WAPT News.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Twins in the Senate: a one-sample *t* test
+
+:: left ::
+
+Each senator is a 1 (identical twin) or a 0 (not). The mean of those 0s and 1s is the proportion of twins. Under H₀, that proportion is 1/200 = .005.
+
+```r
+twin <- c(rep(1, 4), rep(0, 52))   # 1 = identical twin
+t.test(twin, mu = 1/200)
+```
+
+```text
+t = 1.9129, df = 55, p-value = 0.06097
+95 percent confidence interval:
+ 0.001834905 0.141022238
+mean of x
+0.07142857
+```
+
+:: right ::
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+The sample proportion is .071, against .005 expected by chance. What does the test say?
+
+</Admonition>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+*t*(55) = 1.91, *p* = .061: not quite significant, two-tailed. But the question was directional ("*more* likely"), so a one-tailed test (`alternative = "greater"`) gives *p* = .030.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Is a t test the right tool?" width="100%">The data are only 0s and 1s, nothing like a normal distribution, and twins are rare. The exact test for a proportion, <code>binom.test(4, 56, p = 1/200, alternative = "greater")</code>, gives <i>p</i> < .001. Tests for categorical outcomes: Lecture 19.</StickyNote></p>
 ---
 layout: top-title
 color: indigo-light
@@ -145,7 +208,7 @@ align: lt
 </div>
 <div>
 
-**Equal-variance assumption** — the groups should have similar spreads (rule of thumb: the larger SD less than twice the smaller). `var.equal = TRUE` pools them.
+**Equal-variance assumption** — the groups should have similar spreads. `var.equal = TRUE` pools them.
 
 </div>
 </div>
@@ -203,12 +266,12 @@ Which statement is correct?
 
 <Admonition title="Multiple choice 2" color="teal-light" width="100%">
 
-The SDs were 5.6 (Basal) and 7.4 (DRTA). Was `var.equal = TRUE` reasonable?
+DRTA *M* = 46.7, Basal *M* = 41.0, pooled *SD* ≈ 6.6, so Cohen's *d* ≈ 0.87. Which description fits?
 
-- **A)** No: any difference in SDs breaks the assumption.
-- **B)** No: the design calls for a paired test.
-- **C)** Yes, because the p value is small.
-- **D)** Yes: 7.4 is less than twice 5.6, so the spreads are similar enough to pool.
+- **A)** A small effect: the difference is under 6 points.
+- **B)** The DRTA children scored 87% higher.
+- **C)** A large effect: the average DRTA child scored almost 0.9 SDs above the average Basal child.
+- **D)** It can't be judged without the *p* value.
 
 </Admonition>
 
@@ -216,7 +279,7 @@ The SDs were 5.6 (Basal) and 7.4 (DRTA). Was `var.equal = TRUE` reasonable?
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**D.** Lecture 12's rule of thumb. (B): different children in each group. \(C): assumptions are checked before the test, not judged by its result.
+**C.** *d* = 5.7 / 6.6 is the difference in SD units; by Cohen's guide, 0.8 or more is large. (A) ignores the spread. (B) misreads *d* as a percentage. (D): effect size and *p* answer different questions (Lecture 11).
 
 </Admonition></p>
 
@@ -374,7 +437,7 @@ two means: a *difference* is the signal
 </div>
 <div v-click class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-3">
 
-$$F = \frac{\text{between-groups variance}}{\text{within-groups variance}}$$
+$$F = \frac{\begin{matrix}\text{between-groups}\\ \text{variance}\end{matrix}}{\begin{matrix}\text{within-groups}\\ \text{variance}\end{matrix}}$$
 
 3+ means: how *spread out* the means are is the signal
 
@@ -479,11 +542,14 @@ No. H₁ is simply "not all equal." One method could beat the other two, which t
 
 :: right ::
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 
 There is no "direction" for H₁. *F* is a ratio of two variances, so it can never be negative, and every *F* test is **one-tailed**: only a large *F* counts against H₀.
 
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="happy" color="#FDA7DC" /></div>
+</div>
 
 ---
 layout: top-title-two-cols
@@ -677,11 +743,14 @@ Reading study: η² = 357.3 / 2,869.0 = **.12**. Teaching method accounts for 12
 
 :: right ::
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 
 Rough guide (Cohen, 1988): small ≈ .01, medium ≈ .06, large ≈ .14. Context matters: 12% from a few weeks of teaching is a lot.
 
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="excited" color="#FDA7DC" /></div>
+</div>
 
 <p v-click><StickyNote color="amber-light" title="Same as d" width="100%">Like Cohen's d, η² does not depend on sample size. With a huge sample, a tiny η² can still be significant, so report both.</StickyNote></p>
 
@@ -710,6 +779,12 @@ Residuals   63 2511.7   39.87
 ```
 
 The formula `comprehension ~ method` reads "comprehension **as explained by** method": DV on the left, IV on the right. The IV column holds each child's group label.
+
+<Admonition title="Warning: make the IV a factor" color="red-light" width="100%">
+
+If the groups are stored as numbers (1, 2, 3), R treats the IV as a number and fits a single slope: the `method` row shows df = 1 instead of k − 1. Fix it first with `factor()`, and always check that df<sub>Between</sub> = k − 1.
+
+</Admonition>
 
 :: right ::
 
@@ -808,11 +883,14 @@ A significant ANOVA says **at least one** mean differs. To find out which, we co
 
 :: right ::
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 
 A post-hoc test is a *t* test with a built-in correction: each comparison has to clear a higher bar, so the whole *set* keeps a 5% false-positive rate.
 
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="blissful" color="#FDA7DC" /></div>
+</div>
 
 <p v-click><StickyNote color="amber-light" title="Only after a significant F" width="100%">If the ANOVA is not significant, stop. Running pairwise tests anyway is hunting for a result.</StickyNote></p>
 
@@ -847,6 +925,8 @@ align: lt
 Whichever you use, **say which** in your write-up. All of them trade a little power for protection against false positives.
 
 </p>
+
+<p v-click><StickyNote color="amber-light" title="How much do you need to know?" width="90%">Exactly how Tukey and Scheffé adjust <i>p</i> is beyond this course. The idea: each extra comparison is another chance at a false positive, so each one must clear a higher bar (R shows this as a larger <code>p adj</code>). Together, the whole set keeps a 5% false-positive rate.</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -1041,7 +1121,7 @@ The same assumptions as the independent-samples *t* test, for every group:
 3. **Normality**: each group's population is roughly normal. With about 30+ per group, the CLT makes this matter much less.
 4. **Homogeneity of variance**: the groups have similar spreads
    - ==Homoscedastic==: same variance. ==Heteroscedastic==: different variances.
-   - Rule of thumb from Lecture 12: the largest SD should be less than twice the smallest.
+   - Check it by comparing the groups' SDs. If one is much larger, say so and interpret the result with caution.
 
 
 ---
@@ -1125,12 +1205,12 @@ Tukey tests show owls missed more classes than both larks and "neither" (*p*s < 
 
 <Admonition title="Multiple choice 9" color="teal-light" width="100%">
 
-Look at the SDs: 2.00, 2.36, 5.29. Which assumption should worry us?
+For classes missed, η² = .09. Which statement is correct?
 
-- **A)** Independent observations
-- **B)** Homogeneity of variance: 5.29 is more than twice 2.00
-- **C)** Numeric DV
-- **D)** None; the ANOVA was significant
+- **A)** 9% of owls missed class.
+- **B)** Chronotype accounts for about 9% of the variability in classes missed; the other 91% comes from everything else about the students.
+- **C)** The effect is too small to be real.
+- **D)** Owls missed 9% more classes than larks.
 
 </Admonition>
 
@@ -1138,7 +1218,7 @@ Look at the SDs: 2.00, 2.36, 5.29. Which assumption should worry us?
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-**B.** The owls' SD is more than twice the larks', so the equal-variance assumption is questionable, and the result should be read with that caution in mind. (The skewed counts are less of a worry with groups this large.) (D): assumptions are about the data, not the result.
+**B.** η² is a proportion of variability, not of people (A) or of classes (D). \(C): by Cohen's guide .09 is a medium effect, and the significant *F* says it is unlikely to be chance.
 
 </Admonition></p>
 
