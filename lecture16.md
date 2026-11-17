@@ -141,6 +141,157 @@ color: indigo-light
 align: lt
 ---
 
+Finishing Lecture 15
+# One-Way ANOVA: practice
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Practice: owls, larks, and missed classes
+
+:: left ::
+
+Our sleep data from Discussions 5–6: **253 college students** who called themselves larks (morning people), owls (night people), or neither. Do they miss different numbers of classes?
+
+<table class="compact-table text-base">
+<thead><tr><th></th><th>n</th><th><i>M</i></th><th><i>SD</i></th></tr></thead>
+<tbody>
+<tr><td>Lark</td><td>41</td><td>1.56</td><td>2.00</td></tr>
+<tr><td>Neither</td><td>163</td><td>1.77</td><td>2.36</td></tr>
+<tr><td>Owl</td><td>49</td><td>4.20</td><td>5.29</td></tr>
+</tbody>
+</table>
+
+```text
+             Df Sum Sq Mean Sq F value   Pr(>F)    
+chronotype    2  243.2  121.62   12.65 5.82e-06 ***
+Residuals   250 2402.7    9.61                     
+```
+
+<div class="text-xs text-gray-500 mt-1">Data: Onyper, Thacher, Gilbert, & Gradess (2012), <i>Chronobiology International</i>; Lock5Data (<code>SleepStudy</code>).</div>
+
+:: right ::
+
+<img src="/images/lecture15/chronotype_missed.png" alt="Classes missed by chronotype, individual students and group means with standard-error bars" class="w-11/12 mx-auto"/>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+What are df<sub>Between</sub> and df<sub>Within</sub>, and what is η²?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+3 − 1 = 2 and 253 − 3 = 250. η² = 243.2 / (243.2 + 2,402.7) = .09.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Owls: what can we conclude?
+
+:: left ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+Tukey tests show owls missed more classes than both larks and "neither" (*p*s < .001), who did not differ. Which conclusion is justified?
+
+- **A)** Being a night owl causes students to miss class.
+- **B)** Owls should be assigned afternoon classes.
+- **C)** Owls missed significantly more classes than the other students; we can't say why.
+- **D)** No conclusion: one-way ANOVA needs equal group sizes.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** Chronotype was not assigned, so this is observational: owls might differ in many ways (later bedtimes, heavier course loads). (A) and (B) both assume a cause. (D): unequal ns are fine.
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+For classes missed, η² = .09. Which statement is correct?
+
+- **A)** 9% of owls missed class.
+- **B)** Chronotype accounts for about 9% of the variability in classes missed; the other 91% comes from everything else about the students.
+- **C)** The effect is too small to be real.
+- **D)** Owls missed 9% more classes than larks.
+
+</Admonition>
+
+</p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+**B.** η² is a proportion of variability, not of people (A) or of classes (D). \(C): by Cohen's guide .09 is a medium effect, and the significant *F* says it is unlikely to be chance.
+
+</Admonition></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# A non-significant ANOVA: GPA by chronotype
+
+:: left ::
+
+Same students. Do larks, owls, and "neither" differ in **GPA**?
+
+<table class="compact-table text-base">
+<thead><tr><th></th><th>Lark</th><th>Neither</th><th>Owl</th></tr></thead>
+<tbody>
+<tr><td><i>M</i> (<i>SD</i>)</td><td>3.33 (0.40)</td><td>3.24 (0.39)</td><td>3.20 (0.44)</td></tr>
+</tbody>
+</table>
+
+```text
+             Df Sum Sq Mean Sq F value Pr(>F)
+chronotype    2   0.43   0.215   1.319  0.269
+Residuals   250  40.76   0.163               
+```
+
+:: right ::
+
+<Admonition title="Multiple choice 5" color="teal-light" width="100%">
+
+What should the researchers do next?
+
+- **A)** Report that they found no significant GPA difference among chronotypes (η² = .01), and stop: no post-hoc tests.
+- **B)** Run Tukey tests to find the hidden difference between larks and owls.
+- **C)** Conclude that chronotype is unrelated to GPA in every population.
+- **D)** Switch to α = .30 so the result is significant.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**A.** Post-hoc tests only follow a significant *F* (B). Failing to reject is not proof of no difference \(C), though with 253 students and η² = .01, any difference is likely small. (D) changes the rule after seeing the data.
+
+</Admonition>
+
+---
+layout: section
+color: indigo-light
+align: lt
+---
+
 Part 1
 # Repeated-Measures ANOVA
 
@@ -193,7 +344,7 @@ Which of these studies call for a **repeated-measures ANOVA**?
 
 :: right ::
 
-<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+<Admonition title="Multiple choice 6" color="teal-light" width="100%">
 
 **A)** 1 and 3 &nbsp; **B)** 2 and 3 &nbsp; **C)** All four &nbsp; **D)** Only 1
 
@@ -261,6 +412,39 @@ align: lt
 ---
 
 :: title ::
+# Removing each person's average, step by step
+
+:: content ::
+
+<div class="grid grid-cols-3 gap-3 text-[14px] leading-snug">
+<div>
+<img src="/images/lecture16/rm_step1_raw.png" alt="Each person's tapping rate across the three drugs, with a dashed line at each person's average" class="w-full"/>
+
+Dashed lines: each person's **average** (19, 70, 30, 17). Ignore who is who, and these baseline gaps become spread *within* each drug: big error bars.
+
+</div>
+<div v-click>
+<img src="/images/lecture16/rm_step2_adjusted.png" alt="The same lines after each person's average is subtracted and the overall mean of 34 is added back; the lines now overlap" class="w-full"/>
+
+Subtract each person's own average, add back the overall mean. Person I, placebo: 11 − 19 + 34 = **26**. Everyone now has the same average; only how each person **changed** across drugs is left.
+
+</div>
+<div v-click>
+<img src="/images/lecture16/rm_step3_bars.png" alt="Mean and standard error for each drug, computed from the adjusted scores, with the adjusted scores shown as dots" class="w-full"/>
+
+Mean and SE for each drug from the step-2 scores. The means don't move (22, 39, 41); the error bars shrink. These are the right-hand bars on the next slide.
+
+</div>
+</div>
+
+<div v-click class="text-xs text-gray-500 mt-2">One small extra step: the SE is multiplied by √(k / (k − 1)) = √(3/2), because removing averages slightly shrinks the spread (Morey, 2008).</div>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
 # Same data, two analyses
 
 :: content ::
@@ -280,6 +464,35 @@ align: lt
 </div>
 </div>
 
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Why is each score far from the grand mean?
+
+:: content ::
+
+<div class="text-[15px] leading-snug">
+
+Every score = grand mean + **drug piece** + **person piece** + **leftover**. Person II on caffeine: 83 = 34 + <span class="text-pink-600 font-bold">5</span> + <span class="text-gray-500 font-bold">36</span> + <span class="text-teal-600 font-bold">8</span>. Each SS adds up the squared lengths of one kind of piece.
+
+</div>
+
+<div class="grid grid-cols-4 gap-2 mt-1">
+<img src="/images/lecture16/ss_step1_total.png" alt="Each of the 12 scores as a line from the grand mean of 34; SS total 6,682" class="w-full"/>
+<img v-click src="/images/lecture16/ss_step2_drug.png" alt="Each score replaced by its drug's mean; short lines; SS drug 872" class="w-full"/>
+<img v-click src="/images/lecture16/ss_step3_person.png" alt="Each score replaced by its person's mean; Person II far above 34 in every condition; SS person 5,478" class="w-full"/>
+<img v-click src="/images/lecture16/ss_step4_leftover.png" alt="What is left after removing drug and person pieces; short lines; SS leftover 332" class="w-full"/>
+</div>
+
+<p v-click><Admonition title="Why is the person piece so big?" color="green-light" width="100%">
+
+The drug pieces are short (−12, +5, +7). The person pieces are long, and each one appears in **all three** conditions: Person II alone is 36 above 34 three times, 3 × 36² = 3,888 of the 5,478. Most of what made the scores differ was **who** was tapping, not which pill they took.
+
+</Admonition></p>
 ---
 layout: top-title
 color: indigo-light
@@ -315,11 +528,17 @@ align: lt-lt-lt
 
 :: left ::
 
+<div class="text-[15px] leading-snug">
+
 1. Find each **person's mean** across conditions.
 2. Subtract the **grand mean** (all scores; here 34).
 3. Square, add up, and multiply by **k**, the number of conditions (each person contributes k scores).
 
+</div>
+
 $$SS_\text{Subjects} = k \sum (M_\text{person} - M_G)^2$$
+
+<img src="/images/lecture16/subjects_dev.png" alt="Each person's three scores, their average, and the distance from the grand mean of 34: minus 15, plus 36, minus 4, minus 17" class="w-3/4 mx-auto"/>
 
 :: right ::
 
@@ -388,7 +607,7 @@ align: lt
 <thead><tr><th>Source</th><th>SS</th><th>df</th><th>MS</th><th><i>F</i></th></tr></thead>
 <tbody>
 <tr><td>Between (drug)</td><td>872</td><td>2</td><td><span v-click="1">872 / 2 = 436.0</span></td><td><span v-click="2"><b>436.0 / 55.3 = 7.88</b></span></td></tr>
-<tr><td>Subjects</td><td>5,478</td><td>3</td><td><span v-click="1">5,478 / 3 = 1,826.0</span></td><td><span v-click="2">(not tested)</span></td></tr>
+<tr><td>Subjects</td><td>5,478</td><td>3</td><td><span v-click="1">5,478 / 3 = 1,826.0</span></td><td></td></tr>
 <tr><td>Within (error)</td><td>332</td><td>6</td><td><span v-click="1">332 / 6 = 55.3</span></td><td></td></tr>
 <tr><td><b>Total</b></td><td>6,682</td><td>11</td><td></td><td></td></tr>
 </tbody>
@@ -431,7 +650,7 @@ align: lt
 <tr><td><b>3.</b> Comparison distribution</td><td><i>F</i>, df = (k − 1, N − k)</td><td><i>F</i>, df = (k − 1, <b>(k − 1)(n − 1)</b>)</td></tr>
 <tr><td><b>4.</b> Critical value</td><td colspan="2">α = .05, one cutoff in the upper tail. Identical.</td></tr>
 <tr><td><b>5.</b> Test statistic</td><td><i>F</i> = MS<sub>Between</sub>/MS<sub>Within</sub></td><td><i>F</i> = MS<sub>Between</sub>/MS<sub>Within</sub>, <b>after SS<sub>Subjects</sub> is removed from the noise</b></td></tr>
-<tr><td><b>6.</b> Decision</td><td>Reject or not; then Tukey or Bonferroni</td><td>Reject or not; then <b>paired <i>t</i> tests with a Bonferroni correction</b></td></tr>
+<tr><td><b>6.</b> Decision</td><td>Reject or not; then Tukey or Bonferroni</td><td>Reject or not; then <b>paired <i>t</i> tests with a correction</b></td></tr>
 </tbody>
 </table>
 
@@ -519,7 +738,7 @@ align: lt-lt-lt
 
 *Participants memorize word lists after drinking 0, 1, or 2 cups of coffee, one condition per day, always in that order. Everyone improves from day to day, whatever the dose.*
 
-<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+<Admonition title="Multiple choice 7" color="teal-light" width="100%">
 
 Which disadvantage of within-groups designs does this show?
 
@@ -540,7 +759,7 @@ Which disadvantage of within-groups designs does this show?
 
 <p v-click>
 
-<Admonition title="Multiple choice 5" color="teal-light" width="100%">
+<Admonition title="Multiple choice 8" color="teal-light" width="100%">
 
 What is the best way to fix the design?
 
@@ -617,7 +836,7 @@ align: lt-lt-lt
 
 :: left ::
 
-<Admonition title="Multiple choice 6" color="teal-light" width="100%">
+<Admonition title="Multiple choice 9" color="teal-light" width="100%">
 
 Mean "45 seconds": silence 37 s, upbeat 53 s, calm 63 s. Paired *t* tests with a Bonferroni correction show every pair differs (all *p* < .001). Which conclusion is correct?
 
@@ -638,7 +857,7 @@ Mean "45 seconds": silence 37 s, upbeat 53 s, calm 63 s. Paired *t* tests with a
 
 <p v-click>
 
-<Admonition title="Multiple choice 7" color="teal-light" width="100%">
+<Admonition title="Multiple choice 10" color="teal-light" width="100%">
 
 Why did the researcher randomize the order of conditions for each student?
 
@@ -676,7 +895,7 @@ A one-way repeated-measures ANOVA compared students' estimates of 45 seconds acr
 
 </div>
 
-<p v-click><StickyNote color="amber-light" title="Different from Lecture 15" width="80%">Say <b>repeated-measures</b>. Take both dfs from the lower table (<code>Error: student:music</code>): 2 and 38, not 19. Partial η² = 6889 / (6889 + 3107) = .69, leaving the students' 9,671 out. Post-hoc tests: Bonferroni-corrected paired <i>t</i> tests, not Tukey.</StickyNote></p>
+<p v-click><StickyNote color="amber-light" title="Different from Lecture 15" width="80%">Say <b>repeated-measures</b>. Take both dfs from the lower table (<code>Error: student:music</code>): 2 and 38, not 19. Partial η² = 6889 / (6889 + 3107) = .69, leaving the students' 9,671 out. Post-hoc tests: paired <i>t</i> tests with a correction, not Tukey; name the correction you used.</StickyNote></p>
 
 ---
 layout: section
@@ -735,15 +954,152 @@ columns: is-6-6
 ---
 
 :: title ::
+# How each effect is computed, in general
+
+:: left ::
+
+<div class="text-[15px] leading-snug">
+
+Each *F* compares one set of means with the grand mean, divided by the same noise term.
+
+- **Main effect of A:** A's **marginal means** (averaging over B) vs. the grand mean.
+- **Main effect of B:** B's marginal means vs. the grand mean.
+- **Interaction:** is the **effect of A the same at every level of B**? Find A's effect separately at each level of B and compare: a **difference of differences**.
+- **Noise (within):** each score vs. its own **cell mean**. It is the denominator of all three *F*s.
+
+</div>
+
+<p v-click><StickyNote color="amber-light" title="Cell by cell" width="100%">The interaction is what's left in each cell mean after you account for both main effects: cell − row margin − column margin + grand mean. If that's about 0 everywhere, the lines are parallel.</StickyNote></p>
+
+:: right ::
+
+<div class="text-[15px]">Two made-up 2 × 2 tables of cell means:</div>
+
+<div class="grid grid-cols-2 gap-3 mt-1">
+<div>
+
+**No interaction**
+
+<table class="compact-table text-sm">
+<thead><tr><th></th><th>B₁</th><th>B₂</th></tr></thead>
+<tbody>
+<tr><td>A₁</td><td>10</td><td>30</td></tr>
+<tr><td>A₂</td><td>20</td><td>40</td></tr>
+<tr><td><i>A₂ − A₁</i></td><td><b>10</b></td><td><b>10</b></td></tr>
+</tbody>
+</table>
+
+</div>
+<div>
+
+**Interaction**
+
+<table class="compact-table text-sm">
+<thead><tr><th></th><th>B₁</th><th>B₂</th></tr></thead>
+<tbody>
+<tr><td>A₁</td><td>10</td><td>30</td></tr>
+<tr><td>A₂</td><td>20</td><td>60</td></tr>
+<tr><td><i>A₂ − A₁</i></td><td><b>10</b></td><td><b>30</b></td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+In each table, how big is the effect of A at B₁ and at B₂? What is the difference of differences?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Left: 10 and 10, so 10 − 10 = 0: no interaction (parallel lines). Right: 10 and 30, so 30 − 10 = 20: A matters more at B₂, an interaction. Both tables also have main effects of A and B.
+
+</Admonition></p>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Reading main effects and interactions from a plot
+
+:: content ::
+
+<div class="text-[15px] leading-snug">
+
+One IV on the x-axis (B), the other as separate lines (A). Ask three questions:
+
+</div>
+
+<div class="grid grid-cols-3 gap-3 text-[14px] leading-snug mt-1">
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Main effect of A (the lines):</b> is one line higher than the other <i>on average</i>? Compare the midpoints of the two lines.</div>
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Main effect of B (the x-axis):</b> average the points above B₁, then above B₂. Do those averages differ?</div>
+<div class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-2"><b>Interaction:</b> are the lines <b>parallel</b>? If not, the effect of A depends on the level of B.</div>
+</div>
+
+<img v-click src="/images/lecture16/int_read.png" alt="Four example plots: main effect of A only, main effect of B only, both main effects with parallel lines, and an interaction only where the lines cross" class="w-5/6 mx-auto mt-1"/>
+
+<div v-click class="text-[14px] text-gray-600">Each of the three can be present or absent independently. A plot shows the pattern; the ANOVA says whether it is bigger than chance.</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: what do you see?
+
+:: content ::
+
+<img src="/images/lecture16/int_practice.png" alt="Four practice plots of cell means for a 2 by 2 design" class="w-4/5 mx-auto"/>
+
+<div class="grid grid-cols-2 gap-6 mt-1">
+<div>
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+For each plot: is there a main effect of A? Of B? An interaction?
+
+</Admonition>
+
+<p v-click="2"><StickyNote color="amber-light" title="The tricky ones" width="100%">Plot 3: the B₁ and B₂ averages are both 20, so no main effect of B, even though both lines slope. Plot 4: everything averages out, yet A matters a lot, in opposite directions at B₁ and B₂.</StickyNote></p>
+
+</div>
+<div v-click="1">
+
+<table class="compact-table text-sm">
+<thead><tr><th></th><th>Main A</th><th>Main B</th><th>Interaction</th></tr></thead>
+<tbody>
+<tr><td>Plot 1</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Plot 2</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Plot 3</td><td>Yes</td><td>No</td><td>Yes</td></tr>
+<tr><td>Plot 4</td><td>No</td><td>No</td><td>Yes</td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
 # Our example: who conforms, and to whom?
 
 :: left ::
 
 <div class="text-[15px] leading-snug">
 
-**45 participants** made judgments alongside a partner who kept disagreeing with them. DV: how often they **changed their answer to match the partner** (out of 40 critical trials).
+**45 participants** made judgments on an ambiguous perceptual task alongside a partner. On 40 critical trials, the partner's answer (scripted by the experimenters) disagreed with theirs. DV: how often they **changed their answer to match the partner**.
 
-- **IV₁: partner's status**, high or low (randomly assigned)
+- **IV₁: partner's status**, randomly assigned. Before the task, participants learned who their partner was: a **physician** (high status) or a **postal clerk** (low status). Only this label differed; the disagreements were the same.
 - **IV₂: participant's authoritarianism** (how much they defer to authority), measured with a questionnaire (the F-scale), split into low, medium, high
 
 A **2 × 3** design.
@@ -763,6 +1119,8 @@ Mean conforming responses (n per cell):
 <tr><td><b>Low status</b></td><td>8.9 (10)</td><td>7.2 (4)</td><td>12.6 (8)</td></tr>
 </tbody>
 </table>
+
+<p v-click><StickyNote color="green-light" title="Why would status matter?" width="100%">The task is ambiguous, so the partner's job is a cue to who is more likely to be right. The authors predicted that <b>low</b>-authoritarian people would be the most sensitive to that cue.</StickyNote></p>
 
 <p v-click><StickyNote color="amber-light" title="Only one IV was manipulated" width="100%">Partner status was randomly assigned, so its effect is causal. Authoritarianism was measured, so differences between those groups are observational. Many real factorial studies mix the two.</StickyNote></p>
 
@@ -975,7 +1333,7 @@ Why do our fingers wrinkle in water? **20 people** moved small objects from one 
 
 :: right ::
 
-<Admonition title="Multiple choice 8" color="teal-light" width="100%">
+<Admonition title="Multiple choice 11" color="teal-light" width="100%">
 
 Which description fits the plot?
 
@@ -1015,7 +1373,7 @@ align: lt
   <div class="flex flex-col items-center w-1/3"><img src="/images/lecture15/anova_interaction_C.png" class="h-44 w-auto object-contain rounded-lg shadow-md"/><p class="mt-1 font-semibold">Plot C</p></div>
 </div>
 
-<Admonition title="Multiple choice 9" color="teal-light" width="100%">
+<Admonition title="Multiple choice 12" color="teal-light" width="100%">
 
 Which plot matches the finding? &nbsp; **A)** Plot A &nbsp; **B)** Plot B &nbsp; **C)** Plot C &nbsp; **D)** None of them
 
@@ -1073,7 +1431,7 @@ align: lt-lt-lt
 
 A **mixed-design ANOVA** has at least one between-groups IV and at least one within-groups IV. The calculations are beyond this course; the logic is the same.
 
-<Admonition title="Multiple choice 10" color="teal-light" width="100%">
+<Admonition title="Multiple choice 13" color="teal-light" width="100%">
 
 Which study needs a mixed design?
 
