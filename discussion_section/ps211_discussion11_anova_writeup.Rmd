@@ -1,0 +1,265 @@
+---
+title: 'PS 211 — Discussion Worksheet #11'
+subtitle: 'Fall 2026 · One-way ANOVA in R, then Data Write-Up #2: choose a dataset, hypotheses & descriptives'
+author: "Your Name"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# How today works
+
+Today has two halves.
+
+| Time | What |
+|---|---|
+| First ~20 minutes | **Part A (this worksheet):** run a one-way ANOVA in R from start to finish: descriptives, histograms, the ANOVA, η², post-hoc tests, a figure, and the APA paragraph. |
+| Rest of section | **Part B (your Data Write-Up #2 file):** form your group, choose a dataset, write Parts 1–3 *before* looking at the data, then start Part 4. |
+
+Part A uses exactly the code you need for Write-Up #2. Once you have run it here, running it on your own data is mostly a matter of changing the column names.
+
+Run chunks top-to-bottom; edit where it says **EDIT**; answer at each **"Your answer:"**.
+
+**Setup:** download `recall_format_data.csv` and `ps211_data_writeup2.Rmd` from the Discussion 11 section of the course website and put them in your `ps211` project folder.
+
+---
+
+## Packages and data (run this once at the top)
+
+```{r libraries}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+recall <- read_csv("recall_format_data.csv")
+head(recall)
+count(recall, condition)
+```
+
+You have seen part of this experiment before. In Lecture 14, Friendly and Franklin (1980) compared two ways of studying a 40-word list. The full experiment had **three** groups of 10 people, each randomly assigned to one format:
+
+- `standard`: the list is reshuffled on every study trial (standard free recall).
+- `recalled_first`: on each new trial, the words the person just recalled are shown first, then the ones they missed.
+- `recalled_mixed`: the recalled words are shown mixed in among the others.
+
+`words_recalled` is the number of words (out of 40) each person recalled on the final trial.
+
+---
+
+# Part A: One-way ANOVA, start to finish (20 minutes)
+
+## 1) Why not three *t* tests? (2 min)
+
+With three groups there are three pairs to compare (standard vs. first, standard vs. mixed, first vs. mixed). If each *t* test has a 5% chance of a Type I error, the chance of **at least one** false positive across three independent tests is 1 − .95³:
+
+```{r familywise}
+1 - 0.95^3
+```
+
+**Your answer (1a):** What does this number mean in plain language? How does the ANOVA avoid the problem?
+
+*(Type your answer here.)*
+
+## 2) Descriptives for every group at once (4 min)
+
+Last time you made one data frame per group with `filter()`. With three or more groups, it's easier to let R do every group at once:
+
+- `group_by(iv)` splits the data by the levels of the IV.
+- `summarise()` computes each statistic once per group. You name each new column (`M =`, `SD =`, …).
+- `%>%` (the "pipe") passes the result of one step into the next. Read it as "and then."
+
+First, two new columns, `iv` and `dv`, so the code below works for any dataset. `levels = c(...)` sets the order of the groups (otherwise R uses alphabetical order).
+
+```{r iv-dv}
+recall$iv <- factor(recall$condition, levels = c("standard", "recalled_first", "recalled_mixed"))
+recall$dv <- recall$words_recalled
+
+desc_table <- recall %>%
+  group_by(iv) %>%
+  summarise(M = mean(dv), SD = sd(dv), n = n(), SE = SD / sqrt(n))
+desc_table
+```
+
+Now one histogram per group. `facet_wrap(~ iv)` draws a separate panel for each level of the IV.
+
+```{r histograms, fig.width = 8, fig.height = 3}
+ggplot(recall, aes(x = dv)) +
+  geom_histogram(bins = 8, fill = "lightgrey", color = "black") +
+  facet_wrap(~ iv) +
+  labs(x = "Words recalled (out of 40)", y = "Number of participants") +
+  theme_classic()
+```
+
+**Your answer (2a):** Which format has the highest mean? Check the rule of thumb for equal SDs (largest SD less than twice the smallest). Does it hold here?
+
+*(Type your answer here.)*
+
+## 3) Run the ANOVA (5 min)
+
+`aov(dv ~ iv, data = ...)` reads as "the DV as explained by the IV." `summary()` prints the source table from Lecture 15.
+
+```{r anova}
+anova_result <- aov(dv ~ iv, data = recall)
+summary(anova_result)
+```
+
+**Your answer (3a):** Where do the two degrees of freedom (2 and 27) come from?
+
+*(Type your answer here.)*
+
+**Your answer (3b):** The *F* statistic is the ratio of two mean squares. Which two? Check that dividing them gives the *F* in the table. What is your decision at α = .05?
+
+*(Type your answer here.)*
+
+**Effect size.** η² is the proportion of all the variability in the DV that the IV accounts for: *SS*~IV~ / (*SS*~IV~ + *SS*~Residuals~) (Lecture 15).
+
+```{r eta-squared}
+# EDIT: replace each 1 with the Sum Sq value from the table above
+SS_iv  <- 1    # REPLACE 1
+SS_res <- 1    # REPLACE 1
+eta_sq <- SS_iv / (SS_iv + SS_res)
+eta_sq
+```
+
+**Your answer (3c):** Put η² into words. Is it small, medium, or large (.01, .06, .14)?
+
+*(Type your answer here.)*
+
+## 4) Which groups differ? (3 min)
+
+A significant *F* says that *some* means differ, not which ones. Tukey's HSD compares every pair while keeping the overall Type I error rate at .05.
+
+```{r tukey}
+TukeyHSD(anova_result)
+```
+
+Each row is one pair: `diff` is the difference in means (a row labeled `A-B` means A minus B), `lwr` and `upr` are a 95% CI for that difference, and `p adj` is the *p* value adjusted for making three comparisons.
+
+**Your answer (4a):** Which pairs differ at α = .05? Which pair doesn't?
+
+*(Type your answer here.)*
+
+## 5) The figure (3 min)
+
+Plot the group means with ±1 SE error bars from `desc_table`, with each participant as a grey point underneath.
+
+```{r figure, fig.width = 6, fig.height = 4}
+ggplot(desc_table, aes(x = iv, y = M)) +
+  geom_jitter(data = recall, aes(x = iv, y = dv), width = 0.08, alpha = 0.3, color = "grey50") +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = M - SE, ymax = M + SE), width = 0.15) +
+  labs(title = "Recall by presentation format",
+       x = "Presentation format", y = "Words recalled (out of 40)") +
+  theme_classic()
+```
+
+**Your answer (5a):** What do the grey points show that the means and error bars hide?
+
+*(Type your answer here.)*
+
+## 6) The APA paragraph (3 min)
+
+**Your answer (6a):** Fill in the blanks using the output above (two decimals for *F*, *M*, *SD*, and η²; three for *p*).
+
+*A one-way between-groups ANOVA showed that the number of words recalled differed across presentation formats, F(___, ___) = ___, p = ___, η² = ___. Tukey HSD comparisons showed that participants in the standard format (M = ___, SD = ___) recalled fewer words than participants who saw their recalled words first (M = ___, SD = ___), p = ___, and fewer than participants who saw them mixed in (M = ___, SD = ___), p = ___. The two feedback formats did not differ (p > .999).*
+
+In your write-up, *F*, *p*, *M*, and *SD* must be italic (type them between asterisks: `*F*`), and *p* and η² have no zero before the decimal point.
+
+## 7) Preview for Thursday: between-groups or repeated-measures? (if time allows)
+
+The ANOVA you just ran works when **different people** are in each group. On Thursday (Lecture 16) you'll learn the **repeated-measures ANOVA**, for when **the same people** are measured in every condition. You don't need to know how to run it yet, only how to tell the two designs apart, because some of the Write-Up #2 datasets need it.
+
+**Your answer (7a):** For each study, say which ANOVA it needs.
+
+1. 52 people each play 50 rounds of rock-paper-scissors against a computer; their win rate is recorded in each of five blocks of 10 rounds.
+2. 72 people are each randomly assigned to one of four tasks after watching a film, and the number of intrusive memories each person has over the next week is counted.
+3. 59 students each rate faces shown alone, in a group of different faces, and in a group of copies of the same face.
+
+*(Type your answer here.)*
+
+---
+
+# Part B: Data Write-Up #2 — groups, dataset, hypotheses, descriptives (rest of section)
+
+Open `ps211_data_writeup2.Rmd`. Read the Instructions and the rubric at the top first (3 minutes). Nothing in Part B is typed in this worksheet.
+
+## Step 1: Form your group and choose a dataset (5 min)
+
+Groups of 2–3; you may keep your Write-Up #1 group or form a new one. Choose **one** dataset from the menu below, **different from the one you used for Write-Up #1**. All the CSVs are in the Discussion 11 section of the course website. Read your dataset's **card** at the end of this worksheet, **not the CSV**: you will write your hypotheses before you look at the data.
+
+| File | Study | Which ANOVA | People | IV (levels) | DVs to choose from |
+|---|---|---|---|---|---|
+| `tetris_memory_data.csv` | Can playing Tetris reduce intrusive memories of a distressing film? (James et al., 2015) | between-groups | 72 | `condition` (4) | `intrusions_week`, `provocation_intrusions`, others |
+| `protest_data.csv` | How do people react to a woman who protests discrimination? (Garcia et al., 2010) | between-groups | 129 | `condition` (3) | `liking`, `response_appropriateness`, `anger` |
+| `positive_psych_data.csv` | Do online happiness exercises work? (Woodworth et al., 2017) | between-groups (one time point) **or** repeated-measures (over time) | 108 | `intervention` (4) or `time` (3) | `happiness`, `depression` |
+| `cheerleader_data.csv` | Do faces look more attractive in a group? (Carragher et al., 2019) | repeated-measures (choose one task) | 28 or 31 | `face_shown` (3) | `attractiveness` |
+| `rock_paper_scissors_data.csv` | Do people learn to beat a computer opponent? (Guennouni & Speekenbrink, 2022) | repeated-measures | 52 | `block` (5) | `percent_won`, `percent_lost` |
+
+The repeated-measures datasets are in **long format**: each person has one row per condition. That's why the cheerleader file has 177 rows for 59 people.
+
+**Content note:** the Tetris study showed participants a distressing film (the dataset contains only numbers). If you'd rather not work with that topic, choose another dataset.
+
+## Step 2: Parts 1–3, before you look at the data (15 min)
+
+- **Part 1:** the dataset, from its card.
+- **Part 2:** research question, IV and **all** its levels, DV and its scale, which ANOVA and why. Use your answer to 7a as a model for the "which ANOVA" paragraph.
+- **Part 3:** H0 and H1 in words, your specific prediction (which group highest, which lowest, and why), and alpha. H1 is "at least one mean differs," not "all the means differ."
+
+## Step 3: Start Part 4 (rest of section)
+
+- Load your data and `count()` your IV column. Now you may look.
+- Do any `filter()` your dataset card says you need (one time point for a between-groups analysis of `positive_psych_data.csv`; one task for `cheerleader_data.csv`).
+- Make `iv` and `dv` exactly as in Part A, with `levels = c(...)` in a sensible order. Then run the descriptives and histogram chunks.
+- **Repeated-measures groups:** Part 4 is the same for you. You'll run your ANOVA after Thursday's lecture, in Discussion 12.
+
+Finish Part 4 (including the table and the assumption-check sentences) before Discussion 12 on **Wednesday, Dec. 2**. Discussion 12 is for Parts 5–7; the write-up is due **Tuesday, Dec. 8, at 11:59 p.m.**.
+
+---
+
+# Dataset cards for Data Write-Up #2
+
+Read your dataset's card before you open the CSV. Each card tells you what the study did, what one row is, which ANOVA the data support, and the source to cite in Part 1.
+
+## Tetris and intrusive memories — `tetris_memory_data.csv`
+
+- **Cite:** James, E. L., Bonsall, M. B., Hoppitt, L., Tunbridge, E. M., Geddes, J. R., Milton, A. L., & Holmes, E. A. (2015). Computer game play reduces intrusive memories of experimental trauma via reconsolidation-update mechanisms. *Psychological Science, 26*(8), 1201–1215. (Experiment 2.)
+- **The study:** 72 adults watched a short film with distressing scenes, a standard lab method for studying *intrusive memories* (unwanted images of an event that pop into mind). The next day they were randomly assigned, 18 per group, to one of four conditions: a memory-reactivation task (looking at still images from the film) followed by 12 minutes of playing Tetris; the reactivation task alone; Tetris alone; or neither. Everyone then kept a diary of intrusive memories for a week and came back to the lab on day 7.
+- **One row:** one participant. **ANOVA:** between-groups. **IV:** `condition` (`no_task_control`, `reactivation_only`, `tetris_only`, `reactivation_plus_tetris`).
+- **DVs:** `intrusions_week` (number of intrusive memories in the diary over days 1–7), `provocation_intrusions` (number reported during a 2-minute lab task on day 7, while viewing blurred stills from the film), `ies_intrusion_score` (questionnaire, 0–4; higher = more intrusions), `visual_recognition` (out of 22) and `verbal_recognition` (out of 32): memory for the film's content. Also: `intrusions_day0` (diary count *before* the manipulation), `film_distress` (0–10), `attention_to_film` (0–10), `diary_accuracy` (1–10).
+- **Content note:** the file contains only numbers, but the study used a distressing film. Pick another dataset if you'd rather not work with this topic.
+
+## Reactions to a woman who protests discrimination — `protest_data.csv`
+
+- **Cite:** Garcia, D. M., Schmitt, M. T., Branscombe, N. R., & Ellemers, N. (2010). Women's reactions to ingroup members who protest discriminatory treatment: The importance of beliefs about inequality and response appropriateness. *European Journal of Social Psychology, 40*(5), 733–745.
+- **The study:** 129 women read about a female lawyer who was passed over for a promotion in favor of a less-qualified man. They were randomly assigned to read that she did nothing, that she protested on her own behalf ("They are treating me unfairly"), or that she protested on behalf of women ("The firm is treating women unfairly"). They then rated her.
+- **One row:** one participant. **ANOVA:** between-groups. **IV:** `condition` (`no_protest`, `individual_protest`, `collective_protest`).
+- **DVs** (all 1–7; higher = more): `liking` (how much they liked the lawyer), `response_appropriateness` (how appropriate her response was), `anger` (anger toward her). Also `modern_sexism`, the participant's own score on a sexism-beliefs scale (1–7), measured before the story.
+
+## Online happiness exercises — `positive_psych_data.csv`
+
+- **Cite:** Woodworth, R. J., O'Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). Web-based positive psychology interventions: A reexamination of effectiveness. *Journal of Clinical Psychology, 73*(3), 218–232.
+- **The study:** A replication of a famous study claiming that simple online exercises make people happier. Adults in Australia, recruited online, were randomly assigned to do one of four week-long exercises: using their personal strengths in a new way each day, writing down three good things each day, writing and delivering a letter of thanks to someone, or writing about early memories (the placebo control). They filled out a happiness questionnaire and a depression questionnaire before the week (`pretest`), right after it (`posttest`), and one month later (`one_month`). The file includes the 108 people who completed all three.
+- **One row:** one participant at one time point (each person has three rows). **IV and ANOVA, your choice:**
+    - **Between-groups:** compare the four `intervention` groups (`signature_strengths`, `three_good_things`, `gratitude_visit`, `early_memories_placebo`) at **one** time point. You must `filter()` to one value of `time` first, so each person appears once.
+    - **Repeated-measures:** compare the three `time` points (`pretest`, `posttest`, `one_month`), using everyone or after `filter()` to one intervention.
+- **DVs:** `happiness` (Authentic Happiness Inventory, 24–120; higher = happier), `depression` (CES-D, 0–60; higher = more symptoms of depression). Also `age`.
+
+## The cheerleader effect — `cheerleader_data.csv`
+
+- **Cite:** Carragher, D. J., Thomas, N. A., Gwinn, O. S., & Nicholls, M. E. R. (2019). Limited evidence of hierarchical encoding in the cheerleader effect. *Scientific Reports, 9*, 9329. (Experiment 1.)
+- **The study:** The "cheerleader effect" is the claim that a face looks more attractive in a group than on its own. University students rated how attractive many faces were, on a scale from 0 (very unattractive) to 100 (very attractive). Every participant saw faces in three ways: alone; in a group with two other, different faces; and in a group where the other two faces were versions of the same face. Each participant was randomly assigned to one of two tasks that differed only in that third condition: in `identical_copies` (28 people) the other two faces were exact copies of the photo, and in `same_person_photos` (31 people) they were two other photos of the same person.
+- **One row:** one participant in one condition (each person has three rows; the rating is their average across many faces). **ANOVA:** repeated-measures, after you `filter()` to **one** `task`. **IV:** `face_shown` (`alone`, `group_different_faces`, `group_same_face`).
+- **DV:** `attractiveness` (0–100). Also `age`.
+
+## Learning to beat a computer at rock-paper-scissors — `rock_paper_scissors_data.csv`
+
+- **Cite:** Guennouni, I., & Speekenbrink, M. (2022). Transfer of learned opponent models in repeated games. *Computational Brain & Behavior, 5*, 326–342. (Experiment 1.)
+- **The study:** 52 adults recruited online played 50 rounds of rock-paper-scissors against a computer and earned a small bonus for every point. The computer secretly followed a strategy that could be beaten, and played randomly on about 10% of rounds. Participants were randomly assigned to one of two strategies: a `level_1` opponent, which assumes you will repeat your last move and plays whatever beats it, or a `level_2` opponent, which assumes *you* are using the level-1 strategy and plays whatever beats that.
+- **One row:** one participant in one block of 10 rounds (each person has five rows: `block_1` = rounds 1–10, …, `block_5` = rounds 41–50). **ANOVA:** repeated-measures, using everyone or after `filter()` to one `opponent`. **IV:** `block` (5 levels).
+- **DVs:** `percent_won` and `percent_lost`: the percentage of rounds in that block the participant won or lost (0–100; the rest were ties). If you are just guessing, you win about 33% of rounds.

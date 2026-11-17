@@ -1,0 +1,337 @@
+---
+title: 'PS 211 — Data Write-Up #2'
+subtitle: 'Fall 2026 · Due Tuesday, Dec. 8 at 11:59 p.m.'
+author: "GROUP MEMBER NAMES HERE"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Instructions
+
+Your second write-up follows the same steps as the first, with one change: this time your question compares **three or more** groups or conditions, so you will run an **ANOVA** instead of a *t* test. Your group (2–3 people) will pick a new dataset, ask a question about three or more groups or conditions, state your hypotheses, run the ANOVA and post-hoc tests in R, and report what you found in APA style with a figure.
+
+There are two kinds of ANOVA you can run, and **your dataset decides which one**:
+
+| If your data have… | Run a… | Covered in |
+|---|---|---|
+| **Different people** in each group (each person contributes one score) | **One-way between-groups ANOVA** | Lecture 15 (Nov. 17), Discussion 11 |
+| **The same people** in every condition (each person contributes one score per condition) | **One-way repeated-measures ANOVA** | Lecture 16 (Nov. 19), Discussion 12 |
+
+**This file is the assignment.** You will fill it in over two discussion sections and submit it once. Each part below says what goes in it and how it's graded.
+
+| When | What you'll complete |
+|---|---|
+| Discussion 11 (Nov. 18) | Form groups and choose a dataset; Parts 1–3 (research question and hypotheses, *before* looking at the data); then start Part 4 |
+| Before Discussion 12 | Finish Part 4 (descriptive statistics, histograms, assumption check) |
+| Discussion 12 (Dec. 2) | Parts 5–7: run the ANOVA and post-hoc tests, make the figure, interpret |
+| Tuesday, Dec. 8, 11:59 p.m. | Deadline |
+
+**Remember:** decide your research question, variables, and hypotheses (Parts 1–3) *before* you look at the data. Once you've looked, don't rewrite Parts 2–3 to match the results.
+
+**Datasets.** Choose one from the Data Write-Up #2 menu at the end of the Discussion 11 worksheet (course website → Discussion Section → Discussion 11). You must use a **different dataset** from the one you used in Write-Up #1. You can work in either the same group or a different group, but you must work in a group of 2 - 3 people. The **dataset card** for each one lists its columns, what one row represents, which kind of ANOVA it supports, and the source to cite. You may not use a dataset that isn't on the menu unless your TF has approved it in writing before Discussion 12.
+
+**Group work.** Everyone in the group works on every part. Submit **one** file per group with all full names at the top via Slack to Kate and Rola. Work in this file on one person's computer (or share it), and keep the CSV in the same `ps211` project folder as this file. 
+
+**Writing counts.** This is a report, not a worksheet. Write in complete sentences and proofread. We will check that your results follow **APA style exactly** (italic *F* and *p*, degrees of freedom in parentheses, no leading zero on *p* or η², and so on) and **typos will cost points**.
+
+**AI and collaboration.** Per the syllabus, you may use AI tools and talk to people outside your group, but you must say so in the statement at the end of this file.
+
+## Rubric (100 points)
+
+| Part | What is graded | Points |
+|---|---|---|
+| 1. Dataset | Dataset named and cited; one-sentence description; what one row is; number of participants | 5 |
+| 2. Question & variables | Clear, answerable research question; IV with its three or more levels; DV and its scale; which ANOVA (between-groups or repeated-measures) and why | 15 |
+| 3. Hypotheses | Null and alternative hypotheses in words; a specific prediction about which group(s) will differ, with a reason; alpha | 10 |
+| 4. Descriptives | *M*, *SD*, and *n* for every group or condition in a table; histograms; a few sentences on distribution shape for each group or condition and on whether the SDs are similar | 10 |
+| 5. The test | Correct ANOVA run on the right data; *F*, both *df*, *p*, and η² (partial η² for repeated measures) reported in APA format; post-hoc tests reported | 20 |
+| 6. Figure | One figure showing every group or condition mean with SE error bars, in a sensible order; labeled axes; a caption that says what the reader should see | 15 |
+| 7. Interpretation | Decision about H0 in plain language; which groups differ; size of the effect in plain language; one design limitation and one sample limitation; a follow-up question | 15 |
+| Code & writing | Every chunk runs and shows its output; code is commented; file knits; names at the top; proofread; APA formatting exact; AI/collaboration statement completed | 10 |
+
+## How to submit
+
+Knit this file to HTML (the **Knit** button) and send the `.html` file to Kate and Rola on Slack. **Each group submits exactly once: no resends.** The first file we receive from your group is the one we grade, so check it carefully before you send it. The deadline is **Tuesday, Dec. 8, at 11:59 p.m.** If knitting fails, the error message names the chunk; fix that chunk and knit again. A file that doesn't knit can't be graded. **Before you send it, open the HTML and check that your histograms and your figure appear in it.**
+
+## If you see this error, it means…
+
+- `'xxx.csv' does not exist` → R can't find your data file. Is it in your `ps211` folder, and is the project open?
+- `object 'xxx' not found` → you used a name R doesn't know: usually a typo in a column name, or a chunk above this one hasn't been run yet. Check spelling and capitalization, then run the chunks from the top.
+- A level shows up as `NA` in your descriptives table → a level name inside `levels = c(...)` doesn't match the data exactly. Copy it from the `count()` output.
+- A level you didn't expect is in your table, or `n` is twice as big as it should be → you forgot a `filter()` step that your dataset card says you need (for example, choosing one time point or one task).
+- `Error() model is singular` or the ANOVA table has only one section → you ran the repeated-measures code on data where each person appears only once. Check which kind of ANOVA your dataset supports.
+- `pairwise.t.test` gives `not all arguments have the same length` → some participants are missing a condition. Tell your TF; the menu datasets shouldn't have any.
+- Your plot shows the conditions in alphabetical order (e.g., `block_1`, `block_10`…) or in an order that makes no sense → set the order with `levels = c(...)` in Part 4.
+
+---
+
+# Packages
+
+```{r libraries}
+# Install once if needed (then re-comment):
+# install.packages("readr")
+# install.packages("dplyr")
+# install.packages("ggplot2")
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+---
+
+# Part 1: Your dataset (5 points)
+
+*Complete in Discussion 11.* In two or three sentences: which dataset you chose (file name), what it is (who was studied, how, and what was measured), what one row represents, and how many **participants** it has. (For a repeated-measures dataset, the number of rows is larger than the number of participants, because each person has one row per condition.) Cite the source as it appears on the dataset card.
+
+WRITE YOUR ANSWER HERE.
+
+---
+
+# Part 2: Research question and variables (15 points)
+
+*Complete in Discussion 11, before looking at the data.*
+
+**Research question.** One clear sentence of the form "Do [groups A, B, and C] differ in [DV]?" or, for a repeated-measures design, "Does [DV] change across [conditions or time points]?"
+
+WRITE YOUR RESEARCH QUESTION HERE.
+
+**Variables.** Name your independent variable and **all** of its levels, and your dependent variable. Say what scale the DV is measured on (what is the lowest and highest possible score, and what does a high score mean?).
+
+WRITE YOUR ANSWER HERE.
+
+**Which ANOVA, and why.** Say whether you'll run a *one-way between-groups* ANOVA (different people in each group) or a *one-way repeated-measures* ANOVA (the same people in every condition), and explain why that matches how the data were collected. Then say why an ANOVA is better here than running a *t* test for every pair of groups.
+
+WRITE YOUR ANSWER HERE.
+
+#### Rubric
+- 5 points: research question is clear and answerable with this dataset by comparing three or more groups or conditions on one numeric DV.
+- 5 points: IV, all of its levels, and DV correctly identified; DV scale described.
+- 3 points: the right kind of ANOVA, justified from the design.
+- 2 points: correct reason for using an ANOVA rather than several *t* tests.
+
+---
+
+# Part 3: Hypotheses (10 points)
+
+*Complete in Discussion 11, before looking at the data.*
+
+**Null hypothesis (H0)** in words, about the population:
+
+WRITE HERE.
+
+**Alternative hypothesis (H1)** in words:
+
+WRITE HERE.
+
+**Your specific prediction.** The ANOVA itself only tests whether *any* means differ. Before you look, say which group or condition you expect to be **highest** and which **lowest** (or which pairs you expect to differ), and give a reason based on what you know about the topic, not based on the data.
+
+WRITE HERE.
+
+**Alpha.** State the alpha level you will use.
+
+WRITE HERE.
+
+#### Rubric
+- 3 points: H0 correctly stated.
+- 3 points: H1 correctly stated.
+- 3 points: a specific prediction about which groups will differ, justified from what you know about the topic, not from the data.
+- 1 point: alpha stated.
+
+---
+
+# Part 4: Descriptive statistics (10 points)
+
+*Start in Discussion 11; finish before Discussion 12.*
+
+**Step 1: Load your data.** You've done this every week: `read_csv()`, then look at it.
+
+```{r part4-load-data}
+# Load your dataset here and look at it (head(), count() on your IV column).
+
+
+```
+
+**Step 2: Keep the rows you need, and name your IV and DV.** Some datasets need one `filter()` first (the dataset card says so: for example, choosing one time point or one task). Then make two new columns, `iv` and `dv`, so that every chunk below works no matter which dataset you chose. Setting `levels = c(...)` puts your groups in a sensible order (otherwise R uses alphabetical order) and must list every level, spelled exactly as in the data.
+
+```{r part4-iv-dv}
+# If your dataset card says you need a filter() step, do it here (otherwise skip this line):
+# my_data <- filter(my_data, ___ == "___")
+
+# Fill in the blanks, then remove the # signs:
+# my_data$iv <- factor(my_data$___, levels = c("___", "___", "___"))
+# my_data$dv <- my_data$___
+
+# Check: every level should appear, with the n you expect
+# count(my_data, iv)
+```
+
+**Step 3: Descriptives for every group at once.** `group_by()` splits the data by your IV; `summarise()` then computes each statistic once per group. (Discussion 11 Part A.)
+
+```{r part4-descriptives}
+# Remove the # signs and run:
+# desc_table <- my_data %>%
+#   group_by(iv) %>%
+#   summarise(M = mean(dv), SD = sd(dv), n = n(), SE = SD / sqrt(n))
+# desc_table
+```
+
+Now put the numbers in this table (edit the cells; add or delete rows so there is one per level; keep the vertical bars). Round to two decimals.
+
+| Group or condition | *M* | *SD* | *n* |
+|---|---|---|---|
+| LEVEL 1 NAME | | | |
+| LEVEL 2 NAME | | | |
+| LEVEL 3 NAME | | | |
+
+**Step 4: Histograms and the assumption check.** Make one histogram per group or condition. `facet_wrap(~ iv)` draws a separate small panel for each level of your IV. 
+
+```{r part4-histograms, fig.width = 8, fig.height = 4}
+# Remove the # signs and run. Change bins if the bars look too lumpy or too thin.
+# ggplot(my_data, aes(x = dv)) +
+#   geom_histogram(bins = 10, fill = "lightgrey", color = "black") +
+#   facet_wrap(~ iv) +
+#   labs(x = "___", y = "Number of participants") +
+#   theme_classic()
+```
+
+Write three or four sentences: Is each group's distribution roughly symmetric, or clearly skewed? Are there outliers? Are the SDs similar (rule of thumb: the largest SD is less than twice the smallest)? For a repeated-measures design, also confirm that every participant has a score in every condition (each level should have the same *n*). Anything else a reader should know before trusting a comparison of means?
+
+WRITE YOUR ASSUMPTION-CHECK SENTENCES HERE.
+
+#### Rubric
+- 4 points: correct *M*, *SD*, and *n* for every level, in the table.
+- 4 points: histograms shown; assumption check describes shape and compares the SDs, using the histograms and the numbers.
+- 2 points: code runs, is commented, and uses the names `my_data`, `iv`, and `dv`.
+
+---
+
+# Part 5: Run your ANOVA (20 points)
+
+*Complete in Discussion 12.*
+
+Use **one** of the two code blocks below (leave the other commented), matching what you said in Part 2.
+
+**Option A: one-way between-groups ANOVA** (different people in each group). `TukeyHSD()` then compares every pair of groups while keeping the overall chance of a Type I error at alpha (Lecture 15).
+
+```{r part5-between}
+# Remove the # signs and run:
+# anova_result <- aov(dv ~ iv, data = my_data)
+# summary(anova_result)
+# TukeyHSD(anova_result)
+```
+
+**Option B: one-way repeated-measures ANOVA** (the same people in every condition). `Error(participant/iv)` tells R that each participant was measured in every condition, so R can remove the variability due to individual differences (Lecture 16). The post-hoc tests are paired *t* tests for every pair of conditions, with a Bonferroni correction.
+
+```{r part5-repeated}
+# Remove the # signs and run:
+# my_data$participant <- factor(my_data$participant)   # participant IDs must be a factor, not numbers
+# my_data <- arrange(my_data, iv, participant)          # same participant order in every condition, for the paired tests
+# anova_result <- aov(dv ~ iv + Error(participant/iv), data = my_data)
+# summary(anova_result)
+# pairwise.t.test(my_data$dv, my_data$iv, paired = TRUE, p.adjust.method = "bonferroni")
+```
+
+**Effect size.** Compute the effect size yourself from the sums of squares in your `summary()` output (Lectures 15–16). It is the proportion of variability explained by your IV:
+
+- Between-groups: η² = *SS*~IV~ / (*SS*~IV~ + *SS*~Residuals~), which is *SS*~Between~ / *SS*~Total~.
+- Repeated-measures: report **partial η²**. Use the **lower** section of the output (`Error: participant:iv`): partial η² = *SS*~IV~ / (*SS*~IV~ + *SS*~Residuals~). This leaves *SS*~Subjects~ (the upper section) out of the denominator, as in Lecture 16.
+
+```{r part5-eta-squared}
+# Copy the two Sum Sq values from your ANOVA table:
+# SS_iv  <- ___
+# SS_res <- ___
+# eta_sq <- SS_iv / (SS_iv + SS_res)
+# eta_sq
+```
+
+**Report the result in APA style.** Two to four sentences: say which ANOVA you ran, then report *F*(*df*~IV~, *df*~Residuals~), *p*, and η² (or partial η²), then the post-hoc tests with the means and SDs of the groups that differed. If your ANOVA is not significant, report it the same way and skip the post-hoc sentence.
+
+WRITE YOUR APA RESULTS PARAGRAPH HERE.
+
+#### Rubric
+- 6 points: the right ANOVA for the design, run on the right rows, with the right post-hoc tests.
+- 4 points: η² (or partial η²) computed correctly from the sums of squares.
+- 8 points: APA paragraph correctly reports *F*, both *df*, *p*, η² or partial η², and the post-hoc results with *M* and *SD*, in exact APA format.
+- 2 points: code runs and is commented.
+
+---
+
+# Part 6: Figure (15 points)
+
+*Complete in Discussion 12.*
+
+Make **one** figure that shows the mean of every group or condition with error bars for the standard error of each mean. Your `desc_table` from Part 4 already has `M` and `SE` for every level, so you can plot it directly.
+
+```{r part6-figure, fig.width = 6, fig.height = 4}
+# Fill in the labels, remove the # signs, and run:
+# ggplot(desc_table, aes(x = iv, y = M)) +
+#   geom_point(size = 3) +
+#   geom_errorbar(aes(ymin = M - SE, ymax = M + SE), width = 0.15) +
+#   labs(title = "___", x = "___", y = "___") +
+#   theme_classic()
+
+# Optional: show the individual participants behind the means. Add ONE of these layers
+# right after the ggplot(...) + line (so it is drawn underneath the means):
+#   Between-groups:     geom_jitter(data = my_data, aes(x = iv, y = dv), width = 0.08, alpha = 0.3, color = "grey50") +
+#   Repeated-measures:  geom_line(data = my_data, aes(x = iv, y = dv, group = participant), alpha = 0.2, color = "grey50") +
+```
+
+**Caption.** Write two or three sentences under the figure. This should include: what is plotted, what the error bars represent, and what the reader should notice. For a repeated-measures design, note that these error bars show how much each condition's mean would vary from sample to sample; they include the differences *between people*, which the repeated-measures ANOVA removes, so they can overlap even when the ANOVA is significant.
+
+WRITE YOUR CAPTION HERE.
+
+#### Rubric
+- 5 points: figure shows every group or condition mean with SE error bars, in a sensible order (the order from Part 4).
+- 4 points: axes and title are labeled in plain language, with units where relevant.
+- 4 points: caption explains the plot and the error bars and says what to notice.
+- 2 points: figure matches the numbers in Part 4.
+
+---
+
+# Part 7: Interpretation (15 points)
+
+*Complete in Discussion 12.*
+
+Write one short paragraph for each of the following.
+
+**Decision.** Do you reject the null hypothesis or not, and what does that mean in plain language for your research question? If you rejected it, **which** groups or conditions differ, according to the post-hoc tests? Was your specific prediction from Part 3 right?
+
+WRITE HERE.
+
+**How big is the effect?** Using η² (or partial η²) and the raw differences between the means, say how large the differences are in practical terms. (η² = .06 means your IV accounts for 6% of the variability in the DV. Is that a lot for this topic?)
+
+WRITE HERE.
+
+**Limitations.** One limitation that comes from the *design* (were people randomly assigned to groups? For a repeated-measures design, could the **order** of the conditions, practice, or fatigue explain the change? What does the design allow you to say about cause?) and one that comes from the *sample* (who was studied, and who do the results apply to?).
+
+WRITE HERE.
+
+**What next?** One follow-up question a researcher could ask, and what data they'd need.
+
+WRITE HERE.
+
+#### Rubric
+- 4 points: correct decision about H0, stated in plain language, including which groups differ.
+- 4 points: effect size interpreted sensibly.
+- 5 points: one design limitation and one sample limitation, both specific to this dataset.
+- 2 points: a reasonable follow-up question.
+
+---
+
+# Code & writing (10 points)
+
+Before you submit, check: every chunk runs and its output (including your histograms and figure) appears in the knitted file; each chunk has at least one comment saying what it does; all group members' names are at the top; APA formatting is exact; the whole thing is proofread; and the statement below is filled in.
+
+# AI and collaboration statement
+
+- Everyone who worked on this assignment is listed at the top of the file: YES / NO
+- We used an AI tool (e.g., ChatGPT, Claude) for this assignment: YES / NO. *If yes, which tool and how?* WRITE HERE.
+- We got help from people outside our group (TF and instructor excluded): YES / NO. *If yes, who and how?* WRITE HERE.
