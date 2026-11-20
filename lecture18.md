@@ -198,11 +198,14 @@ Regression uses new names for its variables:
 
 :: right ::
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 
 Regression tells us how Y is expected to differ **when X differs**, not **why**. Predictors aren't manipulated, confounds still exist, and observational data is not experimental data.
 
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="excited" color="#FDA7DC" /></div>
+</div>
 
 ---
 layout: top-title-two-cols
@@ -378,11 +381,14 @@ Galton called this "regression toward mediocrity." We call it **regression to th
 
 :: right ::
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 
 Whenever two variables are imperfectly correlated, extreme scores on one are paired, on average, with less extreme scores on the other. It's statistics, not biology.
 
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="blissful" color="#FDA7DC" /></div>
+</div>
 
 <p v-click><StickyNote color="amber-light" title="Why researchers care" width="100%">Pick people for a study <i>because</i> they scored extremely (the most anxious, the worst readers), and their next scores will tend to be less extreme even with no treatment at all. A control group protects you.</StickyNote></p>
 

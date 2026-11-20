@@ -56,23 +56,13 @@ align: lt
 **Order effects & counterbalancing** — practice, fatigue, carryover; vary the order of conditions across people.
 
 </div>
-<div>
-
-**Two-way ANOVA** — two IVs, three *F*s: two **main effects** (from marginal means) and an **interaction** (from cell means).
-
-</div>
-<div>
-
-**Interaction** — the effect of one IV depends on the level of the other: non-parallel lines in a plot of cell means.
-
-</div>
 </div>
 
 <p v-click>
 
 <div class="flex items-center gap-4 mt-6">
 <IceCream :size="80" mood="excited" color="#FDA7DC" />
-<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">Every test so far needed groups or conditions. Today, both variables are numeric: no groups at all.</SpeechBubble>
+<SpeechBubble color="amber-light" shape="round" position="l" maxWidth="36rem">First, finish ANOVA with two IVs at once. Then: what if both variables are numeric, with no groups at all?</SpeechBubble>
 </div>
 
 </p>
@@ -144,6 +134,554 @@ color: indigo-light
 align: lt
 ---
 
+Finishing Lecture 16: what if we have **two** independent variables?
+# Two-Way ANOVA
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-6-6
+---
+
+:: title ::
+# Our example: who conforms, and to whom?
+
+:: left ::
+
+<div class="text-[15px] leading-snug">
+
+**45 participants** made judgments on an ambiguous perceptual task alongside a partner. On 40 critical trials, the partner's answer (scripted by the experimenters) disagreed with theirs. DV: how often they **changed their answer to match the partner**.
+
+- **IV₁: partner's status**, randomly assigned. Before the task, participants learned who their partner was: a **physician** (high status) or a **postal clerk** (low status). Only this label differed; the disagreements were the same.
+- **IV₂: participant's authoritarianism** (how much they defer to authority), measured with a questionnaire (the F-scale), split into low, medium, high
+
+A **2 × 3** design.
+
+</div>
+
+<div class="text-xs text-gray-500 mt-1">Data: Moore & Krupat (1971), <i>Sociometry</i>; R package <code>carData</code> (<code>Moore</code>).</div>
+
+:: right ::
+
+Mean conforming responses (n per cell):
+
+<table class="compact-table text-base">
+<thead><tr><th>Partner</th><th>Low auth.</th><th>Medium</th><th>High auth.</th></tr></thead>
+<tbody>
+<tr><td><b>High status</b></td><td>17.4 (5)</td><td>14.3 (11)</td><td>11.9 (7)</td></tr>
+<tr><td><b>Low status</b></td><td>8.9 (10)</td><td>7.2 (4)</td><td>12.6 (8)</td></tr>
+</tbody>
+</table>
+
+<p v-click><StickyNote color="green-light" title="Why would status matter?" width="100%">The task is ambiguous, so the partner's job is a cue to who is more likely to be right. The authors predicted that <b>low</b>-authoritarian people would be the most sensitive to that cue.</StickyNote></p>
+
+<p v-click><StickyNote color="amber-light" title="Only one IV was manipulated" width="100%">Partner status was randomly assigned, so its effect is causal. Authoritarianism was measured, so differences between those groups are observational. Many real factorial studies mix the two.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# One study, three questions
+
+:: content ::
+
+<div class="text-[15px] leading-snug">
+
+A two-way ANOVA answers **three separate questions** about the same 45 people, with **three separate *F* tests**:
+
+</div>
+
+<div class="grid grid-cols-3 gap-3 mt-1 text-[14px] leading-snug">
+<div v-click>
+<img src="/images/lecture16/tw_q1_status.png" alt="Mean conforming responses: high-status partner 14.2, low-status partner 10.0" class="w-full"/>
+
+**1. Main effect of partner status.** Ignoring authoritarianism, do people conform more to a physician than to a postal clerk?
+
+</div>
+<div v-click>
+<img src="/images/lecture16/tw_q2_auth.png" alt="Mean conforming responses by authoritarianism: low 11.7, medium 12.4, high 12.3" class="w-full"/>
+
+**2. Main effect of authoritarianism.** Ignoring the partner, do low-, medium-, and high-authoritarian people conform differently?
+
+</div>
+<div v-click>
+<img src="/images/lecture16/tw_q3_cells.png" alt="Mean conforming responses for all six combinations of partner status and authoritarianism" class="w-full"/>
+
+**3. Interaction.** Does the effect of partner status **depend on** the person's authoritarianism?
+
+</div>
+</div>
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# The design: 2 × 3 = 6 cells
+
+:: left ::
+
+<div class="text-[15px] leading-snug">
+
+A **two-way ANOVA** has two categorical IVs and one numeric DV. Any design with 2+ IVs is a **factorial design**.
+
+- Partner status has **2** levels; authoritarianism has **3**. That's a **2 × 3** design.
+- Each combination of levels is a **cell**: 2 × 3 = **6 cells**, each with its own group of people.
+
+</div>
+
+<table class="compact-table text-sm mt-2">
+<thead><tr><th>Partner</th><th>Low auth.</th><th>Medium</th><th>High auth.</th></tr></thead>
+<tbody>
+<tr><td><b>High status</b></td><td>cell 1 (n = 5)</td><td>cell 2 (n = 11)</td><td>cell 3 (n = 7)</td></tr>
+<tr><td><b>Low status</b></td><td>cell 4 (n = 10)</td><td>cell 5 (n = 4)</td><td>cell 6 (n = 8)</td></tr>
+</tbody>
+</table>
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+How many cells in a 2 × 2 design? A 3 × 4?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+4 and 12: multiply the numbers of levels.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Why not two one-way ANOVAs?" width="100%">One on status and one on authoritarianism would answer questions 1 and 2, but never question 3. Here, question 3 is the interesting finding: status mattered for some people and not others.</StickyNote></p>
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Three *F* tests, one shared denominator
+
+:: content ::
+
+<div class="text-[15px] leading-snug">
+
+Each question gets its own H₀ and its own *F*. Same logic as Lecture 15: **signal ÷ noise**.
+
+</div>
+
+<table class="compact-table text-sm mt-1">
+<thead><tr><th>Test</th><th>H₀ in words</th><th>Signal: which means it compares</th><th><i>F</i> =</th></tr></thead>
+<tbody>
+<tr v-click><td><b>1. Partner status</b></td><td>Conformity is the same with either partner, on average</td><td>the 2 status <b>marginal means</b> (14.2 vs. 10.0)</td><td>MS<sub>status</sub> / MS<sub>Within</sub></td></tr>
+<tr v-click><td><b>2. Authoritarianism</b></td><td>Low, medium, and high conform the same, on average</td><td>the 3 authoritarianism <b>marginal means</b></td><td>MS<sub>auth</sub> / MS<sub>Within</sub></td></tr>
+<tr v-click><td><b>3. Interaction</b></td><td>The effect of status is the same at every level of authoritarianism</td><td>the 6 <b>cell means</b>, beyond what the two main effects predict</td><td>MS<sub>status×auth</sub> / MS<sub>Within</sub></td></tr>
+</tbody>
+</table>
+
+<p v-click><StickyNote color="amber-light" title="The shared denominator" width="85%">MS<sub>Within</sub> is the noise: how far each person's score is from <b>their own cell's mean</b>, pooled over all 6 cells. It doesn't depend on which question you're asking, so all three <i>F</i>s divide by the same number. In R's output: three rows with an <i>F</i>, plus <code>Residuals</code>.</StickyNote></p>
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Main effects use marginal means
+
+:: left ::
+
+A **marginal mean** is the mean for one level of an IV, ignoring the other IV: the mean of everyone in that row or column (it sits in the table's *margin*).
+
+<table class="compact-table text-base">
+<thead><tr><th>Partner</th><th>Low</th><th>Med.</th><th>High</th><th style="color:#7e57c2">Marginal</th></tr></thead>
+<tbody>
+<tr><td><b>High status</b></td><td>17.4</td><td>14.3</td><td>11.9</td><td style="color:#7e57c2"><b>14.2</b></td></tr>
+<tr><td><b>Low status</b></td><td>8.9</td><td>7.2</td><td>12.6</td><td style="color:#7e57c2"><b>10.0</b></td></tr>
+<tr><td style="color:#0d9488"><b>Marginal</b></td><td style="color:#0d9488"><b>11.7</b></td><td style="color:#0d9488"><b>12.4</b></td><td style="color:#0d9488"><b>12.3</b></td><td></td></tr>
+</tbody>
+</table>
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+From the marginal means alone, which main effect looks real?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+Partner status: 14.2 vs. 10.0. The authoritarianism margins (11.7, 12.4, 12.3) are nearly identical, so averaged over partners, authoritarianism seems not to matter.
+
+</Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="But look inside the table" width="100%">For high-authoritarian people the status gap is gone (11.9 vs. 12.6). The margins hide that. Cell means show interactions.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Interactions use cell means
+
+:: left ::
+
+<img src="/images/lecture16/moore_interaction.png" alt="Conformity by authoritarianism for high- and low-status partners; the lines converge and cross at high authoritarianism" class="w-full mx-auto"/>
+
+:: right ::
+
+<div class="text-[15px] leading-snug">
+
+An **interaction**: the effect of one IV **changes depending on** the level of the other.
+
+The effect of status (high − low) at each level of authoritarianism:
+
+| Low auth. | Medium | High auth. |
+|:---:|:---:|:---:|
+| 17.4 − 8.9 = **+8.5** | 14.3 − 7.2 = **+7.1** | 11.9 − 12.6 = **−0.7** |
+
+With no interaction, these three differences would be about equal. A **difference of differences** is what the interaction tests.
+
+</div>
+
+<p v-click><StickyNote color="amber-light" title="Reading the plot" width="100%"><b>Parallel lines</b> → the effect of one IV is the same at every level of the other: no interaction. <b>Lines that converge, diverge, or cross</b> → an interaction. Always plot the cell means; interactions are hard to see in a table of numbers.</StickyNote></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Reading main effects and interactions from a plot
+
+:: content ::
+
+<div class="text-[15px] leading-snug">
+
+A made-up study: does **caffeine** (x-axis) or **sleep** (separate lines) affect exam scores? Ask three questions:
+
+</div>
+
+<div class="grid grid-cols-3 gap-3 text-[14px] leading-snug mt-1">
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Main effect of sleep (the lines):</b> is one line higher than the other <i>on average</i>? Compare the midpoints of the two lines.</div>
+<div class="border-2 border-gray-300 rounded-lg p-2"><b>Main effect of caffeine (the x-axis):</b> average the two points above "No caffeine," then above "Caffeine." Do those averages differ?</div>
+<div class="border-2 border-indigo-400 bg-indigo-50 rounded-lg p-2"><b>Interaction:</b> are the lines <b>parallel</b>? If not, the effect of caffeine depends on how much you slept.</div>
+</div>
+
+<img v-click src="/images/lecture16/int_read.png" alt="Four example plots of exam scores: main effect of sleep only, main effect of caffeine only, both main effects with parallel lines, and an interaction only where the lines cross" class="w-5/6 mx-auto mt-1"/>
+
+<div v-click class="text-[14px] text-gray-600">Each of the three can be present or absent independently. A plot shows the pattern; the ANOVA says whether it is bigger than chance.</div>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: what do you see?
+
+:: content ::
+
+<img src="/images/lecture16/int_practice.png" alt="Four practice plots of cell means for a 2 by 2 design" class="w-4/5 mx-auto"/>
+
+<div class="grid grid-cols-2 gap-6 mt-1">
+<div>
+
+<Admonition title="Question" color="teal-light" width="100%">
+
+Same made-up study. For each plot: is there a main effect of sleep? Of caffeine? An interaction?
+
+</Admonition>
+
+<p v-click="2"><StickyNote color="amber-light" title="The tricky ones" width="100%">Plot 3: the averages above "No caffeine" and "Caffeine" are both 80, so no main effect of caffeine, even though both lines slope. Plot 4: everything averages out, yet caffeine matters a lot, in opposite directions for rested and sleep-deprived students.</StickyNote></p>
+
+</div>
+<div v-click="1">
+
+<table class="compact-table text-sm">
+<thead><tr><th></th><th>Sleep</th><th>Caffeine</th><th>Interaction</th></tr></thead>
+<tbody>
+<tr><td>Plot 1</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Plot 2</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Plot 3</td><td>Yes</td><td>No</td><td>Yes</td></tr>
+<tr><td>Plot 4</td><td>No</td><td>No</td><td>Yes</td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-7-5
+---
+
+:: title ::
+# Two-way ANOVA in R
+
+:: left ::
+
+```r
+conform_model <- aov(conformity ~ partner_status * authoritarianism,
+                     data = conformity_data)
+summary(conform_model)
+```
+
+```text
+                                Df Sum Sq Mean Sq F value  Pr(>F)   
+partner_status                   1  204.3  204.33   9.745 0.00338 **
+authoritarianism                 2   11.6    5.81   0.277 0.75956   
+partner_status:authoritarianism  2  175.5   87.74   4.185 0.02257 * 
+Residuals                       39  817.8   20.97                   
+```
+
+The `*` in the formula asks for both main effects **and** their interaction (the row with the colon).
+
+:: right ::
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Which effects are significant at α = .05?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+The main effect of partner status (*p* = .003) and the interaction (*p* = .023). Not authoritarianism (*p* = .76).
+
+</Admonition></p>
+
+<p v-click><Admonition title="Question" color="teal-light" width="100%">
+
+Why is the Residuals df 39?
+
+</Admonition></p>
+
+<p v-click><Admonition title="Answer" color="green-light" width="100%">
+
+45 people minus 6 cells: one df spent on each cell's mean, just like N − k in a one-way ANOVA.
+
+</Admonition></p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Where each row of the table comes from
+
+:: content ::
+
+<table class="compact-table text-base">
+<thead><tr><th>Row</th><th>df</th><th>Here</th><th>Variability it measures</th></tr></thead>
+<tbody>
+<tr><td>Main effect of partner status</td><td>2 levels − 1</td><td>1</td><td>between the 2 status marginal means</td></tr>
+<tr><td>Main effect of authoritarianism</td><td>3 levels − 1</td><td>2</td><td>between the 3 authoritarianism marginal means</td></tr>
+<tr><td>Interaction</td><td>1 × 2 (multiply the two dfs above)</td><td>2</td><td>what the cell means do that the two main effects can't explain</td></tr>
+<tr><td>Within (Residuals)</td><td>45 people − 6 cells</td><td>39</td><td>scores around their own cell's mean: the shared noise</td></tr>
+</tbody>
+</table>
+
+<div v-click class="border-l-4 border-indigo-400 pl-4 mt-4 text-[17px] leading-snug">
+
+**APA:** A 2 (partner status) × 3 (authoritarianism) between-groups ANOVA showed that participants conformed more to high-status (*M* = 14.2) than low-status partners (*M* = 10.0), *F*(1, 39) = 9.75, *p* = .003. There was no main effect of authoritarianism, *F*(2, 39) = 0.28, *p* = .760, but there was a status × authoritarianism interaction, *F*(2, 39) = 4.19, *p* = .023: the effect of partner status appeared for low- and medium-authoritarian participants but not for high-authoritarian participants.
+
+</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Practice: wrinkly fingers
+
+:: left ::
+
+Why do our fingers wrinkle in water? **20 people** moved small objects from one box to another as fast as they could, with **wrinkled or unwrinkled fingers** (after soaking in warm water, or not) and with **wet or dry objects**.
+
+<img src="/images/lecture16/wrinkle_interaction.png" alt="Time to move objects: dry objects take about 94 seconds either way; wet objects take 118 seconds with unwrinkled fingers but 103 with wrinkled fingers" class="w-full mx-auto"/>
+
+<div class="text-xs text-gray-500 mt-1">Data: Kareklas, Nettle, & Smulders (2013), <i>Biology Letters</i>; R package <code>Stat2Data</code> (<code>Wrinkle</code>).</div>
+
+:: right ::
+
+<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+
+Which description fits the plot?
+
+- **A)** Wrinkled fingers make people faster with every kind of object.
+- **B)** Wet objects take longer, and that's all.
+- **C)** No interaction: the lines are both straight.
+- **D)** An interaction: wet objects slow people down, but much less when their fingers are wrinkled.
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**D.** With dry objects, wrinkles make no difference (94 vs. 93 s). With wet ones, they save 15 seconds. Non-parallel lines = interaction, *F*(1, 19) = 45.2, *p* < .001. \(C): "parallel" is what matters, not "straight." The same people did all four conditions here, but main effects and interactions mean the same thing.
+
+</Admonition>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Practice: John or Jennifer?
+
+:: content ::
+
+<div class="text-[15px] leading-snug">
+
+**127 science professors** rated an application for a lab manager job. The application was identical, but was randomly labeled **"John"** or **"Jennifer."** Both male and female professors rated "John" as more competent than "Jennifer." Faculty gender made no difference.
+
+</div>
+
+<div class="flex justify-center items-start gap-4 mt-2">
+  <div class="flex flex-col items-center w-1/3"><img src="/images/lecture15/anova_interaction_A.png" class="h-44 w-auto object-contain rounded-lg shadow-md"/><p class="mt-1 font-semibold">Plot A</p></div>
+  <div class="flex flex-col items-center w-1/3"><img src="/images/lecture15/anova_interaction_B.png" class="h-44 w-auto object-contain rounded-lg shadow-md"/><p class="mt-1 font-semibold">Plot B</p></div>
+  <div class="flex flex-col items-center w-1/3"><img src="/images/lecture15/anova_interaction_C.png" class="h-44 w-auto object-contain rounded-lg shadow-md"/><p class="mt-1 font-semibold">Plot C</p></div>
+</div>
+
+<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+
+Which plot matches the finding? &nbsp; **A)** Plot A &nbsp; **B)** Plot B &nbsp; **C)** Plot C &nbsp; **D)** None of them
+
+</Admonition>
+
+<div class="text-xs text-gray-500">Moss-Racusin, Dovidio, Brescoll, Graham, & Handelsman (2012), <i>PNAS</i>. The plots are illustrations, not the study's data.</div>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# John or Jennifer: the answer
+
+:: left ::
+
+<Admonition title="Answer" color="green-light" width="100%">
+
+**B.** Plot B shows a **main effect of applicant gender** (male applicant higher, whichever professor rated him) and no main effect of faculty gender and no interaction. Plot A shows a main effect of *faculty* gender. Plot C shows an interaction.
+
+</Admonition>
+
+The study's actual competence ratings (1–7 scale):
+
+<table class="compact-table text-base">
+<thead><tr><th></th><th>Male professors</th><th>Female professors</th></tr></thead>
+<tbody>
+<tr><td><b>"John"</b></td><td>4.01</td><td>4.10</td></tr>
+<tr><td><b>"Jennifer"</b></td><td>3.33</td><td>3.32</td></tr>
+</tbody>
+</table>
+
+:: right ::
+
+<div class="text-[15px] leading-snug">
+
+The 2 × 2 ANOVA found a significant effect of applicant gender (*p* < .01); faculty gender and the interaction were not significant (*p*s > .19). Follow-up: "Jennifer" was rated less competent, *t*(125) = 3.89, *p* < .001, *d* = 0.71.
+
+</div>
+
+<p v-click><StickyNote color="amber-light" title="Why it matters" width="100%">Random assignment of the name makes this causal: the same application got lower ratings with a woman's name on it, from women and men alike. That is a finding only an experiment could show.</StickyNote></p>
+
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+---
+
+:: title ::
+# Mixed designs and more IVs
+
+:: left ::
+
+A **mixed-design ANOVA** has at least one between-groups IV and at least one within-groups IV. The calculations are beyond this course; the logic is the same.
+
+<Admonition title="Multiple choice 5" color="teal-light" width="100%">
+
+Which study needs a mixed design?
+
+1. Students in two sections of PS 211 take Exams 1, 2, and 3.
+2. First-years and sophomores each rate three dining halls.
+
+**A)** Only 1 &nbsp; **B)** Only 2 &nbsp; **C)** Both &nbsp; **D)** Neither
+
+</Admonition>
+
+<Admonition title="Answer" color="green-light" width="100%" v-click>
+
+**C.** Section and class year are between-groups (each person has one); exam and dining hall are within-groups (each person does all three).
+
+</Admonition>
+
+:: right ::
+
+<p v-click>
+
+More IVs → many more *F*s. A **three-way** ANOVA has 3 main effects, 3 two-way interactions, and 1 three-way interaction: **7 *F*s**. A **four-way** has **15**.
+
+</p>
+
+<p v-click>
+
+Each extra IV multiplies the number of cells, so the number of participants you need grows fast, and so does the number of tests. Remember alpha inflation.
+
+</p>
+
+---
+layout: top-title
+color: indigo-light
+align: lt
+---
+
+:: title ::
+# Which test? The story so far
+
+:: content ::
+
+<table class="compact-table text-sm">
+<thead><tr><th>Test</th><th>IVs</th><th>Levels</th><th>Same people in every condition?</th><th>DV</th><th>Example from class</th></tr></thead>
+<tbody>
+<tr><td><i>z</i> test / one-sample <i>t</i></td><td>0</td><td>—</td><td>—</td><td>Numeric</td><td>Is 98.6°F the average body temperature?</td></tr>
+<tr><td>Independent-samples <i>t</i></td><td>1</td><td>2</td><td>No</td><td>Numeric</td><td>Musicians vs. non-musicians' reaction times</td></tr>
+<tr><td>Paired-samples <i>t</i></td><td>1</td><td>2</td><td>Yes</td><td>Numeric</td><td>Fandango vs. IMDb ratings of the same films</td></tr>
+<tr><td>One-way between-groups ANOVA</td><td>1</td><td>3+</td><td>No</td><td>Numeric</td><td>Three ways to teach reading</td></tr>
+<tr><td>Repeated-measures ANOVA</td><td>1</td><td>3+</td><td>Yes</td><td>Numeric</td><td>Caffeine, chocolate & tapping; music & time</td></tr>
+<tr><td>Two-way (factorial) ANOVA</td><td>2</td><td>2+ each</td><td>No (yes, or mixed, in other designs)</td><td>Numeric</td><td>Partner status × authoritarianism</td></tr>
+</tbody>
+</table>
+
+<p v-click><StickyNote color="green-light" title="Coming attractions" width="60%">Every test in this table has a <b>categorical</b> IV. Next: what to do when both variables are numeric (correlation).</StickyNote></p>
+
+---
+layout: section
+color: indigo-light
+align: lt
+---
+
 When both variables are numeric...
 # Correlation
 
@@ -199,11 +737,14 @@ Correlations are usually computed in **observational** studies: both variables a
 
 :: right ::
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 
 The statistic doesn't decide whether you can claim causation: the **design** does. A correlation from a randomized experiment can be causal; a *t* test on groups that already existed (owls vs. larks) cannot.
 
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="happy" color="#FDA7DC" /></div>
+</div>
 
 ---
 layout: top-title-two-cols
@@ -233,9 +774,11 @@ Describe the relationship. Is it strong?
 
 <p v-click><Admonition title="Answer" color="green-light" width="100%">
 
-Students who drink more tend to have somewhat **lower** GPAs, but there is a lot of scatter: many heavy drinkers have high GPAs. A **weak negative** relationship. Pearson's *r* = **−.27**.
+Students who drink more tend to have somewhat **lower** GPAs, but there is a lot of scatter: many heavy drinkers have high GPAs. A **weak negative** relationship.
 
 </Admonition></p>
+
+<p v-click><StickyNote color="amber-light" title="Up next" width="100%">"Weak" and "somewhat" are judgment calls. How do we actually <b>quantify</b> the strength of this relationship?</StickyNote></p>
 
 ---
 layout: top-title-two-cols
@@ -306,7 +849,7 @@ align: lt-lt-lt
 
 :: left ::
 
-<Admonition title="Multiple choice 3" color="teal-light" width="100%">
+<Admonition title="Multiple choice 6" color="teal-light" width="100%">
 
 Which of these would you expect to show a **negative** correlation?
 
@@ -338,9 +881,9 @@ align: lt
 
 <img src="/images/lecture17/guess_r.png" alt="Six scatterplots of real data labeled A to F" class="w-3/4 mx-auto"/>
 
-<Admonition title="Multiple choice 4" color="teal-light" width="100%">
+<Admonition title="Question" color="teal-light" width="100%">
 
-Which panel shows the **strongest** correlation? &nbsp; **A)** B (penguins) &nbsp; **B)** D (high school vs. college GPA) &nbsp; **C)** F (parents' and children's heights) &nbsp; **D)** A (sleep and GPA)
+Which panel shows the **strongest** correlation? Which shows the **weakest**? Guess *r* for each panel.
 
 </Admonition>
 
@@ -364,7 +907,7 @@ align: lt
 
 <Admonition title="Answer" color="green-light" width="100%">
 
-**A.** Penguin flipper length and body mass, *r* = .87: two measurements of the same body. Behavioral correlations look more like C–F.
+**Strongest: panel B.** Penguin flipper length and body mass, *r* = .87: two measurements of the same body. **Weakest: panel A**, *r* = −.06. Behavioral correlations look more like C–F.
 
 </Admonition>
 
@@ -417,41 +960,51 @@ Part 2
 # Calculating and testing *r*
 
 ---
-layout: top-title
+layout: top-title-two-cols
 color: indigo-light
-align: lt
+align: lt-lt-lt
+columns: is-5-7
 ---
 
 :: title ::
-# The Pearson correlation coefficient
+# Building *r*, steps 1–3: do X and Y move together?
 
-:: content ::
+:: left ::
 
-$$
-r = \frac{\sum(X - M_X)(Y - M_Y)}{\sqrt{\sum (X - M_X)^2 \,\sum(Y - M_Y)^2}}
-$$
+<div class="text-[15px] leading-snug">
 
-<div class="grid grid-cols-2 gap-8 mt-2 text-[15px] leading-snug">
-<div v-click>
+Eight students from our sample. The dashed lines are the two means.
 
-**Numerator: how X and Y move together** (covariation)
+<div v-click="1">
 
-For each person, multiply their deviation on X by their deviation on Y, then add up the products.
-- Both above their means, or both below → **positive** product
-- One above, one below → **negative** product
+**Step 1: deviations.** For one student: how far from the mean on X, and on Y?
+$$X - M_X \qquad Y - M_Y$$
 
 </div>
-<div v-click>
+<div v-click="2">
 
-**Denominator: how much X and Y vary on their own**
+**Step 2: multiply** the two deviations: the area of a rectangle.
+$$(X - M_X)(Y - M_Y)$$
+Same side of both means → positive (teal). Opposite sides → negative (pink).
 
-The square root of (SS<sub>X</sub> × SS<sub>Y</sub>). Dividing by it puts *r* on a −1 to +1 scale, whatever the units.
+</div>
+<div v-click="3">
+
+**Step 3: add up** everyone's products.
+$$\sum (X - M_X)(Y - M_Y)$$
+More pink area than teal → a negative total.
 
 </div>
 </div>
 
-<p v-click><StickyNote color="amber-light" title="Signal ÷ noise, once more" width="70%">Numerator = shared movement (signal); denominator = total variability (noise). You will not compute <i>r</i> by hand; know what each part does.</StickyNote></p>
+:: right ::
 
+<v-switch>
+<template #0><img src="/images/lecture17/r_step0.png" alt="Eight students' GPA against drinks per week, with dashed lines at the two means" class="w-full"/></template>
+<template #1><img src="/images/lecture17/r_step1.png" alt="One student's deviation from the mean on drinks (plus 5.88) and on GPA (minus 0.93), drawn as arrows" class="w-full"/></template>
+<template #2><img src="/images/lecture17/r_step2.png" alt="The same student's two deviations multiplied, drawn as a pink rectangle with area minus 5.49" class="w-full"/></template>
+<template #3><img src="/images/lecture17/r_step3.png" alt="Rectangles for all eight students, mostly pink; the products add up to minus 6.96" class="w-full"/></template>
+</v-switch>
 ---
 layout: top-title-two-cols
 color: indigo-light
@@ -489,6 +1042,46 @@ Negative: the products are mostly negative, so their sum is too. (Strictly, the 
 
 </Admonition></p>
 
+---
+layout: top-title-two-cols
+color: indigo-light
+align: lt-lt-lt
+columns: is-5-7
+---
+
+:: title ::
+# Building *r*, steps 4–5: put it on a −1 to +1 scale
+
+:: left ::
+
+<div class="text-[15px] leading-snug">
+
+The sum of products (−6.96) depends on the **units** (drinks, GPA points) and on **how many people** there are, so it can't say how strong the relationship is.
+
+<div v-click="1">
+
+**Step 4: how much X and Y vary on their own.** The familiar sums of squares:
+$$SS_X = \sum (X - M_X)^2 \quad SS_Y = \sum (Y - M_Y)^2$$
+
+</div>
+<div v-click="2">
+
+**Step 5: divide.** Movement together, relative to movement at all:
+$$r = \frac{\sum(X - M_X)(Y - M_Y)}{\sqrt{SS_X \cdot SS_Y}}$$
+The units cancel, so *r* always lands between −1 and +1.
+
+</div>
+</div>
+
+<p v-click="3"><StickyNote color="amber-light" title="Signal ÷ noise, once more" width="100%">You will not compute <i>r</i> by hand. Know what each part does.</StickyNote></p>
+
+:: right ::
+
+<v-switch>
+<template #0-1><img src="/images/lecture17/r_step3.png" alt="Rectangles for all eight students; the products add up to minus 6.96" class="w-full"/></template>
+<template #1><img src="/images/lecture17/r_step4.png" alt="Each student's deviation on drinks alone (SS X = 106.9) and on GPA alone (SS Y = 1.54)" class="w-full"/></template>
+<template #2-4><img src="/images/lecture17/r_step5.png" alt="The eight students with a best-fit line; r = minus 6.96 divided by the square root of 106.9 times 1.54, which is minus 0.54" class="w-full"/></template>
+</v-switch>
 ---
 layout: top-title
 color: indigo-light
@@ -564,7 +1157,7 @@ align: lt-lt-lt
 
 :: left ::
 
-<Admonition title="Multiple choice 5" color="teal-light" width="100%">
+<Admonition title="Multiple choice 7" color="teal-light" width="100%">
 
 Two studies both find *r* = .30 between social media use and loneliness. Study 1 has N = 20; Study 2 has N = 200. Which is true?
 
@@ -748,7 +1341,7 @@ sample estimates:
 
 :: right ::
 
-<Admonition title="Multiple choice 6" color="teal-light" width="100%">
+<Admonition title="Multiple choice 8" color="teal-light" width="100%">
 
 Which is the best summary?
 
@@ -899,7 +1492,7 @@ Hill (1990) studied final exam grades in a sociology course:
 </tbody>
 </table>
 
-<Admonition title="Multiple choice 7" color="teal-light" width="100%">
+<Admonition title="Multiple choice 9" color="teal-light" width="100%">
 
 Which variable has the **strongest** relationship with exam grade?
 
@@ -929,7 +1522,7 @@ align: lt-lt-lt
 
 :: left ::
 
-<Admonition title="Multiple choice 8" color="teal-light" width="100%">
+<Admonition title="Multiple choice 10" color="teal-light" width="100%">
 
 A survey finds *r* = −.45 between daily screen time and sleep quality. Which interpretation is most appropriate?
 

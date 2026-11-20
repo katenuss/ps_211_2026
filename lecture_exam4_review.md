@@ -174,9 +174,12 @@ A. Increasing “signal” increases F.
 
 </Admonition>
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+<div v-click class="flex flex-col items-start">
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 We don't know how much F increases without knowing the exact values, but we can say it will increase.
-</SpeechBubble></p>
+</SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="happy" color="#FDA7DC" /></div>
+</div>
 
 ---
 layout: top-title
@@ -208,9 +211,12 @@ B. Because *p* = .42, we fail to reject the null hypothesis, meaning we did not 
 
 <p v-click>
 
+<div class="flex flex-col items-start">
 <SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 Even though *F* tests are always one-tailed, *F* **can** be less than 1 when within-group variability exceeds between-group variability.
 </SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="excited" color="#FDA7DC" /></div>
+</div>
 
 </p>
 
@@ -511,9 +517,12 @@ A, B, D, and E.
 
 </Admonition>
 
-<p v-click><SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
+<div v-click class="flex flex-col items-start">
+<SpeechBubble color="amber-light" shape="round" position="bl" maxWidth="24rem">
 E is correct because $r^2 = (-0.62)^2 = 0.3844$, so approximately 38% of the variance is explained, meaning about 62% is not explained. The fact that it is exactly .62 is coincidental.
-</SpeechBubble></p>
+</SpeechBubble>
+<div class="ml-2 -mt-1"><IceCream :size="60" mood="happy" color="#FDA7DC" /></div>
+</div>
 
 ---
 layout: top-title
